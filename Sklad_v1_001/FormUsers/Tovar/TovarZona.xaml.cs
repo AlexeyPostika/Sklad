@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Sklad_v1_001.FormUsers.Tovar;
 
 namespace Sklad_v1_001.FormUsers.Tovar
 {
@@ -20,9 +21,25 @@ namespace Sklad_v1_001.FormUsers.Tovar
     /// </summary>
     public partial class TovarZona : UserControl
     {
+        Tovar.LocalRow localrow;
+        Tovar.TovarZonaLogic logic;
         public TovarZona()
         {
             InitializeComponent();
+            logic = new TovarZonaLogic();
+            logic.Select();
+            localrow = new LocalRow();
+            this.DataGrid.DataContext = localrow;
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

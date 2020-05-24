@@ -48,5 +48,10 @@ namespace Sklad_v1_001.FormUsers
         {
             Docker1.Navigate(new Kategorii()); // открытие страницы
         }
+
+        private void Admins_Click(object sender, RoutedEventArgs e)
+        {
+            Docker1.Content = new Admins.Users.RegistersUsers();
+        }
     }
 }

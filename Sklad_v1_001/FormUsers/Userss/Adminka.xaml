@@ -7,7 +7,5 @@
       d:DesignHeight="818" Width="979" 
 	Title="Adminka">
 
-    <Grid Height="818" Background="#FFFDFAFA">
-        
-    </Grid>
+    <Grid Height="818" Background="#FFFDFAFA"/>
 </Page>
