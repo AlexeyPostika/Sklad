@@ -29,7 +29,7 @@
             <Button x:Name="Server" Content="Сервер" HorizontalAlignment="Left" Margin="45,353,0,0" VerticalAlignment="Top" Width="177" Height="40" Background="#FF292933" FontSize="16" FontWeight="Bold" Foreground="#FFF9F8F8" BorderBrush="#FF292933"/>
             <Button x:Name="Kassa" Content="Касса" HorizontalAlignment="Left" Margin="45,398,0,0" VerticalAlignment="Top" Width="177" Height="40" Background="#FF292933" FontSize="16" FontWeight="Bold" Foreground="#FFF9F8F8" BorderBrush="#FF292933"/>
             <Image HorizontalAlignment="Left" Height="40" Margin="0,485,0,0" VerticalAlignment="Top" Width="40" Source="/Sklad_v1_001;component/Icone/registration_30px.png" RenderTransformOrigin="0.475,0.025"/>
-            <Button x:Name="Admins" Content="Персонал" HorizontalAlignment="Left" Margin="45,485,0,0" VerticalAlignment="Top" Width="177" Height="40" Background="#FF292933" FontSize="16" FontWeight="Bold" Foreground="#FFF9F8F8" BorderBrush="#FF292933"/>
+            <Button x:Name="Admins" Content="Персонал" HorizontalAlignment="Left" Margin="45,485,0,0" VerticalAlignment="Top" Width="177" Height="40" Background="#FF292933" FontSize="16" FontWeight="Bold" Foreground="#FFF9F8F8" BorderBrush="#FF292933" Click="Admins_Click"/>
         </Grid>
         <!--вертикальное меню-->
         <Grid HorizontalAlignment="Left" Height="100" Margin="234,0,0,0" VerticalAlignment="Top" Width="1034" Background="#FF292933"/>
