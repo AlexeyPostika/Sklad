@@ -128,6 +128,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
                 localrow.TypeProduct = Int32.Parse(row["IDTypeProduct"].ToString());
                 localrow.Cena = Int32.Parse(row["Cena"].ToString());
                 localrow.Vetrina= Int32.Parse(row["IDVetrina"].ToString());
+
             }
         }
     }
