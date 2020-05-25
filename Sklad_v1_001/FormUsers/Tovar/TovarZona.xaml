@@ -15,26 +15,26 @@
             <Image Height="130" VerticalAlignment="Top" HorizontalAlignment="Left" Width="126" Margin="0,10,0,0" Source="/Sklad_v1_001;component/Icone/picture_80px.png"/>
         </GroupBox>
         <!--{x:Static res:Resources.SchtrxCode}-->
-        <TextBlock HorizontalAlignment="Left" Margin="149,30,0,0" Text="№-штрих-кода" VerticalAlignment="Top" Width="183" Height="22" FontSize="16" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="149,30,0,0" Text="{x:Static res:Resources.SchtrxCode}" VerticalAlignment="Top" Width="183" Height="22" FontSize="16" FontWeight="Bold"/>
         <TextBlock x:Name="ShtrixCode" HorizontalAlignment="Left" Margin="149,57,0,0" TextWrapping="Wrap" Text="---------------------------" VerticalAlignment="Top" Width="183" Height="22" FontSize="16"/>
-        <TextBlock HorizontalAlignment="Left" Margin="362,30,0,0" TextWrapping="Wrap" Text="Наимаенование" VerticalAlignment="Top" Width="183" Height="22" FontSize="16" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="362,30,0,0" TextWrapping="Wrap" Text="{x:Static res:Resources.NameProduct}" VerticalAlignment="Top" Width="183" Height="22" FontSize="16" FontWeight="Bold"/>
         <TextBlock x:Name="NameTovar" HorizontalAlignment="Left" Margin="362,57,0,0" TextWrapping="Wrap" Text="------------------------------------" VerticalAlignment="Top" Width="244" Height="22" FontSize="16"/>
-        <TextBlock HorizontalAlignment="Left" Margin="646,30,0,0" TextWrapping="Wrap" Text="Категория" VerticalAlignment="Top" Width="183" Height="22" FontSize="16" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="646,30,0,0" TextWrapping="Wrap" Text="{x:Static res:Resources.TypeProduct}" VerticalAlignment="Top" Width="183" Height="22" FontSize="16" FontWeight="Bold"/>
         <TextBlock x:Name="TypeKategor" HorizontalAlignment="Left" Margin="646,57,0,0" TextWrapping="Wrap" Text="---------------------------------" VerticalAlignment="Top" Width="183" Height="22" FontSize="16"/>
-        <TextBlock HorizontalAlignment="Left" Margin="149,84,0,0" TextWrapping="Wrap" Text="Описание" VerticalAlignment="Top" Width="183" Height="22" FontSize="16" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="149,84,0,0" TextWrapping="Wrap" Text="{x:Static res:Resources.Description}" VerticalAlignment="Top" Width="183" Height="22" FontSize="16" FontWeight="Bold"/>
         <TextBlock x:Name="Opisanie" HorizontalAlignment="Left" Margin="149,111,0,0" TextWrapping="Wrap" Text="-----------------------------------------------------" VerticalAlignment="Top" Width="396" Height="55" FontSize="16"/>
-        <TextBlock HorizontalAlignment="Left" Margin="555,84,0,0" TextWrapping="Wrap" Text="Расположение" VerticalAlignment="Top" Width="183" Height="22" FontSize="16" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="555,84,0,0" TextWrapping="Wrap" Text="{x:Static res:Resources.Vetrina}" VerticalAlignment="Top" Width="183" Height="22" FontSize="16" FontWeight="Bold"/>
         <TextBlock x:Name="Raspolowenie" HorizontalAlignment="Left" Margin="555,111,0,0" TextWrapping="Wrap" Text="---------------------------------------------------------------------------" VerticalAlignment="Top" Width="405" Height="55" FontSize="16"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,182,0,0" TextWrapping="Wrap" Text="Список товара на складе:" VerticalAlignment="Top" Height="33" Width="263" FontSize="20" FontWeight="Bold" Grid.RowSpan="2"/>
         <Image HorizontalAlignment="Left" Height="24" Margin="269,186,0,0" VerticalAlignment="Top" Width="25" Source="/Sklad_v1_001;component/Icone/tovar/bulleted_list_30px.png"/>
         <Image HorizontalAlignment="Left" Height="24" Margin="299,186,0,0" VerticalAlignment="Top" Width="24" Source="/Sklad_v1_001;component/Icone/tovar/grid_2_30px.png"/>
         <DataGrid AutoGenerateColumns="False" x:Name="DataGrid" Grid.Row="1" SelectionChanged="DataGrid_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="ID" Width="40"/>
-                <DataGridTextColumn Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="Наименование продукта"  Width="500"/>
-                <DataGridTextColumn Binding="{Binding TypeProduct}" Header="Категория"  Width="200"/>
-                <DataGridTextColumn Binding="{Binding Path=CenaProduct, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="Цена"  Width="100"/>
-                <DataGridTextColumn Binding="{Binding Path=Vetrina, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="Ветрина"  Width="1*"/>
+                <DataGridTextColumn Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="40"/>
+                <DataGridTextColumn Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NameProduct}"  Width="500"/>
+                <DataGridTextColumn Binding="{Binding TypeProduct}" Header="{x:Static res:Resources.TypeProduct}"  Width="200"/>
+                <DataGridTextColumn Binding="{Binding Path=CenaProduct, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.CenaProduct}"  Width="100"/>
+                <DataGridTextColumn Binding="{Binding Path=Vetrina, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.Vetrina}"  Width="1*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="Sklad_v1_001.Control.ToolBarControls.GridProductListControls"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sklad_v1_001.Control.ToolBarControls"
+             xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+             mc:Ignorable="d" 
+             d:DesignHeight="818" Width="979" Foreground="#FFFBFBFB" Name="control">
+    <UserControl.Resources>
+        <DataTemplate x:Key="listTemplate">
+            <StackPanel Margin="5">
+                <Grid Name="Product" Width="979" Height="100" Background="#FFE6FDFD" Margin="0,0,0,718">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="image" 
+                           Source="/Sklad_v1_001;component/Icone/picture_80px.png"
+                           Grid.Column="0"/>
+                    <Grid Grid.Column="1">
+                    <Label x:Name="NameProduct" Content="{x:Static res:Resources.NameProduct}" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="ProductEdit" Content="**" HorizontalAlignment="Left" Margin="150,-25,0,0" VerticalAlignment="Top" Width="250"/>
+                    <Label x:Name="Model" Content="{x:Static res:Resources.Model}" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="ModelEdit" Content="**" HorizontalAlignment="Left" Margin="70,-25,0,0" VerticalAlignment="Top" Width="250"/>
+                    <Label x:Name="Type" Content="{x:Static res:Resources.TypeProduct}" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="TypeEdit" Content="**" HorizontalAlignment="Left" Margin="80,-25,0,0" VerticalAlignment="Top" Width="250"/>
+                    </Grid>
+                </Grid>
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid Background="#FFFDFDFD">
+        <ListBox x:Name="ProductList" ItemTemplate="{StaticResource listTemplate}"
+                />
+    </Grid>
+</UserControl>

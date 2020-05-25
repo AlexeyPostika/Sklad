@@ -120,8 +120,14 @@
   <data name="CenaProduct" xml:space="preserve">
     <value>Цена</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
   <data name="ID" xml:space="preserve">
     <value>№</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Модель</value>
   </data>
   <data name="NameProduct" xml:space="preserve">
     <value>Наименование товара</value>
