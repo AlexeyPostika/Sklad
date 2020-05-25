@@ -33,8 +33,8 @@ namespace Sklad_v1_001.SQL
                     //table = reader.GetSchemaTable();
                     table.Load(reader);
                     reader.Close();
-                }
-                connection.Close();
+                    connection.Close();
+                }                
                 return table;
             }
             catch (Exception ex)
