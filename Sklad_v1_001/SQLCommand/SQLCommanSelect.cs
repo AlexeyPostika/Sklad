@@ -20,12 +20,12 @@ namespace Sklad_v1_001.SQL
         {
             try
             {
-                string sqlExpression = "xp_GetSelectProductTable";
+               // string sqlExpression = "xp_GetSelectProductTable";
                 _connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
                 using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
-                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    SqlCommand command = new SqlCommand(sqlProcedura, connection);
                     // указываем, что команда представляет хранимую процедуру
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     var reader = command.ExecuteReader();

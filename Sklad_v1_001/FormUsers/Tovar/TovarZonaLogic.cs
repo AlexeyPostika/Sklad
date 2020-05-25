@@ -14,7 +14,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
     {
         private Int32 iD;
         private String name;
-        private Int32 typeProduct;
+        private String typeProduct;
         private String typeDescriptio;
         private Double cena;
         private Int32 vetrina;
@@ -47,7 +47,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
             }
         }
 
-        public int TypeProduct
+        public String TypeProduct
         {
             get
             {
@@ -117,19 +117,21 @@ namespace Sklad_v1_001.FormUsers.Tovar
         LocalRow localrow = new LocalRow();
         String commanString = "Select * From Product";
         String getSelectProductTable = "xp_GetSelectProductTable";
-       
-        public void Select()
+        DataTable table;
+        public DataTable Select()
         {
-            DataTable table = sqlSting.SQLCommandrs(getSelectProductTable);
-            foreach(DataRow row in table.Rows)
-            {
-                localrow.ID = Int32.Parse(row["ID"].ToString());
-                localrow.Name = row["Name"].ToString();
-                localrow.TypeProduct = Int32.Parse(row["IDTypeProduct"].ToString());
-                localrow.Cena = Int32.Parse(row["Cena"].ToString());
-                localrow.Vetrina= Int32.Parse(row["IDVetrina"].ToString());
+            table = new DataTable();
+            table = sqlSting.SQLCommandrs(getSelectProductTable);
+            //foreach(DataRow row in table.Rows)
+            //{
+            //    localrow.ID = Int32.Parse(row["ID"].ToString());
+            //    localrow.Name = row["Name"].ToString();
+            //    localrow.TypeProduct = Int32.Parse(row["IDTypeProduct"].ToString());
+            //    localrow.Cena = Int32.Parse(row["Cena"].ToString());
+            //    localrow.Vetrina= Int32.Parse(row["IDVetrina"].ToString());
 
-            }
+            //}
+            return table;
         }
     }
 }
