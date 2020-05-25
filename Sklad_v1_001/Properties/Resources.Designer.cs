@@ -22,7 +22,7 @@ namespace Sklad_v1_001.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Sklad_v1_001.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Sklad_v1_001.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace Sklad_v1_001.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Sklad_v1_001.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Цена.
         /// </summary>
-        internal static string CenaProduct {
+        public static string CenaProduct {
             get {
                 return ResourceManager.GetString("CenaProduct", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Sklad_v1_001.Properties {
         /// <summary>
         ///   Looks up a localized string similar to №.
         /// </summary>
-        internal static string ID {
+        public static string ID {
             get {
                 return ResourceManager.GetString("ID", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Sklad_v1_001.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Наименование товара.
         /// </summary>
-        internal static string NameProduct {
+        public static string NameProduct {
             get {
                 return ResourceManager.GetString("NameProduct", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Sklad_v1_001.Properties {
         /// <summary>
         ///   Looks up a localized string similar to № штрих-кода.
         /// </summary>
-        internal static string SchtrxCode {
+        public static string SchtrxCode {
             get {
                 return ResourceManager.GetString("SchtrxCode", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Sklad_v1_001.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Категория .
         /// </summary>
-        internal static string TypeProduct {
+        public static string TypeProduct {
             get {
                 return ResourceManager.GetString("TypeProduct", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Sklad_v1_001.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Ветрина.
         /// </summary>
-        internal static string Vetrina {
+        public static string Vetrina {
             get {
                 return ResourceManager.GetString("Vetrina", resourceCulture);
             }
