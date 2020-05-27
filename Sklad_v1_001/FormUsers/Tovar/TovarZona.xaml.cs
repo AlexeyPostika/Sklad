@@ -33,7 +33,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
 
             logicTovarZona = new TovarZonaLogic();
 
-            this.DataGrid.ItemsSource = dataProduct;
+            this.dataList.ItemsSource = dataProduct;
            
             //this.DataGrid.DataContext = localrow;
         }
@@ -61,6 +61,11 @@ namespace Sklad_v1_001.FormUsers.Tovar
                 localrow.Vetrina = Int32.Parse(row["IDVetrina"].ToString());
                 dataProduct.Add(localrow);
             }
+        }
+
+        private void phonesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
