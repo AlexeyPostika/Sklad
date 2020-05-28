@@ -126,6 +126,9 @@
   <data name="NameProduct" xml:space="preserve">
     <value>Наименование товара</value>
   </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Фото</value>
+  </data>
   <data name="SchtrxCode" xml:space="preserve">
     <value>№ штрих-кода</value>
   </data>

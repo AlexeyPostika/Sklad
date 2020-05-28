@@ -33,7 +33,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
 
             logicTovarZona = new TovarZonaLogic();
 
-            this.dataList.ItemsSource = dataProduct;
+            this.DataProductGrid.ItemsSource = dataProduct;
            
             //this.DataGrid.DataContext = localrow;
         }
@@ -59,6 +59,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
                 localrow.TypeProduct = row["TypeDescription"].ToString();
                 localrow.Cena = Int32.Parse(row["Cena"].ToString());
                 localrow.Vetrina = Int32.Parse(row["IDVetrina"].ToString());
+                localrow.PhotoImage = @"..\..\Icone\tovar\picture_80px.png";
                 dataProduct.Add(localrow);
             }
         }

@@ -46,12 +46,32 @@
         <TextBlock HorizontalAlignment="Left" Margin="10,182,0,0" TextWrapping="Wrap" Text="Список товара на складе:" VerticalAlignment="Top" Height="33" Width="263" FontSize="20" FontWeight="Bold" Grid.RowSpan="2"/>
         <Image HorizontalAlignment="Left" Height="24" Margin="269,186,0,0" VerticalAlignment="Top" Width="25" Source="/Sklad_v1_001;component/Icone/tovar/bulleted_list_30px.png"/>
         <Image HorizontalAlignment="Left" Height="24" Margin="299,186,0,0" VerticalAlignment="Top" Width="24" Source="/Sklad_v1_001;component/Icone/tovar/grid_2_30px.png"/>
-        <Grid Grid.Row="1">
-            <ListBox x:Name="dataList"
+        <Grid Grid.Row="1" >
+            <!--<ListBox x:Name="dataList"
                  ItemTemplate="{StaticResource listTemplate}"
                  ItemsPanel="{StaticResource listPanelTemplate}"
                  SelectionChanged="phonesList_SelectionChanged"
-                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" />-->
+            <DataGrid Name="DataProductGrid">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Width="Auto">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{x:Static res:Resources.Photo}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding PhotoImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="Auto"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="{x:Static res:Resources.NameProduct}" Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="Auto" />
+                    <DataGridTextColumn Header="{x:Static res:Resources.TypeProduct}" Binding="{Binding TypeDescriptio, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="Auto" />
+                    <DataGridTextColumn Header="{x:Static res:Resources.Vetrina}" Binding="{Binding Vetrina, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="Auto" />
+                    <DataGridTextColumn Header="{x:Static res:Resources.CenaProduct}" Binding="{Binding Cena, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="Auto" />
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
     </Grid>
 </UserControl>
