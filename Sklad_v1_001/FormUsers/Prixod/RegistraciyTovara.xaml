@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:res="clr-namespace:Sklad_v1_001.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="818" Width="979">
     <Grid Height="818" Background="#FFFDFAFA">
         <Image Height="130" VerticalAlignment="Top" HorizontalAlignment="Left" Width="126" Margin="10,10,0,0" Source="/Sklad_v1_001;component/Icone/picture_80px.png"/>
         <TextBlock HorizontalAlignment="Left" Margin="12,132,0,0" TextWrapping="Wrap" Text="Загрузить фото" VerticalAlignment="Top" Width="117" FontSize="16" Cursor="None" FlowDirection="RightToLeft"/>
-        <TextBlock HorizontalAlignment="Left" Margin="158,10,0,0" TextWrapping="Wrap" Text="Штрих - код товара" VerticalAlignment="Top" Width="156" FontSize="16" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="158,10,0,0" TextWrapping="Wrap" Text="{x:Static res:Resources.SchtrxCode}" VerticalAlignment="Top" Width="156" FontSize="16" FontWeight="Bold"/>
         <TextBlock x:Name="ShtrixCodeAuto" HorizontalAlignment="Left" Margin="158,36,0,0" TextWrapping="Wrap" Text="-----------------------------" VerticalAlignment="Top" Width="188" FontSize="16" Height="28"/>
         <TextBlock HorizontalAlignment="Left" Margin="370,10,0,0" TextWrapping="Wrap" Text="Штрих - код допол." VerticalAlignment="Top" Width="156" FontSize="16" FontWeight="Bold"/>
         <TextBox x:Name="shtrixCodUsers" HorizontalAlignment="Left" Height="28" Margin="370,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" FontSize="16"/>
