@@ -18,7 +18,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
         private String typeDescriptio;
         private Double cena;
         private Int32 vetrina;
-
+        private String photoImage;
         public int ID
         {
             get
@@ -100,6 +100,20 @@ namespace Sklad_v1_001.FormUsers.Tovar
             {
                 vetrina = value;
                 OnPropertyChanged("Vetrina");
+            }
+        }
+
+        public string PhotoImage
+        {
+            get
+            {
+                return photoImage;
+            }
+
+            set
+            {
+                photoImage = value;
+                OnPropertyChanged("PhotoImage");
             }
         }
 
