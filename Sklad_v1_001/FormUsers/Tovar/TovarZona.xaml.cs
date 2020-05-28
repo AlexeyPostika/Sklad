@@ -33,7 +33,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
 
             logicTovarZona = new TovarZonaLogic();
 
-            this.DataProductGrid.ItemsSource = dataProduct;
+            this.DataGrid.ItemsSource = dataProduct;
            
             //this.DataGrid.DataContext = localrow;
         }
