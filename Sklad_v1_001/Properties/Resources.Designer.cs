@@ -61,11 +61,29 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Предыдущая.
+        /// </summary>
+        public static string BACK {
+            get {
+                return ResourceManager.GetString("BACK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Цена.
         /// </summary>
         public static string CenaProduct {
             get {
                 return ResourceManager.GetString("CenaProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Описание  продукта.
+        /// </summary>
+        public static string DescriptionProduct {
+            get {
+                return ResourceManager.GetString("DescriptionProduct", resourceCulture);
             }
         }
         
@@ -84,6 +102,15 @@ namespace Sklad_v1_001.Properties {
         public static string NameProduct {
             get {
                 return ResourceManager.GetString("NameProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Следующая.
+        /// </summary>
+        public static string NEXT {
+            get {
+                return ResourceManager.GetString("NEXT", resourceCulture);
             }
         }
         
