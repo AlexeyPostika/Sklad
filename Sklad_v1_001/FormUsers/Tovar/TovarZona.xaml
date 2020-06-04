@@ -4,12 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+             xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
              mc:Ignorable="d"             
              d:DesignHeight="818" Width="979" Loaded="UserControl_Loaded">
     <Grid Height="818" Background="#FFFDFAFA">
         <Grid.RowDefinitions>
             <RowDefinition Height="220"/>
-            <RowDefinition Height="303*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <GroupBox x:Name="Informe" Header="Информация о товаре" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="167" RenderTransformOrigin="-0.056,0.073" Width="962">
             <Image Height="130" VerticalAlignment="Top" HorizontalAlignment="Left" Width="126" Margin="0,10,0,0" Source="/Sklad_v1_001;component/Icone/picture_80px.png"/>
@@ -43,11 +45,12 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NameProduct}"  Width="500"/>
+                <DataGridTextColumn Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NameProduct}" Width="500"/>
                 <DataGridTextColumn Binding="{Binding TypeProduct}" Header="{x:Static res:Resources.TypeProduct}"  Width="200"/>
                 <DataGridTextColumn Binding="{Binding Path=CenaProduct, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.CenaProduct}"  Width="100"/>
                 <DataGridTextColumn Binding="{Binding Path=Vetrina, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.Vetrina}"  Width="1*"/>
             </DataGrid.Columns>
         </DataGrid>
+        <ToolBar:ToolBarNextToBack Grid.Row="2"/>
     </Grid>
 </UserControl>

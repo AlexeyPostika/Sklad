@@ -117,14 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BACK" xml:space="preserve">
+    <value>Предыдущая</value>
+  </data>
   <data name="CenaProduct" xml:space="preserve">
     <value>Цена</value>
+  </data>
+  <data name="DescriptionProduct" xml:space="preserve">
+    <value>Описание  продукта</value>
   </data>
   <data name="ID" xml:space="preserve">
     <value>№</value>
   </data>
   <data name="NameProduct" xml:space="preserve">
     <value>Наименование товара</value>
+  </data>
+  <data name="NEXT" xml:space="preserve">
+    <value>Следующая</value>
   </data>
   <data name="Photo" xml:space="preserve">
     <value>Фото</value>
