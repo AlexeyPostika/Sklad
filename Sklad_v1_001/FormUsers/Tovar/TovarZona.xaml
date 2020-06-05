@@ -30,6 +30,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="10,182,0,0" TextWrapping="Wrap" Text="Список товара на складе:" VerticalAlignment="Top" Height="33" Width="263" FontSize="20" FontWeight="Bold" Grid.RowSpan="2"/>
         <Image HorizontalAlignment="Left" Height="24" Margin="269,186,0,0" VerticalAlignment="Top" Width="25" Source="/Sklad_v1_001;component/Icone/tovar/bulleted_list_30px.png"/>
         <Image HorizontalAlignment="Left" Height="24" Margin="299,186,0,0" VerticalAlignment="Top" Width="24" Source="/Sklad_v1_001;component/Icone/tovar/grid_2_30px.png"/>
+        
         <DataGrid AutoGenerateColumns="False" x:Name="DataGrid" Grid.Row="1" SelectionChanged="DataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="40"/>
@@ -51,7 +52,7 @@
                 <DataGridTextColumn Binding="{Binding Path=Vetrina, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.Vetrina}"  Width="1*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <ToolBar:ToolBarNextToBack Grid.Row="2"
+        <ToolBar:ToolBarNextToBack Grid.Row="2" x:Name="ToolbarNextPageData"
                                    ButtonBack="ToolBarNextToBack_ButtonBack"
                                    ButtonNext="ToolBarNextToBack_ButtonNext"
                                    TextOnWhatPage="{Binding Path=TextOnWhatPage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>

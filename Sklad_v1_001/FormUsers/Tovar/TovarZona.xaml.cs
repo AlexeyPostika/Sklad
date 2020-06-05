@@ -23,9 +23,10 @@ namespace Sklad_v1_001.FormUsers.Tovar
     /// </summary>
     public partial class TovarZona : UserControl
     {
-        Tovar.LocalRow localrow;
         Tovar.TovarZonaLogic logicTovarZona;
         ObservableCollection<Tovar.LocalRow> dataProduct;
+
+        Tovar.RowSummary sammary;
         public TovarZona()
         {
             InitializeComponent();
@@ -33,8 +34,10 @@ namespace Sklad_v1_001.FormUsers.Tovar
 
             logicTovarZona = new TovarZonaLogic();
 
+            sammary = new RowSummary();
+
             this.DataGrid.ItemsSource = dataProduct;
-           
+            this.ToolbarNextPageData.DataContext = sammary;
             //this.DataGrid.DataContext = localrow;
         }
 
@@ -55,8 +58,9 @@ namespace Sklad_v1_001.FormUsers.Tovar
             //заполнили данные
             foreach(DataRow row in table.Rows)
             {
-                dataProduct.Add(logicTovarZona.Convert(row, new LocalRow()));
+                dataProduct.Add(logicTovarZona.Convert(row, new LocalRow()));                
             }
+            sammary.TextOnWhatPage = "25/100";//как сделать перещелкивание страниц
         }
 
         private void phonesList_SelectionChanged(object sender, SelectionChangedEventArgs e)

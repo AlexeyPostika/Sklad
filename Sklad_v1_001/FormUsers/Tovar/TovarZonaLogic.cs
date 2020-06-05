@@ -140,7 +140,33 @@ namespace Sklad_v1_001.FormUsers.Tovar
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
     }
-    
+
+    public class RowSummary : INotifyPropertyChanged
+    {
+        private String textOnWhatPage;
+   
+        public string TextOnWhatPage
+        {
+            get
+            {
+                return textOnWhatPage;
+            }
+
+            set
+            {
+                textOnWhatPage = value;
+                OnPropertyChanged("TextOnWhatPage");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName]string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
+    }
+
     public class TovarZonaLogic
     {
         SQLCommanSelect sqlSting = new SQLCommanSelect();
