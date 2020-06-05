@@ -50,21 +50,26 @@ namespace Sklad_v1_001.FormUsers.Tovar
         private void Refresh()
         {
             DataTable table = new DataTable();
+            //получили данные
             table = logicTovarZona.Select();
+            //заполнили данные
             foreach(DataRow row in table.Rows)
             {
-                localrow = new LocalRow();
-                localrow.ID = Int32.Parse(row["ID"].ToString());
-                localrow.Name = row["Name"].ToString();
-                localrow.TypeProduct = row["TypeDescription"].ToString();
-                localrow.Cena = Int32.Parse(row["Cena"].ToString());
-                localrow.Vetrina = Int32.Parse(row["IDVetrina"].ToString());
-                localrow.PhotoImage = @"..\..\Icone\tovar\picture_80px.png";
-                dataProduct.Add(localrow);
+                dataProduct.Add(logicTovarZona.Convert(row, new LocalRow()));
             }
         }
 
         private void phonesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ToolBarNextToBack_ButtonBack()
+        {
+
+        }
+
+        private void ToolBarNextToBack_ButtonNext()
         {
 
         }

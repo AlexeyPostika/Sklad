@@ -19,6 +19,8 @@ namespace Sklad_v1_001.FormUsers.Tovar
         private Double cena;
         private Int32 vetrina;
         private String photoImage;
+
+        private String textOnWhatPage;
         public int ID
         {
             get
@@ -117,6 +119,20 @@ namespace Sklad_v1_001.FormUsers.Tovar
             }
         }
 
+        public string TextOnWhatPage
+        {
+            get
+            {
+                return textOnWhatPage;
+            }
+
+            set
+            {
+                textOnWhatPage = value;
+                OnPropertyChanged("TextOnWhatPage");
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
@@ -129,23 +145,25 @@ namespace Sklad_v1_001.FormUsers.Tovar
     {
         SQLCommanSelect sqlSting = new SQLCommanSelect();
         LocalRow localrow = new LocalRow();
-        String commanString = "Select * From Product";
         String getSelectProductTable = "xp_GetSelectProductTable";
         DataTable table;
         public DataTable Select()
         {
             table = new DataTable();
             table = sqlSting.SQLCommandrs(getSelectProductTable);
-            //foreach(DataRow row in table.Rows)
-            //{
-            //    localrow.ID = Int32.Parse(row["ID"].ToString());
-            //    localrow.Name = row["Name"].ToString();
-            //    localrow.TypeProduct = Int32.Parse(row["IDTypeProduct"].ToString());
-            //    localrow.Cena = Int32.Parse(row["Cena"].ToString());
-            //    localrow.Vetrina= Int32.Parse(row["IDVetrina"].ToString());
-
-            //}
             return table;
+        }
+
+        public LocalRow Convert(DataRow _row, LocalRow localrow)
+        {
+            localrow.ID = Int32.Parse(_row["ID"].ToString());
+            localrow.Name = _row["Name"].ToString();
+            localrow.TypeProduct = _row["TypeDescription"].ToString();
+            localrow.Cena = Int32.Parse(_row["Cena"].ToString());
+            localrow.Vetrina = Int32.Parse(_row["IDVetrina"].ToString());
+            localrow.PhotoImage = @"..\..\Icone\tovar\picture_80px.png";
+            localrow.TextOnWhatPage = "25/100";
+            return localrow;
         }
     }
 }
