@@ -46,11 +46,14 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NameProduct}" Width="500"/>
-                <DataGridTextColumn Binding="{Binding TypeProduct}" Header="{x:Static res:Resources.TypeProduct}"  Width="200"/>
+                <DataGridTextColumn Binding="{Binding Path=TypeProduct, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.TypeProduct}"  Width="200"/>
                 <DataGridTextColumn Binding="{Binding Path=CenaProduct, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.CenaProduct}"  Width="100"/>
                 <DataGridTextColumn Binding="{Binding Path=Vetrina, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.Vetrina}"  Width="1*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <ToolBar:ToolBarNextToBack Grid.Row="2"/>
+        <ToolBar:ToolBarNextToBack Grid.Row="2"
+                                   ButtonBack="ToolBarNextToBack_ButtonBack"
+                                   ButtonNext="ToolBarNextToBack_ButtonNext"
+                                   TextOnWhatPage="{Binding Path=TextOnWhatPage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
     </Grid>
 </UserControl>
