@@ -147,4 +147,10 @@
   <data name="Vetrina" xml:space="preserve">
     <value>Ветрина</value>
   </data>
+  <data name="OF" xml:space="preserve">
+    <value>из</value>
+  </data>
+  <data name="PAGE" xml:space="preserve">
+    <value>Страница</value>
+  </data>
 </root>

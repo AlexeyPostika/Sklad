@@ -15,18 +15,88 @@ using System.Windows.Shapes;
 using Sklad_v1_001.FormUsers.Tovar;
 using System.Collections.ObjectModel;
 using System.Data;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Sklad_v1_001.FormUsers.Tovar
 {
     /// <summary>
     /// Interaction logic for TovarZona.xaml
     /// </summary>
-    public partial class TovarZona : UserControl
+    public partial class TovarZona : UserControl, INotifyPropertyChanged
     {
+        private Boolean page;
+        private Boolean isEnableBack;
+        private Boolean isEnableNext;
+        private String textOnWhatPage;
+
         Tovar.TovarZonaLogic logicTovarZona;
         ObservableCollection<Tovar.LocalRow> dataProduct;
 
+        Tovar.LocalFilter filterLocal;
+
         Tovar.RowSummary sammary;
+
+        public bool Page
+        {
+            get
+            {
+                return page;
+            }
+
+            set
+            {
+                page = value;
+            }
+        }
+
+        public bool IsEnableBack
+        {
+            get
+            {
+                return isEnableBack;
+            }
+
+            set
+            {
+                isEnableBack = value;
+                OnPropertyChanged("IsEnableBack");
+            }
+        }
+
+        public bool IsEnableNext
+        {
+            get
+            {
+                return isEnableNext;
+            }
+
+            set
+            {
+                isEnableNext = value;
+                OnPropertyChanged("IsEnableNext");
+            }
+        }
+
+        public String TextOnWhatPage
+        {
+            get
+            {
+                return textOnWhatPage;
+            }
+
+            set
+            {
+                textOnWhatPage = value;
+                OnPropertyChanged("TextOnWhatPage");
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName]string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
         public TovarZona()
         {
             InitializeComponent();
@@ -34,16 +104,23 @@ namespace Sklad_v1_001.FormUsers.Tovar
 
             logicTovarZona = new TovarZonaLogic();
 
+            filterLocal = new LocalFilter();
+            filterLocal.Page = 0;
+            filterLocal.PageCountRows = 0;
+            filterLocal.RowsCountPage = 7;
+
             sammary = new RowSummary();
 
             this.DataGrid.ItemsSource = dataProduct;
-            this.ToolbarNextPageData.DataContext = sammary;
+            this.ToolbarNextPageData.DataContext = this;
             //this.DataGrid.DataContext = localrow;
+            Page = false;
+            Refresh();
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            Refresh();
+            //
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -52,15 +129,26 @@ namespace Sklad_v1_001.FormUsers.Tovar
         }
         private void Refresh()
         {
-            DataTable table = new DataTable();
-            //получили данные
-            table = logicTovarZona.Select();
-            //заполнили данные
-            foreach(DataRow row in table.Rows)
+            if (Page == false)
             {
-                dataProduct.Add(logicTovarZona.Convert(row, new LocalRow()));                
+                filterLocal.PageCountRows = 0;
             }
-            sammary.TextOnWhatPage = "25/100";//как сделать перещелкивание страниц
+            //почистил данные
+            dataProduct.Clear();
+            
+            //получили данные
+            DataTable table = table = logicTovarZona.Select(filterLocal);
+  
+            //заполнили данные
+            foreach (DataRow row in table.Rows)
+            {
+                dataProduct.Add(logicTovarZona.Convert(row, new LocalRow()));
+                logicTovarZona.ConvertSummary(row, sammary);
+            }
+            TextOnWhatPage = Properties.Resources.PAGE + " " + (filterLocal.Page + 1).ToString() + " " + Properties.Resources.OF + " " + Math.Ceiling((double)sammary.PageCount / filterLocal.RowsCountPage).ToString();
+         
+            IsEnableBack = filterLocal.Page != 0;        
+            IsEnableNext = filterLocal.Page != (Int32)(Math.Ceiling((double)sammary.PageCount / filterLocal.RowsCountPage) - 1);
         }
 
         private void phonesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -70,12 +158,18 @@ namespace Sklad_v1_001.FormUsers.Tovar
 
         private void ToolBarNextToBack_ButtonBack()
         {
-
+            Page = true;
+            filterLocal.PageCountRows = (filterLocal.Page - 1) * filterLocal.RowsCountPage;
+            filterLocal.Page--;
+            Refresh();
         }
 
         private void ToolBarNextToBack_ButtonNext()
         {
-
+            Page = true;           
+            filterLocal.PageCountRows = (filterLocal.Page + 1) * filterLocal.RowsCountPage;
+            filterLocal.Page++;
+            Refresh();
         }
     }
 }
