@@ -54,6 +54,17 @@ namespace Sklad_v1_001.Control.ToolBar
             set { SetValue(IsEnableNextProperty, value); }
         }
 
+        public static readonly DependencyProperty IsEnableNextEndProperty = DependencyProperty.Register(
+        "IsEnableNextEnd",
+        typeof(Boolean),
+        typeof(ToolBarNextToBack), new UIPropertyMetadata(true));
+
+        public Boolean IsEnableNextEnd
+        {
+            get { return (Boolean)GetValue(IsEnableNextEndProperty); }
+            set { SetValue(IsEnableNextEndProperty, value); }
+        }
+
         public static readonly DependencyProperty IsEnableBackProperty = DependencyProperty.Register(
          "IsEnableBack",
          typeof(Boolean),
@@ -65,14 +76,26 @@ namespace Sklad_v1_001.Control.ToolBar
             set { SetValue(IsEnableBackProperty, value); }
         }
 
+       public static readonly DependencyProperty IsEnableBackInProperty = DependencyProperty.Register(
+       "IsEnableBackIn",
+       typeof(Boolean),
+       typeof(ToolBarNextToBack), new UIPropertyMetadata(false));
+
+        public Boolean IsEnableBackIn
+        {
+            get { return (Boolean)GetValue(IsEnableBackInProperty); }
+            set { SetValue(IsEnableBackInProperty, value); }
+        }
+
         public ToolBarNextToBack()
         {
             InitializeComponent();
         }
 
         public event Action ButtonNext;
+        public event Action ButtonNextEnd;
         public event Action ButtonBack;
-        
+        public event Action ButtonBackIn;
         //кнопка назад
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
@@ -82,6 +105,16 @@ namespace Sklad_v1_001.Control.ToolBar
         private void NextButoon_Click(object sender, RoutedEventArgs e)
         {
             ButtonNext?.Invoke();
+        }
+
+        private void BackInButton_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonBackIn?.Invoke();
+        }
+        
+        private void NextEndButoon_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonNextEnd?.Invoke();
         }
     }
 }

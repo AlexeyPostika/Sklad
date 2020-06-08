@@ -46,7 +46,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NameProduct}" Width="500"/>
+                <DataGridTextColumn Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NameProduct}" Width="450"/>
                 <DataGridTextColumn Binding="{Binding Path=TypeProduct, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.TypeProduct}"  Width="200"/>
                 <DataGridTextColumn Binding="{Binding Path=CenaProduct, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.CenaProduct}"  Width="100"/>
                 <DataGridTextColumn Binding="{Binding Path=Vetrina, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.Vetrina}"  Width="1*"/>
@@ -55,8 +55,12 @@
         <ToolBar:ToolBarNextToBack Grid.Row="2" x:Name="ToolbarNextPageData"
                                    ButtonBack="ToolBarNextToBack_ButtonBack"
                                    ButtonNext="ToolBarNextToBack_ButtonNext"
+                                   ButtonBackIn="ToolbarNextPageData_ButtonBackIn"
+                                   ButtonNextEnd="ToolbarNextPageData_ButtonNextEnd"
                                    IsEnableBack="{Binding ElementName=PageTovarZona, Path=IsEnableBack, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                    IsEnableNext="{Binding ElementName=PageTovarZona, Path=IsEnableNext, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   IsEnableBackIn="{Binding ElementName=PageTovarZona, Path=IsEnableBackIn, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   IsEnableNextEnd="{Binding ElementName=PageTovarZona, Path=IsEnableNextEnd, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                    TextOnWhatPage="{Binding ElementName=PageTovarZona, Path=TextOnWhatPage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
     </Grid>
 </UserControl>

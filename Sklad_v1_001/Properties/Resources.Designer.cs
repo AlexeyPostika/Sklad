@@ -70,6 +70,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to В начало.
+        /// </summary>
+        public static string BACKIN {
+            get {
+                return ResourceManager.GetString("BACKIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Цена.
         /// </summary>
         public static string CenaProduct {
@@ -111,6 +120,15 @@ namespace Sklad_v1_001.Properties {
         public static string NEXT {
             get {
                 return ResourceManager.GetString("NEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to В конец.
+        /// </summary>
+        public static string NEXTEXIT {
+            get {
+                return ResourceManager.GetString("NEXTEXIT", resourceCulture);
             }
         }
         

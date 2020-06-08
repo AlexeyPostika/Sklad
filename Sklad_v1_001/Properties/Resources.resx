@@ -147,6 +147,12 @@
   <data name="Vetrina" xml:space="preserve">
     <value>Ветрина</value>
   </data>
+  <data name="BACKIN" xml:space="preserve">
+    <value>В начало</value>
+  </data>
+  <data name="NEXTEXIT" xml:space="preserve">
+    <value>В конец</value>
+  </data>
   <data name="OF" xml:space="preserve">
     <value>из</value>
   </data>
