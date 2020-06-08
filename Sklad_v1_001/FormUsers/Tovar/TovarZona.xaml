@@ -6,7 +6,7 @@
              xmlns:res="clr-namespace:Sklad_v1_001.Properties"
              xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
              mc:Ignorable="d"             
-             d:DesignHeight="818" Width="979" Loaded="UserControl_Loaded">
+             d:DesignHeight="818" Width="979" Loaded="UserControl_Loaded" x:Name="PageTovarZona">
     <Grid Height="818" Background="#FFFDFAFA">
         <Grid.RowDefinitions>
             <RowDefinition Height="220"/>
@@ -55,6 +55,8 @@
         <ToolBar:ToolBarNextToBack Grid.Row="2" x:Name="ToolbarNextPageData"
                                    ButtonBack="ToolBarNextToBack_ButtonBack"
                                    ButtonNext="ToolBarNextToBack_ButtonNext"
-                                   TextOnWhatPage="{Binding Path=TextOnWhatPage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                                   IsEnableBack="{Binding ElementName=PageTovarZona, Path=IsEnableBack, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   IsEnableNext="{Binding ElementName=PageTovarZona, Path=IsEnableNext, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   TextOnWhatPage="{Binding ElementName=PageTovarZona, Path=TextOnWhatPage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
     </Grid>
 </UserControl>

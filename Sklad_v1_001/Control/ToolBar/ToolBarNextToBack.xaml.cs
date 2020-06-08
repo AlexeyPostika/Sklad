@@ -42,6 +42,29 @@ namespace Sklad_v1_001.Control.ToolBar
             get { return (String)GetValue(TextOnWhatPageProperty); }
             set { SetValue(TextOnWhatPageProperty, value); }
         }
+
+        public static readonly DependencyProperty IsEnableNextProperty = DependencyProperty.Register(
+          "IsEnableNext",
+          typeof(Boolean),
+          typeof(ToolBarNextToBack), new UIPropertyMetadata(true));
+
+        public Boolean IsEnableNext
+        {
+            get { return (Boolean)GetValue(IsEnableNextProperty); }
+            set { SetValue(IsEnableNextProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsEnableBackProperty = DependencyProperty.Register(
+         "IsEnableBack",
+         typeof(Boolean),
+         typeof(ToolBarNextToBack), new UIPropertyMetadata(false));
+
+        public Boolean IsEnableBack
+        {
+            get { return (Boolean)GetValue(IsEnableBackProperty); }
+            set { SetValue(IsEnableBackProperty, value); }
+        }
+
         public ToolBarNextToBack()
         {
             InitializeComponent();
