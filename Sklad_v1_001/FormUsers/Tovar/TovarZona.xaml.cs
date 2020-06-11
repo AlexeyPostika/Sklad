@@ -28,7 +28,10 @@ namespace Sklad_v1_001.FormUsers.Tovar
         private Boolean page;
         private Boolean isEnableBack;
         private Boolean isEnableNext;
+        private Boolean isEnableBackIn;
+        private Boolean isEnableNextEnd;
         private String textOnWhatPage;
+        private Int32 numberPage;
 
         Tovar.TovarZonaLogic logicTovarZona;
         ObservableCollection<Tovar.LocalRow> dataProduct;
@@ -91,6 +94,48 @@ namespace Sklad_v1_001.FormUsers.Tovar
                 OnPropertyChanged("TextOnWhatPage");
             }
         }
+
+        public int NumberPage
+        {
+            get
+            {
+                return numberPage;
+            }
+
+            set
+            {
+                numberPage = value;
+            }
+        }
+
+        public bool IsEnableBackIn
+        {
+            get
+            {
+                return isEnableBackIn;
+            }
+
+            set
+            {
+                isEnableBackIn = value;
+                OnPropertyChanged("IsEnableBackIn");
+            }
+        }
+
+        public bool IsEnableNextEnd
+        {
+            get
+            {
+                return isEnableNextEnd;
+            }
+
+            set
+            {
+                isEnableNextEnd = value;
+                OnPropertyChanged("IsEnableNextEnd");
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
@@ -137,7 +182,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
             dataProduct.Clear();
             
             //получили данные
-            DataTable table = table = logicTovarZona.Select(filterLocal);
+            DataTable table = logicTovarZona.Select(filterLocal);
   
             //заполнили данные
             foreach (DataRow row in table.Rows)
@@ -147,8 +192,11 @@ namespace Sklad_v1_001.FormUsers.Tovar
             }
             TextOnWhatPage = Properties.Resources.PAGE + " " + (filterLocal.Page + 1).ToString() + " " + Properties.Resources.OF + " " + Math.Ceiling((double)sammary.PageCount / filterLocal.RowsCountPage).ToString();
          
-            IsEnableBack = filterLocal.Page != 0;        
-            IsEnableNext = filterLocal.Page != (Int32)(Math.Ceiling((double)sammary.PageCount / filterLocal.RowsCountPage) - 1);
+            IsEnableBack = filterLocal.Page != 0;
+            IsEnableBackIn = filterLocal.Page != 0;
+            NumberPage = (Int32)(Math.Ceiling((double)sammary.PageCount / filterLocal.RowsCountPage) - 1);
+            IsEnableNext = filterLocal.Page != NumberPage;
+            IsEnableNextEnd = filterLocal.Page != NumberPage;
         }
 
         private void phonesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -169,6 +217,22 @@ namespace Sklad_v1_001.FormUsers.Tovar
             Page = true;           
             filterLocal.PageCountRows = (filterLocal.Page + 1) * filterLocal.RowsCountPage;
             filterLocal.Page++;
+            Refresh();
+        }
+
+        private void ToolbarNextPageData_ButtonBackIn()
+        {
+            Page = true;
+            filterLocal.PageCountRows = 0;
+            filterLocal.Page = 0;
+            Refresh();
+        }
+
+        private void ToolbarNextPageData_ButtonNextEnd()
+        {
+            Page = true;
+            filterLocal.PageCountRows = NumberPage;
+            filterLocal.Page= NumberPage;
             Refresh();
         }
     }

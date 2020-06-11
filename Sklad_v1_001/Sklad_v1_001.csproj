@@ -70,13 +70,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Control\FlexControlDate\FilterDate.xaml.cs">
+      <DependentUpon>FilterDate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\ToolBar\ToolBarNextToBack.xaml.cs">
       <DependentUpon>ToolBarNextToBack.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\Prixod\RegistraciyTovaraLogic.cs" />
     <Compile Include="FormUsers\Tovar\TovarZonaLogic.cs" />
+    <Compile Include="GlobalList\List.cs" />
     <Compile Include="SQLCommand\SQLCommanSelect.cs" />
     <Page Include="Admins\Users\RegistersUsers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\FlexControlDate\FilterDate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -221,9 +229,17 @@
     <Resource Include="Icone\shutdown_30px.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icone\Controllu\Back_32px.png" />
-    <Resource Include="Icone\Controllu\Next.png" />
-    <Resource Include="Icone\Controllu\Next_32px.png" />
+    <Resource Include="Icone\Controllu\back_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icone\Controllu\BackIn_32px.png" />
+    <Resource Include="Icone\Controllu\NextExit_32px.png" />
+    <Resource Include="Icone\Controllu\next_page_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icone\Controllu\clear_filters_30px.png" />
+    <Resource Include="Icone\Controllu\Edit_filter_30px.png" />
+    <Resource Include="Icone\Controllu\funnel_30px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
