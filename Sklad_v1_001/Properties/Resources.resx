@@ -159,4 +159,22 @@
   <data name="PAGE" xml:space="preserve">
     <value>Страница</value>
   </data>
+  <data name="CreatedDate" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="DateTimeDescription1" xml:space="preserve">
+    <value>За сегодня</value>
+  </data>
+  <data name="DateTimeDescription2" xml:space="preserve">
+    <value>За неделю</value>
+  </data>
+  <data name="DateTimeDescription3" xml:space="preserve">
+    <value>За месяц</value>
+  </data>
+  <data name="DateTimeDescription4" xml:space="preserve">
+    <value>За периуд</value>
+  </data>
+  <data name="DateTimeDescriptionAll" xml:space="preserve">
+    <value>Все</value>
+  </data>
 </root>

@@ -88,6 +88,60 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Дата.
+        /// </summary>
+        public static string CreatedDate {
+            get {
+                return ResourceManager.GetString("CreatedDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to За сегодня.
+        /// </summary>
+        public static string DateTimeDescription1 {
+            get {
+                return ResourceManager.GetString("DateTimeDescription1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to За неделю.
+        /// </summary>
+        public static string DateTimeDescription2 {
+            get {
+                return ResourceManager.GetString("DateTimeDescription2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to За месяц.
+        /// </summary>
+        public static string DateTimeDescription3 {
+            get {
+                return ResourceManager.GetString("DateTimeDescription3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to За периуд.
+        /// </summary>
+        public static string DateTimeDescription4 {
+            get {
+                return ResourceManager.GetString("DateTimeDescription4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Все.
+        /// </summary>
+        public static string DateTimeDescriptionAll {
+            get {
+                return ResourceManager.GetString("DateTimeDescriptionAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Описание  продукта.
         /// </summary>
         public static string DescriptionProduct {
