@@ -15,6 +15,12 @@ namespace Sklad_v1_001.GlobalList
         public Int32 ID { get; set; }
         public String Description { get; set; }
     }
+    //отвечает за ветрины
+    public class Vetrina
+    {
+        public Int32 ID { get; set; }
+        public String Description { get; set; }
+    }
     public class DateTimeListFilter
     {
         public ObservableCollection<DateTimeItem> innerList { get; set; }
@@ -27,6 +33,28 @@ namespace Sklad_v1_001.GlobalList
                 new DateTimeItem {ID=0,Description=Properties.Resources.DateTimeDescription2 },
                 new DateTimeItem {ID=0,Description=Properties.Resources.DateTimeDescription3 },
                 new DateTimeItem {ID=0,Description=Properties.Resources.DateTimeDescription4 },
+            };
+        }
+    }
+
+    public class VetrinaList
+    {
+        public ObservableCollection<Vetrina> innerList { get; set; }
+        public VetrinaList()
+        {
+            innerList = new ObservableCollection<Vetrina>()
+            {
+                new Vetrina {ID=0,Description=Properties.Resources.Vetrina0 },
+                new Vetrina {ID=0,Description=Properties.Resources.Vetrina1 },
+                new Vetrina {ID=0,Description=Properties.Resources.Vetrina2 },
+                new Vetrina {ID=0,Description=Properties.Resources.Vetrina3 },
+                new Vetrina {ID=0,Description=Properties.Resources.Vetrina4 },
+                new Vetrina {ID=0,Description=Properties.Resources.Vetrina5 },
+                new Vetrina {ID=0,Description=Properties.Resources.Vetrina6 },
+                new Vetrina {ID=0,Description=Properties.Resources.Vetrina7 },
+                new Vetrina {ID=0,Description=Properties.Resources.Vetrina8 },
+                new Vetrina {ID=0,Description=Properties.Resources.Vetrina9 },
+                new Vetrina {ID=0,Description=Properties.Resources.Vetrina10 },
             };
         }
     }

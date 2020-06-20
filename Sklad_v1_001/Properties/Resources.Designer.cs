@@ -142,6 +142,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Описание.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Описание  продукта.
         /// </summary>
         public static string DescriptionProduct {
@@ -156,6 +165,33 @@ namespace Sklad_v1_001.Properties {
         public static string ID {
             get {
                 return ResourceManager.GetString("ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to наимен. столбца.
+        /// </summary>
+        public static string LableText {
+            get {
+                return ResourceManager.GetString("LableText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Расположение.
+        /// </summary>
+        public static string Location {
+            get {
+                return ResourceManager.GetString("Location", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Наименование.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
             }
         }
         
@@ -223,6 +259,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Штрих-код.
+        /// </summary>
+        public static string ShtrixCode {
+            get {
+                return ResourceManager.GetString("ShtrixCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Категория .
         /// </summary>
         public static string TypeProduct {
@@ -237,6 +282,105 @@ namespace Sklad_v1_001.Properties {
         public static string Vetrina {
             get {
                 return ResourceManager.GetString("Vetrina", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ветрина не выбрана.
+        /// </summary>
+        public static string Vetrina0 {
+            get {
+                return ResourceManager.GetString("Vetrina0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ветрина 1.
+        /// </summary>
+        public static string Vetrina1 {
+            get {
+                return ResourceManager.GetString("Vetrina1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ветрина 10.
+        /// </summary>
+        public static string Vetrina10 {
+            get {
+                return ResourceManager.GetString("Vetrina10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ветрина 2.
+        /// </summary>
+        public static string Vetrina2 {
+            get {
+                return ResourceManager.GetString("Vetrina2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ветрина 3.
+        /// </summary>
+        public static string Vetrina3 {
+            get {
+                return ResourceManager.GetString("Vetrina3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ветрина 4.
+        /// </summary>
+        public static string Vetrina4 {
+            get {
+                return ResourceManager.GetString("Vetrina4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ветрина 5.
+        /// </summary>
+        public static string Vetrina5 {
+            get {
+                return ResourceManager.GetString("Vetrina5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ветрина 6.
+        /// </summary>
+        public static string Vetrina6 {
+            get {
+                return ResourceManager.GetString("Vetrina6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ветрина 7.
+        /// </summary>
+        public static string Vetrina7 {
+            get {
+                return ResourceManager.GetString("Vetrina7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ветрина 8.
+        /// </summary>
+        public static string Vetrina8 {
+            get {
+                return ResourceManager.GetString("Vetrina8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ветрина 9.
+        /// </summary>
+        public static string Vetrina9 {
+            get {
+                return ResourceManager.GetString("Vetrina9", resourceCulture);
             }
         }
     }

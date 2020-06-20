@@ -177,4 +177,52 @@
   <data name="DateTimeDescriptionAll" xml:space="preserve">
     <value>Все</value>
   </data>
+  <data name="LableText" xml:space="preserve">
+    <value>наимен. столбца</value>
+  </data>
+  <data name="Vetrina0" xml:space="preserve">
+    <value>Ветрина не выбрана</value>
+  </data>
+  <data name="Vetrina1" xml:space="preserve">
+    <value>Ветрина 1</value>
+  </data>
+  <data name="Vetrina10" xml:space="preserve">
+    <value>Ветрина 10</value>
+  </data>
+  <data name="Vetrina2" xml:space="preserve">
+    <value>Ветрина 2</value>
+  </data>
+  <data name="Vetrina3" xml:space="preserve">
+    <value>Ветрина 3</value>
+  </data>
+  <data name="Vetrina4" xml:space="preserve">
+    <value>Ветрина 4</value>
+  </data>
+  <data name="Vetrina5" xml:space="preserve">
+    <value>Ветрина 5</value>
+  </data>
+  <data name="Vetrina6" xml:space="preserve">
+    <value>Ветрина 6</value>
+  </data>
+  <data name="Vetrina7" xml:space="preserve">
+    <value>Ветрина 7</value>
+  </data>
+  <data name="Vetrina8" xml:space="preserve">
+    <value>Ветрина 8</value>
+  </data>
+  <data name="Vetrina9" xml:space="preserve">
+    <value>Ветрина 9</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Расположение</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="ShtrixCode" xml:space="preserve">
+    <value>Штрих-код</value>
+  </data>
 </root>
