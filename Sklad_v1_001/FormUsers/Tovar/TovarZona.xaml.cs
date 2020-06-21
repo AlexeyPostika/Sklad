@@ -158,7 +158,6 @@ namespace Sklad_v1_001.FormUsers.Tovar
 
             this.DataGrid.ItemsSource = dataProduct;
             this.ToolbarNextPageData.DataContext = this;
-            //this.DataGrid.DataContext = localrow;
             Page = false;
             Refresh();
         }
@@ -170,7 +169,9 @@ namespace Sklad_v1_001.FormUsers.Tovar
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Tovar.LocalRow local= DataGrid.SelectedItem as Tovar.LocalRow;
+            this.Informer1.DataContext = local;
+            this.Informe.DataContext = local;
         }
         private void Refresh()
         {

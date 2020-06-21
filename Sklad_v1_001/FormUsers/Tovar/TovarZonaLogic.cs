@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sklad_v1_001.SQL;
 using System.Data;
+using Sklad_v1_001.GlobalList;
 
 namespace Sklad_v1_001.FormUsers.Tovar
 {
@@ -68,13 +69,16 @@ namespace Sklad_v1_001.FormUsers.Tovar
     public class LocalRow : INotifyPropertyChanged
     {
         private Int32 iD;
+        private Int64 extrRefShtrixCode;
         private String name;
         private String typeProduct;
         private String typeDescriptio;
         private Double cena;
         private Int32 vetrina;
+        private String vetrinaString;
         private String photoImage;
         private Int32 countPAGE;
+        private String description;
 
         private String textOnWhatPage;
         public int ID
@@ -203,6 +207,48 @@ namespace Sklad_v1_001.FormUsers.Tovar
             }
         }
 
+        public string VetrinaString
+        {
+            get
+            {
+                return vetrinaString;
+            }
+
+            set
+            {
+                vetrinaString = value;
+                OnPropertyChanged("VetrinaString");
+            }
+        }
+
+        public long ExtrRefShtrixCode
+        {
+            get
+            {
+                return extrRefShtrixCode;
+            }
+
+            set
+            {
+                extrRefShtrixCode = value;
+                OnPropertyChanged("ExtrRefShtrixCode");
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+
+            set
+            {
+                description = value;
+                OnPropertyChanged("Description");
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
@@ -280,13 +326,19 @@ namespace Sklad_v1_001.FormUsers.Tovar
 
         public LocalRow Convert(DataRow _row, LocalRow localrow)
         {
+            VetrinaList listVetrina = new VetrinaList();
             localrow.ID = Int32.Parse(_row["ID"].ToString());
             localrow.Name = _row["Name"].ToString();
             localrow.TypeProduct = _row["TypeDescription"].ToString();
             localrow.Cena = Int32.Parse(_row["Cena"].ToString());
             localrow.Vetrina = Int32.Parse(_row["IDVetrina"].ToString());
+            localrow.VetrinaString = _row["VetrinaString"].ToString();
+            localrow.ExtrRefShtrixCode = (_row["ExtrRefShtrixCode"].ToString() != "" && _row["ExtrRefShtrixCode"] != null) ? Int64.Parse(_row["ExtrRefShtrixCode"].ToString()) : 0;
+            // parts.Exists(x => x.PartId == 1444));
+            // localrow.VetrinaString=listVetrina
             localrow.PhotoImage = @"..\..\Icone\tovar\picture_80px.png";
             localrow.CountPAGE = Int32.Parse(_row["CountROWS"].ToString());
+            localrow.Description = _row["Description"].ToString();
             return localrow;
         }
 
