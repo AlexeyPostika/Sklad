@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Sklad_v1_001.Admins.Users
+namespace Sklad_v1_001.FormUsers.Userss
 {
     /// <summary>
     /// Interaction logic for RegistersUsers.xaml

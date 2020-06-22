@@ -5,9 +5,10 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using Sklad_v1_001.SQL;
 using System.Data;
+using Sklad_v1_001.SQL;
 using Sklad_v1_001.GlobalList;
+using Sklad_v1_001.HelperGlobal;
 
 namespace Sklad_v1_001.FormUsers.Tovar
 {
@@ -293,6 +294,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
 
         DataTable _table;
 
+        ConvertData convertData;
         
         public TovarZonaLogic()
         {
@@ -302,6 +304,8 @@ namespace Sklad_v1_001.FormUsers.Tovar
             localrow = new LocalRow();
             //объявили таблицу куда будем записывать все
             _table = new DataTable();
+            //за правильную конвертацию данных
+            convertData = new ConvertData();
            
             //объявляем переменные для хранимой процедуры
             _sqlSting.AddParametr("@p_rowcountpage", SqlDbType.Int);
@@ -327,18 +331,17 @@ namespace Sklad_v1_001.FormUsers.Tovar
         public LocalRow Convert(DataRow _row, LocalRow localrow)
         {
             VetrinaList listVetrina = new VetrinaList();
-            localrow.ID = Int32.Parse(_row["ID"].ToString());
-            localrow.Name = _row["Name"].ToString();
-            localrow.TypeProduct = _row["TypeDescription"].ToString();
-            localrow.Cena = Int32.Parse(_row["Cena"].ToString());
-            localrow.Vetrina = Int32.Parse(_row["IDVetrina"].ToString());
-            localrow.VetrinaString = _row["VetrinaString"].ToString();
-            localrow.ExtrRefShtrixCode = (_row["ExtrRefShtrixCode"].ToString() != "" && _row["ExtrRefShtrixCode"] != null) ? Int64.Parse(_row["ExtrRefShtrixCode"].ToString()) : 0;
-            // parts.Exists(x => x.PartId == 1444));
-            // localrow.VetrinaString=listVetrina
+            convertData = new ConvertData(_row, localrow);
+            localrow.ID = convertData.ConvertDataInt32("ID");
+            localrow.Name = convertData.ConvertDataString("Name");
+            localrow.TypeProduct = convertData.ConvertDataString("TypeDescription");
+            localrow.Cena = convertData.ConvertDataDouble("Cena");
+            localrow.Vetrina = convertData.ConvertDataInt32("IDVetrina");
+            localrow.VetrinaString = convertData.ConvertDataString("VetrinaString");
+            localrow.ExtrRefShtrixCode = convertData.ConvertDataInt64("ExtrRefShtrixCode");
             localrow.PhotoImage = @"..\..\Icone\tovar\picture_80px.png";
-            localrow.CountPAGE = Int32.Parse(_row["CountROWS"].ToString());
-            localrow.Description = _row["Description"].ToString();
+            localrow.CountPAGE = convertData.ConvertDataInt32("CountROWS");
+            localrow.Description = convertData.ConvertDataString("Description");
             return localrow;
         }
 

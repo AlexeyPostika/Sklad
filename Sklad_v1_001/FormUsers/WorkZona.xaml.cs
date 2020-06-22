@@ -51,7 +51,7 @@ namespace Sklad_v1_001.FormUsers
 
         private void Admins_Click(object sender, RoutedEventArgs e)
         {
-            Docker1.Content = new Admins.Users.RegistersUsers();
+            Docker1.Content = new FormUsers.Userss.UserList();
         }
     }
 }
