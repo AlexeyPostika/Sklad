@@ -93,6 +93,7 @@
     <Compile Include="FormUsers\Userss\UserListLogic.cs" />
     <Compile Include="GlobalList\List.cs" />
     <Compile Include="HelperGlobal\ConvertData.cs" />
+    <Compile Include="HelperGlobal\ImageSql.cs" />
     <Compile Include="SQLCommand\SQLCommanSelect.cs" />
     <Page Include="FormUsers\Userss\RegistersUsers.xaml">
       <SubType>Designer</SubType>

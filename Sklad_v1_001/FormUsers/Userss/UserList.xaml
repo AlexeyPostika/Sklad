@@ -9,7 +9,7 @@
       xmlns:UserControl="clr-namespace:Sklad_v1_001.Control.Users"
       mc:Ignorable="d" 
       d:DesignHeight="818" Width="979" 
-      Title="UserList">
+      Title="UserList" Name="Page">
 
     <Grid Background="#FFFDFAFA">
         <DataGrid AutoGenerateColumns="False" x:Name="DataGrid" SelectionChanged="DataGrid_SelectionChanged" Margin="0,0,0,40">
@@ -23,7 +23,8 @@
                     </DataGridTemplateColumn.HeaderTemplate>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <UserControl:PhotoUserToDolwnost/>
+                            <UserControl:PhotoUserToDolwnost Dolwnost="{Binding Path=Dolwnost, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                             ImageSource="{Binding Path=ImageSource, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -35,7 +36,13 @@
                     </DataGridTemplateColumn.HeaderTemplate>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <UserControl:FlexUsersEdit/>
+                            <UserControl:FlexUsersEdit LastName1="{Binding Path=LastName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                       FirstName1="{Binding Path=FirstName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                       Otchestvo1="{Binding Path=Otchestvo, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                       Otdel1="{Binding Path=Otdel, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                       Phone1="{Binding Path=Phone, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                       NumberSotrudnika1="{Binding Path=NumberSotrudnika, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                     />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -50,11 +57,11 @@
                                    ButtonNext="ToolBarNextToBack_ButtonNext"
                                    ButtonBackIn="ToolbarNextPageData_ButtonBackIn"
                                    ButtonNextEnd="ToolbarNextPageData_ButtonNextEnd"
-                                   IsEnableBack="{Binding ElementName=PageTovarZona, Path=IsEnableBack, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                   IsEnableNext="{Binding ElementName=PageTovarZona, Path=IsEnableNext, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                   IsEnableBackIn="{Binding ElementName=PageTovarZona, Path=IsEnableBackIn, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                   IsEnableNextEnd="{Binding ElementName=PageTovarZona, Path=IsEnableNextEnd, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                   TextOnWhatPage="{Binding ElementName=PageTovarZona, Path=TextOnWhatPage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="0,778,0,0"/>
+                                   IsEnableBack="{Binding ElementName=Page, Path=IsEnableBack, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   IsEnableNext="{Binding ElementName=Page, Path=IsEnableNext, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   IsEnableBackIn="{Binding ElementName=Page, Path=IsEnableBackIn, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   IsEnableNextEnd="{Binding ElementName=Page, Path=IsEnableNextEnd, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   TextOnWhatPage="{Binding ElementName=Page, Path=TextOnWhatPage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="0,778,0,0"/>
 
     </Grid>
 </Page>
