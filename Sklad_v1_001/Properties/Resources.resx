@@ -225,4 +225,25 @@
   <data name="ShtrixCode" xml:space="preserve">
     <value>Штрих-код</value>
   </data>
+  <data name="Dolwnost" xml:space="preserve">
+    <value>Должность</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Фамилия</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="NumberSotrudnika" xml:space="preserve">
+    <value>Номер Сотрудника</value>
+  </data>
+  <data name="Otchestvo" xml:space="preserve">
+    <value>Отчество</value>
+  </data>
+  <data name="Otdel" xml:space="preserve">
+    <value>Отдел</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
 </root>

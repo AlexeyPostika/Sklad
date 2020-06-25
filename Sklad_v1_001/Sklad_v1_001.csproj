@@ -79,11 +79,23 @@
     <Compile Include="Control\ToolBar\ToolBarNextToBack.xaml.cs">
       <DependentUpon>ToolBarNextToBack.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\Users\FlexUsersEdit.xaml.cs">
+      <DependentUpon>FlexUsersEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Users\PhotoUserToDolwnost.xaml.cs">
+      <DependentUpon>PhotoUserToDolwnost.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FormUsers\Prixod\RegistraciyTovaraLogic.cs" />
     <Compile Include="FormUsers\Tovar\TovarZonaLogic.cs" />
+    <Compile Include="FormUsers\Userss\UserList.xaml.cs">
+      <DependentUpon>UserList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsers\Userss\UserListLogic.cs" />
     <Compile Include="GlobalList\List.cs" />
+    <Compile Include="HelperGlobal\ConvertData.cs" />
+    <Compile Include="HelperGlobal\ImageSql.cs" />
     <Compile Include="SQLCommand\SQLCommanSelect.cs" />
-    <Page Include="Admins\Users\RegistersUsers.xaml">
+    <Page Include="FormUsers\Userss\RegistersUsers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -96,6 +108,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\ToolBar\ToolBarNextToBack.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\Users\FlexUsersEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\Users\PhotoUserToDolwnost.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -119,6 +139,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FormUsers\Userss\UserList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FormUsers\WorkZona.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -127,7 +151,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Admins\Users\RegistersUsers.xaml.cs">
+    <Compile Include="FormUsers\Userss\RegistersUsers.xaml.cs">
       <DependentUpon>RegistersUsers.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">

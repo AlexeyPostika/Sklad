@@ -160,6 +160,24 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Должность.
+        /// </summary>
+        public static string Dolwnost {
+            get {
+                return ResourceManager.GetString("Dolwnost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Фамилия.
+        /// </summary>
+        public static string FirstName {
+            get {
+                return ResourceManager.GetString("FirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to №.
         /// </summary>
         public static string ID {
@@ -174,6 +192,15 @@ namespace Sklad_v1_001.Properties {
         public static string LableText {
             get {
                 return ResourceManager.GetString("LableText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Имя.
+        /// </summary>
+        public static string LastName {
+            get {
+                return ResourceManager.GetString("LastName", resourceCulture);
             }
         }
         
@@ -223,6 +250,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Номер Сотрудника.
+        /// </summary>
+        public static string NumberSotrudnika {
+            get {
+                return ResourceManager.GetString("NumberSotrudnika", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to из.
         /// </summary>
         public static string OF {
@@ -232,11 +268,38 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Отчество.
+        /// </summary>
+        public static string Otchestvo {
+            get {
+                return ResourceManager.GetString("Otchestvo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Отдел.
+        /// </summary>
+        public static string Otdel {
+            get {
+                return ResourceManager.GetString("Otdel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Страница.
         /// </summary>
         public static string PAGE {
             get {
                 return ResourceManager.GetString("PAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Телефон.
+        /// </summary>
+        public static string Phone {
+            get {
+                return ResourceManager.GetString("Phone", resourceCulture);
             }
         }
         
