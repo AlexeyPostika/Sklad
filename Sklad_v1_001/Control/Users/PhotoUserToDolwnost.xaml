@@ -6,13 +6,12 @@
              xmlns:local="clr-namespace:Sklad_v1_001.Control.Users"
              xmlns:res="clr-namespace:Sklad_v1_001.Properties"
              mc:Ignorable="d" 
-             d:DesignHeight="80" d:DesignWidth="80"
+             d:DesignHeight="130" d:DesignWidth="130"
              Name="control">
     <Grid Background="#FFFDFAFA">
-        <Image x:Name="image" Margin="0,0,0,23" Source="{Binding ElementName=control, Path=ImageSource, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-        <Label x:Name="label" Content="{Binding ElementName=control, Path=Dolwnost, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
-               HorizontalAlignment="Left" Margin="0,57,0,0" VerticalAlignment="Top" 
-               Height="19" FontFamily="Times New Roman" FontSize="8" Width="80"/>
+        <Image x:Name="image" Margin="0,0,0,33" Source="{Binding ElementName=control, Path=ImageSource, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <Label x:Name="label" Content="{Binding ElementName=control, Path=Dolwnost, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="0,97,0,0" VerticalAlignment="Top" 
+               Height="29" FontFamily="Times New Roman"/>
 
     </Grid>
 </UserControl>
