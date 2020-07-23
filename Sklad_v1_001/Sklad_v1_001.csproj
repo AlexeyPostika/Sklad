@@ -272,7 +272,12 @@
     <Resource Include="Icone\Controllu\Edit_filter_30px.png" />
     <Resource Include="Icone\Controllu\funnel_30px.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="FormUsers\purchase_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icone\Menu\purchase_30px.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
