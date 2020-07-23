@@ -85,6 +85,18 @@
     <Compile Include="Control\Users\PhotoUserToDolwnost.xaml.cs">
       <DependentUpon>PhotoUserToDolwnost.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\Zona\Green\SelectCategoryGreenTable.xaml.cs">
+      <DependentUpon>SelectCategoryGreenTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Zona\Red\SelectCategoryRedTable.xaml.cs">
+      <DependentUpon>SelectCategoryRedTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Zona\White\SelectCategoryWhiteTable.xaml.cs">
+      <DependentUpon>SelectCategoryWhiteTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Zona\Yellow\SelectCategoryYellowTable.xaml.cs">
+      <DependentUpon>SelectCategoryYellowTable.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FormUsers\Prixod\RegistraciyTovaraLogic.cs" />
     <Compile Include="FormUsers\Tovar\TovarZonaLogic.cs" />
     <Compile Include="FormUsers\Userss\UserList.xaml.cs">
@@ -95,6 +107,22 @@
     <Compile Include="HelperGlobal\ConvertData.cs" />
     <Compile Include="HelperGlobal\ImageSql.cs" />
     <Compile Include="SQLCommand\SQLCommanSelect.cs" />
+    <Page Include="Control\Zona\Green\SelectCategoryGreenTable.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\Zona\Red\SelectCategoryRedTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\Zona\White\SelectCategoryWhiteTable.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\Zona\Yellow\SelectCategoryYellowTable.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="FormUsers\Userss\RegistersUsers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -278,6 +306,7 @@
   <ItemGroup>
     <Resource Include="Icone\Menu\purchase_30px.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

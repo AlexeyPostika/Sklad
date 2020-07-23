@@ -3,16 +3,48 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
+      xmlns:ZonaRed="clr-namespace:Sklad_v1_001.Control.Zona.Red"
+      xmlns:ZonaGreen="clr-namespace:Sklad_v1_001.Control.Zona.Green"
+      xmlns:ZonaYellow="clr-namespace:Sklad_v1_001.Control.Zona.Yellow"
+      xmlns:ZonaWhite="clr-namespace:Sklad_v1_001.Control.Zona.White"
       mc:Ignorable="d" 
       d:DesignHeight="818" Width="979" 
       Title="Kategorii">
 
     <Grid Height="818" Background="#FFFDFAFA">
-        <Grid HorizontalAlignment="Left" Height="818" VerticalAlignment="Top" Width="211">
-            <TreeView Name="Kategoriy" HorizontalAlignment="Left" Height="782" Margin="0,36,0,0" VerticalAlignment="Top" Width="211"/>
-            <TextBlock HorizontalAlignment="Left" Margin="63,10,0,0" TextWrapping="Wrap" Text="Категории" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" Name="White"/>
+            <RowDefinition Height="Auto" Name="Red"/>
+            <RowDefinition Height="Auto" Name="Green"/>
+            <RowDefinition Height="Auto" Name="Yellow"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Label Content="Категории" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold"/>
         </Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="283,10,0,0" TextWrapping="Wrap" Text="Выбранная категория:" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Left" Margin="464,10,0,0" TextWrapping="Wrap" Text="Выбранная категория:" VerticalAlignment="Top" FontSize="16"/>
+        <Grid Grid.Row="1">
+            <TreeView></TreeView>
+        </Grid>
+        <ZonaWhite:SelectCategoryWhiteTable  Grid.Column="1"
+                                            LabelNameText="Выбор таблицы"
+                                            WidthLabel="100"
+                                            WidthComboBox="120"/>
+        <ZonaRed:SelectCategoryRedTable Grid.Row="1" Grid.Column="1"
+                                         LabelNameText="Выбор таблицы"
+                                            WidthLabel="100"
+                                            WidthComboBox="120"/>
+        <ZonaYellow:SelectCategoryYellowTable Grid.Row="2" Grid.Column="1"
+                                               LabelNameText="Выбор таблицы"
+                                            WidthLabel="100"
+                                            WidthComboBox="120"/>
+        <ZonaGreen:SelectCategoryGreenTable Grid.Row="3" Grid.Column="1"
+                                             LabelNameText="Выбор таблицы"
+                                            WidthLabel="100"
+                                            WidthComboBox="120"/>
     </Grid>
 </Page>
