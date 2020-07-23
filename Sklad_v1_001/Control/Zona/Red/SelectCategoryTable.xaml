@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="Sklad_v1_001.Control.Zona.Red.SelectCategoryTable"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sklad_v1_001.Control.Zona.Red"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Name="control">
+    <Grid Background="#FFFBBCBC">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <ComboBox x:Name="comboBox"  Grid.Column="3"  VerticalAlignment="Center" HorizontalAlignment="Center"
+                      Width="{Binding ElementName=control, Path=WidthComboBox, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                      
+                      SelectionChanged="comboBox_SelectionChanged"/>
+            <Label x:Name="label"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"
+                   Content="{Binding ElementName=control, Path=LabelNameText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                   Width="{Binding ElementName=control, Path=WidthLabel, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        </Grid>
+    </Grid>
+</UserControl>
