@@ -1,12 +1,12 @@
-﻿<UserControl x:Class="Sklad_v1_001.Control.Zona.Red.SelectCategoryTable"
+﻿<UserControl x:Class="Sklad_v1_001.Control.Zona.White.SelectCategoryWhiteTable"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Sklad_v1_001.Control.Zona.Red"
+             xmlns:local="clr-namespace:Sklad_v1_001.Control.Zona.White"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Name="control">
-    <Grid Background="#FFFBBCBC">
+    <Grid Background="#FFFDFDF9">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="40"/>
@@ -20,13 +20,18 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <ComboBox x:Name="comboBox"  Grid.Column="3"  VerticalAlignment="Center" HorizontalAlignment="Center"
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="5"/>
+            </Grid.RowDefinitions>
+            <ComboBox x:Name="comboBox"  Grid.Column="3" Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                       Width="{Binding ElementName=control, Path=WidthComboBox, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                      
                       SelectionChanged="comboBox_SelectionChanged"/>
-            <Label x:Name="label"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"
+            <Label x:Name="label" Grid.Row="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
                    Content="{Binding ElementName=control, Path=LabelNameText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                    Width="{Binding ElementName=control, Path=WidthLabel, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         </Grid>
+       
     </Grid>
 </UserControl>

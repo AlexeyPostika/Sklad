@@ -13,18 +13,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Sklad_v1_001.Control.Zona.Red
+namespace Sklad_v1_001.Control.Zona.White
 {
     /// <summary>
     /// Логика взаимодействия для SelectCategoryTable.xaml
     /// </summary>
-    public partial class SelectCategoryTable : UserControl
+    public partial class SelectCategoryWhiteTable : UserControl
     {
         // свойство зависимостей
         public static readonly DependencyProperty LabelNameTextProperty = DependencyProperty.Register(
                         "LabelNameText",
                         typeof(String),
-                        typeof(SelectCategoryTable), new UIPropertyMetadata(""));
+                        typeof(SelectCategoryWhiteTable), new UIPropertyMetadata(""));
         // Обычное свойство .NET  - обертка над свойством зависимостей
         public String LabelNameText
         {
@@ -42,7 +42,7 @@ namespace Sklad_v1_001.Control.Zona.Red
         public static readonly DependencyProperty WidthLabelProperty = DependencyProperty.Register(
                         "WidthLabel",
                         typeof(Int32),
-                        typeof(SelectCategoryTable), new UIPropertyMetadata(10));
+                        typeof(SelectCategoryWhiteTable), new UIPropertyMetadata(10));
         // Обычное свойство .NET  - обертка над свойством зависимостей
         public Int32 WidthLabel
         {
@@ -59,7 +59,7 @@ namespace Sklad_v1_001.Control.Zona.Red
         public static readonly DependencyProperty WidthComboBoxProperty = DependencyProperty.Register(
                         "WidthComboBox",
                         typeof(Int32),
-                        typeof(SelectCategoryTable), new UIPropertyMetadata(10));
+                        typeof(SelectCategoryWhiteTable), new UIPropertyMetadata(10));
         // Обычное свойство .NET  - обертка над свойством зависимостей
         public Int32 WidthComboBox
         {
@@ -72,14 +72,14 @@ namespace Sklad_v1_001.Control.Zona.Red
                 SetValue(WidthComboBoxProperty, value);
             }
         }
-        public SelectCategoryTable()
+        public SelectCategoryWhiteTable()
         {
             InitializeComponent();
         }
-        //public event ButtonClickHandler ButtonFilterSelected;
+        public event Action ButtonSelectChanged;
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            ButtonSelectChanged?.Invoke();
         }
     }
 }
