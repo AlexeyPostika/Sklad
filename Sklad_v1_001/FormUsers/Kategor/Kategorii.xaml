@@ -9,7 +9,7 @@
       xmlns:ZonaYellow="clr-namespace:Sklad_v1_001.Control.Zona.Yellow"
       xmlns:ZonaWhite="clr-namespace:Sklad_v1_001.Control.Zona.White"
       mc:Ignorable="d" 
-      d:DesignHeight="818" Width="979" 
+      d:DesignHeight="818" Width="979"  Name="page"
       Title="Kategorii">
 
     <Grid Height="818" Background="#FFFDFAFA">
@@ -37,14 +37,17 @@
         <ZonaRed:SelectCategoryRedTable Grid.Row="1" Grid.Column="1"
                                          LabelNameText="Выбор таблицы"
                                             WidthLabel="100"
-                                            WidthComboBox="120"/>
+                                            WidthComboBox="120"
+                                         Visibility="{Binding ElementName=page, Path=VisibilityZonaRed, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         <ZonaYellow:SelectCategoryYellowTable Grid.Row="2" Grid.Column="1"
                                                LabelNameText="Выбор таблицы"
                                             WidthLabel="100"
-                                            WidthComboBox="120"/>
+                                            WidthComboBox="120"
+                                               Visibility="{Binding ElementName=page, Path=VisibilityZonaYellow, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         <ZonaGreen:SelectCategoryGreenTable Grid.Row="3" Grid.Column="1"
                                              LabelNameText="Выбор таблицы"
                                             WidthLabel="100"
-                                            WidthComboBox="120"/>
+                                            WidthComboBox="120"
+                                            Visibility="{Binding ElementName=page, Path=VisibilityZonaGreen, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
     </Grid>
 </Page>
