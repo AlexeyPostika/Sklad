@@ -21,6 +21,8 @@ namespace Sklad_v1_001.FormUsers
     /// <summary>
     /// Interaction logic for WorkZona.xaml
     /// </summary>
+    /// </summary>
+    /// </summary>  
     public partial class WorkZona : UserControl
     {
         public string ViewModel { get; set; }
