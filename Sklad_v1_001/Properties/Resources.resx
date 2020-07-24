@@ -247,15 +247,30 @@
     <value>Телефон</value>
   </data>
   <data name="Category0" xml:space="preserve">
-    <value>Товары</value>
+    <value>&lt;ВЫБРАТЬ&gt;</value>
   </data>
   <data name="Category1" xml:space="preserve">
-    <value>Сопуствующие товары</value>
+    <value>Товар</value>
   </data>
   <data name="CategoryDetails0" xml:space="preserve">
-    <value>Категория</value>
+    <value>&lt;ВЫБРАТЬ&gt;</value>
   </data>
   <data name="CategoryDetails1" xml:space="preserve">
+    <value>Категория</value>
+  </data>
+  <data name="Category2" xml:space="preserve">
+    <value>Сопуствующий товар</value>
+  </data>
+  <data name="CategoryDetails2" xml:space="preserve">
     <value>Подкатегория</value>
+  </data>
+  <data name="CategoryTypeProduct" xml:space="preserve">
+    <value>Категория продукции</value>
+  </data>
+  <data name="TypeCategory" xml:space="preserve">
+    <value>Тип категории</value>
+  </data>
+  <data name="CATEGORY" xml:space="preserve">
+    <value>Категория</value>
   </data>
 </root>

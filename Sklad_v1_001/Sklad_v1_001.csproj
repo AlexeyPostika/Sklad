@@ -97,6 +97,7 @@
     <Compile Include="Control\Zona\Yellow\SelectCategoryYellowTable.xaml.cs">
       <DependentUpon>SelectCategoryYellowTable.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FormUsers\Kategor\KategoriiLogic.cs" />
     <Compile Include="FormUsers\Prixod\RegistraciyTovaraLogic.cs" />
     <Compile Include="FormUsers\Tovar\TovarZonaLogic.cs" />
     <Compile Include="FormUsers\Userss\UserList.xaml.cs">

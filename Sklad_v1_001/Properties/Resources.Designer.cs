@@ -79,7 +79,16 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Товары.
+        ///   Looks up a localized string similar to Категория.
+        /// </summary>
+        public static string CATEGORY {
+            get {
+                return ResourceManager.GetString("CATEGORY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;ВЫБРАТЬ&gt;.
         /// </summary>
         public static string Category0 {
             get {
@@ -88,7 +97,7 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сопуствующие товары.
+        ///   Looks up a localized string similar to Товар.
         /// </summary>
         public static string Category1 {
             get {
@@ -97,7 +106,16 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Категория.
+        ///   Looks up a localized string similar to Сопуствующий товар.
+        /// </summary>
+        public static string Category2 {
+            get {
+                return ResourceManager.GetString("Category2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;ВЫБРАТЬ&gt;.
         /// </summary>
         public static string CategoryDetails0 {
             get {
@@ -106,11 +124,29 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Подкатегория.
+        ///   Looks up a localized string similar to Категория.
         /// </summary>
         public static string CategoryDetails1 {
             get {
                 return ResourceManager.GetString("CategoryDetails1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Подкатегория.
+        /// </summary>
+        public static string CategoryDetails2 {
+            get {
+                return ResourceManager.GetString("CategoryDetails2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Категория продукции.
+        /// </summary>
+        public static string CategoryTypeProduct {
+            get {
+                return ResourceManager.GetString("CategoryTypeProduct", resourceCulture);
             }
         }
         
@@ -363,6 +399,15 @@ namespace Sklad_v1_001.Properties {
         public static string ShtrixCode {
             get {
                 return ResourceManager.GetString("ShtrixCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Тип категории.
+        /// </summary>
+        public static string TypeCategory {
+            get {
+                return ResourceManager.GetString("TypeCategory", resourceCulture);
             }
         }
         

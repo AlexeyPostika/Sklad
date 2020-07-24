@@ -9,6 +9,7 @@
       xmlns:ZonaYellow="clr-namespace:Sklad_v1_001.Control.Zona.Yellow"
       xmlns:ZonaWhite="clr-namespace:Sklad_v1_001.Control.Zona.White"
       xmlns:Filter1="clr-namespace:Sklad_v1_001.Control.FlexControlDate"
+      xmlns:res="clr-namespace:Sklad_v1_001.Properties"
       mc:Ignorable="d" 
       d:DesignHeight="818" Width="979"  Name="page"
       Title="Kategorii" Loaded="page_Loaded">
@@ -28,29 +29,31 @@
         <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Label Content="Категории" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold"/>
         </Grid>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Grid.RowSpan="4">
             <TreeView></TreeView>
         </Grid>
         <ZonaWhite:SelectCategoryWhiteTable x:Name="WhiteZona" Grid.Column="1"
-                                            LabelNameText="Выбор таблицы"
-                                            WidthLabel="100"
-                                            WidthComboBox="160"
+                                         LabelNameText="{x:Static res:Resources.CategoryTypeProduct}"
+                                         WidthLabel="160"
+                                         WidthComboBox="160"
                                             ButtonSelectChanged="WhiteZona_ButtonSelectChanged"/>
-        <ZonaRed:SelectCategoryRedTable Grid.Row="1" Grid.Column="1"
-                                         LabelNameText="Выбор таблицы"
-                                            WidthLabel="100"
-                                            WidthComboBox="120"
-                                         Visibility="{Binding ElementName=page, Path=VisibilityZonaRed, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-        <ZonaYellow:SelectCategoryYellowTable Grid.Row="2" Grid.Column="1"
-                                               LabelNameText="Выбор таблицы"
-                                            WidthLabel="100"
-                                            WidthComboBox="120"
-                                               Visibility="{Binding ElementName=page, Path=VisibilityZonaYellow, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <ZonaRed:SelectCategoryRedTable x:Name="RedZona" Grid.Row="1" Grid.Column="1"
+                                         LabelNameText="{x:Static res:Resources.TypeCategory}"
+                                         WidthLabel="160"
+                                         WidthComboBox="160"
+                                         Visibility="{Binding ElementName=page, Path=VisibilityZonaRed, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                        ButtonSelectChanged="SelectCategoryRedTable_ButtonSelectChanged"/>
+        <ZonaYellow:SelectCategoryYellowTable x:Name="YellowZona" Grid.Row="2" Grid.Column="1"
+                                            LabelNameText="{x:Static res:Resources.CATEGORY}"
+                                            WidthLabel="160"
+                                            WidthComboBox="160"
+                                            Visibility="{Binding ElementName=page, Path=VisibilityZonaYellow, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                              ButtonSelectChanged="SelectCategoryYellowTable_ButtonSelectChanged"/>
         <ZonaGreen:SelectCategoryGreenTable Grid.Row="3" Grid.Column="1"
                                              LabelNameText="Выбор таблицы"
-                                            WidthLabel="100"
-                                            WidthComboBox="120"
-                                            Visibility="{Binding ElementName=page, Path=VisibilityZonaGreen, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                                             WidthLabel="160"
+                                             WidthComboBox="160"
+                                             Visibility="{Binding ElementName=page, Path=VisibilityZonaGreen, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         
     </Grid>
 </Page>

@@ -25,10 +25,11 @@
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="5"/>
             </Grid.RowDefinitions>
-            <ComboBox x:Name="comboBox"  Grid.Column="3" Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+            <ComboBox x:Name="comboBox"  Grid.Column="3" Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
                       SelectedValuePath="ID"
                       DisplayMemberPath="Description"
                       Width="{Binding ElementName=control, Path=WidthComboBox, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                      SelectedValue="{Binding ElementName=control, Path=Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                       SelectionChanged="comboBox_SelectionChanged"
                       Loaded="comboBox_Loaded"/>
             <Label x:Name="label" Grid.Row="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
