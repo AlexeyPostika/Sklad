@@ -21,8 +21,14 @@ namespace Sklad_v1_001.GlobalList
         public Int32 ID { get; set; }
         public String Description { get; set; }
     }
-    //отвечает за ветрины
+    //отвечает за категории
     public class Category
+    {
+        public Int32 ID { get; set; }
+        public String Description { get; set; }
+    }
+    //отвечает за подкатегории
+    public class CategoryDetails
     {
         public Int32 ID { get; set; }
         public String Description { get; set; }
@@ -74,6 +80,19 @@ namespace Sklad_v1_001.GlobalList
             {
                 new Category {ID=0,Description=Properties.Resources.Category0 },
                 new Category {ID=0,Description=Properties.Resources.Category1 },          
+            };
+        }
+    }
+
+    public class CategoryDetailsList
+    {
+        public ObservableCollection<CategoryDetails> innerList { get; set; }
+        public CategoryDetailsList()
+        {
+            innerList = new ObservableCollection<CategoryDetails>()
+            {
+                new CategoryDetails {ID=0,Description=Properties.Resources.CategoryDetails0 },
+                new CategoryDetails {ID=0,Description=Properties.Resources.CategoryDetails1 },
             };
         }
     }

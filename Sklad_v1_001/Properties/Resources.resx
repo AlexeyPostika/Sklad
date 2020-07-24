@@ -252,4 +252,10 @@
   <data name="Category1" xml:space="preserve">
     <value>Сопуствующие товары</value>
   </data>
+  <data name="CategoryDetails0" xml:space="preserve">
+    <value>Категория</value>
+  </data>
+  <data name="CategoryDetails1" xml:space="preserve">
+    <value>Подкатегория</value>
+  </data>
 </root>

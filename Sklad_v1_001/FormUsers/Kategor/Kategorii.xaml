@@ -8,9 +8,10 @@
       xmlns:ZonaGreen="clr-namespace:Sklad_v1_001.Control.Zona.Green"
       xmlns:ZonaYellow="clr-namespace:Sklad_v1_001.Control.Zona.Yellow"
       xmlns:ZonaWhite="clr-namespace:Sklad_v1_001.Control.Zona.White"
+      xmlns:Filter1="clr-namespace:Sklad_v1_001.Control.FlexControlDate"
       mc:Ignorable="d" 
       d:DesignHeight="818" Width="979"  Name="page"
-      Title="Kategorii">
+      Title="Kategorii" Loaded="page_Loaded">
 
     <Grid Height="818" Background="#FFFDFAFA">
         <Grid.RowDefinitions>
@@ -33,7 +34,8 @@
         <ZonaWhite:SelectCategoryWhiteTable x:Name="WhiteZona" Grid.Column="1"
                                             LabelNameText="Выбор таблицы"
                                             WidthLabel="100"
-                                            WidthComboBox="120"/>
+                                            WidthComboBox="160"
+                                            ButtonSelectChanged="WhiteZona_ButtonSelectChanged"/>
         <ZonaRed:SelectCategoryRedTable Grid.Row="1" Grid.Column="1"
                                          LabelNameText="Выбор таблицы"
                                             WidthLabel="100"
@@ -49,5 +51,6 @@
                                             WidthLabel="100"
                                             WidthComboBox="120"
                                             Visibility="{Binding ElementName=page, Path=VisibilityZonaGreen, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        
     </Grid>
 </Page>

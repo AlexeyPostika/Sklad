@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sklad_v1_001.GlobalList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -72,14 +73,22 @@ namespace Sklad_v1_001.Control.Zona.White
                 SetValue(WidthComboBoxProperty, value);
             }
         }
+        CategoryList сategoryList;
         public SelectCategoryWhiteTable()
         {
             InitializeComponent();
+            
         }
         public event Action ButtonSelectChanged;
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ButtonSelectChanged?.Invoke();
+        }
+
+        private void comboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            сategoryList = new CategoryList();
+            this.comboBox.ItemsSource = сategoryList.innerList;
         }
     }
 }

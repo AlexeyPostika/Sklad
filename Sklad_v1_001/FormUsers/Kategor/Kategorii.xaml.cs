@@ -59,14 +59,26 @@ namespace Sklad_v1_001.FormUsers.Kategor
         }
 
         //подключаем листы с информацией
-        CategoryList сategoryList;
+       
         public Kategorii()
         {
             InitializeComponent();
             //загружаем данные в комбо
-            сategoryList = new CategoryList();
+          
 
-            this.WhiteZona.comboBox.ItemsSource = сategoryList.innerList.ToList()[0].Description;
+        }
+
+        private void page_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void WhiteZona_ButtonSelectChanged()
+        {
+            if (this.WhiteZona.comboBox.SelectedValue != null)
+            {
+                IsEnableZonaRed = Visibility.Visible;
+            }
         }
     }
 }

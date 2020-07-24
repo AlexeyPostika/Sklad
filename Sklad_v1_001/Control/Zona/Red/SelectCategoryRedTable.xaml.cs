@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sklad_v1_001.GlobalList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -80,6 +81,12 @@ namespace Sklad_v1_001.Control.Zona.Red
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ButtonSelectChanged?.Invoke();
+        }
+
+        private void comboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            CategoryDetailsList categoryDetailsList = new CategoryDetailsList();
+            this.comboBox.ItemsSource = categoryDetailsList.innerList;
         }
     }
 }
