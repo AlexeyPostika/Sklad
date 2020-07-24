@@ -246,4 +246,10 @@
   <data name="Phone" xml:space="preserve">
     <value>Телефон</value>
   </data>
+  <data name="Category0" xml:space="preserve">
+    <value>Товары</value>
+  </data>
+  <data name="Category1" xml:space="preserve">
+    <value>Сопуствующие товары</value>
+  </data>
 </root>

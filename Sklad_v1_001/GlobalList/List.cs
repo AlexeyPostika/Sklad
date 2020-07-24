@@ -21,6 +21,12 @@ namespace Sklad_v1_001.GlobalList
         public Int32 ID { get; set; }
         public String Description { get; set; }
     }
+    //отвечает за ветрины
+    public class Category
+    {
+        public Int32 ID { get; set; }
+        public String Description { get; set; }
+    }
     public class DateTimeListFilter
     {
         public ObservableCollection<DateTimeItem> innerList { get; set; }
@@ -55,6 +61,19 @@ namespace Sklad_v1_001.GlobalList
                 new Vetrina {ID=0,Description=Properties.Resources.Vetrina8 },
                 new Vetrina {ID=0,Description=Properties.Resources.Vetrina9 },
                 new Vetrina {ID=0,Description=Properties.Resources.Vetrina10 },
+            };
+        }
+    }
+
+    public class CategoryList
+    {
+        public ObservableCollection<Category> innerList { get; set; }
+        public CategoryList()
+        {
+            innerList = new ObservableCollection<Category>()
+            {
+                new Category {ID=0,Description=Properties.Resources.Category0 },
+                new Category {ID=0,Description=Properties.Resources.Category1 },          
             };
         }
     }
