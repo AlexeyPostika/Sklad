@@ -21,6 +21,23 @@ namespace Sklad_v1_001.Control.Zona.Yellow
     public partial class SelectCategoryYellowTable : UserControl
     {
         // свойство зависимостей
+        public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(
+                        "Value",
+                        typeof(Int32),
+                        typeof(SelectCategoryYellowTable), new UIPropertyMetadata(0));
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Int32 Value
+        {
+            get
+            {
+                return (Int32)GetValue(ValueProperty);
+            }
+            set
+            {
+                SetValue(ValueProperty, value);
+            }
+        }
+        // свойство зависимостей
         public static readonly DependencyProperty LabelNameTextProperty = DependencyProperty.Register(
                         "LabelNameText",
                         typeof(String),
@@ -80,6 +97,11 @@ namespace Sklad_v1_001.Control.Zona.Yellow
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ButtonSelectChanged?.Invoke();
+        }
+
+        private void comboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sklad_v1_001.GlobalList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,23 @@ namespace Sklad_v1_001.Control.Zona.Red
     /// </summary>
     public partial class SelectCategoryRedTable : UserControl
     {
+        // свойство зависимостей
+        public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(
+                        "Value",
+                        typeof(Int32),
+                        typeof(SelectCategoryRedTable), new UIPropertyMetadata(0));
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Int32 Value
+        {
+            get
+            {
+                return (Int32)GetValue(ValueProperty);
+            }
+            set
+            {
+                SetValue(ValueProperty, value);
+            }
+        }
         // свойство зависимостей
         public static readonly DependencyProperty LabelNameTextProperty = DependencyProperty.Register(
                         "LabelNameText",
@@ -80,6 +98,12 @@ namespace Sklad_v1_001.Control.Zona.Red
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ButtonSelectChanged?.Invoke();
+        }
+
+        private void comboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            CategoryDetailsList categoryDetailsList = new CategoryDetailsList();
+            this.comboBox.ItemsSource = categoryDetailsList.innerList;
         }
     }
 }

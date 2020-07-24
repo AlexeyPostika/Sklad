@@ -1,7 +1,9 @@
 ﻿using Sklad_v1_001.GlobalList;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -34,7 +36,7 @@ namespace Sklad_v1_001.FormUsers.Kategor
          "VisibilityZonaGreen",
          typeof(Visibility),
          typeof(Kategorii), new UIPropertyMetadata(Visibility.Collapsed));     
-        public Visibility IsEnableZonaGreen
+        public Visibility VisibilityZonaGreen
         {
             get { return (Visibility)GetValue(VisibilityGreenProperty); }
             set { SetValue(VisibilityGreenProperty, value); }
@@ -52,21 +54,108 @@ namespace Sklad_v1_001.FormUsers.Kategor
         "VisibilityZonaRed",
         typeof(Visibility),
         typeof(Kategorii), new UIPropertyMetadata(Visibility.Collapsed));
-        public Visibility IsEnableZonaRed
+        public Visibility VisibilityZonaRed
         {
             get { return (Visibility)GetValue(VisibilityRedProperty); }
             set { SetValue(VisibilityRedProperty, value); }
         }
+        private Int32 typeTable;
+        public int TypeTable
+        {
+            get
+            {
+                return typeTable;
+            }
 
-        //подключаем листы с информацией
-        CategoryList сategoryList;
+            set
+            {
+                typeTable = value;
+            }
+        }
+
+        Kategor.KategoriiLogic kategoriiLogic;
+        ObservableCollection<Kategor.LocalRow> dataCategor;
+
+       
         public Kategorii()
         {
             InitializeComponent();
             //загружаем данные в комбо
-            сategoryList = new CategoryList();
+            kategoriiLogic = new KategoriiLogic();
+            dataCategor = new ObservableCollection<LocalRow>();
 
-            this.WhiteZona.comboBox.ItemsSource = сategoryList.innerList.ToList()[0].Description;
+            this.YellowZona.comboBox.ItemsSource = dataCategor;
         }
+
+        private void page_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        #region производим сортировку зон
+        //1 - производим выбор таблицы (товар или сопуствующий товар)
+        private void WhiteZona_ButtonSelectChanged()
+        {
+            if (this.WhiteZona.comboBox.SelectedValue != null & this.WhiteZona.Value!=0)
+            {
+                VisibilityZonaRed = Visibility.Visible;
+                TypeTable = WhiteZona.Value == 1 ? 0 : 1;
+            }
+            else
+            {
+                VisibilityZonaRed = Visibility.Collapsed;
+                VisibilityZonaYellow = Visibility.Collapsed;
+                VisibilityZonaGreen = Visibility.Collapsed;               
+            }
+        }
+        //2 - выбираем тип категории (категория или подкатегория)
+        private void SelectCategoryRedTable_ButtonSelectChanged()
+        {
+            if (this.RedZona.comboBox.SelectedValue != null & this.RedZona.Value != 0)
+            {
+                if (RedZona.Value == 2)
+                {
+                    VisibilityZonaYellow = Visibility.Visible;
+                    InitComboBox(TypeTable);
+                }
+                else
+                    VisibilityZonaYellow = Visibility.Collapsed;
+                VisibilityZonaGreen = RedZona.Value == 1 ? Visibility.Visible : Visibility.Collapsed; 
+            }
+            else
+            {
+                VisibilityZonaYellow = Visibility.Collapsed;
+                VisibilityZonaGreen = Visibility.Collapsed;
+            }
+        }
+        //3 - выбираем какой именно категории относиться (подкатегория)
+        private void SelectCategoryYellowTable_ButtonSelectChanged()
+        {
+            if (this.YellowZona.comboBox.SelectedValue != null & this.YellowZona.Value != 0)
+            {
+                VisibilityZonaGreen = Visibility.Visible;
+            }
+            else
+            {
+                VisibilityZonaGreen = Visibility.Collapsed;
+            }
+        }
+
+        #endregion
+
+        #region заполнение комбобоксы данными
+        private void InitComboBox(Int32 _typeTable)
+        {
+            dataCategor.Clear();
+            //получили данные
+            DataTable table = kategoriiLogic.SelectCategory(_typeTable);
+
+            //заполнили данные
+            foreach (DataRow row in table.Rows)
+            {
+                dataCategor.Add(kategoriiLogic.ConvertCategory(row, new LocalRow()));
+            }
+        }
+
+        #endregion
     }
 }

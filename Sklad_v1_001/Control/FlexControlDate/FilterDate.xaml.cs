@@ -128,7 +128,7 @@ namespace Sklad_v1_001.Control.FlexControlDate
                         }
                          if (Value == 0)
                          {
-                             filterImage.Source = new BitmapImage(new Uri(@"..\Icone\Controllu\funnel_30px.png", UriKind.Relative));
+                             //filterImage.Source = new BitmapImage(new Uri(@"..\Icone\Controllu\funnel_30px.png", UriKind.Relative));
                             ButtonFilterSelected?.Invoke();
                          }
                      }
