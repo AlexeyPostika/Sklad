@@ -30,7 +30,7 @@
         <Grid Grid.Row="1">
             <TreeView></TreeView>
         </Grid>
-        <ZonaWhite:SelectCategoryWhiteTable  Grid.Column="1"
+        <ZonaWhite:SelectCategoryWhiteTable x:Name="WhiteZona" Grid.Column="1"
                                             LabelNameText="Выбор таблицы"
                                             WidthLabel="100"
                                             WidthComboBox="120"/>

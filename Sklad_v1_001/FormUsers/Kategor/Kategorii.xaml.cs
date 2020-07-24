@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sklad_v1_001.GlobalList;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -56,9 +57,16 @@ namespace Sklad_v1_001.FormUsers.Kategor
             get { return (Visibility)GetValue(VisibilityRedProperty); }
             set { SetValue(VisibilityRedProperty, value); }
         }
+
+        //подключаем листы с информацией
+        CategoryList сategoryList;
         public Kategorii()
         {
             InitializeComponent();
+            //загружаем данные в комбо
+            сategoryList = new CategoryList();
+
+            this.WhiteZona.comboBox.ItemsSource = сategoryList.innerList.ToList()[0].Description;
         }
     }
 }
