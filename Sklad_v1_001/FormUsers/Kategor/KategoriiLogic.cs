@@ -103,15 +103,70 @@ namespace Sklad_v1_001.FormUsers.Kategor
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
     }
-   
+
+    public class KategoryType
+    {
+        private Int32 iD;
+        private string kategoryName;
+        private string typeCategoryName;
+
+        public int ID
+        {
+            get
+            {
+                return iD;
+            }
+
+            set
+            {
+                iD = value;
+                OnPropertyChanged("ID");
+            }
+        }
+
+        public string KategoryName
+        {
+            get
+            {
+                return kategoryName;
+            }
+
+            set
+            {
+                kategoryName = value;
+                OnPropertyChanged("KategoryName");
+            }
+        }
+
+        public string TypeCategoryName
+        {
+            get
+            {
+                return typeCategoryName;
+            }
+
+            set
+            {
+                typeCategoryName = value;
+                OnPropertyChanged("TypeCategoryName");
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName]string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
+    }
     public class KategoriiLogic
     {
         SQLCommanSelect _sqlSting;
+        SQLCommanSelect _sqlTreeViewSting;
 
         LocalRow localrow;
         
-        String _getSelectCategoryTable = "xp_GetCategoryTable";      //хранимка
-
+        String _getSelectCategoryTable = "xp_GetCategoryTable";      //хранимка xp_GetCategoryDetailsTable
+        String _getSelectCategoryTreeView = "xp_GetCategoryDetailsTable";
         DataTable _table;
 
         ConvertData convertData;
@@ -120,6 +175,7 @@ namespace Sklad_v1_001.FormUsers.Kategor
         {
             //объявили подключение
             _sqlSting = new SQLCommanSelect();
+            _sqlTreeViewSting = new SQLCommanSelect();
             //объявили localRow
             localrow = new LocalRow();
             //объявили таблицу куда будем записывать все
@@ -144,6 +200,16 @@ namespace Sklad_v1_001.FormUsers.Kategor
 
             return _table;
         }
+        public DataTable SelectCategory()
+        {
+            _sqlTreeViewSting.SqlAnswer.datatable.Clear();
+            _table.Clear();
+
+            _sqlTreeViewSting.ComplexRequest(_getSelectCategoryTreeView, CommandType.StoredProcedure, null);
+            _table = _sqlTreeViewSting.SqlAnswer.datatable;
+
+            return _table;
+        }
 
         public LocalRow ConvertCategory(DataRow _row, LocalRow localrow)
         {
@@ -151,6 +217,15 @@ namespace Sklad_v1_001.FormUsers.Kategor
             convertData = new ConvertData(_row, localrow);
             localrow.ID = convertData.ConvertDataInt32("ID");
             localrow.Description = convertData.ConvertDataString("Description");
+            return localrow;
+        }
+
+        public KategoryType ConvertCategory(DataRow _row, KategoryType localrow)
+        {
+            convertData = new ConvertData(_row, localrow);
+            localrow.ID = convertData.ConvertDataInt32("ID");
+            localrow.KategoryName = convertData.ConvertDataString("KategoryName");
+            localrow.TypeCategoryName = convertData.ConvertDataString("TypeCategoryName");
             return localrow;
         }
 

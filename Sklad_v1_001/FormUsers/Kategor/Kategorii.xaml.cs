@@ -20,6 +20,7 @@ using System.Windows.Shapes;
 
 namespace Sklad_v1_001.FormUsers.Kategor
 {
+   
     /// <summary>
     /// Interaction logic for Kategorii.xaml
     /// </summary>
@@ -75,7 +76,7 @@ namespace Sklad_v1_001.FormUsers.Kategor
 
         Kategor.KategoriiLogic kategoriiLogic;
         ObservableCollection<Kategor.LocalRow> dataCategor;
-
+        ObservableCollection<Kategor.KategoryType> dataCategorTreeView; //Выводим категории в TreeView
        
         public Kategorii()
         {
@@ -83,14 +84,18 @@ namespace Sklad_v1_001.FormUsers.Kategor
             //загружаем данные в комбо
             kategoriiLogic = new KategoriiLogic();
             dataCategor = new ObservableCollection<LocalRow>();
+            dataCategorTreeView = new ObservableCollection<Kategor.KategoryType>();
 
             this.YellowZona.comboBox.ItemsSource = dataCategor;
+            this.treeView1.ItemsSource = dataCategorTreeView;
+            InitTreeView();
         }
 
         private void page_Loaded(object sender, RoutedEventArgs e)
         {
             
         }
+
         #region производим сортировку зон
         //1 - производим выбор таблицы (товар или сопуствующий товар)
         private void WhiteZona_ButtonSelectChanged()
@@ -142,7 +147,7 @@ namespace Sklad_v1_001.FormUsers.Kategor
 
         #endregion
 
-        #region заполнение комбобоксы данными
+        #region заполнение комбобоксы данными и дерево данными
         private void InitComboBox(Int32 _typeTable)
         {
             dataCategor.Clear();
@@ -155,7 +160,37 @@ namespace Sklad_v1_001.FormUsers.Kategor
                 dataCategor.Add(kategoriiLogic.ConvertCategory(row, new LocalRow()));
             }
         }
+        private void InitTreeView()
+        {
+            dataCategor.Clear();
+            //получили данные
+            DataTable table = kategoriiLogic.SelectCategory();
+            List<KategoryType> listKategory = new List<KategoryType>();
+            KategoryType kategoryType;
+            //внутренний запрос в List
+            var queryNumericRange =
+                from kategory in listKategory
+                let kategorytype1 = kategory.TypeCategoryName
+                group new { kategory.ID, kategory.KategoryName} by kategorytype1 into kategorytype2
+                orderby kategorytype2.Key
+                select kategorytype2;
 
+
+            //заполнили данные
+            foreach (DataRow row in table.Rows)
+            {
+                kategoryType = new KategoryType();              
+                listKategory.Add(kategoriiLogic.ConvertCategory(row, kategoryType));         //записали лист             
+               
+            }
+            foreach (var kategorytype in queryNumericRange)
+            {
+                foreach (var item in kategorytype)
+                {                  
+                        //dataCategorTreeView.Add(item);
+                }
+            }
+        }
         #endregion
     }
 }
