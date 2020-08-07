@@ -77,7 +77,8 @@ namespace Sklad_v1_001.FormUsers.Kategor
         Kategor.KategoriiLogic kategoriiLogic;
         ObservableCollection<Kategor.LocalRow> dataCategor;
         ObservableCollection<Kategor.KategoryType> dataCategorTreeView; //Выводим категории в TreeView
-       
+        ObservableCollection<Kategor.KategoryType> dataCategorTreeView1; //Выводим категории в TreeView
+        ObservableCollection<Kategor.CategoryType> dataCategoryTypeTreeView; //Выводим категории в TreeView
         public Kategorii()
         {
             InitializeComponent();
@@ -85,6 +86,43 @@ namespace Sklad_v1_001.FormUsers.Kategor
             kategoriiLogic = new KategoriiLogic();
             dataCategor = new ObservableCollection<LocalRow>();
             dataCategorTreeView = new ObservableCollection<Kategor.KategoryType>();
+            dataCategorTreeView1 = new ObservableCollection<Kategor.KategoryType>();
+            dataCategoryTypeTreeView = new ObservableCollection<CategoryType>();
+            //dataCategorTreeView = new ObservableCollection<Kategor.KategoryType>() { 
+            //new KategoryType
+            //{
+            //    KategoryName ="Европа",
+            //    Category = new ObservableCollection<CategoryType>
+            //    {
+            //        new CategoryType {Title="Германия" },
+            //        new CategoryType {Title="Франция" },
+            //        //new KategoryType
+            //        //{
+            //        //    KategoryName ="Великобритания",
+            //        //    Category = new ObservableCollection<CategoryType>
+            //        //    {
+            //        //        new CategoryType {Title="Англия" },
+            //        //        new CategoryType {Title="Шотландия" },
+            //        //        new CategoryType {Title="Уэльс" },
+            //        //        new CategoryType {Title="Сев. Ирландия" },
+            //        //    }
+            //        //}
+            //    }
+            //},
+            //new KategoryType
+            //{
+            //    KategoryName ="Азия",
+            //    Category = new ObservableCollection<CategoryType>
+            //    {
+            //        new CategoryType {Title="Китай" },
+            //        new CategoryType {Title="Япония" },
+            //        new CategoryType { Title ="Индия" }
+            //    }
+            //},
+            //new KategoryType { KategoryName="Африка" },
+            //new KategoryType { KategoryName="Америка" },
+            //new KategoryType { KategoryName="Австралия" }
+            //};
 
             this.YellowZona.comboBox.ItemsSource = dataCategor;
             this.treeView1.ItemsSource = dataCategorTreeView;
@@ -167,29 +205,46 @@ namespace Sklad_v1_001.FormUsers.Kategor
             DataTable table = kategoriiLogic.SelectCategory();
             List<KategoryType> listKategory = new List<KategoryType>();
             KategoryType kategoryType;
+            CategoryType categoryType;
             //внутренний запрос в List
             var queryNumericRange =
                 from kategory in listKategory
                 let kategorytype1 = kategory.TypeCategoryName
-                group new { kategory.ID, kategory.KategoryName} by kategorytype1 into kategorytype2
+                group new { kategory.ID, kategory.KategoryName } by kategorytype1 into kategorytype2
                 orderby kategorytype2.Key
                 select kategorytype2;
+            //
+            //{ 
 
 
             //заполнили данные
-            foreach (DataRow row in table.Rows)
-            {
-                kategoryType = new KategoryType();              
-                listKategory.Add(kategoriiLogic.ConvertCategory(row, kategoryType));         //записали лист             
-               
-            }
+            //foreach (DataRow row in table.Rows)
+            //{
+            //    kategoryType = new KategoryType();
+            //    listKategory.Add(kategoriiLogic.ConvertCategory(row, kategoryType));         //записали лист             
+            //    dataCategorTreeView.Add(kategoryType);
+            //}
+
             foreach (var kategorytype in queryNumericRange)
             {
                 foreach (var item in kategorytype)
-                {                  
-                        //dataCategorTreeView.Add(item);
+                {
+                    kategoryType = new KategoryType();
+                    kategoryType.KategoryName = item.KategoryName;
+                    kategoryType.ID = item.ID;
+                    categoryType = new CategoryType();
+                    foreach (var kat in dataCategorTreeView)
+                    {
+                        categoryType.Title = kat.KategoryName;           
+                        //dataCategoryTypeTreeView.Add(categoryType);
+                        //kat.Category = dataCategoryTypeTreeView;
+                        //dataCategorTreeView1.Add(kat);
+                    }
+                    dataCategorTreeView.Add(kategoryType);
                 }
             }
+
+            treeView1.ItemsSource = dataCategorTreeView1;
         }
         #endregion
     }

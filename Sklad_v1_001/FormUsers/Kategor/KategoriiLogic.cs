@@ -9,6 +9,7 @@ using System.Data;
 using Sklad_v1_001.SQL;
 using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.HelperGlobal;
+using System.Collections.ObjectModel;
 
 namespace Sklad_v1_001.FormUsers.Kategor
 {
@@ -109,7 +110,7 @@ namespace Sklad_v1_001.FormUsers.Kategor
         private Int32 iD;
         private string kategoryName;
         private string typeCategoryName;
-
+        public ObservableCollection<CategoryType> Category { get; set; }
         public int ID
         {
             get
@@ -149,6 +150,34 @@ namespace Sklad_v1_001.FormUsers.Kategor
             {
                 typeCategoryName = value;
                 OnPropertyChanged("TypeCategoryName");
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName]string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
+        public KategoryType()
+        {
+            Category = new ObservableCollection<CategoryType>();
+        }
+    }
+    public class CategoryType
+    {
+        private string title;
+
+        public string Title
+        {
+            get
+            {
+                return title;
+            }
+
+            set
+            {
+                title = value;
+                OnPropertyChanged("Title");
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;

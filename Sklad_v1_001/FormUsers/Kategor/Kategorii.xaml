@@ -32,11 +32,12 @@
         <Grid Grid.Row="1" Grid.RowSpan="4">
             <TreeView x:Name="treeView1">
                 <TreeView.ItemTemplate>
-                    <HierarchicalDataTemplate>
-                        <TextBlock Text="{Binding KategoryName}" />
+                    <!--ItemsSource="{Binding Path=Category}"-->
+                    <HierarchicalDataTemplate ItemsSource="{Binding Path=Category}">
+                        <TextBlock Text="{Binding Path=KategoryName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         <HierarchicalDataTemplate.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding TypeCategoryName}" />
+                                <TextBlock Text="{Binding Path=Title, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                             </DataTemplate>
                         </HierarchicalDataTemplate.ItemTemplate>
                     </HierarchicalDataTemplate>
