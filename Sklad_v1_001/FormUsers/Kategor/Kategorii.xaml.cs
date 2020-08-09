@@ -219,7 +219,7 @@ namespace Sklad_v1_001.FormUsers.Kategor
                 //typeCategory = new TypeCategory();
                 foreach (var item in kategorytype)
                 {
-                    if (item.TypeCategoryName!="")
+                    if (!String.IsNullOrEmpty(item.TypeCategoryName))
                     {
                         typeCategory = new TypeCategory();
                         typeCategory.Title = item.TypeCategoryName;
