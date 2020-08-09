@@ -105,8 +105,7 @@ namespace Sklad_v1_001.FormUsers.Kategor
         Kategor.KategoriiLogic kategoriiLogic;
         ObservableCollection<Kategor.LocalRow> dataCategor;
         ObservableCollection<Kategor.KategoryType> dataCategorTreeView; //Выводим категории в TreeView
-        ObservableCollection<Kategor.KategoryType> dataCategorTreeView1; //Выводим категории в TreeView
-        ObservableCollection<Kategor.CategoryType> dataCategoryTypeTreeView; //Выводим категории в TreeView
+       
         public Kategorii()
         {
             InitializeComponent();
@@ -114,44 +113,7 @@ namespace Sklad_v1_001.FormUsers.Kategor
             kategoriiLogic = new KategoriiLogic();
             dataCategor = new ObservableCollection<LocalRow>();
             dataCategorTreeView = new ObservableCollection<Kategor.KategoryType>();
-            dataCategorTreeView1 = new ObservableCollection<Kategor.KategoryType>();
-            dataCategoryTypeTreeView = new ObservableCollection<CategoryType>();
-            //dataCategorTreeView = new ObservableCollection<Kategor.KategoryType>() { 
-            //new KategoryType
-            //{
-            //    KategoryName ="Европа",
-            //    Category = new ObservableCollection<CategoryType>
-            //    {
-            //        new CategoryType {Title="Германия" },
-            //        new CategoryType {Title="Франция" },
-            //        //new KategoryType
-            //        //{
-            //        //    KategoryName ="Великобритания",
-            //        //    Category = new ObservableCollection<CategoryType>
-            //        //    {
-            //        //        new CategoryType {Title="Англия" },
-            //        //        new CategoryType {Title="Шотландия" },
-            //        //        new CategoryType {Title="Уэльс" },
-            //        //        new CategoryType {Title="Сев. Ирландия" },
-            //        //    }
-            //        //}
-            //    }
-            //},
-            //new KategoryType
-            //{
-            //    KategoryName ="Азия",
-            //    Category = new ObservableCollection<CategoryType>
-            //    {
-            //        new CategoryType {Title="Китай" },
-            //        new CategoryType {Title="Япония" },
-            //        new CategoryType { Title ="Индия" }
-            //    }
-            //},
-            //new KategoryType { KategoryName="Африка" },
-            //new KategoryType { KategoryName="Америка" },
-            //new KategoryType { KategoryName="Австралия" }
-            //};
-
+  
             this.YellowZona.comboBox.ItemsSource = dataCategor;
             this.treeView1.ItemsSource = dataCategorTreeView;
             InitTreeView();
@@ -266,8 +228,6 @@ namespace Sklad_v1_001.FormUsers.Kategor
                 }
                 dataCategorTreeView.Add(kategoryType);
             }
-
-            treeView1.ItemsSource = dataCategorTreeView1;
         }
         #endregion
 
