@@ -61,6 +61,8 @@ namespace Sklad_v1_001.FormUsers.Kategor
             set { SetValue(VisibilityRedProperty, value); }
         }
         private Int32 typeTable;
+        private String text;
+        private String description;
         public int TypeTable
         {
             get
@@ -71,6 +73,32 @@ namespace Sklad_v1_001.FormUsers.Kategor
             set
             {
                 typeTable = value;
+            }
+        }
+
+        public string Text
+        {
+            get
+            {
+                return text;
+            }
+
+            set
+            {
+                text = value;
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+
+            set
+            {
+                description = value;
             }
         }
 
@@ -200,5 +228,25 @@ namespace Sklad_v1_001.FormUsers.Kategor
             }
         }
         #endregion
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(Text + "----" + Description);
+        }
+
+        private void SelectCategoryGreenTable_ButtonInputTextBox()
+        {
+            
+        }
+
+        private void GreenZona_ButtonInputTextBoxDescription()
+        {
+            Description = GreenZona.Description;
+        }
+
+        private void GreenZona_ButtonInputTextBox()
+        {
+            Text = GreenZona.Value;
+        }
     }
 }

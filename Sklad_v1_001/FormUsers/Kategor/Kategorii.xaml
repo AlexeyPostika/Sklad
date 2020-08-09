@@ -60,11 +60,19 @@
                                             WidthComboBox="160"
                                             Visibility="{Binding ElementName=page, Path=VisibilityZonaYellow, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                               ButtonSelectChanged="SelectCategoryYellowTable_ButtonSelectChanged"/>
-        <ZonaGreen:SelectCategoryGreenTable Grid.Row="3" Grid.Column="1"
+        <ZonaGreen:SelectCategoryGreenTable x:Name="GreenZona" Grid.Row="3" Grid.Column="1"
                                              LabelNameText="Выбор таблицы"
+                                             LabelNameTextDescription="Описание"
                                              WidthLabel="160"
-                                             WidthComboBox="160"
+                                             WidthTextBox="160"
+                                             WidthLabelDescription="160"
+                                             HeightLabelDescription="20"
+                                             WidthTextBoxDescription="250"
+                                             ButtonInputTextBox="GreenZona_ButtonInputTextBox"
+                                             ButtonInputTextBoxDescription="GreenZona_ButtonInputTextBoxDescription"
                                              Visibility="{Binding ElementName=page, Path=VisibilityZonaGreen, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-        
+        <Button x:Name="button" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="169,100,0,0" Grid.Row="4" VerticalAlignment="Top" Width="75"
+                Click="button_Click"/>
+
     </Grid>
 </Page>
