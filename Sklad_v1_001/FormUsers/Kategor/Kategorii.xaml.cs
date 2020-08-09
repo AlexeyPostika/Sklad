@@ -61,6 +61,8 @@ namespace Sklad_v1_001.FormUsers.Kategor
             set { SetValue(VisibilityRedProperty, value); }
         }
         private Int32 typeTable;
+        private String text;
+        private String description;
         public int TypeTable
         {
             get
@@ -71,6 +73,32 @@ namespace Sklad_v1_001.FormUsers.Kategor
             set
             {
                 typeTable = value;
+            }
+        }
+
+        public string Text
+        {
+            get
+            {
+                return text;
+            }
+
+            set
+            {
+                text = value;
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+
+            set
+            {
+                description = value;
             }
         }
 
@@ -205,12 +233,12 @@ namespace Sklad_v1_001.FormUsers.Kategor
             DataTable table = kategoriiLogic.SelectCategory();
             List<KategoryType> listKategory = new List<KategoryType>();
             KategoryType kategoryType;
-            CategoryType categoryType;
+            TypeCategory typeCategory;
             //внутренний запрос в List
             var queryNumericRange =
                 from kategory in listKategory
-                let kategorytype1 = kategory.TypeCategoryName
-                group new { kategory.ID, kategory.KategoryName } by kategorytype1 into kategorytype2
+                let kategorytype1 = kategory.KategoryName
+                group new { kategory.ID, kategory.TypeCategoryName } by kategorytype1 into kategorytype2
                 orderby kategorytype2.Key
                 select kategorytype2;
             //
@@ -218,34 +246,49 @@ namespace Sklad_v1_001.FormUsers.Kategor
 
 
             //заполнили данные
-            //foreach (DataRow row in table.Rows)
-            //{
-            //    kategoryType = new KategoryType();
-            //    listKategory.Add(kategoriiLogic.ConvertCategory(row, kategoryType));         //записали лист             
-            //    dataCategorTreeView.Add(kategoryType);
-            //}
+            foreach (DataRow row in table.Rows)
+            {
+                kategoryType = new KategoryType();
+                listKategory.Add(kategoriiLogic.ConvertCategory(row, kategoryType));         //записали лист             
 
+            }
             foreach (var kategorytype in queryNumericRange)
             {
+                kategoryType = new KategoryType();
+                kategoryType.KategoryName = kategorytype.Key;
+                //typeCategory = new TypeCategory();
                 foreach (var item in kategorytype)
                 {
-                    kategoryType = new KategoryType();
-                    kategoryType.KategoryName = item.KategoryName;
-                    kategoryType.ID = item.ID;
-                    categoryType = new CategoryType();
-                    foreach (var kat in dataCategorTreeView)
-                    {
-                        categoryType.Title = kat.KategoryName;           
-                        //dataCategoryTypeTreeView.Add(categoryType);
-                        //kat.Category = dataCategoryTypeTreeView;
-                        //dataCategorTreeView1.Add(kat);
-                    }
-                    dataCategorTreeView.Add(kategoryType);
+                    typeCategory = new TypeCategory();
+                    typeCategory.Title = item.TypeCategoryName;
+                    kategoryType.Category.Add( typeCategory);
+                    //dataCategorTreeView.Add(item);
                 }
+                dataCategorTreeView.Add(kategoryType);
             }
 
             treeView1.ItemsSource = dataCategorTreeView1;
         }
         #endregion
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(Text + "----" + Description);
+        }
+
+        private void SelectCategoryGreenTable_ButtonInputTextBox()
+        {
+            
+        }
+
+        private void GreenZona_ButtonInputTextBoxDescription()
+        {
+            Description = GreenZona.Description;
+        }
+
+        private void GreenZona_ButtonInputTextBox()
+        {
+            Text = GreenZona.Value;
+        }
     }
 }

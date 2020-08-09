@@ -105,10 +105,30 @@ namespace Sklad_v1_001.FormUsers.Kategor
         }
     }
 
+    //TypeCategory
+    public class TypeCategory
+    {
+        private string title;
+
+        public string Title
+        {
+            get
+            {
+                return title;
+            }
+
+            set
+            {
+                title = value;
+            }
+        }
+    }
+
     public class KategoryType
     {
         private Int32 iD;
         private string kategoryName;
+        public ObservableCollection<TypeCategory> Category { get; set; }
         private string typeCategoryName;
         public ObservableCollection<CategoryType> Category { get; set; }
         public int ID
@@ -194,7 +214,7 @@ namespace Sklad_v1_001.FormUsers.Kategor
 
         LocalRow localrow;
         
-        String _getSelectCategoryTable = "xp_GetCategoryTable";      //хранимка xp_GetCategoryDetailsTable
+        String _getSelectCategoryTable = "xp_GetCategoryComboBox";      //хранимка xp_GetCategoryDetailsTable
         String _getSelectCategoryTreeView = "xp_GetCategoryDetailsTable";
         DataTable _table;
 
