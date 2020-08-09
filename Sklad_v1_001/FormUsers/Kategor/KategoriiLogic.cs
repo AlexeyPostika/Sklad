@@ -9,6 +9,7 @@ using System.Data;
 using Sklad_v1_001.SQL;
 using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.HelperGlobal;
+using System.Collections.ObjectModel;
 
 namespace Sklad_v1_001.FormUsers.Kategor
 {
@@ -104,10 +105,30 @@ namespace Sklad_v1_001.FormUsers.Kategor
         }
     }
 
+    //TypeCategory
+    public class TypeCategory
+    {
+        private string title;
+
+        public string Title
+        {
+            get
+            {
+                return title;
+            }
+
+            set
+            {
+                title = value;
+            }
+        }
+    }
+
     public class KategoryType
     {
         private Int32 iD;
         private string kategoryName;
+        public ObservableCollection<TypeCategory> Category { get; set; }
         private string typeCategoryName;
 
         public int ID
@@ -157,6 +178,10 @@ namespace Sklad_v1_001.FormUsers.Kategor
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
+        public KategoryType()
+        {
+            Category = new ObservableCollection<TypeCategory>();
+        }
     }
     public class KategoriiLogic
     {
@@ -165,7 +190,7 @@ namespace Sklad_v1_001.FormUsers.Kategor
 
         LocalRow localrow;
         
-        String _getSelectCategoryTable = "xp_GetCategoryTable";      //хранимка xp_GetCategoryDetailsTable
+        String _getSelectCategoryTable = "xp_GetCategoryComboBox";      //хранимка xp_GetCategoryDetailsTable
         String _getSelectCategoryTreeView = "xp_GetCategoryDetailsTable";
         DataTable _table;
 
