@@ -71,8 +71,8 @@
                                              ButtonInputTextBox="GreenZona_ButtonInputTextBox"
                                              ButtonInputTextBoxDescription="GreenZona_ButtonInputTextBoxDescription"
                                              Visibility="{Binding ElementName=page, Path=VisibilityZonaGreen, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-        <Button x:Name="button" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="169,100,0,0" Grid.Row="4" VerticalAlignment="Top" Width="75"
-                Click="button_Click"/>
+        <!--<Button x:Name="button" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="169,100,0,0" Grid.Row="4" VerticalAlignment="Top" Width="75"
+                Click="button_Click"/>-->
 
     </Grid>
 </Page>
