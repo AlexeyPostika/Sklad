@@ -167,11 +167,12 @@ namespace Sklad_v1_001.FormUsers.Kategor
             DataTable table = kategoriiLogic.SelectCategory();
             List<KategoryType> listKategory = new List<KategoryType>();
             KategoryType kategoryType;
+            TypeCategory typeCategory;
             //внутренний запрос в List
             var queryNumericRange =
                 from kategory in listKategory
-                let kategorytype1 = kategory.TypeCategoryName
-                group new { kategory.ID, kategory.KategoryName} by kategorytype1 into kategorytype2
+                let kategorytype1 = kategory.KategoryName
+                group new { kategory.ID, kategory.TypeCategoryName } by kategorytype1 into kategorytype2
                 orderby kategorytype2.Key
                 select kategorytype2;
 
@@ -179,16 +180,23 @@ namespace Sklad_v1_001.FormUsers.Kategor
             //заполнили данные
             foreach (DataRow row in table.Rows)
             {
-                kategoryType = new KategoryType();              
+                kategoryType = new KategoryType();
                 listKategory.Add(kategoriiLogic.ConvertCategory(row, kategoryType));         //записали лист             
-               
+
             }
             foreach (var kategorytype in queryNumericRange)
             {
+                kategoryType = new KategoryType();
+                kategoryType.KategoryName = kategorytype.Key;
+                //typeCategory = new TypeCategory();
                 foreach (var item in kategorytype)
-                {                  
-                        //dataCategorTreeView.Add(item);
+                {
+                    typeCategory = new TypeCategory();
+                    typeCategory.Title = item.TypeCategoryName;
+                    kategoryType.Category.Add( typeCategory);
+                    //dataCategorTreeView.Add(item);
                 }
+                dataCategorTreeView.Add(kategoryType);
             }
         }
         #endregion

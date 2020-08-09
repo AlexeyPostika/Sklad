@@ -32,11 +32,11 @@
         <Grid Grid.Row="1" Grid.RowSpan="4">
             <TreeView x:Name="treeView1">
                 <TreeView.ItemTemplate>
-                    <HierarchicalDataTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Path=Category}">
                         <TextBlock Text="{Binding KategoryName}" />
-                        <HierarchicalDataTemplate.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding TypeCategoryName}" />
+                        <HierarchicalDataTemplate.ItemTemplate >
+                            <DataTemplate >
+                                <TextBlock Text="{Binding Title}" />
                             </DataTemplate>
                         </HierarchicalDataTemplate.ItemTemplate>
                     </HierarchicalDataTemplate>
