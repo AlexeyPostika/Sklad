@@ -221,9 +221,12 @@ namespace Sklad_v1_001.FormUsers.Kategor
                 //typeCategory = new TypeCategory();
                 foreach (var item in kategorytype)
                 {
-                    typeCategory = new TypeCategory();
-                    typeCategory.Title = item.TypeCategoryName;
-                    kategoryType.Category.Add( typeCategory);
+                    if (item.TypeCategoryName!="")
+                    {
+                        typeCategory = new TypeCategory();
+                        typeCategory.Title = item.TypeCategoryName;
+                        kategoryType.Category.Add(typeCategory);
+                    }
                     //dataCategorTreeView.Add(item);
                 }
                 dataCategorTreeView.Add(kategoryType);

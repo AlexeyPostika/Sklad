@@ -19,7 +19,7 @@
             <RowDefinition Height="60" Name="White"/>
             <RowDefinition Height="Auto" Name="Red"/>
             <RowDefinition Height="Auto" Name="Green"/>
-            <RowDefinition Height="Auto" Name="Yellow"/>
+            <RowDefinition Height="150" Name="Yellow"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -64,9 +64,9 @@
                                              LabelNameText="Выбор таблицы"
                                              LabelNameTextDescription="Описание"
                                              WidthLabel="160"
-                                             WidthTextBox="160"
+                                             WidthTextBox="250"
                                              WidthLabelDescription="160"
-                                             HeightLabelDescription="20"
+                                             HeightLabelDescription="25"
                                              WidthTextBoxDescription="250"
                                              ButtonInputTextBox="GreenZona_ButtonInputTextBox"
                                              ButtonInputTextBoxDescription="GreenZona_ButtonInputTextBoxDescription"
