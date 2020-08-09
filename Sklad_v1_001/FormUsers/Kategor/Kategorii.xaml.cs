@@ -232,10 +232,10 @@ namespace Sklad_v1_001.FormUsers.Kategor
         }
         #endregion
 
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show(Text + "----" + Description);
-        }
+        //private void button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MessageBox.Show(Text + "----" + Description);
+        //}
 
         private void SelectCategoryGreenTable_ButtonInputTextBox()
         {
