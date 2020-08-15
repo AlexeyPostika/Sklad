@@ -183,15 +183,18 @@ namespace Sklad_v1_001.FormUsers.Kategor
             Category = new ObservableCollection<TypeCategory>();
         }
     }
+
     public class KategoriiLogic
     {
         SQLCommanSelect _sqlSting;
-        SQLCommanSelect _sqlTreeViewSting;
+        SQLCommanSelect _sqlTreeViewProductSting;
+        SQLCommanSelect _sqlTreeViewRelaySting;
 
         LocalRow localrow;
         
         String _getSelectCategoryTable = "xp_GetCategoryComboBox";      //хранимка xp_GetCategoryDetailsTable
-        String _getSelectCategoryTreeView = "xp_GetCategoryDetailsTable";
+        String _getSelectCategoryProductTreeView = "xp_GetCategoryDetailsTableProduct";
+        String _getSelectCategoryRelayTreeView = "xp_GetCategoryDetailsTableRelay";
         DataTable _table;
 
         ConvertData convertData;
@@ -200,7 +203,8 @@ namespace Sklad_v1_001.FormUsers.Kategor
         {
             //объявили подключение
             _sqlSting = new SQLCommanSelect();
-            _sqlTreeViewSting = new SQLCommanSelect();
+            _sqlTreeViewProductSting = new SQLCommanSelect();
+            _sqlTreeViewRelaySting = new SQLCommanSelect();
             //объявили localRow
             localrow = new LocalRow();
             //объявили таблицу куда будем записывать все
@@ -227,11 +231,22 @@ namespace Sklad_v1_001.FormUsers.Kategor
         }
         public DataTable SelectCategory()
         {
-            _sqlTreeViewSting.SqlAnswer.datatable.Clear();
+            _sqlTreeViewProductSting.SqlAnswer.datatable.Clear();
             _table.Clear();
 
-            _sqlTreeViewSting.ComplexRequest(_getSelectCategoryTreeView, CommandType.StoredProcedure, null);
-            _table = _sqlTreeViewSting.SqlAnswer.datatable;
+            _sqlTreeViewProductSting.ComplexRequest(_getSelectCategoryProductTreeView, CommandType.StoredProcedure, null);
+            _table = _sqlTreeViewProductSting.SqlAnswer.datatable;
+
+            return _table;
+        }
+
+        public DataTable SelectCategoryRelay()
+        {
+            _sqlTreeViewRelaySting.SqlAnswer.datatable.Clear();
+            _table.Clear();
+
+            _sqlTreeViewRelaySting.ComplexRequest(_getSelectCategoryRelayTreeView, CommandType.StoredProcedure, null);
+            _table = _sqlTreeViewRelaySting.SqlAnswer.datatable;
 
             return _table;
         }
