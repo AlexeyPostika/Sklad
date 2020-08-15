@@ -30,6 +30,11 @@
             <Label Content="Категории Товара" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold"/>
         </Grid>
         <Grid Grid.Row="1" Grid.RowSpan="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
             <TreeView x:Name="treeView1">
                 <TreeView.ItemTemplate>
                     <HierarchicalDataTemplate ItemsSource="{Binding Path=Category}">
@@ -37,6 +42,19 @@
                         <HierarchicalDataTemplate.ItemTemplate >
                             <DataTemplate >
                                 <TextBlock Text="{Binding Title}" />
+                            </DataTemplate>
+                        </HierarchicalDataTemplate.ItemTemplate>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+            <Label Content="Категории Доп.товара" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Grid.Row="1"/>
+            <TreeView x:Name="treeView2" Grid.Row="3">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Path=CategoruRelay}">
+                        <TextBlock Text="{Binding KategoryNameRelay}" />
+                        <HierarchicalDataTemplate.ItemTemplate >
+                            <DataTemplate >
+                                <TextBlock Text="{Binding TitleRelay}" />
                             </DataTemplate>
                         </HierarchicalDataTemplate.ItemTemplate>
                     </HierarchicalDataTemplate>
