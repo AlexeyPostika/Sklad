@@ -196,6 +196,14 @@ namespace Sklad_v1_001.FormUsers.Kategor
             List<KategoryType> listKategory = new List<KategoryType>();
             KategoryType kategoryType;
             TypeCategory typeCategory;
+            //заполнили данные
+            foreach (DataRow row in table.Rows)
+            {
+                kategoryType = new KategoryType();
+                listKategory.Add(kategoriiLogic.ConvertCategory(row, kategoryType));         //записали лист             
+
+            }
+
             //внутренний запрос в List
             var queryNumericRange =
                 from kategory in listKategory
@@ -205,13 +213,7 @@ namespace Sklad_v1_001.FormUsers.Kategor
                 select kategorytype2;
 
 
-            //заполнили данные
-            foreach (DataRow row in table.Rows)
-            {
-                kategoryType = new KategoryType();
-                listKategory.Add(kategoriiLogic.ConvertCategory(row, kategoryType));         //записали лист             
-
-            }
+           
             foreach (var kategorytype in queryNumericRange)
             {
                 kategoryType = new KategoryType();

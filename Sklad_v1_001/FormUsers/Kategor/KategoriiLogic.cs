@@ -191,7 +191,7 @@ namespace Sklad_v1_001.FormUsers.Kategor
         LocalRow localrow;
         
         String _getSelectCategoryTable = "xp_GetCategoryComboBox";      //хранимка xp_GetCategoryDetailsTable
-        String _getSelectCategoryTreeView = "xp_GetCategoryDetailsTable";
+        String _getSelectCategoryTreeView = "xp_GetCategoryDetailsTableProduct";
         DataTable _table;
 
         ConvertData convertData;
