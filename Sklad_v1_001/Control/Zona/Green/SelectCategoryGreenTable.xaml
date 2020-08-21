@@ -9,9 +9,10 @@
     <Grid Background="#FFC7F7B5">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="5"/>
             <RowDefinition Height="60"/>
+            <RowDefinition Height="5"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="1">

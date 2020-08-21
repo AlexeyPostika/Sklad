@@ -19,7 +19,8 @@
             <RowDefinition Height="60" Name="White"/>
             <RowDefinition Height="Auto" Name="Red"/>
             <RowDefinition Height="Auto" Name="Green"/>
-            <RowDefinition Height="150" Name="Yellow"/>
+            <RowDefinition Height="Auto" Name="Yellow"/>
+            <RowDefinition Height="Auto" Name="Button"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -29,7 +30,7 @@
         <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Label Content="Категории Товара" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold"/>
         </Grid>
-        <Grid Grid.Row="1" Grid.RowSpan="4">
+        <Grid Grid.Row="1" Grid.RowSpan="5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="Auto"/>
@@ -48,7 +49,7 @@
                 </TreeView.ItemTemplate>
             </TreeView>
             <Label Content="Категории Доп.товара" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Grid.Row="1"/>
-            <TreeView x:Name="treeView2" Grid.Row="3">
+            <TreeView x:Name="treeView2" Grid.Row="4">
                 <TreeView.ItemTemplate>
                     <HierarchicalDataTemplate ItemsSource="{Binding Path=Category}">
                         <TextBlock Text="{Binding KategoryName}" />
@@ -91,6 +92,8 @@
                                              Visibility="{Binding ElementName=page, Path=VisibilityZonaGreen, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         <!--<Button x:Name="button" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="169,100,0,0" Grid.Row="4" VerticalAlignment="Top" Width="75"
                 Click="button_Click"/>-->
-
-    </Grid>
+        <ToolBar:ToolBarSaveCancel Grid.Column="1" Grid.Row="4"
+                                   IsEnableBack="{Binding ElementName=page, Path=IsEnableSaveCancel, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   IsEnableNext="{Binding ElementName=page, Path=IsEnableSaveCancel, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+    </Grid> 
 </Page>
