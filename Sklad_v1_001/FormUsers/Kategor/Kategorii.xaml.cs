@@ -105,7 +105,7 @@ namespace Sklad_v1_001.FormUsers.Kategor
         Kategor.KategoriiLogic kategoriiLogic;
         ObservableCollection<Kategor.LocalRow> dataCategor;
         ObservableCollection<Kategor.KategoryType> dataCategorTreeView; //Выводим категории в TreeView
-       
+        ObservableCollection<Kategor.KategoryType> dataCategorTreeViewRelay; //Выводим категории в TreeView
         public Kategorii()
         {
             InitializeComponent();
@@ -113,10 +113,14 @@ namespace Sklad_v1_001.FormUsers.Kategor
             kategoriiLogic = new KategoriiLogic();
             dataCategor = new ObservableCollection<LocalRow>();
             dataCategorTreeView = new ObservableCollection<Kategor.KategoryType>();
+            dataCategorTreeViewRelay = new ObservableCollection<Kategor.KategoryType>();
 
             this.YellowZona.comboBox.ItemsSource = dataCategor;
             this.treeView1.ItemsSource = dataCategorTreeView;
-            InitTreeView();
+            this.treeView2.ItemsSource = dataCategorTreeViewRelay;
+
+            InitTreeViewProduct();
+            InitTreeViewRelay();
         }
 
         private void page_Loaded(object sender, RoutedEventArgs e)
@@ -188,14 +192,21 @@ namespace Sklad_v1_001.FormUsers.Kategor
                 dataCategor.Add(kategoriiLogic.ConvertCategory(row, new LocalRow()));
             }
         }
-        private void InitTreeView()
+        private void InitTreeViewProduct()
         {
-            dataCategor.Clear();
             //получили данные
             DataTable table = kategoriiLogic.SelectCategory();
             List<KategoryType> listKategory = new List<KategoryType>();
             KategoryType kategoryType;
             TypeCategory typeCategory;
+            //заполнили данные
+            foreach (DataRow row in table.Rows)
+            {
+                kategoryType = new KategoryType();
+                listKategory.Add(kategoriiLogic.ConvertCategory(row, kategoryType));         //записали лист             
+
+            }
+
             //внутренний запрос в List
             var queryNumericRange =
                 from kategory in listKategory
@@ -205,13 +216,7 @@ namespace Sklad_v1_001.FormUsers.Kategor
                 select kategorytype2;
 
 
-            //заполнили данные
-            foreach (DataRow row in table.Rows)
-            {
-                kategoryType = new KategoryType();
-                listKategory.Add(kategoriiLogic.ConvertCategory(row, kategoryType));         //записали лист             
-
-            }
+           
             foreach (var kategorytype in queryNumericRange)
             {
                 kategoryType = new KategoryType();
@@ -228,6 +233,50 @@ namespace Sklad_v1_001.FormUsers.Kategor
                     //dataCategorTreeView.Add(item);
                 }
                 dataCategorTreeView.Add(kategoryType);
+            }
+        }
+
+        private void InitTreeViewRelay()
+        {           
+            //получили данные
+            DataTable table = kategoriiLogic.SelectCategoryRelay();
+            List<KategoryType> listKategory = new List<KategoryType>();
+            KategoryType kategoryType;
+            TypeCategory typeCategory;
+            //заполнили данные
+            foreach (DataRow row in table.Rows)
+            {
+                kategoryType = new KategoryType();
+                listKategory.Add(kategoriiLogic.ConvertCategory(row, kategoryType));         //записали лист             
+
+            }
+
+            //внутренний запрос в List
+            var queryNumericRange =
+                from kategory in listKategory
+                let kategorytype1 = kategory.KategoryName
+                group new { kategory.ID, kategory.TypeCategoryName } by kategorytype1 into kategorytype2
+                orderby kategorytype2.Key
+                select kategorytype2;
+
+
+
+            foreach (var kategorytype in queryNumericRange)
+            {
+                kategoryType = new KategoryType();
+                kategoryType.KategoryName = kategorytype.Key;
+                //typeCategory = new TypeCategory();
+                foreach (var item in kategorytype)
+                {
+                    if (!String.IsNullOrEmpty(item.TypeCategoryName))
+                    {
+                        typeCategory = new TypeCategory();
+                        typeCategory.Title = item.TypeCategoryName;
+                        kategoryType.Category.Add(typeCategory);
+                    }
+                    //dataCategorTreeView.Add(item);
+                }
+                dataCategorTreeViewRelay.Add(kategoryType);
             }
         }
         #endregion
