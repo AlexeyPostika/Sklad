@@ -317,5 +317,10 @@ namespace Sklad_v1_001.FormUsers.Kategor
         {
             Text = GreenZona.Value;
         }
+
+        private void treeView1_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+
+        }
     }
 }

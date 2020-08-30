@@ -36,7 +36,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <TreeView x:Name="treeView1">
+            <TreeView x:Name="treeView1" SelectedItemChanged="treeView1_SelectedItemChanged">
                 <TreeView.ItemTemplate>
                     <HierarchicalDataTemplate ItemsSource="{Binding Path=Category}">
                         <TextBlock Text="{Binding KategoryName}" />
