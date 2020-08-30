@@ -43,6 +43,14 @@ namespace Sklad_v1_001.FormUsers.Kategor
     {
         private Int32 iD;
         private String description;
+
+        private String massCategoryProduct;
+        private String massCategoryIDProduct;
+        private String massCategoryDescriptionProduct;
+        private String massCategoryRelay;
+        private String massCategoryIDRelay;
+        private String massCategoryDescriptionRelay;
+
         public int ID
         {
             get
@@ -68,6 +76,90 @@ namespace Sklad_v1_001.FormUsers.Kategor
             {
                 description = value;
                 OnPropertyChanged("Description");
+            }
+        }
+
+        public string MassCategoryProduct
+        {
+            get
+            {
+                return massCategoryProduct;
+            }
+
+            set
+            {
+                massCategoryProduct = value;
+                OnPropertyChanged("MassCategoryProduct");
+            }
+        }
+
+        public string MassCategoryIDProduct
+        {
+            get
+            {
+                return massCategoryIDProduct;
+            }
+
+            set
+            {
+                massCategoryIDProduct = value;
+                OnPropertyChanged("MassCategoryIDProduct");
+            }
+        }
+
+        public string MassCategoryDescriptionProduct
+        {
+            get
+            {
+                return massCategoryDescriptionProduct;
+            }
+
+            set
+            {
+                massCategoryDescriptionProduct = value;
+                OnPropertyChanged("MassCategoryDescriptionProduct");
+            }
+        }
+
+        public string MassCategoryRelay
+        {
+            get
+            {
+                return massCategoryRelay;
+            }
+
+            set
+            {
+                massCategoryRelay = value;
+                OnPropertyChanged("MassCategoryRelay");
+            }
+        }
+
+        public string MassCategoryIDRelay
+        {
+            get
+            {
+                return massCategoryIDRelay;
+            }
+
+            set
+            {
+                massCategoryIDRelay = value;
+                OnPropertyChanged("MassCategoryIDRelay");
+            }
+        }
+
+        public string MassCategoryDescriptionRelay
+        {
+            get
+            {
+                return massCategoryDescriptionRelay;
+            }
+
+            set
+            {
+                massCategoryDescriptionRelay = value;
+                OnPropertyChanged("MassCategoryDescriptionRelay");
             }
         }
 
@@ -189,12 +281,15 @@ namespace Sklad_v1_001.FormUsers.Kategor
         SQLCommanSelect _sqlSting;
         SQLCommanSelect _sqlTreeViewProductSting;
         SQLCommanSelect _sqlTreeViewRelaySting;
+        SQLCommanSelect _sqlSave;
 
         LocalRow localrow;
         
         String _getSelectCategoryTable = "xp_GetCategoryComboBox";      //хранимка xp_GetCategoryDetailsTable
         String _getSelectCategoryProductTreeView = "xp_GetCategoryDetailsTableProduct";
         String _getSelectCategoryRelayTreeView = "xp_GetCategoryDetailsTableRelay";
+        String _getSaveCategory = "xp_SaveCategoryDetailsTableProduct";
+
         DataTable _table;
 
         ConvertData convertData;
@@ -205,6 +300,8 @@ namespace Sklad_v1_001.FormUsers.Kategor
             _sqlSting = new SQLCommanSelect();
             _sqlTreeViewProductSting = new SQLCommanSelect();
             _sqlTreeViewRelaySting = new SQLCommanSelect();
+            _sqlSave = new SQLCommanSelect();
+
             //объявили localRow
             localrow = new LocalRow();
             //объявили таблицу куда будем записывать все
@@ -214,10 +311,27 @@ namespace Sklad_v1_001.FormUsers.Kategor
            
             //объявляем переменные для хранимой процедуры
            _sqlSting.AddParametr("@p_typeTable", SqlDbType.Int);
-            _sqlSting.SetParametrValue("@p_typeTable", 0);
+           _sqlSting.SetParametrValue("@p_typeTable", 0);
 
-            /* _sqlSting.AddParametr("@p_pagecountrow", SqlDbType.Int);
-            _sqlSting.SetParametrValue("@p_pagecountrow", 0);*/
+            //объявляем переменные для хранимой процедуры Save
+            _sqlSave.AddParametr("@p_MassCategoryProduct", SqlDbType.NVarChar,255);
+            _sqlSave.SetParametrValue("@p_MassCategoryProduct", "");
+
+            _sqlSave.AddParametr("@p_MassCategoryIDProduct", SqlDbType.NVarChar, 255);
+            _sqlSave.SetParametrValue("@p_MassCategoryIDProduct", "");
+
+            _sqlSave.AddParametr("@p_MassDescriptionProduct", SqlDbType.NVarChar, 255);
+            _sqlSave.SetParametrValue("@p_MassDescriptionProduct", "");
+
+            _sqlSave.AddParametr("@p_MassCategoryRelay", SqlDbType.NVarChar, 255);
+            _sqlSave.SetParametrValue("@p_MassCategoryRelay", "");
+
+            _sqlSave.AddParametr("@p_MassDescriptionRelay", SqlDbType.NVarChar, 255);
+            _sqlSave.SetParametrValue("@p_MassDescriptionRelay", "");
+
+            _sqlSave.AddParametr("@p_MassCategoryIDRelay", SqlDbType.NVarChar, 255);
+            _sqlSave.SetParametrValue("@p_MassCategoryIDRelay", "");
+         
         }
         public DataTable SelectCategory( Int32 _typetab)
         {
@@ -247,6 +361,24 @@ namespace Sklad_v1_001.FormUsers.Kategor
 
             _sqlTreeViewRelaySting.ComplexRequest(_getSelectCategoryRelayTreeView, CommandType.StoredProcedure, null);
             _table = _sqlTreeViewRelaySting.SqlAnswer.datatable;
+
+            return _table;
+        }
+
+        public DataTable SetCategorySave(LocalRow localRow)
+        {
+            _sqlSave.SqlAnswer.datatable.Clear();
+            _table.Clear();
+
+            _sqlSave.SetParametrValue("@p_MassCategoryProduct", localRow.MassCategoryProduct);
+            _sqlSave.SetParametrValue("@p_MassCategoryIDProduct", localRow.MassCategoryIDProduct);
+            _sqlSave.SetParametrValue("@p_MassDescriptionProduct", localRow.MassCategoryDescriptionProduct);
+            _sqlSave.SetParametrValue("@p_MassCategoryRelay", localRow.MassCategoryRelay);
+            _sqlSave.SetParametrValue("@p_MassDescriptionRelay", localRow.MassCategoryIDRelay);
+            _sqlSave.SetParametrValue("@p_MassCategoryIDRelay", localRow.MassCategoryDescriptionRelay);
+
+            _sqlSave.ComplexRequest(_getSaveCategory, CommandType.StoredProcedure, null);
+            _table = _sqlSave.SqlAnswer.datatable;
 
             return _table;
         }
