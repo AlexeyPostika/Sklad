@@ -60,9 +60,13 @@ namespace Sklad_v1_001.FormUsers.Kategor
             get { return (Visibility)GetValue(VisibilityRedProperty); }
             set { SetValue(VisibilityRedProperty, value); }
         }
+
+        LocalRow document;
+
         private Int32 typeTable;
         private String text;
         private String description;
+
         public int TypeTable
         {
             get
@@ -102,20 +106,38 @@ namespace Sklad_v1_001.FormUsers.Kategor
             }
         }
 
+        public LocalRow Document
+        {
+            get
+            {
+                return document;
+            }
+
+            set
+            {
+                document = value;
+                OnPropertyChanged("Document");
+            }
+        }
+
         Kategor.KategoriiLogic kategoriiLogic;
-        ObservableCollection<Kategor.LocalRow> dataCategor;
+        ObservableCollection<Kategor.LocalRow> dataCategorComboBox;
         ObservableCollection<Kategor.KategoryType> dataCategorTreeView; //Выводим категории в TreeView
         ObservableCollection<Kategor.KategoryType> dataCategorTreeViewRelay; //Выводим категории в TreeView
+
+       
         public Kategorii()
         {
             InitializeComponent();
             //загружаем данные в комбо
             kategoriiLogic = new KategoriiLogic();
-            dataCategor = new ObservableCollection<LocalRow>();
+            dataCategorComboBox = new ObservableCollection<LocalRow>();
             dataCategorTreeView = new ObservableCollection<Kategor.KategoryType>();
             dataCategorTreeViewRelay = new ObservableCollection<Kategor.KategoryType>();
 
-            this.YellowZona.comboBox.ItemsSource = dataCategor;
+            Document = new LocalRow();
+
+            this.YellowZona.comboBox.ItemsSource = dataCategorComboBox;
             this.treeView1.ItemsSource = dataCategorTreeView;
             this.treeView2.ItemsSource = dataCategorTreeViewRelay;
 
@@ -182,14 +204,14 @@ namespace Sklad_v1_001.FormUsers.Kategor
         #region заполнение комбобоксы данными и дерево данными
         private void InitComboBox(Int32 _typeTable)
         {
-            dataCategor.Clear();
+            dataCategorComboBox.Clear();
             //получили данные
             DataTable table = kategoriiLogic.SelectCategory(_typeTable);
 
             //заполнили данные
             foreach (DataRow row in table.Rows)
             {
-                dataCategor.Add(kategoriiLogic.ConvertCategory(row, new LocalRow()));
+                dataCategorComboBox.Add(kategoriiLogic.ConvertCategory(row, new LocalRow()));
             }
         }
         private void InitTreeViewProduct()
@@ -281,6 +303,15 @@ namespace Sklad_v1_001.FormUsers.Kategor
         }
         #endregion
 
+
+        #region Save
+        private void Save()
+        {
+
+        }
+
+        #endregion
+
         //private void button_Click(object sender, RoutedEventArgs e)
         //{
         //    MessageBox.Show(Text + "----" + Description);
@@ -288,7 +319,16 @@ namespace Sklad_v1_001.FormUsers.Kategor
 
         private void SelectCategoryGreenTable_ButtonInputTextBox()
         {
-            
+            Document.MassCategoryDescriptionProduct = "";
+            Document.MassCategoryDescriptionRelay = "";
+            Document.MassCategoryIDProduct = "";
+            Document.MassCategoryIDRelay = "";
+            Document.MassCategoryProduct = "";
+            Document.MassCategoryRelay = "";
+
+            //перебор коллекции продуктов 
+
+            //перебор коллекции сопутсвующего товара
         }
 
         private void GreenZona_ButtonInputTextBoxDescription()
