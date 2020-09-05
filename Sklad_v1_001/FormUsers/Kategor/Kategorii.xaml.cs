@@ -1,4 +1,4 @@
-﻿using Sklad_v1_001.GlobalList;
+﻿ using Sklad_v1_001.GlobalList;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
