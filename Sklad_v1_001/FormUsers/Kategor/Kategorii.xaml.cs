@@ -63,6 +63,17 @@ namespace Sklad_v1_001.FormUsers.Kategor
 
         LocalRow document;
 
+
+        public static readonly DependencyProperty IsEnableSaveCancelProperty = DependencyProperty.Register(
+        "IsEnableSaveCancel",
+        typeof(Boolean),
+        typeof(Kategorii), new UIPropertyMetadata(false));
+        public Boolean IsEnableSaveCancel
+        {
+            get { return (Boolean)GetValue(IsEnableSaveCancelProperty); }
+            set { SetValue(IsEnableSaveCancelProperty, value); }
+        }
+
         private Int32 typeTable;
         private String text;
         private String description;
@@ -163,7 +174,8 @@ namespace Sklad_v1_001.FormUsers.Kategor
             {
                 VisibilityZonaRed = Visibility.Collapsed;
                 VisibilityZonaYellow = Visibility.Collapsed;
-                VisibilityZonaGreen = Visibility.Collapsed;               
+                VisibilityZonaGreen = Visibility.Collapsed;
+                IsEnableSaveCancel = false;
             }
         }
         //2 - выбираем тип категории (категория или подкатегория)
@@ -174,16 +186,19 @@ namespace Sklad_v1_001.FormUsers.Kategor
                 if (RedZona.Value == 2)
                 {
                     VisibilityZonaYellow = Visibility.Visible;
+                    IsEnableSaveCancel = false;
                     InitComboBox(TypeTable);
                 }
                 else
                     VisibilityZonaYellow = Visibility.Collapsed;
-                VisibilityZonaGreen = RedZona.Value == 1 ? Visibility.Visible : Visibility.Collapsed; 
+                VisibilityZonaGreen = RedZona.Value == 1 ? Visibility.Visible : Visibility.Collapsed;
+                IsEnableSaveCancel = VisibilityZonaGreen == Visibility.Visible ? true : false;
             }
             else
             {
                 VisibilityZonaYellow = Visibility.Collapsed;
                 VisibilityZonaGreen = Visibility.Collapsed;
+                IsEnableSaveCancel = false;
             }
         }
         //3 - выбираем какой именно категории относиться (подкатегория)
@@ -192,10 +207,12 @@ namespace Sklad_v1_001.FormUsers.Kategor
             if (this.YellowZona.comboBox.SelectedValue != null & this.YellowZona.Value != 0)
             {
                 VisibilityZonaGreen = Visibility.Visible;
+                IsEnableSaveCancel = true;
             }
             else
             {
                 VisibilityZonaGreen = Visibility.Collapsed;
+                IsEnableSaveCancel = false;
             }
         }
 
@@ -339,6 +356,11 @@ namespace Sklad_v1_001.FormUsers.Kategor
         private void GreenZona_ButtonInputTextBox()
         {
             Text = GreenZona.Value;
+        }
+
+        private void treeView1_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+
         }
     }
 }
