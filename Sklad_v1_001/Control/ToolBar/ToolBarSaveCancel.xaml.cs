@@ -92,29 +92,19 @@ namespace Sklad_v1_001.Control.ToolBar
             InitializeComponent();
         }
 
-        public event Action ButtonNext;
-        public event Action ButtonNextEnd;
-        public event Action ButtonBack;
-        public event Action ButtonBackIn;
+        public event Action ButtonApply;
+        public event Action ButtonEnd;
+
+        private void ApplyButton_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonApply?.Invoke();
+        }
+
+        private void EndButton_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonEnd?.Invoke();
+        }
         //кнопка назад
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            ButtonBack?.Invoke();
-        }
 
-        private void NextButoon_Click(object sender, RoutedEventArgs e)
-        {
-            ButtonNext?.Invoke();
-        }
-
-        private void BackInButton_Click(object sender, RoutedEventArgs e)
-        {
-            ButtonBackIn?.Invoke();
-        }
-        
-        private void NextEndButoon_Click(object sender, RoutedEventArgs e)
-        {
-            ButtonNextEnd?.Invoke();
-        }
     }
 }

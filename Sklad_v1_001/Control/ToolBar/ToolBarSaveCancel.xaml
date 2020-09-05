@@ -29,9 +29,9 @@
         </Button>-->
         
         <!--предыдущая страница-->
-        <Button x:Name="BackButton"  Grid.Column="2" HorizontalAlignment="Left" Margin="145,4,0,4" 
+        <Button x:Name="ApplyButton"  Grid.Column="2" HorizontalAlignment="Left" Margin="145,4,0,4" 
                 Width="140"
-                Click="BackButton_Click"
+                Click="ApplyButton_Click"
                 IsEnabled="{Binding ElementName=control, Path=IsEnableBack, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
             <StackPanel Width="Auto" Orientation="Horizontal">
                 <Image Source="/Sklad_v1_001;component/Icone/Controllu/checkmark_24px.png" Margin="5,1" Height="24" Width="26" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5"/>
@@ -40,9 +40,9 @@
         </Button>
 
         <!--следующая страниц-->
-        <Button x:Name="NextButoon" Grid.Column="2" HorizontalAlignment="Left" Margin="300,4,0,4"
+        <Button x:Name="EndButton" Grid.Column="2" HorizontalAlignment="Left" Margin="300,4,0,4"
                 Width="140"
-                Click="NextButoon_Click"
+                Click="EndButton_Click"
                 IsEnabled="{Binding ElementName=control, Path=IsEnableNext, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
             <StackPanel Width="Auto" Orientation="Horizontal">
                 <TextBlock Text="{x:Static res:Resources.CANCEL}" Width="80" Height="20" TextAlignment="Right"/>
