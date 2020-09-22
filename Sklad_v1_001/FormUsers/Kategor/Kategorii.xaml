@@ -1,0 +1,99 @@
+﻿<Page x:Class="Sklad_v1_001.FormUsers.Kategor.Kategorii"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
+      xmlns:ZonaRed="clr-namespace:Sklad_v1_001.Control.Zona.Red"
+      xmlns:ZonaGreen="clr-namespace:Sklad_v1_001.Control.Zona.Green"
+      xmlns:ZonaYellow="clr-namespace:Sklad_v1_001.Control.Zona.Yellow"
+      xmlns:ZonaWhite="clr-namespace:Sklad_v1_001.Control.Zona.White"
+      xmlns:Filter1="clr-namespace:Sklad_v1_001.Control.FlexControlDate"
+      xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+      mc:Ignorable="d" 
+      d:DesignHeight="818" Width="979"  Name="page"
+      Title="Kategorii" Loaded="page_Loaded">
+
+    <Grid Height="818" Background="#FFFDFAFA">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" Name="White"/>
+            <RowDefinition Height="Auto" Name="Red"/>
+            <RowDefinition Height="Auto" Name="Green"/>
+            <RowDefinition Height="Auto" Name="Yellow"/>
+            <RowDefinition Height="Auto" Name="Button"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Label Content="Категории Товара" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.RowSpan="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <TreeView x:Name="treeView1" SelectedItemChanged="treeView1_SelectedItemChanged">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Path=Category}">
+                        <TextBlock Text="{Binding KategoryName}" />
+                        <HierarchicalDataTemplate.ItemTemplate >
+                            <DataTemplate >
+                                <TextBlock Text="{Binding Title}" />
+                            </DataTemplate>
+                        </HierarchicalDataTemplate.ItemTemplate>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+            <Label Content="Категории Доп.товара" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Grid.Row="1"/>
+            <TreeView x:Name="treeView2" Grid.Row="4">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Path=Category}">
+                        <TextBlock Text="{Binding KategoryName}" />
+                        <HierarchicalDataTemplate.ItemTemplate >
+                            <DataTemplate >
+                                <TextBlock Text="{Binding Title}" />
+                            </DataTemplate>
+                        </HierarchicalDataTemplate.ItemTemplate>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+        </Grid>
+        <ZonaWhite:SelectCategoryWhiteTable x:Name="WhiteZona" Grid.Column="1"
+                                         LabelNameText="{x:Static res:Resources.CategoryTypeProduct}"
+                                         WidthLabel="160"
+                                         WidthComboBox="160"
+                                            ButtonSelectChanged="WhiteZona_ButtonSelectChanged"/>
+        <ZonaRed:SelectCategoryRedTable x:Name="RedZona" Grid.Row="1" Grid.Column="1"
+                                         LabelNameText="{x:Static res:Resources.TypeCategory}"
+                                         WidthLabel="160"
+                                         WidthComboBox="160"
+                                         Visibility="{Binding ElementName=page, Path=VisibilityZonaRed, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                        ButtonSelectChanged="SelectCategoryRedTable_ButtonSelectChanged"/>
+        <ZonaYellow:SelectCategoryYellowTable x:Name="YellowZona" Grid.Row="2" Grid.Column="1"
+                                            LabelNameText="{x:Static res:Resources.CATEGORY}"
+                                            WidthLabel="160"
+                                            WidthComboBox="160"
+                                            Visibility="{Binding ElementName=page, Path=VisibilityZonaYellow, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                              ButtonSelectChanged="SelectCategoryYellowTable_ButtonSelectChanged"/>
+        <ZonaGreen:SelectCategoryGreenTable x:Name="GreenZona" Grid.Row="3" Grid.Column="1"
+                                             LabelNameText="Выбор таблицы"
+                                             LabelNameTextDescription="Описание"
+                                             WidthLabel="160"
+                                             WidthTextBox="250"
+                                             WidthLabelDescription="160"
+                                             HeightLabelDescription="25"
+                                             WidthTextBoxDescription="250"
+                                             ButtonInputTextBox="GreenZona_ButtonInputTextBox"
+                                             ButtonInputTextBoxDescription="GreenZona_ButtonInputTextBoxDescription"
+                                             Visibility="{Binding ElementName=page, Path=VisibilityZonaGreen, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <!--<Button x:Name="button" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="169,100,0,0" Grid.Row="4" VerticalAlignment="Top" Width="75"
+                Click="button_Click"/>-->
+        <ToolBar:ToolBarSaveCancel Grid.Column="1" Grid.Row="4"
+                                   IsEnableBack="{Binding ElementName=page, Path=IsEnableSaveCancel, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   IsEnableNext="{Binding ElementName=page, Path=IsEnableSaveCancel, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+    </Grid> 
+</Page>

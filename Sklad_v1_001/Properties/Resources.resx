@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BACK" xml:space="preserve">
+    <value>Предыдущая</value>
+  </data>
+  <data name="CenaProduct" xml:space="preserve">
+    <value>Цена</value>
+  </data>
+  <data name="DescriptionProduct" xml:space="preserve">
+    <value>Описание  продукта</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>№</value>
+  </data>
+  <data name="NameProduct" xml:space="preserve">
+    <value>Наименование товара</value>
+  </data>
+  <data name="NEXT" xml:space="preserve">
+    <value>Следующая</value>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Фото</value>
+  </data>
+  <data name="SchtrxCode" xml:space="preserve">
+    <value>№ штрих-кода</value>
+  </data>
+  <data name="TypeProduct" xml:space="preserve">
+    <value>Категория </value>
+  </data>
+  <data name="Vetrina" xml:space="preserve">
+    <value>Ветрина</value>
+  </data>
+  <data name="BACKIN" xml:space="preserve">
+    <value>В начало</value>
+  </data>
+  <data name="NEXTEXIT" xml:space="preserve">
+    <value>В конец</value>
+  </data>
+  <data name="OF" xml:space="preserve">
+    <value>из</value>
+  </data>
+  <data name="PAGE" xml:space="preserve">
+    <value>Страница</value>
+  </data>
+  <data name="CreatedDate" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="DateTimeDescription1" xml:space="preserve">
+    <value>За сегодня</value>
+  </data>
+  <data name="DateTimeDescription2" xml:space="preserve">
+    <value>За неделю</value>
+  </data>
+  <data name="DateTimeDescription3" xml:space="preserve">
+    <value>За месяц</value>
+  </data>
+  <data name="DateTimeDescription4" xml:space="preserve">
+    <value>За периуд</value>
+  </data>
+  <data name="DateTimeDescriptionAll" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="LableText" xml:space="preserve">
+    <value>наимен. столбца</value>
+  </data>
+  <data name="Vetrina0" xml:space="preserve">
+    <value>Ветрина не выбрана</value>
+  </data>
+  <data name="Vetrina1" xml:space="preserve">
+    <value>Ветрина 1</value>
+  </data>
+  <data name="Vetrina10" xml:space="preserve">
+    <value>Ветрина 10</value>
+  </data>
+  <data name="Vetrina2" xml:space="preserve">
+    <value>Ветрина 2</value>
+  </data>
+  <data name="Vetrina3" xml:space="preserve">
+    <value>Ветрина 3</value>
+  </data>
+  <data name="Vetrina4" xml:space="preserve">
+    <value>Ветрина 4</value>
+  </data>
+  <data name="Vetrina5" xml:space="preserve">
+    <value>Ветрина 5</value>
+  </data>
+  <data name="Vetrina6" xml:space="preserve">
+    <value>Ветрина 6</value>
+  </data>
+  <data name="Vetrina7" xml:space="preserve">
+    <value>Ветрина 7</value>
+  </data>
+  <data name="Vetrina8" xml:space="preserve">
+    <value>Ветрина 8</value>
+  </data>
+  <data name="Vetrina9" xml:space="preserve">
+    <value>Ветрина 9</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Расположение</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="ShtrixCode" xml:space="preserve">
+    <value>Штрих-код</value>
+  </data>
+  <data name="Dolwnost" xml:space="preserve">
+    <value>Должность</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Фамилия</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="NumberSotrudnika" xml:space="preserve">
+    <value>Номер Сотрудника</value>
+  </data>
+  <data name="Otchestvo" xml:space="preserve">
+    <value>Отчество</value>
+  </data>
+  <data name="Otdel" xml:space="preserve">
+    <value>Отдел</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
+  <data name="Category0" xml:space="preserve">
+    <value>&lt;ВЫБРАТЬ&gt;</value>
+  </data>
+  <data name="Category1" xml:space="preserve">
+    <value>Товар</value>
+  </data>
+  <data name="CategoryDetails0" xml:space="preserve">
+    <value>&lt;ВЫБРАТЬ&gt;</value>
+  </data>
+  <data name="CategoryDetails1" xml:space="preserve">
+    <value>Категория</value>
+  </data>
+  <data name="Category2" xml:space="preserve">
+    <value>Сопуствующий товар</value>
+  </data>
+  <data name="CategoryDetails2" xml:space="preserve">
+    <value>Подкатегория</value>
+  </data>
+  <data name="CategoryTypeProduct" xml:space="preserve">
+    <value>Категория продукции</value>
+  </data>
+  <data name="TypeCategory" xml:space="preserve">
+    <value>Тип категории</value>
+  </data>
+  <data name="CATEGORY" xml:space="preserve">
+    <value>Категория</value>
+  </data>
+  <data name="CANCEL" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="SAVE" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+</root>

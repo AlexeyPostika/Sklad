@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="Sklad_v1_001.Control.Users.PhotoUserToDolwnost"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sklad_v1_001.Control.Users"
+             xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+             mc:Ignorable="d" 
+             d:DesignHeight="130" d:DesignWidth="130"
+             Name="control">
+    <Grid Background="#FFFDFAFA">
+        <Image x:Name="image" Margin="0,0,0,33" Source="{Binding ElementName=control, Path=ImageSource, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <Label x:Name="label" Content="{Binding ElementName=control, Path=Dolwnost, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="0,97,0,0" VerticalAlignment="Top" 
+               Height="29" FontFamily="Times New Roman"/>
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,99 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Sklad_v1_001.FormUsers.Userss"
+      xmlns:Prixod="clr-namespace:Sklad_v1_001.FormUsers.Prixod" 
+      x:Class="Sklad_v1_001.FormUsers.Userss.RegistersUsers"
+      mc:Ignorable="d" 
+     d:DesignHeight="818" Width="979" 
+      Title="RegistersUsers" Background="#FFFDFBFB">
+
+    <Grid Height="818" Background="#FFFDFAFA">
+        <StackPanel Height="169" Margin="196,10,10,0" VerticalAlignment="Top" Background="#FFFBBCBC"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="169" Margin="10,10,0,0" VerticalAlignment="Top" Width="176.5" Source="/Sklad_v1_001;component/Icone/admin2.png"/>
+        <Label x:Name="DownloadUsers" Content="Загрузить фото" HorizontalAlignment="Left" Margin="25,169,0,0" VerticalAlignment="Top" Width="139" Height="32" FontSize="16" FontWeight="Bold" AutomationProperties.HelpText="Выбирите фото сотрудника"/>
+        <TextBlock x:Name="LastName" HorizontalAlignment="Left" Margin="202,14,0,0" TextWrapping="Wrap" Text="Фамилия:" VerticalAlignment="Top" Width="74" FontSize="14" Height="19"/>
+        <TextBox x:Name="lastName" HorizontalAlignment="Left" Height="23" Margin="202,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="293"/>
+        <TextBlock x:Name="Name" HorizontalAlignment="Left" Margin="202,62,0,0" TextWrapping="Wrap" Text="Имя:" VerticalAlignment="Top" Width="74" FontSize="14" Height="19"/>
+        <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="202,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="293" RenderTransformOrigin="0.379,11.913"/>
+        <TextBlock x:Name="OtchName" HorizontalAlignment="Left" Margin="202,116,0,0" TextWrapping="Wrap" Text="Отчество:" VerticalAlignment="Top" Width="74" FontSize="14" Height="19"/>
+        <TextBox x:Name="otchName" HorizontalAlignment="Left" Height="23" Margin="202,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="293"/>
+        <TextBlock x:Name="Passport1" HorizontalAlignment="Left" Margin="514,14,0,0" TextWrapping="Wrap" Text="Гражданство" VerticalAlignment="Top" Width="74" FontSize="14" Height="19"/>
+        <TextBox x:Name="Passport2" HorizontalAlignment="Left" Height="23" Margin="514,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="293"/>
+        <TextBlock x:Name="Passport3" HorizontalAlignment="Left" Margin="514,62,0,0" TextWrapping="Wrap" Text="Серия:" VerticalAlignment="Top" Width="74" FontSize="14" Height="19"/>
+        <TextBox x:Name="Passport" HorizontalAlignment="Left" Height="23" Margin="514,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74"/>
+        <TextBlock x:Name="Seriy1" HorizontalAlignment="Left" Margin="602,62,0,0" TextWrapping="Wrap" Text="Номер:" VerticalAlignment="Top" Width="74" FontSize="14" Height="19"/>
+        <TextBox x:Name="Seriy" HorizontalAlignment="Left" Height="23" Margin="602,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205"/>
+        <TextBlock x:Name="Vudan" HorizontalAlignment="Left" Margin="514,116,0,0" TextWrapping="Wrap" Text="Паспорт выдан:" VerticalAlignment="Top" Width="134" FontSize="14" Height="19"/>
+        <TextBox x:Name="Vudan1" HorizontalAlignment="Left" Height="23" Margin="514,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="293"/>
+        <TextBlock x:Name="Podrazdel" HorizontalAlignment="Left" Margin="829,14,0,0" TextWrapping="Wrap" Text="Код подразделения:" VerticalAlignment="Top" Width="137" FontSize="14" Height="19"/>
+        <TextBox x:Name="Podrazld1" HorizontalAlignment="Left" Height="23" Margin="829,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128"/>
+        <TextBlock x:Name="DataVudach" HorizontalAlignment="Left" Margin="829,62,0,0" TextWrapping="Wrap" Text="Код подразделения:" VerticalAlignment="Top" Width="137" FontSize="14" Height="19"/>
+        <DatePicker HorizontalAlignment="Left" Margin="829,82,0,0" VerticalAlignment="Top" Width="128" SelectedDateFormat="Short" DisplayDate="2020-04-25" FontSize="14"/>
+        <StackPanel Height="169" Margin="196,205,10,0" VerticalAlignment="Top" Background="#FFBCE7FB"/>
+        <TextBlock x:Name="Dop" HorizontalAlignment="Left" Margin="196,186,0,0" TextWrapping="Wrap" Text="Дополнительная информация:" VerticalAlignment="Top" Width="270" FontSize="14" Height="19" FontWeight="Bold"/>
+        <TextBlock x:Name="Rowd" HorizontalAlignment="Left" Margin="202,213,0,0" TextWrapping="Wrap" Text="Место рождения:" VerticalAlignment="Top" Width="293" FontSize="14" Height="19"/>
+        <TextBox x:Name="Rowd1" HorizontalAlignment="Left" Height="23" Margin="202,233,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="293"/>
+        <TextBlock x:Name="Rowd2" HorizontalAlignment="Left" Margin="202,262,0,0" TextWrapping="Wrap" Text="Место прописки:" VerticalAlignment="Top" Width="293" FontSize="14" Height="19"/>
+        <TextBox x:Name="Propiska" HorizontalAlignment="Left" Height="23" Margin="202,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="293"/>
+        <TextBlock x:Name="Registr" HorizontalAlignment="Left" Margin="202,314,0,0" TextWrapping="Wrap" Text="Место регистрации:" VerticalAlignment="Top" Width="293" FontSize="14" Height="19"/>
+        <TextBox x:Name="Registr1" HorizontalAlignment="Left" Height="23" Margin="202,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="293"/>
+        <TextBlock x:Name="Pol" HorizontalAlignment="Left" Margin="829,116,0,0" TextWrapping="Wrap" Text="Пол:" VerticalAlignment="Top" Width="74" FontSize="14" Height="19"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="829,137,0,0" VerticalAlignment="Top" Width="128">
+            <ListBoxItem Content="Муж."/>
+            <ListBoxItem Content="Жен."/>
+        </ComboBox>
+        <TextBlock x:Name="Fam" HorizontalAlignment="Left" Margin="514,213,0,0" TextWrapping="Wrap" Text="Семейное положение:" VerticalAlignment="Top" Width="151" FontSize="14" Height="19"/>
+        <ComboBox x:Name="comboBoxFam" HorizontalAlignment="Left" Margin="514,234,0,0" VerticalAlignment="Top" Width="151">
+            <ListBoxItem Content="Холост."/>
+            <ListBoxItem Content="Женат."/>
+            <ListBoxItem Content="Замужем."/>
+        </ComboBox>
+        <TextBlock x:Name="Children" HorizontalAlignment="Left" Margin="514,261,0,0" TextWrapping="Wrap" Text="Дети:" VerticalAlignment="Top" Width="151" FontSize="14" Height="19"/>
+        <ComboBox x:Name="comboBoxFam_Copy" HorizontalAlignment="Left" Margin="514,282,0,0" VerticalAlignment="Top" Width="151">
+            <ListBoxItem Content="Есть"/>
+            <ListBoxItem Content="Нет"/>
+        </ComboBox>
+        <TextBlock x:Name="Voen" HorizontalAlignment="Left" Margin="514,313,0,0" TextWrapping="Wrap" Text="Воинсская обязанность:" VerticalAlignment="Top" Width="162" FontSize="14" Height="19"/>
+        <ComboBox x:Name="comboBoxFam_Voen" HorizontalAlignment="Left" Margin="514,334,0,0" VerticalAlignment="Top" Width="151">
+            <ListBoxItem Content="Призывник"/>
+            <ListBoxItem Content="Военнообязанный"/>
+            <ListBoxItem Content="Запас"/>
+        </ComboBox>
+        <TextBlock x:Name="Telefon" HorizontalAlignment="Left" Margin="686,213,0,0" TextWrapping="Wrap" Text="Мобильный номер телефона:" VerticalAlignment="Top" Width="271" FontSize="14" Height="19"/>
+        <TextBox x:Name="Telef" HorizontalAlignment="Left" Height="23" Margin="686,233,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="271"/>
+        <TextBlock x:Name="Telefon_Home" HorizontalAlignment="Left" Margin="686,262,0,0" TextWrapping="Wrap" Text="Домашний номер телефона:" VerticalAlignment="Top" Width="271" FontSize="14" Height="19"/>
+        <TextBox x:Name="Telef_Home" HorizontalAlignment="Left" Height="23" Margin="686,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="271"/>
+        <TextBlock x:Name="Email" HorizontalAlignment="Left" Margin="686,314,0,0" TextWrapping="Wrap" Text="Email:" VerticalAlignment="Top" Width="271" FontSize="14" Height="19"/>
+        <TextBox x:Name="Emailll" HorizontalAlignment="Left" Height="23" Margin="686,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="271"/>
+        <StackPanel Height="169" Margin="196,399,10,0" VerticalAlignment="Top" Background="#FFBFFBBC"/>
+        <TextBlock x:Name="Work" HorizontalAlignment="Left" Margin="196,380,0,0" TextWrapping="Wrap" Text="Рабочая информация:" VerticalAlignment="Top" Width="270" FontSize="14" Height="19" FontWeight="Bold"/>
+        <TextBlock x:Name="NumerSotr" HorizontalAlignment="Left" Margin="202,408,0,0" TextWrapping="Wrap" Text="Номер сотрудника:" VerticalAlignment="Top" Width="206" FontSize="14" Height="19"/>
+        <TextBox x:Name="NumerSotr1" HorizontalAlignment="Left" Height="23" Margin="202,428,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="206"/>
+        <TextBlock x:Name="NumerSotrINN" HorizontalAlignment="Left" Margin="202,460,0,0" TextWrapping="Wrap" Text="Номер ИНН:" VerticalAlignment="Top" Width="206" FontSize="14" Height="19"/>
+        <TextBox x:Name="NumerSotr1_INN" HorizontalAlignment="Left" Height="23" Margin="202,480,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="206"/>
+        <TextBlock x:Name="NumerSotrStrax" HorizontalAlignment="Left" Margin="202,512,0,0" TextWrapping="Wrap" Text="№ страх. свидет.:" VerticalAlignment="Top" Width="206" FontSize="14" Height="19"/>
+        <TextBox x:Name="NumerSotr1_Copy1" HorizontalAlignment="Left" Height="23" Margin="202,532,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="206"/>
+        <TextBlock x:Name="Podr" HorizontalAlignment="Left" Margin="425,408,0,0" TextWrapping="Wrap" Text="Подразделение:" VerticalAlignment="Top" Width="151" FontSize="14" Height="19"/>
+        <ComboBox x:Name="comboBoxFam_Podrazd" HorizontalAlignment="Left" Margin="425,429,0,0" VerticalAlignment="Top" Width="151" IsSynchronizedWithCurrentItem="True"/>
+        <TextBlock x:Name="Children_Dolw" HorizontalAlignment="Left" Margin="425,459,0,0" TextWrapping="Wrap" Text="Должность:" VerticalAlignment="Top" Width="151" FontSize="14" Height="19"/>
+        <ComboBox x:Name="comboBox_Dolwnost" HorizontalAlignment="Left" Margin="425,480,0,0" VerticalAlignment="Top" Width="151"/>
+        <TextBlock x:Name="Medec" HorizontalAlignment="Left" Margin="425,511,0,0" TextWrapping="Wrap" Text="№ мед. полис.:" VerticalAlignment="Top" Width="151" FontSize="14" Height="19"/>
+        <TextBox x:Name="NumerMed" HorizontalAlignment="Left" Height="23" Margin="425,532,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151"/>
+        <TextBlock x:Name="Oklad" HorizontalAlignment="Left" Margin="595,408,0,0" TextWrapping="Wrap" Text="Оклад:" VerticalAlignment="Top" Width="151" FontSize="14" Height="19"/>
+        <TextBox x:Name="Oklad_Work" HorizontalAlignment="Left" Height="23" Margin="595,428,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151"/>
+        <TextBlock x:Name="Oklad_Nad" HorizontalAlignment="Left" Margin="595,460,0,0" TextWrapping="Wrap" Text="Надбавка %:" VerticalAlignment="Top" Width="151" FontSize="14" Height="19"/>
+        <TextBox x:Name="Oklad_Nadbav" HorizontalAlignment="Left" Height="23" Margin="595,480,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151"/>
+        <TextBlock x:Name="Oklad_Nad_Work" HorizontalAlignment="Left" Margin="595,512,0,0" TextWrapping="Wrap" Text="Оклад с надбавкой:" VerticalAlignment="Top" Width="151" FontSize="14" Height="19"/>
+        <TextBox x:Name="Oklad_Nadbav_Work" HorizontalAlignment="Left" Height="23" Margin="595,532,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151" FontWeight="Bold"/>
+        <TextBlock x:Name="Login" HorizontalAlignment="Left" Margin="765,408,0,0" TextWrapping="Wrap" Text="Логин:" VerticalAlignment="Top" Width="151" FontSize="14" Height="19"/>
+        <TextBox x:Name="LoginWork" HorizontalAlignment="Left" Height="23" Margin="765,428,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="192"/>
+        <TextBlock x:Name="Password" HorizontalAlignment="Left" Margin="765,460,0,0" TextWrapping="Wrap" Text="Пароль:" VerticalAlignment="Top" Width="151" FontSize="14" Height="19"/>
+        <TextBox x:Name="PasswordWork" HorizontalAlignment="Left" Height="23" Margin="765,480,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="192"/>
+        <Button x:Name="buttonSave" Content="Сохранить" HorizontalAlignment="Left" Margin="765,573,0,0" VerticalAlignment="Top" Width="98" Height="35" FontSize="14" FontWeight="Bold"/>
+        <Button x:Name="buttonClose" Content="Отмена" HorizontalAlignment="Left" Margin="871,573,0,0" VerticalAlignment="Top" Width="98" Height="35" FontSize="14" FontWeight="Bold"/>
+
+    </Grid>
+</Page>

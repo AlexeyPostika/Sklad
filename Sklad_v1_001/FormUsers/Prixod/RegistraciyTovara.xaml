@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="Sklad_v1_001.FormUsers.Prixod.RegistraciyTovara"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+             mc:Ignorable="d" 
+             d:DesignHeight="818" Width="979">
+    <Grid Height="818" Background="#FFFDFAFA">
+        <Image Height="130" VerticalAlignment="Top" HorizontalAlignment="Left" Width="126" Margin="10,10,0,0" Source="/Sklad_v1_001;component/Icone/picture_80px.png"/>
+        <TextBlock HorizontalAlignment="Left" Margin="12,132,0,0" TextWrapping="Wrap" Text="Загрузить фото" VerticalAlignment="Top" Width="117" FontSize="16" Cursor="None" FlowDirection="RightToLeft"/>
+        <TextBlock HorizontalAlignment="Left" Margin="158,10,0,0" TextWrapping="Wrap" Text="{x:Static res:Resources.SchtrxCode}" VerticalAlignment="Top" Width="156" FontSize="16" FontWeight="Bold"/>
+        <TextBlock x:Name="ShtrixCodeAuto" HorizontalAlignment="Left" Margin="158,36,0,0" TextWrapping="Wrap" Text="-----------------------------" VerticalAlignment="Top" Width="188" FontSize="16" Height="28"/>
+        <TextBlock HorizontalAlignment="Left" Margin="370,10,0,0" TextWrapping="Wrap" Text="Штрих - код допол." VerticalAlignment="Top" Width="156" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="shtrixCodUsers" HorizontalAlignment="Left" Height="28" Margin="370,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="158,75,0,0" TextWrapping="Wrap" Text="Наим енование товара" VerticalAlignment="Top" Width="201" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="LastNameTovar" HorizontalAlignment="Left" Height="28" Margin="158,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="343" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="518,75,0,0" TextWrapping="Wrap" Text="Категория" VerticalAlignment="Top" Width="156" FontSize="16" FontWeight="Bold"/>
+        <ComboBox x:Name="TypeTovar" HorizontalAlignment="Left" Margin="518,101,0,0" VerticalAlignment="Top" Width="266" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="158,143,0,0" TextWrapping="Wrap" Text="Цена закупки" VerticalAlignment="Top" Width="156" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="cenaZakTov" HorizontalAlignment="Left" Height="28" Margin="158,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" FontSize="16" Text="0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="384,143,0,0" TextWrapping="Wrap" Text="Цена продажи" VerticalAlignment="Top" Width="156" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="CenaProdTov" HorizontalAlignment="Left" Height="28" Margin="384,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" FontSize="16" Text="0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="613,143,0,0" TextWrapping="Wrap" Text="Количество, шт" VerticalAlignment="Top" Width="127" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="KolichestvoTov" HorizontalAlignment="Left" Height="28" Margin="613,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127" FontSize="16" Text="0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="671,10,0,0" TextWrapping="Wrap" Text="Дата" VerticalAlignment="Top" Width="46" FontSize="16" FontWeight="Bold"/>
+        <TextBlock x:Name="Data1" HorizontalAlignment="Left" Margin="596,36,0,0" TextWrapping="Wrap" Text="-----------------------------" VerticalAlignment="Top" Width="188" FontSize="16" Height="28"/>
+        <TextBlock HorizontalAlignment="Left" Margin="158,216,0,0" TextWrapping="Wrap" Text="Описание товара" VerticalAlignment="Top" Width="156" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="OpisanieTovara" HorizontalAlignment="Left" Height="91" Margin="158,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="484,216,0,0" TextWrapping="Wrap" Text="Расположение товара на складе" VerticalAlignment="Top" Width="300" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="RaspolowenieTovara" HorizontalAlignment="Left" Height="91" Margin="484,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" FontSize="16"/>
+    </Grid>
+</UserControl>
