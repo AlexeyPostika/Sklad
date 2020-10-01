@@ -66,7 +66,7 @@
                                          LabelNameText="{x:Static res:Resources.CategoryTypeProduct}"
                                          WidthLabel="160"
                                          WidthComboBox="160"
-                                            ButtonSelectChanged="WhiteZona_ButtonSelectChanged"/>
+                                         ButtonSelectChanged="WhiteZona_ButtonSelectChanged"/>
         <ZonaRed:SelectCategoryRedTable x:Name="RedZona" Grid.Row="1" Grid.Column="1"
                                          LabelNameText="{x:Static res:Resources.TypeCategory}"
                                          WidthLabel="160"

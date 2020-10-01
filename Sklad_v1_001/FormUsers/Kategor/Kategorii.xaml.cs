@@ -360,7 +360,11 @@ namespace Sklad_v1_001.FormUsers.Kategor
 
         private void treeView1_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
+            var row = this.treeView1.ItemsSource as Kategor.KategoryType;
+            if (row!=null)
+            {
 
+            }
         }
     }
 }
