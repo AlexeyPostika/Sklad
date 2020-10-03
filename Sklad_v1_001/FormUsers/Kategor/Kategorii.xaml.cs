@@ -373,6 +373,20 @@ namespace Sklad_v1_001.FormUsers.Kategor
                 this.YellowZona.comboBox.SelectedValue = row.ID;
                 this.GreenZona.LabelNameText = Properties.Resources.NameTypeCategory;
             }
+            // Tovar.LocalRow local = DataGrid.SelectedItem as Tovar.LocalRow;
+            
+        }
+
+        private void treeView2_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            var row1 = this.treeView2.SelectedItem as Kategor.KategoryType;
+            if (row1 != null)
+            {
+                this.WhiteZona.comboBox.SelectedValue = 2;
+                this.RedZona.comboBox.SelectedValue = 2;
+                this.YellowZona.comboBox.SelectedValue = row1.ID;
+                this.GreenZona.LabelNameText = Properties.Resources.NameTypeCategory;
+            }
         }
     }
 }
