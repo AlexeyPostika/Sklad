@@ -80,8 +80,8 @@
                                             Visibility="{Binding ElementName=page, Path=VisibilityZonaYellow, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                               ButtonSelectChanged="SelectCategoryYellowTable_ButtonSelectChanged"/>
         <ZonaGreen:SelectCategoryGreenTable x:Name="GreenZona" Grid.Row="3" Grid.Column="1"
-                                             LabelNameText="Выбор таблицы"
-                                             LabelNameTextDescription="Описание"
+                                             LabelNameText="{x:Static res:Resources.NameCategory}"
+                                             LabelNameTextDescription="{x:Static res:Resources.Description}"
                                              WidthLabel="160"
                                              WidthTextBox="250"
                                              WidthLabelDescription="160"

@@ -94,7 +94,9 @@ namespace Sklad_v1_001.Control.Zona.White
         public SelectCategoryWhiteTable()
         {
             InitializeComponent();
-            
+            сategoryList = new CategoryList();
+            this.comboBox.ItemsSource = сategoryList.innerList;
+
         }
         public event Action ButtonSelectChanged;
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -104,8 +106,7 @@ namespace Sklad_v1_001.Control.Zona.White
 
         private void comboBox_Loaded(object sender, RoutedEventArgs e)
         {
-            сategoryList = new CategoryList();
-            this.comboBox.ItemsSource = сategoryList.innerList;
+           
         }
     }
 }

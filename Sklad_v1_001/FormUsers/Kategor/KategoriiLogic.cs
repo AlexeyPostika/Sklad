@@ -201,6 +201,7 @@ namespace Sklad_v1_001.FormUsers.Kategor
     public class TypeCategory
     {
         private string title;
+        private Int32 iD;
 
         public string Title
         {
@@ -212,6 +213,19 @@ namespace Sklad_v1_001.FormUsers.Kategor
             set
             {
                 title = value;
+            }
+        }
+
+        public int ID
+        {
+            get
+            {
+                return iD;
+            }
+
+            set
+            {
+                iD = value;
             }
         }
     }

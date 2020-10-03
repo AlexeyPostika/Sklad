@@ -263,10 +263,12 @@ namespace Sklad_v1_001.FormUsers.Kategor
                 //typeCategory = new TypeCategory();
                 foreach (var item in kategorytype)
                 {
+                    kategoryType.ID = item.ID;
                     if (!String.IsNullOrEmpty(item.TypeCategoryName))
                     {
                         typeCategory = new TypeCategory();
                         typeCategory.Title = item.TypeCategoryName;
+                        typeCategory.ID = item.ID;
                         kategoryType.Category.Add(typeCategory);
                     }
                     //dataCategorTreeView.Add(item);
@@ -307,10 +309,12 @@ namespace Sklad_v1_001.FormUsers.Kategor
                 //typeCategory = new TypeCategory();
                 foreach (var item in kategorytype)
                 {
+                    kategoryType.ID = item.ID;
                     if (!String.IsNullOrEmpty(item.TypeCategoryName))
                     {
                         typeCategory = new TypeCategory();
                         typeCategory.Title = item.TypeCategoryName;
+                        typeCategory.ID = item.ID;                      
                         kategoryType.Category.Add(typeCategory);
                     }
                     //dataCategorTreeView.Add(item);
@@ -360,10 +364,14 @@ namespace Sklad_v1_001.FormUsers.Kategor
 
         private void treeView1_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            var row = this.treeView1.ItemsSource as Kategor.KategoryType;
+           // Tovar.LocalRow local = DataGrid.SelectedItem as Tovar.LocalRow;
+            var row = this.treeView1.SelectedItem as Kategor.KategoryType;
             if (row!=null)
             {
-
+                this.WhiteZona.comboBox.SelectedValue = 1;
+                this.RedZona.comboBox.SelectedValue = 2;
+                this.YellowZona.comboBox.SelectedValue = row.ID;
+                this.GreenZona.LabelNameText = Properties.Resources.NameTypeCategory;
             }
         }
     }
