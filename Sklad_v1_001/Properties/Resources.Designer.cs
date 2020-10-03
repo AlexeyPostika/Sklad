@@ -304,11 +304,29 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Наименование категории.
+        /// </summary>
+        public static string NameCategory {
+            get {
+                return ResourceManager.GetString("NameCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Наименование товара.
         /// </summary>
         public static string NameProduct {
             get {
                 return ResourceManager.GetString("NameProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Наименование под категории.
+        /// </summary>
+        public static string NameTypeCategory {
+            get {
+                return ResourceManager.GetString("NameTypeCategory", resourceCulture);
             }
         }
         
