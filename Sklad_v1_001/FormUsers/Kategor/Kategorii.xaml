@@ -49,7 +49,7 @@
                 </TreeView.ItemTemplate>
             </TreeView>
             <Label Content="Категории Доп.товара" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Grid.Row="1"/>
-            <TreeView x:Name="treeView2" Grid.Row="4">
+            <TreeView x:Name="treeView2" Grid.Row="4" SelectedItemChanged="treeView2_SelectedItemChanged">
                 <TreeView.ItemTemplate>
                     <HierarchicalDataTemplate ItemsSource="{Binding Path=Category}">
                         <TextBlock Text="{Binding KategoryName}" />
@@ -66,7 +66,7 @@
                                          LabelNameText="{x:Static res:Resources.CategoryTypeProduct}"
                                          WidthLabel="160"
                                          WidthComboBox="160"
-                                            ButtonSelectChanged="WhiteZona_ButtonSelectChanged"/>
+                                         ButtonSelectChanged="WhiteZona_ButtonSelectChanged"/>
         <ZonaRed:SelectCategoryRedTable x:Name="RedZona" Grid.Row="1" Grid.Column="1"
                                          LabelNameText="{x:Static res:Resources.TypeCategory}"
                                          WidthLabel="160"
@@ -80,8 +80,8 @@
                                             Visibility="{Binding ElementName=page, Path=VisibilityZonaYellow, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                               ButtonSelectChanged="SelectCategoryYellowTable_ButtonSelectChanged"/>
         <ZonaGreen:SelectCategoryGreenTable x:Name="GreenZona" Grid.Row="3" Grid.Column="1"
-                                             LabelNameText="Выбор таблицы"
-                                             LabelNameTextDescription="Описание"
+                                             LabelNameText="{x:Static res:Resources.NameCategory}"
+                                             LabelNameTextDescription="{x:Static res:Resources.Description}"
                                              WidthLabel="160"
                                              WidthTextBox="250"
                                              WidthLabelDescription="160"
