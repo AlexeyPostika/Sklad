@@ -94,6 +94,7 @@
                 Click="button_Click"/>-->
         <ToolBar:ToolBarSaveCancel Grid.Column="1" Grid.Row="4"
                                    IsEnableBack="{Binding ElementName=page, Path=IsEnableSaveCancel, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                   IsEnableNext="{Binding ElementName=page, Path=IsEnableSaveCancel, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                                   IsEnableNext="{Binding ElementName=page, Path=IsEnableSaveCancel, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   ButtonApply="ToolBarSaveCancel_ButtonApply"/>
     </Grid> 
 </Page>
