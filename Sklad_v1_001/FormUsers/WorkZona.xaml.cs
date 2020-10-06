@@ -55,5 +55,10 @@ namespace Sklad_v1_001.FormUsers
         {
             Docker1.Content = new FormUsers.Userss.UserList();
         }
+
+        private void Purchase_Click(object sender, RoutedEventArgs e)
+        {
+            Docker1.Navigate(new Zacupca.ZacupcaGrid()); // открытие страницы
+        }
     }
 }

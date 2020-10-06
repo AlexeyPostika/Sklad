@@ -33,7 +33,7 @@
             <Image HorizontalAlignment="Left" Height="40" Margin="4,768,0,0" VerticalAlignment="Top" Width="40" Source="/Sklad_v1_001;component/Icone/exit_sign_40px.png" RenderTransformOrigin="0.475,0.025"/>
             <Button x:Name="Exit" Content="Выход" HorizontalAlignment="Left" Margin="45,768,0,0" VerticalAlignment="Top" Width="179" Height="40" Background="#FF292933" FontSize="16" FontWeight="Bold" Foreground="#FFF9F8F8" BorderBrush="#FF292933" Click="Admins_Click"/>
             <Image HorizontalAlignment="Left" Height="40" Margin="4,179,0,0" VerticalAlignment="Top" Width="40" Source="purchase_30px.png"/>
-            <Button x:Name="Purchase" Content="Закупка" HorizontalAlignment="Left" Margin="47,177,0,0" VerticalAlignment="Top" Width="177" Height="40" Background="#FF292933" FontSize="16" FontWeight="Bold" Foreground="#FFF9F8F8" BorderBrush="#FF292933"/>
+            <Button x:Name="Purchase" Content="Закупка" HorizontalAlignment="Left" Margin="47,177,0,0" VerticalAlignment="Top" Width="177" Height="40" Background="#FF292933" FontSize="16" FontWeight="Bold" Foreground="#FFF9F8F8" BorderBrush="#FF292933" Click="Purchase_Click"/>
         </Grid>
         <!--вертикальное меню-->
         <Grid HorizontalAlignment="Left" Height="100" Margin="234,0,0,0" VerticalAlignment="Top" Width="1034" Background="#FF292933"/>

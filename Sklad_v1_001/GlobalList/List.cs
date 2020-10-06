@@ -33,6 +33,13 @@ namespace Sklad_v1_001.GlobalList
         public Int32 ID { get; set; }
         public String Description { get; set; }
     }
+
+    //отвечает за подкатегории
+    public class PaymentType
+    {
+        public Int32 ID { get; set; }
+        public String Description { get; set; }
+    }
     public class DateTimeListFilter
     {
         public ObservableCollection<DateTimeItem> innerList { get; set; }
@@ -95,6 +102,20 @@ namespace Sklad_v1_001.GlobalList
                 new CategoryDetails {ID=0,Description=Properties.Resources.CategoryDetails0 },
                 new CategoryDetails {ID=1,Description=Properties.Resources.CategoryDetails1 },
                 new CategoryDetails {ID=2,Description=Properties.Resources.CategoryDetails2 },
+            };
+        }
+    }
+
+    public class PaymentTypeList
+    {
+        public ObservableCollection<PaymentType> innerList { get; set; }
+        public PaymentTypeList()
+        {
+            innerList = new ObservableCollection<PaymentType>()
+            {
+                new PaymentType {ID=0,Description=Properties.Resources.Payment1 },
+                new PaymentType {ID=1,Description=Properties.Resources.Payment2 },
+                new PaymentType {ID=2,Description=Properties.Resources.Payment3 },
             };
         }
     }
