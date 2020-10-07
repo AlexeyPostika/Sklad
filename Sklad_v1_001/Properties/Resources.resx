@@ -285,4 +285,28 @@
   <data name="NameTypeCategory" xml:space="preserve">
     <value>Наименование под категории</value>
   </data>
+  <data name="FromWhere" xml:space="preserve">
+    <value>От куда идет</value>
+  </data>
+  <data name="PaymentReceipt" xml:space="preserve">
+    <value>Чек оплаты</value>
+  </data>
+  <data name="PaymentType" xml:space="preserve">
+    <value>Тип оплаты</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Количество</value>
+  </data>
+  <data name="TotalSumma" xml:space="preserve">
+    <value>Сумма заказа</value>
+  </data>
+  <data name="TrackingNumber" xml:space="preserve">
+    <value>Номер отслеживания</value>
+  </data>
+  <data name="WhenItComes" xml:space="preserve">
+    <value>Когда придет</value>
+  </data>
+  <data name="WhenOrdered" xml:space="preserve">
+    <value>Когда заказали</value>
+  </data>
 </root>

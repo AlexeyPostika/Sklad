@@ -107,6 +107,10 @@
       <DependentUpon>UserList.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\Userss\UserListLogic.cs" />
+    <Compile Include="FormUsers\Zacupca\ZacupcaGrid.xaml.cs">
+      <DependentUpon>ZacupcaGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsers\Zacupca\ZacupcaGridLogic.cs" />
     <Compile Include="GlobalList\List.cs" />
     <Compile Include="HelperGlobal\ConvertData.cs" />
     <Compile Include="HelperGlobal\ImageSql.cs" />
@@ -182,6 +186,10 @@
     <Page Include="FormUsers\WorkZona.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FormUsers\Zacupca\ZacupcaGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
