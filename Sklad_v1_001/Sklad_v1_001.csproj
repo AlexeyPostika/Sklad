@@ -73,6 +73,9 @@
     <Compile Include="Control\FlexControlDate\FilterDate.xaml.cs">
       <DependentUpon>FilterDate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexControlDescription\Description4TextBlock.xaml.cs">
+      <DependentUpon>Description4TextBlock.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexFilter\FlexGridFromTo.xaml.cs">
       <DependentUpon>FlexGridFromTo.xaml</DependentUpon>
     </Compile>
@@ -115,6 +118,10 @@
     <Compile Include="HelperGlobal\ConvertData.cs" />
     <Compile Include="HelperGlobal\ImageSql.cs" />
     <Compile Include="SQLCommand\SQLCommanSelect.cs" />
+    <Page Include="Control\FlexControlDescription\Description4TextBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\ToolBar\ToolBarSaveCancel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

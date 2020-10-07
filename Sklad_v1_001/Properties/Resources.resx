@@ -285,8 +285,26 @@
   <data name="NameTypeCategory" xml:space="preserve">
     <value>Наименование под категории</value>
   </data>
+  <data name="Adress" xml:space="preserve">
+    <value>Адресс доставки</value>
+  </data>
   <data name="FromWhere" xml:space="preserve">
     <value>От куда идет</value>
+  </data>
+  <data name="NmaeManager" xml:space="preserve">
+    <value>Инициалы менеджера</value>
+  </data>
+  <data name="NumberPhone" xml:space="preserve">
+    <value>№-телефона</value>
+  </data>
+  <data name="Payment1" xml:space="preserve">
+    <value>Наличные</value>
+  </data>
+  <data name="Payment2" xml:space="preserve">
+    <value>Банковская карта</value>
+  </data>
+  <data name="Payment3" xml:space="preserve">
+    <value>Денежный перевод</value>
   </data>
   <data name="PaymentReceipt" xml:space="preserve">
     <value>Чек оплаты</value>
@@ -302,6 +320,9 @@
   </data>
   <data name="TrackingNumber" xml:space="preserve">
     <value>Номер отслеживания</value>
+  </data>
+  <data name="TypeВelivery" xml:space="preserve">
+    <value>Тип доставки</value>
   </data>
   <data name="WhenItComes" xml:space="preserve">
     <value>Когда придет</value>

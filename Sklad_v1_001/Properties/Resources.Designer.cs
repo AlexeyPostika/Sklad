@@ -61,6 +61,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Адресс доставки.
+        /// </summary>
+        public static string Adress {
+            get {
+                return ResourceManager.GetString("Adress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Предыдущая.
         /// </summary>
         public static string BACK {
@@ -358,6 +367,24 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Инициалы менеджера.
+        /// </summary>
+        public static string NmaeManager {
+            get {
+                return ResourceManager.GetString("NmaeManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на №-телефона.
+        /// </summary>
+        public static string NumberPhone {
+            get {
+                return ResourceManager.GetString("NumberPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Номер Сотрудника.
         /// </summary>
         public static string NumberSotrudnika {
@@ -399,6 +426,33 @@ namespace Sklad_v1_001.Properties {
         public static string PAGE {
             get {
                 return ResourceManager.GetString("PAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Наличные.
+        /// </summary>
+        public static string Payment1 {
+            get {
+                return ResourceManager.GetString("Payment1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Банковская карта.
+        /// </summary>
+        public static string Payment2 {
+            get {
+                return ResourceManager.GetString("Payment2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Денежный перевод.
+        /// </summary>
+        public static string Payment3 {
+            get {
+                return ResourceManager.GetString("Payment3", resourceCulture);
             }
         }
         
@@ -507,6 +561,15 @@ namespace Sklad_v1_001.Properties {
         public static string TypeProduct {
             get {
                 return ResourceManager.GetString("TypeProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Тип доставки.
+        /// </summary>
+        public static string TypeВelivery {
+            get {
+                return ResourceManager.GetString("TypeВelivery", resourceCulture);
             }
         }
         

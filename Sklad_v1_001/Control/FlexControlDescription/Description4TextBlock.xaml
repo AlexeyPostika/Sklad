@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="Sklad_v1_001.Control.FlexControlDescription.Description4TextBlock"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sklad_v1_001.Control.FlexControlDescription"
+             xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Name="control" Background="#FFF2FDFC">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="labelAdress" Grid.Row="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                   Content="{x:Static res:Resources.Adress}"
+                   Width="{Binding ElementName=control, Path=WidthLabel, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <Label x:Name="labelAdress1" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                   Content="{Binding ElementName=control, Path=ValueAdress, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                   Width="Auto"/>
+        <Label x:Name="labelTypeBelivery" Grid.Row="2"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                   Content="{x:Static res:Resources.TypeВelivery}"
+                   Width="{Binding ElementName=control, Path=WidthLabel, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <Label x:Name="labelTypeBelivery1" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                   Content="{Binding ElementName=control, Path=ValueTypeBelivery, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                   Width="Auto"/>
+        <Label x:Name="labelNumvberPhon" Grid.Row="3"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                   Content="{x:Static res:Resources.NumberPhone}"
+                   Width="{Binding ElementName=control, Path=WidthLabel, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <Label x:Name="labelNumvberPhon1" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                   Content="{Binding ElementName=control, Path=ValueNumvberPhon, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                   Width="Auto"/>
+        <Label x:Name="labelNmae" Grid.Row="4"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                   Content="{x:Static res:Resources.NmaeManager}"
+                   Width="{Binding ElementName=control, Path=WidthLabel, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <Label x:Name="labelNmae1" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                   Content="{Binding ElementName=control, Path=ValueNmae, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                   Width="Auto"/>
+    </Grid>
+</UserControl>

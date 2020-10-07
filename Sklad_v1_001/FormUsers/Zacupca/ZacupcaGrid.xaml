@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:res="clr-namespace:Sklad_v1_001.Properties"
              xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
+             xmlns:DescriptionControl="clr-namespace:Sklad_v1_001.Control.FlexControlDescription"
              mc:Ignorable="d"             
              d:DesignHeight="818" Width="979" Loaded="UserControl_Loaded" x:Name="ZacupcaGridPage">
     <Grid Height="818" Background="#FFFDFAFA">
@@ -29,6 +30,22 @@
                 <DataGridTextColumn Binding="{Binding Path=SummaSum, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.TotalSumma}" Width="Auto" MaxWidth="200"/>
                 <DataGridTextColumn Binding="{Binding Path=PaymentType, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.PaymentType}" Width="Auto" MaxWidth="200"/>
                 <DataGridTextColumn Binding="{Binding Path=PaymentReceipt, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.PaymentReceipt}" Width="Auto" MaxWidth="200"/>
+                <DataGridTemplateColumn Width="1*" MaxWidth="500">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{x:Static res:Resources.Description}" HorizontalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DescriptionControl:Description4TextBlock 
+                                ValueAdress="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                ValueTypeBelivery="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                ValueNumvberPhon="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                ValueNmae="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
         <ToolBar:ToolBarNextToBack Grid.Row="2" x:Name="ToolbarNextPageData"
