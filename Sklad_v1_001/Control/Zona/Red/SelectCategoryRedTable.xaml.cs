@@ -90,9 +90,12 @@ namespace Sklad_v1_001.Control.Zona.Red
                 SetValue(WidthComboBoxProperty, value);
             }
         }
+        CategoryDetailsList categoryDetailsList;
         public SelectCategoryRedTable()
         {
             InitializeComponent();
+            categoryDetailsList = new CategoryDetailsList();
+            this.comboBox.ItemsSource = categoryDetailsList.innerList;
         }
         public event Action ButtonSelectChanged;
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -102,8 +105,7 @@ namespace Sklad_v1_001.Control.Zona.Red
 
         private void comboBox_Loaded(object sender, RoutedEventArgs e)
         {
-            CategoryDetailsList categoryDetailsList = new CategoryDetailsList();
-            this.comboBox.ItemsSource = categoryDetailsList.innerList;
+            
         }
     }
 }

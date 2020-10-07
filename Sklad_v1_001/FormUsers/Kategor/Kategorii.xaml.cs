@@ -177,17 +177,19 @@ namespace Sklad_v1_001.FormUsers.Kategor
                 VisibilityZonaGreen = Visibility.Collapsed;
                 IsEnableSaveCancel = false;
             }
+            Document.TempTable = TypeTable.ToString();
         }
         //2 - выбираем тип категории (категория или подкатегория)
         private void SelectCategoryRedTable_ButtonSelectChanged()
         {
+            dataCategorComboBox.Clear();
+            InitComboBox(TypeTable);
             if (this.RedZona.comboBox.SelectedValue != null & this.RedZona.Value != 0)
             {
                 if (RedZona.Value == 2)
                 {
                     VisibilityZonaYellow = Visibility.Visible;
                     IsEnableSaveCancel = false;
-                    InitComboBox(TypeTable);
                 }
                 else
                     VisibilityZonaYellow = Visibility.Collapsed;
@@ -203,7 +205,7 @@ namespace Sklad_v1_001.FormUsers.Kategor
         }
         //3 - выбираем какой именно категории относиться (подкатегория)
         private void SelectCategoryYellowTable_ButtonSelectChanged()
-        {
+        {           
             if (this.YellowZona.comboBox.SelectedValue != null & this.YellowZona.Value != 0)
             {
                 VisibilityZonaGreen = Visibility.Visible;
@@ -263,10 +265,12 @@ namespace Sklad_v1_001.FormUsers.Kategor
                 //typeCategory = new TypeCategory();
                 foreach (var item in kategorytype)
                 {
+                    kategoryType.ID = item.ID;
                     if (!String.IsNullOrEmpty(item.TypeCategoryName))
                     {
                         typeCategory = new TypeCategory();
                         typeCategory.Title = item.TypeCategoryName;
+                        typeCategory.ID = item.ID;
                         kategoryType.Category.Add(typeCategory);
                     }
                     //dataCategorTreeView.Add(item);
@@ -307,10 +311,12 @@ namespace Sklad_v1_001.FormUsers.Kategor
                 //typeCategory = new TypeCategory();
                 foreach (var item in kategorytype)
                 {
+                    kategoryType.ID = item.ID;
                     if (!String.IsNullOrEmpty(item.TypeCategoryName))
                     {
                         typeCategory = new TypeCategory();
                         typeCategory.Title = item.TypeCategoryName;
+                        typeCategory.ID = item.ID;                      
                         kategoryType.Category.Add(typeCategory);
                     }
                     //dataCategorTreeView.Add(item);
@@ -322,9 +328,69 @@ namespace Sklad_v1_001.FormUsers.Kategor
 
 
         #region Save
-        private void Save()
+        private Boolean Save()
         {
+            Document.MassCategoryProduct = "";
+            Document.MassCategoryIDProduct = "";
+            Document.MassCategoryDescriptionProduct = "";
 
+            Document.MassCategoryProductDetails = "";
+            Document.MassCategoryProductID = "";
+            Document.MassCategoryIDProductDetails = "";
+            Document.MassDescriptionProductDetails = "";
+
+            Document.MassCategoryRelay = "";
+            Document.MassCategoryIDRelay = "";
+            Document.MassCategoryDescriptionRelay = "";           
+
+            Document.MassCategoryRelayDetails = "";
+            Document.MassCategoryRelayID = "";
+            Document.MassCategoryIDRelayDetails = "";
+            Document.MassDescriptionRelayDetails = "";
+
+            if (Document.TempTable == "0")
+            {               
+                if (this.RedZona.comboBox.SelectedValue.ToString() == "1")
+                {
+                    Document.TempTable = "0";
+                    Document.MassCategoryProduct = this.GreenZona.Value + "|";
+                    Document.MassCategoryIDProduct = "0" + "|";
+                    Document.MassCategoryDescriptionProduct = this.GreenZona.Description + "|";
+                }
+
+                if (this.RedZona.comboBox.SelectedValue.ToString() == "2")
+                {
+                    Document.TempTable = "1";
+                    Document.MassCategoryProductDetails = this.GreenZona.Value + "|";
+                    Document.MassCategoryProductID = this.YellowZona.comboBox.SelectedValue.ToString() != "0" ? this.YellowZona.comboBox.SelectedValue + "|" : "0" + "|"; 
+                    Document.MassCategoryIDProductDetails = "0" + "|";
+                    Document.MassDescriptionProductDetails = this.GreenZona.Description + "|";
+                }
+            }
+
+            if (Document.TempTable == "1")
+            {
+                if (this.RedZona.comboBox.SelectedValue.ToString() == "1")
+                {
+                    Document.TempTable = "0";
+                    Document.MassCategoryRelay = this.GreenZona.Value + "|";
+                    Document.MassCategoryIDRelay = "0" + "|"; ;
+                    Document.MassCategoryDescriptionRelay = this.GreenZona.Description + "|";
+                }
+
+                if (this.RedZona.comboBox.SelectedValue.ToString() == "2")
+                {
+                    Document.TempTable = "1";
+                    Document.MassCategoryRelayDetails = this.GreenZona.Value + "|";
+                    Document.MassCategoryRelayID = this.YellowZona.comboBox.SelectedValue.ToString() != "0" ? this.YellowZona.comboBox.SelectedValue + "|" : "0" + "|";
+                    Document.MassCategoryIDRelayDetails = "0" + "|";
+                    Document.MassDescriptionRelayDetails = this.GreenZona.Description + "|";
+                }
+            }
+
+           if ( kategoriiLogic.SetCategorySave(Document).Rows.Count>0)
+                return true;
+            return false;
         }
 
         #endregion
@@ -359,8 +425,64 @@ namespace Sklad_v1_001.FormUsers.Kategor
         }
 
         private void treeView1_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
-        {
+        {         
+            InitComboBox(0);
+            // Tovar.LocalRow local = DataGrid.SelectedItem as Tovar.LocalRow;
+            var row = this.treeView1.SelectedItem as Kategor.KategoryType;
+            if (row!=null)
+            {
+                Document.TempTable = "0";
+                this.WhiteZona.comboBox.SelectedValue = 1;
+                this.RedZona.comboBox.SelectedValue = 2;             
+                this.YellowZona.comboBox.SelectedValue = row.ID;
+                this.GreenZona.Visibility = Visibility.Visible;
+                IsEnableSaveCancel = true;
+                this.GreenZona.LabelNameText = Properties.Resources.NameTypeCategory;
+            }
+            // Tovar.LocalRow local = DataGrid.SelectedItem as Tovar.LocalRow;
+            
+        }
 
+        private void treeView2_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {          
+            InitComboBox(1);
+            var row1 = this.treeView2.SelectedItem as Kategor.KategoryType;
+            if (row1 != null)
+            {
+                Document.TempTable = "1";
+                this.WhiteZona.comboBox.SelectedValue = 2;
+                this.RedZona.comboBox.SelectedValue = 2;
+                this.YellowZona.comboBox.SelectedValue = row1.ID;
+                this.GreenZona.Visibility = Visibility.Visible;
+                IsEnableSaveCancel = true;
+                this.GreenZona.LabelNameText = Properties.Resources.NameTypeCategory;
+            }
+        }
+
+        private void ToolBarSaveCancel_ButtonApply()
+        {
+            if (Save() == true)
+            {
+
+                dataCategorTreeView.Clear();
+                dataCategorTreeViewRelay.Clear();
+
+                InitTreeViewProduct();
+                InitTreeViewRelay();
+
+                this.GreenZona.Value = "";
+                this.GreenZona.Description = "";
+
+                VisibilityZonaGreen = Visibility.Collapsed;
+                VisibilityZonaRed= Visibility.Collapsed;
+                VisibilityZonaYellow= Visibility.Collapsed;
+                IsEnableSaveCancel = false;
+            }
+            else
+            {
+                MessageBox.Show("Произошла ошибка при добавлении данных в БД");
+            }
+            
         }
     }
 }
