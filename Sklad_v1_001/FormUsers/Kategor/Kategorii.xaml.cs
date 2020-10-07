@@ -328,6 +328,12 @@ namespace Sklad_v1_001.FormUsers.Kategor
         #region Save
         private void Save()
         {
+            Document.MassCategoryDescriptionProduct = "";
+            Document.MassCategoryDescriptionRelay = "";
+            Document.MassCategoryIDProduct = "";
+            Document.MassCategoryIDRelay = "";
+            Document.MassCategoryProduct = "";
+            Document.MassCategoryRelay = "";
 
         }
 
@@ -387,6 +393,11 @@ namespace Sklad_v1_001.FormUsers.Kategor
                 this.YellowZona.comboBox.SelectedValue = row1.ID;
                 this.GreenZona.LabelNameText = Properties.Resources.NameTypeCategory;
             }
+        }
+
+        private void ToolBarSaveCancel_ButtonApply()
+        {
+            Save();
         }
     }
 }
