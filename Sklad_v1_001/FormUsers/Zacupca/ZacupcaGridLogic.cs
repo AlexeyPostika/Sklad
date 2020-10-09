@@ -70,18 +70,36 @@ namespace Sklad_v1_001.FormUsers.Zacupca
     public class LocalRow : INotifyPropertyChanged
     {
         private Int32 iD;
-        private Int64 extrRefShtrixCode;
-        private String name;
-        private String typeProduct;
-        private String typeDescriptio;
-        private Double cena;
-        private Int32 vetrina;
-        private String vetrinaString;
-        private String photoImage;
-        private Int32 countPAGE;
-        private String description;
+        private Int64 trackingNumber;
+        private DateTime? whenOrdered;
+        private DateTime? whenItComes;
+        private Int32 quantity;
+        private Double summaSum;
+        private Int32 paymentType;
+        private Int32 paymentReceipt;
+        private Int32 typeBelivery;
+        private String adress;
+        private String numvberPhon;
+        private String namaMeneger;
+        private String nameBelivery;
+        private String numberBeliveryTracking;
+        private String nameManegerBelivery;
+        private String dopNameCompanyBelivery;
+        private String dopNameSkladCompany;
+        private Double dopTagPriceOrder;
+        private DateTime? dopWhenDateOrder;
 
-        private String textOnWhatPage;
+        private DateTime? dopWhereDateOrder;
+        private Int32 dopTypePayment;
+        private Int32 dopPaymentReceipt;
+        private String dopNameManegerCompany;
+        private String dopNumberPhoneManeger;
+        private DateTime? dateCreate;
+        private Int32 createUseras;
+
+        private DateTime? dataLastModifide;
+        private Int32 lastModifideUsers;
+
         public int ID
         {
             get
@@ -96,157 +114,381 @@ namespace Sklad_v1_001.FormUsers.Zacupca
             }
         }
 
-        public string Name
+        public long TrackingNumber
         {
             get
             {
-                return name;
+                return trackingNumber;
             }
 
             set
             {
-                name = value;
-                OnPropertyChanged("Name");
+                trackingNumber = value;
+                OnPropertyChanged("TrackingNumber");
             }
         }
 
-        public String TypeProduct
+        public DateTime? WhenOrdered
         {
             get
             {
-                return typeProduct;
+                return whenOrdered;
             }
 
             set
             {
-                typeProduct = value;
-                OnPropertyChanged("TypeProduct");
+                whenOrdered = value;
+                OnPropertyChanged("WhenOrdered");
             }
         }
 
-        public string TypeDescriptio
+        public DateTime? WhenItComes
         {
             get
             {
-                return typeDescriptio;
+                return whenItComes;
             }
 
             set
             {
-                typeDescriptio = value;
-                OnPropertyChanged("TypeDescriptio");
+                whenItComes = value;
+                OnPropertyChanged("WhenItComes");
             }
         }
 
-        public double Cena
+        public int Quantity
         {
             get
             {
-                return cena;
+                return quantity;
             }
 
             set
             {
-                cena = value;
-                OnPropertyChanged("Cena");
+                quantity = value;
+                OnPropertyChanged("Quantity");
             }
         }
 
-        public int Vetrina
+        public double SummaSum
         {
             get
             {
-                return vetrina;
+                return summaSum;
             }
 
             set
             {
-                vetrina = value;
-                OnPropertyChanged("Vetrina");
+                summaSum = value;
+                OnPropertyChanged("SummaSum");
             }
         }
 
-        public string PhotoImage
+        public int PaymentType
         {
             get
             {
-                return photoImage;
+                return paymentType;
             }
 
             set
             {
-                photoImage = value;
-                OnPropertyChanged("PhotoImage");
+                paymentType = value;
+                OnPropertyChanged("PaymentType");
             }
         }
 
-        public string TextOnWhatPage
+        public int PaymentReceipt
         {
             get
             {
-                return textOnWhatPage;
+                return paymentReceipt;
             }
 
             set
             {
-                textOnWhatPage = value;
-                OnPropertyChanged("TextOnWhatPage");
+                paymentReceipt = value;
+                OnPropertyChanged("PaymentReceipt");
             }
         }
 
-        public int CountPAGE
+        public int TypeBelivery
         {
             get
             {
-                return countPAGE;
+                return typeBelivery;
             }
 
             set
             {
-                countPAGE = value;
-                OnPropertyChanged("CountPAGE");
+                typeBelivery = value;
+                OnPropertyChanged("TypeBelivery");
             }
         }
 
-        public string VetrinaString
+        public string Adress
         {
             get
             {
-                return vetrinaString;
+                return adress;
             }
 
             set
             {
-                vetrinaString = value;
-                OnPropertyChanged("VetrinaString");
+                adress = value;
+                OnPropertyChanged("Adress");
             }
         }
 
-        public long ExtrRefShtrixCode
+        public string NumvberPhon
         {
             get
             {
-                return extrRefShtrixCode;
+                return numvberPhon;
             }
 
             set
             {
-                extrRefShtrixCode = value;
-                OnPropertyChanged("ExtrRefShtrixCode");
+                numvberPhon = value;
+                OnPropertyChanged("NumvberPhon");
             }
         }
 
-        public string Description
+        public string NamaMeneger
         {
             get
             {
-                return description;
+                return namaMeneger;
             }
 
             set
             {
-                description = value;
-                OnPropertyChanged("Description");
+                namaMeneger = value;
+                OnPropertyChanged("NamaMeneger");
+            }
+        }
+
+        public string NameBelivery
+        {
+            get
+            {
+                return nameBelivery;
+            }
+
+            set
+            {
+                nameBelivery = value;
+                OnPropertyChanged("NameBelivery");
+            }
+        }
+
+        public string NumberBeliveryTracking
+        {
+            get
+            {
+                return numberBeliveryTracking;
+            }
+
+            set
+            {
+                numberBeliveryTracking = value;
+                OnPropertyChanged("NumberBeliveryTracking");
+            }
+        }
+
+        public string NameManegerBelivery
+        {
+            get
+            {
+                return nameManegerBelivery;
+            }
+
+            set
+            {
+                nameManegerBelivery = value;
+                OnPropertyChanged("NameManegerBelivery");
+            }
+        }
+
+        public string DopNameCompanyBelivery
+        {
+            get
+            {
+                return dopNameCompanyBelivery;
+            }
+
+            set
+            {
+                dopNameCompanyBelivery = value;
+                OnPropertyChanged("DopNameCompanyBelivery");
+            }
+        }
+
+        public string DopNameSkladCompany
+        {
+            get
+            {
+                return dopNameSkladCompany;
+            }
+
+            set
+            {
+                dopNameSkladCompany = value;
+                OnPropertyChanged("DopNameSkladCompany");
+            }
+        }
+
+        public double DopTagPriceOrder
+        {
+            get
+            {
+                return dopTagPriceOrder;
+            }
+
+            set
+            {
+                dopTagPriceOrder = value;
+                OnPropertyChanged("DopTagPriceOrder");
+            }
+        }
+
+        public DateTime? DopWhenDateOrder
+        {
+            get
+            {
+                return dopWhenDateOrder;
+            }
+
+            set
+            {
+                dopWhenDateOrder = value;
+                OnPropertyChanged("DopWhenDateOrder");
+            }
+        }
+
+        public DateTime? DopWhereDateOrder
+        {
+            get
+            {
+                return dopWhereDateOrder;
+            }
+
+            set
+            {
+                dopWhereDateOrder = value;
+                OnPropertyChanged("DopWhereDateOrder");
+            }
+        }
+
+        public int DopTypePayment
+        {
+            get
+            {
+                return dopTypePayment;
+            }
+
+            set
+            {
+                dopTypePayment = value;
+                OnPropertyChanged("DopTypePayment");
+            }
+        }
+
+        public int DopPaymentReceipt
+        {
+            get
+            {
+                return dopPaymentReceipt;
+            }
+
+            set
+            {
+                dopPaymentReceipt = value;
+                OnPropertyChanged("DopPaymentReceipt");
+            }
+        }
+
+        public string DopNameManegerCompany
+        {
+            get
+            {
+                return dopNameManegerCompany;
+            }
+
+            set
+            {
+                dopNameManegerCompany = value;
+                OnPropertyChanged("DopNameManegerCompany");
+            }
+        }
+
+        public string DopNumberPhoneManeger
+        {
+            get
+            {
+                return dopNumberPhoneManeger;
+            }
+
+            set
+            {
+                dopNumberPhoneManeger = value;
+                OnPropertyChanged("DopNumberPhoneManeger");
+            }
+        }
+
+        public DateTime? DateCreate
+        {
+            get
+            {
+                return dateCreate;
+            }
+
+            set
+            {
+                dateCreate = value;
+                OnPropertyChanged("DateCreate");
+            }
+        }
+
+        public int CreateUseras
+        {
+            get
+            {
+                return createUseras;
+            }
+
+            set
+            {
+                createUseras = value;
+                OnPropertyChanged("CreateUseras");
+            }
+        }
+
+        public DateTime? DataLastModifide
+        {
+            get
+            {
+                return dataLastModifide;
+            }
+
+            set
+            {
+                dataLastModifide = value;
+                OnPropertyChanged("DataLastModifide");
+            }
+        }
+
+        public int LastModifideUsers
+        {
+            get
+            {
+                return lastModifideUsers;
+            }
+
+            set
+            {
+                lastModifideUsers = value;
+                OnPropertyChanged("lastModifideUsers");
             }
         }
 
@@ -290,7 +532,7 @@ namespace Sklad_v1_001.FormUsers.Zacupca
 
         LocalRow localrow;
         
-        String _getSelectProductTable = "xp_GetSelectProductTable";      //хранимка
+        String _getSelectPurchaseTable = "xp_GetSelectPurchaseDocument";      //хранимка
 
         DataTable _table;
 
@@ -322,7 +564,7 @@ namespace Sklad_v1_001.FormUsers.Zacupca
             _sqlSting.SetParametrValue("@p_rowcountpage", filterlocal.RowsCountPage);
             _sqlSting.SetParametrValue("@p_pagecountrow", filterlocal.PageCountRows);
 
-            _sqlSting.ComplexRequest(_getSelectProductTable, CommandType.StoredProcedure, null);
+            _sqlSting.ComplexRequest(_getSelectPurchaseTable, CommandType.StoredProcedure, null);
             _table = _sqlSting.SqlAnswer.datatable;
 
             return _table;
@@ -332,22 +574,42 @@ namespace Sklad_v1_001.FormUsers.Zacupca
         {
             VetrinaList listVetrina = new VetrinaList();
             convertData = new ConvertData(_row, localrow);
-            localrow.ID = convertData.ConvertDataInt32("ID");
-            localrow.Name = convertData.ConvertDataString("Name");
-            localrow.TypeProduct = convertData.ConvertDataString("TypeDescription");
-            localrow.Cena = convertData.ConvertDataDouble("Cena");
-            localrow.Vetrina = convertData.ConvertDataInt32("IDVetrina");
-            localrow.VetrinaString = convertData.ConvertDataString("VetrinaString");
-            localrow.ExtrRefShtrixCode = convertData.ConvertDataInt64("ExtrRefShtrixCode");
-            localrow.PhotoImage = @"..\..\Icone\tovar\picture_80px.png";
-            localrow.CountPAGE = convertData.ConvertDataInt32("CountROWS");
-            localrow.Description = convertData.ConvertDataString("Description");
+
+            localrow.ID = convertData.ConvertDataInt32("ID");          
+            localrow.TrackingNumber= convertData.ConvertDataInt64("TrackingNumber");
+            localrow.WhenOrdered= convertData.ConvertDataDateTime("WhenOrdered");
+            localrow.WhenItComes= convertData.ConvertDataDateTime("WhenItComes");
+            localrow.Quantity= convertData.ConvertDataInt32("Quantity");
+            localrow.SummaSum= convertData.ConvertDataDouble("SummaSum");
+            localrow.PaymentType= convertData.ConvertDataInt32("PaymentType");
+            localrow.PaymentReceipt= convertData.ConvertDataInt32("PaymentReceipt");
+            localrow.TypeBelivery = convertData.ConvertDataInt32("TypeBelivery");
+            localrow.Adress= convertData.ConvertDataString("Adress");
+            localrow.NumvberPhon= convertData.ConvertDataString("NumvberPhon");
+            localrow.NamaMeneger= convertData.ConvertDataString("NamaMeneger");
+            localrow.NameBelivery= convertData.ConvertDataString("NameBelivery");
+            localrow.NumberBeliveryTracking= convertData.ConvertDataString("NumberBeliveryTracking");
+            localrow.NameManegerBelivery= convertData.ConvertDataString("NameManegerBelivery");
+            localrow.DopNameCompanyBelivery= convertData.ConvertDataString("DopNameCompanyBelivery");
+            localrow.DopNameSkladCompany= convertData.ConvertDataString("DopNameSkladCompany");
+            localrow.DopTagPriceOrder= convertData.ConvertDataDouble("DopTagPriceOrder");
+            localrow.DopWhenDateOrder = convertData.ConvertDataDateTime("DopWhenDateOrder");
+            localrow.DopWhereDateOrder= convertData.ConvertDataDateTime("DopWhereDateOrder");
+            localrow.DopTypePayment= convertData.ConvertDataInt32("DopTypePayment");
+            localrow.DopPaymentReceipt= convertData.ConvertDataInt32("DopPaymentReceipt");
+            localrow.DopNameManegerCompany= convertData.ConvertDataString("DopNameManegerCompany");
+            localrow.DopNumberPhoneManeger= convertData.ConvertDataString("DopNumberPhoneManeger");
+            localrow.DateCreate= convertData.ConvertDataDateTime("DateCreate");
+            localrow.CreateUseras= convertData.ConvertDataInt32("CreateUseras");
+            localrow.DataLastModifide= convertData.ConvertDataDateTime("DataLastModifide");
+            localrow.LastModifideUsers= convertData.ConvertDataInt32("LastModifideUsers");
+         
             return localrow;
         }
 
         public LocalRow ConvertSummary(DataRow _row, RowSummary _localrow)
         {
-            _localrow.PageCount = Int32.Parse(_row["CountROWS"].ToString());
+            //_localrow.PageCount = Int32.Parse(_row["CountROWS"].ToString());
 
 
             return localrow;

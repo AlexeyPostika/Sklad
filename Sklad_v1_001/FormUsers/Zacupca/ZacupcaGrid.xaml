@@ -19,9 +19,10 @@
         <Grid x:Name="Informer1">
            
         </Grid>
-        <DataGrid AutoGenerateColumns="False" x:Name="DataGrid" Grid.Row="1" SelectionChanged="DataGrid_SelectionChanged">
+        <DataGrid x:Name="DataDocument" AutoGenerateColumns="False" Grid.Row="1" SelectionChanged="DataGrid_SelectionChanged"
+                  Style="{DynamicResource DataDocument}">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="Auto" MaxWidth="200"/>
+                <DataGridTextColumn Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="Auto" MaxWidth="200" />
                 <DataGridTextColumn Binding="{Binding Path=TrackingNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.TrackingNumber}" Width="Auto" MaxWidth="200"/>
                 <DataGridTextColumn Binding="{Binding Path=FromWhere, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.FromWhere}" Width="Auto" MaxWidth="200"/>
                 <DataGridTextColumn Binding="{Binding Path=WhenOrdered, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.WhenOrdered}"  Width="Auto" MaxWidth="200"/>
@@ -39,10 +40,10 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <DescriptionControl:Description4TextBlock 
-                                ValueAdress="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                ValueTypeBelivery="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                ValueNumvberPhon="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                ValueNmae="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                                ValueAdress="{Binding Path=Adress, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                ValueTypeBelivery="{Binding Path=NumberBeliveryTracking, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                ValueNumvberPhon="{Binding Path=NumvberPhon, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                ValueNmae="{Binding Path=NameBelivery, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
