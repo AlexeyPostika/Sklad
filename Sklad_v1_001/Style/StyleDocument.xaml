@@ -5,10 +5,17 @@
 
     <Style  x:Key="DataDocument"  TargetType="{x:Type DataGrid}" >
         <Style.Setters>
-            <Setter Property="TextBlock.TextAlignment" Value="Center" />
-            <Setter Property="TextBlock.HorizontalAlignment" Value="Stretch" />
-            <Setter Property="TextBlock.VerticalAlignment" Value="Stretch"/>
+            <!--<Setter Property="TextBlock.TextAlignment" Value="Center" />-->
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
         </Style.Setters>
     </Style>
-
+    <Style x:Key="NameCellStyle" TargetType="DataGridCell">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="NameRowStyle" TargetType="DataGridRow">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
 </ResourceDictionary>

@@ -529,10 +529,12 @@ namespace Sklad_v1_001.FormUsers.Zacupca
     public class ZacupcaGridLogic
     {
         SQLCommanSelect _sqlSting;
+        SQLCommanSelect _sqlSave;
 
         LocalRow localrow;
         
         String _getSelectPurchaseTable = "xp_GetSelectPurchaseDocument";      //хранимка
+        String _savePurchaseDocument = "xp_SavePurchaseDocument";      //хранимка
 
         DataTable _table;
 
@@ -542,6 +544,7 @@ namespace Sklad_v1_001.FormUsers.Zacupca
         {
             //объявили подключение
             _sqlSting = new SQLCommanSelect();
+            _sqlSave = new SQLCommanSelect();
             //объявили localRow
             localrow = new LocalRow();
             //объявили таблицу куда будем записывать все
@@ -555,6 +558,99 @@ namespace Sklad_v1_001.FormUsers.Zacupca
 
             _sqlSting.AddParametr("@p_pagecountrow", SqlDbType.Int);
             _sqlSting.SetParametrValue("@p_pagecountrow", 0);
+
+            //объявляем переменные для хранимой процедуры save
+            _sqlSave.AddParametr("@p_IDCommand", SqlDbType.Int);
+            _sqlSave.SetParametrValue("@p_IDCommand", 0);
+
+            _sqlSave.AddParametr("@p_IDProduct", SqlDbType.Int);
+            _sqlSave.SetParametrValue("@p_IDProduct", 0);
+
+            _sqlSave.AddParametr("@p_TrackingNumber", SqlDbType.BigInt);
+            _sqlSave.SetParametrValue("@p_TrackingNumber", 0);
+
+            _sqlSave.AddParametr("@p_WhenOrdered", SqlDbType.DateTime);
+            _sqlSave.SetParametrValue("@p_WhenOrdered", DateTime.Now);
+
+            _sqlSave.AddParametr("@p_WhenItComes", SqlDbType.DateTime);
+            _sqlSave.SetParametrValue("@p_WhenItComes", DateTime.Now);
+
+            _sqlSave.AddParametr("@p_Quantity", SqlDbType.Int);
+            _sqlSave.SetParametrValue("@p_Quantity", 0);
+
+            _sqlSave.AddParametr("@p_TrackingNumber", SqlDbType.BigInt);
+            _sqlSave.SetParametrValue("@p_TrackingNumber", 0);
+
+            _sqlSave.AddParametr("@p_SummaSum", SqlDbType.Money);
+            _sqlSave.SetParametrValue("@p_SummaSum", 0);
+            
+            _sqlSave.AddParametr("@p_PaymentType", SqlDbType.Int);
+            _sqlSave.SetParametrValue("@p_PaymentType", 0);
+
+            _sqlSave.AddParametr("@p_PaymentReceipt", SqlDbType.Image);
+            _sqlSave.SetParametrValue("@p_PaymentReceipt", 0);
+            
+            _sqlSave.AddParametr("@p_TypeBelivery", SqlDbType.BigInt);
+            _sqlSave.SetParametrValue("@p_TypeBelivery", 0);
+            
+            _sqlSave.AddParametr("@p_Adress", SqlDbType.NVarChar);
+            _sqlSave.SetParametrValue("@p_Adress", "");
+
+            _sqlSave.AddParametr("@p_NumvberPhon", SqlDbType.BigInt);
+            _sqlSave.SetParametrValue("@p_NumvberPhon", 0);
+
+            _sqlSave.AddParametr("@p_NamaMeneger", SqlDbType.NVarChar);
+            _sqlSave.SetParametrValue("@p_NamaMeneger", "");
+
+            _sqlSave.AddParametr("@p_NameBelivery", SqlDbType.NVarChar);
+            _sqlSave.SetParametrValue("@p_NameBelivery", "");
+
+            _sqlSave.AddParametr("@p_NumberBeliveryTracking", SqlDbType.NVarChar);
+            _sqlSave.SetParametrValue("@p_NumberBeliveryTracking", "");
+            
+            _sqlSave.AddParametr("@p_DopNameCompanyBelivery", SqlDbType.NVarChar);
+            _sqlSave.SetParametrValue("@p_DopNameCompanyBelivery", "");
+
+            _sqlSave.AddParametr("@p_NameManegerBelivery", SqlDbType.NVarChar);
+            _sqlSave.SetParametrValue("@p_NameManegerBelivery", "");
+
+            _sqlSave.AddParametr("@p_DopNameSkladCompany", SqlDbType.NVarChar);
+            _sqlSave.SetParametrValue("@p_DopNameSkladCompany", "");
+
+            _sqlSave.AddParametr("@p_DopTagPriceOrder", SqlDbType.Money);
+            _sqlSave.SetParametrValue("@p_DopTagPriceOrder", 0);
+
+            _sqlSave.AddParametr("@p_DopWhenDateOrder", SqlDbType.DateTime);
+            _sqlSave.SetParametrValue("@p_DopWhenDateOrder", DateTime.Now);
+
+            _sqlSave.AddParametr("@p_DopWhereDateOrder", SqlDbType.DateTime);
+            _sqlSave.SetParametrValue("@p_DopWhereDateOrder", DateTime.Now);
+
+            _sqlSave.AddParametr("@p_DopTypePayment", SqlDbType.Int);
+            _sqlSave.SetParametrValue("@p_DopTypePayment", 0);
+
+            _sqlSave.AddParametr("@p_DopPaymentReceipt", SqlDbType.Image);
+            _sqlSave.SetParametrValue("@p_DopPaymentReceipt", 0);
+
+            _sqlSave.AddParametr("@p_DopNameManegerCompany", SqlDbType.NVarChar);
+            _sqlSave.SetParametrValue("@p_DopNameManegerCompany", "");
+
+            _sqlSave.AddParametr("@p_DopNumberPhoneManeger", SqlDbType.NVarChar);
+            _sqlSave.SetParametrValue("@p_DopNumberPhoneManeger", "");
+
+
+            _sqlSave.AddParametr("@p_DateCreate", SqlDbType.DateTime);
+            _sqlSave.SetParametrValue("@p_DateCreate", DateTime.Now);
+
+            _sqlSave.AddParametr("@p_CreateUseras", SqlDbType.Int);
+            _sqlSave.SetParametrValue("@p_CreateUseras", 0);
+
+            _sqlSave.AddParametr("@p_DataLastModifide", SqlDbType.DateTime);
+            _sqlSave.SetParametrValue("@p_DataLastModifide", DateTime.Now);
+
+            _sqlSave.AddParametr("@p_LastModifideUsers", SqlDbType.Int);
+            _sqlSave.SetParametrValue("@p_LastModifideUsers", 0);
+
         }
         public DataTable Select(LocalFilter filterlocal)
         {
