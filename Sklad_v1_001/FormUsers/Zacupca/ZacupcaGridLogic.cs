@@ -529,10 +529,12 @@ namespace Sklad_v1_001.FormUsers.Zacupca
     public class ZacupcaGridLogic
     {
         SQLCommanSelect _sqlSting;
+        SQLCommanSelect _sqlSave;
 
         LocalRow localrow;
         
         String _getSelectPurchaseTable = "xp_GetSelectPurchaseDocument";      //хранимка
+        String _savePurchaseDocument = "xp_SavePurchaseDocument";      //хранимка
 
         DataTable _table;
 
@@ -542,6 +544,7 @@ namespace Sklad_v1_001.FormUsers.Zacupca
         {
             //объявили подключение
             _sqlSting = new SQLCommanSelect();
+            _sqlSave = new SQLCommanSelect();
             //объявили localRow
             localrow = new LocalRow();
             //объявили таблицу куда будем записывать все
@@ -555,6 +558,50 @@ namespace Sklad_v1_001.FormUsers.Zacupca
 
             _sqlSting.AddParametr("@p_pagecountrow", SqlDbType.Int);
             _sqlSting.SetParametrValue("@p_pagecountrow", 0);
+
+            //объявляем переменные для хранимой процедуры save
+            _sqlSave.AddParametr("@p_IDCommand", SqlDbType.Int);
+            _sqlSave.SetParametrValue("@p_IDCommand", 0);
+
+            _sqlSave.AddParametr("@p_IDProduct", SqlDbType.Int);
+            _sqlSave.SetParametrValue("@p_IDProduct", 0);
+
+            _sqlSave.AddParametr("@p_TrackingNumber", SqlDbType.BigInt);
+            _sqlSave.SetParametrValue("@p_TrackingNumber", 0);
+
+            _sqlSave.AddParametr("@p_WhenOrdered", SqlDbType.DateTime);
+            _sqlSave.SetParametrValue("@p_WhenOrdered", DateTime.Now);
+            /*
+             *@ int,
+	@ int = 0,
+	@ bigint,
+	@ datetime,
+	@p_WhenItComes datetime,
+	@p_Quantity int,
+	@p_SummaSum money,
+	@p_PaymentType int,
+	@p_PaymentReceipt image,
+	@p_TypeBelivery int,
+	@p_Adress nvarchar(255),
+	@p_NumvberPhon bigint ,
+	@p_NamaMeneger nvarchar(255) ,
+	@p_NameBelivery nvarchar(255),
+	@p_NumberBeliveryTracking nvarchar(255),
+	@p_NameManegerBelivery nvarchar(255),
+	@p_DopNameCompanyBelivery nvarchar(255),
+	@p_DopNameSkladCompany nvarchar(255) ,
+	@p_DopTagPriceOrder money,
+	@p_DopWhenDateOrder datetime,
+	@p_DopWhereDateOrder datetime,
+	@p_DopTypePayment int,
+	@p_DopPaymentReceipt image,
+	@p_DopNameManegerCompany nvarchar(255) ,
+	@p_DopNumberPhoneManeger nvarchar(255),
+	@p_DateCreate datetime,
+	@p_CreateUseras int,
+	@p_DataLastModifide datetime,
+	@p_LastModifideUsers int
+             */
         }
         public DataTable Select(LocalFilter filterlocal)
         {

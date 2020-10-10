@@ -20,7 +20,9 @@
            
         </Grid>
         <DataGrid x:Name="DataDocument" AutoGenerateColumns="False" Grid.Row="1" SelectionChanged="DataGrid_SelectionChanged"
-                  Style="{DynamicResource DataDocument}">
+                  Style="{DynamicResource DataDocument}"
+                  CellStyle="{StaticResource NameCellStyle}"
+                  RowStyle="{StaticResource NameRowStyle}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="Auto" MaxWidth="200" />
                 <DataGridTextColumn Binding="{Binding Path=TrackingNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.TrackingNumber}" Width="Auto" MaxWidth="200"/>
