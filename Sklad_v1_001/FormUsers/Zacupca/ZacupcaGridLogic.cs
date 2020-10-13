@@ -70,6 +70,7 @@ namespace Sklad_v1_001.FormUsers.Zacupca
     public class LocalRow : INotifyPropertyChanged
     {
         private Int32 iD;
+        private Int32 iDCommand;
         private Int64 trackingNumber;
         private DateTime? whenOrdered;
         private DateTime? whenItComes;
@@ -492,6 +493,20 @@ namespace Sklad_v1_001.FormUsers.Zacupca
             }
         }
 
+        public int IDCommand
+        {
+            get
+            {
+                return iDCommand;
+            }
+
+            set
+            {
+                iDCommand = value;
+                OnPropertyChanged("IDCommand");
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
@@ -664,6 +679,42 @@ namespace Sklad_v1_001.FormUsers.Zacupca
             _table = _sqlSting.SqlAnswer.datatable;
 
             return _table;
+        }
+
+        public Int64 SetRow(LocalRow _localRow)
+        {
+            _sqlSave.SetParametrValue("@p_IDCommand", _localRow.IDCommand);
+            _sqlSave.SetParametrValue("@p_IDProduct", _localRow.ID);            
+            _sqlSave.SetParametrValue("@p_TrackingNumber", _localRow.TrackingNumber);           
+            _sqlSave.SetParametrValue("@p_WhenOrdered", _localRow.WhenOrdered);
+            _sqlSave.SetParametrValue("@p_WhenItComes", _localRow.WhenItComes);
+            _sqlSave.SetParametrValue("@p_Quantity", _localRow.Quantity);          
+            _sqlSave.SetParametrValue("@p_TrackingNumber", _localRow.TrackingNumber);          
+            _sqlSave.SetParametrValue("@p_SummaSum", _localRow.SummaSum);           
+            _sqlSave.SetParametrValue("@p_PaymentType", _localRow.PaymentType);            
+            _sqlSave.SetParametrValue("@p_PaymentReceipt", _localRow.PaymentReceipt);            
+            _sqlSave.SetParametrValue("@p_TypeBelivery", _localRow.TypeBelivery);
+            _sqlSave.SetParametrValue("@p_Adress", _localRow.Adress);         
+            _sqlSave.SetParametrValue("@p_NumvberPhon", _localRow.NumvberPhon);           
+            _sqlSave.SetParametrValue("@p_NamaMeneger", _localRow.NamaMeneger);            
+            _sqlSave.SetParametrValue("@p_NameBelivery", _localRow.NameBelivery);           
+            _sqlSave.SetParametrValue("@p_NumberBeliveryTracking", _localRow.NumberBeliveryTracking);           
+            _sqlSave.SetParametrValue("@p_DopNameCompanyBelivery", _localRow.DopNameCompanyBelivery);          
+            _sqlSave.SetParametrValue("@p_NameManegerBelivery", _localRow.NameManegerBelivery);           
+            _sqlSave.SetParametrValue("@p_DopNameSkladCompany", _localRow.DopNameSkladCompany);           
+            _sqlSave.SetParametrValue("@p_DopTagPriceOrder", _localRow.DopTagPriceOrder);           
+            _sqlSave.SetParametrValue("@p_DopWhenDateOrder", _localRow.DopWhenDateOrder);          
+            _sqlSave.SetParametrValue("@p_DopWhereDateOrder", _localRow.DopWhereDateOrder);           
+            _sqlSave.SetParametrValue("@p_DopTypePayment", _localRow.DopTypePayment);           
+            _sqlSave.SetParametrValue("@p_DopPaymentReceipt", _localRow.DopPaymentReceipt);            
+            _sqlSave.SetParametrValue("@p_DopNameManegerCompany", _localRow.DopNameManegerCompany);           
+            _sqlSave.SetParametrValue("@p_DopNumberPhoneManeger", _localRow.DopNumberPhoneManeger);            
+            _sqlSave.SetParametrValue("@p_DateCreate", _localRow.DateCreate);            
+            _sqlSave.SetParametrValue("@p_CreateUseras", _localRow.CreateUseras);           
+            _sqlSave.SetParametrValue("@p_DataLastModifide", _localRow.DataLastModifide);            
+            _sqlSave.SetParametrValue("@p_LastModifideUsers", _localRow.LastModifideUsers);
+            
+            return (long)_sqlSave.SqlAnswer.result;
         }
 
         public LocalRow Convert(DataRow _row, LocalRow localrow)
