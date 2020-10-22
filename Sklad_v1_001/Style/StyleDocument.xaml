@@ -2,6 +2,13 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Sklad_v1_001.Style">
 
+    <Style  x:Key="UsersControlWidth"  TargetType="{x:Type UserControl}" >
+        <Style.Setters>
+            <Setter Property="Background" Value="#FFFDFAFA"/>
+            <Setter Property="Height" Value="918"/>
+        </Style.Setters>
+    </Style>
+    
 
     <Style  x:Key="DataDocument"  TargetType="{x:Type DataGrid}" >
         <Style.Setters>
@@ -18,4 +25,12 @@
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />
     </Style>
+    <Style  x:Key="Grid"  TargetType="{x:Type Grid}" >
+        <Style.Setters>
+            <!--<Setter Property="TextBlock.TextAlignment" Value="Center" />-->
+            <!--<Setter Property="HorizontalAlignment" Value="Center" />-->
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+        </Style.Setters>
+    </Style>
+
 </ResourceDictionary>

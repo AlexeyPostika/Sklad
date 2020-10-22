@@ -79,11 +79,17 @@
     <Compile Include="Control\FlexFilter\FlexGridFromTo.xaml.cs">
       <DependentUpon>FlexGridFromTo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexImage\FlexLabelImageButton.xaml.cs">
+      <DependentUpon>FlexLabelImageButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\ToolBar\ToolBarSaveCancel.xaml.cs">
       <DependentUpon>ToolBarSaveCancel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\ToolBar\ToolBarNextToBack.xaml.cs">
       <DependentUpon>ToolBarNextToBack.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ToolBar\ToolBarZakupkaxaml.xaml.cs">
+      <DependentUpon>ToolBarZakupkaxaml.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\Users\FlexUsersEdit.xaml.cs">
       <DependentUpon>FlexUsersEdit.xaml</DependentUpon>
@@ -122,9 +128,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Control\FlexImage\FlexLabelImageButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\ToolBar\ToolBarSaveCancel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\ToolBar\ToolBarZakupkaxaml.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\Zona\Green\SelectCategoryGreenTable.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -336,6 +350,9 @@
   <ItemGroup>
     <Resource Include="Icone\Controllu\checkmark_24px.png" />
     <Resource Include="Icone\Controllu\delete_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icone\AddList_40.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

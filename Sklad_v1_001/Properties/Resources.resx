@@ -330,4 +330,7 @@
   <data name="WhenOrdered" xml:space="preserve">
     <value>Когда заказали</value>
   </data>
+  <data name="ADDLIST" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
 </root>

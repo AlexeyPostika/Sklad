@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
              mc:Ignorable="d" Height="918" Width="1268">
     <Grid Background="#FFF7F7F7" HorizontalAlignment="Left" Width="1268" Margin="0,0,-96,0">
         <!--грид иконки-->
@@ -36,10 +37,12 @@
             <Button x:Name="Purchase" Content="Закупка" HorizontalAlignment="Left" Margin="47,177,0,0" VerticalAlignment="Top" Width="177" Height="40" Background="#FF292933" FontSize="16" FontWeight="Bold" Foreground="#FFF9F8F8" BorderBrush="#FF292933" Click="Purchase_Click"/>
         </Grid>
         <!--вертикальное меню-->
-        <Grid HorizontalAlignment="Left" Height="100" Margin="234,0,0,0" VerticalAlignment="Top" Width="1034" Background="#FF292933"/>
+        <!--<Grid HorizontalAlignment="Left" Height="100" Margin="234,0,0,0" VerticalAlignment="Top" Width="1034" Background="#FF292933">
+            <ToolBar:ToolBarZakupkaxaml></ToolBar:ToolBarZakupkaxaml>
+        </Grid>-->
         <!--грид основной контейнер-->
-        <Grid Height="818" Margin="234,100,0,0" VerticalAlignment="Top" Background="#FF292933">
-            <TextBlock HorizontalAlignment="Left" Margin="-155,-45,0,0" TextWrapping="Wrap" Text="KLAD" VerticalAlignment="Top" Height="39" RenderTransformOrigin="0.079,0.407" Width="116" FontSize="32" FontWeight="Bold" FontFamily="Castellar"/>
+        <TextBlock HorizontalAlignment="Left" Margin="83,54,0,0" TextWrapping="Wrap" Text="KLAD" VerticalAlignment="Top" Height="38" RenderTransformOrigin="0.079,0.407" Width="116" FontSize="32" FontWeight="Bold" FontFamily="Castellar"/>
+        <Grid Height="918" Margin="234,0,0,0" VerticalAlignment="Top" Background="#FF292933">
             <Frame x:Name="Docker1" Margin="0,1" NavigationUIVisibility="Hidden" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
         </Grid>
         <Image HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="51" RenderTransformOrigin="-4.9,-2.62" Source="/Sklad_v1_001;component/Icone/Sklad.png" Margin="103,10,0,0"/>
