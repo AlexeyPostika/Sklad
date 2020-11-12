@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sklad_v1_001", "Sklad_v1_001\Sklad_v1_001.csproj", "{E5596643-F9BB-44B2-92D1-5A09384327A3}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SkladInstaller", "SkladInstaller\SkladInstaller.vdproj", "{CA7732CF-5511-4946-8542-DE790D5D5A70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,13 @@ Global
 		{E5596643-F9BB-44B2-92D1-5A09384327A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5596643-F9BB-44B2-92D1-5A09384327A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5596643-F9BB-44B2-92D1-5A09384327A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA7732CF-5511-4946-8542-DE790D5D5A70}.Debug|Any CPU.ActiveCfg = Debug
+		{CA7732CF-5511-4946-8542-DE790D5D5A70}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9D7AA463-5FB9-4C23-90FD-0BD8CF7AD6E1}
 	EndGlobalSection
 EndGlobal
