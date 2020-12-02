@@ -16,13 +16,19 @@
         "Entry"
         {
         "MsmKey" = "8:_30D00F6ABE38AAB2F3B624597F1940CB"
-        "OwnerKey" = "8:_979BBB07D6024A5780AD421B46101CB3"
+        "OwnerKey" = "8:_F307623269ED451EB3DA9DA14B8819D6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_30D00F6ABE38AAB2F3B624597F1940CB"
         "OwnerKey" = "8:_4318C250343D20DF286020E6D7B08DF1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_369B0F49058D41AF8A42FA7656DEE465"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -34,31 +40,43 @@
         "Entry"
         {
         "MsmKey" = "8:_4318C250343D20DF286020E6D7B08DF1"
-        "OwnerKey" = "8:_979BBB07D6024A5780AD421B46101CB3"
+        "OwnerKey" = "8:_F307623269ED451EB3DA9DA14B8819D6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_4346676C8D3643D58DD2B8156FA46598"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_979BBB07D6024A5780AD421B46101CB3"
+        "MsmKey" = "8:_86BF3F7915EF4515ACD6E780CEA82C9C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_9C251FCC68C6E7184BDD0A5CBE3EF329"
-        "OwnerKey" = "8:_979BBB07D6024A5780AD421B46101CB3"
+        "OwnerKey" = "8:_F307623269ED451EB3DA9DA14B8819D6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CEE5A31198D94957B945D2552B83F75A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F307623269ED451EB3DA9DA14B8819D6"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_979BBB07D6024A5780AD421B46101CB3"
+        "OwnerKey" = "8:_30D00F6ABE38AAB2F3B624597F1940CB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_F307623269ED451EB3DA9DA14B8819D6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -71,12 +89,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_4318C250343D20DF286020E6D7B08DF1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_30D00F6ABE38AAB2F3B624597F1940CB"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -106,16 +118,6 @@
             "ComponentsUrl" = "8:"
                 "Items"
                 {
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
-                    {
-                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 и x64)"
-                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
-                    }
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.SqlServer.Express.10.5"
-                    {
-                    "Name" = "8:SQL Server 2008 R2 Express"
-                    "ProductCode" = "8:Microsoft.SqlServer.Express.10.5"
-                    }
                 }
             }
         }
@@ -156,31 +158,31 @@
     {
         "CustomAction"
         {
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_D06B7119BDF04A188B5FECA7882407B5"
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_2BF6F21DC3AC4E998236DF78640A7C21"
             {
             "Name" = "8:Основные выходные файлы from Sklad_v1_001 (Active)"
             "Condition" = "8:"
-            "Object" = "8:_979BBB07D6024A5780AD421B46101CB3"
-            "FileType" = "3:2"
-            "InstallAction" = "3:1"
-            "Arguments" = "8:"
-            "EntryPoint" = "8:"
-            "Sequence" = "3:1"
-            "Identifier" = "8:_962E4F09_E3BB_4949_A81B_467830E4AD0F"
-            "InstallerClass" = "11:TRUE"
-            "CustomActionData" = "8:"
-            }
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_FD8B04E785D746BD8187EA3C9FC31C41"
-            {
-            "Name" = "8:dotnetfx20.exe"
-            "Condition" = "8:"
-            "Object" = "8:_4346676C8D3643D58DD2B8156FA46598"
+            "Object" = "8:_F307623269ED451EB3DA9DA14B8819D6"
             "FileType" = "3:2"
             "InstallAction" = "3:2"
             "Arguments" = "8:"
             "EntryPoint" = "8:"
             "Sequence" = "3:1"
-            "Identifier" = "8:_287BCB97_4AA0_46E7_B62B_09A786E67B50"
+            "Identifier" = "8:_D55EF75D_971E_400C_9CFB_5FD8FB74B3D4"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_518998AEC82B4FBBA0FC877BE5A8C783"
+            {
+            "Name" = "8:Основные выходные файлы from Sklad_v1_001 (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_F307623269ED451EB3DA9DA14B8819D6"
+            "FileType" = "3:2"
+            "InstallAction" = "3:1"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_E55A54D3_B922_44A7_B9FD_193570389351"
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:"
             }
@@ -238,6 +240,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_369B0F49058D41AF8A42FA7656DEE465"
+            {
+            "SourcePath" = "8:..\\..\\..\\Sklad-master\\Допол Компонет\\NDP472-KB4054530-x86-x64-AllOS-ENU.exe"
+            "TargetName" = "8:NDP472-KB4054530-x86-x64-AllOS-ENU.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_452A991035304CCFA2B4446EB7139649"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3E9822CED7FA4F269A01154510C686D0"
             {
             "SourcePath" = "8:..\\..\\..\\Sklad\\Sklad_v1_001\\Icone\\SkladIco.ico"
@@ -289,10 +311,10 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4346676C8D3643D58DD2B8156FA46598"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_86BF3F7915EF4515ACD6E780CEA82C9C"
             {
-            "SourcePath" = "8:W:\\dotnetfx20.exe"
-            "TargetName" = "8:dotnetfx20.exe"
+            "SourcePath" = "8:..\\..\\..\\Sklad-master\\Допол Компонет\\SQLEXPR32_x86_ENU.exe"
+            "TargetName" = "8:SQLEXPR32_x86_ENU.exe"
             "Tag" = "8:"
             "Folder" = "8:_452A991035304CCFA2B4446EB7139649"
             "Condition" = "8:"
@@ -305,7 +327,7 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
@@ -338,6 +360,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CEE5A31198D94957B945D2552B83F75A"
+            {
+            "SourcePath" = "8:..\\..\\..\\Sklad-master\\Допол Компонет\\SQLEXPR_x64_ENU.exe"
+            "TargetName" = "8:SQLEXPR_x64_ENU.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_452A991035304CCFA2B4446EB7139649"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
         }
@@ -407,15 +449,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SkladInstaller"
-        "ProductCode" = "8:{F1C02081-2A61-45F5-8BB9-87105397C5D9}"
-        "PackageCode" = "8:{5FCEAEC8-F50A-42EC-AB9C-C3236DEF25FB}"
+        "ProductCode" = "8:{4BC8F3EA-A7A8-481A-9483-C6DFEAFE5471}"
+        "PackageCode" = "8:{FF895813-B755-4A04-8EC8-3B6B0F3A8B2C}"
         "UpgradeCode" = "8:{F83F68A8-8702-4306-BA9C-7883CDDA957A}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.0.3"
         "Manufacturer" = "8:Default Company Name"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -584,7 +626,7 @@
                 {
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_BE91CEACB28F49AA9B6F12E03B1E1147"
                     {
-                    "Sequence" = "3:100"
+                    "Sequence" = "3:110"
                     "DisplayName" = "8:Ход выполнения"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
@@ -785,7 +827,7 @@
                 {
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_4485E4C0410C438D8C4E679802152A49"
                     {
-                    "Sequence" = "3:110"
+                    "Sequence" = "3:200"
                     "DisplayName" = "8:Флажки (Б)"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
@@ -812,7 +854,7 @@
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
                             "Setting" = "3:2"
-                            "Value" = "8:ghfghghgf"
+                            "Value" = "8:Установка .Net"
                             "DefaultValue" = "8:#1214"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -825,7 +867,7 @@
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
                             "Setting" = "3:2"
-                            "Value" = "8:fghfghfg"
+                            "Value" = "8:Установка дополнительно ПО для полноценного функционирования"
                             "DefaultValue" = "8:#1215"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -837,8 +879,8 @@
                             "Type" = "3:3"
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1234"
+                            "Setting" = "3:2"
+                            "Value" = "8:Установка .Net 4.7.2"
                             "DefaultValue" = "8:#1234"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -889,8 +931,8 @@
                             "Type" = "3:3"
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1235"
+                            "Setting" = "3:2"
+                            "Value" = "8:SQL Express 2014"
                             "DefaultValue" = "8:#1235"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -941,8 +983,8 @@
                             "Type" = "3:3"
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1236"
+                            "Setting" = "3:2"
+                            "Value" = "8:MS Studio 2014"
                             "DefaultValue" = "8:#1236"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -981,7 +1023,7 @@
                             "ContextData" = "8:1;True=1;False=0"
                             "Attributes" = "3:0"
                             "Setting" = "3:0"
-                            "Value" = "3:1"
+                            "Value" = "3:0"
                             "DefaultValue" = "3:1"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -1033,7 +1075,7 @@
                             "ContextData" = "8:1;True=1;False=0"
                             "Attributes" = "3:0"
                             "Setting" = "3:0"
-                            "Value" = "3:1"
+                            "Value" = "3:0"
                             "DefaultValue" = "3:1"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -1041,7 +1083,7 @@
                     }
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_ADF0983D65504B89977ED202B66305E8"
                     {
-                    "Sequence" = "3:300"
+                    "Sequence" = "3:400"
                     "DisplayName" = "8:Подтверждение установки"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
@@ -1063,7 +1105,7 @@
                     }
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_B2408B48B40144AFBB7CFFDAAC6FFCFE"
                     {
-                    "Sequence" = "3:200"
+                    "Sequence" = "3:300"
                     "DisplayName" = "8:Папка установки"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
@@ -1183,7 +1225,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_2C16801E8F37414DBA0C0127FE7D8881"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_027E3475721B4D2D898935C3FD568E0E"
             {
             "SourcePath" = "8:"
             "TargetName" = "8:"
@@ -1211,119 +1253,7 @@
                 {
                 }
             }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_5165C3D9C2C04A648CAB5DC976B62B7C"
-            {
-            "SourcePath" = "8:"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_452A991035304CCFA2B4446EB7139649"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:XmlSerializer"
-            "OutputProjectGuid" = "8:{E5596643-F9BB-44B2-92D1-5A09384327A3}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_586A3674257C4B9584B76AD675673CA9"
-            {
-            "SourcePath" = "8:"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_452A991035304CCFA2B4446EB7139649"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:RuntimeImplementation"
-            "OutputProjectGuid" = "8:{E5596643-F9BB-44B2-92D1-5A09384327A3}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_833809DC5B36480D9FB3EB2774DBA4B5"
-            {
-            "SourcePath" = "8:"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_452A991035304CCFA2B4446EB7139649"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Symbols"
-            "OutputProjectGuid" = "8:{E5596643-F9BB-44B2-92D1-5A09384327A3}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_979BBB07D6024A5780AD421B46101CB3"
-            {
-            "SourcePath" = "8:..\\Sklad_v1_001\\obj\\Debug\\Sklad_v1_001.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_452A991035304CCFA2B4446EB7139649"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{E5596643-F9BB-44B2-92D1-5A09384327A3}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A9616A6279514FBA82C4193CDC6991F0"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_060B8F31EBD84F41B6E0036447A54A51"
             {
             "SourcePath" = "8:"
             "TargetName" = "8:"
@@ -1351,7 +1281,91 @@
                 {
                 }
             }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_E3C54E2C84F24F9BAFD46A83D6DAEE37"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_235346277AE245C7ACC0595B0E9A7FB6"
+            {
+            "SourcePath" = "8:"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_452A991035304CCFA2B4446EB7139649"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:RuntimeImplementation"
+            "OutputProjectGuid" = "8:{E5596643-F9BB-44B2-92D1-5A09384327A3}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_281CEAF435254DD2B16DAC00C675C0C8"
+            {
+            "SourcePath" = "8:"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_452A991035304CCFA2B4446EB7139649"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Symbols"
+            "OutputProjectGuid" = "8:{E5596643-F9BB-44B2-92D1-5A09384327A3}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_68ED6EA23A754BF5B8432119C4864B39"
+            {
+            "SourcePath" = "8:"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_452A991035304CCFA2B4446EB7139649"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:XmlSerializer"
+            "OutputProjectGuid" = "8:{E5596643-F9BB-44B2-92D1-5A09384327A3}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_978E2A15CD114F92AEB74D53586834CC"
             {
             "SourcePath" = "8:"
             "TargetName" = "8:"
@@ -1379,7 +1393,7 @@
                 {
                 }
             }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_F40FBB90B99340AC9350640FCAEE6CC1"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_C8ACDC3F9DA6418D914A503F6879C9A5"
             {
             "SourcePath" = "8:"
             "TargetName" = "8:"
@@ -1407,7 +1421,7 @@
                 {
                 }
             }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_F84D3F3E36CE451CB2CCDFE0E36D0378"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_CE70206CF15245CDBEA76D3BC298AF19"
             {
             "SourcePath" = "8:"
             "TargetName" = "8:"
@@ -1429,6 +1443,34 @@
             "ProjectOutputGroupRegister" = "3:1"
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:ContentFiles"
+            "OutputProjectGuid" = "8:{E5596643-F9BB-44B2-92D1-5A09384327A3}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_F307623269ED451EB3DA9DA14B8819D6"
+            {
+            "SourcePath" = "8:..\\Sklad_v1_001\\obj\\Debug\\Sklad_v1_001.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_452A991035304CCFA2B4446EB7139649"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{E5596643-F9BB-44B2-92D1-5A09384327A3}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"

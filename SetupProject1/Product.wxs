@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?define TargetDir=$(var.AppSample.TargetDir)?>
+  <?define ProductName=$(var.AppSample.ProjectName)?>
+  <?define TargetFileName=$(var.AppSample.TargetFileName)?>
+  
+	<Product Id="*" Name="SetupProject1" Language="1049" Version="1.0.0.2" Manufacturer="" UpgradeCode="7ab0dac9-9f89-4834-943f-774ce131d8a9">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate />
+
+		<Feature Id="ProductFeature" Title="SetupProject1" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="SetupProject1" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="TARGETDIR" Directory="INSTALLFOLDER">
+      
+			 <!--TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer.--> 
+			 <Component Id="ProductComponent" Directory="INSTALLFOLDER">
+         <File Name="$(var.TargetFileName).config" Source="$(var.TargetDir)"/>
+         <File Name="$(var.TargetFileName)" Source="$(var.TargetDir)"/>
+			 </Component>
+		</ComponentGroup>
+    
+	</Fragment>
+</Wix>
