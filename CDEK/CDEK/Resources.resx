@@ -1,0 +1,925 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AED" xml:space="preserve">
+    <value>Дирхам ОАЭ</value>
+  </data>
+  <data name="AMD" xml:space="preserve">
+    <value>Армянский драм</value>
+  </data>
+  <data name="APIError" xml:space="preserve">
+    <value>Указанная вами версия API не поддерживается</value>
+  </data>
+  <data name="AuthorisationError" xml:space="preserve">
+    <value>Ошибка авторизации</value>
+  </data>
+  <data name="BYN" xml:space="preserve">
+    <value>Белорусский рубль</value>
+  </data>
+  <data name="ChineseExpress" xml:space="preserve">
+    <value>Китайский экспресс</value>
+  </data>
+  <data name="ChineseExpressDescription" xml:space="preserve">
+    <value>Услуга по доставке из Китая в Россию, Белоруссию и Казахстан. Стоимость разбита по интервалам:
+- до 200 гр;
+- каждые последующие 100 гр до 1 кг;
+- каждый последующий 1кг свыше 1 кг.</value>
+  </data>
+  <data name="ChineseExpressDoorDoor" xml:space="preserve">
+    <value>Китайский экспресс дверь-дверь (Д-Д)</value>
+  </data>
+  <data name="ChineseExpressDoorWarehouse" xml:space="preserve">
+    <value>Китайский экспресс дверь-склад (Д-С)</value>
+  </data>
+  <data name="ChineseExpressWarehouseDoor" xml:space="preserve">
+    <value>Китайский экспресс склад-дверь (С-Д)</value>
+  </data>
+  <data name="ChineseExpressWarehouseWarehouse" xml:space="preserve">
+    <value>Китайский экспресс склад-склад (С-С)</value>
+  </data>
+  <data name="CNY" xml:space="preserve">
+    <value>Юань</value>
+  </data>
+  <data name="DataDecodingError" xml:space="preserve">
+    <value>Ошибка декодирования данных. Ожидается &lt;json или jsop&gt;</value>
+  </data>
+  <data name="DataFormatSetIncorrectly" xml:space="preserve">
+    <value>Неправильно задан формат данных</value>
+  </data>
+  <data name="DeliveryModeSettingError" xml:space="preserve">
+    <value>Ошибка задания режима доставки</value>
+  </data>
+  <data name="DestinationCityNot" xml:space="preserve">
+    <value>Не задан город-получатель</value>
+  </data>
+  <data name="DoorDoor" xml:space="preserve">
+    <value>дверь-дверь</value>
+  </data>
+  <data name="DoorDoorDescription" xml:space="preserve">
+    <value>Курьер забирает груз у отправителя и доставляет получателю на указанный адрес.</value>
+  </data>
+  <data name="DoorPostamat" xml:space="preserve">
+    <value>дверь-постамат</value>
+  </data>
+  <data name="DoorPostamatDecription" xml:space="preserve">
+    <value>Курьер забирает груз у отправителя и доставляет в указанный постамат, получатель забирает груз самостоятельно из постамата</value>
+  </data>
+  <data name="DoorWarehouse" xml:space="preserve">
+    <value>дверь-склад</value>
+  </data>
+  <data name="DoorWarehouseDescription" xml:space="preserve">
+    <value>Курьер забирает груз у отправителя и довозит до склада, получатель забирает груз самостоятельно в ПВЗ (самозабор).</value>
+  </data>
+  <data name="EconomyExpressDescription" xml:space="preserve">
+    <value>Недорогая доставка грузов внутри РФ, Белоруссии, Казахстана, Армении, Киргизии и между этим странами, ЖД и автотранспортом (доставка грузов с увеличением сроков).</value>
+  </data>
+  <data name="EconomyExpressDoorDoor" xml:space="preserve">
+    <value>Экономичный экспресс дверь-дверь</value>
+  </data>
+  <data name="EconomyExpressDoorWarehouse" xml:space="preserve">
+    <value>Экономичный экспресс дверь-склад</value>
+  </data>
+  <data name="EconomyExpressWarehouseDoor" xml:space="preserve">
+    <value>Экономичный экспресс склад-дверь</value>
+  </data>
+  <data name="EconomyShipping" xml:space="preserve">
+    <value>Экономичная доставка</value>
+  </data>
+  <data name="EconomyShippingDescription" xml:space="preserve">
+    <value>Недорогая доставка грузов по России ЖД и автотранспортом (доставка грузов с увеличением сроков).</value>
+  </data>
+  <data name="EconomyShippingWarehouseWarehouse" xml:space="preserve">
+    <value>Экономичный экспресс склад-склад</value>
+  </data>
+  <data name="ErrorWhileSpecifyingLocationParameters" xml:space="preserve">
+    <value>Ошибка при указании параметров места</value>
+  </data>
+  <data name="EUR" xml:space="preserve">
+    <value>Евро</value>
+  </data>
+  <data name="Express" xml:space="preserve">
+    <value>Экспресс</value>
+  </data>
+  <data name="ExpressLightDescription" xml:space="preserve">
+    <value>Классическая экспресс-доставка по России документов и грузов до 30 кг.</value>
+  </data>
+  <data name="ExpressLightDoorDoor" xml:space="preserve">
+    <value>Экспресс лайт дверь-дверь</value>
+  </data>
+  <data name="ExpressLightDoorPostamat" xml:space="preserve">
+    <value>Экспресс лайт дверь-постамат</value>
+  </data>
+  <data name="ExpressLightInternationalDescription" xml:space="preserve">
+    <value>Классическая экспресс-доставка документов и грузов внутри РФ, Белоруссии, Казахстана, Армении, Киргизии и между этим странами.</value>
+  </data>
+  <data name="ExpressLightInternationalDoorWarehouse" xml:space="preserve">
+    <value>Экспресс лайт дверь-склад(2)</value>
+  </data>
+  <data name="ExpressLightInternationalWarehouseDoor" xml:space="preserve">
+    <value>Экспресс лайт склад-дверь(2)</value>
+  </data>
+  <data name="ExpressLightInternationalWarehouseWarehouse" xml:space="preserve">
+    <value>Экспресс лайт склад-склад(2)</value>
+  </data>
+  <data name="ExpressLightLimit" xml:space="preserve">
+    <value>До 30 кг</value>
+  </data>
+  <data name="ExpressLightWarehousePostamat" xml:space="preserve">
+    <value>Экспресс лайт склад-постамат</value>
+  </data>
+  <data name="ExpressSheavyweightsDescription" xml:space="preserve">
+    <value>Классическая экспресс-доставка внутри РФ, Белоруссии, Казахстана, Армении, Киргизии и между этим странами.</value>
+  </data>
+  <data name="ExpressSheavyweightsDoorDoor" xml:space="preserve">
+    <value>Экспресс тяжеловесы дверь-дверь</value>
+  </data>
+  <data name="ExpressSheavyweightsDoorWarehouse" xml:space="preserve">
+    <value>Экспресс тяжеловесы дверь-склад</value>
+  </data>
+  <data name="ExpressSheavyweightsWarehouseDoor" xml:space="preserve">
+    <value>Экспресс тяжеловесы склад-дверь</value>
+  </data>
+  <data name="ExpressSheavyweightsWarehouseWarehouse" xml:space="preserve">
+    <value>Экспресс тяжеловесы склад-склад</value>
+  </data>
+  <data name="ExpressВelivery" xml:space="preserve">
+    <value>Срочная доставка</value>
+  </data>
+  <data name="ExpressВeliveryDescription" xml:space="preserve">
+    <value>Срочная доставка документов и грузов «из рук в руки» по России к определенному часу.</value>
+  </data>
+  <data name="ExpressВeliveryTo18" xml:space="preserve">
+    <value>Супер-экспресс до 18</value>
+  </data>
+  <data name="GBP" xml:space="preserve">
+    <value>Фунт стерлингов</value>
+  </data>
+  <data name="IHungUp" xml:space="preserve">
+    <value>Бросил трубку</value>
+  </data>
+  <data name="InternalServerError" xml:space="preserve">
+    <value>Внутренняя ошибка на сервере. Обратитесь к программистам компании СДЭК для исправления.</value>
+  </data>
+  <data name="ItIsImpossiblePostalCodeError" xml:space="preserve">
+    <value>Невозможно однозначно идентифицировать город-отправитель по почтовому индексу</value>
+  </data>
+  <data name="ItIsImpossibleToCarryOutDelivery" xml:space="preserve">
+    <value>Невозможно осуществить доставку по этому направлению при заданных условиях</value>
+  </data>
+  <data name="ItIsImpossibleToUniquelyIdentifyTheReceivingCity" xml:space="preserve">
+    <value>Невозможно однозначно идентифицировать город-получатель по почтовому индексу</value>
+  </data>
+  <data name="KGS" xml:space="preserve">
+    <value>Киргизский сом</value>
+  </data>
+  <data name="KRW" xml:space="preserve">
+    <value>Южнокорейская вона</value>
+  </data>
+  <data name="KZT" xml:space="preserve">
+    <value>Тенге</value>
+  </data>
+  <data name="MainExpressDescription" xml:space="preserve">
+    <value>Быстрая экономичная доставка грузов по России</value>
+  </data>
+  <data name="MainExpressDescription1" xml:space="preserve">
+    <value>Быстрая экономичная доставка грузов по России</value>
+  </data>
+  <data name="MainExpressDoorDoor" xml:space="preserve">
+    <value>Магистральный экспресс дверь-дверь</value>
+  </data>
+  <data name="MainExpressDoorWarehouse" xml:space="preserve">
+    <value>Магистральный экспресс дверь-склад</value>
+  </data>
+  <data name="MainExpressWarehouseDoor" xml:space="preserve">
+    <value>Магистральный экспресс склад-дверь</value>
+  </data>
+  <data name="MainExpressWarehouseWarehouse" xml:space="preserve">
+    <value>Магистральный экспресс Магистральный экспресс склад-склад</value>
+  </data>
+  <data name="MainSuperExpressDescription" xml:space="preserve">
+    <value>Быстрая экономичная доставка грузов к определенному часу</value>
+  </data>
+  <data name="MainSuperExpressDescription1" xml:space="preserve">
+    <value>Быстрая экономичная доставка грузов к определенному часу</value>
+  </data>
+  <data name="MainSuperExpressDoorDoor" xml:space="preserve">
+    <value>Магистральный супер-экспресс дверь-дверь</value>
+  </data>
+  <data name="MainSuperExpressDoorWarehouse" xml:space="preserve">
+    <value>Магистральный супер-экспресс дверь-склад</value>
+  </data>
+  <data name="MainSuperExpressWarehouseDoor" xml:space="preserve">
+    <value>Магистральный супер-экспресс склад-дверь</value>
+  </data>
+  <data name="MainSuperExpressWarehouseWarehouse" xml:space="preserve">
+    <value>Магистральный супер-экспресс склад-склад</value>
+  </data>
+  <data name="MNT" xml:space="preserve">
+    <value>Монгольский тугрик</value>
+  </data>
+  <data name="NoDepartureLocation" xml:space="preserve">
+    <value>Не задано ни одного места для отправления</value>
+  </data>
+  <data name="PhoneIsBusy" xml:space="preserve">
+    <value>Телефон занят</value>
+  </data>
+  <data name="PhoneNotSpecified" xml:space="preserve">
+    <value>Телефон не указан</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Сброс</value>
+  </data>
+  <data name="RUB" xml:space="preserve">
+    <value>Российский рубль</value>
+  </data>
+  <data name="SenderCityNot" xml:space="preserve">
+    <value>Не задан город-отправитель</value>
+  </data>
+  <data name="Silence" xml:space="preserve">
+    <value>Тишина</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Телефон неверный</value>
+  </data>
+  <data name="String10" xml:space="preserve">
+    <value>Отказ в получении</value>
+  </data>
+  <data name="String100" xml:space="preserve">
+    <value>УПАКОВКА 1</value>
+  </data>
+  <data name="String101" xml:space="preserve">
+    <value>УПАКОВКА 2</value>
+  </data>
+  <data name="String102" xml:space="preserve">
+    <value>АРЕНДА КУРЬЕРА</value>
+  </data>
+  <data name="String103" xml:space="preserve">
+    <value>СМС УВЕДОМЛЕНИЕ</value>
+  </data>
+  <data name="String104" xml:space="preserve">
+    <value>ПРИМЕРКА НА ДОМУ</value>
+  </data>
+  <data name="String105" xml:space="preserve">
+    <value>СКАН ДОКУМЕНТОВ</value>
+  </data>
+  <data name="String106" xml:space="preserve">
+    <value>ПОДЪЕМ НА ЭТАЖ РУЧНОЙ</value>
+  </data>
+  <data name="String107" xml:space="preserve">
+    <value>ПОДЪЕМ НА ЭТАЖ ЛИФТОМ</value>
+  </data>
+  <data name="String108" xml:space="preserve">
+    <value>ПРОЗВОН</value>
+  </data>
+  <data name="String109" xml:space="preserve">
+    <value>ЧАСТИЧНАЯ ДОСТАВКА</value>
+  </data>
+  <data name="String11" xml:space="preserve">
+    <value>Отказ от оплаты</value>
+  </data>
+  <data name="String110" xml:space="preserve">
+    <value>ОСМОТР ВЛОЖЕНИЯ</value>
+  </data>
+  <data name="String111" xml:space="preserve">
+    <value>ТЕПЛОВОЙ РЕЖИМ</value>
+  </data>
+  <data name="String112" xml:space="preserve">
+    <value>ВОЗВРАТ ДОКУМЕНТОВ</value>
+  </data>
+  <data name="String113" xml:space="preserve">
+    <value>АГЕНТСКОЕ ВОЗНАГРАЖДЕНИЕ</value>
+  </data>
+  <data name="String114" xml:space="preserve">
+    <value>РЕВЕРС</value>
+  </data>
+  <data name="String115" xml:space="preserve">
+    <value>Обеспечение страховой защиты посылки. Размер дополнительного сбора страхования вычисляется от размера объявленной стоимости отправления. (Услуга начисляется автоматически для всех заказов типа "интернет-магазин", не разрешена для самостоятельной передачи в тэге AddService.)</value>
+  </data>
+  <data name="String116" xml:space="preserve">
+    <value>Компания СДЭК осуществляет доставку и отправление документов и грузов в выходные и нерабочие дни.
+
+При доставке или отправлении документов или грузов в выходной день к базовому тарифу добавляется 300 руб.</value>
+  </data>
+  <data name="String117" xml:space="preserve">
+    <value>При отправке тяжелых грузов,
+
+если вес 1 места составляет от 75 до 200 кг, то тариф увеличивается на 18 руб за каждый килограмм,
+
+если вес 1 места более 200 кг, то тариф увеличивается на 25 руб. за каждый килограмм.
+
+Также возможен индивидуальный расчет стоимости доставки тяжелых грузов.
+
+Тарифы на такие отправления будут рассчитаны индивидуально и в короткие сроки (не более 1 рабочего дня) и могут быть значительно дешевле наших базовых тарифов.</value>
+  </data>
+  <data name="String118" xml:space="preserve">
+    <value>При доставке негабаритного отправления, размер одной из сторон которого превышает 1,5 м, тариф увеличивается на 60 % (если отправление рассчитывается не по объемному весу).
+При доставке негабаритного отправления, размер одной из сторон которого превышает 2,2 м, тариф увеличивается на 100 % (если отправление рассчитывается не по объемному весу).</value>
+  </data>
+  <data name="String119" xml:space="preserve">
+    <value>Кроме обычных документов и грузов, компания СДЭК готова доставить отправления, содержащие опасные грузы (кроме запрещенных к перевозке).
+
+В связи с определенным риском стоимость доставки грузов, относящихся к категории опасных, увеличивается в 1,5 раза.</value>
+  </data>
+  <data name="String12" xml:space="preserve">
+    <value>Контактное лицо в компании не работает</value>
+  </data>
+  <data name="String120" xml:space="preserve">
+    <value>К приезду курьера Отправление должно быть подготовлено.
+
+По правилам компании СДЭК курьер может ожидать передачи или получения отправления не более 15 минут.
+
+В случаях, когда курьер дожидается приема или передачи Отправления более 15 минут, взимается дополнительный сбор в размере 170 рублей.
+
+Не допускается на тарифах Посылка.</value>
+  </data>
+  <data name="String121" xml:space="preserve">
+    <value>При необходимости наша компания предоставляет возможность хранения груза на складе, первые 7 дней — БЕСПЛАТНО.
+
+Начиная с восьмых суток, плата за хранение осуществляется по следующим тарифам:
+
+стандартного отправления (1 место размером до 25*40*60см) - основной тариф 15 руб./место за 1 календарный день, включая выходные и праздничные дни;
+
+не стандартного отправления (1 место размером более 25*40*60см) - основной тариф 30 руб./место за 1 календарный день, включая выходные и праздничные дни.</value>
+  </data>
+  <data name="String122" xml:space="preserve">
+    <value>Дополнительный сбор от кредитного контроля СДЭК.</value>
+  </data>
+  <data name="String123" xml:space="preserve">
+    <value>В случаях, когда забор или доставка груза курьером осуществляется из удаленного района города, взимается дополнительная плата.
+
+Установленный перечень удаленных районов Вы можете узнать по телефону единой справочной службы 8-800-250-04-05 (звонок бесплатный) или у менеджеров компании в офисе Вашего города.</value>
+  </data>
+  <data name="String124" xml:space="preserve">
+    <value>Когда требуется повторный вызов курьера по ранее аннулированному заказу либо доставка/забор не были осуществлены по вине клиента, начисляется дополнительный сбор.
+
+Размер сбора зависит от веса отправления и стоимости доставки по городу.</value>
+  </data>
+  <data name="String125" xml:space="preserve">
+    <value>Дополнительная услуга забора груза в городе отправителя, при условии, что тариф доставки с режимом «от склада» (не доступна для тарифов Посылка)</value>
+  </data>
+  <data name="String126" xml:space="preserve">
+    <value>Дополнительная услуга доставки груза в городе получателя, при условии, что тариф доставки с режимом «до склада» (только для тарифов «Магистральный», «Магистральный супер-экспресс»)</value>
+  </data>
+  <data name="String127" xml:space="preserve">
+    <value>Дополнительный сбор от кредитного контроля СДЭК.</value>
+  </data>
+  <data name="String128" xml:space="preserve">
+    <value>Для большей сохранности Вашего Отправления компания СДЭК предлагает услуги по обрешетке груза. Стоимость обрешетки для каждого Отправления рассчитывается индивидуально. Т.е. это индивидуальная упаковка груза.</value>
+  </data>
+  <data name="String129" xml:space="preserve">
+    <value>Стоимость коробки размером 310*215*280мм — 30 руб. (для грузов до 10 кг).</value>
+  </data>
+  <data name="String13" xml:space="preserve">
+    <value>Контактное лицо отсутствует</value>
+  </data>
+  <data name="String130" xml:space="preserve">
+    <value>Стоимость коробки размером 430*310*280мм — 45 руб. (для грузов до 15 кг).</value>
+  </data>
+  <data name="String131" xml:space="preserve">
+    <value>Когда необходимо доставить или принять документы в Федеральные службы, такие как: налоговые органы, министерства, посольства, суды, службы надзора и т.д., а также по заказам, требующим ожидания более часа, наша компания готова предоставить курьера.
+Стоимость услуги 170 руб./ час, минимальная оплата за 3 часа (510 руб).</value>
+  </data>
+  <data name="String132" xml:space="preserve">
+    <value>Компания СДЭК предлагает каждому клиенту оформить услугу "смс-уведомление о доставке".
+
+Отправителю высылается сообщение с датой и временем доставки. Стоимость услуги 5 рублей.</value>
+  </data>
+  <data name="String133" xml:space="preserve">
+    <value>Курьер доставляет покупателю несколько единиц товара (одежда, обувь и пр.) для примерки.</value>
+  </data>
+  <data name="String134" xml:space="preserve">
+    <value>Для подтверждения факта доставки мы можем предоставить Вам скан документов с подписью получателя. Стоимость услуги 50 руб.</value>
+  </data>
+  <data name="String135" xml:space="preserve">
+    <value>Услуга предоставляется при необходимости подъема на этаж крупногабаритных и тяжелых отправлений (весом от 10 кг).
+Разделяется на 2 вида: «Подъем на этаж ручной» и «Подъем на этаж лифтом».
+Стоимость услуги «Подъем на этаж ручной» (без лифта)для веса до 30 кг включительно — 50 руб. каждый этаж
+
+для веса 31-50 кг — 70 руб. каждый этаж
+
+для веса 51-100 кг — 100 руб. каждый этаж
+
+для веса 101-150 кг — 130 руб. каждый этаж
+
+для веса свыше 150 кг — 150 руб. каждый этаж
+
+Стоимость услуги «Подъем на этаж лифтом»:
+
+для веса до 30 кг включительно — 50 руб.
+
+для веса 31-50 кг — 70 руб.
+
+для веса 51-100 кг — 100 руб.
+
+для веса 101-150 кг — 130 руб.
+
+для веса свыше 100 кг — 150 руб.</value>
+  </data>
+  <data name="String136" xml:space="preserve">
+    <value>Услуга для ИМ "Прозвон" включает в себя предварительный прозвон получателей перед доставкой операторами call-центра. Стоимость услуги 15 руб. 1 заказ.</value>
+  </data>
+  <data name="String137" xml:space="preserve">
+    <value>Во время доставки товара покупатель может отказаться от одной или нескольких позиций, и выкупить только часть заказа (Если в заказе указано одно вложение, услуга не подключается.)</value>
+  </data>
+  <data name="String138" xml:space="preserve">
+    <value>Направления, по которым возможна доставка с тепловым режимом: Кемерово-Новокузнецк, Новосибирск-Красноярск, Новосибирск-Кемерово, Новосибирск-Томск, Новосибирск-Омск, Новосибирск-Барнаул, Барнаул-Горно-Алтайск И В ОБРАТНЫХ НАПРАВЛЕНИЯХ!</value>
+  </data>
+  <data name="String139" xml:space="preserve">
+    <value>Служба доставки «СДЭК» предоставляет услугу обратной доставки сопроводительных документов с отметками получателя, а также возврат товаров для ИМ и других торговых предприятий.</value>
+  </data>
+  <data name="String14" xml:space="preserve">
+    <value>Груз отправили через другую компанию</value>
+  </data>
+  <data name="String140" xml:space="preserve">
+    <value>Наша компания оказывает услуги по приему  денежных средств от клиента за товар и РКО</value>
+  </data>
+  <data name="String141" xml:space="preserve">
+    <value>Обратный заказ на доставку от получателя до отправителя. Например, подписанные документы.</value>
+  </data>
+  <data name="String142" xml:space="preserve">
+    <value>Проверка покупателем содержимого заказа до его оплаты (вскрытие посылки).</value>
+  </data>
+  <data name="String15" xml:space="preserve">
+    <value>Не дозвонился</value>
+  </data>
+  <data name="String16" xml:space="preserve">
+    <value>Частичная доставка</value>
+  </data>
+  <data name="String17" xml:space="preserve">
+    <value>Организация не работает</value>
+  </data>
+  <data name="String18" xml:space="preserve">
+    <value>Не могу найти адрес</value>
+  </data>
+  <data name="String19" xml:space="preserve">
+    <value>Смена адреса</value>
+  </data>
+  <data name="String2" xml:space="preserve">
+    <value>Тел. недоступен</value>
+  </data>
+  <data name="String20" xml:space="preserve">
+    <value>Требуется доп. информация для забора груза</value>
+  </data>
+  <data name="String21" xml:space="preserve">
+    <value>Отказ от получения/ от заявки</value>
+  </data>
+  <data name="String22" xml:space="preserve">
+    <value>Перенос даты</value>
+  </data>
+  <data name="String23" xml:space="preserve">
+    <value>Требуется пропуск/ограниченный доступ</value>
+  </data>
+  <data name="String24" xml:space="preserve">
+    <value>Нет паспорта/копии</value>
+  </data>
+  <data name="String25" xml:space="preserve">
+    <value>Нет купона</value>
+  </data>
+  <data name="String26" xml:space="preserve">
+    <value>Нужен чек</value>
+  </data>
+  <data name="String27" xml:space="preserve">
+    <value>Нет доверенности от получателя</value>
+  </data>
+  <data name="String28" xml:space="preserve">
+    <value>Нет доверенности от СДЭК</value>
+  </data>
+  <data name="String29" xml:space="preserve">
+    <value>Требуются документы</value>
+  </data>
+  <data name="String3" xml:space="preserve">
+    <value>Не берут трубку</value>
+  </data>
+  <data name="String30" xml:space="preserve">
+    <value>Груз не вошел в авто</value>
+  </data>
+  <data name="String31" xml:space="preserve">
+    <value>Требуется курьер на авто/газель</value>
+  </data>
+  <data name="String32" xml:space="preserve">
+    <value>Отправитель требует расписаться в документах</value>
+  </data>
+  <data name="String33" xml:space="preserve">
+    <value>Очередь на выдачу груза</value>
+  </data>
+  <data name="String34" xml:space="preserve">
+    <value>Я жду звонка от оператора</value>
+  </data>
+  <data name="String35" xml:space="preserve">
+    <value>Не успеваю</value>
+  </data>
+  <data name="String36" xml:space="preserve">
+    <value>Самозабор</value>
+  </data>
+  <data name="String37" xml:space="preserve">
+    <value>Постомат переполнен</value>
+  </data>
+  <data name="String38" xml:space="preserve">
+    <value>Постомат не работает</value>
+  </data>
+  <data name="String39" xml:space="preserve">
+    <value>Груз не влез в ячейку постомата</value>
+  </data>
+  <data name="String4" xml:space="preserve">
+    <value>Не успел</value>
+  </data>
+  <data name="String40" xml:space="preserve">
+    <value>Отказ от получения</value>
+  </data>
+  <data name="String41" xml:space="preserve">
+    <value>Отказ от заявки</value>
+  </data>
+  <data name="String42" xml:space="preserve">
+    <value>Требуется пропуск</value>
+  </data>
+  <data name="String43" xml:space="preserve">
+    <value>Платный въезд</value>
+  </data>
+  <data name="String44" xml:space="preserve">
+    <value>Закрытая территория</value>
+  </data>
+  <data name="String45" xml:space="preserve">
+    <value>Нет документа удостоверяющего личность</value>
+  </data>
+  <data name="String46" xml:space="preserve">
+    <value>Смена города</value>
+  </data>
+  <data name="String47" xml:space="preserve">
+    <value>Адрес не существует</value>
+  </data>
+  <data name="String48" xml:space="preserve">
+    <value>Доставка в А/Я</value>
+  </data>
+  <data name="String49" xml:space="preserve">
+    <value>Опасный груз</value>
+  </data>
+  <data name="String5" xml:space="preserve">
+    <value>Неисправность авто</value>
+  </data>
+  <data name="String50" xml:space="preserve">
+    <value>Разрешено (только для типа заказа "доставка" и заказам до постамата)</value>
+  </data>
+  <data name="String51" xml:space="preserve">
+    <value>Разрешено (Исключение - заказы до постамата)</value>
+  </data>
+  <data name="String52" xml:space="preserve">
+    <value>Отказ с адреса</value>
+  </data>
+  <data name="String53" xml:space="preserve">
+    <value>Изменение интервала по согласованию с клиентом</value>
+  </data>
+  <data name="String54" xml:space="preserve">
+    <value>Постаматное приложение не работает</value>
+  </data>
+  <data name="String55" xml:space="preserve">
+    <value>Груз не найден</value>
+  </data>
+  <data name="String56" xml:space="preserve">
+    <value>Передача на ПВЗ</value>
+  </data>
+  <data name="String57" xml:space="preserve">
+    <value>Не могу доставить на ПВЗ</value>
+  </data>
+  <data name="String58" xml:space="preserve">
+    <value>Запрещено, начисляется автоматически</value>
+  </data>
+  <data name="String59" xml:space="preserve">
+    <value>Запрещено, начисляется автоматически</value>
+  </data>
+  <data name="String6" xml:space="preserve">
+    <value>Неверный адрес</value>
+  </data>
+  <data name="String60" xml:space="preserve">
+    <value>Разрешено</value>
+  </data>
+  <data name="String61" xml:space="preserve">
+    <value>Запрещено, начисляется автоматически</value>
+  </data>
+  <data name="String62" xml:space="preserve">
+    <value>Запрещено, начисляется автоматически</value>
+  </data>
+  <data name="String63" xml:space="preserve">
+    <value>Запрещено, начисляется автоматически</value>
+  </data>
+  <data name="String64" xml:space="preserve">
+    <value>Запрещено, начисляется сотрудником СДЭК</value>
+  </data>
+  <data name="String65" xml:space="preserve">
+    <value>Запрещено, начисляется автоматически</value>
+  </data>
+  <data name="String66" xml:space="preserve">
+    <value>Разрешено</value>
+  </data>
+  <data name="String67" xml:space="preserve">
+    <value>Разрешено (Исключение - заказы до постамата)</value>
+  </data>
+  <data name="String68" xml:space="preserve">
+    <value>Запрещено, начисляется сотрудником СДЭК</value>
+  </data>
+  <data name="String69" xml:space="preserve">
+    <value>Запрещено, начисляется сотрудником СДЭК</value>
+  </data>
+  <data name="String7" xml:space="preserve">
+    <value>Отказ от заявки</value>
+  </data>
+  <data name="String70" xml:space="preserve">
+    <value>Разрешено</value>
+  </data>
+  <data name="String71" xml:space="preserve">
+    <value>Доступно только в ЛК и при оформлении через Call-центр (Запрещено для заказов до постамата)</value>
+  </data>
+  <data name="String72" xml:space="preserve">
+    <value>Только при оформлении через Call-центр
+(Запрещено для заказов до постамата)</value>
+  </data>
+  <data name="String73" xml:space="preserve">
+    <value>Доступно только в ЛК и при оформлении через Call-центр
+(Запрещено для заказов до постамата)</value>
+  </data>
+  <data name="String74" xml:space="preserve">
+    <value>Разрешено (Исключение - заказы до постамата)</value>
+  </data>
+  <data name="String75" xml:space="preserve">
+    <value>Запрещено, начисляется автоматически в зависимости от условий договора</value>
+  </data>
+  <data name="String76" xml:space="preserve">
+    <value>Доступно только в ЛК и при оформлении через Call-центр
+(Запрещено для заказов до постамата)</value>
+  </data>
+  <data name="String77" xml:space="preserve">
+    <value>Доступно только в ЛК и при оформлении через Call-центр
+(Запрещено для заказов до постамата)</value>
+  </data>
+  <data name="String78" xml:space="preserve">
+    <value>Запрещено, начисляется автоматически</value>
+  </data>
+  <data name="String79" xml:space="preserve">
+    <value>Разрешено (Исключение - заказы до постамата)</value>
+  </data>
+  <data name="String8" xml:space="preserve">
+    <value>Не знают что отправлять</value>
+  </data>
+  <data name="String80" xml:space="preserve">
+    <value>Разрешено (Исключение - заказы до постамата)</value>
+  </data>
+  <data name="String81" xml:space="preserve">
+    <value>Запрещено, начисляется автоматически</value>
+  </data>
+  <data name="String82" xml:space="preserve">
+    <value>Запрещено, начисляется автоматически</value>
+  </data>
+  <data name="String83" xml:space="preserve">
+    <value>Запрещено, начисляется автоматически</value>
+  </data>
+  <data name="String84" xml:space="preserve">
+    <value>Разрешено (Исключение - заказы до постамата)</value>
+  </data>
+  <data name="String85" xml:space="preserve">
+    <value>СТРАХОВАНИЕ</value>
+  </data>
+  <data name="String86" xml:space="preserve">
+    <value>ДОСТАВКА В ВЫХОДНОЙ ДЕНЬ</value>
+  </data>
+  <data name="String87" xml:space="preserve">
+    <value>ТЯЖЕЛЫЙ ГРУЗ</value>
+  </data>
+  <data name="String88" xml:space="preserve">
+    <value>НЕГАБАРИТНЫЙ ГРУЗ</value>
+  </data>
+  <data name="String89" xml:space="preserve">
+    <value>ОПАСНЫЙ ГРУЗ</value>
+  </data>
+  <data name="String9" xml:space="preserve">
+    <value>Груз не готов</value>
+  </data>
+  <data name="String90" xml:space="preserve">
+    <value>ОЖИДАНИЕ БОЛЕЕ 15 МИН. У ОТПРАВИТЕЛЯ</value>
+  </data>
+  <data name="String91" xml:space="preserve">
+    <value>ОЖИДАНИЕ БОЛЕЕ 15 МИН. У ПОЛУЧАТЕЛЯ</value>
+  </data>
+  <data name="String92" xml:space="preserve">
+    <value>ХРАНЕНИЕ НА СКЛАДЕ</value>
+  </data>
+  <data name="String93" xml:space="preserve">
+    <value>ПРОЧЕЕ</value>
+  </data>
+  <data name="String94" xml:space="preserve">
+    <value>УДАЛЕННЫЙ РАЙОН</value>
+  </data>
+  <data name="String95" xml:space="preserve">
+    <value>ПОВТОРНАЯ ПОЕЗДКА</value>
+  </data>
+  <data name="String96" xml:space="preserve">
+    <value>ЗАБОР В ГОРОДЕ ОТПРАВИТЕЛЕ</value>
+  </data>
+  <data name="String97" xml:space="preserve">
+    <value>ДОСТАВКА В ГОРОДЕ ПОЛУЧАТЕЛЕ</value>
+  </data>
+  <data name="String98" xml:space="preserve">
+    <value>ПЕНЯ</value>
+  </data>
+  <data name="String99" xml:space="preserve">
+    <value>ОБРЕШЕТКА ГРУЗА</value>
+  </data>
+  <data name="SubscriberUnavailable" xml:space="preserve">
+    <value>Абонент недоступен</value>
+  </data>
+  <data name="SuperExpressDescription" xml:space="preserve">
+    <value>Срочная доставка документов и грузов «из рук в руки» по России к определенному часу (доставка за 1-2 суток).</value>
+  </data>
+  <data name="SuperExpressTo10" xml:space="preserve">
+    <value>Супер-экспресс до 10</value>
+  </data>
+  <data name="SuperExpressTo12" xml:space="preserve">
+    <value>Супер-экспресс до 12</value>
+  </data>
+  <data name="SuperExpressTo14" xml:space="preserve">
+    <value>Супер-экспресс до 14</value>
+  </data>
+  <data name="SuperExpressTo16" xml:space="preserve">
+    <value>Супер-экспресс до 16</value>
+  </data>
+  <data name="SuperExpressTo9" xml:space="preserve">
+    <value>Супер-экспресс до 9</value>
+  </data>
+  <data name="TariffOrTariffList" xml:space="preserve">
+    <value>Не задан тариф или список тарифов</value>
+  </data>
+  <data name="THB" xml:space="preserve">
+    <value>Тайский бат</value>
+  </data>
+  <data name="ThePostalCodeOfTheRecipientCity" xml:space="preserve">
+    <value>Почтовый индекс города-получателя отсутствует в базе СДЭК</value>
+  </data>
+  <data name="ThePpostalCode" xml:space="preserve">
+    <value>Почтовый индекс города-отправителя отсутствует в базе СДЭК</value>
+  </data>
+  <data name="TheSubscriberDoesNotPickUpThePhone" xml:space="preserve">
+    <value>Абонент не берет трубку</value>
+  </data>
+  <data name="TL" xml:space="preserve">
+    <value>Турецкая лира</value>
+  </data>
+  <data name="UAH" xml:space="preserve">
+    <value>Гривна</value>
+  </data>
+  <data name="USD" xml:space="preserve">
+    <value>Доллар США</value>
+  </data>
+  <data name="UZS" xml:space="preserve">
+    <value>Узбекский сум</value>
+  </data>
+  <data name="VAT0" xml:space="preserve">
+    <value>0%</value>
+  </data>
+  <data name="VAT10" xml:space="preserve">
+    <value>10%</value>
+  </data>
+  <data name="VAT20" xml:space="preserve">
+    <value>20%</value>
+  </data>
+  <data name="VATX" xml:space="preserve">
+    <value>БЕЗ НДС</value>
+  </data>
+  <data name="WarehouseDoor" xml:space="preserve">
+    <value>склад-дверь</value>
+  </data>
+  <data name="WarehouseDoorDescription" xml:space="preserve">
+    <value>Отправитель доставляет груз самостоятельно до склада, курьер доставляет получателю на указанный адрес.</value>
+  </data>
+  <data name="WarehousePostomat" xml:space="preserve">
+    <value>склад-постамат</value>
+  </data>
+  <data name="WarehousePostomatDescription" xml:space="preserve">
+    <value>Отправитель доставляет груз самостоятельно до склада, курьер доставляет в указанный постамат, получатель забирает груз самостоятельно из постамата</value>
+  </data>
+  <data name="WarehouseWarehouse" xml:space="preserve">
+    <value>склад-склад</value>
+  </data>
+  <data name="WarehouseWarehouseDescription" xml:space="preserve">
+    <value>Отправитель доставляет груз самостоятельно до склада, получатель забирает груз самостоятельно в ПВЗ (самозабор).</value>
+  </data>
+  <data name="WhenAuthorizingError" xml:space="preserve">
+    <value>При авторизации не задана дата планируемой отправки</value>
+  </data>
+  <data name="WrongNumber" xml:space="preserve">
+    <value>Неверный номер</value>
+  </data>
+</root>
