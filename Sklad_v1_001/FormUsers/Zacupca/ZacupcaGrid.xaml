@@ -6,23 +6,23 @@
              xmlns:res="clr-namespace:Sklad_v1_001.Properties"
              xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
              xmlns:DescriptionControl="clr-namespace:Sklad_v1_001.Control.FlexControlDescription"
-             mc:Ignorable="d"             
-             d:DesignHeight="818" Width="979" Loaded="UserControl_Loaded" x:Name="ZacupcaGridPage">
-    <Grid Height="818" Background="#FFFDFAFA">
+             mc:Ignorable="d"  
+             Style="{DynamicResource UsersControlWidth}"
+             d:DesignHeight="818" Loaded="UserControl_Loaded" x:Name="ZacupcaGridPage">
+    <Grid Height="918">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="30*"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-      
+        <ToolBar:ToolBarZakupkaxaml/>
         <!--{x:Static res:Resources.SchtrxCode}-->
         <Grid x:Name="Informer1">
-           
+            <!--CellStyle="{DynamicResource NameCellStyle}"
+                  RowStyle="{DynamicResource NameRowStyle}"-->
         </Grid>
         <DataGrid x:Name="DataDocument" AutoGenerateColumns="False" Grid.Row="1" SelectionChanged="DataGrid_SelectionChanged"
-                  Style="{DynamicResource DataDocument}"
-                  CellStyle="{StaticResource NameCellStyle}"
-                  RowStyle="{StaticResource NameRowStyle}">
+                  Style="{DynamicResource DataDocument}" CellStyle="{DynamicResource NameCellStyle}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="Auto" MaxWidth="200" />
                 <DataGridTextColumn Binding="{Binding Path=TrackingNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.TrackingNumber}" Width="Auto" MaxWidth="200"/>
