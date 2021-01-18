@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boxberry", "Boxberry\Boxberry.csproj", "{9EEA1772-BF9A-41CE-978C-E55E7B0B7D64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMenu", "TestMenu\TestMenu.csproj", "{93377E7C-98AF-4F7D-8932-0488431E40DD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9EEA1772-BF9A-41CE-978C-E55E7B0B7D64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EEA1772-BF9A-41CE-978C-E55E7B0B7D64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EEA1772-BF9A-41CE-978C-E55E7B0B7D64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EEA1772-BF9A-41CE-978C-E55E7B0B7D64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93377E7C-98AF-4F7D-8932-0488431E40DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93377E7C-98AF-4F7D-8932-0488431E40DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93377E7C-98AF-4F7D-8932-0488431E40DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93377E7C-98AF-4F7D-8932-0488431E40DD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6CD1908D-7D45-4135-840E-665820946A5B}
+	EndGlobalSection
+EndGlobal
