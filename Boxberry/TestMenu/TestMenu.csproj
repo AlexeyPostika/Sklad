@@ -50,6 +50,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CDEK\CDEK\CDEK.csproj">
+      <Project>{94cbfc9d-e2fe-40b2-89ee-c7742ecca2d3}</Project>
+      <Name>CDEK</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Boxberry\Boxberry.csproj">
       <Project>{9eea1772-bf9a-41ce-978c-e55e7b0b7d64}</Project>
       <Name>Boxberry</Name>
