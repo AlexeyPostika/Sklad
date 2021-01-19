@@ -48,14 +48,23 @@ namespace CDEK.Helper
     public class Services
     {
         public int ID { set; get; }
-        public string OrderAdd { get; set; }
-        public string Name { get; set; }
-        public string Description { set; get; }      
+        public string Title { get; set; }
+        public string Price { get; set; }
+        public string Rate { set; get; }
+    }
+
+    //Дополнительные услуги -- Services
+    public class Good
+    {
+        public Double Weight { set; get; }
+        public Double Length { get; set; }
+        public Double Width { get; set; }
+        public Double Height { set; get; }
     }
     //Режимы доставки -- Delivery modes
     public class DeliveryModes
     {
-        public int ID { set; get; }      
+        public int ID { set; get; }
         public string Name { get; set; }
         public string Description { set; get; }
     }
@@ -127,7 +136,7 @@ namespace CDEK.Helper
         public RingingErrorList()
         {
             innerList = new ObservableCollection<RingingError>()
-            {                 
+            {
                   new RingingError { ID=1, Description=Resources.PhoneIsBusy },
                   new RingingError { ID=2, Description=Resources.TheSubscriberDoesNotPickUpThePhone },
                   new RingingError { ID=3, Description=Resources.SubscriberUnavailable },
@@ -135,7 +144,7 @@ namespace CDEK.Helper
                   new RingingError { ID=5, Description=Resources.PhoneNotSpecified },
                   new RingingError { ID=6, Description=Resources.Silence },
                   new RingingError { ID=7, Description=Resources.Reset },
-                  new RingingError { ID=8, Description=Resources.IHungUp }               
+                  new RingingError { ID=8, Description=Resources.IHungUp }
             };
         }
     }
@@ -194,14 +203,14 @@ namespace CDEK.Helper
                   new ReasonsForDeliveryDelaysError { ID=45, Description=Resources.String45 },
                   new ReasonsForDeliveryDelaysError { ID=46, Description=Resources.String46 },
                   new ReasonsForDeliveryDelaysError { ID=47, Description=Resources.String47 },
-                  new ReasonsForDeliveryDelaysError { ID=48, Description=Resources.String48 },                 
-                  new ReasonsForDeliveryDelaysError { ID=49, Description=Resources.String49 },               
+                  new ReasonsForDeliveryDelaysError { ID=48, Description=Resources.String48 },
+                  new ReasonsForDeliveryDelaysError { ID=49, Description=Resources.String49 },
                   new ReasonsForDeliveryDelaysError { ID=52, Description=Resources.String52 },
                   new ReasonsForDeliveryDelaysError { ID=53, Description=Resources.String53 },
                   new ReasonsForDeliveryDelaysError { ID=54, Description=Resources.String54 },
                   new ReasonsForDeliveryDelaysError { ID=55, Description=Resources.String55 },
                   new ReasonsForDeliveryDelaysError { ID=56, Description=Resources.String56 },
-                  new ReasonsForDeliveryDelaysError { ID=57, Description=Resources.String57 }                 
+                  new ReasonsForDeliveryDelaysError { ID=57, Description=Resources.String57 }
             };
         }
     }
@@ -216,7 +225,7 @@ namespace CDEK.Helper
                   new VAT { ID=1, Description=Resources.VATX },
                   new VAT { ID=2, Description=Resources.VAT0 },
                   new VAT { ID=3, Description=Resources.VAT10 },
-                  new VAT { ID=4, Description=Resources.VAT20 },                
+                  new VAT { ID=4, Description=Resources.VAT20 },
             };
         }
     }
@@ -257,36 +266,36 @@ namespace CDEK.Helper
         {
             innerList = new ObservableCollection<Services>()
             {
-                  new Services { ID=2, OrderAdd =Resources.String54, Name=Resources.String84, Description=Resources.String115 },
-                  new Services { ID=3, OrderAdd =Resources.String55, Name=Resources.String85, Description=Resources.String116 },                
-                  new Services { ID=5, OrderAdd =Resources.String57, Name=Resources.String87, Description=Resources.String117 },
-                  new Services { ID=6, OrderAdd =Resources.String58, Name=Resources.String88, Description=Resources.String118 },
-                  new Services { ID=7, OrderAdd =Resources.String59, Name=Resources.String89, Description=Resources.String119 },
-                  new Services { ID=8, OrderAdd =Resources.String60, Name=Resources.String90, Description=Resources.String120 },
-                  new Services { ID=9, OrderAdd =Resources.String61, Name=Resources.String91, Description=Resources.String120 },
-                  new Services { ID=10, OrderAdd =Resources.String62, Name=Resources.String92, Description=Resources.String121 },
-                  new Services { ID=13, OrderAdd =Resources.String63, Name=Resources.String93, Description=Resources.String122 },
-                  new Services { ID=14, OrderAdd =Resources.String64, Name=Resources.String94, Description=Resources.String123 },
-                  new Services { ID=15, OrderAdd =Resources.String65, Name=Resources.String95, Description=Resources.String124 },
-                  new Services { ID=16, OrderAdd =Resources.String66, Name=Resources.String96, Description=Resources.String125 },
-                  new Services { ID=17, OrderAdd =Resources.String67, Name=Resources.String97, Description=Resources.String126 },
-                  new Services { ID=20, OrderAdd =Resources.String68, Name=Resources.String98, Description=Resources.String127 },
-                  new Services { ID=23, OrderAdd =Resources.String69, Name=Resources.String99, Description=Resources.String128 },
-                  new Services { ID=24, OrderAdd =Resources.String70, Name=Resources.String100, Description=Resources.String129 },
-                  new Services { ID=25, OrderAdd =Resources.String71, Name=Resources.String101, Description=Resources.String130 },
-                  new Services { ID=26, OrderAdd =Resources.String72, Name=Resources.String102, Description=Resources.String131 },
-                  new Services { ID=27, OrderAdd =Resources.String73, Name=Resources.String103, Description=Resources.String132 },
-                  new Services { ID=30, OrderAdd =Resources.String74, Name=Resources.String104, Description=Resources.String133 },
-                  new Services { ID=32, OrderAdd =Resources.String75, Name=Resources.String105, Description=Resources.String134 },
-                  new Services { ID=33, OrderAdd =Resources.String76, Name=Resources.String106, Description=Resources.String135 },
-                  new Services { ID=34, OrderAdd =Resources.String77, Name=Resources.String107, Description=Resources.String135 },
-                  new Services { ID=35, OrderAdd =Resources.String78, Name=Resources.String108, Description=Resources.String136 },
-                  new Services { ID=36, OrderAdd =Resources.String79, Name=Resources.String109, Description=Resources.String137 },
-                  new Services { ID=37, OrderAdd =Resources.String80, Name=Resources.String110, Description=Resources.String142 },
-                  new Services { ID=40, OrderAdd =Resources.String81, Name=Resources.String111, Description=Resources.String138 },
-                  new Services { ID=41, OrderAdd =Resources.String82, Name=Resources.String112, Description=Resources.String139 },
-                  new Services { ID=42, OrderAdd =Resources.String83, Name=Resources.String113, Description=Resources.String140 },
-                  new Services { ID=48, OrderAdd =Resources.String84, Name=Resources.String114, Description=Resources.String141 }                
+                  new Services { ID=2, Title =Resources.String54, Price=Resources.String84, Rate=Resources.String115 },
+                  new Services { ID=3, Title =Resources.String55, Price=Resources.String85, Rate=Resources.String116 },
+                  new Services { ID=5, Title =Resources.String57, Price=Resources.String87, Rate=Resources.String117 },
+                  new Services { ID=6, Title =Resources.String58, Price=Resources.String88, Rate=Resources.String118 },
+                  new Services { ID=7, Title =Resources.String59, Price=Resources.String89, Rate=Resources.String119 },
+                  new Services { ID=8, Title =Resources.String60, Price=Resources.String90, Rate=Resources.String120 },
+                  new Services { ID=9, Title =Resources.String61, Price=Resources.String91, Rate=Resources.String120 },
+                  new Services { ID=10, Title =Resources.String62, Price=Resources.String92, Rate=Resources.String121 },
+                  new Services { ID=13, Title =Resources.String63, Price=Resources.String93, Rate=Resources.String122 },
+                  new Services { ID=14, Title =Resources.String64, Price=Resources.String94, Rate=Resources.String123 },
+                  new Services { ID=15, Title =Resources.String65, Price=Resources.String95, Rate=Resources.String124 },
+                  new Services { ID=16, Title =Resources.String66, Price=Resources.String96, Rate=Resources.String125 },
+                  new Services { ID=17, Title =Resources.String67, Price=Resources.String97, Rate=Resources.String126 },
+                  new Services { ID=20, Title =Resources.String68, Price=Resources.String98, Rate=Resources.String127 },
+                  new Services { ID=23, Title =Resources.String69, Price=Resources.String99, Rate=Resources.String128 },
+                  new Services { ID=24, Title =Resources.String70, Price=Resources.String100, Rate=Resources.String129 },
+                  new Services { ID=25, Title =Resources.String71, Price=Resources.String101, Rate=Resources.String130 },
+                  new Services { ID=26, Title =Resources.String72, Price=Resources.String102, Rate=Resources.String131 },
+                  new Services { ID=27, Title =Resources.String73, Price=Resources.String103, Rate=Resources.String132 },
+                  new Services { ID=30, Title =Resources.String74, Price=Resources.String104, Rate=Resources.String133 },
+                  new Services { ID=32, Title =Resources.String75, Price=Resources.String105, Rate=Resources.String134 },
+                  new Services { ID=33, Title =Resources.String76, Price=Resources.String106, Rate=Resources.String135 },
+                  new Services { ID=34, Title =Resources.String77, Price=Resources.String107, Rate=Resources.String135 },
+                  new Services { ID=35, Title =Resources.String78, Price=Resources.String108, Rate=Resources.String136 },
+                  new Services { ID=36, Title =Resources.String79, Price=Resources.String109, Rate=Resources.String137 },
+                  new Services { ID=37, Title =Resources.String80, Price=Resources.String110, Rate=Resources.String142 },
+                  new Services { ID=40, Title =Resources.String81, Price=Resources.String111, Rate=Resources.String138 },
+                  new Services { ID=41, Title =Resources.String82, Price=Resources.String112, Rate=Resources.String139 },
+                  new Services { ID=42, Title =Resources.String83, Price=Resources.String113, Rate=Resources.String140 },
+                  new Services { ID=48, Title =Resources.String84, Price=Resources.String114, Rate=Resources.String141 }
             };
         }
     }
@@ -302,9 +311,9 @@ namespace CDEK.Helper
                   new DeliveryModes { ID=1, Name=Resources.DoorDoor, Description=Resources.DoorPostamatDecription },
                   new DeliveryModes { ID=2, Name=Resources.DoorWarehouse, Description=Resources.DoorWarehouseDescription },
                   new DeliveryModes { ID=3, Name=Resources.WarehouseDoor, Description=Resources.WarehouseDoorDescription },
-                  new DeliveryModes { ID=4, Name=Resources.WarehouseWarehouse, Description=Resources.WarehouseWarehouseDescription },                
+                  new DeliveryModes { ID=4, Name=Resources.WarehouseWarehouse, Description=Resources.WarehouseWarehouseDescription },
                   new DeliveryModes { ID=6, Name=Resources.DoorPostamat, Description=Resources.DoorPostamatDecription },
-                  new DeliveryModes { ID=7, Name=Resources.WarehousePostomat, Description=Resources.WarehousePostomatDescription },                
+                  new DeliveryModes { ID=7, Name=Resources.WarehousePostomat, Description=Resources.WarehousePostomatDescription },
             };
         }
     }
@@ -316,7 +325,7 @@ namespace CDEK.Helper
         public RatesForRegularDeliveryList()
         {
             innerList = new ObservableCollection<RatesForRegularDelivery>()
-            {               
+            {
                 new RatesForRegularDelivery { ID=1, NameRate=Resources.ExpressLightDoorDoor, DeliveryMode=Resources.DoorDoor, Limitation=Resources.ExpressLightLimit, Service=Resources.Express, Description=Resources.ExpressLightDescription },
                 new RatesForRegularDelivery { ID=361, NameRate=Resources.ExpressLightDoorPostamat, DeliveryMode=Resources.DoorPostamat, Limitation=Resources.ExpressLightLimit, Service=Resources.Express, Description=Resources.ExpressLightDescription },
                 new RatesForRegularDelivery { ID=363, NameRate=Resources.ExpressLightWarehousePostamat, DeliveryMode=Resources.WarehousePostomat, Limitation=Resources.ExpressLightLimit, Service=Resources.Express, Description=Resources.ExpressLightDescription },
@@ -360,7 +369,7 @@ namespace CDEK.Helper
                 new ChineseExpress { ID=243, NameRate=Resources.ChineseExpressWarehouseWarehouse, DeliveryMode=Resources.WarehouseWarehouse, Service=Resources.ChineseExpress, Description=Resources.ChineseExpressDescription },
                 new ChineseExpress { ID=245, NameRate=Resources.ChineseExpressDoorDoor, DeliveryMode=Resources.DoorDoor, Service=Resources.ChineseExpress },
                 new ChineseExpress { ID=246, NameRate=Resources.ChineseExpressWarehouseDoor, DeliveryMode=Resources.WarehouseDoor, Service=Resources.ChineseExpress },
-                new ChineseExpress { ID=247, NameRate=Resources.ChineseExpressDoorWarehouse, DeliveryMode=Resources.DoorWarehouse, Service=Resources.ChineseExpress }             
+                new ChineseExpress { ID=247, NameRate=Resources.ChineseExpressDoorWarehouse, DeliveryMode=Resources.DoorWarehouse, Service=Resources.ChineseExpress }
             };
         }
     }
