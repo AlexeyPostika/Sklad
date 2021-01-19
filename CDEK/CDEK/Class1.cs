@@ -1,12 +1,36 @@
-﻿using System;
+﻿using CDEK.Helper;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
+using Newtonsoft.Json;
+//using System.Text.Json.JsonSerializer;
 
 namespace CDEK
 {
+    #region калькулятор
+    public class Tariff
+    {
+        ServicesTariffsCDEKList servicesTariffsCDEKList;
+        Int32 priority;
+        Int32 iD;
+        Int32 modeld;
+        List<ServicesTariffsCDEK> servicesTariffsCDEKs;
+
+        public int Priority { get => priority; set => priority = value; }
+        public int ID { get => iD; set => iD = value; }
+        public int Modeld { get => modeld; set => modeld = value; }
+        public List<ServicesTariffsCDEK> ServicesTariffsCDEKs { get => servicesTariffsCDEKs; set => servicesTariffsCDEKs = value; }
+
+        public Tariff()
+        {
+            ServicesTariffsCDEKs = new List<ServicesTariffsCDEK>();
+        }
+
+    }
     //форма для отправки данных
     public class AdressRowDispatch
     {
@@ -30,22 +54,11 @@ namespace CDEK
         Double senderLatitude;// Широта города отправителя   float нет
         Double receiverLatitude;// Широта города получателя    float нет
         //тарифы
-        List<String> tariffId;//Код выбранного тарифа (подробнее см. приложение 1)  integer да
-        Int32 tariffList;//Список тарифов да
-        Int32 priorityTariffList;// Заданный приоритет integer да
-        Int32 idTariffList;// Код тарифа(подробнее см. приложение 1) integer да
-
-        Int32 modeId;// Режим доставки(подробнее см. приложение 1) integer нет
-
-        Int32 goods;// Габаритные характеристики упаковки да
-        Double weightGoods;// Вес упаковки(в килограммах)    float да
-        Int32 lengthGoods;// Длина упаковки(в сантиметрах)  integer да
-        Int32 widthGoods;// Ширина упаковки(в сантиметрах) integer да
-        Int32 heightGoods;// Высота упаковки(в сантиметрах) integer да
-
-        Int32 services;// Список передаваемых дополнительных услуг(подробнее см. приложение 2) нет
-        Int32 idServices;//Идентификатор номера дополнительной услуги integer да
-        Int32 param5Services;// Параметр дополнительной услуги, если необходимо integer нет
+        List<Tariff> tariffId;//Код выбранного тарифа (подробнее см. приложение 1)  integer да
+        //посылка
+        List<Good> goods;// Габаритные характеристики упаковки да      
+        //услуги
+        List<Services> services;// Список передаваемых дополнительных услуг(подробнее см. приложение 2) нет      
 
         public string Version { get => version; set => version = value; }
         public string AuthLogin { get => authLogin; set => authLogin = value; }
@@ -64,44 +77,319 @@ namespace CDEK
         public double ReceiverLongitude { get => receiverLongitude; set => receiverLongitude = value; }
         public double SenderLatitude { get => senderLatitude; set => senderLatitude = value; }
         public double ReceiverLatitude { get => receiverLatitude; set => receiverLatitude = value; }
-        public List<String> TariffId { get => tariffId; set => tariffId = value; }
-        public int TariffList { get => tariffList; set => tariffList = value; }
-        public int PriorityTariffList { get => priorityTariffList; set => priorityTariffList = value; }
-        public int IdTariffList { get => idTariffList; set => idTariffList = value; }
-        public int ModeId { get => modeId; set => modeId = value; }
-        public int Goods { get => goods; set => goods = value; }
-        public double WeightGoods { get => weightGoods; set => weightGoods = value; }
-        public int LengthGoods { get => lengthGoods; set => lengthGoods = value; }
-        public int WidthGoods { get => widthGoods; set => widthGoods = value; }
-        public int HeightGoods { get => heightGoods; set => heightGoods = value; }
-        public int Services { get => services; set => services = value; }
-        public int IdServices { get => idServices; set => idServices = value; }
-        public int Param5Services { get => param5Services; set => param5Services = value; }
+        public List<Tariff> TariffId { get => tariffId; set => tariffId = value; }
+        public List<Good> Goods { get => goods; set => goods = value; }
+        public List<Services> Services { get => services; set => services = value; }
+
+        public AdressRowDispatch()
+        {
+            Goods = new List<Good>();
+            TariffId = new List<Tariff>();
+            Services = new List<Services>();
+        }
     }
 
     //форма для получения ответа
     public class AdressRowReceive
     {
-        List<String> error;// Массив ошибок при их возникновении(подробнее см. приложение 9)
-	    Int32 codeError;// Код ошибки integer
-        String textError;// Текст ошибки string
-        Double price;// Сумма за доставку в рублях  double
-        Int32 deliveryPeriodMin;// Минимальное время доставки в днях   integer
-        Int32 deliveryPeriodMax;// Максимальное время доставки в днях  integer
-        DateTime deliveryDateMin;// Минимальная дата доставки, формате 'ГГГГ-ММ-ДД', например “2018-07-29”	string
-        DateTime deliveryDateMax;// Максимальная дата доставки, формате 'ГГГГ-ММ-ДД', например “2018-07-30”	string
-        Int32 tariffId;//Код тарифа, по которому рассчитана сумма доставки integer
-        Double cashOnDelivery;// Ограничение оплаты наличными, появляется только если оно есть   float
-        Double priceByCurrency;// Цена в валюте взаиморасчетов.Валюта определяется по authLogin и secure.    float
+        List<CalculatorError> error;// Массив ошибок при их возникновении(подробнее см. приложение 9)	   
+        String price;// Сумма за доставку в рублях  double
+        String deliveryPeriodMin;// Минимальное время доставки в днях   integer
+        String deliveryPeriodMax;// Максимальное время доставки в днях  integer
+        String deliveryDateMin;// Минимальная дата доставки, формате 'ГГГГ-ММ-ДД', например “2018-07-29”	string
+        String deliveryDateMax;// Максимальная дата доставки, формате 'ГГГГ-ММ-ДД', например “2018-07-30”	string
+        String tariffId;//Код тарифа, по которому рассчитана сумма доставки integer
+        String cashOnDelivery;// Ограничение оплаты наличными, появляется только если оно есть   float
+        String priceByCurrency;// Цена в валюте взаиморасчетов.Валюта определяется по authLogin и secure.    float
         String currency;//Валюта интернет-магазина (подробнее см. приложение 3)   string
-        Double percentVAT;// Размер ставки НДС для данного клиента.Появляется в случае, если переданы authLogin и secure, по ним же определяется ставка ИМ.Если ставка НДС не предусмотрена условиями договора, данный параметр не будет отображен.integer
-        List<String>services;//Список передаваемых дополнительных услуг (подробнее см. приложение 2)
-        Int32 idServices;//Идентификатор переданной услуги integer
-        String titleServices;//Заголовок услуги string
-        Double priceServices;// Стоимость услуги без учета НДС в рублях float
-        Double rateServices;//Процент для расчета дополнительной услуги   float
+        String percentVAT;// Размер ставки НДС для данного клиента.Появляется в случае, если переданы authLogin и secure, по ним же определяется ставка ИМ.Если ставка НДС не предусмотрена условиями договора, данный параметр не будет отображен.integer
+        List<Services> services;//Список передаваемых дополнительных услуг (подробнее см. приложение 2)       
+
+        public List<CalculatorError> Error { get => error; set => error = value; }
+
+        public String Price { get => price; set => price = value; }
+        public String DeliveryPeriodMin { get => deliveryPeriodMin; set => deliveryPeriodMin = value; }
+        public String DeliveryPeriodMax { get => deliveryPeriodMax; set => deliveryPeriodMax = value; }
+        public String DeliveryDateMin { get => deliveryDateMin; set => deliveryDateMin = value; }
+        public String DeliveryDateMax { get => deliveryDateMax; set => deliveryDateMax = value; }
+        public String TariffId { get => tariffId; set => tariffId = value; }
+        public String CashOnDelivery { get => cashOnDelivery; set => cashOnDelivery = value; }
+        public String PriceByCurrency { get => priceByCurrency; set => priceByCurrency = value; }
+        public String Currency { get => currency; set => currency = value; }
+        public String PercentVAT { get => percentVAT; set => percentVAT = value; }
+        public List<Services> Services { get => services; set => services = value; }
+
+        public AdressRowReceive()
+        {
+            Services = new List<Services>();
+            Error = new List<CalculatorError>();
+        }
     }
-    public class CalculatorNOTPriority
+    //форма для ответа
+    public class ResultOUT
     {
+        private AdressRowReceive result;
+
+        public AdressRowReceive Result { get => result; set => result = value; }
+        public ResultOUT()
+        {
+            Result = new AdressRowReceive();
+        }
     }
+    //калькулятор
+    public class CalculatorPriority
+    {
+        static String url;
+        public static String Url { get => url; set => url = value; }
+        public static AdressRowReceive Calculator(AdressRowDispatch _row)
+        {
+            Url = "http://api.cdek.ru/calculator/calculate_price_by_json.php";
+
+            string json = JsonConvert.SerializeObject(_row, Formatting.Indented);
+
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            // Создаём объект WebClient
+
+            using (var webClient = new WebClient())
+            {
+                // Выполняем запрос по адресу и получаем ответ в виде строки
+                webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+                string response = webClient.UploadString(new Uri(url), "POST", JsonConvert.SerializeObject(_row, Formatting.Indented));
+                ResultOUT resultOUT = JsonConvert.DeserializeObject<ResultOUT>(response);
+                if (resultOUT != null)
+                    return resultOUT.Result;
+            }
+            return null;
+        }
+    }
+    #endregion
+
+    #region информация по заказам
+    //заголовок документа
+    public class InfoRequest
+    {
+        DateTime date;
+        String account;
+        String secure;
+
+        public DateTime Date { get => date; set => date = value; }
+        public string Account { get => account; set => account = value; }
+        public string Secure { get => secure; set => secure = value; }
+    }
+    //дополнительная информация по изменению доставки
+    public class ChangePeriod
+    {
+        DateTime dateBeg;
+        DateTime dateEnd;
+
+        public DateTime DateBeg { get => dateBeg; set => dateBeg = value; }
+        public DateTime DateEnd { get => dateEnd; set => dateEnd = value; }
+    }
+    //город отправитель
+    public class SenderCity
+    {
+        Int32 code;
+        String postCode;
+        String name;
+
+        public int Code { get => code; set => code = value; }
+        public string PostCode { get => postCode; set => postCode = value; }
+        public string Name { get => name; set => name = value; }
+    }
+    //город получатель
+    public class RecCity
+    {
+        Int32 code;
+        String postCode;
+        String name;
+
+        public int Code { get => code; set => code = value; }
+        public string PostCode { get => postCode; set => postCode = value; }
+        public string Name { get => name; set => name = value; }
+    }
+    //Дополнительные услуги к заказам
+    public class AddedService
+    {
+        Int32 serviceCode;
+        Decimal sum;
+        public int ServiceCode { get => serviceCode; set => serviceCode = value; }
+        public decimal Sum { get => sum; set => sum = value; }
+    }
+    //Упаковка (все упаковки передаются в разных тэгах Package)
+    public class Package
+    {
+        String number;
+        String barCode;
+        Int32 weight;
+        Int32 volumeWeight;
+        Int32 sizeA;
+        Int32 sizeB;
+        Int32 sizeC;
+
+        public string Number { get => number; set => number = value; }
+        public string BarCode { get => barCode; set => barCode = value; }
+        public int Weight { get => weight; set => weight = value; }
+        public int VolumeWeight { get => volumeWeight; set => volumeWeight = value; }
+        public int SizeA { get => sizeA; set => sizeA = value; }
+        public int SizeB { get => sizeB; set => sizeB = value; }
+        public int SizeC { get => sizeC; set => sizeC = value; }
+    }
+    //Вложение (товар)
+    public class Item
+    {
+        String wareKey;
+        String marking;
+        String comment;
+        Int32 amount;
+        Decimal delivAmount;
+        Double cost;
+        Decimal payment;
+        String vATRate;
+        Decimal vATSum;
+        Int32 weight;
+
+        public string WareKey { get => wareKey; set => wareKey = value; }
+        public string Marking { get => marking; set => marking = value; }
+        public string Comment { get => comment; set => comment = value; }
+        public int Amount { get => amount; set => amount = value; }
+        public decimal DelivAmount { get => delivAmount; set => delivAmount = value; }
+        public double Cost { get => cost; set => cost = value; }
+        public decimal Payment { get => payment; set => payment = value; }
+        public string VATRate { get => vATRate; set => vATRate = value; }
+        public decimal VATSum { get => vATSum; set => vATSum = value; }
+        public int Weight { get => weight; set => weight = value; }
+    }
+    //ReciverOrder
+    public class Order
+    {
+
+        String number;
+        DateTime date;
+        Int32 dispatchNumber;
+        Int32 tariffTypeCode;
+        Double weight;
+        Double deliverySum;
+        DateTime dateLastChange;
+        Double cashOnDeliv;
+        Double cashOnDelivFact;
+        String cashOnDelivType;
+        Int32 deliveryMode;
+        String pvzCode;
+        String deliveryVariant;
+        //город отправитель
+        SenderCity senderCity;
+        //город получатель
+        RecCity recCity;
+        //Дополнительные услуги к заказам
+        AddedService addedService;
+        //Упаковка (все упаковки передаются в разных тэгах Package)
+        Package package;
+        //Вложение (товар)
+        Item item;
+
+        public string Number { get => number; set => number = value; }
+        public DateTime Date { get => date; set => date = value; }
+        public int DispatchNumber { get => dispatchNumber; set => dispatchNumber = value; }
+        public int TariffTypeCode { get => tariffTypeCode; set => tariffTypeCode = value; }
+        public double Weight { get => weight; set => weight = value; }
+        public double DeliverySum { get => deliverySum; set => deliverySum = value; }
+        public DateTime DateLastChange { get => dateLastChange; set => dateLastChange = value; }
+        public double CashOnDeliv { get => cashOnDeliv; set => cashOnDeliv = value; }
+        public double CashOnDelivFact { get => cashOnDelivFact; set => cashOnDelivFact = value; }
+        public string CashOnDelivType { get => cashOnDelivType; set => cashOnDelivType = value; }
+        public int DeliveryMode { get => deliveryMode; set => deliveryMode = value; }
+        public string PvzCode { get => pvzCode; set => pvzCode = value; }
+        public string DeliveryVariant { get => deliveryVariant; set => deliveryVariant = value; }
+        public SenderCity SenderCity { get => senderCity; set => senderCity = value; }
+        public RecCity RecCity { get => recCity; set => recCity = value; }
+        public AddedService AddedService { get => addedService; set => addedService = value; }
+        public Package Package { get => package; set => package = value; }
+        public Item Item { get => item; set => item = value; }
+        public Order()
+        {
+            SenderCity = new SenderCity();
+            RecCity = new RecCity();
+            AddedService = new AddedService();
+            Package = new Package();
+            Item = new Item();
+        }
+    }
+    //форма отправки данных
+    public class AdressRowReportOrder
+    {
+        InfoRequest infoRequest;
+        ChangePeriod changePeriod;
+        Order order;
+
+        public InfoRequest InfoRequest { get => infoRequest; set => infoRequest = value; }
+        public ChangePeriod ChangePeriod { get => changePeriod; set => changePeriod = value; }
+        public Order Order { get => order; set => order = value; }
+        public AdressRowReportOrder()
+        {
+            InfoRequest = new InfoRequest();
+            ChangePeriod = new ChangePeriod();
+            Order = new Order();
+        }
+    }
+    //форма для получения данных 
+    public class ResponseReportOrder
+    {
+        InfoRequest infoRequest;
+        ChangePeriod changePeriod;
+        Order order;
+        public InfoRequest InfoRequest { get => infoRequest; set => infoRequest = value; }
+        public ChangePeriod ChangePeriod { get => changePeriod; set => changePeriod = value; }
+        public Order Order { get => order; set => order = value; }
+        public ResponseReportOrder()
+        {
+            InfoRequest = new InfoRequest();
+            ChangePeriod = new ChangePeriod();
+            Order = new Order();
+        }
+    }
+
+    //result
+    public class ResponeResultOrder
+    {
+        ResponseReportOrder responseReportOrder;
+
+        public ResponseReportOrder ResponseReportOrder { get => responseReportOrder; set => responseReportOrder = value; }
+        public ResponeResultOrder()
+        {
+            ResponseReportOrder = new ResponseReportOrder();
+        }
+    }
+
+    //отчет "информация по заказам"
+    public class ReportOrder
+    {
+
+        static String url;
+        public static String Url { get => url; set => url = value; }
+        public static ResponseReportOrder Calculator(AdressRowReportOrder _row)
+        {
+            Url = "https://integration.edu.cdek.ru/info_report.php";
+
+            string json = JsonConvert.SerializeObject(_row, Formatting.Indented);
+
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            // Создаём объект WebClient
+
+            using (var webClient = new WebClient())
+            {
+                // Выполняем запрос по адресу и получаем ответ в виде строки
+                webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+                string response = webClient.UploadString(new Uri(url), "POST", JsonConvert.SerializeObject(_row, Formatting.Indented));
+                ResponeResultOrder resultOUT = JsonConvert.DeserializeObject<ResponeResultOrder>(response);
+                if (resultOUT != null)
+                    return resultOUT.ResponseReportOrder;
+            }
+            return null;
+        }
+
+    }
+    #endregion
+
 }
