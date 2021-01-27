@@ -45,6 +45,11 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Interop.DrvFRLib, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>DLL\Interop.DrvFRLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -269,6 +274,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="DataBase\Sklad" />
+    <None Include="DLL\pinpad.ini" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -353,6 +359,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icone\AddList_40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DLL\Boxberry.dll" />
+    <Content Include="DLL\CDEK.dll" />
+    <Content Include="DLL\Interop.DrvFRLib.dll" />
+    <Content Include="DLL\pilot_nt.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
