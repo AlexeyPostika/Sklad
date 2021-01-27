@@ -292,7 +292,7 @@
     <value>От куда идет</value>
   </data>
   <data name="NmaeManager" xml:space="preserve">
-    <value>Инициалы менеджера</value>
+    <value>ФИО менеджер</value>
   </data>
   <data name="NumberPhone" xml:space="preserve">
     <value>№-телефона</value>

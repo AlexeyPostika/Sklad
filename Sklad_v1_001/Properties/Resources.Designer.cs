@@ -376,7 +376,7 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Инициалы менеджера.
+        ///   Ищет локализованную строку, похожую на ФИО менеджер.
         /// </summary>
         public static string NmaeManager {
             get {

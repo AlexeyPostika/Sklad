@@ -37,7 +37,23 @@ namespace Sklad_v1_001.Control.FlexControlDescription
                 SetValue(ValueAdressProperty, value);
             }
         }
-
+        // свойство зависимостей
+        public static readonly DependencyProperty WidthLabelProperty = DependencyProperty.Register(
+                        "WidthLabel",
+                        typeof(Int32),
+                        typeof(Description4TextBlock), new UIPropertyMetadata(120));
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Int32 WidthLabel
+        {
+            get
+            {
+                return (Int32)GetValue(WidthLabelProperty);
+            }
+            set
+            {
+                SetValue(WidthLabelProperty, value);
+            }
+        }
         // свойство зависимостей
         public static readonly DependencyProperty ValueTypeBeliveryProperty = DependencyProperty.Register(
                         "ValueTypeBelivery",
