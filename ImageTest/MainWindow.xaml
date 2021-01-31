@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ImageTest"
         mc:Ignorable="d"
-        Title="Картинка" Height="450" Width="1030">
+        Title="Картинка" Height="450" Width="1130">
     <Grid>
 
         <StackPanel Name="ListImage" 
@@ -21,15 +21,17 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="200"/>
                     <ColumnDefinition Width="200"/>
                     <ColumnDefinition Width="200"/>
                     <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="200"/>
                 </Grid.ColumnDefinitions>
                 <Image x:Name="image"
-                       Grid.Column="2" 
+                       Grid.Column="3" 
                        Grid.Row="1"
                        HorizontalAlignment="Left" 
                        VerticalAlignment="Stretch"
@@ -37,34 +39,34 @@
                        Width="Auto"
                        Grid.ColumnSpan="3"/>
                 <Image x:Name="image1"
-                       Grid.Column="1" 
-                       Grid.Row="2"
-                       HorizontalAlignment="Left" 
-                       VerticalAlignment="Stretch"
-                       Height="Auto"    
-                       Width="Auto"/>
-                <Image x:Name="image2"
                        Grid.Column="2" 
                        Grid.Row="2"
                        HorizontalAlignment="Left" 
                        VerticalAlignment="Stretch"
                        Height="Auto"    
                        Width="Auto"/>
-                <Image x:Name="image3"
+                <Image x:Name="image2"
                        Grid.Column="3" 
                        Grid.Row="2"
                        HorizontalAlignment="Left" 
                        VerticalAlignment="Stretch"
                        Height="Auto"    
                        Width="Auto"/>
-                <Image x:Name="image4"
+                <Image x:Name="image3"
                        Grid.Column="4" 
                        Grid.Row="2"
                        HorizontalAlignment="Left" 
                        VerticalAlignment="Stretch"
                        Height="Auto"    
                        Width="Auto"/>
-                <Grid Grid.Column="6" 
+                <Image x:Name="image4"
+                       Grid.Column="5" 
+                       Grid.Row="2"
+                       HorizontalAlignment="Left" 
+                       VerticalAlignment="Stretch"
+                       Height="Auto"    
+                       Width="Auto"/>
+                <Grid Grid.Column="8" 
                        Grid.Row="1" 
                       HorizontalAlignment="Stretch"
                       VerticalAlignment="Stretch">
@@ -100,7 +102,28 @@
                             Height="25"
                             Click="ButtonSave_Click"/>
                 </Grid>
-
+                <Grid Grid.Column="6"
+                      Grid.Row="2">
+                    <Button x:Name="buttonNext"   
+                            Grid.Row="1"
+                            Content="вперед" 
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"                        
+                            Width="50"
+                            Height="25"
+                            Click="ButtonNext_Click"/>
+                </Grid>
+                <Grid Grid.Column="1"
+                      Grid.Row="2">
+                    <Button x:Name="buttonBrak"   
+                            Grid.Row="1"
+                            Content="назад" 
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"                        
+                            Width="50"
+                            Height="25"
+                            Click="ButtonBrak_Click"/>
+                </Grid>
             </Grid>
         </StackPanel>
 

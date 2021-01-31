@@ -25,10 +25,17 @@ namespace ImageTest
     public partial class MainWindow : Window
     {
         List<BitmapImage> listImage;
+        Int32 tempClick;
+
+        public int TempClick { get => tempClick; set => tempClick = value; }
+
         public MainWindow()
         {
             InitializeComponent();
             listImage = new List<BitmapImage>();
+            TempClick = 0;
+            buttonNext.IsEnabled = false;
+            buttonBrak.IsEnabled = false;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -39,6 +46,9 @@ namespace ImageTest
             image2.Source = listImage[2];
             image3.Source = listImage[3];
             image4.Source = listImage[4];
+            TempClick = listImage.Count - 1;
+            buttonNext.IsEnabled = true;
+            buttonBrak.IsEnabled = false;
         }
         public void OpenFile()
         {
@@ -140,6 +150,44 @@ namespace ImageTest
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog();
+        }
+
+        private void ButtonBrak_Click(object sender, RoutedEventArgs e)
+        {
+            TempClick++;
+            if (Math.Abs(TempClick) < listImage.Count - 1)
+            {
+                image4.Source = image3.Source;
+                image3.Source = image2.Source;
+                image2.Source = image1.Source;
+                image1.Source = image.Source;
+                image.Source = listImage[Math.Abs(TempClick)];
+                buttonNext.IsEnabled = true;
+            }
+            else
+            {
+                buttonNext.IsEnabled = true;
+                buttonBrak.IsEnabled = false;
+            }
+        }
+
+        private void ButtonNext_Click(object sender, RoutedEventArgs e)
+        {
+            TempClick--;
+            if (TempClick > 0 && Math.Abs(TempClick) < listImage.Count - 1)
+            {
+                image.Source = image1.Source;
+                image1.Source = image2.Source;
+                image2.Source = image3.Source;
+                image3.Source = image4.Source;
+                image4.Source = listImage[Math.Abs(TempClick)];
+                buttonBrak.IsEnabled = true;
+            }
+            else
+            {
+                buttonNext.IsEnabled = false;
+                buttonBrak.IsEnabled = true;
+            }
         }
     }
 }
