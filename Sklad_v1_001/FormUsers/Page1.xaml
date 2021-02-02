@@ -3,14 +3,12 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+       xmlns:ImageControl="clr-namespace:Sklad_v1_001.Control.FlexImage"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="300" d:DesignWidth="1300"
 	Title="Page1">
 
     <Grid Background="#FFF9F7F7">
-        <TextBlock HorizontalAlignment="Left" Margin="119,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ru-ru" Text="Cnhfybwf1"/></TextBlock>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="119,163,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBlock HorizontalAlignment="Left" Margin="56,48,0,0" TextWrapping="Wrap" Text="S" VerticalAlignment="Top" Height="73" Width="56" FontSize="70" FontWeight="Bold" FontFamily="Castellar" TextAlignment="Center"/>
-
+        <ImageControl:ImageList/>
     </Grid>
 </Page>

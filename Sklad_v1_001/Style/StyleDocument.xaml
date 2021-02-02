@@ -8,7 +8,13 @@
             <Setter Property="Height" Value="918"/>
         </Style.Setters>
     </Style>
-    
+
+    <Style  x:Key="UsersControlColor"  TargetType="{x:Type UserControl}" >
+        <Style.Setters>
+            <Setter Property="Background" Value="#FFFDFAFA"/>
+        </Style.Setters>
+    </Style>
+
 
     <Style  x:Key="DataDocument"  TargetType="{x:Type DataGrid}" >
         <Style.Setters>
