@@ -189,5 +189,12 @@ namespace ImageTest
                 buttonBrak.IsEnabled = true;
             }
         }
+
+        private void ButtonOpenControl_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationWindow win = new NavigationWindow();
+            win.Content = new ImagePage();
+            win.Show();                   
+        }
     }
 }

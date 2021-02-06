@@ -87,6 +87,9 @@
     <Compile Include="Control\FlexImage\ImageList.xaml.cs">
       <DependentUpon>ImageList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexImage\ImageListPage.xaml.cs">
+      <DependentUpon>ImageListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\ToolBar\ToolBarSaveCancel.xaml.cs">
       <DependentUpon>ToolBarSaveCancel.xaml</DependentUpon>
     </Compile>
@@ -135,6 +138,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\FlexImage\ImageList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\FlexImage\ImageListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -366,6 +373,11 @@
     <Content Include="DLL\CDEK.dll" />
     <Content Include="DLL\Interop.DrvFRLib.dll" />
     <Content Include="DLL\pilot_nt.dll" />
+    <Resource Include="Icone\broom_50px.png" />
+    <Resource Include="Icone\chevron_left_30px.png" />
+    <Resource Include="Icone\chevron_right_30px.png" />
+    <Resource Include="Icone\download_26px.png" />
+    <Resource Include="Icone\search_32px.png" />
     <Resource Include="Icone\IconDownload.png" />
     <Resource Include="Icone\IconErase.png" />
     <Resource Include="Icone\IconSaveAs.png" />

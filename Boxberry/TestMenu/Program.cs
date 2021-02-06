@@ -13,6 +13,10 @@ namespace TestMenu
     {
         static void Main(string[] args)
         {
+
+            OrderStatusLinke orderStatusLinke = new OrderStatusLinke();
+            OrderStatusLinke.OrderStatusSelect("0000164226759");
+
             AdressRowDispatch adressRowDispatch = new AdressRowDispatch();
             adressRowDispatch.Version = "1.0";
             adressRowDispatch.DateExecute = DateTime.Now;

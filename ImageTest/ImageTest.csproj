@@ -56,6 +56,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ImagePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,6 +67,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ImagePage.xaml.cs">
+      <DependentUpon>ImagePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -94,6 +101,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="chevron_left_30px.png" />
+    <Resource Include="chevron_right_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="broom_50px.png" />
+    <Resource Include="download_26px.png" />
+    <Resource Include="search_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="search_60px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sklad_v1_001\Sklad_v1_001.csproj">
+      <Project>{E5596643-F9BB-44B2-92D1-5A09384327A3}</Project>
+      <Name>Sklad_v1_001</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

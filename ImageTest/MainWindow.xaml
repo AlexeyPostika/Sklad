@@ -75,6 +75,7 @@
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <Button x:Name="button"   
@@ -101,6 +102,14 @@
                             Width="100"
                             Height="25"
                             Click="ButtonSave_Click"/>
+                    <Button x:Name="buttonOpenControl"                           
+                            Content="Контролл" 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Grid.Row="4" 
+                            Width="100"
+                            Height="25"
+                            Click="ButtonOpenControl_Click"/>
                 </Grid>
                 <Grid Grid.Column="6"
                       Grid.Row="2">

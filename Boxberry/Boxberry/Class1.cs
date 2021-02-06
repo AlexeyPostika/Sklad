@@ -559,4 +559,38 @@ namespace Boxberry
             return null;
         }
     }
+
+    public class OrderStatusLinke
+    {
+        //static String token;     
+        //static String lmld;
+        static String url;
+        static String str;
+
+        //public static string Token { get => token; set => token = value; }
+        //public static string Lmld { get => lmld; set => lmld = value; }
+        public static string Url { get => url; set => url = value; }
+        public static string Str { get => str; set => str = value; }
+
+        public static Boolean? OrderStatusSelect(String _numberorder)
+        {
+            Url = "https://boxberry.ru/departure_track/?id=" + _numberorder;
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            // Создаём объект WebClient
+
+            using (var webClient = new WebClient())
+            {
+                webClient.Encoding = Encoding.UTF8; //установили кадировку UTF8
+                // Выполняем запрос по адресу и получаем ответ в виде строки
+                var response = webClient.DownloadString(url);
+                if (!String.IsNullOrEmpty(response.ToString()))
+                {
+                    Str = response.ToString();
+                    return true;
+                }
+            }
+            return null;
+        }
+    }
 }
