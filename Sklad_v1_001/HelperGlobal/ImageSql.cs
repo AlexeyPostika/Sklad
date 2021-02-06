@@ -79,19 +79,25 @@ using System.Windows.Media.Imaging;
 
         }
 
-        public static byte[] ConvertToBytes(BitmapImage bitmapImage)
-        {
-            Stream stream = bitmapImage.StreamSource;
+        public static byte[] ConvertToBytes(BitmapImage _bitmapImage)
+        {           
+            //Stream stream = _bitmapImage.StreamSource;
             Byte[] buffer = null;
-
-
-            if (stream != null && stream.Length > 0)
+          
+            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(_bitmapImage));
+            using (MemoryStream ms = new MemoryStream())
             {
-                using (BinaryReader br = new BinaryReader(stream))
-                {
-                    buffer = br.ReadBytes((Int32)stream.Length);
-                }
+                encoder.Save(ms);
+                buffer = ms.ToArray();
             }
+            //if (stream != null && stream.Length > 0)
+            //{
+            //    using (BinaryReader br = new BinaryReader(stream))
+            //    {
+            //        buffer = br.ReadBytes((Int32)stream.Length);
+            //    }
+            //}
             return buffer;
         }
     }

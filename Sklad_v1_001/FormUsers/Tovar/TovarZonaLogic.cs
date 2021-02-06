@@ -79,10 +79,11 @@ namespace Sklad_v1_001.FormUsers.Tovar
         private Double cena;
         private Int32 vetrina;
         private String vetrinaString;
-        private String photoImage;
+        private Byte[] photoImage;
         private Int32 countPAGE;
         private String description;
         private List<BitmapImage> listImage;
+        private Int32 documentID;
         private String textOnWhatPage;
 
         public int ID
@@ -169,7 +170,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
             }
         }
 
-        public string PhotoImage
+        public Byte[] PhotoImage
         {
             get
             {
@@ -267,6 +268,20 @@ namespace Sklad_v1_001.FormUsers.Tovar
             }
         }
 
+        public Int32 DocumentID
+        {
+            get
+            {
+                return documentID;
+            }
+
+            set
+            {
+                documentID = value;
+                OnPropertyChanged("DocumentID");
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
@@ -275,7 +290,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
         }
         public LocalRow()
         {
-            ListImage = new List<BitmapImage>();
+            ListImage = new List<BitmapImage>();          
         }
     }
 
@@ -308,10 +323,12 @@ namespace Sklad_v1_001.FormUsers.Tovar
     public class TovarZonaLogic
     {
         SQLCommanSelect _sqlSting;
+        SQLCommanSelect _sqlSave;
 
         LocalRow localrow;
         
         String _getSelectProductTable = "xp_GetSelectProductTable";      //хранимка
+        String _getSaveProductImage = "xp_SaveProductImage";      //хранимка
 
         DataTable _table;
 
@@ -321,19 +338,33 @@ namespace Sklad_v1_001.FormUsers.Tovar
         {
             //объявили подключение
             _sqlSting = new SQLCommanSelect();
+            _sqlSave = new SQLCommanSelect();
             //объявили localRow
             localrow = new LocalRow();
             //объявили таблицу куда будем записывать все
             _table = new DataTable();
             //за правильную конвертацию данных
             convertData = new ConvertData();
-           
+
             //объявляем переменные для хранимой процедуры
             _sqlSting.AddParametr("@p_rowcountpage", SqlDbType.Int);
             _sqlSting.SetParametrValue("@p_rowcountpage", 0);
 
             _sqlSting.AddParametr("@p_pagecountrow", SqlDbType.Int);
             _sqlSting.SetParametrValue("@p_pagecountrow", 0);
+
+            //SAVE
+            //объявляем переменные для хранимой процедуры
+            _sqlSave.AddParametr("@p_ID", SqlDbType.Int);
+            _sqlSave.SetParametrValue("@p_ID", 0);
+
+            _sqlSave.AddParametr("@p_DocumentID", SqlDbType.Int);
+            _sqlSave.SetParametrValue("@p_DocumentID", 0);
+
+            _sqlSave.AddParametr("@p_Image", SqlDbType.VarBinary);
+            _sqlSave.SetParametrValue("@p_Image", 0);
+
+
         }
         public DataTable Select(LocalFilter filterlocal)
         {
@@ -349,6 +380,22 @@ namespace Sklad_v1_001.FormUsers.Tovar
             return _table;
         }
 
+        //SAVE
+        public DataTable Save(LocalRow _localRow)
+        {
+            _sqlSave.SqlAnswer.datatable.Clear();
+            _table.Clear();
+
+            _sqlSave.SetParametrValue("@p_ID", _localRow.ID);
+            _sqlSave.SetParametrValue("@p_DocumentID", _localRow.DocumentID);
+            _sqlSave.SetParametrValue("@p_Image", _localRow.PhotoImage);
+
+            _sqlSave.ComplexRequest(_getSaveProductImage, CommandType.StoredProcedure, null);
+            _table = _sqlSave.SqlAnswer.datatable;
+
+            return _table;
+        }
+
         public LocalRow Convert(DataRow _row, LocalRow localrow)
         {
             VetrinaList listVetrina = new VetrinaList();
@@ -360,7 +407,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
             localrow.Vetrina = convertData.ConvertDataInt32("IDVetrina");
             localrow.VetrinaString = convertData.ConvertDataString("VetrinaString");
             localrow.ExtrRefShtrixCode = convertData.ConvertDataInt64("ExtrRefShtrixCode");
-            localrow.PhotoImage = @"..\..\Icone\tovar\picture_80px.png";
+           
             localrow.CountPAGE = convertData.ConvertDataInt32("CountROWS");
             localrow.Description = convertData.ConvertDataString("Description");
             return localrow;

@@ -216,20 +216,14 @@ namespace Sklad_v1_001.FormUsers.Tovar
                 Save(localDocument);
         }
 
-        private static void Save(LocalRow _localRow)
+        private void Save(LocalRow _localRow)
         {
-            DataTable tempTableImage = new DataTable();
-            tempTableImage.Columns.Add("ID", typeof(Int32));
-            tempTableImage.Columns.Add("DocumentID", typeof(Int32));
-            tempTableImage.Columns.Add("Images", typeof(byte[]));
-            DataRow dataRow;
+            _localRow.DocumentID = _localRow.ID;
+            _localRow.ID = 0;
             foreach (BitmapImage bitmapImage in _localRow.ListImage)
             {
-                dataRow = tempTableImage.NewRow();
-                dataRow["ID"] = 0;
-                dataRow["DocumentID"] = _localRow.ID;
-                dataRow["Images"] = ImageSql.ConvertToBytes(bitmapImage);
-                tempTableImage.Rows.Add(dataRow);
+                _localRow.PhotoImage = ImageSql.ConvertToBytes(bitmapImage);           
+                logicTovarZona.Save(_localRow);
             }
         }
 

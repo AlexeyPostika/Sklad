@@ -117,9 +117,14 @@ namespace Sklad_v1_001.Control.FlexImage
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            TempClick = 0;
             fileWork.OpenFile();
             if (fileWork.ListImage != null && fileWork.ListImage.Count > 0)
+            {
                 ListImageControl = fileWork.ListImage;
+                ImagStandart.Source = ListImageControl[Math.Abs(TempClick)];
+            }
+
         }
     }
 }
