@@ -78,5 +78,21 @@ using System.Windows.Media.Imaging;
             return bitmapImage;
 
         }
+
+        public static byte[] ConvertToBytes(BitmapImage bitmapImage)
+        {
+            Stream stream = bitmapImage.StreamSource;
+            Byte[] buffer = null;
+
+
+            if (stream != null && stream.Length > 0)
+            {
+                using (BinaryReader br = new BinaryReader(stream))
+                {
+                    buffer = br.ReadBytes((Int32)stream.Length);
+                }
+            }
+            return buffer;
+        }
     }
 }

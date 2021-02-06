@@ -17,6 +17,7 @@ using System.Collections.ObjectModel;
 using System.Data;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Sklad_v1_001.HelperGlobal;
 
 namespace Sklad_v1_001.FormUsers.Tovar
 {
@@ -24,7 +25,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
     /// Interaction logic for TovarZona.xaml
     /// </summary>
     public partial class TovarZona : UserControl, INotifyPropertyChanged
-    {
+    {      
         private Boolean page;
         private Boolean isEnableBack;
         private Boolean isEnableNext;
@@ -36,6 +37,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
         Tovar.TovarZonaLogic logicTovarZona;
         ObservableCollection<Tovar.LocalRow> dataProduct;
 
+        Tovar.LocalRow localDocument;
         Tovar.LocalFilter filterLocal;
 
         Tovar.RowSummary sammary;
@@ -144,11 +146,13 @@ namespace Sklad_v1_001.FormUsers.Tovar
         }
         public TovarZona()
         {
-            InitializeComponent();
+            InitializeComponent();           
+
             dataProduct = new ObservableCollection<LocalRow>();
 
             logicTovarZona = new TovarZonaLogic();
 
+            localDocument = new LocalRow();
             filterLocal = new LocalFilter();
             filterLocal.Page = 0;
             filterLocal.PageCountRows = 0;
@@ -158,6 +162,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
 
             this.DataGrid.ItemsSource = dataProduct;
             this.ToolbarNextPageData.DataContext = this;
+            
             Page = false;
             Refresh();
         }
@@ -169,9 +174,9 @@ namespace Sklad_v1_001.FormUsers.Tovar
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Tovar.LocalRow local= DataGrid.SelectedItem as Tovar.LocalRow;
-            this.Informer1.DataContext = local;
-            this.Informe.DataContext = local;
+            localDocument = DataGrid.SelectedItem as Tovar.LocalRow;
+            this.Informer1.DataContext = localDocument;
+            this.Informe.DataContext = localDocument;
         }
         private void Refresh()
         {
@@ -204,7 +209,31 @@ namespace Sklad_v1_001.FormUsers.Tovar
         {
 
         }
+       
+        private void ToolBarZakupkaxaml_ButtonSave()
+        {
+            if (localDocument != null)
+                Save(localDocument);
+        }
 
+        private static void Save(LocalRow _localRow)
+        {
+            DataTable tempTableImage = new DataTable();
+            tempTableImage.Columns.Add("ID", typeof(Int32));
+            tempTableImage.Columns.Add("DocumentID", typeof(Int32));
+            tempTableImage.Columns.Add("Images", typeof(byte[]));
+            DataRow dataRow;
+            foreach (BitmapImage bitmapImage in _localRow.ListImage)
+            {
+                dataRow = tempTableImage.NewRow();
+                dataRow["ID"] = 0;
+                dataRow["DocumentID"] = _localRow.ID;
+                dataRow["Images"] = ImageSql.ConvertToBytes(bitmapImage);
+                tempTableImage.Rows.Add(dataRow);
+            }
+        }
+
+        #region Paginator
         private void ToolBarNextToBack_ButtonBack()
         {
             Page = true;
@@ -215,7 +244,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
 
         private void ToolBarNextToBack_ButtonNext()
         {
-            Page = true;           
+            Page = true;
             filterLocal.PageCountRows = (filterLocal.Page + 1) * filterLocal.RowsCountPage;
             filterLocal.Page++;
             Refresh();
@@ -233,8 +262,9 @@ namespace Sklad_v1_001.FormUsers.Tovar
         {
             Page = true;
             filterLocal.PageCountRows = NumberPage;
-            filterLocal.Page= NumberPage;
+            filterLocal.Page = NumberPage;
             Refresh();
         }
+        #endregion
     }
 }

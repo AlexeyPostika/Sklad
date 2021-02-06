@@ -16,10 +16,12 @@
             <RowDefinition Height="30*"/>
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
-        <ToolBar:ToolBarZakupkaxaml/>
+        <ToolBar:ToolBarZakupkaxaml 
+            ButtonSave="ToolBarZakupkaxaml_ButtonSave"/>
         <GroupBox x:Name="Informe" Grid.Row="1" Header="Информация о товаре" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="167" RenderTransformOrigin="-0.056,0.073" Width="962">
             <!--<Image Height="130" VerticalAlignment="Top" HorizontalAlignment="Left" Width="126" Margin="0,10,0,0" Source="/Sklad_v1_001;component/Icone/picture_80px.png"/>-->
-            <ImageList:ImageListPage  HorizontalAlignment="Left" Width="126"/>
+            <ImageList:ImageListPage  HorizontalAlignment="Left" Width="126"
+                                      ListImageControl="{Binding Path=ListImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         </GroupBox>
         <!--{x:Static res:Resources.SchtrxCode}-->
         <Grid x:Name="Informer1" Grid.Row="1">

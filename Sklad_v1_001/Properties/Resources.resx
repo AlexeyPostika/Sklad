@@ -333,4 +333,7 @@
   <data name="ADDLIST" xml:space="preserve">
     <value>Добавить</value>
   </data>
+  <data name="SAVELIST" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
 </root>

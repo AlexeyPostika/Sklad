@@ -520,6 +520,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Сохранить.
+        /// </summary>
+        public static string SAVELIST {
+            get {
+                return ResourceManager.GetString("SAVELIST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на № штрих-кода.
         /// </summary>
         public static string SchtrxCode {

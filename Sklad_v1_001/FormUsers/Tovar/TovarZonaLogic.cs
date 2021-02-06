@@ -9,6 +9,7 @@ using System.Data;
 using Sklad_v1_001.SQL;
 using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.HelperGlobal;
+using System.Windows.Media.Imaging;
 
 namespace Sklad_v1_001.FormUsers.Tovar
 {
@@ -17,6 +18,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
         private Int32 pageCountRows;                    //страница
         private Int32 rowsCountPage;                    //количество строк на странице
         private Int32 page;
+       
         public int PageCountRows
         {
             get
@@ -80,8 +82,9 @@ namespace Sklad_v1_001.FormUsers.Tovar
         private String photoImage;
         private Int32 countPAGE;
         private String description;
-
+        private List<BitmapImage> listImage;
         private String textOnWhatPage;
+
         public int ID
         {
             get
@@ -250,11 +253,29 @@ namespace Sklad_v1_001.FormUsers.Tovar
             }
         }
 
+        public List<BitmapImage> ListImage
+        {
+            get
+            {
+                return listImage;
+            }
+
+            set
+            {
+                listImage = value;
+                OnPropertyChanged("ListImage");
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
+        public LocalRow()
+        {
+            ListImage = new List<BitmapImage>();
         }
     }
 

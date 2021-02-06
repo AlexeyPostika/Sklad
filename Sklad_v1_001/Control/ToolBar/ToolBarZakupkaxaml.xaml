@@ -17,7 +17,6 @@
             <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="Auto" MaxWidth="80"/>
         </Grid.ColumnDefinitions>
-        
 
         <Button x:Name="ApplyButton" Grid.Column="1"
                 HorizontalAlignment="Left" Width="auto"                
@@ -31,6 +30,22 @@
                     </Grid.RowDefinitions>
                     <Image Source="/Sklad_v1_001;component/Icone/AddList_40.png"  HorizontalAlignment="Right" StretchDirection="DownOnly" Stretch="UniformToFill" Margin="10,0,10,0"/>
                     <TextBlock Grid.Row="1" Text="{x:Static res:Resources.ADDLIST}" Width="Auto" HorizontalAlignment="Center" />
+                </Grid>
+            </StackPanel>
+        </Button>
+
+        <Button x:Name="SaveButton" Grid.Column="3"
+                HorizontalAlignment="Left" Width="auto"                
+                Click="SaveButton_Click"
+                IsEnabled="{Binding ElementName=control, Path=IsEnableAdd, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+            <StackPanel Width="Auto" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="75"/>
+                        <RowDefinition Height="24"/>
+                    </Grid.RowDefinitions>
+                    <Image Source="/Sklad_v1_001;component/Icone/save_32px.png"  HorizontalAlignment="Right" StretchDirection="DownOnly" Stretch="UniformToFill" Margin="10,0,10,0"/>
+                    <TextBlock Grid.Row="1" Text="{x:Static res:Resources.SAVELIST}" Width="Auto" HorizontalAlignment="Center" />
                 </Grid>
             </StackPanel>
         </Button>
