@@ -10,6 +10,7 @@ using Sklad_v1_001.SQL;
 using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.HelperGlobal;
 using System.Windows.Media.Imaging;
+using Sklad_v1_001.GlobalVariable;
 
 namespace Sklad_v1_001.FormUsers.Tovar
 {
@@ -79,7 +80,8 @@ namespace Sklad_v1_001.FormUsers.Tovar
         private Double cena;
         private Int32 vetrina;
         private String vetrinaString;
-        private Byte[] photoImage;
+        private BitmapImage photoImage;
+        private Byte[] photoImageByte;
         private Int32 countPAGE;
         private String description;
         private List<BitmapImage> listImage;
@@ -170,7 +172,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
             }
         }
 
-        public Byte[] PhotoImage
+        public BitmapImage PhotoImage
         {
             get
             {
@@ -281,6 +283,8 @@ namespace Sklad_v1_001.FormUsers.Tovar
                 OnPropertyChanged("DocumentID");
             }
         }
+
+        public byte[] PhotoImageByte { get => photoImageByte; set => photoImageByte = value; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
@@ -398,6 +402,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
 
         public LocalRow Convert(DataRow _row, LocalRow localrow)
         {
+            ImageSql imageSql = new ImageSql();
             VetrinaList listVetrina = new VetrinaList();
             convertData = new ConvertData(_row, localrow);
             localrow.ID = convertData.ConvertDataInt32("ID");
@@ -407,7 +412,11 @@ namespace Sklad_v1_001.FormUsers.Tovar
             localrow.Vetrina = convertData.ConvertDataInt32("IDVetrina");
             localrow.VetrinaString = convertData.ConvertDataString("VetrinaString");
             localrow.ExtrRefShtrixCode = convertData.ConvertDataInt64("ExtrRefShtrixCode");
-           
+            if (_row["PhotoImage"] as byte[] != null)
+                localrow.PhotoImage = imageSql.BytesToImageSource(_row["PhotoImage"] as byte[]);
+            else
+                localrow.PhotoImage = ImageHelper.GenerateImage("picture_80px.png");
+
             localrow.CountPAGE = convertData.ConvertDataInt32("CountROWS");
             localrow.Description = convertData.ConvertDataString("Description");
             return localrow;

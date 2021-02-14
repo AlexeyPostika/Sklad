@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 {
     public class ConvertData
      {
+        ImageSql imageSql;
          public enum ConvertDataTypes
          {
              Int32 = 0,
@@ -48,6 +49,7 @@ using System.Threading.Tasks;
          {
              localdatarow = _row;
              localRow = _localRow;
+            imageSql = new ImageSql();
          }
            public Int32 ConvertDataInt32(string _columnname)
          {
@@ -251,6 +253,6 @@ using System.Threading.Tasks;
                      return i.Date;
              }
              return i.Date;
-           }
-       }
+           }      
+    }
 }

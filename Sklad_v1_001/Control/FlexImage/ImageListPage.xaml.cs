@@ -39,7 +39,82 @@ namespace Sklad_v1_001.Control.FlexImage
         {
             get { return (List<BitmapImage>)GetValue(ListImageControlProperty); }
             set { SetValue(ListImageControlProperty, value); }
-        }       
+        }
+        public static readonly DependencyProperty AddButtonVisibilityProperty = DependencyProperty.Register(
+        "AddButtonVisibility",
+        typeof(Visibility),
+        typeof(ImageListPage), new UIPropertyMetadata(Visibility.Visible));
+        public Visibility AddButtonVisibility
+        {
+            get { return (Visibility) GetValue(AddButtonVisibilityProperty); }
+            set { SetValue(AddButtonVisibilityProperty, value); }
+        }
+        
+        //
+        public static readonly DependencyProperty DownLoadButtonVisibilityProperty = DependencyProperty.Register(
+        "DownLoadButtonVisibility",
+        typeof(Visibility),
+        typeof(ImageListPage), new UIPropertyMetadata(Visibility.Visible));
+        public Visibility DownLoadButtonVisibility
+        {
+            get { return (Visibility)GetValue(DownLoadButtonVisibilityProperty); }
+            set { SetValue(DownLoadButtonVisibilityProperty, value); }
+        }
+        
+        //
+        public static readonly DependencyProperty SearchButtonVisibilityProperty = DependencyProperty.Register(
+        "SearchButtonVisibility",
+        typeof(Visibility),
+        typeof(ImageListPage), new UIPropertyMetadata(Visibility.Visible));
+        public Visibility SearchButtonVisibility
+        {
+            get { return (Visibility)GetValue(SearchButtonVisibilityProperty); }
+            set { SetValue(SearchButtonVisibilityProperty, value); }
+        }
+        
+        //
+        public static readonly DependencyProperty ClearButtonVisibilityProperty = DependencyProperty.Register(
+        "ClearButtonVisibility",
+        typeof(Visibility),
+        typeof(ImageListPage), new UIPropertyMetadata(Visibility.Visible));
+        public Visibility ClearButtonVisibility
+        {
+            get { return (Visibility)GetValue(ClearButtonVisibilityProperty); }
+            set { SetValue(ClearButtonVisibilityProperty, value); }
+        }
+
+        //
+        public static readonly DependencyProperty BrackButtonVisibilityProperty = DependencyProperty.Register(
+        "BrackButtonVisibility",
+        typeof(Visibility),
+        typeof(ImageListPage), new UIPropertyMetadata(Visibility.Hidden));
+        public Visibility BrackButtonVisibility
+        {
+            get { return (Visibility)GetValue(BrackButtonVisibilityProperty); }
+            set { SetValue(BrackButtonVisibilityProperty, value); }
+        }
+        
+        //
+        public static readonly DependencyProperty NextButtonVisibilityProperty = DependencyProperty.Register(
+        "NextButtonVisibility",
+        typeof(Visibility),
+        typeof(ImageListPage), new UIPropertyMetadata(Visibility.Visible));
+        public Visibility NextButtonVisibility
+        {
+            get { return (Visibility)GetValue(NextButtonVisibilityProperty); }
+            set { SetValue(NextButtonVisibilityProperty, value); }
+        }
+
+       public static readonly DependencyProperty ImageProperty = DependencyProperty.Register(
+       "Image",
+       typeof(BitmapImage),
+       typeof(ImageListPage), new UIPropertyMetadata(ImageHelper.GenerateImage("picture_80px.png")));
+        public BitmapImage Image
+        {
+            get { return (BitmapImage)GetValue(ImageProperty); }
+            set { SetValue(ImageProperty, value); }
+        }
+
         Int32 tempClick;
         public int TempClick { get => tempClick; set => tempClick = value; }
 
@@ -53,30 +128,36 @@ namespace Sklad_v1_001.Control.FlexImage
         }
 
         private void BorderControll_PreviewMouseMove(object sender, MouseEventArgs e)
-        {           
-            this.Brack.Visibility = Visibility.Visible;
-            this.Next.Visibility = Visibility.Visible;
-            this.DownLoad.Visibility = Visibility.Visible;
-            this.Clear.Visibility = Visibility.Visible;
-            this.Search.Visibility = Visibility.Visible;
-            this.AddButton.Visibility = Visibility.Visible;
+        {
+            if (BrackButtonVisibility != Visibility.Collapsed || NextButtonVisibility != Visibility.Collapsed)
+            {
+                this.Brack.Visibility = Visibility.Visible;
+                this.Next.Visibility = Visibility.Visible;
+                this.DownLoad.Visibility = Visibility.Visible;
+                this.Clear.Visibility = Visibility.Visible;
+                this.Search.Visibility = Visibility.Visible;
+                this.AddButton.Visibility = Visibility.Visible;
+            }
             //ButtonPreviewMouseMove?.Invoke();
         }
 
         private void BorderControll_MouseLeave(object sender, MouseEventArgs e)
-        {          
-            this.Brack.Visibility = Visibility.Hidden;
-            this.Next.Visibility = Visibility.Hidden;
-            this.DownLoad.Visibility = Visibility.Hidden;
-            this.Clear.Visibility = Visibility.Hidden;
-            this.Search.Visibility = Visibility.Hidden;
-            this.AddButton.Visibility = Visibility.Hidden;
+        {
+            if (BrackButtonVisibility != Visibility.Collapsed || NextButtonVisibility != Visibility.Collapsed)
+            {
+                this.Brack.Visibility = Visibility.Hidden;
+                this.Next.Visibility = Visibility.Hidden;
+                this.DownLoad.Visibility = Visibility.Hidden;
+                this.Clear.Visibility = Visibility.Hidden;
+                this.Search.Visibility = Visibility.Hidden;
+                this.AddButton.Visibility = Visibility.Hidden;
+            }
             //ButtonMouseLeave?.Invoke();
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            this.ImagStandart.Source = ImageHelper.GenerateImage("picture_80px.png");
+            this.ImagStandart.Source = Image;
         }
 
         private void Brack_Click(object sender, RoutedEventArgs e)
@@ -85,7 +166,7 @@ namespace Sklad_v1_001.Control.FlexImage
             {
                 TempClick++;
                 if (Math.Abs(TempClick) < ListImageControl.Count - 1)
-                {                   
+                {
                     ImagStandart.Source = ListImageControl[Math.Abs(TempClick)];
                     Next.IsEnabled = true;
                 }
@@ -124,7 +205,6 @@ namespace Sklad_v1_001.Control.FlexImage
                 ListImageControl = fileWork.ListImage;
                 ImagStandart.Source = ListImageControl[Math.Abs(TempClick)];
             }
-
         }
     }
 }

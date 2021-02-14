@@ -222,7 +222,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
             _localRow.ID = 0;
             foreach (BitmapImage bitmapImage in _localRow.ListImage)
             {
-                _localRow.PhotoImage = ImageSql.ConvertToBytes(bitmapImage);           
+                _localRow.PhotoImageByte = ImageSql.ConvertToBytes(bitmapImage);           
                 logicTovarZona.Save(_localRow);
             }
         }
