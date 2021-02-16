@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="Sklad_v1_001.FormUsers.Tovar.TovarItemZona"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+             xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
+             xmlns:ImageList="clr-namespace:Sklad_v1_001.Control.FlexImage"
+             mc:Ignorable="d"   
+             Style="{DynamicResource UsersControlWidth}"
+             d:DesignHeight="918" Width="1462" Loaded="UserControl_Loaded" x:Name="PageTovarZona">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="450" MaxWidth="550"/>
+            <ColumnDefinition Width="3"/>
+            <ColumnDefinition Width="Auto" MaxWidth="450"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Name="ImageList" Margin="0,0,10,0" Grid.RowSpan="3">
+            <ImageList:ImageListPage  HorizontalAlignment="Left" Width="441"
+                                      Image="{Binding Path=PhotoImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                      ListImageControl="{Binding Path=ListImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        </Grid>
+
+        <Grid Grid.Column="2" Name="EditProduct">
+
+        </Grid>
+
+    </Grid>
+</UserControl>

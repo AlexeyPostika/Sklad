@@ -18,6 +18,7 @@ using System.Data;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Sklad_v1_001.HelperGlobal;
+using Sklad_v1_001.Control.FlexMessageBox;
 
 namespace Sklad_v1_001.FormUsers.Tovar
 {
@@ -33,6 +34,9 @@ namespace Sklad_v1_001.FormUsers.Tovar
         private Boolean isEnableNextEnd;
         private String textOnWhatPage;
         private Int32 numberPage;
+
+        TovarItemZona tovarItemZona;
+        Window tovarItemZonaWindow; 
 
         Tovar.TovarZonaLogic logicTovarZona;
         ObservableCollection<Tovar.LocalRow> dataProduct;
@@ -260,5 +264,36 @@ namespace Sklad_v1_001.FormUsers.Tovar
             Refresh();
         }
         #endregion
+
+        private void ToolBarZakupkaxaml_ButtonEdit()
+        {
+            EditRow();
+        }
+        private void EditRow()
+        {
+            tovarItemZona = new TovarItemZona();
+
+            localDocument = DataGrid.SelectedItem as Tovar.LocalRow;
+
+            if (localDocument != null && localDocument.ID > 0)
+            {
+                //productItem = new ProductItem(_numeric, _databasedata);
+                //LocaleRow row = new LocaleRow();
+                //DataTable datatable = productLogic.FillGrid(currentRowView.ID);
+                //foreach (DataRow currentrow in datatable.Rows)
+                //{
+                //    productLogic.Convert(currentrow, row);
+                //}
+                //productItem.Row = row;
+                tovarItemZonaWindow = new FlexWindows(Properties.Resources.ProductItemScreenTitle);
+                tovarItemZonaWindow.Content = tovarItemZona;
+                tovarItemZonaWindow.ShowDialog();
+
+                //LocaleRow outrow = datalist.FirstOrDefault(x => x.ID == row.ID);
+                //outrow.ShowcaseID = row.ShowcaseID;
+                //outrow.ShowcaseIDDescription = row.ShowcaseIDDescription;
+            }
+        }
+
     }
 }

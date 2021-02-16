@@ -268,6 +268,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Детали.
+        /// </summary>
+        public static string EDITBUTTON {
+            get {
+                return ResourceManager.GetString("EDITBUTTON", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Фамилия.
         /// </summary>
         public static string FirstName {
@@ -498,6 +507,15 @@ namespace Sklad_v1_001.Properties {
         public static string Photo {
             get {
                 return ResourceManager.GetString("Photo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Детали продукта.
+        /// </summary>
+        public static string ProductItemScreenTitle {
+            get {
+                return ResourceManager.GetString("ProductItemScreenTitle", resourceCulture);
             }
         }
         

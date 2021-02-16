@@ -33,6 +33,7 @@ namespace Sklad_v1_001.Control.ToolBar
 
         public event Action ButtonAdd;
         public event Action ButtonSave;
+        public event Action ButtonEdit;
         public ToolBarZakupkaxaml()
         {
             InitializeComponent();
@@ -46,6 +47,11 @@ namespace Sklad_v1_001.Control.ToolBar
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             ButtonSave?.Invoke();
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonEdit?.Invoke();
         }
     }
 }

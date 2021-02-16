@@ -11,11 +11,11 @@
     <Grid  Style="{DynamicResource Grid}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="Auto" MaxWidth="80"/>
+            <ColumnDefinition Width="60" MaxWidth="80"/>
             <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="Auto" MaxWidth="80"/>
+            <ColumnDefinition Width="60" MaxWidth="80"/>
             <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="Auto" MaxWidth="80"/>
+            <ColumnDefinition Width="60" MaxWidth="80"/>
         </Grid.ColumnDefinitions>
 
         <Button x:Name="ApplyButton" Grid.Column="1"
@@ -44,8 +44,24 @@
                         <RowDefinition Height="75"/>
                         <RowDefinition Height="24"/>
                     </Grid.RowDefinitions>
-                    <Image Source="/Sklad_v1_001;component/Icone/save_32px.png"  HorizontalAlignment="Right" StretchDirection="DownOnly" Stretch="UniformToFill" Margin="10,0,10,0"/>
+                    <Image Source="/Sklad_v1_001;component/Icone/save_32px.png"  HorizontalAlignment="Right" StretchDirection="DownOnly" Stretch="UniformToFill" Margin="0,0,12,0"/>
                     <TextBlock Grid.Row="1" Text="{x:Static res:Resources.SAVELIST}" Width="Auto" HorizontalAlignment="Center" />
+                </Grid>
+            </StackPanel>
+        </Button>
+
+        <Button x:Name="EditButton" Grid.Column="5"
+                HorizontalAlignment="Left" Width="auto"                
+                Click="EditButton_Click"
+                IsEnabled="{Binding ElementName=control, Path=IsEnableAdd, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+            <StackPanel Width="Auto" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="75"/>
+                        <RowDefinition Height="24"/>
+                    </Grid.RowDefinitions>
+                    <Image Source="/Sklad_v1_001;component/Icone/IconEdit.png"  HorizontalAlignment="Right" StretchDirection="DownOnly" Stretch="UniformToFill" Margin="10,0,10,0"/>
+                    <TextBlock Grid.Row="1" Text="{x:Static res:Resources.EDITBUTTON}" Width="Auto" HorizontalAlignment="Center" />
                 </Grid>
             </StackPanel>
         </Button>

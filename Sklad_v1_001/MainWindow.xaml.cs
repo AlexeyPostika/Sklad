@@ -23,7 +23,7 @@ namespace Sklad_v1_001
     public partial class MainWindow : Window
     {
         //public MainWindow mailWindows1;
-
+        public static MainWindow AppWindow;
         private string path = "log.txt";
         public MainWindow()
         {

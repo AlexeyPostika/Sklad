@@ -336,4 +336,10 @@
   <data name="SAVELIST" xml:space="preserve">
     <value>Сохранить</value>
   </data>
+  <data name="EDITBUTTON" xml:space="preserve">
+    <value>Детали</value>
+  </data>
+  <data name="ProductItemScreenTitle" xml:space="preserve">
+    <value>Детали продукта</value>
+  </data>
 </root>
