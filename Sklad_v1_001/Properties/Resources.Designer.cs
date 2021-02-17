@@ -241,6 +241,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Поставки.
+        /// </summary>
+        public static string Deliveries {
+            get {
+                return ResourceManager.GetString("Deliveries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Описание.
         /// </summary>
         public static string Description {
@@ -273,6 +282,15 @@ namespace Sklad_v1_001.Properties {
         public static string EDITBUTTON {
             get {
                 return ResourceManager.GetString("EDITBUTTON", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Выход.
+        /// </summary>
+        public static string Exite {
+            get {
+                return ResourceManager.GetString("Exite", resourceCulture);
             }
         }
         
@@ -520,11 +538,29 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Продукты.
+        /// </summary>
+        public static string Products {
+            get {
+                return ResourceManager.GetString("Products", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Количество.
         /// </summary>
         public static string Quantity {
             get {
                 return ResourceManager.GetString("Quantity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Продажи.
+        /// </summary>
+        public static string SaleDocument {
+            get {
+                return ResourceManager.GetString("SaleDocument", resourceCulture);
             }
         }
         
@@ -556,6 +592,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Настройки.
+        /// </summary>
+        public static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Штрих-код.
         /// </summary>
         public static string ShtrixCode {
@@ -579,6 +624,15 @@ namespace Sklad_v1_001.Properties {
         public static string TrackingNumber {
             get {
                 return ResourceManager.GetString("TrackingNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Перемещение.
+        /// </summary>
+        public static string TransferDocument {
+            get {
+                return ResourceManager.GetString("TransferDocument", resourceCulture);
             }
         }
         

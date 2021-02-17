@@ -75,6 +75,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Control\FlexButton\LevelButton.xaml.cs">
+      <DependentUpon>LevelButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexControlDate\FilterDate.xaml.cs">
       <DependentUpon>FilterDate.xaml</DependentUpon>
     </Compile>
@@ -89,6 +92,9 @@
     </Compile>
     <Compile Include="Control\FlexImage\ImageListPage.xaml.cs">
       <DependentUpon>ImageListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexMenu\frameMenu.xaml.cs">
+      <DependentUpon>frameMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\FlexMessageBox\FlexWindows.xaml.cs">
       <DependentUpon>FlexWindows.xaml</DependentUpon>
@@ -135,11 +141,16 @@
     </Compile>
     <Compile Include="FormUsers\Zacupca\ZacupcaGridLogic.cs" />
     <Compile Include="GlobalList\List.cs" />
+    <Compile Include="GlobalVariable\AbsractRow.cs" />
     <Compile Include="GlobalVariable\FileWork.cs" />
     <Compile Include="GlobalVariable\ScreenType.cs" />
     <Compile Include="HelperGlobal\ConvertData.cs" />
     <Compile Include="HelperGlobal\ImageSql.cs" />
     <Compile Include="SQLCommand\SQLCommanSelect.cs" />
+    <Page Include="Control\FlexButton\LevelButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\FlexControlDescription\Description4TextBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -149,6 +160,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\FlexImage\ImageListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\FlexMenu\frameMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -322,13 +337,10 @@
     <Resource Include="Icone\admin2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icone\Menu\trolley_40px.png" />
+    <Resource Include="Icone\IconSale.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icone\Menu\product_80px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Icone\Menu\buy_40px.png" />
+    <Resource Include="Icone\IconBuy.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icone\Menu\cash_register_80px.png" />
@@ -353,7 +365,7 @@
     <Resource Include="Icone\registration_30px.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icone\exit_sign_40px.png" />
+    <Resource Include="Icone\IconExit.png" />
     <Resource Include="Icone\shutdown1_30px.png" />
     <Resource Include="Icone\shutdown_30px.png" />
   </ItemGroup>
@@ -374,7 +386,7 @@
     <Resource Include="FormUsers\purchase_30px.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icone\Menu\purchase_30px.png" />
+    <Resource Include="Icone\IconTransfer.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icone\Controllu\checkmark_24px.png" />
@@ -388,6 +400,9 @@
     <Content Include="DLL\CDEK.dll" />
     <Content Include="DLL\Interop.DrvFRLib.dll" />
     <Content Include="DLL\pilot_nt.dll" />
+    <Resource Include="Icone\IconProducts.png" />
+    <Resource Include="Icone\IconServices.png" />
+    <Resource Include="Icone\IconDelivery.png" />
     <Resource Include="Icone\IconEdit.png" />
     <Resource Include="Icone\save_32px.png" />
     <Resource Include="Icone\add_new_32px.png" />

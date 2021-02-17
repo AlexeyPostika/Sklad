@@ -36,31 +36,36 @@
         <Grid Grid.Row="1" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="3"/>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="3"/>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="3"/>
-                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Button Name="AddButton" Grid.Column="1" VerticalAlignment="Stretch" Click="AddButton_Click"
+            <Grid Grid.Column="1" Margin="3,0,0,0">
+                <Button Name="AddButton" VerticalAlignment="Stretch" Click="AddButton_Click"
                     Visibility="{Binding ElementName=control, Path=AddButtonVisibility, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                <Image Source="/Sklad_v1_001;component/Icone/add_new_32px.png" />
-            </Button>
-            <Button Name="DownLoad" Grid.Column="3" VerticalAlignment="Stretch" 
+                    <Image Source="/Sklad_v1_001;component/Icone/add_new_32px.png" />
+                </Button>
+            </Grid>
+            <Grid Grid.Column="2" Margin="3,0,0,0">
+                <Button Name="DownLoad" Grid.Column="2" VerticalAlignment="Stretch" 
                     Visibility="{Binding ElementName=control, Path=DownLoadButtonVisibility, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                <Image Source="/Sklad_v1_001;component/Icone/download_26px.png" />
-            </Button>
-            <Button Name="Search" Grid.Column="5" VerticalAlignment="Stretch" 
+                    <Image Source="/Sklad_v1_001;component/Icone/download_26px.png" />
+                </Button>
+            </Grid>
+            <Grid Grid.Column="3" Margin="3,0,0,0">
+                <Button Name="Search" VerticalAlignment="Stretch" 
                     Visibility="{Binding ElementName=control, Path=SearchButtonVisibility, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                <Image Source="/Sklad_v1_001;component/Icone/search_32px.png" />
-            </Button>
-            <Button Name="Clear" Grid.Column="7" VerticalAlignment="Stretch" 
-                    Visibility="{Binding ElementName=control, Path=ClearButtonVisibility, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                <Image Source="/Sklad_v1_001;component/Icone/broom_50px.png" />
-            </Button>
+                    <Image Source="/Sklad_v1_001;component/Icone/search_32px.png" />
+                </Button>
+            </Grid>
+            <Grid Grid.Column="4" Margin="3,0,0,0">
+                <Button Name="Clear"  VerticalAlignment="Stretch" 
+                        Visibility="{Binding ElementName=control, Path=ClearButtonVisibility, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                    <Image Source="/Sklad_v1_001;component/Icone/broom_50px.png" />
+                </Button>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

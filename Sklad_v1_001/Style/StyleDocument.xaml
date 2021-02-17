@@ -39,4 +39,18 @@
         </Style.Setters>
     </Style>
 
+    <Style  x:Key="MenuControl"  TargetType="{x:Type UserControl}" >
+        <Style.Setters>
+            <Setter Property="Background" Value="#FF292933"/>
+            <Setter Property="Height" Value="818"/>
+            <Setter Property="Width" Value="230"/>
+        </Style.Setters>
+    </Style>
+    
+    <Style  x:Key="MenuButton"  TargetType="{x:Type UserControl}" >
+        <Style.Setters>
+            <Setter Property="Background" Value="#FF292933"/>
+        </Style.Setters>
+    </Style>
+
 </ResourceDictionary>

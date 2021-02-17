@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="Sklad_v1_001.Control.FlexMenu.frameMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sklad_v1_001.Control.FlexMenu"
+             xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton"
+             xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+             mc:Ignorable="d" 
+              Style="{DynamicResource MenuControl}"
+             d:DesignHeight="818" d:DesignWidth="230" Name ="Menu" Loaded="Menu_Loaded">
+    <Grid Name="Osnova">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Name="UserDescription">
+            
+        </Grid>
+
+        <Grid Name="MenuButton" Grid.Row="1">
+            <StackPanel x:Name="rootStackPanel" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Stretch" >
+                <FlexButton:LevelButton Margin="0,0,0,4" x:Name="ButtonProduct" ButtonClick="ButtonProduct_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.Products}"/>
+                <FlexButton:LevelButton Margin="0,0,0,4" x:Name="ButtonSaleDocument" ButtonClick="ButtonSaleDocument_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.SaleDocument}"/>
+                <FlexButton:LevelButton Margin="0,0,0,4" x:Name="ButtonDelivery" ButtonClick="ButtonDelivery_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.Deliveries}"/>
+                <FlexButton:LevelButton Margin="0,0,0,4" x:Name="ButtonTransferDocument" ButtonClick="ButtonTransferDocument_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.TransferDocument}"/>
+                <FlexButton:LevelButton Margin="0,0,0,4" x:Name="ButtonSettings" ButtonClick="ButtonSettings_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.Settings}"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Name="Exite" Grid.Row="3">
+            <StackPanel x:Name="exiteStackPanel" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Stretch" >
+                <FlexButton:LevelButton Margin="0,0,0,4" x:Name="ButtonExite" ButtonClick="ButtonProduct_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.Exite}"/>
+             </StackPanel>
+        </Grid>
+
+    </Grid>
+</UserControl>

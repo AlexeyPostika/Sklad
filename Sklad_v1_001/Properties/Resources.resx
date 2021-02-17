@@ -342,4 +342,22 @@
   <data name="ProductItemScreenTitle" xml:space="preserve">
     <value>Детали продукта</value>
   </data>
+  <data name="Deliveries" xml:space="preserve">
+    <value>Поставки</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>Продукты</value>
+  </data>
+  <data name="SaleDocument" xml:space="preserve">
+    <value>Продажи</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="TransferDocument" xml:space="preserve">
+    <value>Перемещение</value>
+  </data>
+  <data name="Exite" xml:space="preserve">
+    <value>Выход</value>
+  </data>
 </root>

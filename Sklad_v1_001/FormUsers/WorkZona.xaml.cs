@@ -25,10 +25,13 @@ namespace Sklad_v1_001.FormUsers
     /// </summary>  
     public partial class WorkZona : UserControl
     {
+        TovarItemZona tovarItem;
         public string ViewModel { get; set; }
         public WorkZona()
         {
             InitializeComponent();
+
+           
         }
         public void ShowViewModel()
         {

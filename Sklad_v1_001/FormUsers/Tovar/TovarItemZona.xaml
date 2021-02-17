@@ -10,27 +10,10 @@
              Style="{DynamicResource UsersControlWidth}"
              d:DesignHeight="918" Width="1462" Loaded="UserControl_Loaded" x:Name="PageTovarZona">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="450" MaxWidth="550"/>
-            <ColumnDefinition Width="3"/>
-            <ColumnDefinition Width="Auto" MaxWidth="450"/>
-        </Grid.ColumnDefinitions>
-
-        <Grid.RowDefinitions>
-            <RowDefinition Height="300"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-
-        <Grid Name="ImageList" Margin="0,0,10,0" Grid.RowSpan="3">
-            <ImageList:ImageListPage  HorizontalAlignment="Left" Width="441"
+        
+            <ImageList:ImageListPage  HorizontalAlignment="Left" Width="1462"
                                       Image="{Binding Path=PhotoImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                       ListImageControl="{Binding Path=ListImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-        </Grid>
-
-        <Grid Grid.Column="2" Name="EditProduct">
-
-        </Grid>
-
+        
     </Grid>
 </UserControl>
