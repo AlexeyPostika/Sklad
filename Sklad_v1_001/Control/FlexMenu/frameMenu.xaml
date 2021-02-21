@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Sklad_v1_001.Control.FlexMenu"
              xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton"
+             xmlns:FlexUser="clr-namespace:Sklad_v1_001.Control.Users"
              xmlns:res="clr-namespace:Sklad_v1_001.Properties"
              mc:Ignorable="d" 
               Style="{DynamicResource MenuControl}"
@@ -18,7 +19,7 @@
         </Grid.RowDefinitions>
         
         <Grid Name="UserDescription">
-            
+            <FlexUser:FlexUserNameImage/>
         </Grid>
 
         <Grid Name="MenuButton" Grid.Row="1">
@@ -33,7 +34,7 @@
 
         <Grid Name="Exite" Grid.Row="3">
             <StackPanel x:Name="exiteStackPanel" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Stretch" >
-                <FlexButton:LevelButton Margin="0,0,0,4" x:Name="ButtonExite" ButtonClick="ButtonProduct_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.Exite}"/>
+                <FlexButton:LevelButton Margin="0,0,0,4" x:Name="ButtonExite" ButtonClick="ButtonExite_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.Exite}"/>
              </StackPanel>
         </Grid>
 

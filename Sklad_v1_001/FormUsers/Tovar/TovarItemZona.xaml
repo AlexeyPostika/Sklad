@@ -11,9 +11,9 @@
              d:DesignHeight="918" Width="1462" Loaded="UserControl_Loaded" x:Name="PageTovarZona">
     <Grid>
         
-            <ImageList:ImageListPage  HorizontalAlignment="Left" Width="1462"
+            <ImageList:ImageListPage  HorizontalAlignment="Left" Width="1462" x:Name="Imagelist"
                                       Image="{Binding Path=PhotoImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                      ListImageControl="{Binding Path=ListImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                                      ListImageControl="{Binding ElementName=PageTovarZona, Path=ListImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         
     </Grid>
 </UserControl>

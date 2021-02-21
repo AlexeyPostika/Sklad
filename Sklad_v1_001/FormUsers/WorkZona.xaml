@@ -18,7 +18,12 @@
                 <TextBlock x:Name="last_Copy" HorizontalAlignment="Left" Margin="81,63,0,0" TextWrapping="Wrap" Text="Должность" VerticalAlignment="Top" Width="123" Foreground="#FFFBF6F6" Height="22" FontSize="16" FontWeight="Bold" TextAlignment="Center" RenderTransformOrigin="0.512,-1.182"/>
                 <TextBlock x:Name="Dolwnost" HorizontalAlignment="Left" Margin="81,90,0,0" TextWrapping="Wrap" Text="----------------" VerticalAlignment="Top" Width="123" Foreground="#FFFBF6F6" Height="22" FontSize="16" FontWeight="Bold" TextAlignment="Center" RenderTransformOrigin="0.512,-1.182"/>
             </Grid>
-            <FlexMenu:frameMenu/>
+            <FlexMenu:frameMenu ButtonProductOpen="FrameMenu_ButtonProductOpen"
+                                ButtonSaleDocumentOpen="FrameMenu_ButtonSaleDocumentOpen"
+                                ButtonTransferDocumentOpen="FrameMenu_ButtonTransferDocumentOpen"
+                                ButtonDeliveryOpen="FrameMenu_ButtonDeliveryOpen"
+                                ButtonSettingsOpen="FrameMenu_ButtonSettingsOpen"
+                                ButtonExiteOpen="FrameMenu_ButtonExiteOpen"/>
         </Grid>
         <!--вертикальное меню-->
         <!--<Grid HorizontalAlignment="Left" Height="100" Margin="234,0,0,0" VerticalAlignment="Top" Width="1034" Background="#FF292933">
@@ -26,11 +31,12 @@
         </Grid>-->
         <!--грид основной контейнер-->
         <TextBlock HorizontalAlignment="Left" Margin="83,54,0,0" TextWrapping="Wrap" Text="KLAD" VerticalAlignment="Top" Height="38" RenderTransformOrigin="0.079,0.407" Width="116" FontSize="32" FontWeight="Bold" FontFamily="Castellar"/>
-        <Grid Height="918" Margin="234,0,0,0" VerticalAlignment="Top" Background="#FF292933">
-            <Frame x:Name="Docker1" Margin="0,1" NavigationUIVisibility="Hidden" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
-        </Grid>
+     
         <Image HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="51" RenderTransformOrigin="-4.9,-2.62" Source="/Sklad_v1_001;component/Icone/Sklad.png" Margin="103,10,0,0"/>
         <TextBlock HorizontalAlignment="Left" Margin="12,-7,0,0" TextWrapping="Wrap" Text="S" VerticalAlignment="Top" Height="95" Width="91" FontSize="95" FontWeight="Bold" FontFamily="Castellar" TextAlignment="Center" RenderTransformOrigin="0.835,0.484"/>
-
+        <Grid Height="918" Margin="234,0,0,0" VerticalAlignment="Top" Background="#FF292933">
+            <Frame x:Name="Docker1" Margin="0,1" NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"
+                   Navigated="Docker1_Navigated"/>
+        </Grid>
     </Grid>
 </UserControl>

@@ -327,11 +327,13 @@ namespace Sklad_v1_001.FormUsers.Tovar
     public class TovarZonaLogic
     {
         SQLCommanSelect _sqlSting;
+        SQLCommanSelect _sqlImageSting;
         SQLCommanSelect _sqlSave;
 
         LocalRow localrow;
         
         String _getSelectProductTable = "xp_GetSelectProductTable";      //хранимка
+        String _getSelectProductImageTable = "xp_GetSelectProductImageTable";      //хранимка
         String _getSaveProductImage = "xp_SaveProductImage";      //хранимка
 
         DataTable _table;
@@ -342,6 +344,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
         {
             //объявили подключение
             _sqlSting = new SQLCommanSelect();
+            _sqlImageSting = new SQLCommanSelect();
             _sqlSave = new SQLCommanSelect();
             //объявили localRow
             localrow = new LocalRow();
@@ -356,6 +359,10 @@ namespace Sklad_v1_001.FormUsers.Tovar
 
             _sqlSting.AddParametr("@p_pagecountrow", SqlDbType.Int);
             _sqlSting.SetParametrValue("@p_pagecountrow", 0);
+
+            //объявляем переменные для хранимой процедуры
+            _sqlImageSting.AddParametr("@p_ID", SqlDbType.Int);
+            _sqlImageSting.SetParametrValue("@p_ID", 0);
 
             //SAVE
             //объявляем переменные для хранимой процедуры
@@ -380,6 +387,19 @@ namespace Sklad_v1_001.FormUsers.Tovar
 
             _sqlSting.ComplexRequest(_getSelectProductTable, CommandType.StoredProcedure, null);
             _table = _sqlSting.SqlAnswer.datatable;
+
+            return _table;
+        }
+
+        public DataTable Select(Int32 _documentID)
+        {
+            _sqlImageSting.SqlAnswer.datatable.Clear();
+            _table.Clear();
+
+            _sqlImageSting.SetParametrValue("@p_ID", _documentID);
+
+            _sqlImageSting.ComplexRequest(_getSelectProductImageTable, CommandType.StoredProcedure, null);
+            _table = _sqlImageSting.SqlAnswer.datatable;
 
             return _table;
         }
@@ -419,6 +439,14 @@ namespace Sklad_v1_001.FormUsers.Tovar
 
             localrow.CountPAGE = convertData.ConvertDataInt32("CountROWS");
             localrow.Description = convertData.ConvertDataString("Description");
+            return localrow;
+        }
+
+        public LocalRow ConvertImage(DataRow _row, LocalRow _localrow)
+        {
+            ImageSql imageSql = new ImageSql();
+            if (_row["Images"] as byte[] != null)
+                _localrow.ListImage.Add(imageSql.BytesToImageSource(_row["Images"] as byte[]));
             return localrow;
         }
 

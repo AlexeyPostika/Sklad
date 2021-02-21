@@ -56,7 +56,8 @@
             </Grid>
             <Grid Grid.Column="3" Margin="3,0,0,0">
                 <Button Name="Search" VerticalAlignment="Stretch" 
-                    Visibility="{Binding ElementName=control, Path=SearchButtonVisibility, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                    Visibility="{Binding ElementName=control, Path=SearchButtonVisibility, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                        Click="Search_Click">
                     <Image Source="/Sklad_v1_001;component/Icone/search_32px.png" />
                 </Button>
             </Grid>

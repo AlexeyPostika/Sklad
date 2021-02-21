@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sklad_v1_001.GlobalVariable;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,7 @@ namespace Sklad_v1_001.Control.FlexMessageBox
         public FlexWindows(string title)
         {
             InitializeComponent();
-            this.Title = title;
+            this.Title = title;         
         }
 
         private void WindowName_Closing(object sender, System.ComponentModel.CancelEventArgs e)

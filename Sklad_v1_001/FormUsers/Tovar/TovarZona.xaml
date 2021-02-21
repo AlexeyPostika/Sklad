@@ -28,7 +28,8 @@
                                       ClearButtonVisibility="Collapsed"
                                       DownLoadButtonVisibility="Collapsed"
                                       BrackButtonVisibility="Collapsed"
-                                      NextButtonVisibility="Collapsed"/>
+                                      NextButtonVisibility="Collapsed"
+                                      ButtonSearchOpen="ImageListPage_ButtonSearchOpen"/>
         </GroupBox>
         <!--{x:Static res:Resources.SchtrxCode}-->
         <Grid x:Name="Informer1" Grid.Row="1">

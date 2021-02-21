@@ -108,6 +108,9 @@
     <Compile Include="Control\ToolBar\ToolBarZakupkaxaml.xaml.cs">
       <DependentUpon>ToolBarZakupkaxaml.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\Users\FlexUserNameImage.xaml.cs">
+      <DependentUpon>FlexUserNameImage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\Users\FlexUsersEdit.xaml.cs">
       <DependentUpon>FlexUsersEdit.xaml</DependentUpon>
     </Compile>
@@ -176,6 +179,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Control\ToolBar\ToolBarZakupkaxaml.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\Users\FlexUserNameImage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -400,6 +407,7 @@
     <Content Include="DLL\CDEK.dll" />
     <Content Include="DLL\Interop.DrvFRLib.dll" />
     <Content Include="DLL\pilot_nt.dll" />
+    <Resource Include="Icone\Sklad.ico" />
     <Resource Include="Icone\IconProducts.png" />
     <Resource Include="Icone\IconServices.png" />
     <Resource Include="Icone\IconDelivery.png" />

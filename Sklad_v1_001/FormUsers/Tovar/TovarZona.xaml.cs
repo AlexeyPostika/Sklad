@@ -274,26 +274,24 @@ namespace Sklad_v1_001.FormUsers.Tovar
             tovarItemZona = new TovarItemZona();
 
             localDocument = DataGrid.SelectedItem as Tovar.LocalRow;
-
+            tovarItemZona.Imagelist.ListImageControl.Clear();
             if (localDocument != null && localDocument.ID > 0)
             {
-                //productItem = new ProductItem(_numeric, _databasedata);
-                //LocaleRow row = new LocaleRow();
-                //DataTable datatable = productLogic.FillGrid(currentRowView.ID);
-                //foreach (DataRow currentrow in datatable.Rows)
-                //{
-                //    productLogic.Convert(currentrow, row);
-                //}
-                //productItem.Row = row;
+                DataTable datatable = logicTovarZona.Select(localDocument.ID);
+                foreach (DataRow currentrow in datatable.Rows)
+                {
+                    logicTovarZona.ConvertImage(currentrow, localDocument);
+                }
+                tovarItemZona.ListImage = localDocument.ListImage;
                 tovarItemZonaWindow = new FlexWindows(Properties.Resources.ProductItemScreenTitle);
                 tovarItemZonaWindow.Content = tovarItemZona;
-                tovarItemZonaWindow.ShowDialog();
-
-                //LocaleRow outrow = datalist.FirstOrDefault(x => x.ID == row.ID);
-                //outrow.ShowcaseID = row.ShowcaseID;
-                //outrow.ShowcaseIDDescription = row.ShowcaseIDDescription;
+                tovarItemZonaWindow.ShowDialog(); 
             }
         }
 
+        private void ImageListPage_ButtonSearchOpen()
+        {
+            EditRow();
+        }
     }
 }

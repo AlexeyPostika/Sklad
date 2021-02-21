@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="FlexWindow" Height="300" Width="300"
         SizeToContent="WidthAndHeight"
-        WindowStartupLocation ="CenterScreen"
-        ResizeMode="NoResize" x:Name="WindowName" Closing="WindowName_Closing">
+        WindowStartupLocation ="CenterScreen"       
+        ResizeMode="NoResize" x:Name="WindowName" Closing="WindowName_Closing" Icon="/Sklad_v1_001;component/Icone/Sklad.ico">
     <Grid>
         
     </Grid>

@@ -360,4 +360,10 @@
   <data name="Exite" xml:space="preserve">
     <value>Выход</value>
   </data>
+  <data name="NameLast" xml:space="preserve">
+    <value>ФИО</value>
+  </data>
+  <data name="Position" xml:space="preserve">
+    <value>Должность</value>
+  </data>
 </root>

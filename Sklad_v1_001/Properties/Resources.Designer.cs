@@ -367,6 +367,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на ФИО.
+        /// </summary>
+        public static string NameLast {
+            get {
+                return ResourceManager.GetString("NameLast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Наименование товара.
         /// </summary>
         public static string NameProduct {
@@ -525,6 +534,15 @@ namespace Sklad_v1_001.Properties {
         public static string Photo {
             get {
                 return ResourceManager.GetString("Photo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Должность.
+        /// </summary>
+        public static string Position {
+            get {
+                return ResourceManager.GetString("Position", resourceCulture);
             }
         }
         

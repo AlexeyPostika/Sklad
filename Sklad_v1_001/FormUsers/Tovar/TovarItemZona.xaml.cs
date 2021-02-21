@@ -25,7 +25,16 @@ namespace Sklad_v1_001.FormUsers.Tovar
     /// Interaction logic for TovarZona.xaml
     /// </summary>
     public partial class TovarItemZona : UserControl, INotifyPropertyChanged
-    {      
+    {
+        public static readonly DependencyProperty ListImageProperty = DependencyProperty.Register(
+        "ListImage",
+        typeof(List<BitmapImage>),
+        typeof(TovarItemZona), new UIPropertyMetadata(new List<BitmapImage>()));
+        public List<BitmapImage> ListImage
+        {
+            get { return (List<BitmapImage>)GetValue(ListImageProperty); }
+            set { SetValue(ListImageProperty, value); }
+        }
         private Boolean page;
         private Boolean isEnableBack;
         private Boolean isEnableNext;
@@ -157,7 +166,8 @@ namespace Sklad_v1_001.FormUsers.Tovar
             filterLocal.Page = 0;
             filterLocal.PageCountRows = 0;
             filterLocal.RowsCountPage = 7;
-
+            this.Imagelist.ListImageControl = ListImage;
+            this.PageTovarZona = this;
             sammary = new RowSummary();
             Page = false;
             

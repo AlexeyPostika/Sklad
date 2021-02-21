@@ -21,6 +21,12 @@ namespace Sklad_v1_001.Control.FlexMenu
     /// </summary>
     public partial class frameMenu : UserControl
     {
+        public event Action ButtonProductOpen;
+        public event Action ButtonSaleDocumentOpen;
+        public event Action ButtonDeliveryOpen;
+        public event Action ButtonTransferDocumentOpen;
+        public event Action ButtonSettingsOpen;
+        public event Action ButtonExiteOpen;
         public frameMenu()
         {
             InitializeComponent();
@@ -38,27 +44,32 @@ namespace Sklad_v1_001.Control.FlexMenu
 
         private void ButtonProduct_ButtonClick()
         {
-
+            ButtonProductOpen?.Invoke();
         }
 
         private void ButtonDelivery_ButtonClick()
         {
-
+            ButtonDeliveryOpen?.Invoke();
         }
 
         private void ButtonSaleDocument_ButtonClick()
         {
-
+            ButtonSaleDocumentOpen?.Invoke();
         }
 
         private void ButtonTransferDocument_ButtonClick()
         {
-
+            ButtonTransferDocumentOpen?.Invoke();
         }
 
         private void ButtonSettings_ButtonClick()
         {
+            ButtonSettingsOpen?.Invoke();
+        }
 
+        private void ButtonExite_ButtonClick()
+        {
+            ButtonExiteOpen?.Invoke();
         }
     }
 }

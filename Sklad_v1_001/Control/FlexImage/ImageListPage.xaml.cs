@@ -119,12 +119,20 @@ namespace Sklad_v1_001.Control.FlexImage
         public int TempClick { get => tempClick; set => tempClick = value; }
 
         //public event Action ButtonPreviewMouseMove;
-        //public event Action ButtonMouseLeave;      
+        //public event Action ButtonMouseLeave;     
+        public event Action ButtonSearchOpen;      
         public ImageListPage()
         {
             InitializeComponent();
             fileWork = new FileWork();
             TempClick = 0;
+            if (Image != null)
+                this.ImagStandart.Source = Image;
+            else if (ListImageControl.Count > 0)
+            {
+                this.ImagStandart.Source = ListImageControl[0];
+            }
+            
         }
 
         private void BorderControll_PreviewMouseMove(object sender, MouseEventArgs e)
@@ -157,7 +165,7 @@ namespace Sklad_v1_001.Control.FlexImage
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            this.ImagStandart.Source = Image;
+           
         }
 
         private void Brack_Click(object sender, RoutedEventArgs e)
@@ -205,6 +213,11 @@ namespace Sklad_v1_001.Control.FlexImage
                 ListImageControl = fileWork.ListImage;
                 ImagStandart.Source = ListImageControl[Math.Abs(TempClick)];
             }
+        }
+
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonSearchOpen?.Invoke();
         }
     }
 }

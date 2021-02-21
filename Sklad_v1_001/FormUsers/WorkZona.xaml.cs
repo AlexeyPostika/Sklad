@@ -25,43 +25,49 @@ namespace Sklad_v1_001.FormUsers
     /// </summary>  
     public partial class WorkZona : UserControl
     {
-        TovarItemZona tovarItem;
         public string ViewModel { get; set; }
         public WorkZona()
         {
-            InitializeComponent();
-
-           
+            InitializeComponent();       
         }
         public void ShowViewModel()
         {
             MessageBox.Show(ViewModel);
         }
 
-        private void ListTovar_Click(object sender, RoutedEventArgs e)
+        private void Docker1_Navigated(object sender, NavigationEventArgs e)
         {
-            Docker1.Content=new TovarZona();
+
         }
 
-        private void PrixodTovara_Click(object sender, RoutedEventArgs e)
+        private void FrameMenu_ButtonProductOpen()
         {
-            //Docker1.Content = new RegistraciyTovara();
-            Docker1.Navigate(new RegistraciyTovara()); // открытие страницы
+            Docker1.Navigate(new TovarZona()); // открытие страницы
         }
 
-        private void Kategorii_Click(object sender, RoutedEventArgs e)
+        private void FrameMenu_ButtonSaleDocumentOpen()
         {
-            Docker1.Navigate(new Kategorii()); // открытие страницы
+
         }
 
-        private void Admins_Click(object sender, RoutedEventArgs e)
+        private void FrameMenu_ButtonTransferDocumentOpen()
         {
-            Docker1.Content = new FormUsers.Userss.UserList();
+
         }
 
-        private void Purchase_Click(object sender, RoutedEventArgs e)
+        private void FrameMenu_ButtonDeliveryOpen()
         {
             Docker1.Navigate(new Zacupca.ZacupcaGrid()); // открытие страницы
+        }
+
+        private void FrameMenu_ButtonSettingsOpen()
+        {
+
+        }
+
+        private void FrameMenu_ButtonExiteOpen()
+        {
+
         }
     }
 }
