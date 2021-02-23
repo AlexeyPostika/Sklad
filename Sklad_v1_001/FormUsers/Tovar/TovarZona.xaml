@@ -58,7 +58,9 @@
                     </DataGridTemplateColumn.HeaderTemplate>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding PhotoImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="Auto" MaxWidth="100"/>
+                            <ImageList:FlexImageSelect HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" MaxWidth="100"
+                                                       Image="{Binding PhotoImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                                                       ButtonSelectImage="FlexImageSelect_ButtonSelectImage"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

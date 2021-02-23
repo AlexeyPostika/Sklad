@@ -293,5 +293,10 @@ namespace Sklad_v1_001.FormUsers.Tovar
         {
             EditRow();
         }
+
+        private void FlexImageSelect_ButtonSelectImage()
+        {
+            EditRow();
+        }
     }
 }
