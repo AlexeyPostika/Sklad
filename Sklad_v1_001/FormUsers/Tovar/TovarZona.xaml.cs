@@ -27,6 +27,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
     /// </summary>
     public partial class TovarZona : UserControl, INotifyPropertyChanged
     {
+        WorkZona workZona;
         public event Action ButtonInTovar;
 
         private Boolean page;
@@ -152,7 +153,9 @@ namespace Sklad_v1_001.FormUsers.Tovar
         }
         public TovarZona()
         {
-            InitializeComponent();           
+            InitializeComponent();
+
+            workZona = new WorkZona();
 
             dataProduct = new ObservableCollection<LocalRow>();
 
@@ -269,7 +272,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
 
         private void ToolBarZakupkaxaml_ButtonEdit()
         {
-            ButtonInTovar?.Invoke();
+            workZona.ButtonProductEditOpen();
         }
         private void EditRow()
         {

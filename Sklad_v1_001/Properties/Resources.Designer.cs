@@ -565,6 +565,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Детали продукта.
+        /// </summary>
+        public static string ProductsEdit {
+            get {
+                return ResourceManager.GetString("ProductsEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Количество.
         /// </summary>
         public static string Quantity {

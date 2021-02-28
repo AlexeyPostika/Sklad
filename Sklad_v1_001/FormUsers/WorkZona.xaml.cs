@@ -46,27 +46,34 @@ namespace Sklad_v1_001.FormUsers
         {
             InitializeComponent();
 
-            tovarZona = new TovarZona();
-
             PageframeMenuLevel1 = new frameMenuPage();
             this.frameMenuOpen.Navigate(PageframeMenuLevel1);
 
-
+            //продукты
             PageframeMenuLevel1.ButtonProductOpen += new Action(ButtonProductOpen);
-            PageframeMenuLevel1.ButtonSaleDocumentOpen += new Action(ButtonSaleDocumentOpen);
-            //ButtonPlanFactClick
-            //Аналитика 
+            PageframeMenuLevel1.ButtonProductEditOpen += new Action(ButtonProductEditOpen);
+            //продажи     
+            PageframeMenuLevel1.ButtonSaleDocumentOpen += new Action(ButtonSaleDocumentOpen);     
+            //перемещение
             PageframeMenuLevel1.ButtonTransferDocumentOpen += new Action(ButtonTransferDocumentOpen);
+            //поставки
             PageframeMenuLevel1.ButtonDeliveryOpen += new Action(ButtonDeliveryOpen);
-            //продажи           
+            //настройки                
             PageframeMenuLevel1.ButtonSettingsOpen += new Action(ButtonSettingsOpen);
+            //выход
             PageframeMenuLevel1.ButtonExiteOpen += new Action(ButtonExiteOpen);
 
         }
+
         #region Product
-        private void ButtonProductOpen()
+        public void ButtonProductOpen()
         {
             Docker1.Navigate(new TovarZona()); // открытие страницы
+        }
+
+        public void ButtonProductEditOpen()
+        {
+            MessageBox.Show("пойдем гулять");
         }
         #endregion
 
@@ -77,32 +84,32 @@ namespace Sklad_v1_001.FormUsers
         }
         #endregion
 
-
+        #region перемещение
         private void ButtonTransferDocumentOpen()
         {
             
         }
+        #endregion
 
+        #region поставки
         private void ButtonDeliveryOpen()
         {
             Docker1.Navigate(new Zacupca.ZacupcaGrid()); // открытие страницы
         }
+        #endregion
 
-
-        public void ShowViewModel()
-        {
-            MessageBox.Show(ViewModel);
-        }  
-
+        #region настройки
         private void ButtonSettingsOpen()
         {
             
         }
+        #endregion
 
+        #region выход
         private void ButtonExiteOpen()
         {
             
         }
-
+        #endregion
     }
 }

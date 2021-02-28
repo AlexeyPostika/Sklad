@@ -369,4 +369,7 @@
   <data name="Status" xml:space="preserve">
     <value>Статус</value>
   </data>
+  <data name="ProductsEdit" xml:space="preserve">
+    <value>Детали продукта</value>
+  </data>
 </root>
