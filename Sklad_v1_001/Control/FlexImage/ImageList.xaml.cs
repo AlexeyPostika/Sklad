@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using Sklad_v1_001.FormUsers.Tovar;
 using Sklad_v1_001.GlobalVariable;
 using System;
 using System.Collections.Generic;
@@ -83,16 +84,75 @@ namespace Sklad_v1_001.Control.FlexImage
             set { SetValue(ImageSaveProperty, value); }
         }
 
+        public static readonly DependencyProperty ShtrixCodeTextProperty = DependencyProperty.Register(
+        "ShtrixCodeText",
+        typeof(String),
+        typeof(ImageList), new UIPropertyMetadata(String.Empty));
+        public String ShtrixCodeText
+        {
+            get { return (String)GetValue(ShtrixCodeTextProperty); }
+            set { SetValue(ShtrixCodeTextProperty, value); }
+        }
+
+        public static readonly DependencyProperty NameProductTextProperty = DependencyProperty.Register(
+        "NameProductText",
+        typeof(String),
+        typeof(ImageList), new UIPropertyMetadata(String.Empty));
+        public String NameProductText
+        {
+            get { return (String)GetValue(NameProductTextProperty); }
+            set { SetValue(NameProductTextProperty, value); }
+        }
+
+        public static readonly DependencyProperty TypeProductTextProperty = DependencyProperty.Register(
+        "TypeProductText",
+        typeof(String),
+        typeof(ImageList), new UIPropertyMetadata(String.Empty));
+        public String TypeProductText
+        {
+            get { return (String)GetValue(TypeProductTextProperty); }
+            set { SetValue(TypeProductTextProperty, value); }
+        }
+
+        public static readonly DependencyProperty StatusTextProperty = DependencyProperty.Register(
+      "StatusText",
+      typeof(String),
+      typeof(ImageList), new UIPropertyMetadata(String.Empty));
+        public String StatusText
+        {
+            get { return (String)GetValue(StatusTextProperty); }
+            set { SetValue(StatusTextProperty, value); }
+        }
+
+        LocalRow localDocument;
+
         List<BitmapImage> listImageControl;
         Int32 tempClick;
 
         public int TempClick { get => tempClick; set => tempClick = value; }
         public List<BitmapImage> ListImageControl { get => listImageControl; set => listImageControl = value; }
+        public LocalRow LocalDocument
+        {
+            get
+            {
+                return localDocument;
+            }
+
+            set
+            {
+                localDocument = value;
+                OnPropertyChanged("LocalDocument");
+            }
+        }
 
         public ImageList()
         {
             InitializeComponent();
             ListImageControl = new List<BitmapImage>();
+            LocalDocument = new LocalRow();
+
+            this.Form.DataContext = LocalDocument;
+
             TempClick = 0;
             buttonNext.IsEnabled = false;
             buttonBrak.IsEnabled = false;

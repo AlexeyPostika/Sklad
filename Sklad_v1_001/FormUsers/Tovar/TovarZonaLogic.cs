@@ -76,6 +76,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
         private Int64 extrRefShtrixCode;
         private String name;
         private String typeProduct;
+        private Int32 status;
         private String typeDescriptio;
         private Double cena;
         private Int32 vetrina;
@@ -285,6 +286,19 @@ namespace Sklad_v1_001.FormUsers.Tovar
         }
 
         public byte[] PhotoImageByte { get => photoImageByte; set => photoImageByte = value; }
+        public int Status
+        {
+            get
+            {
+                return status;
+            }
+
+            set
+            {
+                status = value;
+                OnPropertyChanged("Status");
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")

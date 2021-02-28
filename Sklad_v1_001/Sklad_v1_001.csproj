@@ -99,8 +99,14 @@
     <Compile Include="Control\FlexMenu\frameMenu.xaml.cs">
       <DependentUpon>frameMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexMenu\frameMenuPage.xaml.cs">
+      <DependentUpon>frameMenuPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexMessageBox\FlexWindows.xaml.cs">
       <DependentUpon>FlexWindows.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexTextBox\FlexLabelTextBox.xaml.cs">
+      <DependentUpon>FlexLabelTextBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\ToolBar\ToolBarSaveCancel.xaml.cs">
       <DependentUpon>ToolBarSaveCancel.xaml</DependentUpon>
@@ -134,6 +140,9 @@
     </Compile>
     <Compile Include="FormUsers\Kategor\KategoriiLogic.cs" />
     <Compile Include="FormUsers\Prixod\RegistraciyTovaraLogic.cs" />
+    <Compile Include="FormUsers\Tovar\TovarInZona.xaml.cs">
+      <DependentUpon>TovarInZona.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FormUsers\Tovar\TovarItemZona.xaml.cs">
       <DependentUpon>TovarItemZona.xaml</DependentUpon>
     </Compile>
@@ -177,7 +186,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Control\FlexMenu\frameMenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\FlexMessageBox\FlexWindows.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\FlexTextBox\FlexLabelTextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -208,6 +225,10 @@
     <Page Include="Control\Zona\Yellow\SelectCategoryYellowTable.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FormUsers\Tovar\TovarInZona.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FormUsers\Tovar\TovarItemZona.xaml">
       <Generator>MSBuild:Compile</Generator>

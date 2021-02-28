@@ -4,18 +4,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Sklad_v1_001.Control.FlexImage"
+             xmlns:FlexText="clr-namespace:Sklad_v1_001.Control.FlexTextBox"
+             xmlns:res="clr-namespace:Sklad_v1_001.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="1130"
               Style="{DynamicResource UsersControlColor}"
              Name="control">
-    <Grid>
+    <Grid x:Name="Form">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
         
         <StackPanel Name="ListImage" 
                     HorizontalAlignment="Left" 
                     VerticalAlignment="Stretch" 
                     Height="Auto"                                    
-                    Width="Auto"
-                    Grid.ColumnSpan="7"
+                    Width="Auto"                 
                     Grid.RowSpan="2">
             <Grid>
                 <Grid.RowDefinitions>
@@ -152,6 +157,22 @@
                                Source="{Binding ElementName=control, Path=ImageSave, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                 </Button>
             </Grid>
+        </StackPanel>
+        <StackPanel Grid.Column="1" x:Name="DescriptionInform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <FlexText:FlexLabelTextBox x:Name="Shtrix" LabelText="{x:Static res:Resources.ShtrixCode}"
+                                       Description="{Binding Path=ExtrRefShtrixCode, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                       EnableTextBox="False"/>
+            <FlexText:FlexLabelTextBox x:Name="Product" LabelText="{x:Static res:Resources.NameProduct}"
+                                       Description="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                       EnableTextBox="False"/>
+            <FlexText:FlexLabelTextBox x:Name="Type" LabelText="{x:Static res:Resources.TypeProduct}"
+                                       Description="{Binding  Path=TypeProduct, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                       EnableTextBox="False"/>
+            <FlexText:FlexLabelTextBox x:Name="Status" LabelText="{x:Static res:Resources.Status}"
+                                       Description="{Binding Path=Status, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                       EnableTextBox="False"/>
+
+
         </StackPanel>
     </Grid>
 </UserControl>

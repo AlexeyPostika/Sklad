@@ -366,4 +366,7 @@
   <data name="Position" xml:space="preserve">
     <value>Должность</value>
   </data>
+  <data name="Status" xml:space="preserve">
+    <value>Статус</value>
+  </data>
 </root>

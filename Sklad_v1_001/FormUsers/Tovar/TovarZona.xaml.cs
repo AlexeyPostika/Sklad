@@ -26,7 +26,9 @@ namespace Sklad_v1_001.FormUsers.Tovar
     /// Interaction logic for TovarZona.xaml
     /// </summary>
     public partial class TovarZona : UserControl, INotifyPropertyChanged
-    {      
+    {
+        public event Action ButtonInTovar;
+
         private Boolean page;
         private Boolean isEnableBack;
         private Boolean isEnableNext;
@@ -267,7 +269,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
 
         private void ToolBarZakupkaxaml_ButtonEdit()
         {
-            EditRow();
+            ButtonInTovar?.Invoke();
         }
         private void EditRow()
         {

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Sklad_v1_001.Control.FlexMenu;
 using Sklad_v1_001.FormUsers.Kategor;
 using Sklad_v1_001.FormUsers.Prixod;
 using Sklad_v1_001.FormUsers.Tovar;
@@ -25,49 +26,83 @@ namespace Sklad_v1_001.FormUsers
     /// </summary>  
     public partial class WorkZona : UserControl
     {
+        frameMenuPage _pageframeMenuLevel1;
+        Tovar.TovarZona tovarZona;
         public string ViewModel { get; set; }
+        public frameMenuPage PageframeMenuLevel1
+        {
+            get
+            {
+                return _pageframeMenuLevel1;
+            }
+
+            set
+            {
+                _pageframeMenuLevel1 = value;
+            }
+        }
+
         public WorkZona()
         {
-            InitializeComponent();       
-        }
-        public void ShowViewModel()
-        {
-            MessageBox.Show(ViewModel);
-        }
+            InitializeComponent();
 
-        private void Docker1_Navigated(object sender, NavigationEventArgs e)
-        {
+            tovarZona = new TovarZona();
+
+            PageframeMenuLevel1 = new frameMenuPage();
+            this.frameMenuOpen.Navigate(PageframeMenuLevel1);
+
+
+            PageframeMenuLevel1.ButtonProductOpen += new Action(ButtonProductOpen);
+            PageframeMenuLevel1.ButtonSaleDocumentOpen += new Action(ButtonSaleDocumentOpen);
+            //ButtonPlanFactClick
+            //Аналитика 
+            PageframeMenuLevel1.ButtonTransferDocumentOpen += new Action(ButtonTransferDocumentOpen);
+            PageframeMenuLevel1.ButtonDeliveryOpen += new Action(ButtonDeliveryOpen);
+            //продажи           
+            PageframeMenuLevel1.ButtonSettingsOpen += new Action(ButtonSettingsOpen);
+            PageframeMenuLevel1.ButtonExiteOpen += new Action(ButtonExiteOpen);
 
         }
-
-        private void FrameMenu_ButtonProductOpen()
+        #region Product
+        private void ButtonProductOpen()
         {
             Docker1.Navigate(new TovarZona()); // открытие страницы
         }
+        #endregion
 
-        private void FrameMenu_ButtonSaleDocumentOpen()
+        #region Продажи
+        private void ButtonSaleDocumentOpen()
         {
+            
+        }
+        #endregion
 
+
+        private void ButtonTransferDocumentOpen()
+        {
+            
         }
 
-        private void FrameMenu_ButtonTransferDocumentOpen()
-        {
-
-        }
-
-        private void FrameMenu_ButtonDeliveryOpen()
+        private void ButtonDeliveryOpen()
         {
             Docker1.Navigate(new Zacupca.ZacupcaGrid()); // открытие страницы
         }
 
-        private void FrameMenu_ButtonSettingsOpen()
-        {
 
+        public void ShowViewModel()
+        {
+            MessageBox.Show(ViewModel);
+        }  
+
+        private void ButtonSettingsOpen()
+        {
+            
         }
 
-        private void FrameMenu_ButtonExiteOpen()
+        private void ButtonExiteOpen()
         {
-
+            
         }
+
     }
 }
