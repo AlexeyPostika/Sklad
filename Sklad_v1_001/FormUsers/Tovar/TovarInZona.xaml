@@ -7,7 +7,7 @@
       xmlns:FlexImage="clr-namespace:Sklad_v1_001.Control.FlexImage"
       mc:Ignorable="d" 
       d:DesignHeight="918" d:DesignWidth="800"
-      Title="TovarInZona" Background="#FFFDFAFA">
+      Title="TovarInZona" Style="{DynamicResource UsersPageWidth}">
 
     <Grid>
         <FlexImage:ImageList/>

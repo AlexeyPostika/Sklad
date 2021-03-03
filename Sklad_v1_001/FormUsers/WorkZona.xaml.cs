@@ -27,7 +27,7 @@ namespace Sklad_v1_001.FormUsers
     public partial class WorkZona : UserControl
     {
         frameMenuPage _pageframeMenuLevel1;
-        Tovar.TovarZona tovarZona;
+       
         public string ViewModel { get; set; }
         public frameMenuPage PageframeMenuLevel1
         {
@@ -73,7 +73,7 @@ namespace Sklad_v1_001.FormUsers
 
         public void ButtonProductEditOpen()
         {
-            MessageBox.Show("пойдем гулять");
+            Docker1.Navigate(new TovarInZona());
         }
         #endregion
 
