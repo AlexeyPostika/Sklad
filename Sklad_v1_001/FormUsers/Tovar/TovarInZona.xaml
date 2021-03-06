@@ -10,6 +10,6 @@
       Title="TovarInZona" Style="{DynamicResource UsersPageWidth}">
 
     <Grid>
-        <FlexImage:ImageList/>
+        <FlexImage:ImageList x:Name="Edit"/>
     </Grid>
 </Page>

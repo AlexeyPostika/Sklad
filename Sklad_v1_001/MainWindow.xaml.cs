@@ -86,6 +86,13 @@ namespace Sklad_v1_001
             tovarInZona = new TovarInZona();
             this.frameWorkArea.Navigate(tovarInZona);
         }
+
+        public void ButtonProductEditOpenF(FormUsers.Tovar.LocalRow _localRow)
+        {
+            tovarInZona = new TovarInZona();
+            tovarInZona.LocalRow = _localRow;
+            this.frameWorkArea.Navigate(tovarInZona);
+        }
         #endregion
 
         #region Продажи

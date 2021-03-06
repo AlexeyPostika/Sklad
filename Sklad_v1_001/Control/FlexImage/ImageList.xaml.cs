@@ -130,7 +130,36 @@ namespace Sklad_v1_001.Control.FlexImage
         Int32 tempClick;
 
         public int TempClick { get => tempClick; set => tempClick = value; }
-        public List<BitmapImage> ListImageControl { get => listImageControl; set => listImageControl = value; }
+        public List<BitmapImage> ListImageControl
+        {
+            get
+            {
+                return listImageControl;
+            }
+            set
+            {
+                listImageControl = value;
+                if (ListImageControl.Count > 0)
+                {
+                    TempClick++;
+                    if (Math.Abs(TempClick) < ListImageControl.Count - 1)
+                    {
+                        image4.Source = image3.Source;
+                        image3.Source = image2.Source;
+                        image2.Source = image1.Source;
+                        image1.Source = image.Source;
+                        image.Source = ListImageControl[Math.Abs(TempClick)];
+                        buttonNext.IsEnabled = true;
+                    }
+                    else
+                    {
+                        buttonNext.IsEnabled = true;
+                        buttonBrak.IsEnabled = false;
+                    }
+                }
+                
+            }
+        }
         public LocalRow LocalDocument
         {
             get
@@ -141,6 +170,8 @@ namespace Sklad_v1_001.Control.FlexImage
             set
             {
                 localDocument = value;
+                if (LocalDocument.ListImage.Count > 0)
+                    ListImageControl = LocalDocument.ListImage;
                 OnPropertyChanged("LocalDocument");
             }
         }
@@ -154,8 +185,8 @@ namespace Sklad_v1_001.Control.FlexImage
             this.Form.DataContext = LocalDocument;
 
             TempClick = 0;
-            buttonNext.IsEnabled = false;
-            buttonBrak.IsEnabled = false;
+            //buttonNext.IsEnabled = false;
+            //buttonBrak.IsEnabled = false;
 
             ImageNext = ImageHelper.GenerateImage("chevron_right_30px.png");
             ImageBrake = ImageHelper.GenerateImage("chevron_left_30px.png");

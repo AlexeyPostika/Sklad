@@ -268,7 +268,12 @@ namespace Sklad_v1_001.FormUsers.Tovar
 
         private void ToolBarZakupkaxaml_ButtonEdit()
         {
-            MainWindow.AppWindow.ButtonProductEditOpen();
+            localDocument = DataGrid.SelectedItem as Tovar.LocalRow;
+            if (localDocument != null)
+            {
+                EditRow();
+                MainWindow.AppWindow.ButtonProductEditOpenF(localDocument);
+            }
         }
         private void EditRow()
         {

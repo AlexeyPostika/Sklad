@@ -25,7 +25,7 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10"/>
-                    <RowDefinition Height="400"/>
+                    <RowDefinition Height="250"/>
                     <RowDefinition Height="5"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="5"/>
@@ -45,13 +45,13 @@
                     <ColumnDefinition Width="5"/>
                 </Grid.ColumnDefinitions>
                 <Image x:Name="image"
-                           Grid.Column="3" 
+                           Grid.Column="1" 
                            Grid.Row="1"
                            HorizontalAlignment="Left" 
                            VerticalAlignment="Stretch"
                            Height="Auto"    
                            Width="Auto"
-                           Grid.ColumnSpan="5"/>
+                           Grid.ColumnSpan="9"/>
                 <Image x:Name="image1"
                            Grid.Column="2" 
                            Grid.Row="3"
