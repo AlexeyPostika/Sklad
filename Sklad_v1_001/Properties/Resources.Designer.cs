@@ -268,6 +268,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Описание.
+        /// </summary>
+        public static string Discription {
+            get {
+                return ResourceManager.GetString("Discription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Должность.
         /// </summary>
         public static string Dolwnost {
@@ -700,110 +709,110 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Ветрина.
+        ///   Ищет локализованную строку, похожую на Витрина.
         /// </summary>
-        public static string Vetrina {
+        public static string Vitrina {
             get {
-                return ResourceManager.GetString("Vetrina", resourceCulture);
+                return ResourceManager.GetString("Vitrina", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Ищет локализованную строку, похожую на Ветрина не выбрана.
         /// </summary>
-        public static string Vetrina0 {
+        public static string Vitrina0 {
             get {
-                return ResourceManager.GetString("Vetrina0", resourceCulture);
+                return ResourceManager.GetString("Vitrina0", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Ветрина 1.
+        ///   Ищет локализованную строку, похожую на Витрина 1.
         /// </summary>
-        public static string Vetrina1 {
+        public static string Vitrina1 {
             get {
-                return ResourceManager.GetString("Vetrina1", resourceCulture);
+                return ResourceManager.GetString("Vitrina1", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Ветрина 10.
+        ///   Ищет локализованную строку, похожую на Витрина 10.
         /// </summary>
-        public static string Vetrina10 {
+        public static string Vitrina10 {
             get {
-                return ResourceManager.GetString("Vetrina10", resourceCulture);
+                return ResourceManager.GetString("Vitrina10", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Ветрина 2.
+        ///   Ищет локализованную строку, похожую на Витрина 2.
         /// </summary>
-        public static string Vetrina2 {
+        public static string Vitrina2 {
             get {
-                return ResourceManager.GetString("Vetrina2", resourceCulture);
+                return ResourceManager.GetString("Vitrina2", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Ветрина 3.
+        ///   Ищет локализованную строку, похожую на Витрина 3.
         /// </summary>
-        public static string Vetrina3 {
+        public static string Vitrina3 {
             get {
-                return ResourceManager.GetString("Vetrina3", resourceCulture);
+                return ResourceManager.GetString("Vitrina3", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Ветрина 4.
+        ///   Ищет локализованную строку, похожую на Витрина 4.
         /// </summary>
-        public static string Vetrina4 {
+        public static string Vitrina4 {
             get {
-                return ResourceManager.GetString("Vetrina4", resourceCulture);
+                return ResourceManager.GetString("Vitrina4", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Ветрина 5.
+        ///   Ищет локализованную строку, похожую на Витрина 5.
         /// </summary>
-        public static string Vetrina5 {
+        public static string Vitrina5 {
             get {
-                return ResourceManager.GetString("Vetrina5", resourceCulture);
+                return ResourceManager.GetString("Vitrina5", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Ветрина 6.
+        ///   Ищет локализованную строку, похожую на Витрина 6.
         /// </summary>
-        public static string Vetrina6 {
+        public static string Vitrina6 {
             get {
-                return ResourceManager.GetString("Vetrina6", resourceCulture);
+                return ResourceManager.GetString("Vitrina6", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Ветрина 7.
+        ///   Ищет локализованную строку, похожую на Витрина 7.
         /// </summary>
-        public static string Vetrina7 {
+        public static string Vitrina7 {
             get {
-                return ResourceManager.GetString("Vetrina7", resourceCulture);
+                return ResourceManager.GetString("Vitrina7", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Ветрина 8.
+        ///   Ищет локализованную строку, похожую на Витрина 8.
         /// </summary>
-        public static string Vetrina8 {
+        public static string Vitrina8 {
             get {
-                return ResourceManager.GetString("Vetrina8", resourceCulture);
+                return ResourceManager.GetString("Vitrina8", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Ветрина 9.
+        ///   Ищет локализованную строку, похожую на Витрина 9.
         /// </summary>
-        public static string Vetrina9 {
+        public static string Vitrina9 {
             get {
-                return ResourceManager.GetString("Vetrina9", resourceCulture);
+                return ResourceManager.GetString("Vitrina9", resourceCulture);
             }
         }
         

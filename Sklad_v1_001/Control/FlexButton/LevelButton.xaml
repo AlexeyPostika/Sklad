@@ -14,7 +14,7 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <Image x:Name="Image" Stretch="None" Margin="5,3,0,3" HorizontalAlignment="Left" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+                <Image x:Name="Image" Stretch="Fill" Margin="5,3,0,3" HorizontalAlignment="Left" RenderOptions.BitmapScalingMode="NearestNeighbor" MaxHeight="30" MaxWidth="30"/>
                 <Image x:Name="ImageWarning" Stretch="None" Margin="0,3,-10,0" HorizontalAlignment="Right" VerticalAlignment="Top" RenderOptions.BitmapScalingMode="NearestNeighbor" Visibility="Collapsed"/>
                 <Label x:Name="TextField" Grid.Column="1" HorizontalAlignment="Stretch" Margin="15,0,0,0"/>
                 <Image x:Name="ImageDown" Stretch="None" Margin="0,5,0,5" HorizontalAlignment="Left"  Grid.Column="2"/>

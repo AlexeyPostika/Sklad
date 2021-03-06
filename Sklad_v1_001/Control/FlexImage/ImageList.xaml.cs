@@ -36,7 +36,7 @@ namespace Sklad_v1_001.Control.FlexImage
         public static readonly DependencyProperty ImageNextProperty = DependencyProperty.Register(
          "ImageNext",
          typeof(BitmapImage),
-         typeof(ImageList), new UIPropertyMetadata(ImageHelper.GenerateImage("next_page_32px.png")));
+         typeof(ImageList), new UIPropertyMetadata(ImageHelper.GenerateImage("chevron_right_30px.png")));
         public BitmapImage ImageNext
         {
             get { return (BitmapImage)GetValue(ImageNextProperty); }
@@ -46,7 +46,7 @@ namespace Sklad_v1_001.Control.FlexImage
         public static readonly DependencyProperty ImageBrakeProperty = DependencyProperty.Register(
         "ImageBrake",
         typeof(BitmapImage),
-        typeof(ImageList), new UIPropertyMetadata(ImageHelper.GenerateImage("back_32px.png")));
+        typeof(ImageList), new UIPropertyMetadata(ImageHelper.GenerateImage("chevron_left_30px.png")));
         public BitmapImage ImageBrake
         {
             get { return (BitmapImage)GetValue(ImageBrakeProperty); }
@@ -156,6 +156,12 @@ namespace Sklad_v1_001.Control.FlexImage
             TempClick = 0;
             buttonNext.IsEnabled = false;
             buttonBrak.IsEnabled = false;
+
+            ImageNext = ImageHelper.GenerateImage("chevron_right_30px.png");
+            ImageBrake = ImageHelper.GenerateImage("chevron_left_30px.png");
+            ImageDowload = ImageHelper.GenerateImage("IconDownload.png");
+            ImageClear = ImageHelper.GenerateImage("IconErase.png");
+            ImageSave = ImageHelper.GenerateImage("IconSaveAs.png");
         }
 
         private void ButtonBrak_Click(object sender, RoutedEventArgs e)

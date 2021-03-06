@@ -63,17 +63,17 @@ namespace Sklad_v1_001.GlobalList
         {
             innerList = new ObservableCollection<Vetrina>()
             {
-                new Vetrina {ID=0,Description=Properties.Resources.Vetrina0 },
-                new Vetrina {ID=1,Description=Properties.Resources.Vetrina1 },
-                new Vetrina {ID=2,Description=Properties.Resources.Vetrina2 },
-                new Vetrina {ID=3,Description=Properties.Resources.Vetrina3 },
-                new Vetrina {ID=4,Description=Properties.Resources.Vetrina4 },
-                new Vetrina {ID=5,Description=Properties.Resources.Vetrina5 },
-                new Vetrina {ID=6,Description=Properties.Resources.Vetrina6 },
-                new Vetrina {ID=7,Description=Properties.Resources.Vetrina7 },
-                new Vetrina {ID=8,Description=Properties.Resources.Vetrina8 },
-                new Vetrina {ID=9,Description=Properties.Resources.Vetrina9 },
-                new Vetrina {ID=10,Description=Properties.Resources.Vetrina10 },
+                new Vetrina {ID=0,Description=Properties.Resources.Vitrina0 },
+                new Vetrina {ID=1,Description=Properties.Resources.Vitrina1 },
+                new Vetrina {ID=2,Description=Properties.Resources.Vitrina2 },
+                new Vetrina {ID=3,Description=Properties.Resources.Vitrina3 },
+                new Vetrina {ID=4,Description=Properties.Resources.Vitrina4 },
+                new Vetrina {ID=5,Description=Properties.Resources.Vitrina5 },
+                new Vetrina {ID=6,Description=Properties.Resources.Vitrina6 },
+                new Vetrina {ID=7,Description=Properties.Resources.Vitrina7 },
+                new Vetrina {ID=8,Description=Properties.Resources.Vitrina8 },
+                new Vetrina {ID=9,Description=Properties.Resources.Vitrina9 },
+                new Vetrina {ID=10,Description=Properties.Resources.Vitrina10 },
             };
         }
     }
