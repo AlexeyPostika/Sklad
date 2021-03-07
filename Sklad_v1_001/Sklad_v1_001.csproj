@@ -105,6 +105,9 @@
     <Compile Include="Control\FlexMessageBox\FlexWindows.xaml.cs">
       <DependentUpon>FlexWindows.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexTextBox\FlexLabelTextBlock.xaml.cs">
+      <DependentUpon>FlexLabelTextBlock.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexTextBox\FlexLabelTextBox.xaml.cs">
       <DependentUpon>FlexLabelTextBox.xaml</DependentUpon>
     </Compile>
@@ -113,6 +116,9 @@
     </Compile>
     <Compile Include="Control\ToolBar\ToolBarNextToBack.xaml.cs">
       <DependentUpon>ToolBarNextToBack.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ToolBar\ToolBarProductEdit.xaml.cs">
+      <DependentUpon>ToolBarProductEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\ToolBar\ToolBarZakupkaxaml.xaml.cs">
       <DependentUpon>ToolBarZakupkaxaml.xaml</DependentUpon>
@@ -194,11 +200,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Control\FlexTextBox\FlexLabelTextBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Control\FlexTextBox\FlexLabelTextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\ToolBar\ToolBarSaveCancel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\ToolBar\ToolBarProductEdit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -428,6 +442,9 @@
     <Content Include="DLL\CDEK.dll" />
     <Content Include="DLL\Interop.DrvFRLib.dll" />
     <Content Include="DLL\pilot_nt.dll" />
+    <Resource Include="Icone\IconOk.png" />
+    <Resource Include="Icone\IconArchiveListOfParts.png" />
+    <Resource Include="Icone\IconSaveClose.png" />
     <Resource Include="Icone\IconCamera.png" />
     <Resource Include="Icone\Sklad.ico" />
     <Resource Include="Icone\IconProducts.png" />

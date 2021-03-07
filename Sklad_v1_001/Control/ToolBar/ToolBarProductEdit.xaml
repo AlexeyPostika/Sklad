@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="Sklad_v1_001.Control.ToolBar.ToolBarProductEdit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sklad_v1_001.Control.ToolBar"
+             xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton"
+             xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+             mc:Ignorable="d" 
+             Style="{DynamicResource UsersControl}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid  Style="{DynamicResource Grid}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <FlexButton:LevelButton Grid.Column="1" Margin="0,0,0,4" x:Name="SaveButton" ButtonClick="SaveButton_Click" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.SAVE}"/>
+        <FlexButton:LevelButton Grid.Column="3" Margin="0,0,0,4" x:Name="SaveCloseButton" ButtonClick="SaveCloseButton_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.SAVECLOCE}"/>
+        <FlexButton:LevelButton Grid.Column="5" Margin="0,0,0,4" x:Name="ListDocumentButton" ButtonClick="ListDocumentButton_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.LISTDOCUMENT}"/>
+        <FlexButton:LevelButton Grid.Column="7" Margin="0,0,0,4" x:Name="ApplyButton" ButtonClick="ApplyButton_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.APPLYBUTTON}"/>
+       
+    </Grid>
+</UserControl>

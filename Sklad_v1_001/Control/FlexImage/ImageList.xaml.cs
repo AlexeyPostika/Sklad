@@ -171,7 +171,10 @@ namespace Sklad_v1_001.Control.FlexImage
             {
                 localDocument = value;
                 if (LocalDocument.ListImage.Count > 0)
+                {
                     ListImageControl = LocalDocument.ListImage;
+                    this.DescriptionInform.DataContext = LocalDocument;
+                }
                 OnPropertyChanged("LocalDocument");
             }
         }
@@ -181,8 +184,7 @@ namespace Sklad_v1_001.Control.FlexImage
             InitializeComponent();
             ListImageControl = new List<BitmapImage>();
             LocalDocument = new LocalRow();
-
-            this.Form.DataContext = LocalDocument;
+           
 
             TempClick = 0;
             //buttonNext.IsEnabled = false;
@@ -193,6 +195,7 @@ namespace Sklad_v1_001.Control.FlexImage
             ImageDowload = ImageHelper.GenerateImage("IconDownload.png");
             ImageClear = ImageHelper.GenerateImage("IconErase.png");
             ImageSave = ImageHelper.GenerateImage("IconSaveAs.png");
+          
         }
 
         private void ButtonBrak_Click(object sender, RoutedEventArgs e)

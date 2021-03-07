@@ -375,4 +375,13 @@
   <data name="Discription" xml:space="preserve">
     <value>Описание</value>
   </data>
+  <data name="APPLYBUTTON" xml:space="preserve">
+    <value>Подтвердить</value>
+  </data>
+  <data name="LISTDOCUMENT" xml:space="preserve">
+    <value>К списку документов</value>
+  </data>
+  <data name="SAVECLOCE" xml:space="preserve">
+    <value>Сохранить и выйти</value>
+  </data>
 </root>

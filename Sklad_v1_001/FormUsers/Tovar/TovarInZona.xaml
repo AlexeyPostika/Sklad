@@ -5,11 +5,25 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Sklad_v1_001.FormUsers.Tovar"
       xmlns:FlexImage="clr-namespace:Sklad_v1_001.Control.FlexImage"
+      xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
       mc:Ignorable="d" 
       d:DesignHeight="918" d:DesignWidth="800"
       Title="TovarInZona" Style="{DynamicResource UsersPageWidth}">
 
     <Grid>
-        <FlexImage:ImageList x:Name="Edit"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <ToolBar:ToolBarProductEdit />
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <FlexImage:ImageList x:Name="Edit" />
+        </Grid>
+        
     </Grid>
 </Page>

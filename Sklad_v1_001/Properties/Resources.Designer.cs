@@ -79,6 +79,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Подтвердить.
+        /// </summary>
+        public static string APPLYBUTTON {
+            get {
+                return ResourceManager.GetString("APPLYBUTTON", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Предыдущая.
         /// </summary>
         public static string BACK {
@@ -349,6 +358,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на К списку документов.
+        /// </summary>
+        public static string LISTDOCUMENT {
+            get {
+                return ResourceManager.GetString("LISTDOCUMENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Расположение.
         /// </summary>
         public static string Location {
@@ -606,6 +624,15 @@ namespace Sklad_v1_001.Properties {
         public static string SAVE {
             get {
                 return ResourceManager.GetString("SAVE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Сохранить и выйти.
+        /// </summary>
+        public static string SAVECLOCE {
+            get {
+                return ResourceManager.GetString("SAVECLOCE", resourceCulture);
             }
         }
         
