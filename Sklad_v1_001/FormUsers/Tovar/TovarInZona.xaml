@@ -18,7 +18,10 @@
         </Grid.RowDefinitions>
 
         <Grid>
-            <ToolBar:ToolBarProductEdit />
+            <ToolBar:ToolBarProductEdit  
+                ButtonSave="ToolBarProductEdit_ButtonSave"
+                ButtonSaveClose="ToolBarProductEdit_ButtonSaveClose"
+                ButtonListDocument="ToolBarProductEdit_ButtonListDocument"/>
         </Grid>
 
         <Grid Grid.Row="1">

@@ -21,10 +21,10 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <FlexButton:LevelButton Grid.Column="1" Margin="0,0,0,4" x:Name="SaveButton" ButtonClick="SaveButton_Click" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.SAVE}"/>
-        <FlexButton:LevelButton Grid.Column="3" Margin="0,0,0,4" x:Name="SaveCloseButton" ButtonClick="SaveCloseButton_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.SAVECLOCE}"/>
-        <FlexButton:LevelButton Grid.Column="5" Margin="0,0,0,4" x:Name="ListDocumentButton" ButtonClick="ListDocumentButton_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.LISTDOCUMENT}"/>
-        <FlexButton:LevelButton Grid.Column="7" Margin="0,0,0,4" x:Name="ApplyButton" ButtonClick="ApplyButton_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.APPLYBUTTON}"/>
+        <FlexButton:LevelButton Grid.Column="1" Margin="0,5,0,4" x:Name="SaveButton" ButtonClick="SaveButton_Click" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.SAVE}"/>
+        <FlexButton:LevelButton Grid.Column="3" Margin="0,5,0,4" x:Name="SaveCloseButton" ButtonClick="SaveCloseButton_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.SAVECLOCE}"/>
+        <FlexButton:LevelButton Grid.Column="5" Margin="0,5,0,4" x:Name="ListDocumentButton" ButtonClick="ListDocumentButton_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.LISTDOCUMENT}"/>
+        <!--<FlexButton:LevelButton Grid.Column="7" Margin="0,5,0,4" x:Name="ApplyButton" ButtonClick="ApplyButton_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.APPLYBUTTON}"/>-->
        
     </Grid>
 </UserControl>

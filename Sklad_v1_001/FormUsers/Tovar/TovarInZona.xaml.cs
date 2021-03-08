@@ -37,6 +37,21 @@ namespace Sklad_v1_001.FormUsers.Tovar
         {
             InitializeComponent();
             LocalRow = new LocalRow();
-        }     
+        }
+
+        private void ToolBarProductEdit_ButtonSave()
+        {
+
+        }
+
+        private void ToolBarProductEdit_ButtonSaveClose()
+        {
+
+        }
+
+        private void ToolBarProductEdit_ButtonListDocument()
+        {
+            MainWindow.AppWindow.ButtonProductOpen();
+        }
     }
 }

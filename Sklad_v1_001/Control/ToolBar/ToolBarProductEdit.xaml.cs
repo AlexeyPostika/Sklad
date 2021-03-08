@@ -42,7 +42,7 @@ namespace Sklad_v1_001.Control.ToolBar
             SaveButton.Image.Source = ImageHelper.GenerateImage("save_32px.png");
             SaveCloseButton.Image.Source = ImageHelper.GenerateImage("IconSaveClose.png");
             ListDocumentButton.Image.Source = ImageHelper.GenerateImage("IconArchiveListOfParts.png");
-            ApplyButton.Image.Source = ImageHelper.GenerateImage("IconOk.png");           
+            //ApplyButton.Image.Source = ImageHelper.GenerateImage("IconOk.png");           
         }
 
         private void SaveButton_Click()
