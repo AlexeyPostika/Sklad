@@ -442,6 +442,8 @@
     <Content Include="DLL\CDEK.dll" />
     <Content Include="DLL\Interop.DrvFRLib.dll" />
     <Content Include="DLL\pilot_nt.dll" />
+    <Content Include="SQLCommand\JDB_DataAdapter.sql" />
+    <Content Include="SQLCommand\JDB_POS.sql" />
     <Resource Include="Icone\IconOk.png" />
     <Resource Include="Icone\IconArchiveListOfParts.png" />
     <Resource Include="Icone\IconSaveClose.png" />
