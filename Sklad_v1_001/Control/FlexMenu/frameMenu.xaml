@@ -26,8 +26,13 @@
             <StackPanel x:Name="rootStackPanel" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Stretch" >
                 <FlexButton:LevelButton Margin="0,0,0,4" x:Name="ButtonProduct" ButtonClick="ButtonProduct_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.Products}"/>
                 <FlexButton:LevelButton Margin="0,0,0,4" x:Name="ButtonProductEdit" ButtonClick="ButtonProductEdit_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.ProductsEdit}" Visibility="Collapsed"/>
-                <FlexButton:LevelButton Margin="0,0,0,4" x:Name="ButtonSaleDocument" ButtonClick="ButtonSaleDocument_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.SaleDocument}"/>
-                <FlexButton:LevelButton Margin="0,0,0,4" x:Name="ButtonDelivery" ButtonClick="ButtonDelivery_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.Deliveries}"/>
+                <FlexButton:LevelButton x:Name="ButtonSaleDocument" ButtonClick="ButtonSaleDocument_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.SaleDocument}"/>
+                <StackPanel Visibility="{Binding ElementName=Menu, Path=VisibilitySale, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                    <FlexButton:LevelButton x:Name="ButtonNewSaleDocument" ButtonClick="ButtonNewSaleDocument_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.NewSaleDocument}"/>
+                    <FlexButton:LevelButton  x:Name="ButtonListSaleDocument" ButtonClick="ButtonListSaleDocument_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.ListSaleDocument}"/>
+                </StackPanel>
+                
+                <FlexButton:LevelButton Margin="0,4,0,4" x:Name="ButtonDelivery" ButtonClick="ButtonDelivery_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.Deliveries}"/>
                 <FlexButton:LevelButton Margin="0,0,0,4" x:Name="ButtonTransferDocument" ButtonClick="ButtonTransferDocument_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.TransferDocument}"/>
                 <FlexButton:LevelButton Margin="0,0,0,4" x:Name="ButtonSettings" ButtonClick="ButtonSettings_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.Settings}"/>
             </StackPanel>

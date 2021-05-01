@@ -12,7 +12,7 @@
     <Grid >
         <FlexMenu:frameMenu ButtonProductOpen="FrameMenu_ButtonProductOpen"
                             ButtonProductEditOpen="FrameMenu_ButtonProductEditOpen"
-                                ButtonSaleDocumentOpen="FrameMenu_ButtonSaleDocumentOpen"
+                                ButtonNewSaleDocumentOpen="FrameMenu_ButtonSaleDocumentOpen"
                                 ButtonTransferDocumentOpen="FrameMenu_ButtonTransferDocumentOpen"
                                 ButtonDeliveryOpen="FrameMenu_ButtonDeliveryOpen"
                                 ButtonSettingsOpen="FrameMenu_ButtonSettingsOpen"

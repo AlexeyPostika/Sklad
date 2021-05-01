@@ -307,10 +307,18 @@ namespace Sklad_v1_001.FormUsers.Tovar
 
         private void FlexImageSelect_ButtonSelectImage()
         {
+            tovarItemZona = new TovarItemZona();
             localDocument = DataGrid.SelectedItem as Tovar.LocalRow;
             if (localDocument != null)
             {
                 EditRow(localDocument);
+                if (localDocument != null)
+                {
+                    tovarItemZona.ListImage = localDocument.ListImage;
+                    tovarItemZonaWindow = new FlexWindows(Properties.Resources.ProductItemScreenTitle);
+                    tovarItemZonaWindow.Content = tovarItemZona;
+                    tovarItemZonaWindow.ShowDialog();
+                }
             }
         }
     }

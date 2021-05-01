@@ -384,4 +384,10 @@
   <data name="SAVECLOCE" xml:space="preserve">
     <value>Сохранить и выйти</value>
   </data>
+  <data name="ListSaleDocument" xml:space="preserve">
+    <value>Список продаж</value>
+  </data>
+  <data name="NewSaleDocument" xml:space="preserve">
+    <value>Новая продажа</value>
+  </data>
 </root>

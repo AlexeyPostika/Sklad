@@ -21,9 +21,32 @@ namespace Sklad_v1_001.Control.FlexMenu
     /// </summary>
     public partial class frameMenu : UserControl
     {
+        //
+        // свойство зависимостей
+        public static readonly DependencyProperty VisibilitySaleProperty = DependencyProperty.Register(
+                        "VisibilitySale",
+                        typeof(Visibility),
+                        typeof(frameMenu), new UIPropertyMetadata(Visibility.Collapsed));
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Visibility VisibilitySale
+        {
+            get
+            {
+                return (Visibility)GetValue(VisibilitySaleProperty);
+            }
+            set
+            {
+                SetValue(VisibilitySaleProperty, value);
+            }
+        }
+
+
         public event Action ButtonProductOpen;
         public event Action ButtonProductEditOpen;
-        public event Action ButtonSaleDocumentOpen;
+        //операция продажа
+        public event Action ButtonNewSaleDocumentOpen;
+        public event Action ButtonListSaleDocumentOpen;
+        //
         public event Action ButtonDeliveryOpen;
         public event Action ButtonTransferDocumentOpen;
         public event Action ButtonSettingsOpen;
@@ -45,37 +68,55 @@ namespace Sklad_v1_001.Control.FlexMenu
 
         private void ButtonProduct_ButtonClick()
         {
+            VisibilitySale = Visibility.Collapsed;
             ButtonProductOpen?.Invoke();
         }
 
         private void ButtonProductEdit_ButtonClick()
         {
+            VisibilitySale = Visibility.Collapsed;
             ButtonProductEditOpen?.Invoke();
         }
         private void ButtonDelivery_ButtonClick()
         {
+            VisibilitySale = Visibility.Collapsed;
             ButtonDeliveryOpen?.Invoke();
         }
 
-        private void ButtonSaleDocument_ButtonClick()
-        {
-            ButtonSaleDocumentOpen?.Invoke();
-        }
+       
 
         private void ButtonTransferDocument_ButtonClick()
         {
+            VisibilitySale = Visibility.Collapsed;
             ButtonTransferDocumentOpen?.Invoke();
         }
 
         private void ButtonSettings_ButtonClick()
         {
+            VisibilitySale = Visibility.Collapsed;
             ButtonSettingsOpen?.Invoke();
         }
 
         private void ButtonExite_ButtonClick()
         {
+            VisibilitySale = Visibility.Collapsed;
             ButtonExiteOpen?.Invoke();
         }
+        #region Sale
+        private void ButtonSaleDocument_ButtonClick()
+        {
+            VisibilitySale = Visibility.Visible;
+        }
 
+        private void ButtonNewSaleDocument_ButtonClick()
+        {
+            ButtonNewSaleDocumentOpen?.Invoke();
+        }
+
+        private void ButtonListSaleDocument_ButtonClick()
+        {
+            ButtonListSaleDocumentOpen?.Invoke();
+        }
+        #endregion
     }
 }

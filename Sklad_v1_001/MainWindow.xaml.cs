@@ -61,7 +61,8 @@ namespace Sklad_v1_001
             PageframeMenuLevel.ButtonProductOpen += new Action(ButtonProductOpen);
             PageframeMenuLevel.ButtonProductEditOpen += new Action(ButtonProductEditOpen);
             //продажи     
-            PageframeMenuLevel.ButtonSaleDocumentOpen += new Action(ButtonSaleDocumentOpen);
+            PageframeMenuLevel.ButtonNewSaleDocumentOpen += new Action(ButtonNewSaleDocumentOpen);
+            PageframeMenuLevel.ButtonListSaleDocumentOpen += new Action(ButtonListSaleDocumentOpen);
             //перемещение
             PageframeMenuLevel.ButtonTransferDocumentOpen += new Action(ButtonTransferDocumentOpen);
             //поставки
@@ -72,7 +73,6 @@ namespace Sklad_v1_001
             PageframeMenuLevel.ButtonExiteOpen += new Action(ButtonExiteOpen);
 
         }
-
 
         #region Product
         public void ButtonProductOpen()
@@ -96,10 +96,15 @@ namespace Sklad_v1_001
         #endregion
 
         #region Продажи
-        public void ButtonSaleDocumentOpen()
+        public void ButtonNewSaleDocumentOpen()
         {
-            frameWorkArea.Navigate(new TovarInZona());
+            
         }
+        private void ButtonListSaleDocumentOpen()
+        {
+            
+        }
+
         #endregion
 
         #region перемещение
