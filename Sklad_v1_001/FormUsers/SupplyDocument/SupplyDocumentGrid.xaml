@@ -1,0 +1,35 @@
+﻿<Page x:Class="Sklad_v1_001.FormUsers.SupplyDocument.SupplyDocumentGrid"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Sklad_v1_001.FormUsers.SupplyDocument"
+      xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+      xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="{x:Static res:Resources.SupplyTitly}" 
+      Style="{DynamicResource UsersPageWidth}"
+      x:Name="page">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ToolBar:SupplyToolBar/>
+        
+        
+
+        <ToolBar:ToolBarNextToBack Grid.Row="2" x:Name="ToolbarNextPageData"
+                                   ButtonBack="ToolBarNextToBack_ButtonBack"
+                                   ButtonNext="ToolBarNextToBack_ButtonNext"
+                                   ButtonBackIn="ToolbarNextPageData_ButtonBackIn"
+                                   ButtonNextEnd="ToolbarNextPageData_ButtonNextEnd"
+                                   IsEnableBack="{Binding ElementName=page, Path=IsEnableBack, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   IsEnableNext="{Binding ElementName=page, Path=IsEnableNext, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   IsEnableBackIn="{Binding ElementName=page, Path=IsEnableBackIn, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   IsEnableNextEnd="{Binding ElementName=page, Path=IsEnableNextEnd, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   TextOnWhatPage="{Binding ElementName=page, Path=TextOnWhatPage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+    </Grid>
+</Page>

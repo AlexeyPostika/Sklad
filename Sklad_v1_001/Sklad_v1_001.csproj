@@ -192,6 +192,9 @@
     <Compile Include="Control\ToolBar\ToolBarProductEdit.xaml.cs">
       <DependentUpon>ToolBarProductEdit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\ToolBar\SupplyToolBar.xaml.cs">
+      <DependentUpon>SupplyToolBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\ToolBar\ToolBarZakupkaxaml.xaml.cs">
       <DependentUpon>ToolBarZakupkaxaml.xaml</DependentUpon>
     </Compile>
@@ -221,6 +224,10 @@
     <Compile Include="FormUsers\SaleDocument\NewSaleDocument.xaml.cs">
       <DependentUpon>NewSaleDocument.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FormUsers\SupplyDocument\SupplyDocumentGrid.xaml.cs">
+      <DependentUpon>SupplyDocumentGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsers\SupplyDocument\SupplyDocumentLogic.cs" />
     <Compile Include="FormUsers\Tovar\TovarInZona.xaml.cs">
       <DependentUpon>TovarInZona.xaml</DependentUpon>
     </Compile>
@@ -291,6 +298,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Control\ToolBar\SupplyToolBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Control\ToolBar\ToolBarZakupkaxaml.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -318,6 +329,10 @@
     <Page Include="FormUsers\SaleDocument\NewSaleDocument.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FormUsers\SupplyDocument\SupplyDocumentGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FormUsers\Tovar\TovarInZona.xaml">
       <SubType>Designer</SubType>

@@ -700,6 +700,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Поставки.
+        /// </summary>
+        public static string SupplyTitly {
+            get {
+                return ResourceManager.GetString("SupplyTitly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Сумма заказа.
         /// </summary>
         public static string TotalSumma {

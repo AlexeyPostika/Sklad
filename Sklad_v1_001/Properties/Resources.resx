@@ -390,4 +390,7 @@
   <data name="NewSaleDocument" xml:space="preserve">
     <value>Новая продажа</value>
   </data>
+  <data name="SupplyTitly" xml:space="preserve">
+    <value>Поставки</value>
+  </data>
 </root>
