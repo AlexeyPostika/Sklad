@@ -1,292 +1,157 @@
-﻿using System;
+﻿using Sklad_v1_001.GlobalVariable;
+using Sklad_v1_001.SQL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
+using System.Data.SqlTypes;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data;
-using Sklad_v1_001.SQL;
-using Sklad_v1_001.GlobalList;
-using Sklad_v1_001.HelperGlobal;
-using System.Windows.Media.Imaging;
-using Sklad_v1_001.GlobalVariable;
 
-namespace Sklad_v1_001.FormUsers.Tovar
+namespace Sklad_v1_001.FormUsers.SupplyDocument
 {
     public class LocalFilter : INotifyPropertyChanged
     {
-        private Int32 pageCountRows;                    //страница
-        private Int32 rowsCountPage;                    //количество строк на странице
-        private Int32 page;
-       
-        public int PageCountRows
+        private string search;
+        private string screenTypeGrid;
+
+        private String createdByUserID;
+        private String lastModifiedByUserID;
+        private String status;
+
+        private Double quantityMin;
+        private Double quantityMax;
+        private Double tagPriceVATRUSMin;
+        private Double tagPriceVATRUSMax;
+
+        private Int32 filterCreatedDate;
+        private DateTime? fromCreatedDate;
+        private DateTime? toCreatedDate;
+
+        private Int32 filterLastModifiedDate;
+        private DateTime? fromLastModifiedDate;
+        private DateTime? toLastModifiedDate;
+
+        private String sortColumn;
+        private Boolean sort;
+
+        private Int32 pageNumber;
+        private Int32 pagerowCount;
+
+        public string Search
         {
             get
             {
-                return pageCountRows;
+                return search;
             }
 
             set
             {
-                pageCountRows = value;
-                OnPropertyChanged("PageCountRows");
+                search = value;
+                OnPropertyChanged("Search");
             }
         }
 
-        public int RowsCountPage
+        public string ScreenTypeGrid
         {
             get
             {
-                return rowsCountPage;
+                return screenTypeGrid;
             }
 
             set
             {
-                rowsCountPage = value;
-                OnPropertyChanged("RowsCountPage");
+                screenTypeGrid = value;
+                OnPropertyChanged("ScreenTypeGrid");
             }
         }
 
-        public int Page
+        public Int32 FilterCreatedDate
         {
             get
             {
-                return page;
+                return filterCreatedDate;
             }
 
             set
             {
-                page = value;
-                OnPropertyChanged("Page");
+                filterCreatedDate = value;
+                OnPropertyChanged("FilterCreatedDate");
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-        }
-    }
-
-    public class LocalRow : INotifyPropertyChanged
-    {
-        private Int32 iD;
-        private Int64 extrRefShtrixCode;
-        private String name;
-        private String typeProduct;
-        private Int32 status;
-        private String typeDescriptio;
-        private Double cena;
-        private Int32 vetrina;
-        private String vetrinaString;
-        private BitmapImage photoImage;
-        private Byte[] photoImageByte;
-        private Int32 countPAGE;
-        private String description;
-        private List<BitmapImage> listImage;
-        private Int32 documentID;
-        private String textOnWhatPage;
-
-        public int ID
+        public DateTime? FromCreatedDate
         {
             get
             {
-                return iD;
+                return fromCreatedDate;
             }
 
             set
             {
-                iD = value;
-                OnPropertyChanged("ID");
+                fromCreatedDate = value;
+                OnPropertyChanged("FromCreatedDate");
             }
         }
 
-        public string Name
+        public DateTime? ToCreatedDate
         {
             get
             {
-                return name;
+                return toCreatedDate;
             }
 
             set
             {
-                name = value;
-                OnPropertyChanged("Name");
+                toCreatedDate = value;
+                OnPropertyChanged("ToCreatedDate");
             }
         }
 
-        public String TypeProduct
+        public Int32 FilterLastModifiedDate
         {
             get
             {
-                return typeProduct;
+                return filterLastModifiedDate;
             }
 
             set
             {
-                typeProduct = value;
-                OnPropertyChanged("TypeProduct");
+                filterLastModifiedDate = value;
+                OnPropertyChanged("FilterLastModifiedDate");
             }
         }
 
-        public string TypeDescriptio
+        public DateTime? FromLastModifiedDate
         {
             get
             {
-                return typeDescriptio;
+                return fromLastModifiedDate;
             }
 
             set
             {
-                typeDescriptio = value;
-                OnPropertyChanged("TypeDescriptio");
+                fromLastModifiedDate = value;
+                OnPropertyChanged("FromLastModifiedDate");
             }
         }
 
-        public double Cena
+        public DateTime? ToLastModifiedDate
         {
             get
             {
-                return cena;
+                return toLastModifiedDate;
             }
 
             set
             {
-                cena = value;
-                OnPropertyChanged("Cena");
+                toLastModifiedDate = value;
+                OnPropertyChanged("ToLastModifiedDate");
             }
         }
 
-        public int Vetrina
-        {
-            get
-            {
-                return vetrina;
-            }
-
-            set
-            {
-                vetrina = value;
-                OnPropertyChanged("Vetrina");
-            }
-        }
-
-        public BitmapImage PhotoImage
-        {
-            get
-            {
-                return photoImage;
-            }
-
-            set
-            {
-                photoImage = value;
-                OnPropertyChanged("PhotoImage");
-            }
-        }
-
-        public string TextOnWhatPage
-        {
-            get
-            {
-                return textOnWhatPage;
-            }
-
-            set
-            {
-                textOnWhatPage = value;
-                OnPropertyChanged("TextOnWhatPage");
-            }
-        }
-
-        public int CountPAGE
-        {
-            get
-            {
-                return countPAGE;
-            }
-
-            set
-            {
-                countPAGE = value;
-                OnPropertyChanged("CountPAGE");
-            }
-        }
-
-        public string VetrinaString
-        {
-            get
-            {
-                return vetrinaString;
-            }
-
-            set
-            {
-                vetrinaString = value;
-                OnPropertyChanged("VetrinaString");
-            }
-        }
-
-        public long ExtrRefShtrixCode
-        {
-            get
-            {
-                return extrRefShtrixCode;
-            }
-
-            set
-            {
-                extrRefShtrixCode = value;
-                OnPropertyChanged("ExtrRefShtrixCode");
-            }
-        }
-
-        public string Description
-        {
-            get
-            {
-                return description;
-            }
-
-            set
-            {
-                description = value;
-                OnPropertyChanged("Description");
-            }
-        }
-
-        public List<BitmapImage> ListImage
-        {
-            get
-            {
-                return listImage;
-            }
-
-            set
-            {
-                listImage = value;
-                OnPropertyChanged("ListImage");
-            }
-        }
-
-        public Int32 DocumentID
-        {
-            get
-            {
-                return documentID;
-            }
-
-            set
-            {
-                documentID = value;
-                OnPropertyChanged("DocumentID");
-            }
-        }
-
-        public byte[] PhotoImageByte { get => photoImageByte; set => photoImageByte = value; }
-        public int Status
+        public string Status
         {
             get
             {
@@ -300,176 +165,534 @@ namespace Sklad_v1_001.FormUsers.Tovar
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-        }
-        public LocalRow()
-        {
-            ListImage = new List<BitmapImage>();          
-        }
-    }
-
-    public class RowSummary : INotifyPropertyChanged
-    {
-        private Int32 pageCount;
-
-        public int PageCount
+        public string CreatedByUserID
         {
             get
             {
-                return pageCount;
+                return createdByUserID;
             }
 
             set
             {
-                pageCount = value;
-                OnPropertyChanged("PageCount");
+                createdByUserID = value;
+                OnPropertyChanged("CreatedByUserID");
+            }
+        }
+
+        public string LastModifiedByUserID
+        {
+            get
+            {
+                return lastModifiedByUserID;
+            }
+
+            set
+            {
+                lastModifiedByUserID = value;
+                OnPropertyChanged("LastModifiedByUserID");
+            }
+        }
+
+        public Double QuantityMin
+        {
+            get
+            {
+                return quantityMin;
+            }
+
+            set
+            {
+                quantityMin = value;
+                OnPropertyChanged("QuantityMin");
+            }
+        }
+
+        public Double QuantityMax
+        {
+            get
+            {
+                return quantityMax;
+            }
+
+            set
+            {
+                quantityMax = value;
+                OnPropertyChanged("QuantityMax");
+            }
+        }
+
+        public Double TagPriceVATRUSMin
+        {
+            get
+            {
+                return tagPriceVATRUSMin;
+            }
+
+            set
+            {
+                tagPriceVATRUSMin = value;
+                OnPropertyChanged("TagPriceVATRUSMin");
+            }
+        }
+
+        public Double TagPriceVATRUSMax
+        {
+            get
+            {
+                return tagPriceVATRUSMax;
+            }
+
+            set
+            {
+                tagPriceVATRUSMax = value;
+                OnPropertyChanged("TagPriceVATRUSMax");
+            }
+        }
+
+        public string SortColumn
+        {
+            get
+            {
+                return sortColumn;
+            }
+
+            set
+            {
+                sortColumn = value;
+                OnPropertyChanged("SortColumn");
+            }
+        }
+
+        public Boolean Sort
+        {
+            get
+            {
+                return sort;
+            }
+
+            set
+            {
+                sort = value;
+                OnPropertyChanged("Sort");
+            }
+        }
+
+        public Int32 PageNumber
+        {
+            get
+            {
+                return pageNumber;
+            }
+
+            set
+            {
+                pageNumber = value;
+                OnPropertyChanged("PageNumber");
+            }
+        }
+
+        public Int32 PagerowCount
+        {
+            get
+            {
+                return pagerowCount;
+            }
+
+            set
+            {
+                pagerowCount = value;
+                OnPropertyChanged("PagerowCount");
             }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
+        protected void OnPropertyChanged(string propertyName)
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public LocalFilter()
+        {
+            ScreenTypeGrid = ScreenType.ScreenTypeGrid;
+            Search = "";
+
+            FromCreatedDate = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
+            ToCreatedDate = DateTime.Now;
+            FromCreatedDate = FromCreatedDate?.AddSeconds(10);
+
+            FromLastModifiedDate = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
+            ToLastModifiedDate = DateTime.Now;
+            FromLastModifiedDate = FromLastModifiedDate?.AddSeconds(10);
+
+            PageNumber = 0;
+            Sort = true;
+            SortColumn = "ID";
+
+            Status = "All";
+            CreatedByUserID = "All";
+            LastModifiedByUserID = "All";
+        }
+
+    }
+
+    public class LocalRow : INotifyPropertyChanged
+    {
+        private Int32 iD;
+        private Int32 nameClientID;
+        private Int32 status;
+        private String delivery;
+        private String managerName;
+        private String tTN;
+        private String invoice;
+        private DateTime? createdDate;
+        private String createdDateString;
+        private Int32 createdUserID;
+        private String createdUserIDString;
+        private DateTime? lastModificatedDate;
+        private String lastModificatedDateString;
+        private Int32 lastModificatedUserID;
+        private String lastModificatedUserIDString;
+        private Int32 count;
+        private Decimal amount;
+
+        public Int32 ID
+        {
+            get
+            {
+                return iD;
+            }
+
+            set
+            {
+                iD = value;
+                OnPropertyChanged("ID");
+            }
+        }
+
+        public Int32 NameClientID
+        {
+            get
+            {
+                return nameClientID;
+            }
+
+            set
+            {
+                nameClientID = value;
+                OnPropertyChanged("NameClientID");
+            }
+        }
+
+        public Int32 Status
+        {
+            get
+            {
+                return status;
+            }
+
+            set
+            {
+                status = value;
+                OnPropertyChanged("Status");
+            }
+        }
+        public string Delivery
+        {
+            get
+            {
+                return delivery;
+            }
+
+            set
+            {
+                delivery = value;
+                OnPropertyChanged("Delivery");
+            }
+        }
+
+        public string ManagerName
+        {
+            get
+            {
+                return managerName;
+            }
+
+            set
+            {
+                managerName = value;
+                OnPropertyChanged("ManagerName");
+            }
+        }
+
+        public string TTN
+        {
+            get
+            {
+                return tTN;
+            }
+
+            set
+            {
+                tTN = value;
+                OnPropertyChanged("TTN");
+            }
+        }
+
+        public string Invoice
+        {
+            get
+            {
+                return invoice;
+            }
+
+            set
+            {
+                invoice = value;
+                OnPropertyChanged("Invoice");
+            }
+        }
+
+        public DateTime? CreatedDate
+        {
+            get
+            {
+                return createdDate;
+            }
+
+            set
+            {
+                createdDate = value;
+                OnPropertyChanged("CreatedDate");
+            }
+        }
+
+        public string CreatedDateString
+        {
+            get
+            {
+                return createdDateString;
+            }
+
+            set
+            {
+                createdDateString = value;
+                OnPropertyChanged("CreatedDateString");
+            }
+        }
+
+        public Int32 CreatedUserID
+        {
+            get
+            {
+                return createdUserID;
+            }
+
+            set
+            {
+                createdUserID = value;
+                OnPropertyChanged("CreatedUserID");
+            }
+        }
+    
+        public string CreatedUserIDString
+        {
+            get
+            {
+                return createdUserIDString;
+            }
+
+            set
+            {
+                createdUserIDString = value;
+                OnPropertyChanged("CreatedUserIDString");
+            }
+        }
+        public DateTime? LastModificatedDate
+        {
+            get
+            {
+                return lastModificatedDate;
+            }
+
+            set
+            {
+                lastModificatedDate = value;
+                OnPropertyChanged("LastModificatedDate");
+            }
+        }
+
+        public string LastModificatedDateString
+        {
+            get
+            {
+                return lastModificatedDateString;
+            }
+
+            set
+            {
+                lastModificatedDateString = value;
+                OnPropertyChanged("LastModificatedDateString");
+            }
+        }
+
+        public Int32 LastModificatedUserID
+        {
+            get
+            {
+                return lastModificatedUserID;
+            }
+
+            set
+            {
+                lastModificatedUserID = value;
+                OnPropertyChanged("LastModificatedUserID");
+            }
+        }
+
+        public string LastModificatedUserIDString
+        {
+            get
+            {
+                return lastModificatedUserIDString;
+            }
+
+            set
+            {
+                lastModificatedUserIDString = value;
+                OnPropertyChanged("LastModificatedUserIDString");
+            }
+        }     
+        public Int32 Count
+        {
+            get
+            {
+                return count;
+            }
+
+            set
+            {
+                count = value;
+                OnPropertyChanged("Count");
+            }
+        }
+
+        public Decimal Amount
+        {
+            get
+            {
+                return amount;
+            }
+
+            set
+            {
+                amount = value;
+                OnPropertyChanged("Amount");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-   
-    public class TovarZonaLogic
+
+    public class Summary : INotifyPropertyChanged
     {
-        SQLCommanSelect _sqlSting;
-        SQLCommanSelect _sqlImageSting;
-        SQLCommanSelect _sqlSave;
-
-        LocalRow localrow;
-        
-        String _getSelectProductTable = "xp_GetSelectProductTable";      //хранимка
-        String _getSelectProductImageTable = "xp_GetSelectProductImageTable";      //хранимка
-        String _getSaveProductImage = "xp_SaveProductImage";      //хранимка
-
-        DataTable _table;
-
-        ConvertData convertData;
-        
-        public TovarZonaLogic()
+        private Int32 summaryQuantityLine;
+        public Int32 SummaryQuantityLine
         {
-            //объявили подключение
-            _sqlSting = new SQLCommanSelect();
-            _sqlImageSting = new SQLCommanSelect();
-            _sqlSave = new SQLCommanSelect();
-            //объявили localRow
-            localrow = new LocalRow();
-            //объявили таблицу куда будем записывать все
-            _table = new DataTable();
-            //за правильную конвертацию данных
-            convertData = new ConvertData();
+            get
+            {
+                return summaryQuantityLine;
+            }
 
-            //объявляем переменные для хранимой процедуры
-            _sqlSting.AddParametr("@p_rowcountpage", SqlDbType.Int);
-            _sqlSting.SetParametrValue("@p_rowcountpage", 0);
-
-            _sqlSting.AddParametr("@p_pagecountrow", SqlDbType.Int);
-            _sqlSting.SetParametrValue("@p_pagecountrow", 0);
-
-            //объявляем переменные для хранимой процедуры
-            _sqlImageSting.AddParametr("@p_ID", SqlDbType.Int);
-            _sqlImageSting.SetParametrValue("@p_ID", 0);
-
-            //SAVE
-            //объявляем переменные для хранимой процедуры
-            _sqlSave.AddParametr("@p_ID", SqlDbType.Int);
-            _sqlSave.SetParametrValue("@p_ID", 0);
-
-            _sqlSave.AddParametr("@p_DocumentID", SqlDbType.Int);
-            _sqlSave.SetParametrValue("@p_DocumentID", 0);
-
-            _sqlSave.AddParametr("@p_Image", SqlDbType.VarBinary);
-            _sqlSave.SetParametrValue("@p_Image", 0);
-
-
-        }
-        public DataTable Select(LocalFilter filterlocal)
-        {
-            _sqlSting.SqlAnswer.datatable.Clear();
-            _table.Clear();
-
-            _sqlSting.SetParametrValue("@p_rowcountpage", filterlocal.RowsCountPage);
-            _sqlSting.SetParametrValue("@p_pagecountrow", filterlocal.PageCountRows);
-
-            _sqlSting.ComplexRequest(_getSelectProductTable, CommandType.StoredProcedure, null);
-            _table = _sqlSting.SqlAnswer.datatable;
-
-            return _table;
+            set
+            {
+                summaryQuantityLine = value;
+                OnPropertyChanged("SummaryQuantityLine");
+            }
         }
 
-        public DataTable Select(Int32 _documentID)
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
         {
-            _sqlImageSting.SqlAnswer.datatable.Clear();
-            _table.Clear();
-
-            _sqlImageSting.SetParametrValue("@p_ID", _documentID);
-
-            _sqlImageSting.ComplexRequest(_getSelectProductImageTable, CommandType.StoredProcedure, null);
-            _table = _sqlImageSting.SqlAnswer.datatable;
-
-            return _table;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+    }
 
-        //SAVE
-        public DataTable Save(LocalRow _localRow)
+    public class SupplyDocumentLogic
+    {
+        string get_store_procedure = "xp_GetSupplyDocumentTable";
+        string get_filters_procedure = "xp_GetSupplyDocumentFilter";
+        string get_summary_procedure = "xp_GetSupplyDocumentSummary";
+
+        SQLCommanSelect _sqlRequestSelect = null;
+        SQLCommanSelect _sqlRequestSelectFilters = null;
+        SQLCommanSelect _sqlRequestSelectSummary = null;
+
+        public SupplyDocumentLogic()
         {
-            _sqlSave.SqlAnswer.datatable.Clear();
-            _table.Clear();
+            _sqlRequestSelect = new SQLCommanSelect();
+            _sqlRequestSelectFilters = new SQLCommanSelect();
+            _sqlRequestSelectSummary = new SQLCommanSelect();
 
-            _sqlSave.SetParametrValue("@p_ID", _localRow.ID);
-            _sqlSave.SetParametrValue("@p_DocumentID", _localRow.DocumentID);
-            _sqlSave.SetParametrValue("@p_Image", _localRow.PhotoImage);
+            //----------------------------------------------------------------------------
+            _sqlRequestSelect.AddParametr("@p_TypeScreen", SqlDbType.VarChar, 40);
+            _sqlRequestSelect.SetParametrValue("@@p_TypeScreen", ScreenType.ScreenTypeGrid);
 
-            _sqlSave.ComplexRequest(_getSaveProductImage, CommandType.StoredProcedure, null);
-            _table = _sqlSave.SqlAnswer.datatable;
+            _sqlRequestSelect.AddParametr("@p_Search", SqlDbType.NVarChar, 40);
+            _sqlRequestSelect.SetParametrValue("@p_Search", "");
 
-            return _table;
-        }
+            _sqlRequestSelect.AddParametr("@p_ID", SqlDbType.Int);
+            _sqlRequestSelect.SetParametrValue("@p_ID", 0);
+                      
+            _sqlRequestSelect.AddParametr("@p_CreatedUserID", SqlDbType.Int);
+            _sqlRequestSelect.SetParametrValue("@p_CreatedUserID", 0);
 
-        public LocalRow Convert(DataRow _row, LocalRow localrow)
-        {
-            ImageSql imageSql = new ImageSql();
-            VetrinaList listVetrina = new VetrinaList();
-            convertData = new ConvertData(_row, localrow);
-            localrow.ID = convertData.ConvertDataInt32("ID");
-            localrow.Name = convertData.ConvertDataString("Name");
-            localrow.TypeProduct = convertData.ConvertDataString("TypeDescription");
-            localrow.Cena = convertData.ConvertDataDouble("Cena");
-            localrow.Vetrina = convertData.ConvertDataInt32("IDVetrina");
-            localrow.VetrinaString = convertData.ConvertDataString("VetrinaString");
-            localrow.ExtrRefShtrixCode = convertData.ConvertDataInt64("ExtrRefShtrixCode");
-            if (_row["PhotoImage"] as byte[] != null)
-                localrow.PhotoImage = imageSql.BytesToImageSource(_row["PhotoImage"] as byte[]);
-            else
-                localrow.PhotoImage = ImageHelper.GenerateImage("picture_80px.png");
+            _sqlRequestSelect.AddParametr("@p_LastModifiedUserID", SqlDbType.Int);
+            _sqlRequestSelect.SetParametrValue("@p_LastModifiedUserID", 0);
 
-            localrow.CountPAGE = convertData.ConvertDataInt32("CountROWS");
-            localrow.Description = convertData.ConvertDataString("Description");
-            return localrow;
-        }
+            _sqlRequestSelect.AddParametr("@p_Status", SqlDbType.NVarChar);
+            _sqlRequestSelect.SetParametrValue("@p_Status", "");
 
-        public LocalRow ConvertImage(DataRow _row, LocalRow _localrow)
-        {
-            ImageSql imageSql = new ImageSql();
-            if (_row["Images"] as byte[] != null)
-                _localrow.ListImage.Add(imageSql.BytesToImageSource(_row["Images"] as byte[]));
-            return localrow;
-        }
+            _sqlRequestSelect.AddParametr("@p_Quantity_Min", SqlDbType.Money);
+            _sqlRequestSelect.SetParametrValue("@p_Quantity_Min", 0);
 
-        public LocalRow ConvertSummary(DataRow _row, RowSummary _localrow)
-        {
-            _localrow.PageCount = Int32.Parse(_row["CountROWS"].ToString());
+            _sqlRequestSelect.AddParametr("@p_Quantity_Max", SqlDbType.Money);
+            _sqlRequestSelect.SetParametrValue("@p_Quantity_Max", SqlMoney.MaxValue);
+           
+            _sqlRequestSelect.AddParametr("@p_TagPriceVATRUS_Min", SqlDbType.Money);
+            _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Min", System.Data.SqlTypes.SqlMoney.MaxValue);
 
+            _sqlRequestSelect.AddParametr("@p_TagPriceVATRUS_Max", SqlDbType.Money);
+            _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Max", System.Data.SqlTypes.SqlMoney.MaxValue);
 
-            return localrow;
+            _sqlRequestSelect.AddParametr("@p_FromCreatedDate", SqlDbType.DateTime);
+            _sqlRequestSelect.SetParametrValue("@p_FromCreatedDate", SqlDateTime.MinValue);
+
+            _sqlRequestSelect.AddParametr("@p_ToCreatedDate", SqlDbType.DateTime);
+            _sqlRequestSelect.SetParametrValue("@p_ToCreatedDate", DateTime.Now);
+
+            _sqlRequestSelect.AddParametr("@p_FromLastModifiedDate", SqlDbType.DateTime);
+            _sqlRequestSelect.SetParametrValue("@p_FromLastModifiedDate", SqlDateTime.MinValue);
+
+            _sqlRequestSelect.AddParametr("@p_ToLastModifiedDate", SqlDbType.DateTime);
+            _sqlRequestSelect.SetParametrValue("@p_ToLastModifiedDate", DateTime.Now);
+
+            _sqlRequestSelect.AddParametr("@p_PageNumber", SqlDbType.Int);
+            _sqlRequestSelect.SetParametrValue("@p_PageNumber", 0);
+
+            _sqlRequestSelect.AddParametr("@p_PagerowCount", SqlDbType.Int);
+            _sqlRequestSelect.SetParametrValue("@p_PagerowCount", 0);
+
+            _sqlRequestSelect.AddParametr("@p_SortColumn", SqlDbType.NVarChar, 255);
+            _sqlRequestSelect.SetParametrValue("@p_SortColumn", 0);
+
+            _sqlRequestSelect.AddParametr("@p_Sort", SqlDbType.Bit);
+            _sqlRequestSelect.SetParametrValue("@p_Sort", 0);
+            //----------------------------------------------------------------------------
+
         }
     }
 }

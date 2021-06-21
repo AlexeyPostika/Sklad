@@ -79,7 +79,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
         private Int32 status;
         private String typeDescriptio;
         private Double cena;
-        private Int32 vetrina;
+        private Int32 vitrina;
         private String vetrinaString;
         private BitmapImage photoImage;
         private Byte[] photoImageByte;
@@ -159,16 +159,16 @@ namespace Sklad_v1_001.FormUsers.Tovar
             }
         }
 
-        public int Vetrina
+        public int Vitrina
         {
             get
             {
-                return vetrina;
+                return vitrina;
             }
 
             set
             {
-                vetrina = value;
+                vitrina = value;
                 OnPropertyChanged("Vetrina");
             }
         }
@@ -443,7 +443,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
             localrow.Name = convertData.ConvertDataString("Name");
             localrow.TypeProduct = convertData.ConvertDataString("TypeDescription");
             localrow.Cena = convertData.ConvertDataDouble("Cena");
-            localrow.Vetrina = convertData.ConvertDataInt32("IDVetrina");
+            localrow.Vitrina = convertData.ConvertDataInt32("IDVetrina");
             localrow.VetrinaString = convertData.ConvertDataString("VetrinaString");
             localrow.ExtrRefShtrixCode = convertData.ConvertDataInt64("ExtrRefShtrixCode");
             if (_row["PhotoImage"] as byte[] != null)

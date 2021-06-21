@@ -1,84 +1,35 @@
-﻿<UserControl x:Class="Sklad_v1_001.FormUsers.Tovar.TovarZona"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:res="clr-namespace:Sklad_v1_001.Properties"
-             xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
-             xmlns:ImageList="clr-namespace:Sklad_v1_001.Control.FlexImage"
-             mc:Ignorable="d"   
-             Style="{DynamicResource UsersControlWidth}"
-             d:DesignHeight="918" Loaded="UserControl_Loaded" x:Name="PageTovarZona">
+﻿<Page x:Class="Sklad_v1_001.FormUsers.SupplyDocument.SupplyDocumentGrid"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Sklad_v1_001.FormUsers.SupplyDocument"
+      xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+      xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="{x:Static res:Resources.SupplyTitly}" 
+      Style="{DynamicResource UsersPageWidth}"
+      x:Name="page">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="99"/>
-            <RowDefinition Height="220"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="30*"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <ToolBar:ToolBarZakupkaxaml 
-            ButtonSave="ToolBarZakupkaxaml_ButtonSave"
-            ButtonEdit="ToolBarZakupkaxaml_ButtonEdit"/>
-        <GroupBox x:Name="Informe" Grid.Row="1" Header="Информация о товаре" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="167" RenderTransformOrigin="-0.056,0.073" Width="962">
-            <!--<Image Height="130" VerticalAlignment="Top" HorizontalAlignment="Left" Width="126" Margin="0,10,0,0" Source="/Sklad_v1_001;component/Icone/picture_80px.png"/>-->
-            <ImageList:ImageListPage  HorizontalAlignment="Left" Width="126"
-                                      Image="{Binding Path=PhotoImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                      ListImageControl="{Binding Path=ListImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                      AddButtonVisibility="Collapsed"
-                                      ClearButtonVisibility="Collapsed"
-                                      DownLoadButtonVisibility="Collapsed"
-                                      BrackButtonVisibility="Collapsed"
-                                      NextButtonVisibility="Collapsed"
-                                      ButtonSearchOpen="ImageListPage_ButtonSearchOpen"/>
-        </GroupBox>
-        <!--{x:Static res:Resources.SchtrxCode}-->
-        <Grid x:Name="Informer1" Grid.Row="1">
-            <TextBlock HorizontalAlignment="Left" Margin="149,30,0,0" Text="{x:Static res:Resources.ShtrixCode}" VerticalAlignment="Top" Width="183" Height="22" FontSize="16" FontWeight="Bold" />
-            <TextBlock x:Name="ShtrixCode" HorizontalAlignment="Left" Margin="149,57,0,0" TextWrapping="Wrap" Text="{Binding Path=ExtrRefShtrixCode, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Width="183" Height="22" FontSize="16"/>
-            <TextBlock HorizontalAlignment="Left" Margin="362,30,0,0" TextWrapping="Wrap" Text="{x:Static res:Resources.Name}" VerticalAlignment="Top" Width="183" Height="22" FontSize="16" FontWeight="Bold"/>
-            <TextBlock x:Name="NameTovar" HorizontalAlignment="Left" Margin="362,57,0,0" TextWrapping="Wrap" Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Width="393" Height="22" FontSize="16"/>
-            <TextBlock HorizontalAlignment="Left" Margin="775,30,0,0" TextWrapping="Wrap" Text="{x:Static res:Resources.TypeProduct}" VerticalAlignment="Top" Width="183" Height="22" FontSize="16" FontWeight="Bold"/>
-            <TextBlock x:Name="TypeKategor" HorizontalAlignment="Left" Margin="775,57,0,0" TextWrapping="Wrap" Text="{Binding Path=TypeProduct, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Width="183" Height="22" FontSize="16"/>
-            <TextBlock HorizontalAlignment="Left" Margin="149,84,0,0" TextWrapping="Wrap" Text="{x:Static res:Resources.Description}" VerticalAlignment="Top" Width="183" Height="22" FontSize="16" FontWeight="Bold"/>
-            <TextBlock x:Name="Opisanie" HorizontalAlignment="Left" Margin="149,111,0,0" TextWrapping="Wrap" Text="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Width="396" Height="55" FontSize="16"/>
-            <TextBlock HorizontalAlignment="Left" Margin="555,84,0,0" TextWrapping="Wrap" Text="{x:Static res:Resources.Location}" VerticalAlignment="Top" Width="183" Height="22" FontSize="16" FontWeight="Bold"/>
-            <TextBlock x:Name="Raspolowenie" HorizontalAlignment="Left" Margin="555,111,0,0" TextWrapping="Wrap" Text="{Binding Path=VetrinaString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Width="405" Height="55" FontSize="16"/>
-            <TextBlock HorizontalAlignment="Left" Margin="10,182,0,0" TextWrapping="Wrap" Text="Список товара на складе:" VerticalAlignment="Top" Height="33" Width="263" FontSize="20" FontWeight="Bold" Grid.RowSpan="2"/>
-            <Image HorizontalAlignment="Left" Height="24" Margin="269,186,0,0" VerticalAlignment="Top" Width="25" Source="/Sklad_v1_001;component/Icone/tovar/bulleted_list_30px.png"/>
-            <Image HorizontalAlignment="Left" Height="24" Margin="299,186,0,0" VerticalAlignment="Top" Width="24" Source="/Sklad_v1_001;component/Icone/tovar/grid_2_30px.png"/>
-        </Grid>
-        <DataGrid AutoGenerateColumns="False" x:Name="DataGrid" Grid.Row="2" SelectionChanged="DataGrid_SelectionChanged">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="40"/>
-                <DataGridTemplateColumn>
-                    <DataGridTemplateColumn.HeaderTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{x:Static res:Resources.Photo}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.HeaderTemplate>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <ImageList:FlexImageSelect HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" MaxWidth="100"
-                                                       Image="{Binding PhotoImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
-                                                       ButtonSelectImage="FlexImageSelect_ButtonSelectImage"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTextColumn Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NameProduct}" Width="450"/>
-                <DataGridTextColumn Binding="{Binding Path=TypeProduct, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.TypeProduct}"  Width="200"/>
-                <DataGridTextColumn Binding="{Binding Path=Cena, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.CenaProduct}"  Width="100"/>
-                <DataGridTextColumn Binding="{Binding Path=VetrinaString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.Vetrina}"  Width="1*"/>
-            </DataGrid.Columns>
-        </DataGrid>
-        <ToolBar:ToolBarNextToBack Grid.Row="3" x:Name="ToolbarNextPageData"
+        <ToolBar:SupplyToolBar/>
+        
+        
+
+        <ToolBar:ToolBarNextToBack Grid.Row="2" x:Name="ToolbarNextPageData"
                                    ButtonBack="ToolBarNextToBack_ButtonBack"
                                    ButtonNext="ToolBarNextToBack_ButtonNext"
                                    ButtonBackIn="ToolbarNextPageData_ButtonBackIn"
                                    ButtonNextEnd="ToolbarNextPageData_ButtonNextEnd"
-                                   IsEnableBack="{Binding ElementName=PageTovarZona, Path=IsEnableBack, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                   IsEnableNext="{Binding ElementName=PageTovarZona, Path=IsEnableNext, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                   IsEnableBackIn="{Binding ElementName=PageTovarZona, Path=IsEnableBackIn, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                   IsEnableNextEnd="{Binding ElementName=PageTovarZona, Path=IsEnableNextEnd, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                   TextOnWhatPage="{Binding ElementName=PageTovarZona, Path=TextOnWhatPage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                                   IsEnableBack="{Binding ElementName=page, Path=IsEnableBack, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   IsEnableNext="{Binding ElementName=page, Path=IsEnableNext, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   IsEnableBackIn="{Binding ElementName=page, Path=IsEnableBackIn, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   IsEnableNextEnd="{Binding ElementName=page, Path=IsEnableNextEnd, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   TextOnWhatPage="{Binding ElementName=page, Path=TextOnWhatPage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
     </Grid>
-</UserControl>
+</Page>

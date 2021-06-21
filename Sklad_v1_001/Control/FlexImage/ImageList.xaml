@@ -8,7 +8,7 @@
              xmlns:res="clr-namespace:Sklad_v1_001.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="1130"
-              Style="{DynamicResource UsersControlColor}"
+             Style="{DynamicResource UsersControlColor}"
              Name="control">
     <Grid x:Name="Form">
         <Grid.ColumnDefinitions>
@@ -25,7 +25,7 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10"/>
-                    <RowDefinition Height="400"/>
+                    <RowDefinition Height="250"/>
                     <RowDefinition Height="5"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="5"/>
@@ -34,24 +34,24 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="5"/>
                     <ColumnDefinition Width="40"/>
-                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="50" MaxWidth="100"/>
                     <ColumnDefinition Width="5"/>
-                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="50" MaxWidth="100"/>
                     <ColumnDefinition Width="5"/>
-                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="50" MaxWidth="100"/>
                     <ColumnDefinition Width="5"/>
-                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="50" MaxWidth="100"/>
                     <ColumnDefinition Width="40"/>
                     <ColumnDefinition Width="5"/>
                 </Grid.ColumnDefinitions>
                 <Image x:Name="image"
-                           Grid.Column="3" 
+                           Grid.Column="1" 
                            Grid.Row="1"
                            HorizontalAlignment="Left" 
                            VerticalAlignment="Stretch"
                            Height="Auto"    
                            Width="Auto"
-                           Grid.ColumnSpan="5"/>
+                           Grid.ColumnSpan="9"/>
                 <Image x:Name="image1"
                            Grid.Column="2" 
                            Grid.Row="3"
@@ -158,19 +158,39 @@
                 </Button>
             </Grid>
         </StackPanel>
-        <StackPanel Grid.Column="1" x:Name="DescriptionInform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <StackPanel Grid.Column="1" x:Name="DescriptionInform" HorizontalAlignment="Left" VerticalAlignment="Stretch">
             <FlexText:FlexLabelTextBox x:Name="Shtrix" LabelText="{x:Static res:Resources.ShtrixCode}"
                                        Description="{Binding Path=ExtrRefShtrixCode, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                       EnableTextBox="False"/>
-            <FlexText:FlexLabelTextBox x:Name="Product" LabelText="{x:Static res:Resources.NameProduct}"
+                                       EnableTextBox="False"
+                                       Width="200"/>
+            <FlexText:FlexLabelTextBlock x:Name="Product" LabelText="{x:Static res:Resources.NameProduct}"
                                        Description="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                       EnableTextBox="False"/>
+                                       EnableTextBox="False"
+                                       Width="200"
+                                       HeightTextBlock="50"/>
             <FlexText:FlexLabelTextBox x:Name="Type" LabelText="{x:Static res:Resources.TypeProduct}"
                                        Description="{Binding  Path=TypeProduct, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                       EnableTextBox="False"/>
+                                       EnableTextBox="False"
+                                       Width="200"/>
             <FlexText:FlexLabelTextBox x:Name="Status" LabelText="{x:Static res:Resources.Status}"
                                        Description="{Binding Path=Status, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                       EnableTextBox="False"/>
+                                       EnableTextBox="False"
+                                       Width="200"/>
+            <FlexText:FlexLabelTextBox x:Name="Cena" LabelText="{x:Static res:Resources.CenaProduct}"
+                                       Description="{Binding Path=Cena, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                       EnableTextBox="False"
+                                       Width="200"/>
+            
+            <FlexText:FlexLabelTextBox x:Name="Vitrina" LabelText="{x:Static res:Resources.Vitrina}"
+                                       Description="{Binding Path=VetrinaString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                       EnableTextBox="False"
+                                       Width="200"/>
+
+            <FlexText:FlexLabelTextBlock x:Name="Description" LabelText="{x:Static res:Resources.Discription}"
+                                       Description="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                       EnableTextBox="True"
+                                       Width="200"
+                                       HeightTextBlock="100"/>
 
 
         </StackPanel>

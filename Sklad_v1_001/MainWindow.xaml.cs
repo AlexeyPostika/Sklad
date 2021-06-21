@@ -13,7 +13,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Sklad_v1_001.Control.FlexMenu;
 using Sklad_v1_001.FormUsers;
+using Sklad_v1_001.FormUsers.Tovar;
+using Sklad_v1_001.FormUsers.Zacupca;
 
 namespace Sklad_v1_001
 {
@@ -22,16 +25,118 @@ namespace Sklad_v1_001
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        frameMenu _pageframeMenuLevel1;
+        TovarZona tovarZona;
+        TovarInZona tovarInZona;
+        ZacupcaGrid zacupcaGrid;
+
+        //public static WorkZona AppWindow;
         //public MainWindow mailWindows1;
         public static MainWindow AppWindow;
         private string path = "log.txt";
+
+        public frameMenu PageframeMenuLevel
+        {
+            get
+            {
+                return _pageframeMenuLevel1;
+            }
+
+            set
+            {
+                _pageframeMenuLevel1 = value;
+            }
+        }
         public MainWindow()
         {
             InitializeComponent();
-            this.Loaded += MainWindows_Loaded;
-            this.Closing += MainWindows_Closing;
-            this.Closed += MainWindows_Closed;
+
+            AppWindow = this;
+
+            PageframeMenuLevel = new frameMenu();
+            this.frameMenuLevel1.Navigate(PageframeMenuLevel);
+
+            //продукты
+            PageframeMenuLevel.ButtonProductOpen += new Action(ButtonProductOpen);
+            PageframeMenuLevel.ButtonProductEditOpen += new Action(ButtonProductEditOpen);
+            //продажи     
+            PageframeMenuLevel.ButtonNewSaleDocumentOpen += new Action(ButtonNewSaleDocumentOpen);
+            PageframeMenuLevel.ButtonListSaleDocumentOpen += new Action(ButtonListSaleDocumentOpen);
+            //перемещение
+            PageframeMenuLevel.ButtonTransferDocumentOpen += new Action(ButtonTransferDocumentOpen);
+            //поставки
+            PageframeMenuLevel.ButtonDeliveryOpen += new Action(ButtonDeliveryOpen);
+            //настройки                
+            PageframeMenuLevel.ButtonSettingsOpen += new Action(ButtonSettingsOpen);
+            //выход
+            PageframeMenuLevel.ButtonExiteOpen += new Action(ButtonExiteOpen);
+
         }
+
+        #region Product
+        public void ButtonProductOpen()
+        {
+            tovarZona = new TovarZona();
+            frameWorkArea.Navigate(tovarZona); // открытие страницы
+        }
+
+        public void ButtonProductEditOpen()
+        {
+            tovarInZona = new TovarInZona();
+            this.frameWorkArea.Navigate(tovarInZona);
+        }
+
+        public void ButtonProductEditOpenF(FormUsers.Tovar.LocalRow _localRow)
+        {
+            tovarInZona = new TovarInZona();
+            tovarInZona.LocalRow = _localRow;
+            this.frameWorkArea.Navigate(tovarInZona);
+        }
+        #endregion
+
+        #region Продажи
+        public void ButtonNewSaleDocumentOpen()
+        {
+            
+        }
+        private void ButtonListSaleDocumentOpen()
+        {
+            
+        }
+
+        #endregion
+
+        #region перемещение
+        public void ButtonTransferDocumentOpen()
+        {
+
+        }
+        #endregion
+
+        #region поставки
+        private void ButtonDeliveryOpen()
+        {
+            zacupcaGrid = new ZacupcaGrid();
+            frameWorkArea.Navigate(zacupcaGrid); // открытие страницы
+        }
+        #endregion
+
+        #region настройки
+        private void ButtonSettingsOpen()
+        {
+
+        }
+        #endregion
+
+        #region выход
+        private void ButtonExiteOpen()
+        {
+
+        }
+        #endregion
+
+
         private void MainWindows_Loaded(object sender, RoutedEventArgs e)
         {
             Log("Loaded");
@@ -59,12 +164,12 @@ namespace Sklad_v1_001
 
         private void Open_Click(object sender, RoutedEventArgs e)
         {
-            //Osnovnou.Content=new FormUsers.Form2();
-            this.Height = 961;
-            this.Width = 1241;
-            this.Main.Margin = new Thickness(1, 1, 1, 1);
-            Autorizaciy.Visibility = Visibility.Collapsed;
-            Main.Content = new WorkZona();
+            ////Osnovnou.Content=new FormUsers.Form2();
+            //this.Height = 961;
+            //this.Width = 1241;
+            //this.Main.Margin = new Thickness(1, 1, 1, 1);
+            //Autorizaciy.Visibility = Visibility.Collapsed;
+            //Main.Content = new WorkZona();
             //Main.NavigationService.Navigate(new Uri("WorkZona.xaml", UriKind.Relative));
            //Main.Content = new Page1();
         }
@@ -74,6 +179,9 @@ namespace Sklad_v1_001
 
         }
 
-      
+        private void frameWorkArea_Navigating(object sender, NavigatingCancelEventArgs e)
+        {
+
+        }
     }
 }

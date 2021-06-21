@@ -37,6 +37,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.AxShockwaveFlashObjects.13.0.4000\lib\net40\AxShockwaveFlashObjects.dll</HintPath>
+    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <HintPath>..\packages\CrystalReports.Engine.13.0.4000\lib\net40\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
     </Reference>
@@ -109,6 +112,16 @@
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="SAPBusinessObjects.WPF.Viewer, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.WPF.Viewer.13.0.4000\lib\net40\SAPBusinessObjects.WPF.Viewer.dll</HintPath>
+    </Reference>
+    <Reference Include="SAPBusinessObjects.WPF.ViewerShared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.WPF.ViewerShared.13.0.4000\lib\net40\SAPBusinessObjects.WPF.ViewerShared.dll</HintPath>
+    </Reference>
+    <Reference Include="ShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ShockwaveFlashObjects.13.0.4000\lib\net40\ShockwaveFlashObjects.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -164,6 +177,9 @@
     <Compile Include="Control\FlexMessageBox\FlexWindows.xaml.cs">
       <DependentUpon>FlexWindows.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexTextBox\FlexLabelTextBlock.xaml.cs">
+      <DependentUpon>FlexLabelTextBlock.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexTextBox\FlexLabelTextBox.xaml.cs">
       <DependentUpon>FlexLabelTextBox.xaml</DependentUpon>
     </Compile>
@@ -172,6 +188,12 @@
     </Compile>
     <Compile Include="Control\ToolBar\ToolBarNextToBack.xaml.cs">
       <DependentUpon>ToolBarNextToBack.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ToolBar\ToolBarProductEdit.xaml.cs">
+      <DependentUpon>ToolBarProductEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ToolBar\SupplyToolBar.xaml.cs">
+      <DependentUpon>SupplyToolBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\ToolBar\ToolBarZakupkaxaml.xaml.cs">
       <DependentUpon>ToolBarZakupkaxaml.xaml</DependentUpon>
@@ -199,6 +221,13 @@
     </Compile>
     <Compile Include="FormUsers\Kategor\KategoriiLogic.cs" />
     <Compile Include="FormUsers\Prixod\RegistraciyTovaraLogic.cs" />
+    <Compile Include="FormUsers\SaleDocument\NewSaleDocument.xaml.cs">
+      <DependentUpon>NewSaleDocument.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsers\SupplyDocument\SupplyDocumentGrid.xaml.cs">
+      <DependentUpon>SupplyDocumentGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsers\SupplyDocument\SupplyDocumentLogic.cs" />
     <Compile Include="FormUsers\Tovar\TovarInZona.xaml.cs">
       <DependentUpon>TovarInZona.xaml</DependentUpon>
     </Compile>
@@ -253,11 +282,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Control\FlexTextBox\FlexLabelTextBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Control\FlexTextBox\FlexLabelTextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\ToolBar\ToolBarSaveCancel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\ToolBar\ToolBarProductEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\ToolBar\SupplyToolBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -284,6 +325,14 @@
     <Page Include="Control\Zona\Yellow\SelectCategoryYellowTable.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FormUsers\SaleDocument\NewSaleDocument.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FormUsers\SupplyDocument\SupplyDocumentGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FormUsers\Tovar\TovarInZona.xaml">
       <SubType>Designer</SubType>
@@ -341,10 +390,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FormUsers\WorkZona.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="FormUsers\Zacupca\ZacupcaGrid.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -374,9 +419,6 @@
     </Compile>
     <Compile Include="FormUsers\Userss\Adminka.xaml.cs">
       <DependentUpon>Adminka.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="FormUsers\WorkZona.xaml.cs">
-      <DependentUpon>WorkZona.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -494,6 +536,11 @@
     <Content Include="DLL\CDEK.dll" />
     <Content Include="DLL\Interop.DrvFRLib.dll" />
     <Content Include="DLL\pilot_nt.dll" />
+    <Content Include="SQLCommand\JDB_DataAdapter.sql" />
+    <Content Include="SQLCommand\JDB_POS.sql" />
+    <Resource Include="Icone\IconOk.png" />
+    <Resource Include="Icone\IconArchiveListOfParts.png" />
+    <Resource Include="Icone\IconSaveClose.png" />
     <Resource Include="Icone\IconCamera.png" />
     <Resource Include="Icone\Sklad.ico" />
     <Resource Include="Icone\IconProducts.png" />
@@ -510,6 +557,9 @@
     <Resource Include="Icone\IconDownload.png" />
     <Resource Include="Icone\IconErase.png" />
     <Resource Include="Icone\IconSaveAs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Report\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

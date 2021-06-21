@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Sklad_v1_001.Control.FlexControlDescription"
              xmlns:res="clr-namespace:Sklad_v1_001.Properties"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" Name="control" Background="#FFF2FDFC">
+             Name="control" Background="#FFF2FDFC">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"/>

@@ -26,8 +26,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
     /// Interaction logic for TovarZona.xaml
     /// </summary>
     public partial class TovarZona : UserControl, INotifyPropertyChanged
-    {
-        WorkZona workZona;
+    {      
         public event Action ButtonInTovar;
 
         private Boolean page;
@@ -154,9 +153,6 @@ namespace Sklad_v1_001.FormUsers.Tovar
         public TovarZona()
         {
             InitializeComponent();
-
-            workZona = new WorkZona();
-
             dataProduct = new ObservableCollection<LocalRow>();
 
             logicTovarZona = new TovarZonaLogic();
@@ -272,36 +268,58 @@ namespace Sklad_v1_001.FormUsers.Tovar
 
         private void ToolBarZakupkaxaml_ButtonEdit()
         {
-            workZona.ButtonProductEditOpen();
-        }
-        private void EditRow()
-        {
-            tovarItemZona = new TovarItemZona();
-
             localDocument = DataGrid.SelectedItem as Tovar.LocalRow;
-            tovarItemZona.Imagelist.ListImageControl.Clear();
+            if (localDocument != null)
+            {
+                EditRow(localDocument);
+                MainWindow.AppWindow.ButtonProductEditOpenF(localDocument);
+            }
+        }
+        private void EditRow(Tovar.LocalRow localRow)
+        {                   
             if (localDocument != null && localDocument.ID > 0)
             {
-                DataTable datatable = logicTovarZona.Select(localDocument.ID);
+                DataTable datatable = logicTovarZona.Select(localRow.ID);
                 foreach (DataRow currentrow in datatable.Rows)
                 {
                     logicTovarZona.ConvertImage(currentrow, localDocument);
-                }
-                tovarItemZona.ListImage = localDocument.ListImage;
-                tovarItemZonaWindow = new FlexWindows(Properties.Resources.ProductItemScreenTitle);
-                tovarItemZonaWindow.Content = tovarItemZona;
-                tovarItemZonaWindow.ShowDialog(); 
+                }              
             }
         }
 
         private void ImageListPage_ButtonSearchOpen()
         {
-            EditRow();
+            tovarItemZona = new TovarItemZona();
+            tovarItemZona.Imagelist.ListImageControl.Clear();
+            localDocument = DataGrid.SelectedItem as Tovar.LocalRow;
+            if (localDocument != null)
+            {
+                EditRow(localDocument);
+                if (localDocument.ListImage.Count > 0)
+                {
+                    tovarItemZona.ListImage = localDocument.ListImage;
+                    tovarItemZonaWindow = new FlexWindows(Properties.Resources.ProductItemScreenTitle);
+                    tovarItemZonaWindow.Content = tovarItemZona;
+                    tovarItemZonaWindow.ShowDialog();
+                }
+            }          
         }
 
         private void FlexImageSelect_ButtonSelectImage()
         {
-            EditRow();
+            tovarItemZona = new TovarItemZona();
+            localDocument = DataGrid.SelectedItem as Tovar.LocalRow;
+            if (localDocument != null)
+            {
+                EditRow(localDocument);
+                if (localDocument != null)
+                {
+                    tovarItemZona.ListImage = localDocument.ListImage;
+                    tovarItemZonaWindow = new FlexWindows(Properties.Resources.ProductItemScreenTitle);
+                    tovarItemZonaWindow.Content = tovarItemZona;
+                    tovarItemZonaWindow.ShowDialog();
+                }
+            }
         }
     }
 }

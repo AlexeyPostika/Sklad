@@ -19,10 +19,39 @@ namespace Sklad_v1_001.FormUsers.Tovar
     /// Логика взаимодействия для TovarInZona.xaml
     /// </summary>
     public partial class TovarInZona : Page
-    {       
+    {
+        LocalRow localRow;
+        public LocalRow LocalRow {
+            get
+            {
+                return localRow;
+            }
+
+            set
+            {
+                localRow = value;
+                this.Edit.LocalDocument = LocalRow;
+            }
+        }
         public TovarInZona()
         {
             InitializeComponent();
+            LocalRow = new LocalRow();
+        }
+
+        private void ToolBarProductEdit_ButtonSave()
+        {
+
+        }
+
+        private void ToolBarProductEdit_ButtonSaveClose()
+        {
+
+        }
+
+        private void ToolBarProductEdit_ButtonListDocument()
+        {
+            MainWindow.AppWindow.ButtonProductOpen();
         }
     }
 }

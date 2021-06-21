@@ -144,8 +144,8 @@
   <data name="TypeProduct" xml:space="preserve">
     <value>Категория </value>
   </data>
-  <data name="Vetrina" xml:space="preserve">
-    <value>Ветрина</value>
+  <data name="Vitrina" xml:space="preserve">
+    <value>Витрина</value>
   </data>
   <data name="BACKIN" xml:space="preserve">
     <value>В начало</value>
@@ -180,38 +180,38 @@
   <data name="LableText" xml:space="preserve">
     <value>наимен. столбца</value>
   </data>
-  <data name="Vetrina0" xml:space="preserve">
+  <data name="Vitrina0" xml:space="preserve">
     <value>Ветрина не выбрана</value>
   </data>
-  <data name="Vetrina1" xml:space="preserve">
-    <value>Ветрина 1</value>
+  <data name="Vitrina1" xml:space="preserve">
+    <value>Витрина 1</value>
   </data>
-  <data name="Vetrina10" xml:space="preserve">
-    <value>Ветрина 10</value>
+  <data name="Vitrina10" xml:space="preserve">
+    <value>Витрина 10</value>
   </data>
-  <data name="Vetrina2" xml:space="preserve">
-    <value>Ветрина 2</value>
+  <data name="Vitrina2" xml:space="preserve">
+    <value>Витрина 2</value>
   </data>
-  <data name="Vetrina3" xml:space="preserve">
-    <value>Ветрина 3</value>
+  <data name="Vitrina3" xml:space="preserve">
+    <value>Витрина 3</value>
   </data>
-  <data name="Vetrina4" xml:space="preserve">
-    <value>Ветрина 4</value>
+  <data name="Vitrina4" xml:space="preserve">
+    <value>Витрина 4</value>
   </data>
-  <data name="Vetrina5" xml:space="preserve">
-    <value>Ветрина 5</value>
+  <data name="Vitrina5" xml:space="preserve">
+    <value>Витрина 5</value>
   </data>
-  <data name="Vetrina6" xml:space="preserve">
-    <value>Ветрина 6</value>
+  <data name="Vitrina6" xml:space="preserve">
+    <value>Витрина 6</value>
   </data>
-  <data name="Vetrina7" xml:space="preserve">
-    <value>Ветрина 7</value>
+  <data name="Vitrina7" xml:space="preserve">
+    <value>Витрина 7</value>
   </data>
-  <data name="Vetrina8" xml:space="preserve">
-    <value>Ветрина 8</value>
+  <data name="Vitrina8" xml:space="preserve">
+    <value>Витрина 8</value>
   </data>
-  <data name="Vetrina9" xml:space="preserve">
-    <value>Ветрина 9</value>
+  <data name="Vitrina9" xml:space="preserve">
+    <value>Витрина 9</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Описание</value>
@@ -371,5 +371,26 @@
   </data>
   <data name="ProductsEdit" xml:space="preserve">
     <value>Детали продукта</value>
+  </data>
+  <data name="Discription" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="APPLYBUTTON" xml:space="preserve">
+    <value>Подтвердить</value>
+  </data>
+  <data name="LISTDOCUMENT" xml:space="preserve">
+    <value>К списку документов</value>
+  </data>
+  <data name="SAVECLOCE" xml:space="preserve">
+    <value>Сохранить и выйти</value>
+  </data>
+  <data name="ListSaleDocument" xml:space="preserve">
+    <value>Список продаж</value>
+  </data>
+  <data name="NewSaleDocument" xml:space="preserve">
+    <value>Новая продажа</value>
+  </data>
+  <data name="SupplyTitly" xml:space="preserve">
+    <value>Поставки</value>
   </data>
 </root>

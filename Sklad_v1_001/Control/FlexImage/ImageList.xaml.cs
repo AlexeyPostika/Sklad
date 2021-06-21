@@ -36,7 +36,7 @@ namespace Sklad_v1_001.Control.FlexImage
         public static readonly DependencyProperty ImageNextProperty = DependencyProperty.Register(
          "ImageNext",
          typeof(BitmapImage),
-         typeof(ImageList), new UIPropertyMetadata(ImageHelper.GenerateImage("next_page_32px.png")));
+         typeof(ImageList), new UIPropertyMetadata(ImageHelper.GenerateImage("chevron_right_30px.png")));
         public BitmapImage ImageNext
         {
             get { return (BitmapImage)GetValue(ImageNextProperty); }
@@ -46,7 +46,7 @@ namespace Sklad_v1_001.Control.FlexImage
         public static readonly DependencyProperty ImageBrakeProperty = DependencyProperty.Register(
         "ImageBrake",
         typeof(BitmapImage),
-        typeof(ImageList), new UIPropertyMetadata(ImageHelper.GenerateImage("back_32px.png")));
+        typeof(ImageList), new UIPropertyMetadata(ImageHelper.GenerateImage("chevron_left_30px.png")));
         public BitmapImage ImageBrake
         {
             get { return (BitmapImage)GetValue(ImageBrakeProperty); }
@@ -130,7 +130,36 @@ namespace Sklad_v1_001.Control.FlexImage
         Int32 tempClick;
 
         public int TempClick { get => tempClick; set => tempClick = value; }
-        public List<BitmapImage> ListImageControl { get => listImageControl; set => listImageControl = value; }
+        public List<BitmapImage> ListImageControl
+        {
+            get
+            {
+                return listImageControl;
+            }
+            set
+            {
+                listImageControl = value;
+                if (ListImageControl.Count > 0)
+                {
+                    TempClick++;
+                    if (Math.Abs(TempClick) < ListImageControl.Count - 1)
+                    {
+                        image4.Source = image3.Source;
+                        image3.Source = image2.Source;
+                        image2.Source = image1.Source;
+                        image1.Source = image.Source;
+                        image.Source = ListImageControl[Math.Abs(TempClick)];
+                        buttonNext.IsEnabled = true;
+                    }
+                    else
+                    {
+                        buttonNext.IsEnabled = true;
+                        buttonBrak.IsEnabled = false;
+                    }
+                }
+                
+            }
+        }
         public LocalRow LocalDocument
         {
             get
@@ -141,6 +170,11 @@ namespace Sklad_v1_001.Control.FlexImage
             set
             {
                 localDocument = value;
+                if (LocalDocument.ListImage.Count > 0)
+                {
+                    ListImageControl = LocalDocument.ListImage;
+                    this.DescriptionInform.DataContext = LocalDocument;
+                }
                 OnPropertyChanged("LocalDocument");
             }
         }
@@ -150,12 +184,18 @@ namespace Sklad_v1_001.Control.FlexImage
             InitializeComponent();
             ListImageControl = new List<BitmapImage>();
             LocalDocument = new LocalRow();
-
-            this.Form.DataContext = LocalDocument;
+           
 
             TempClick = 0;
-            buttonNext.IsEnabled = false;
-            buttonBrak.IsEnabled = false;
+            //buttonNext.IsEnabled = false;
+            //buttonBrak.IsEnabled = false;
+
+            ImageNext = ImageHelper.GenerateImage("chevron_right_30px.png");
+            ImageBrake = ImageHelper.GenerateImage("chevron_left_30px.png");
+            ImageDowload = ImageHelper.GenerateImage("IconDownload.png");
+            ImageClear = ImageHelper.GenerateImage("IconErase.png");
+            ImageSave = ImageHelper.GenerateImage("IconSaveAs.png");
+          
         }
 
         private void ButtonBrak_Click(object sender, RoutedEventArgs e)
