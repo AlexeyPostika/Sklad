@@ -631,6 +631,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         SQLCommanSelect _sqlRequestSelectFilters = null;
         SQLCommanSelect _sqlRequestSelectSummary = null;
 
+        //результат запроса
+        DataTable _data = null;
+        DataTable _datarow = null;
+
         public SupplyDocumentLogic()
         {
             _sqlRequestSelect = new SQLCommanSelect();
@@ -693,6 +697,127 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSelect.SetParametrValue("@p_Sort", 0);
             //----------------------------------------------------------------------------
 
+            _sqlRequestSelectSummary.AddParametr("@p_Search", SqlDbType.Int);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Search", "");
+
+            _sqlRequestSelectSummary.AddParametr("@p_CreatedUserID", SqlDbType.Int);
+            _sqlRequestSelectSummary.SetParametrValue("@p_CreatedUserID", 0);
+
+            _sqlRequestSelectSummary.AddParametr("@p_LastModifiedUserID", SqlDbType.Int);
+            _sqlRequestSelectSummary.SetParametrValue("@p_LastModifiedUserID", 0);
+
+            _sqlRequestSelectSummary.AddParametr("@p_Status", SqlDbType.NVarChar);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Status", "");
+
+            _sqlRequestSelectSummary.AddParametr("@p_FromCreatedDate", SqlDbType.DateTime);
+            _sqlRequestSelectSummary.SetParametrValue("@p_FromCreatedDate", SqlDateTime.MinValue);
+
+            _sqlRequestSelectSummary.AddParametr("@p_ToCreatedDate", SqlDbType.DateTime);
+            _sqlRequestSelectSummary.SetParametrValue("@p_ToCreatedDate", DateTime.Now);
+
+            _sqlRequestSelectSummary.AddParametr("@p_FromLastModifiedDate", SqlDbType.DateTime);
+            _sqlRequestSelectSummary.SetParametrValue("@p_FromLastModifiedDate", SqlDateTime.MinValue);
+
+            _sqlRequestSelectSummary.AddParametr("@p_ToLastModifiedDate", SqlDbType.DateTime);
+            _sqlRequestSelectSummary.SetParametrValue("@p_ToLastModifiedDate", DateTime.Now);
+
+            _sqlRequestSelectSummary.AddParametr("@p_Quantity_Min", SqlDbType.Money);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Quantity_Min", 0);
+
+            _sqlRequestSelectSummary.AddParametr("@p_Quantity_Max", SqlDbType.Money);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Quantity_Max", SqlMoney.MaxValue);
+
+            _sqlRequestSelectSummary.AddParametr("@p_TagPriceVATRUS_Min", SqlDbType.Money);
+            _sqlRequestSelectSummary.SetParametrValue("@p_TagPriceVATRUS_Min", System.Data.SqlTypes.SqlMoney.MaxValue);
+
+            _sqlRequestSelectSummary.AddParametr("@p_TagPriceVATRUS_Max", SqlDbType.Money);
+            _sqlRequestSelectSummary.SetParametrValue("@p_TagPriceVATRUS_Max", System.Data.SqlTypes.SqlMoney.MaxValue);
+            //----------------------------------------------------------------------------
+        }
+
+        public DataTable FillGrid()
+        {
+            _sqlRequestSelect.SqlAnswer.datatable.Clear();
+            _data.Clear();
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeGrid);
+
+            _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
+            _data = _sqlRequestSelect.SqlAnswer.datatable;
+            return _data;
+        }
+
+        public DataTable FillGrid(Int32 id)
+        {
+            _sqlRequestSelect.SqlAnswer.datatable.Clear();
+            _data.Clear();
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeGrid);
+            _sqlRequestSelect.SetParametrValue("@p_ID", id);
+
+            _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
+            _data = _sqlRequestSelect.SqlAnswer.datatable;
+            return _data;
+        }
+
+        public DataTable FillGrid(LocalFilter _localFilter)
+        {
+            _sqlRequestSelect.SqlAnswer.datatable.Clear();
+            _data.Clear();
+
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen" , ScreenType.ScreenTypeGrid);
+            _sqlRequestSelect.SetParametrValue("@p_Search", _localFilter.Search);
+            _sqlRequestSelect.SetParametrValue("@p_CreatedUserID ", _localFilter.CreatedByUserID);
+            _sqlRequestSelect.SetParametrValue("@p_LastModifiedUserID ", _localFilter.LastModifiedByUserID);
+            _sqlRequestSelect.SetParametrValue("@p_Status", _localFilter.Status);
+            _sqlRequestSelect.SetParametrValue("@p_Quantity_Min", _localFilter.QuantityMin);
+            _sqlRequestSelect.SetParametrValue("@p_Quantity_Max ", _localFilter.QuantityMax);
+            _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Min", _localFilter.TagPriceVATRUSMin);
+            _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Max ", _localFilter.TagPriceVATRUSMax);
+            _sqlRequestSelect.SetParametrValue("@p_FromCreatedDate ", _localFilter.FromCreatedDate);
+            _sqlRequestSelect.SetParametrValue("@p_ToCreatedDate ", _localFilter.ToCreatedDate);
+            _sqlRequestSelect.SetParametrValue("@p_FromLastModifiedDate ", _localFilter.FromLastModifiedDate);
+            _sqlRequestSelect.SetParametrValue("@p_ToLastModifiedDate ", _localFilter.ToLastModifiedDate);
+            _sqlRequestSelect.SetParametrValue("@p_PageNumber ", _localFilter.PageNumber);
+            _sqlRequestSelect.SetParametrValue("@p_PagerowCount ", _localFilter.PagerowCount);
+            _sqlRequestSelect.SetParametrValue("@p_SortColumn ", _localFilter.SortColumn);
+            _sqlRequestSelect.SetParametrValue("@p_Sort", _localFilter.Sort);
+
+            _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
+            _data = _sqlRequestSelect.SqlAnswer.datatable;
+            return _data;
+        }
+
+        public DataTable FillGridAllFilter()
+        {
+            _sqlRequestSelectFilters.SqlAnswer.datatable.Clear();
+            _data.Clear();          
+
+            _sqlRequestSelectFilters.ComplexRequest(get_filters_procedure, CommandType.StoredProcedure, null);
+            _data = _sqlRequestSelectFilters.SqlAnswer.datatable;
+            return _data;
+        }
+
+        public DataTable FillSummary(LocalFilter _localFilter)
+        {
+            _sqlRequestSelectSummary.SqlAnswer.datatable.Clear();
+            _data.Clear();
+
+            _sqlRequestSelectSummary.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeGrid);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Search", _localFilter.Search);
+            _sqlRequestSelectSummary.SetParametrValue("@p_CreatedUserID ", _localFilter.CreatedByUserID);
+            _sqlRequestSelectSummary.SetParametrValue("@p_LastModifiedUserID ", _localFilter.LastModifiedByUserID);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Status", _localFilter.Status);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Quantity_Min", _localFilter.QuantityMin);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Quantity_Max ", _localFilter.QuantityMax);
+            _sqlRequestSelectSummary.SetParametrValue("@p_TagPriceVATRUS_Min", _localFilter.TagPriceVATRUSMin);
+            _sqlRequestSelectSummary.SetParametrValue("@p_TagPriceVATRUS_Max ", _localFilter.TagPriceVATRUSMax);
+            _sqlRequestSelectSummary.SetParametrValue("@p_FromCreatedDate ", _localFilter.FromCreatedDate);
+            _sqlRequestSelectSummary.SetParametrValue("@p_ToCreatedDate ", _localFilter.ToCreatedDate);
+            _sqlRequestSelectSummary.SetParametrValue("@p_FromLastModifiedDate ", _localFilter.FromLastModifiedDate);
+            _sqlRequestSelectSummary.SetParametrValue("@p_ToLastModifiedDate ", _localFilter.ToLastModifiedDate);
+
+            _sqlRequestSelectSummary.ComplexRequest(get_summary_procedure, CommandType.StoredProcedure, null);
+            _data = _sqlRequestSelectSummary.SqlAnswer.datatable;
+            return _data;
         }
     }
 }

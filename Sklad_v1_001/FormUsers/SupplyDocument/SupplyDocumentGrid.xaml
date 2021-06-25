@@ -16,10 +16,21 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="30*"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
         <ToolBar:SupplyToolBar/>
-        
-        
+
+        <Grid Grid.Row="1" x:Name="SypplyDocumentList">
+            <DataGrid x:Name="SypplyDocument">
+                
+            </DataGrid>
+        </Grid>
+
+        <Grid Grid.Row="3" x:Name="SypplyDocumentDetailsList">
+            <DataGrid x:Name="SypplyDocumentDetails">
+
+            </DataGrid>
+        </Grid>
 
         <ToolBar:ToolBarNextToBack Grid.Row="2" x:Name="ToolbarNextPageData"
                                    ButtonBack="ToolBarNextToBack_ButtonBack"
