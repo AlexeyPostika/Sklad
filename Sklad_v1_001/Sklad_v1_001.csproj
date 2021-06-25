@@ -150,11 +150,17 @@
     <Compile Include="Control\FlexButton\LevelButton.xaml.cs">
       <DependentUpon>LevelButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexButton\SmallButtonFilter.xaml.cs">
+      <DependentUpon>SmallButtonFilter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexControlDate\FilterDate.xaml.cs">
       <DependentUpon>FilterDate.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\FlexControlDescription\Description4TextBlock.xaml.cs">
       <DependentUpon>Description4TextBlock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexFilter\FlexGridCheckBox.xaml.cs">
+      <DependentUpon>FlexGridCheckBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\FlexFilter\FlexGridFromTo.xaml.cs">
       <DependentUpon>FlexGridFromTo.xaml</DependentUpon>
@@ -254,7 +260,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Control\FlexButton\SmallButtonFilter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\FlexControlDescription\Description4TextBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\FlexFilter\FlexGridCheckBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
