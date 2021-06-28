@@ -180,6 +180,12 @@
     <Compile Include="Control\FlexFilter\FlexGridFiltePaymentType.xaml.cs">
       <DependentUpon>FlexGridFiltePaymentType.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexFilter\FlexGridFilterCheckbox.xaml.cs">
+      <DependentUpon>FlexGridFilterCheckbox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexFilter\FlexGridFilteRole.xaml.cs">
+      <DependentUpon>FlexGridFilteRole.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexFilter\FlexGridFromTo.xaml.cs">
       <DependentUpon>FlexGridFromTo.xaml</DependentUpon>
     </Compile>
@@ -320,6 +326,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Control\FlexFilter\FlexGridFiltePaymentType.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\FlexFilter\FlexGridFilterCheckbox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\FlexFilter\FlexGridFilteRole.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
