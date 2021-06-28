@@ -168,8 +168,17 @@
     <Compile Include="Control\FlexFilter\FlexGridCheckBoxWindow.xaml.cs">
       <DependentUpon>FlexGridCheckBoxWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexFilter\FlexGridCheckBoxWithImageWindow.xaml.cs">
+      <DependentUpon>FlexGridCheckBoxWithImageWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexFilter\FlexGridFromTo.xaml.cs">
       <DependentUpon>FlexGridFromTo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexGridControl\ImageWithCheckBox.xaml.cs">
+      <DependentUpon>ImageWithCheckBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexGridControl\ImageWithText.xaml.cs">
+      <DependentUpon>ImageWithText.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\FlexImage\FlexImageSelect.xaml.cs">
       <DependentUpon>FlexImageSelect.xaml</DependentUpon>
@@ -286,6 +295,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\FlexFilter\FlexGridCheckBoxWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\FlexFilter\FlexGridCheckBoxWithImageWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\FlexGridControl\ImageWithCheckBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\FlexGridControl\ImageWithText.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
