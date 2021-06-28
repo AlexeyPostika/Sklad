@@ -171,6 +171,9 @@
     <Compile Include="Control\FlexFilter\FlexGridCheckBoxWithImageWindow.xaml.cs">
       <DependentUpon>FlexGridCheckBoxWithImageWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexFilter\FlexGridFilteDateTime.xaml.cs">
+      <DependentUpon>FlexGridFilteDateTime.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexFilter\FlexGridFromTo.xaml.cs">
       <DependentUpon>FlexGridFromTo.xaml</DependentUpon>
     </Compile>
@@ -299,6 +302,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Control\FlexFilter\FlexGridCheckBoxWithImageWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\FlexFilter\FlexGridFilteDateTime.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -615,6 +622,7 @@
     <Resource Include="Icone\IconSaveAs.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Control\FlexComboBox\" />
     <Folder Include="Report\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
