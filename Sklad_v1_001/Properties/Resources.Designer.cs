@@ -313,11 +313,29 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Фильтер.
+        /// </summary>
+        public static string FilterTitle {
+            get {
+                return ResourceManager.GetString("FilterTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Фамилия.
         /// </summary>
         public static string FirstName {
             get {
                 return ResourceManager.GetString("FirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Закрыть фильтер.
+        /// </summary>
+        public static string FliterClose {
+            get {
+                return ResourceManager.GetString("FliterClose", resourceCulture);
             }
         }
         
@@ -624,6 +642,15 @@ namespace Sklad_v1_001.Properties {
         public static string Quantity {
             get {
                 return ResourceManager.GetString("Quantity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Сбросить фильтер.
+        /// </summary>
+        public static string ResetFilter {
+            get {
+                return ResourceManager.GetString("ResetFilter", resourceCulture);
             }
         }
         

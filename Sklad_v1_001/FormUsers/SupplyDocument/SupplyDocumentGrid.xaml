@@ -7,7 +7,6 @@
       xmlns:res="clr-namespace:Sklad_v1_001.Properties"
       xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
       Title="{x:Static res:Resources.SupplyTitly}" 
       Style="{DynamicResource UsersPageWidth}"
       x:Name="page">
@@ -16,12 +15,19 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="30*"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="20*"/>
         </Grid.RowDefinitions>
         <ToolBar:SupplyToolBar/>
 
         <Grid Grid.Row="1" x:Name="SypplyDocumentList">
             <DataGrid x:Name="SypplyDocument">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="40"/>
+                    <DataGridTextColumn Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NameProduct}" Width="450"/>
+                        <DataGridTextColumn Binding="{Binding Path=TypeProduct, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.TypeProduct}"  Width="200"/>
+                        <DataGridTextColumn Binding="{Binding Path=Cena, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.CenaProduct}"  Width="100"/>
+                        <DataGridTextColumn Binding="{Binding Path=VetrinaString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.Vitrina}"  Width="1*"/>
+                    </DataGrid.Columns>
                 
             </DataGrid>
         </Grid>
