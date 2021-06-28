@@ -177,6 +177,9 @@
     <Compile Include="Control\FlexFilter\FlexGridFilteDay.xaml.cs">
       <DependentUpon>FlexGridFilteDay.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexFilter\FlexGridFiltePaymentType.xaml.cs">
+      <DependentUpon>FlexGridFiltePaymentType.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexFilter\FlexGridFromTo.xaml.cs">
       <DependentUpon>FlexGridFromTo.xaml</DependentUpon>
     </Compile>
@@ -313,6 +316,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Control\FlexFilter\FlexGridFilteDay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\FlexFilter\FlexGridFiltePaymentType.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
