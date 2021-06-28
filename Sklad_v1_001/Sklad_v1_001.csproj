@@ -189,6 +189,9 @@
     <Compile Include="Control\FlexFilter\FlexGridFromTo.xaml.cs">
       <DependentUpon>FlexGridFromTo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexFilter\FlexGridFromToWindowInt.xaml.cs">
+      <DependentUpon>FlexGridFromToWindowInt.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexGridControl\ImageWithCheckBox.xaml.cs">
       <DependentUpon>ImageWithCheckBox.xaml</DependentUpon>
     </Compile>
@@ -218,6 +221,9 @@
     </Compile>
     <Compile Include="Control\FlexTextBox\FlexLabelTextBox.xaml.cs">
       <DependentUpon>FlexLabelTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\SimpleControl\EditBoxWithLabelNumericForEdit.xaml.cs">
+      <DependentUpon>EditBoxWithLabelNumericForEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\ToolBar\Close.xaml.cs">
       <DependentUpon>Close.xaml</DependentUpon>
@@ -337,6 +343,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Control\FlexFilter\FlexGridFromToWindowInt.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Control\FlexGridControl\ImageWithCheckBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -376,6 +386,10 @@
     <Page Include="Control\FlexTextBox\FlexLabelTextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\SimpleControl\EditBoxWithLabelNumericForEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Control\ToolBar\Close.xaml">
       <Generator>MSBuild:Compile</Generator>

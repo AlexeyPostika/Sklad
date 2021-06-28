@@ -13,7 +13,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="30" />
         </Grid.ColumnDefinitions>
-        <Label Margin="0,0,0,0" Style="{DynamicResource LabelStyle}" Content="{x:Static res:Resources.Role}" HorizontalAlignment="Center"/>
+        <Label Margin="0,0,0,0" Content="{x:Static res:Resources.Role}" HorizontalAlignment="Center"/>
         <ComboBox x:Name="FilterID"                                     
                 SelectedValuePath="ID"
                 DisplayMemberPath="Description" 
