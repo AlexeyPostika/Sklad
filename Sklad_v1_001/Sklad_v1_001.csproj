@@ -153,6 +153,9 @@
     <Compile Include="Control\FlexButton\SmallButtonFilter.xaml.cs">
       <DependentUpon>SmallButtonFilter.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexButton\SmallButtonNoText .xaml.cs">
+      <DependentUpon>SmallButtonNoText .xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexControlDate\FilterDate.xaml.cs">
       <DependentUpon>FilterDate.xaml</DependentUpon>
     </Compile>
@@ -188,6 +191,9 @@
     </Compile>
     <Compile Include="Control\FlexTextBox\FlexLabelTextBox.xaml.cs">
       <DependentUpon>FlexLabelTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ToolBar\Close.xaml.cs">
+      <DependentUpon>Close.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\ToolBar\ToolBarSaveCancel.xaml.cs">
       <DependentUpon>ToolBarSaveCancel.xaml</DependentUpon>
@@ -264,6 +270,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Control\FlexButton\SmallButtonNoText .xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Control\FlexControlDescription\Description4TextBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -303,6 +313,10 @@
     <Page Include="Control\FlexTextBox\FlexLabelTextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\ToolBar\Close.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Control\ToolBar\ToolBarSaveCancel.xaml">
       <Generator>MSBuild:Compile</Generator>

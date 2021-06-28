@@ -7,7 +7,6 @@
       xmlns:res="clr-namespace:Sklad_v1_001.Properties"
       xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
       Title="{x:Static res:Resources.SupplyTitly}" 
       Style="{DynamicResource UsersPageWidth}"
       x:Name="page">
@@ -30,7 +29,6 @@
                         <DataGridTextColumn Binding="{Binding Path=VetrinaString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.Vitrina}"  Width="1*"/>
                     </DataGrid.Columns>
                 
-
             </DataGrid>
         </Grid>
 

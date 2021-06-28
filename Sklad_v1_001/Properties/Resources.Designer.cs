@@ -322,6 +322,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Закрыть фильтер.
+        /// </summary>
+        public static string FliterClose {
+            get {
+                return ResourceManager.GetString("FliterClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на От куда идет.
         /// </summary>
         public static string FromWhere {
@@ -624,6 +633,15 @@ namespace Sklad_v1_001.Properties {
         public static string Quantity {
             get {
                 return ResourceManager.GetString("Quantity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Сбросить фильтер.
+        /// </summary>
+        public static string ResetFilter {
+            get {
+                return ResourceManager.GetString("ResetFilter", resourceCulture);
             }
         }
         
