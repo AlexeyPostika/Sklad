@@ -1,0 +1,288 @@
+﻿using Sklad_v1_001.GlobalVariable;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Interop;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace Sklad_v1_001.Control.FlexFilter
+{
+    /// <summary>
+    /// Логика взаимодействия для FlexGridCheckBox.xaml
+    /// </summary>
+    ///
+    /// <summary>
+    /// Логика взаимодействия для FromToTimeFilter.xaml
+    /// </summary>
+    public partial class FlexGridFromToWindowInt : IAbstractButtonFilter, INotifyPropertyChanged
+    {
+        private Boolean needrefresh;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }        
+
+        public static readonly DependencyProperty DefaultMinProperty = DependencyProperty.Register(
+                        "DefaultMin",
+                        typeof(Int32),
+                        typeof(FlexGridFromToWindowInt));
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Int32 DefaultMin
+        {
+            get
+            {
+                return (Int32)GetValue(DefaultMinProperty);
+            }
+            set
+            {
+                SetValue(DefaultMinProperty, value);
+                OnPropertyChanged("DefaultMin");
+            }
+        }
+
+        public static readonly DependencyProperty DefaultMaxProperty = DependencyProperty.Register(
+                        "DefaultMax",
+                        typeof(Int32),
+                        typeof(FlexGridFromToWindowInt));
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Int32 DefaultMax
+        {
+            get
+            {
+                return (Int32)GetValue(DefaultMaxProperty);
+            }
+            set
+            {
+                SetValue(DefaultMaxProperty, value);
+                OnPropertyChanged("DefaultMax");
+            }
+        }
+
+
+
+        public static readonly DependencyProperty FilterStatusProperty = DependencyProperty.Register(
+                        "FilterStatus",
+                        typeof(Boolean),
+                        typeof(FlexGridFromToWindowInt));
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Boolean FilterStatus
+        {
+            get
+            {
+                return (Boolean)GetValue(FilterStatusProperty);
+            }
+            set
+            {
+
+                SetValue(FilterStatusProperty, value);
+                OnPropertyChanged("FilterStatus");
+            }
+        }
+
+        public static readonly DependencyProperty FromProperty = DependencyProperty.Register(
+                       "From",
+                       typeof(Int32),
+                       typeof(FlexGridFromToWindowInt), new UIPropertyMetadata(0));
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Int32 From
+        {
+            get
+            {
+                return (Int32)GetValue(FromProperty);
+            }
+            set
+            {
+
+                SetValue(FromProperty, value);
+                OnPropertyChanged("From");
+
+                if (To != DefaultMax || From != DefaultMin)
+                    FilterStatus = true;
+                else
+                    FilterStatus = false;
+            }
+        }
+
+        public static readonly DependencyProperty ToProperty = DependencyProperty.Register(
+                      "To",
+                      typeof(Int32),
+                      typeof(FlexGridFromToWindowInt), new UIPropertyMetadata(0));
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Int32 To
+        {
+            get
+            {
+                return (Int32)GetValue(ToProperty);
+            }
+            set
+            {
+
+                SetValue(ToProperty, value);
+                OnPropertyChanged("To");
+
+                if (To != DefaultMax || From != DefaultMin)
+                    FilterStatus = true;
+                else
+                    FilterStatus = false;
+            }
+        }
+
+        string IAbstractButtonFilter.Text
+        {
+            get
+            {
+                return "Временной фильтр";
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        string IAbstractButtonFilter.From
+        {
+            get
+            {
+                return DateFrom.Value.ToString();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        string IAbstractButtonFilter.To
+        {
+            get
+            {
+                return DateTo.Value.ToString();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public static readonly DependencyProperty LabelTextProperty = DependencyProperty.Register(
+                        "LabelText",
+                        typeof(String),
+                        typeof(FlexGridFromToWindowInt));
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public String LabelText
+        {
+            get
+            {
+
+                return (String)GetValue(LabelTextProperty);
+            }
+            set
+            {
+
+                SetValue(LabelTextProperty, value);
+                OnPropertyChanged("LabelText");
+            }
+        }
+
+        public FlexGridFromToWindowInt()
+        {
+            InitializeComponent();
+            //this.Activated += ContentActivated;
+            needrefresh = true;
+        }
+
+        public event Action ButtonApplyClick;
+
+        private void ContentActivated(object sender, EventArgs e)
+        {
+            //var frameWorkAreaX = MainWindow.AppWindow.frameWorkArea.PointToScreen(new Point(0, 0)).X;
+            //this.Left = Left - this.ActualWidth;
+            //if (this.Left <= frameWorkAreaX)
+            //    this.Left = frameWorkAreaX;
+            //this.Activated -= ContentActivated;
+        }
+
+        private void control_Closing(object sender, CancelEventArgs e)
+        {
+            try
+            {
+                //this.Visibility = Visibility.Hidden;
+                e.Cancel = true;
+            }
+            catch
+            {
+            }
+        }
+
+        private void DateTo_TextChanged()
+        {
+            if (needrefresh)
+            {
+                if (To != DefaultMax || From != DefaultMin)
+                    FilterStatus = true;
+                else
+                    FilterStatus = false;
+                ButtonApplyClick?.Invoke();
+            }
+        }
+
+        private void DateFrom_TextChanged()
+        {
+            if (needrefresh)
+            {
+                if (To != DefaultMax || From != DefaultMin)
+                    FilterStatus = true;
+                else
+                    FilterStatus = false;
+                ButtonApplyClick?.Invoke();
+            }
+        }
+
+        private void Close_ButtonClearFiltersClick()
+        {
+            needrefresh = false;
+            From = DefaultMin;
+            To = DefaultMax;
+            FilterStatus = false;
+            ButtonApplyClick?.Invoke();
+            needrefresh = true;
+        }
+
+        private void Close_ButtonCloseClick()
+        {
+            //FlexControl.FlexMessageBox.FlexMessageBox mb = new FlexControl.FlexMessageBox.FlexMessageBox();
+            //if (To < From)
+            //{
+            //    mb.Show(Properties.Resources.ErrorFilterToSmallerFrom, GenerateTitle(TitleType.Error, Properties.Resources.BadRange), MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
+            //else
+            //{
+            //    this.Visibility = Visibility.Hidden;
+            //    this.Activated += ContentActivated;
+            //}
+        }
+    }
+}

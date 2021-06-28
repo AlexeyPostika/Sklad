@@ -63,109 +63,115 @@ using System.Threading.Tasks;
              }
              return 0;
          }
-           //private void ConvertDataToLocalRow(string name, object value)
-         //{
-         //    Screens.RelatedProductDocument.LocaleRow localeRow = localRow as Screens.RelatedProductDocument.LocaleRow;
-         //    if (localeRow != null)
-         //    {
-         //        var field = typeof(Screens.RelatedProductDocument.LocaleRow).GetField(name);
-         //        field.SetValue(localeRow, value);
-         //    }
-           //    Screens.RelatedProduct.LocaleRow localeRow1 = localRow as Screens.RelatedProduct.LocaleRow;
-         //    if (localeRow1 != null)
-         //    {
-         //        var field = typeof(Screens.RelatedProduct.LocaleRow).GetField(name);
-         //        field.SetValue(localeRow1, value);
-         //    }// добавить другие LocalRow                    
-         //}
-           //public void Convert(string _columnname, ConvertDataTypes convertDataTypes)
-         //{
-         //    switch (convertDataTypes)
-         //    {
-         //        case ConvertDataTypes.Int32:
-         //            {
-         //                Int32 i = ConvertDataInt32(_columnname);
-         //                ConvertDataToLocalRow(_columnname, i);
-         //                break;
-         //            }
-           //        case ConvertDataTypes.Int64:
-         //            {
-         //                Int64 i = ConvertDataInt64(_columnname);
-         //                ConvertDataToLocalRow(_columnname, i);
-         //                break;
-         //            }
-         //        case ConvertDataTypes.Double:
-         //            {
-         //                Double i = ConvertDataDouble(_columnname);
-         //                ConvertDataToLocalRow(_columnname, i);
-         //                break;
-         //            }
-         //        case ConvertDataTypes.DateTime:
-         //            {
-         //                DateTime? i = ConvertDataDateTime(_columnname);
-         //                ConvertDataToLocalRow(_columnname, i);
-         //                break;
-         //            }
-         //        case ConvertDataTypes.String:
-         //            {
-         //                String i = ConvertDataString(_columnname);
-         //                ConvertDataToLocalRow(_columnname, i);
-         //                break;
-         //            }
-           //        case ConvertDataTypes.Boolean:
-         //            {
-         //                Boolean i = ConvertDataBoolean(_columnname);
-         //                ConvertDataToLocalRow(_columnname, i);
-         //                break;
-         //            }
-         //            // добавить аналогичные методы для других типов данных
-           //    }
-         //}
-             /* public void Convert(string _columnname, string _rowcolumnname, ConvertDataTypes convertDataTypes)
-          {
-              switch (convertDataTypes)
-              {
-                  case ConvertDataTypes.Int32:
-                     {
-                         Int32 i = ConvertDataInt32(_columnname);
-                         ConvertDataToLocalRow(_columnname, i);
-                         break;
-                     }
-                   case ConvertDataTypes.Int64:
-                     {
-                         Int64 i = ConvertDataInt64(_columnname);
-                         ConvertDataToLocalRow(_columnname, i);
-                         break;
-                     }
-                 case ConvertDataTypes.Double:
-                     {
-                         Double i = ConvertDataDouble(_columnname);
-                         ConvertDataToLocalRow(_columnname, i);
-                         break;
-                     }
-                 case ConvertDataTypes.DateTime:
-                     {
-                         DateTime? i = ConvertDataDateTime(_columnname);
-                         ConvertDataToLocalRow(_columnname, i);
-                         break;
-         }
-                 case ConvertDataTypes.String:
-                     {
-                         String i = ConvertDataString(_columnname);
-                         ConvertDataToLocalRow(_columnname, i);
-                         break;
-                     }
-                   case ConvertDataTypes.Boolean:
+
+        internal object FlexDataConvertToInt32(string v)
+        {
+            throw new NotImplementedException();
+        }
+
+        //private void ConvertDataToLocalRow(string name, object value)
+        //{
+        //    Screens.RelatedProductDocument.LocaleRow localeRow = localRow as Screens.RelatedProductDocument.LocaleRow;
+        //    if (localeRow != null)
+        //    {
+        //        var field = typeof(Screens.RelatedProductDocument.LocaleRow).GetField(name);
+        //        field.SetValue(localeRow, value);
+        //    }
+        //    Screens.RelatedProduct.LocaleRow localeRow1 = localRow as Screens.RelatedProduct.LocaleRow;
+        //    if (localeRow1 != null)
+        //    {
+        //        var field = typeof(Screens.RelatedProduct.LocaleRow).GetField(name);
+        //        field.SetValue(localeRow1, value);
+        //    }// добавить другие LocalRow                    
+        //}
+        //public void Convert(string _columnname, ConvertDataTypes convertDataTypes)
+        //{
+        //    switch (convertDataTypes)
+        //    {
+        //        case ConvertDataTypes.Int32:
+        //            {
+        //                Int32 i = ConvertDataInt32(_columnname);
+        //                ConvertDataToLocalRow(_columnname, i);
+        //                break;
+        //            }
+        //        case ConvertDataTypes.Int64:
+        //            {
+        //                Int64 i = ConvertDataInt64(_columnname);
+        //                ConvertDataToLocalRow(_columnname, i);
+        //                break;
+        //            }
+        //        case ConvertDataTypes.Double:
+        //            {
+        //                Double i = ConvertDataDouble(_columnname);
+        //                ConvertDataToLocalRow(_columnname, i);
+        //                break;
+        //            }
+        //        case ConvertDataTypes.DateTime:
+        //            {
+        //                DateTime? i = ConvertDataDateTime(_columnname);
+        //                ConvertDataToLocalRow(_columnname, i);
+        //                break;
+        //            }
+        //        case ConvertDataTypes.String:
+        //            {
+        //                String i = ConvertDataString(_columnname);
+        //                ConvertDataToLocalRow(_columnname, i);
+        //                break;
+        //            }
+        //        case ConvertDataTypes.Boolean:
+        //            {
+        //                Boolean i = ConvertDataBoolean(_columnname);
+        //                ConvertDataToLocalRow(_columnname, i);
+        //                break;
+        //            }
+        //            // добавить аналогичные методы для других типов данных
+        //    }
+        //}
+        /* public void Convert(string _columnname, string _rowcolumnname, ConvertDataTypes convertDataTypes)
+     {
+         switch (convertDataTypes)
          {
-                         Boolean i = ConvertDataBoolean(_columnname);
-                         ConvertDataToLocalRow(_columnname, i);
-                         break;
-                     }
-                      // добавить аналогичные методы для других типов данных
+             case ConvertDataTypes.Int32:
+                {
+                    Int32 i = ConvertDataInt32(_columnname);
+                    ConvertDataToLocalRow(_columnname, i);
+                    break;
                 }
-          }*/
-           //private
-         public Int64 ConvertDataInt64(string _columnname)
+              case ConvertDataTypes.Int64:
+                {
+                    Int64 i = ConvertDataInt64(_columnname);
+                    ConvertDataToLocalRow(_columnname, i);
+                    break;
+                }
+            case ConvertDataTypes.Double:
+                {
+                    Double i = ConvertDataDouble(_columnname);
+                    ConvertDataToLocalRow(_columnname, i);
+                    break;
+                }
+            case ConvertDataTypes.DateTime:
+                {
+                    DateTime? i = ConvertDataDateTime(_columnname);
+                    ConvertDataToLocalRow(_columnname, i);
+                    break;
+    }
+            case ConvertDataTypes.String:
+                {
+                    String i = ConvertDataString(_columnname);
+                    ConvertDataToLocalRow(_columnname, i);
+                    break;
+                }
+              case ConvertDataTypes.Boolean:
+    {
+                    Boolean i = ConvertDataBoolean(_columnname);
+                    ConvertDataToLocalRow(_columnname, i);
+                    break;
+                }
+                 // добавить аналогичные методы для других типов данных
+           }
+     }*/
+        //private
+        public Int64 ConvertDataInt64(string _columnname)
          {
              Int64 i = 0;
              if (_columnname != null && localdatarow.Table.Columns.Contains(_columnname) && localdatarow[_columnname].ToString() != null && !String.IsNullOrEmpty(localdatarow[_columnname].ToString()))
