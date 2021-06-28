@@ -399,4 +399,7 @@
   <data name="ResetFilter" xml:space="preserve">
     <value>Сбросить фильтер</value>
   </data>
+  <data name="FilterTitle" xml:space="preserve">
+    <value>Фильтер</value>
+  </data>
 </root>

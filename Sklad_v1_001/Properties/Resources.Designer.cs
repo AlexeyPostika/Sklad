@@ -313,6 +313,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Фильтер.
+        /// </summary>
+        public static string FilterTitle {
+            get {
+                return ResourceManager.GetString("FilterTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Фамилия.
         /// </summary>
         public static string FirstName {

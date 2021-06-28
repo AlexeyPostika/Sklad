@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="Sklad_v1_001.Control.FlexFilter.FlexGridCheckBoxWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sklad_v1_001.Control.FlexFilter"
+             xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton" 
+             xmlns:FlexFilter="clr-namespace:Sklad_v1_001.Control.FlexFilter"           
+             xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" x:Name="control"
+             xmlns:Toolbar="clr-namespace:Sklad_v1_001.Control.Toolbar"     
+             MouseEnter="control_MouseEnter"
+             MouseMove="control_MouseMove">
+
+    <Grid x:Name="PopupFilter" MaxHeight="462">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Toolbar:Close x:Name="Toolbar" Width="Auto" ButtonCloseClick="Close_ButtonCloseClick" ButtonClearFiltersVisible="Collapsed" HeaderText ="{x:Static res:Resources.FilterTitle}"/>
+        <DataGrid Name="ElementDataGrid" 
+                  AutoGenerateColumns="False"                                                   
+                  CanUserAddRows="False"                               
+                  MouseLeftButtonUp="ElementDataGrid_MouseLeftButtonUp"
+                  Grid.Row="1"                   
+                  Sorting="ElementDataGrid_Sorting">
+            <DataGrid.Resources>
+                <local:DataContextSpy x:Key="dcSpy" DataContext="{Binding ElementName=control, Path=LabelText, Mode=TwoWay}"/>
+                <local:DataContextSpy x:Key="dcSpy1" DataContext="{Binding ElementName=control, Path=CheckAll, Mode=TwoWay}"/>
+            </DataGrid.Resources>
+
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="50">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <CheckBox x:Name="CheckAll" IsChecked="{Binding Source={StaticResource dcSpy1}, Path=DataContext}" Style="{DynamicResource CheckBoxStyle}" Click="CheckAll_Click" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding Path=IsChecked, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" MouseLeftButtonUp="ElementDataGrid_MouseLeftButtonUp" Click="CheckBox_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn IsReadOnly="True" SortMemberPath="Description" CanUserSort="True" Header="{Binding Source={StaticResource dcSpy}, Path=DataContext}" Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>              
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
