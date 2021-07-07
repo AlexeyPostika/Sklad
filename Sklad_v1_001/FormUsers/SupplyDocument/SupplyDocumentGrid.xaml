@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:Sklad_v1_001.FormUsers.SupplyDocument"
       xmlns:res="clr-namespace:Sklad_v1_001.Properties"
       xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
+      xmlns:FlexFilter="clr-namespace:Sklad_v1_001.Control.FlexFilter"
       mc:Ignorable="d" 
       Title="{x:Static res:Resources.SupplyTitly}" 
       Style="{DynamicResource UsersPageWidth}"
@@ -22,6 +23,21 @@
         <Grid Grid.Row="1" x:Name="SypplyDocumentList">
             <DataGrid x:Name="SypplyDocument">
                 <DataGrid.Columns>
+                    <DataGridTemplateColumn IsReadOnly="True" CanUserSort="True">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                 <FlexFilter:FlexGridFilteDateTime x:Name="FilterToDateLastModifiedDate" ButtonFilterSelected="FilterToDateLastModifiedDate_ButtonFilterSelected"
+                                                                   Value="{Binding ElementName=page, Path=FilterDateIDLastModifiadDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                                   KeyboardNavigation.DirectionalNavigation="None" KeyboardNavigation.TabNavigation="None"
+                                                                   LabelText="{Binding ElementName=page, Path=FilterDateLastModifiadDateText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                               <Label Content="{Binding Path=LastModifiadDateText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            </DataTemplate>
+                         </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                     <DataGridTextColumn Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="40"/>
                     <DataGridTextColumn Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NameProduct}" Width="450"/>
                         <DataGridTextColumn Binding="{Binding Path=TypeProduct, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.TypeProduct}"  Width="200"/>
