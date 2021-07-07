@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Sklad_v1_001.Control.FlexFilter"
+             xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton" 
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="32" d:DesignWidth="300" Name="control" Background="#FFF2FDFC">
@@ -11,12 +12,14 @@
         <sys:String x:Key="HeaderText">Header Text</sys:String>
         <!--<Style x:Key="HeadetTextStyle" TargetType="{}"-->
     </UserControl.Resources>
-    <Grid>
+    <Grid x:Name="MainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <Image x:Name="image" Grid.Column="1" Source="/Sklad_v1_001;component/Icone/Controllu/clear_filters_30px.png"/>
-        <Label x:Name="label" Content="{Binding Path=LabelText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="10,3"/>
+        <Label Name="label" Height="30" HorizontalAlignment="Center" Content="{Binding  ElementName=control, Path=LabelText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <FlexButton:SmallButtonFilter x:Name="ButtonFilter" Width="32" Height="32" Grid.Column="2" ButtonClick="ButtonFilter_ButtonClick" ImageSource="{Binding ElementName=control, Path=ImageSource, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
     </Grid>
 </UserControl>

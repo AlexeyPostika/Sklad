@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="POS.FlexControls.FlexButton.ToolBarButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:POS.FlexControls.FlexButton"
+             Name="control"
+             mc:Ignorable="d">
+    <Grid>
+        <Button Style="{DynamicResource RoundBorderButtonStyle}" Name="button" 
+                Click="button_Click" Visibility="{Binding ElementName=control, Path=VisibilityButton, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                IsEnabled="{Binding ElementName=control, Path=IsEnabledRule, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+            <StackPanel Orientation="Horizontal">
+                <Image Name="Image" Margin="10,0,0,0" Stretch="None" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+                <Label Style="{DynamicResource LabelStyle}" Margin="3,0,10,0" Name="TextField"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</UserControl>

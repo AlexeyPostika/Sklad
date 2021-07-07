@@ -405,4 +405,67 @@
   <data name="Role" xml:space="preserve">
     <value>Роль</value>
   </data>
+  <data name="AsteriskTitle" xml:space="preserve">
+    <value>Информация</value>
+  </data>
+  <data name="BadRange" xml:space="preserve">
+    <value>неверный дифпазон</value>
+  </data>
+  <data name="CompanyDelivery" xml:space="preserve">
+    <value>Доставка</value>
+  </data>
+  <data name="ErrorFilterToSmallerFrom" xml:space="preserve">
+    <value>Значение поля ДО меньше значения поля ОТ</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="ExclamationTitle" xml:space="preserve">
+    <value>Внимание</value>
+  </data>
+  <data name="HandTitle" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="InformationTitle" xml:space="preserve">
+    <value>Информация</value>
+  </data>
+  <data name="ManagerCompany" xml:space="preserve">
+    <value>Менеджер по продажам</value>
+  </data>
+  <data name="MessageAbort" xml:space="preserve">
+    <value>Отменить</value>
+  </data>
+  <data name="MessageCancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="MessageIgnore" xml:space="preserve">
+    <value>Пропустить</value>
+  </data>
+  <data name="MessageNo" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="MessageOK" xml:space="preserve">
+    <value>ОК</value>
+  </data>
+  <data name="MessageRetry" xml:space="preserve">
+    <value>Повторить</value>
+  </data>
+  <data name="MessageYes" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="QuestionTitle" xml:space="preserve">
+    <value>Подтвердите действие</value>
+  </data>
+  <data name="StopTitle" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="SummaSumm" xml:space="preserve">
+    <value>Стоимость</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Сотрудник</value>
+  </data>
+  <data name="WarningTitle" xml:space="preserve">
+    <value>Внимание</value>
+  </data>
 </root>

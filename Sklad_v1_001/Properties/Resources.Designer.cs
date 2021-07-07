@@ -88,6 +88,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Информация.
+        /// </summary>
+        public static string AsteriskTitle {
+            get {
+                return ResourceManager.GetString("AsteriskTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Предыдущая.
         /// </summary>
         public static string BACK {
@@ -102,6 +111,15 @@ namespace Sklad_v1_001.Properties {
         public static string BACKIN {
             get {
                 return ResourceManager.GetString("BACKIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на неверный дифпазон.
+        /// </summary>
+        public static string BadRange {
+            get {
+                return ResourceManager.GetString("BadRange", resourceCulture);
             }
         }
         
@@ -192,6 +210,15 @@ namespace Sklad_v1_001.Properties {
         public static string CenaProduct {
             get {
                 return ResourceManager.GetString("CenaProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Доставка.
+        /// </summary>
+        public static string CompanyDelivery {
+            get {
+                return ResourceManager.GetString("CompanyDelivery", resourceCulture);
             }
         }
         
@@ -304,6 +331,33 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Значение поля ДО меньше значения поля ОТ.
+        /// </summary>
+        public static string ErrorFilterToSmallerFrom {
+            get {
+                return ResourceManager.GetString("ErrorFilterToSmallerFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка.
+        /// </summary>
+        public static string ErrorTitle {
+            get {
+                return ResourceManager.GetString("ErrorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Внимание.
+        /// </summary>
+        public static string ExclamationTitle {
+            get {
+                return ResourceManager.GetString("ExclamationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Выход.
         /// </summary>
         public static string Exite {
@@ -349,11 +403,29 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка.
+        /// </summary>
+        public static string HandTitle {
+            get {
+                return ResourceManager.GetString("HandTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на №.
         /// </summary>
         public static string ID {
             get {
                 return ResourceManager.GetString("ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Информация.
+        /// </summary>
+        public static string InformationTitle {
+            get {
+                return ResourceManager.GetString("InformationTitle", resourceCulture);
             }
         }
         
@@ -399,6 +471,78 @@ namespace Sklad_v1_001.Properties {
         public static string Location {
             get {
                 return ResourceManager.GetString("Location", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Менеджер по продажам.
+        /// </summary>
+        public static string ManagerCompany {
+            get {
+                return ResourceManager.GetString("ManagerCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Отменить.
+        /// </summary>
+        public static string MessageAbort {
+            get {
+                return ResourceManager.GetString("MessageAbort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Отмена.
+        /// </summary>
+        public static string MessageCancel {
+            get {
+                return ResourceManager.GetString("MessageCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Пропустить.
+        /// </summary>
+        public static string MessageIgnore {
+            get {
+                return ResourceManager.GetString("MessageIgnore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Нет.
+        /// </summary>
+        public static string MessageNo {
+            get {
+                return ResourceManager.GetString("MessageNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ОК.
+        /// </summary>
+        public static string MessageOK {
+            get {
+                return ResourceManager.GetString("MessageOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Повторить.
+        /// </summary>
+        public static string MessageRetry {
+            get {
+                return ResourceManager.GetString("MessageRetry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Да.
+        /// </summary>
+        public static string MessageYes {
+            get {
+                return ResourceManager.GetString("MessageYes", resourceCulture);
             }
         }
         
@@ -646,6 +790,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Подтвердите действие.
+        /// </summary>
+        public static string QuestionTitle {
+            get {
+                return ResourceManager.GetString("QuestionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Сбросить фильтер.
         /// </summary>
         public static string ResetFilter {
@@ -736,6 +889,24 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка.
+        /// </summary>
+        public static string StopTitle {
+            get {
+                return ResourceManager.GetString("StopTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Стоимость.
+        /// </summary>
+        public static string SummaSumm {
+            get {
+                return ResourceManager.GetString("SummaSumm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Поставки.
         /// </summary>
         public static string SupplyTitly {
@@ -795,6 +966,15 @@ namespace Sklad_v1_001.Properties {
         public static string TypeВelivery {
             get {
                 return ResourceManager.GetString("TypeВelivery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Сотрудник.
+        /// </summary>
+        public static string UserName {
+            get {
+                return ResourceManager.GetString("UserName", resourceCulture);
             }
         }
         
@@ -903,6 +1083,15 @@ namespace Sklad_v1_001.Properties {
         public static string Vitrina9 {
             get {
                 return ResourceManager.GetString("Vitrina9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Внимание.
+        /// </summary>
+        public static string WarningTitle {
+            get {
+                return ResourceManager.GetString("WarningTitle", resourceCulture);
             }
         }
         

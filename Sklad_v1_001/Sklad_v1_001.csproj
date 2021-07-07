@@ -142,6 +142,7 @@
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -167,6 +168,9 @@
     </Compile>
     <Compile Include="Control\FlexButton\SmallButtonNoText .xaml.cs">
       <DependentUpon>SmallButtonNoText .xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexButton\ToolBarButton.xaml.cs">
+      <DependentUpon>ToolBarButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\FlexControlDate\FilterDate.xaml.cs">
       <DependentUpon>FilterDate.xaml</DependentUpon>
@@ -201,8 +205,14 @@
     <Compile Include="Control\FlexFilter\FlexGridFromTo.xaml.cs">
       <DependentUpon>FlexGridFromTo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexFilter\FlexGridFromToWindow.xaml.cs">
+      <DependentUpon>FlexGridFromToWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexFilter\FlexGridFromToWindowInt.xaml.cs">
       <DependentUpon>FlexGridFromToWindowInt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexFilter\FlexGridFromToWindowTime.xaml.cs">
+      <DependentUpon>FlexGridFromToWindowTime.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\FlexGridControl\ImageWithCheckBox.xaml.cs">
       <DependentUpon>ImageWithCheckBox.xaml</DependentUpon>
@@ -225,6 +235,9 @@
     <Compile Include="Control\FlexMenu\frameMenuPage.xaml.cs">
       <DependentUpon>frameMenuPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexMessageBox\FlexMessageBox.xaml.cs">
+      <DependentUpon>FlexMessageBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexMessageBox\FlexWindows.xaml.cs">
       <DependentUpon>FlexWindows.xaml</DependentUpon>
     </Compile>
@@ -234,8 +247,14 @@
     <Compile Include="Control\FlexTextBox\FlexLabelTextBox.xaml.cs">
       <DependentUpon>FlexLabelTextBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\SimpleControl\EditBoxWithLabelFloatForEdit.xaml.cs">
+      <DependentUpon>EditBoxWithLabelFloatForEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\SimpleControl\EditBoxWithLabelNumericForEdit.xaml.cs">
       <DependentUpon>EditBoxWithLabelNumericForEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\SimpleControl\EditBoxWithLabelTime.xaml.cs">
+      <DependentUpon>EditBoxWithLabelTime.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\ToolBar\Close.xaml.cs">
       <DependentUpon>Close.xaml</DependentUpon>
@@ -306,6 +325,7 @@
     <Compile Include="GlobalVariable\ScreenType.cs" />
     <Compile Include="HelperGlobal\ConvertData.cs" />
     <Compile Include="HelperGlobal\ImageSql.cs" />
+    <Compile Include="HelperGlobal\MessageBoxTitleHelper.cs" />
     <Compile Include="SQLCommand\SQLCommanSelect.cs" />
     <Page Include="Control\FlexButton\LevelButton.xaml">
       <SubType>Designer</SubType>
@@ -316,6 +336,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\FlexButton\SmallButtonNoText .xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\FlexButton\ToolBarButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -355,7 +379,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Control\FlexFilter\FlexGridFromToWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Control\FlexFilter\FlexGridFromToWindowInt.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\FlexFilter\FlexGridFromToWindowTime.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -387,6 +419,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Control\FlexMessageBox\FlexMessageBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Control\FlexMessageBox\FlexWindows.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -399,7 +435,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Control\SimpleControl\EditBoxWithLabelFloatForEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Control\SimpleControl\EditBoxWithLabelNumericForEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\SimpleControl\EditBoxWithLabelTime.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

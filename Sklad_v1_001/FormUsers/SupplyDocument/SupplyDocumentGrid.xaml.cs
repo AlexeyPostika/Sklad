@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -22,6 +23,22 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
     /// </summary>
     public partial class SupplyDocumentGrid : Page, INotifyPropertyChanged
     {
+        DataTable filterIDManagerName;
+        DataTable filterIDDelivery;
+        DataTable filterIDStatus;
+        DataTable filterLastModifiedByUserID;
+
+        Int32 filterDateIDLastModifiadDate;
+        DateTime? fromLastModifiadDate;
+        DateTime? toLastModifiadDate;
+
+        BitmapImage clearfilterManagerNameID;
+        BitmapImage clearfilterDeliveryID;
+        BitmapImage clearfilterStatusID;
+        BitmapImage ClearfilterLastModifiedByUserID;
+
+        BitmapImage clearfilterTagPrice;
+
         private Boolean isEnableBack;
         private Boolean isEnableNext;
         private Boolean isEnableBackIn;
@@ -133,6 +150,35 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         #endregion
 
         private void FilterToDateLastModifiedDate_ButtonFilterSelected()
+        {
+
+        }
+
+        private void FilterStatusID_ButtonApplyClick(string text)
+        {
+
+        }
+
+        private void FilterLastModifiedByUserID_ButtonApplyClick(string text)
+        {
+            //if (NeedRefresh)
+            //{
+            //    filter.LastModifiedByUserID = text;
+            //    Refresh();
+            //}
+        }
+
+        private void FilterDeliveryID_ButtonApplyClick(string text)
+        {
+
+        }
+
+        private void FilterManagerNameID_ButtonApplyClick(string text)
+        {
+
+        }
+
+        private void FilterAmount_ButtonApplyClick()
         {
 
         }
