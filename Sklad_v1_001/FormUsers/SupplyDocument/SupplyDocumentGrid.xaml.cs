@@ -131,5 +131,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         }
         #endregion
+
+        private void FilterToDateLastModifiedDate_ButtonFilterSelected()
+        {
+
+        }
     }
 }
