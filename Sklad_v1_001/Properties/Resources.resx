@@ -468,4 +468,19 @@
   <data name="WarningTitle" xml:space="preserve">
     <value>Внимание</value>
   </data>
+  <data name="SupplyDocument1" xml:space="preserve">
+    <value>Черновик</value>
+  </data>
+  <data name="SupplyDocument2" xml:space="preserve">
+    <value>Получен</value>
+  </data>
+  <data name="SupplyDocument3" xml:space="preserve">
+    <value>Заказ в обработке</value>
+  </data>
+  <data name="SupplyDocument4" xml:space="preserve">
+    <value>В пути</value>
+  </data>
+  <data name="UndefindField" xml:space="preserve">
+    <value />
+  </data>
 </root>

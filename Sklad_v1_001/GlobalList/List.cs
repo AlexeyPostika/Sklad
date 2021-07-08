@@ -40,6 +40,13 @@ namespace Sklad_v1_001.GlobalList
         public Int32 ID { get; set; }
         public String Description { get; set; }
     }
+
+    //отвечает за документы supply
+    public class SupplyType
+    {
+        public Int32 ID { get; set; }
+        public String Description { get; set; }
+    }
     public class DateTimeListFilter
     {
         public ObservableCollection<DateTimeItem> innerList { get; set; }
@@ -116,6 +123,21 @@ namespace Sklad_v1_001.GlobalList
                 new PaymentType {ID=0,Description=Properties.Resources.Payment1 },
                 new PaymentType {ID=1,Description=Properties.Resources.Payment2 },
                 new PaymentType {ID=2,Description=Properties.Resources.Payment3 },
+            };
+        }
+    }
+
+    public class SupplyTypeList
+    {
+        public ObservableCollection<SupplyType> innerList { get; set; }
+        public SupplyTypeList()
+        {
+            innerList = new ObservableCollection<SupplyType>()
+            {
+                new SupplyType {ID=0,Description=Properties.Resources.SupplyDocument1 },
+                new SupplyType {ID=1,Description=Properties.Resources.SupplyDocument2 },
+                new SupplyType {ID=2,Description=Properties.Resources.SupplyDocument3 },
+                new SupplyType {ID=2,Description=Properties.Resources.SupplyDocument4 },
             };
         }
     }

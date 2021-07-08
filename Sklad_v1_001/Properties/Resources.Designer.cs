@@ -907,6 +907,42 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Черновик.
+        /// </summary>
+        public static string SupplyDocument1 {
+            get {
+                return ResourceManager.GetString("SupplyDocument1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Получен.
+        /// </summary>
+        public static string SupplyDocument2 {
+            get {
+                return ResourceManager.GetString("SupplyDocument2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Заказ в обработке.
+        /// </summary>
+        public static string SupplyDocument3 {
+            get {
+                return ResourceManager.GetString("SupplyDocument3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на В пути.
+        /// </summary>
+        public static string SupplyDocument4 {
+            get {
+                return ResourceManager.GetString("SupplyDocument4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Поставки.
         /// </summary>
         public static string SupplyTitly {
@@ -966,6 +1002,15 @@ namespace Sklad_v1_001.Properties {
         public static string TypeВelivery {
             get {
                 return ResourceManager.GetString("TypeВelivery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        public static string UndefindField {
+            get {
+                return ResourceManager.GetString("UndefindField", resourceCulture);
             }
         }
         

@@ -23,8 +23,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         private Double quantityMin;
         private Double quantityMax;
-        private Double tagPriceVATRUSMin;
-        private Double tagPriceVATRUSMax;
+        private Double amountMin;
+        private Double amountMax;
 
         private Int32 filterCreatedDate;
         private DateTime? fromCreatedDate;
@@ -222,31 +222,31 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             }
         }
 
-        public Double TagPriceVATRUSMin
+        public Double AmountMin
         {
             get
             {
-                return tagPriceVATRUSMin;
+                return amountMin;
             }
 
             set
             {
-                tagPriceVATRUSMin = value;
-                OnPropertyChanged("TagPriceVATRUSMin");
+                amountMin = value;
+                OnPropertyChanged("AmountMin");
             }
         }
 
-        public Double TagPriceVATRUSMax
+        public Double AmountMax
         {
             get
             {
-                return tagPriceVATRUSMax;
+                return amountMax;
             }
 
             set
             {
-                tagPriceVATRUSMax = value;
-                OnPropertyChanged("TagPriceVATRUSMax");
+                amountMax = value;
+                OnPropertyChanged("AmountMax");
             }
         }
 
@@ -598,7 +598,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         }
     }
 
-    public class Summary : INotifyPropertyChanged
+    public class RowSummary : INotifyPropertyChanged
     {
         private Int32 summaryQuantityLine;
         public Int32 SummaryQuantityLine
@@ -894,8 +894,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSelect.SetParametrValue("@p_Status", _localFilter.Status);
             _sqlRequestSelect.SetParametrValue("@p_Quantity_Min", _localFilter.QuantityMin);
             _sqlRequestSelect.SetParametrValue("@p_Quantity_Max ", _localFilter.QuantityMax);
-            _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Min", _localFilter.TagPriceVATRUSMin);
-            _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Max ", _localFilter.TagPriceVATRUSMax);
+            _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Min", _localFilter.AmountMin);
+            _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Max ", _localFilter.AmountMax);
             _sqlRequestSelect.SetParametrValue("@p_FromCreatedDate ", _localFilter.FromCreatedDate);
             _sqlRequestSelect.SetParametrValue("@p_ToCreatedDate ", _localFilter.ToCreatedDate);
             _sqlRequestSelect.SetParametrValue("@p_FromLastModifiedDate ", _localFilter.FromLastModifiedDate);
@@ -932,8 +932,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSelectSummary.SetParametrValue("@p_Status", _localFilter.Status);
             _sqlRequestSelectSummary.SetParametrValue("@p_Quantity_Min", _localFilter.QuantityMin);
             _sqlRequestSelectSummary.SetParametrValue("@p_Quantity_Max ", _localFilter.QuantityMax);
-            _sqlRequestSelectSummary.SetParametrValue("@p_TagPriceVATRUS_Min", _localFilter.TagPriceVATRUSMin);
-            _sqlRequestSelectSummary.SetParametrValue("@p_TagPriceVATRUS_Max ", _localFilter.TagPriceVATRUSMax);
+            _sqlRequestSelectSummary.SetParametrValue("@p_TagPriceVATRUS_Min", _localFilter.AmountMin);
+            _sqlRequestSelectSummary.SetParametrValue("@p_TagPriceVATRUS_Max ", _localFilter.AmountMax);
             _sqlRequestSelectSummary.SetParametrValue("@p_FromCreatedDate ", _localFilter.FromCreatedDate);
             _sqlRequestSelectSummary.SetParametrValue("@p_ToCreatedDate ", _localFilter.ToCreatedDate);
             _sqlRequestSelectSummary.SetParametrValue("@p_FromLastModifiedDate ", _localFilter.FromLastModifiedDate);
@@ -952,6 +952,16 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _localeRow.FiltersAmountMin = convertData.ConvertDataDouble("AmountMin");
             _localeRow.FiltersAmountMax = convertData.ConvertDataDouble("AmountMax");
             return _localeRow;
+        }
+
+        public DataTable GetFilter(String filterName)
+        {
+            return filters.FirstOrDefault(x => x.Key == filterName).Value;
+        }
+
+        public Range GetFromToFilter(String filterName)
+        {
+            return filtersFromTo.FirstOrDefault(x => x.Key == filterName).Value;
         }
 
         public void InitFilters()
