@@ -1,4 +1,5 @@
-﻿using Sklad_v1_001.GlobalVariable;
+﻿using Sklad_v1_001.GlobalList;
+using Sklad_v1_001.GlobalVariable;
 using Sklad_v1_001.HelperGlobal;
 using Sklad_v1_001.SQL;
 using System;
@@ -326,6 +327,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             FromLastModifiedDate = FromLastModifiedDate?.AddSeconds(10);
 
             PageNumber = 0;
+            PagerowCount = 16;
             Sort = true;
             SortColumn = "ID";
 
@@ -341,6 +343,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         private Int32 iD;
         private Int32 nameClientID;
         private Int32 status;
+        private String statusString;
         private String delivery;
         private String managerName;
         private String tTN;
@@ -395,6 +398,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             {
                 status = value;
                 OnPropertyChanged("Status");
+            }
+        }
+
+        public String StatusString
+        {
+            get
+            {
+                return statusString;
+            }
+
+            set
+            {
+                statusString = value;
+                OnPropertyChanged("StatusString");
             }
         }
         public string Delivery
@@ -780,11 +797,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSelect.AddParametr("@p_ID", SqlDbType.Int);
             _sqlRequestSelect.SetParametrValue("@p_ID", 0);
                       
-            _sqlRequestSelect.AddParametr("@p_CreatedUserID", SqlDbType.Int);
-            _sqlRequestSelect.SetParametrValue("@p_CreatedUserID", 0);
+            _sqlRequestSelect.AddParametr("@p_CreatedUserID", SqlDbType.NVarChar);
+            _sqlRequestSelect.SetParametrValue("@p_CreatedUserID", "");
 
-            _sqlRequestSelect.AddParametr("@p_LastModifiedUserID", SqlDbType.Int);
-            _sqlRequestSelect.SetParametrValue("@p_LastModifiedUserID", 0);
+            _sqlRequestSelect.AddParametr("@p_LastModifiedUserID", SqlDbType.NVarChar);
+            _sqlRequestSelect.SetParametrValue("@p_LastModifiedUserID", "");
 
             _sqlRequestSelect.AddParametr("@p_Status", SqlDbType.NVarChar);
             _sqlRequestSelect.SetParametrValue("@p_Status", "");
@@ -892,22 +909,22 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSelect.SqlAnswer.datatable.Clear();
             _data.Clear();
 
-            _sqlRequestSelect.SetParametrValue("@p_TypeScreen" , ScreenType.ScreenTypeGrid);
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeGrid);
             _sqlRequestSelect.SetParametrValue("@p_Search", _localFilter.Search);
-            _sqlRequestSelect.SetParametrValue("@p_CreatedUserID ", _localFilter.CreatedByUserID);
-            _sqlRequestSelect.SetParametrValue("@p_LastModifiedUserID ", _localFilter.LastModifiedByUserID);
+            _sqlRequestSelect.SetParametrValue("@p_CreatedUserID", _localFilter.CreatedByUserID);
+            _sqlRequestSelect.SetParametrValue("@p_LastModifiedUserID", _localFilter.LastModifiedByUserID);
             _sqlRequestSelect.SetParametrValue("@p_Status", _localFilter.Status);
             _sqlRequestSelect.SetParametrValue("@p_Quantity_Min", _localFilter.QuantityMin);
-            _sqlRequestSelect.SetParametrValue("@p_Quantity_Max ", _localFilter.QuantityMax);
+            _sqlRequestSelect.SetParametrValue("@p_Quantity_Max", _localFilter.QuantityMax);
             _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Min", _localFilter.AmountMin);
-            _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Max ", _localFilter.AmountMax);
-            _sqlRequestSelect.SetParametrValue("@p_FromCreatedDate ", _localFilter.FromCreatedDate);
-            _sqlRequestSelect.SetParametrValue("@p_ToCreatedDate ", _localFilter.ToCreatedDate);
-            _sqlRequestSelect.SetParametrValue("@p_FromLastModifiedDate ", _localFilter.FromLastModifiedDate);
-            _sqlRequestSelect.SetParametrValue("@p_ToLastModifiedDate ", _localFilter.ToLastModifiedDate);
-            _sqlRequestSelect.SetParametrValue("@p_PageNumber ", _localFilter.PageNumber);
-            _sqlRequestSelect.SetParametrValue("@p_PagerowCount ", _localFilter.PagerowCount);
-            _sqlRequestSelect.SetParametrValue("@p_SortColumn ", _localFilter.SortColumn);
+            _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Max", _localFilter.AmountMax);
+            _sqlRequestSelect.SetParametrValue("@p_FromCreatedDate", _localFilter.FromCreatedDate);
+            _sqlRequestSelect.SetParametrValue("@p_ToCreatedDate", _localFilter.ToCreatedDate);
+            _sqlRequestSelect.SetParametrValue("@p_FromLastModifiedDate", _localFilter.FromLastModifiedDate);
+            _sqlRequestSelect.SetParametrValue("@p_ToLastModifiedDate", _localFilter.ToLastModifiedDate);
+            _sqlRequestSelect.SetParametrValue("@p_PageNumber", _localFilter.PageNumber);
+            _sqlRequestSelect.SetParametrValue("@p_PagerowCount", _localFilter.PagerowCount);
+            _sqlRequestSelect.SetParametrValue("@p_SortColumn", _localFilter.SortColumn);
             _sqlRequestSelect.SetParametrValue("@p_Sort", _localFilter.Sort);
 
             _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
@@ -959,6 +976,35 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             return _localeRow;
         }
 
+        public LocalRow Convert(DataRow _dataRow, LocalRow _localeRow)
+        {
+            SupplyTypeList supplyTypeList = new SupplyTypeList();
+            ConvertData convertData = new ConvertData(_dataRow, _localeRow);
+
+            _localeRow.ID = convertData.ConvertDataInt32("ID");
+            _localeRow.Status = convertData.ConvertDataInt32("Status");
+            _localeRow.StatusString = supplyTypeList.innerList.FirstOrDefault(x => x.ID == _localeRow.Status) != null ?
+                                            supplyTypeList.innerList.FirstOrDefault(x => x.ID == _localeRow.Status).Description : Properties.Resources.UndefindField;
+            _localeRow.CreatedDate = convertData.ConvertDataDateTime("CreatedDate");
+            _localeRow.CreatedDateString = convertData.DateTimeConvertShortString(_localeRow.CreatedDate);
+            _localeRow.LastModificatedDate = convertData.ConvertDataDateTime("LastModificatedDate");
+            _localeRow.LastModificatedDateString = convertData.DateTimeConvertShortString(_localeRow.LastModificatedDate);
+            _localeRow.CreatedUserID = convertData.ConvertDataInt32("CreatedUserID");
+            _localeRow.LastModificatedUserID = convertData.ConvertDataInt32("LastModificatedUserID");
+            _localeRow.CreatedUserIDString= convertData.ConvertDataString("CreatedUserIDString");
+            _localeRow.LastModificatedUserIDString = convertData.ConvertDataString("LastModificatedUserIDString");
+            _localeRow.Invoice = convertData.ConvertDataString("Invoice");
+            _localeRow.TTN = convertData.ConvertDataString("TTN");
+            _localeRow.ManagerName = convertData.ConvertDataString("ManagerName");
+            _localeRow.Delivery = convertData.ConvertDataString("Delivery");
+            _localeRow.Amount = (Decimal)convertData.ConvertDataDouble("Amount");
+            _localeRow.Count = convertData.ConvertDataInt32("Count");
+         
+            return _localeRow;
+        }
+
+
+
         public DataTable GetFilter(String filterName)
         {
             return filters.FirstOrDefault(x => x.Key == filterName).Value;
@@ -986,6 +1032,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 filtersFromTo["Quantity"].min = rowsFilters.FiltersQuantityMin;
                 filtersFromTo["Quantity"].max = rowsFilters.FiltersQuantityMax;
                 filtersFromTo["Amount"].min = rowsFilters.FiltersAmountMin;
+                filtersFromTo["Amount"].max = rowsFilters.FiltersAmountMax;
             }
         }
 

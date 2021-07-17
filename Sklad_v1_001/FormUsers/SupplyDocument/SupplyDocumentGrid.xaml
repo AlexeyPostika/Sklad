@@ -115,7 +115,7 @@
                         </DataGridTemplateColumn.HeaderTemplate>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label HorizontalContentAlignment="Right" Content="{Binding Path=TagPriceWithVATWithDiscount, Mode=OneWay}" ContentStringFormat=" {0:N2}"/>
+                                <Label HorizontalContentAlignment="Right" Content="{Binding Path=Amount, Mode=OneWay}" ContentStringFormat=" {0:N2}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

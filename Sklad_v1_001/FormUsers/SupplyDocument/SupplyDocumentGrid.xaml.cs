@@ -456,13 +456,15 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             localFilter = new LocalFilter();
             localRow = new LocalRow();
 
+            datalist = new ObservableCollection<LocalRow>();
+
             summary = new RowSummary();
 
             this.SypplyDocument.ItemsSource = datalist;
 
             supplyDocumentLogic.InitFilters();
             InitFilters();
-
+            Refresh();
             IsAllowFilter = true;
         }
 
@@ -545,29 +547,6 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         }
 
-        #endregion
-
-        #region Paginator
-        private void ToolBarNextToBack_ButtonBack()
-        {
-
-        }
-
-        private void ToolBarNextToBack_ButtonNext()
-        {
-
-        }
-
-        private void ToolbarNextPageData_ButtonBackIn()
-        {
-
-        }
-
-        private void ToolbarNextPageData_ButtonNextEnd()
-        {
-
-        }
-        #endregion
 
         private void FilterToDateLastModifiedDate_ButtonFilterSelected()
         {
@@ -652,5 +631,45 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         {
 
         }
+        #endregion
+
+        #region Refresh
+        public void Refresh()
+        {
+            DataTable datatable = supplyDocumentLogic.FillGrid(localFilter);
+            datalist.Clear();
+
+            foreach (DataRow row in datatable.Rows)
+            {
+                datalist.Add(supplyDocumentLogic.Convert(row, new LocalRow()));
+            }
+        }
+
+        #endregion
+
+
+        #region Paginator
+        private void ToolBarNextToBack_ButtonBack()
+        {
+
+        }
+
+        private void ToolBarNextToBack_ButtonNext()
+        {
+
+        }
+
+        private void ToolbarNextPageData_ButtonBackIn()
+        {
+
+        }
+
+        private void ToolbarNextPageData_ButtonNextEnd()
+        {
+
+        }
+        #endregion
+
+        
     }
 }
