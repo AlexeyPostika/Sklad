@@ -79,6 +79,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Применить.
+        /// </summary>
+        public static string Apply {
+            get {
+                return ResourceManager.GetString("Apply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Подтвердить.
         /// </summary>
         public static string APPLYBUTTON {
@@ -948,6 +957,24 @@ namespace Sklad_v1_001.Properties {
         public static string SupplyTitly {
             get {
                 return ResourceManager.GetString("SupplyTitly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Временной фильтр.
+        /// </summary>
+        public static string TimeFilterMessage1 {
+            get {
+                return ResourceManager.GetString("TimeFilterMessage1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Диапазон дат.
+        /// </summary>
+        public static string TitleFromToDateFilter {
+            get {
+                return ResourceManager.GetString("TitleFromToDateFilter", resourceCulture);
             }
         }
         

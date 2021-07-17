@@ -483,4 +483,13 @@
   <data name="UndefindField" xml:space="preserve">
     <value />
   </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Применить</value>
+  </data>
+  <data name="TimeFilterMessage1" xml:space="preserve">
+    <value>Временной фильтр</value>
+  </data>
+  <data name="TitleFromToDateFilter" xml:space="preserve">
+    <value>Диапазон дат</value>
+  </data>
 </root>

@@ -333,6 +333,9 @@
     <Compile Include="GlobalVariable\FileWork.cs" />
     <Compile Include="GlobalVariable\ScreenType.cs" />
     <Compile Include="HelperGlobal\ConvertData.cs" />
+    <Compile Include="HelperGlobal\FromToTimeFilter.xaml.cs">
+      <DependentUpon>FromToTimeFilter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HelperGlobal\ImageSql.cs" />
     <Compile Include="HelperGlobal\MessageBoxTitleHelper.cs" />
     <Compile Include="SQLCommand\SQLCommanSelect.cs" />
@@ -573,6 +576,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FormUsers\Zacupca\ZacupcaGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="HelperGlobal\FromToTimeFilter.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

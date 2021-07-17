@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Sklad_v1_001.Control.FlexMenu;
 using Sklad_v1_001.FormUsers;
+using Sklad_v1_001.FormUsers.SupplyDocument;
 using Sklad_v1_001.FormUsers.Tovar;
 using Sklad_v1_001.FormUsers.Zacupca;
 
@@ -30,6 +31,7 @@ namespace Sklad_v1_001
         TovarZona tovarZona;
         TovarInZona tovarInZona;
         ZacupcaGrid zacupcaGrid;
+        SupplyDocumentGrid supplyDocumentGrid;
 
         //public static WorkZona AppWindow;
         //public MainWindow mailWindows1;
@@ -117,8 +119,9 @@ namespace Sklad_v1_001
         #region поставки
         private void ButtonDeliveryOpen()
         {
-            zacupcaGrid = new ZacupcaGrid();
-            frameWorkArea.Navigate(zacupcaGrid); // открытие страницы
+           // zacupcaGrid = new ZacupcaGrid();
+            supplyDocumentGrid = new SupplyDocumentGrid();
+            frameWorkArea.Navigate(supplyDocumentGrid); // открытие страницы
         }
         #endregion
 

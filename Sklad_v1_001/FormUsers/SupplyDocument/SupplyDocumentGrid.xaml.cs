@@ -1,4 +1,5 @@
-﻿using Sklad_v1_001.GlobalList;
+﻿using Sklad_v1_001.Control.FlexMessageBox;
+using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.GlobalVariable;
 using Sklad_v1_001.HelperGlobal;
 using System;
@@ -55,6 +56,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         Double amountMax;
         Double defaultamountMin;
         Double defaultamountMax;
+
+        Boolean isAllowFilter;
 
 
         BitmapImage clearfilterManagerNameID;
@@ -227,6 +230,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             {
                 toLastModifiadDate = value;
                 OnPropertyChanged("ToLastModifiadDate");
+            }
+        }
+
+        public Boolean IsAllowFilter
+        {
+            get
+            {
+                return isAllowFilter;
+            }
+
+            set
+            {
+                isAllowFilter = value;
+                OnPropertyChanged("IsAllowFilter");
             }
         }
         public BitmapImage ClearfilterManagerNameID
@@ -445,6 +462,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             supplyDocumentLogic.InitFilters();
             InitFilters();
+
+            IsAllowFilter = true;
         }
 
         #region фильтры
@@ -491,8 +510,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     DataRow newrow = FilterIDStatus.NewRow();
                     newrow["ID"] = row["ID"];
                     newrow["IsChecked"] = true;
-                    newrow["Description"] = supplyTypeList.innerList.FirstOrDefault(x => x.ID == convertData.ConvertDataInt32(row["ID"].ToString())) != null ?
-                                            supplyTypeList.innerList.FirstOrDefault(x => x.ID == convertData.ConvertDataInt32(row["ID"].ToString())).Description : Properties.Resources.UndefindField;                 
+                    newrow["Description"] = supplyTypeList.innerList.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(row["ID"].ToString())) != null ?
+                                            supplyTypeList.innerList.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(row["ID"].ToString())).Description : Properties.Resources.UndefindField;                 
                     FilterIDStatus.Rows.Add(newrow);
                 }
             }
@@ -552,7 +571,57 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         private void FilterToDateLastModifiedDate_ButtonFilterSelected()
         {
+            if (localFilter.FilterLastModifiedDate != FilterDateIDLastModifiadDate || FilterDateIDLastModifiadDate == 5 && this.IsMouseOver && IsAllowFilter)
+            {
+                localFilter.FilterLastModifiedDate = FilterDateIDLastModifiadDate;
+                switch (FilterDateIDLastModifiadDate)
+                {
+                    case 0:
+                        localFilter.FromLastModifiedDate = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
+                        localFilter.FromLastModifiedDate = localFilter.FromLastModifiedDate?.AddSeconds(10);
+                        localFilter.ToLastModifiedDate = DateTime.Now;
+                        break;
+                    case 1:
+                        localFilter.FromLastModifiedDate = DateTime.Now.Date;
+                        localFilter.ToLastModifiedDate = DateTime.Now;
+                        break;
+                    case 2:
+                        localFilter.FromLastModifiedDate = DateTime.Now.Date.AddDays(-1);
+                        localFilter.ToLastModifiedDate = DateTime.Now.Date.AddSeconds(-1);
+                        break;
+                    case 3:
+                        localFilter.FromLastModifiedDate = DateTime.Now.Date.AddDays(-((Int32)DateTime.Now.Date.DayOfWeek == 0 ? 6 : (Int32)DateTime.Now.Date.DayOfWeek - 1));
+                        localFilter.ToLastModifiedDate = DateTime.Now;
+                        break;
+                    case 4:
+                        localFilter.FromLastModifiedDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                        localFilter.ToLastModifiedDate = DateTime.Now;
+                        break;
+                    case 5:
+                        FromToTimeFilter fromToTimeFilter = new FromToTimeFilter();
+                        Window ret = new FlexWindows(Properties.Resources.TitleFromToDateFilter);
+                        ret.Content = fromToTimeFilter;
+                        fromToTimeFilter.Datefrom = localFilter.FromLastModifiedDate;
+                        if (fromToTimeFilter.Datefrom == ((DateTime)System.Data.SqlTypes.SqlDateTime.MinValue))
+                        {
+                            // возможно прочитать минимальное значение из базы. Пока на начало года открутим 
+                            fromToTimeFilter.Datefrom = new DateTime(DateTime.Now.Year, 1, 1);
+                        }
+                        fromToTimeFilter.Dateto = localFilter.ToLastModifiedDate;
+                        ret.ShowDialog();
+                        if (fromToTimeFilter.Apply)
+                        {
+                            localFilter.FromLastModifiedDate = fromToTimeFilter.Datefrom;
+                            localFilter.ToLastModifiedDate = fromToTimeFilter.Dateto;
+                        }
+                        break;
+                    default:
+                        break;
+                }
 
+                //if (NeedRefresh)
+                //    Refresh();
+            }
         }
 
         private void FilterStatusID_ButtonApplyClick(string text)

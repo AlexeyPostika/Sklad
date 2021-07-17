@@ -63,12 +63,7 @@ using System.Threading.Tasks;
              }
              return 0;
          }
-
-        internal object FlexDataConvertToInt32(string v)
-        {
-            throw new NotImplementedException();
-        }
-
+    
         //private void ConvertDataToLocalRow(string name, object value)
         //{
         //    Screens.RelatedProductDocument.LocaleRow localeRow = localRow as Screens.RelatedProductDocument.LocaleRow;
@@ -259,6 +254,165 @@ using System.Threading.Tasks;
                      return i.Date;
              }
              return i.Date;
-           }      
+         }
+        public DateTime? FlexConvertDataDateTime(string _columnname)
+        {
+            DateTime i = new DateTime();
+            if (DateTime.TryParse(_columnname, out i))
+                return i;
+            else
+                return null;
+        }
+
+        public String DateTimeConvertShortDateString(DateTime? _columnname)
+        {
+            String i = "";
+            DateTime date;
+            if (_columnname.HasValue)
+            {
+                date = _columnname.GetValueOrDefault();
+                i = date.ToString("dd.MM.yyyy");
+            }
+            return i;
+        }
+
+        public Int32? ConvertWeekDay(string _columnname)
+        {
+            switch (_columnname)
+            {
+                case "Monday":
+                    {
+                        return 0;
+                    }
+
+                case "Tuesday":
+                    {
+                        return 1;
+                    }
+                case "Wednesday":
+                    {
+                        return 2;
+                    }
+                case "Thursday":
+                    {
+                        return 3;
+                    }
+                case "Friday":
+                    {
+                        return 4;
+                    }
+
+                case "Saturday":
+                    {
+                        return 5;
+                    }
+                case "Sunday":
+                    {
+                        return 6;
+                    }
+                // добавить аналогичные методы для других типов данных
+                default:
+                    return null;
+            }
+        }
+
+        public String FlexDataConvertToString(String _columnname)
+        {
+            if (String.IsNullOrEmpty(_columnname))
+                return "";
+            else
+                return _columnname;
+        }
+
+        public Int32 FlexDataConvertToInt32(String _columnname)
+        {
+            Int32 i = 0;
+            if (_columnname != null)
+            {
+                if (Int32.TryParse(_columnname, out i))
+                    return i;
+                else
+                    return 0;
+            }
+            return 0;
+        }
+
+        public Int64 FlexDataConvertToInt64(string _columnname)
+        {
+            Int64 i = 0;
+            if (_columnname != null)
+            {
+                if (Int64.TryParse(_columnname, out i))
+                    return i;
+                else
+                    return 0;
+            }
+            return 0;
+        }
+
+        public Double FlexDataConvertToDouble(string _columnname)
+        {
+            Double i = 0.0;
+            if (_columnname != null)
+            {
+                if (Double.TryParse(_columnname.ToString().Replace(".", ","), out i))
+                    return i;
+                else
+                    return 0.0;
+            }
+            return 0.0;
+        }
+
+        public String FlexDataConvertToDateString(DateTime? _columnname)
+        {
+            String i = "";
+            DateTime date;
+            if (_columnname.HasValue)
+            {
+                date = _columnname.GetValueOrDefault();
+                i = date.ToString("dd.MM.yyyy");
+            }
+            return i;
+        }
+
+        public Boolean FlexDataConvertToBoolean(string _columnname)
+        {
+            Boolean i = false;
+            if (_columnname != null)
+            {
+                if (Boolean.TryParse(_columnname, out i))
+                    return i;
+                else
+                    return false;
+            }
+            return false;
+        }
+
+        // для интеграции с тамузом
+        public String ConvertTamuzCorruptDataString(String text)
+        {
+            String outtext = "";
+
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (((int)text[i] > 1039 && (int)text[i] < 1104))
+                {
+                    outtext = outtext + text[i];
+                }
+
+                else
+                {
+                    Encoding source = Encoding.GetEncoding(10007);
+                    Encoding destination = Encoding.GetEncoding(1251);
+
+                    byte[] sourceBytes = destination.GetBytes(text[i].ToString());
+                    byte[] destinationBytes = Encoding.Convert(source, destination, sourceBytes);
+
+                    outtext = outtext + destination.GetString(destinationBytes).ToLower().ToString();
+                    //outtext = outtext.Replace("Џ", "п");
+                }
+            }
+            return outtext;
+        }
     }
 }

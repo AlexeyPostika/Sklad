@@ -723,6 +723,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         {
             convertData = new ConvertData();
 
+            _data = new DataTable();
+            _datarow = new DataTable();
+
             filters = new Dictionary<string, DataTable>();
             filtersFromTo = new Dictionary<string, Range>();
 
@@ -759,7 +762,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             filters.Add("Status", innerList1);
 
             Range QuantityRange = new Range();
-            Range AmountRange = new Range();         
+            Range AmountRange = new Range();
+            filtersFromTo.Add("Quantity", QuantityRange);
+            filtersFromTo.Add("Amount", AmountRange);
 
             _sqlRequestSelect = new SQLCommanSelect();
             _sqlRequestSelectFilters = new SQLCommanSelect();
@@ -767,7 +772,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             //----------------------------------------------------------------------------
             _sqlRequestSelect.AddParametr("@p_TypeScreen", SqlDbType.VarChar, 40);
-            _sqlRequestSelect.SetParametrValue("@@p_TypeScreen", ScreenType.ScreenTypeGrid);
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeGrid);
 
             _sqlRequestSelect.AddParametr("@p_Search", SqlDbType.NVarChar, 40);
             _sqlRequestSelect.SetParametrValue("@p_Search", "");

@@ -54,11 +54,11 @@ namespace Sklad_v1_001.GlobalList
         {
             innerList = new ObservableCollection<DateTimeItem>()
             {
-                new DateTimeItem {ID=0,Description=Properties.Resources.DateTimeDescriptionAll },
-                new DateTimeItem {ID=1,Description=Properties.Resources.DateTimeDescription1 },
-                new DateTimeItem {ID=2,Description=Properties.Resources.DateTimeDescription2 },
-                new DateTimeItem {ID=3,Description=Properties.Resources.DateTimeDescription3 },
-                new DateTimeItem {ID=4,Description=Properties.Resources.DateTimeDescription4 },
+                new DateTimeItem {ID=1,Description=Properties.Resources.DateTimeDescriptionAll },
+                new DateTimeItem {ID=2,Description=Properties.Resources.DateTimeDescription1 },
+                new DateTimeItem {ID=3,Description=Properties.Resources.DateTimeDescription2 },
+                new DateTimeItem {ID=4,Description=Properties.Resources.DateTimeDescription3 },
+                new DateTimeItem {ID=5,Description=Properties.Resources.DateTimeDescription4 },
             };
         }
     }
