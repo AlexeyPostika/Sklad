@@ -330,6 +330,7 @@
     <Compile Include="FormUsers\Zacupca\ZacupcaGridLogic.cs" />
     <Compile Include="GlobalList\List.cs" />
     <Compile Include="GlobalVariable\AbsractRow.cs" />
+    <Compile Include="GlobalVariable\DataBaseData.cs" />
     <Compile Include="GlobalVariable\FileWork.cs" />
     <Compile Include="GlobalVariable\ScreenType.cs" />
     <Compile Include="HelperGlobal\ConvertData.cs" />

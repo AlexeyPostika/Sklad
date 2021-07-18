@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Configuration;
 using System.Data.SqlClient;
+using Sklad_v1_001.GlobalVariable;
 
 namespace Sklad_v1_001.SQL
 {
@@ -35,6 +36,7 @@ namespace Sklad_v1_001.SQL
         SqlDataAdapter adapter;
         SqlConnection connection = null;
         private SqlCommand _sqlgcommands;
+        private DataBaseData _dataBaseData;
         DataTable table;
 
         public Answer SqlAnswer
@@ -68,6 +70,7 @@ namespace Sklad_v1_001.SQL
         {
             _connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             _sqlgcommands = new SqlCommand();
+            _dataBaseData = new DataBaseData();
             _sqlAnswer = new Answer();
         }
        
@@ -148,8 +151,41 @@ namespace Sklad_v1_001.SQL
                     try
                     {
                         SqlCommand sqlCommand = new SqlCommand(sqlstr, connect);
+                        Int32 _connectTimeout = 30;
+                        Int32.TryParse(_dataBaseData._connectTimeout, out _connectTimeout);
+                        sqlCommand.CommandTimeout = _connectTimeout;
                         sqlCommand.CommandType = type;
-                        foreach(SqlParameter parametr in _sqlgcommands.Parameters)
+                        //    foreach (SqlParameter parametr in _sqlgcommands.Parameters)
+                        //    {
+                        //        if (!sqlCommand.Parameters.Contains(parametr))
+                        //        {
+                        //            sqlCommand.Parameters.Add(parametr.ParameterName, parametr.SqlDbType);
+                        //            sqlCommand.Parameters[parametr.ParameterName].Value = parametr.Value;
+                        //        }
+                        //    }
+                        //    if(_parametrs!=null)
+                        //    {
+                        //        foreach (SqlParameter parametr in _parametrs)
+                        //        {
+                        //            if (!sqlCommand.Parameters.Contains(parametr))
+                        //            {
+                        //                sqlCommand.Parameters.Add(parametr.ParameterName, parametr.SqlDbType);
+                        //                sqlCommand.Parameters[parametr.ParameterName].Value = parametr.Value;
+                        //            }
+                        //        }
+                        //    }
+                        //    connect.Open();
+                        //    SqlDataReader reader = sqlCommand.ExecuteReader();
+                        //    if (reader != null)
+                        //    {
+                        //        _sqlAnswer.datatable.Clear();
+                        //        _sqlAnswer.datatable.Load(reader);
+                        //        Int64 result;
+                        //        Int64.TryParse(_sqlAnswer.datatable.Rows[0][0].ToString(), out result);
+                        //        _sqlAnswer.result = result;
+                        //    }
+                        //}
+                        foreach (SqlParameter parametr in _sqlgcommands.Parameters)
                         {
                             if (!sqlCommand.Parameters.Contains(parametr))
                             {
@@ -157,7 +193,7 @@ namespace Sklad_v1_001.SQL
                                 sqlCommand.Parameters[parametr.ParameterName].Value = parametr.Value;
                             }
                         }
-                        if(_parametrs!=null)
+                        if (_parametrs != null)
                         {
                             foreach (SqlParameter parametr in _parametrs)
                             {
@@ -169,15 +205,20 @@ namespace Sklad_v1_001.SQL
                             }
                         }
                         connect.Open();
-                        SqlDataReader reader = sqlCommand.ExecuteReader();
-                        if (reader != null)
+                        SqlDataReader requestanswer = sqlCommand.ExecuteReader();
+                        if (requestanswer != null)
                         {
                             _sqlAnswer.datatable.Clear();
-                            _sqlAnswer.datatable.Load(reader);
+                            _sqlAnswer.datatable.Load(requestanswer);
                             Int64 result;
-                            Int64.TryParse(_sqlAnswer.datatable.Rows[0][0].ToString(), out result);
+                            if (_sqlAnswer.datatable != null && _sqlAnswer.datatable.Rows.Count > 0)
+                                Int64.TryParse(_sqlAnswer.datatable.Rows[0][0].ToString(), out result);
+                            else
+                                result = 0;
                             _sqlAnswer.result = result;
                         }
+                        _sqlAnswer.IsError = false;
+                        connect.Close();
                     }
                     catch (Exception e)
                     {

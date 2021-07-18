@@ -462,8 +462,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             this.SypplyDocument.ItemsSource = datalist;
 
-            supplyDocumentLogic.InitFilters();
-            InitFilters();
+           // supplyDocumentLogic.InitFilters();
+           // InitFilters();
             Refresh();
             IsAllowFilter = true;
         }
