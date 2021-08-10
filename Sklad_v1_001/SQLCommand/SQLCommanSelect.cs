@@ -154,37 +154,7 @@ namespace Sklad_v1_001.SQL
                         Int32 _connectTimeout = 30;
                         Int32.TryParse(_dataBaseData._connectTimeout, out _connectTimeout);
                         sqlCommand.CommandTimeout = _connectTimeout;
-                        sqlCommand.CommandType = type;
-                        //    foreach (SqlParameter parametr in _sqlgcommands.Parameters)
-                        //    {
-                        //        if (!sqlCommand.Parameters.Contains(parametr))
-                        //        {
-                        //            sqlCommand.Parameters.Add(parametr.ParameterName, parametr.SqlDbType);
-                        //            sqlCommand.Parameters[parametr.ParameterName].Value = parametr.Value;
-                        //        }
-                        //    }
-                        //    if(_parametrs!=null)
-                        //    {
-                        //        foreach (SqlParameter parametr in _parametrs)
-                        //        {
-                        //            if (!sqlCommand.Parameters.Contains(parametr))
-                        //            {
-                        //                sqlCommand.Parameters.Add(parametr.ParameterName, parametr.SqlDbType);
-                        //                sqlCommand.Parameters[parametr.ParameterName].Value = parametr.Value;
-                        //            }
-                        //        }
-                        //    }
-                        //    connect.Open();
-                        //    SqlDataReader reader = sqlCommand.ExecuteReader();
-                        //    if (reader != null)
-                        //    {
-                        //        _sqlAnswer.datatable.Clear();
-                        //        _sqlAnswer.datatable.Load(reader);
-                        //        Int64 result;
-                        //        Int64.TryParse(_sqlAnswer.datatable.Rows[0][0].ToString(), out result);
-                        //        _sqlAnswer.result = result;
-                        //    }
-                        //}
+                        sqlCommand.CommandType = type;                       
                         foreach (SqlParameter parametr in _sqlgcommands.Parameters)
                         {
                             if (!sqlCommand.Parameters.Contains(parametr))
