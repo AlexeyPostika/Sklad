@@ -439,11 +439,29 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на №-заказа.
+        /// </summary>
+        public static string Invoice {
+            get {
+                return ResourceManager.GetString("Invoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на наимен. столбца.
         /// </summary>
         public static string LableText {
             get {
                 return ResourceManager.GetString("LableText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Дата модифик..
+        /// </summary>
+        public static string LastModifiadDateText {
+            get {
+                return ResourceManager.GetString("LastModifiadDateText", resourceCulture);
             }
         }
         
@@ -1002,6 +1020,15 @@ namespace Sklad_v1_001.Properties {
         public static string TransferDocument {
             get {
                 return ResourceManager.GetString("TransferDocument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ТТН.
+        /// </summary>
+        public static string TTN {
+            get {
+                return ResourceManager.GetString("TTN", resourceCulture);
             }
         }
         

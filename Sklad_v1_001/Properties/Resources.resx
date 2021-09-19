@@ -492,4 +492,13 @@
   <data name="TitleFromToDateFilter" xml:space="preserve">
     <value>Диапазон дат</value>
   </data>
+  <data name="Invoice" xml:space="preserve">
+    <value>№-заказа</value>
+  </data>
+  <data name="LastModifiadDateText" xml:space="preserve">
+    <value>Дата модифик.</value>
+  </data>
+  <data name="TTN" xml:space="preserve">
+    <value>ТТН</value>
+  </data>
 </root>

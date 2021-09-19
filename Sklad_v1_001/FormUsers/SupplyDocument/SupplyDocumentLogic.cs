@@ -788,7 +788,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSelectSummary = new SQLCommanSelect();
 
             //----------------------------------------------------------------------------
-            _sqlRequestSelect.AddParametr("@p_TypeScreen", SqlDbType.VarChar, 40);
+            _sqlRequestSelect.AddParametr("@p_TypeScreen", SqlDbType.VarChar, 10);
             _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeGrid);
 
             _sqlRequestSelect.AddParametr("@p_Search", SqlDbType.NVarChar, 40);
@@ -796,14 +796,14 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             _sqlRequestSelect.AddParametr("@p_ID", SqlDbType.Int);
             _sqlRequestSelect.SetParametrValue("@p_ID", 0);
-                      
-            _sqlRequestSelect.AddParametr("@p_CreatedUserID", SqlDbType.NVarChar);
+
+            _sqlRequestSelect.AddParametr("@p_CreatedUserID", SqlDbType.NVarChar, 255);
             _sqlRequestSelect.SetParametrValue("@p_CreatedUserID", "");
 
-            _sqlRequestSelect.AddParametr("@p_LastModifiedUserID", SqlDbType.NVarChar);
+            _sqlRequestSelect.AddParametr("@p_LastModifiedUserID", SqlDbType.NVarChar, 255);
             _sqlRequestSelect.SetParametrValue("@p_LastModifiedUserID", "");
 
-            _sqlRequestSelect.AddParametr("@p_Status", SqlDbType.NVarChar);
+            _sqlRequestSelect.AddParametr("@p_Status", SqlDbType.NVarChar, 255);
             _sqlRequestSelect.SetParametrValue("@p_Status", "");
 
             _sqlRequestSelect.AddParametr("@p_Quantity_Min", SqlDbType.Int);
@@ -811,24 +811,24 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             _sqlRequestSelect.AddParametr("@p_Quantity_Max", SqlDbType.Int);
             _sqlRequestSelect.SetParametrValue("@p_Quantity_Max", SqlInt32.MaxValue);
-           
+
             _sqlRequestSelect.AddParametr("@p_TagPriceVATRUS_Min", SqlDbType.Decimal);
             _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Min", SqlDecimal.MaxValue);
 
-            _sqlRequestSelect.AddParametr("@p_TagPriceVATRUS_Max", SqlDbType.Money);
+            _sqlRequestSelect.AddParametr("@p_TagPriceVATRUS_Max", SqlDbType.Decimal);
             _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Max", SqlDecimal.MaxValue);
 
-            _sqlRequestSelect.AddParametr("@p_FromCreatedDate", SqlDbType.DateTime);
-            _sqlRequestSelect.SetParametrValue("@p_FromCreatedDate", SqlDateTime.MinValue);
+            //_sqlRequestSelect.AddParametr("@p_FromCreatedDate", SqlDbType.DateTime);
+            //_sqlRequestSelect.SetParametrValue("@p_FromCreatedDate", SqlDateTime.MinValue);
 
-            _sqlRequestSelect.AddParametr("@p_ToCreatedDate", SqlDbType.DateTime);
-            _sqlRequestSelect.SetParametrValue("@p_ToCreatedDate", DateTime.Now);
+            //_sqlRequestSelect.AddParametr("@p_ToCreatedDate", SqlDbType.DateTime);
+            //_sqlRequestSelect.SetParametrValue("@p_ToCreatedDate", DateTime.Now);
 
-            _sqlRequestSelect.AddParametr("@p_FromLastModifiedDate", SqlDbType.DateTime);
-            _sqlRequestSelect.SetParametrValue("@p_FromLastModifiedDate", SqlDateTime.MinValue);
+            //_sqlRequestSelect.AddParametr("@p_FromLastModifiedDate", SqlDbType.NVarChar);
+            //_sqlRequestSelect.SetParametrValue("@p_FromLastModifiedDate", SqlDateTime.MinValue.ToString());
 
-            _sqlRequestSelect.AddParametr("@p_ToLastModifiedDate", SqlDbType.DateTime);
-            _sqlRequestSelect.SetParametrValue("@p_ToLastModifiedDate", DateTime.Now);
+            //_sqlRequestSelect.AddParametr("@p_ToLastModifiedDate", SqlDbType.NVarChar);
+            //_sqlRequestSelect.SetParametrValue("@p_ToLastModifiedDate", DateTime.Now.ToString());
 
             _sqlRequestSelect.AddParametr("@p_PageNumber", SqlDbType.Int);
             _sqlRequestSelect.SetParametrValue("@p_PageNumber", 0);
@@ -918,10 +918,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSelect.SetParametrValue("@p_Quantity_Max", _localFilter.QuantityMax);
             _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Min", _localFilter.AmountMin);
             _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Max", _localFilter.AmountMax);
-            _sqlRequestSelect.SetParametrValue("@p_FromCreatedDate", _localFilter.FromCreatedDate);
-            _sqlRequestSelect.SetParametrValue("@p_ToCreatedDate", _localFilter.ToCreatedDate);
-            _sqlRequestSelect.SetParametrValue("@p_FromLastModifiedDate", _localFilter.FromLastModifiedDate);
-            _sqlRequestSelect.SetParametrValue("@p_ToLastModifiedDate", _localFilter.ToLastModifiedDate);
+            //_sqlRequestSelect.SetParametrValue("@p_FromCreatedDate", _localFilter.FromCreatedDate);
+            //_sqlRequestSelect.SetParametrValue("@p_ToCreatedDate", _localFilter.ToCreatedDate);
+            //_sqlRequestSelect.SetParametrValue("@p_FromLastModifiedDate", _localFilter.FromLastModifiedDate);
+            //_sqlRequestSelect.SetParametrValue("@p_ToLastModifiedDate", _localFilter.ToLastModifiedDate);
             _sqlRequestSelect.SetParametrValue("@p_PageNumber", _localFilter.PageNumber);
             _sqlRequestSelect.SetParametrValue("@p_PagerowCount", _localFilter.PagerowCount);
             _sqlRequestSelect.SetParametrValue("@p_SortColumn", _localFilter.SortColumn);

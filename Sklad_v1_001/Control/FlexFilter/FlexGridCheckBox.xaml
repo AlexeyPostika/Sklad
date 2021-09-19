@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:Sklad_v1_001.Control.FlexFilter"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton"
-             mc:Ignorable="d">
+             mc:Ignorable="d"
+             x:Name="control">
     <UserControl.Resources>
         <sys:String x:Key="HeaderText">Header Text</sys:String>
         <Style x:Key="HeaderTextStyle" TargetType="{x:Type DataGridColumnHeader}">

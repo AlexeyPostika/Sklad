@@ -21,12 +21,12 @@
         <ToolBar:SupplyToolBar/>
 
         <Grid Grid.Row="1" x:Name="SypplyDocumentList">
-            <DataGrid x:Name="SypplyDocument">
+            <DataGrid x:Name="SypplyDocument" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="40"/>
+                    <DataGridTextColumn Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="Auto"/>
                     <!--<DataGridTextColumn Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NameProduct}" Width="450"/>-->
 
-                    <DataGridTemplateColumn IsReadOnly="True" CanUserSort="True">
+                    <DataGridTemplateColumn IsReadOnly="True" CanUserSort="True" Width="Auto">
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>
                                 <FlexFilter:FlexGridFilteDateTime x:Name="FilterToDateLastModifiedDate" ButtonFilterSelected="FilterToDateLastModifiedDate_ButtonFilterSelected"
@@ -37,15 +37,15 @@
                         </DataGridTemplateColumn.HeaderTemplate>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Content="{Binding Path=LastModifiadDateText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <Label Content="{Binding Path=LastModificatedDateString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    
-                    <DataGridTextColumn Binding="{Binding Path=Invoice, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NameProduct}" Width="450"/>
-                    <DataGridTextColumn Binding="{Binding Path=TTN, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NameProduct}" Width="450"/>
-                    
-                    <DataGridTemplateColumn x:Name="FilterManagerName" Width="1*" IsReadOnly="True" SortMemberPath="ShortLDisplayNameUser" CanUserSort="True">
+
+                    <DataGridTextColumn Binding="{Binding Path=Invoice, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.Invoice}" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding Path=TTN, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.TTN}" Width="Auto"/>
+
+                    <DataGridTemplateColumn x:Name="FilterManagerName" Width="Auto" IsReadOnly="True" SortMemberPath="ShortLDisplayNameUser" CanUserSort="True">
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>
                                 <FlexFilter:FlexGridCheckBox x:Name="FilterManagerNameID"
@@ -62,8 +62,8 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    
-                    <DataGridTemplateColumn x:Name="FilterDelivery" Width="1*" IsReadOnly="True" SortMemberPath="ShortLDisplayNameUser" CanUserSort="True">
+
+                    <DataGridTemplateColumn x:Name="FilterDelivery" Width="Auto" IsReadOnly="True" SortMemberPath="ShortLDisplayNameUser" CanUserSort="True">
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>
                                 <FlexFilter:FlexGridCheckBox x:Name="FilterDeliveryID"
@@ -81,7 +81,7 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
-                    <DataGridTemplateColumn x:Name="FilterStatus" Width="1*" IsReadOnly="True" SortMemberPath="ShortLDisplayNameUser" CanUserSort="True">
+                    <DataGridTemplateColumn x:Name="FilterStatus" Width="Auto" IsReadOnly="True" SortMemberPath="ShortLDisplayNameUser" CanUserSort="True">
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>
                                 <FlexFilter:FlexGridCheckBox x:Name="FilterStatusID"
