@@ -309,6 +309,7 @@
     <Compile Include="FormUsers\SaleDocument\NewSaleDocument.xaml.cs">
       <DependentUpon>NewSaleDocument.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FormUsers\SupplyDocumentDetails\SupplyDocumentDetailsLogic.cs" />
     <Compile Include="FormUsers\SupplyDocument\SupplyDocumentGrid.xaml.cs">
       <DependentUpon>SupplyDocumentGrid.xaml</DependentUpon>
     </Compile>

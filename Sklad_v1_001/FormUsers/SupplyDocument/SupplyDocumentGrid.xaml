@@ -21,7 +21,8 @@
         <ToolBar:SupplyToolBar/>
 
         <Grid Grid.Row="1" x:Name="SypplyDocumentList">
-            <DataGrid x:Name="SypplyDocument" AutoGenerateColumns="False">
+            <DataGrid x:Name="SypplyDocument" AutoGenerateColumns="False"
+                      SelectionChanged="SypplyDocument_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="Auto"/>
                     <!--<DataGridTextColumn Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NameProduct}" Width="450"/>-->
@@ -127,8 +128,22 @@
         </Grid>
 
         <Grid Grid.Row="3" x:Name="SypplyDocumentDetailsList">
-            <DataGrid x:Name="SypplyDocumentDetails">
+            <DataGrid x:Name="SypplyDocumentDetails" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <!--<DataGridTextColumn Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="Auto"/>-->
+                    <DataGridTextColumn Header="{x:Static res:Resources.ID}" SortMemberPath="ProductID" CanUserSort="True" Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                <DataGridTextColumn Header="{x:Static res:Resources.Description}" SortMemberPath="Description" CanUserSort="True" Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
+                <DataGridTextColumn Header="{x:Static res:Resources.ProductType}" SortMemberPath="TypeDescription" CanUserSort="True" Binding="{Binding Path=TypeDescription, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                <DataGridTextColumn Header="{x:Static res:Resources.Quantity}" Binding="{Binding Path=Quantity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  SortMemberPath="Quantity" />
+                    <DataGridTextColumn Header="{x:Static res:Resources.TagPriceRus}" CanUserSort="True" Binding="{Binding Path=TagPriceRUS , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
+                
+                    <!--<DataGridTextColumn Header="{x:Static res:Resources.TagPriceWithOutVAT}" SortMemberPath="TagPriceWithOutVAT" CanUserSort="True" Binding="{Binding Path=TagPriceWithOutVAT , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />-->
 
+                    <DataGridTextColumn Header="{x:Static res:Resources.TagPriceUSA}" SortMemberPath="Discount" CanUserSort="True" Binding="{Binding Path=TagPriceUSA , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
+                
+                    <!--<DataGridTextColumn Header="{x:Static res:Resources.DiscountSumm}" SortMemberPath="DiscountSumm" CanUserSort="True" Binding="{Binding Path=DiscountSumm , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
+                <DataGridTextColumn Header="{x:Static res:Resources.SummaItog}" CellStyle="{StaticResource DataGridDigitCellStyle}" Binding="{Binding Path=SalePriceWithVAT, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}"  SortMemberPath="SalePriceWithVAT"/>-->
+                </DataGrid.Columns>
             </DataGrid>
         </Grid>
 

@@ -1,4 +1,5 @@
 ﻿using Sklad_v1_001.Control.FlexMessageBox;
+using Sklad_v1_001.FormUsers.SupplyDocumentDetails;
 using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.GlobalVariable;
 using Sklad_v1_001.HelperGlobal;
@@ -29,10 +30,14 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
     public partial class SupplyDocumentGrid : Page, INotifyPropertyChanged
     {
         SupplyDocumentLogic supplyDocumentLogic;
+        SupplyDocumentDetailsLogic supplyDocumentDetailsLogic;
+
         SupplyDocument.LocalFilter localFilter;
         LocalRow localRow;
+        SupplyDocumentDetails.LocaleFilter filterDetails;
 
         ObservableCollection<LocalRow> datalist;
+        ObservableCollection<SupplyDocumentDetails.LocaleRow> datalistDetails;
 
         RowSummary summary;
 
@@ -418,6 +423,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             }
         }
 
+        public LocaleFilter FilterProduct { get => filterDetails; set => filterDetails = value; }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
@@ -453,14 +460,21 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             convertData = new ConvertData();
 
             supplyDocumentLogic = new SupplyDocumentLogic();
+            supplyDocumentDetailsLogic = new SupplyDocumentDetailsLogic();
+
             localFilter = new LocalFilter();
+            filterDetails = new SupplyDocumentDetails.LocaleFilter();
+
             localRow = new LocalRow();
 
             datalist = new ObservableCollection<LocalRow>();
+            datalistDetails = new ObservableCollection<SupplyDocumentDetails.LocaleRow>();
 
             summary = new RowSummary();
 
             this.SypplyDocument.ItemsSource = datalist;
+            //this.SypplyDocumentDetails.Items.Clear();
+            this.SypplyDocumentDetails.ItemsSource = datalistDetails;
 
             supplyDocumentLogic.InitFilters();
             InitFilters();
@@ -668,8 +682,35 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         {
 
         }
+
         #endregion
 
-        
+        private void SypplyDocument_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LocalRow currentrow = this.SypplyDocument.SelectedItem as LocalRow;
+            if (currentrow != null)
+            {
+                //подготовили продукты 
+                FilterProduct.TypeScreen = ScreenType.ScreenTypeName;
+                FilterProduct.DocumentID = currentrow.ID;
+                DataTable suppliDocumentDetailsList = supplyDocumentDetailsLogic.FillGrid(FilterProduct);
+                
+                //чистим все детали
+                datalistDetails.Clear();
+                
+                //заливаем данные на формы
+                if (suppliDocumentDetailsList != null && suppliDocumentDetailsList.Rows.Count > 0)
+                {
+                    foreach (DataRow row in suppliDocumentDetailsList.Rows)
+                    {                                          
+                        datalistDetails.Add(supplyDocumentDetailsLogic.Convert(row, new SupplyDocumentDetails.LocaleRow()));
+                        //datalistDetailsAll.Add(saleDocumentDetailsLogic.ConvertProduct(curlocalrow, new SaleDocumentDetails.LocaleRow()));
+                        //if (curlocalrow.IsUCSCardNumberActive)
+                        //    isPartiallyPayment = true;
+                    }
+                }
+            }
+            
+        }
     }
 }

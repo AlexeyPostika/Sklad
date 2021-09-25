@@ -808,6 +808,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Категория.
+        /// </summary>
+        public static string ProductType {
+            get {
+                return ResourceManager.GetString("ProductType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Количество.
         /// </summary>
         public static string Quantity {
@@ -975,6 +984,24 @@ namespace Sklad_v1_001.Properties {
         public static string SupplyTitly {
             get {
                 return ResourceManager.GetString("SupplyTitly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Цена закупки в RUP.
+        /// </summary>
+        public static string TagPriceRus {
+            get {
+                return ResourceManager.GetString("TagPriceRus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Цена закупки в USA.
+        /// </summary>
+        public static string TagPriceUSA {
+            get {
+                return ResourceManager.GetString("TagPriceUSA", resourceCulture);
             }
         }
         

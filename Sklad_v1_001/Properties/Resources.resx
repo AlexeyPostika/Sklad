@@ -501,4 +501,13 @@
   <data name="TTN" xml:space="preserve">
     <value>ТТН</value>
   </data>
+  <data name="ProductType" xml:space="preserve">
+    <value>Категория</value>
+  </data>
+  <data name="TagPriceRus" xml:space="preserve">
+    <value>Цена закупки в RUP</value>
+  </data>
+  <data name="TagPriceUSA" xml:space="preserve">
+    <value>Цена закупки в USA</value>
+  </data>
 </root>
