@@ -633,12 +633,14 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         private void FilterDeliveryID_ButtonApplyClick(string text)
         {
-
+            localFilter.DeliveryID = text;
+            Refresh();
         }
 
         private void FilterManagerNameID_ButtonApplyClick(string text)
         {
-
+            localFilter.ManagerUserID = text;
+            Refresh();
         }
 
         private void FilterAmount_ButtonApplyClick()

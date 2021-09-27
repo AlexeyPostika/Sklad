@@ -18,6 +18,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         private string search;
         private string screenTypeGrid;
 
+        private String deliveryID;
+        private String managerUserID;
         private String createdByUserID;
         private String lastModifiedByUserID;
         private String status;
@@ -152,7 +154,34 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 OnPropertyChanged("ToLastModifiedDate");
             }
         }
+        //deliveryID
+        public string DeliveryID
+        {
+            get
+            {
+                return deliveryID;
+            }
 
+            set
+            {
+                deliveryID = value;
+                OnPropertyChanged("DeliveryID");
+            }
+        }
+        //managerUserID
+        public string ManagerUserID
+        {
+            get
+            {
+                return managerUserID;
+            }
+
+            set
+            {
+                managerUserID = value;
+                OnPropertyChanged("ManagerUserID");
+            }
+        }
         public string Status
         {
             get
