@@ -196,6 +196,9 @@
     <Compile Include="Control\FlexFilter\FlexGridCheckBox.xaml.cs">
       <DependentUpon>FlexGridCheckBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexFilter\FlexGridCheckBoxColorWindow.xaml.cs">
+      <DependentUpon>FlexGridCheckBoxColorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexFilter\FlexGridCheckBoxWindow.xaml.cs">
       <DependentUpon>FlexGridCheckBoxWindow.xaml</DependentUpon>
     </Compile>
@@ -388,6 +391,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\FlexFilter\FlexGridCheckBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\FlexFilter\FlexGridCheckBoxColorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
