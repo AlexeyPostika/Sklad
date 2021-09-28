@@ -284,7 +284,7 @@ namespace Sklad_v1_001.Control.FlexFilter
 
         private void ButtonFilter_ButtonClick()
         {
-
+            ButtonApplyClick?.Invoke();//flexFilterStonesLogic    
         }
 
         public void ClearFilters()
@@ -294,7 +294,7 @@ namespace Sklad_v1_001.Control.FlexFilter
 
         private void ButtonApplyClickWindow()
         {
-            ButtonStonesApplyClick?.Invoke();//flexFilterStonesLogic           
+            ButtonApplyClick?.Invoke();//flexFilterStonesLogic           
         }
     }
 }

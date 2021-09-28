@@ -619,7 +619,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         private void FilterStatusID_ButtonApplyClick(string text)
         {
-
+            localFilter.DeliveryID = text;
+            Refresh();
         }
 
         private void FilterLastModifiedByUserID_ButtonApplyClick(string text)

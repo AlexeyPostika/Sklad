@@ -187,6 +187,12 @@
     <Compile Include="Control\FlexDateTime\DateTimeWithLabel.xaml.cs">
       <DependentUpon>DateTimeWithLabel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexEditBox\EditBoxDelete.xaml.cs">
+      <DependentUpon>EditBoxDelete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexEditBox\EditBoxDeleteWithLabel.xaml.cs">
+      <DependentUpon>EditBoxDeleteWithLabel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexFilter\FlexGridCheckBox.xaml.cs">
       <DependentUpon>FlexGridCheckBox.xaml</DependentUpon>
     </Compile>
@@ -372,6 +378,14 @@
     <Page Include="Control\FlexDateTime\DateTimeWithLabel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\FlexEditBox\EditBoxDelete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\FlexEditBox\EditBoxDeleteWithLabel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\FlexFilter\FlexGridCheckBox.xaml">
       <SubType>Designer</SubType>

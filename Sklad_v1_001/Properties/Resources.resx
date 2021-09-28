@@ -510,4 +510,7 @@
   <data name="TagPriceUSA" xml:space="preserve">
     <value>Цена закупки в USA</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
 </root>
