@@ -359,10 +359,12 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             PagerowCount = 16;
             Sort = true;
             SortColumn = "ID";
-
+            
             Status = "All";
             CreatedByUserID = "All";
             LastModifiedByUserID = "All";
+            ManagerUserID = "All";
+            DeliveryID = "All";
         }
 
     }
@@ -802,10 +804,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             innerList5.Columns.Add("Description");
 
             filters.Add("CreatedByUserID", innerList1);
-            filters.Add("LastModifiedByUserID", innerList1);
-            filters.Add("Delivery", innerList1);
-            filters.Add("ManagerName", innerList1);
-            filters.Add("Status", innerList1);
+            filters.Add("LastModifiedByUserID", innerList2);
+            filters.Add("Delivery", innerList3);
+            filters.Add("ManagerName", innerList4);
+            filters.Add("Status", innerList5);
 
             Range QuantityRange = new Range();
             Range AmountRange = new Range();
@@ -834,6 +836,12 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             _sqlRequestSelect.AddParametr("@p_Status", SqlDbType.NVarChar, 255);
             _sqlRequestSelect.SetParametrValue("@p_Status", "");
+
+            _sqlRequestSelect.AddParametr("@p_ManagerUserID", SqlDbType.NVarChar, 255);
+            _sqlRequestSelect.SetParametrValue("@p_ManagerUserID", "");
+
+            _sqlRequestSelect.AddParametr("@p_DeliveryID", SqlDbType.NVarChar, 255);
+            _sqlRequestSelect.SetParametrValue("@p_DeliveryID", "");
 
             _sqlRequestSelect.AddParametr("@p_Quantity_Min", SqlDbType.Int);
             _sqlRequestSelect.SetParametrValue("@p_Quantity_Min", 0);
@@ -943,6 +951,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSelect.SetParametrValue("@p_CreatedUserID", _localFilter.CreatedByUserID);
             _sqlRequestSelect.SetParametrValue("@p_LastModifiedUserID", _localFilter.LastModifiedByUserID);
             _sqlRequestSelect.SetParametrValue("@p_Status", _localFilter.Status);
+            _sqlRequestSelect.SetParametrValue("@p_ManagerUserID", _localFilter.ManagerUserID);
+            _sqlRequestSelect.SetParametrValue("@p_DeliveryID", _localFilter.DeliveryID);
             _sqlRequestSelect.SetParametrValue("@p_Quantity_Min", _localFilter.QuantityMin);
             _sqlRequestSelect.SetParametrValue("@p_Quantity_Max", _localFilter.QuantityMax);
             _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Min", _localFilter.AmountMin);

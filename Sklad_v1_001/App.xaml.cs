@@ -13,5 +13,19 @@ namespace Sklad_v1_001
     /// </summary>
     public partial class App : Application
     {
+        public enum LogImageType
+        {
+            None = 1,
+            Error = 2,
+            Hand = 3,
+            Stop = 4,
+            Question = 5,
+            Exclamation = 6,
+            Warning = 7,
+            Asterisk = 8,
+            Information = 9,
+            Action = 10,
+            Filter = 11
+        }
     }
 }

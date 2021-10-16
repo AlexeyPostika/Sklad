@@ -68,8 +68,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         BitmapImage clearfilterManagerNameID;
         BitmapImage clearfilterDeliveryID;
         BitmapImage clearfilterStatusID;
-        BitmapImage clearfilterLastModifiedByUserID;
-        BitmapImage clearfilterTagPrice;
+        BitmapImage clearfilterLastModifiedByUserID;       
+        BitmapImage clearfilterAmount;
 
         private Boolean isEnableBack;
         private Boolean isEnableNext;
@@ -303,17 +303,17 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 OnPropertyChanged("ClearfilterLastModifiedByUserID");
             }
         }
-        public BitmapImage ClearfilterTagPrice
+        public BitmapImage ClearfilterAmount
         {
             get
             {
-                return clearfilterTagPrice;
+                return clearfilterAmount;
             }
 
             set
             {
-                clearfilterTagPrice = value;
-                OnPropertyChanged("ClearfilterTagPrice");
+                clearfilterAmount = value;
+                OnPropertyChanged("ClearfilterAmount");
             }
         }
 
@@ -485,10 +485,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         #region фильтры
         void InitFilters()
         {
-            ClearfilterDeliveryID = ImageHelper.GenerateImage("");
-            ClearfilterLastModifiedByUserID= ImageHelper.GenerateImage("");
-            ClearfilterManagerNameID= ImageHelper.GenerateImage("");
-            ClearfilterStatusID= ImageHelper.GenerateImage("");
+            ClearfilterDeliveryID = ImageHelper.GenerateImage("IconFilter.png");
+            ClearfilterLastModifiedByUserID= ImageHelper.GenerateImage("IconFilter.png");
+            ClearfilterManagerNameID= ImageHelper.GenerateImage("IconFilter.png");
+            ClearfilterStatusID= ImageHelper.GenerateImage("IconFilter.png");
+            ClearfilterAmount = ImageHelper.GenerateImage("IconFilter.png");
 
             SupplyTypeList supplyTypeList = new SupplyTypeList();
 
@@ -619,7 +620,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         private void FilterStatusID_ButtonApplyClick(string text)
         {
-            localFilter.DeliveryID = text;
+            localFilter.Status = text;
             Refresh();
         }
 
@@ -646,7 +647,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         private void FilterAmount_ButtonApplyClick()
         {
-
+            localFilter.AmountMin = AmountMin;
+            localFilter.AmountMax = AmountMax;
+            Refresh();
         }
         #endregion
 
@@ -663,7 +666,6 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         }
 
         #endregion
-
 
         #region Paginator
         private void ToolBarNextToBack_ButtonBack()

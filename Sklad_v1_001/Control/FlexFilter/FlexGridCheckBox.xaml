@@ -23,6 +23,11 @@
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <TextBlock Name="label" HorizontalAlignment="Center" Text="{Binding ElementName=control, Path=LabelText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-        <FlexButton:SmallButtonFilter ImageSource="{Binding ElementName=control, Path=ImageSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="ButtonFilter" Width="32" Height="32" Grid.Column="2" ButtonClick="ButtonFilter_ButtonClick"/>
+        <FlexButton:SmallButtonFilter x:Name="ButtonFilter" 
+                                      ImageSource="{Binding ElementName=control, Path=ImageSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                     
+                                      Width="32" 
+                                      Height="32" 
+                                      Grid.Column="2" 
+                                      ButtonClick="ButtonFilter_ButtonClick"/>
     </Grid>
 </UserControl>

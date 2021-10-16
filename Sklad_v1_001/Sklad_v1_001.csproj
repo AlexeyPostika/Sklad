@@ -160,6 +160,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Control\DialogWindows.cs" />
     <Compile Include="Control\FlexButton\LevelButton.xaml.cs">
       <DependentUpon>LevelButton.xaml</DependentUpon>
     </Compile>
@@ -339,10 +340,10 @@
     </Compile>
     <Compile Include="FormUsers\Zacupca\ZacupcaGridLogic.cs" />
     <Compile Include="GlobalList\List.cs" />
-    <Compile Include="GlobalVariable\AbsractRow.cs" />
     <Compile Include="GlobalVariable\DataBaseData.cs" />
     <Compile Include="GlobalVariable\FileWork.cs" />
     <Compile Include="GlobalVariable\ScreenType.cs" />
+    <Compile Include="HelperGlobal\AbsractRow.cs" />
     <Compile Include="HelperGlobal\ConvertData.cs" />
     <Compile Include="HelperGlobal\FromToTimeFilter.xaml.cs">
       <DependentUpon>FromToTimeFilter.xaml</DependentUpon>
@@ -748,6 +749,10 @@
     <Content Include="DLL\CDEK.dll" />
     <Content Include="DLL\Interop.DrvFRLib.dll" />
     <Content Include="DLL\pilot_nt.dll" />
+    <Resource Include="Icone\IconFilter.png" />
+    <Resource Include="Icone\IconClearAllFilters.png" />
+    <Resource Include="Icone\IconClose.png" />
+    <Resource Include="Icone\IconClearFilter.png" />
     <Content Include="SQLCommand\JDB_DataAdapter.sql" />
     <Content Include="SQLCommand\JDB_POS.sql" />
     <Resource Include="Icone\IconOk.png" />

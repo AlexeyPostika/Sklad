@@ -12,28 +12,31 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static Sklad_v1_001.HelperGlobal.MessageBoxTitleHelper;
 namespace Sklad_v1_001.Control.FlexFilter
-{ 
+{
     /// <summary>
     /// Логика взаимодействия для FlexGridCheckBox.xaml
     /// </summary>
     ///
-    public partial class FlexGridCheckBoxWindow : INotifyPropertyChanged, IAbstractGridFilter
+    public partial class FlexGridCheckBoxWindow : DialogWindow, INotifyPropertyChanged, IAbstractGridFilter
     {
-        Boolean needRefresh; 
+        Boolean needRefresh;
+        Boolean needResize;
+
         public static readonly DependencyProperty CheckAllProperty = DependencyProperty.Register(
                         "CheckAll",
                         typeof(Boolean),
                         typeof(FlexGridCheckBoxWindow));
 
-        // Обычное свойство .NET  - обертка над свойством зависимостей      
-
+        // Обычное свойство .NET  - обертка над свойством зависимостей  
         public Boolean CheckAll
         {
             get
@@ -46,7 +49,7 @@ namespace Sklad_v1_001.Control.FlexFilter
                 SetValue(CheckAllProperty, value);
                 OnPropertyChanged("CheckAll");
             }
-        }        
+        }
 
         public static readonly DependencyProperty LabelTextProperty = DependencyProperty.Register(
                         "LabelText",
@@ -108,6 +111,27 @@ namespace Sklad_v1_001.Control.FlexFilter
             }
         }
 
+
+        public static readonly DependencyProperty SearchProperty = DependencyProperty.Register(
+                        "Search",
+                        typeof(String),
+                        typeof(FlexGridCheckBoxWindow), new PropertyMetadata(""));
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public String Search
+        {
+            get
+            {
+                return (String)GetValue(SearchProperty);
+            }
+            set
+            {
+
+                SetValue(SearchProperty, value);
+                OnPropertyChanged("Search");
+            }
+        }
+
         public static readonly DependencyProperty DataTableDataProperty = DependencyProperty.Register(
                         "DataTableData",
                         typeof(DataTable),
@@ -124,7 +148,30 @@ namespace Sklad_v1_001.Control.FlexFilter
             {
                 SetValue(DataTableDataProperty, value);
                 ElementDataGrid.ItemsSource = DataTableData.DefaultView;
+                if (DataTableDataFull.Rows.Count == 0)
+                {
+                    DataTableDataFull = DataTableData.Copy();
+                }
                 OnPropertyChanged("DataTableData");
+            }
+        }
+
+        public static readonly DependencyProperty DataTableDataFullProperty = DependencyProperty.Register(
+                        "DataTableDataFull",
+                        typeof(DataTable),
+                        typeof(FlexGridCheckBoxWindow));
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public DataTable DataTableDataFull
+        {
+            get
+            {
+                return (DataTable)GetValue(DataTableDataFullProperty);
+            }
+            set
+            {
+                SetValue(DataTableDataFullProperty, value);
+                OnPropertyChanged("DataTableDataFull");
             }
         }
 
@@ -185,19 +232,32 @@ namespace Sklad_v1_001.Control.FlexFilter
         {
             get
             {
-                //DataRowView currentRowView = this.ElementDataGrid.SelectedItem as DataRowView;
-                //DataRow currentRow = null;
-                //if (currentRowView != null)
-                //{
-                //    currentRow = currentRowView.Row as DataRow;
-                //    return convertdata.FlexDataConvertToBoolean(currentRow["IsChecked"].ToString());
-                //}
+                DataRowView currentRowView = this.ElementDataGrid.SelectedItem as DataRowView;
+                DataRow currentRow = null;
+                if (currentRowView != null)
+                {
+                    currentRow = currentRowView.Row as DataRow;
+                    return convertdata.FlexDataConvertToBoolean(currentRow["IsChecked"].ToString());
+                }
                 return CheckAll;
             }
 
             set
             {
                 throw new NotImplementedException();
+            }
+        }
+
+        public Boolean NeedResize
+        {
+            get
+            {
+                return needResize;
+            }
+
+            set
+            {
+                needResize = value;
             }
         }
 
@@ -225,27 +285,14 @@ namespace Sklad_v1_001.Control.FlexFilter
         ConvertData convertdata;
 
         public FlexGridCheckBoxWindow()
-        {            
+        {
             InitializeComponent();
             convertdata = new ConvertData();
-            this.DataContext = this;            
+            this.DataContext = this;
             this.ElementDataGrid.DataContext = this;
             NeedRefresh = false;
-            //this.Activated += ContentActivated;
-        }
-
-        private void CheckAll_Click(object sender, RoutedEventArgs e)
-        {
-            ElementDataGrid.SelectedItem = null;
-            NeedRefresh = false;
-            foreach (DataRow row in DataTableData.Rows)
-            {
-                row["IsChecked"] = (Boolean)(sender as CheckBox).IsChecked;
-            }
-            NeedRefresh = true;
-            FilterStatusAll = (Boolean)(sender as CheckBox).IsChecked;
-            FilterStatusNone = !(Boolean)(sender as CheckBox).IsChecked;
-            ButtonApplyClick?.Invoke();
+            this.Activated += ContentActivated;
+            DataTableDataFull = new DataTable();
         }
 
         private Boolean Apply()
@@ -276,10 +323,10 @@ namespace Sklad_v1_001.Control.FlexFilter
                 FilterStatusNone = false;
             }
 
-            if (!IsCheckedOne && DataTableData.Rows.Count > 0)
+            if (!IsCheckedOne && DataTableDataFull.Rows.Count > 0)
             {
-                //FlexControl.FlexMessageBox.FlexMessageBox mb = new FlexControl.FlexMessageBox.FlexMessageBox();
-                //mb.Show(Properties.Resources.WarningNotChoosenFilter, GenerateTitle(TitleType.Warning, Properties.Resources.EmptyFilter), MessageBoxButton.OK, MessageBoxImage.Warning);
+                Control.FlexMessageBox.FlexMessageBox mb = new Control.FlexMessageBox.FlexMessageBox();
+                mb.Show(Properties.Resources.WarningNotChoosenFilter, GenerateTitle(TitleType.Warning, Properties.Resources.EmptyFilter), MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
             return true;
@@ -292,51 +339,61 @@ namespace Sklad_v1_001.Control.FlexFilter
             if (currentRowView != null)
             {
                 currentRow = currentRowView.Row as DataRow;
-                //currentRow["IsChecked"] = !convertdata.FlexDataConvertToBoolean(currentRow["IsChecked"].ToString());
+                currentRow["IsChecked"] = !convertdata.FlexDataConvertToBoolean(currentRow["IsChecked"].ToString());
             }
 
             if (NeedRefresh)
             {
-                Boolean IsCheckedOne = false;
-                Boolean IsCheckedAll = true;
-                foreach (DataRow rowtable in DataTableData.Rows)
+                FilterStatusNone = false;
+                FilterStatusAll = false;
+
+                if (String.IsNullOrEmpty(Search))
                 {
-                    if (rowtable["IsChecked"].ToString().ToLower() == "true")
+                    Boolean IsCheckedOne = false;
+                    Boolean IsCheckedAll = true;
+                    foreach (DataRow rowtable in DataTableData.Rows)
                     {
-                        IsCheckedOne = true;
+                        if (rowtable["IsChecked"].ToString().ToLower() == "true")
+                        {
+                            IsCheckedOne = true;
+                        }
+                        if (rowtable["IsChecked"].ToString().ToLower() == "false")
+                        {
+                            IsCheckedAll = false;
+                        }
                     }
-                    if (rowtable["IsChecked"].ToString().ToLower() == "false")
+
+                    if (IsCheckedOne == false)
+                        CheckAll = false;
+
+                    if (IsCheckedAll == true)
+                        CheckAll = true;
+
+                    if (IsCheckedOne == false)
                     {
-                        IsCheckedAll = false;
+                        FilterStatusNone = true;
+                        FilterStatusAll = false;
                     }
-                }
-
-                if (IsCheckedOne == false)
-                    CheckAll = false;
-
-                if (IsCheckedAll == true)
-                    CheckAll = true;
-
-                if (IsCheckedOne == false)
-                {
-                    FilterStatusNone = true;
-                    FilterStatusAll = false;
-                }
-                else
-                {
-                    FilterStatusAll = IsCheckedAll;
-                    FilterStatusNone = false;
+                    else
+                    {
+                        FilterStatusAll = IsCheckedAll;
+                        FilterStatusNone = false;
+                    }
                 }
                 ButtonApplyClick?.Invoke();
             }
-        } 
+        }
 
         private void control_Closing(object sender, CancelEventArgs e)
         {
             try
             {
                 if (Apply())
+                {
                     this.Visibility = Visibility.Hidden;
+                    this.Activated += ContentActivated;
+                    NeedResize = false;
+                }
                 e.Cancel = true;
             }
             catch
@@ -349,69 +406,195 @@ namespace Sklad_v1_001.Control.FlexFilter
             if (Apply())
             {
                 this.Visibility = Visibility.Hidden;
-               //this.Activated += ContentActivated;
-            }                
+                this.Activated += ContentActivated;
+                NeedResize = false;
+            }
         }
 
-        private void control_MouseEnter(object sender, MouseEventArgs e)
+        private void control_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
             NeedRefresh = true;
-        }        
+        }
 
         private void ElementDataGrid_Sorting(object sender, DataGridSortingEventArgs e)
         {
             NeedRefresh = false;
         }
 
-        private void control_MouseMove(object sender, MouseEventArgs e)
+        private void control_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
             NeedRefresh = true;
         }
 
         private void ContentActivated(object sender, EventArgs e)
         {
+            NeedResize = true;
             var frameWorkAreaX = MainWindow.AppWindow.frameWorkArea.PointToScreen(new Point(0, 0)).X;
-            //this.Left = this.Left - this.ActualWidth;
-            //if (this.Left <= frameWorkAreaX)
-            //    this.Left = frameWorkAreaX;
-            //this.Activated -= ContentActivated;
+            var frameWorkAreaActualWidth = MainWindow.AppWindow.frameWorkArea.ActualWidth;
+            if (this.Left - this.ActualWidth <= frameWorkAreaX)
+                this.Left = frameWorkAreaX;
+            else
+                this.Left = this.Left - this.ActualWidth;
+            if (this.Left + this.ActualWidth > frameWorkAreaX + frameWorkAreaActualWidth)
+            {
+                this.MaxWidth = frameWorkAreaActualWidth - this.Left + frameWorkAreaX;
+            }
+            this.Activated -= ContentActivated;
         }
 
         private void CheckBox_Click(object sender, RoutedEventArgs e)
         {
             if (NeedRefresh)
             {
-                Boolean IsCheckedOne = false;
-                Boolean IsCheckedAll = true;
-                foreach (DataRow rowtable in DataTableData.Rows)
+                FilterStatusNone = false;
+                FilterStatusAll = false;
+
+                if (String.IsNullOrEmpty(Search))
                 {
-                    if (rowtable["IsChecked"].ToString().ToLower() == "true")
+                    Boolean IsCheckedOne = false;
+                    Boolean IsCheckedAll = true;
+                    foreach (DataRow rowtable in DataTableData.Rows)
                     {
-                        IsCheckedOne = true;
+                        if (rowtable["IsChecked"].ToString().ToLower() == "true")
+                        {
+                            IsCheckedOne = true;
+                        }
+                        if (rowtable["IsChecked"].ToString().ToLower() == "false")
+                        {
+                            IsCheckedAll = false;
+                        }
                     }
-                    if (rowtable["IsChecked"].ToString().ToLower() == "false")
+
+                    if (IsCheckedOne == false)
+                        CheckAll = false;
+
+                    if (IsCheckedAll == true)
+                        CheckAll = true;
+
+                    if (IsCheckedOne == false)
                     {
-                        IsCheckedAll = false;
+                        FilterStatusNone = true;
+                        FilterStatusAll = false;
                     }
-                }
-
-                if (IsCheckedOne == false)
-                    CheckAll = false;
-
-                if (IsCheckedAll == true)
-                    CheckAll = true;
-
-                if (IsCheckedOne == false)
-                {
-                    FilterStatusNone = true;
-                    FilterStatusAll = false;
-                }
-                else
-                {
-                    FilterStatusAll = IsCheckedAll;
-                    FilterStatusNone = false;
+                    else
+                    {
+                        FilterStatusAll = IsCheckedAll;
+                        FilterStatusNone = false;
+                    }
                 }
                 ButtonApplyClick?.Invoke();
+            }
+        }
+
+        private void SearchFilter_ButtonClearClick()
+        {
+            Search = "";
+            CheckAll = true;
+            ElementDataGrid.SelectedItem = null;
+            NeedRefresh = false;
+            foreach (DataRow row in DataTableData.Rows)
+            {
+                row["IsChecked"] = true;
+            }
+            NeedRefresh = true;
+            FilterStatusAll = true;
+            FilterStatusNone = false;
+            ButtonApplyClick?.Invoke();
+        }
+
+        private void SearchFilter_ButtonTextChangedClick()
+        {
+            if (String.IsNullOrEmpty(Search))
+            {
+                CheckAll = true;
+                MassUpdateCheckBox(CheckAll);
+                DataTableData.Rows.Clear();
+                foreach (DataRow row in DataTableDataFull.Select())
+                {
+                    row["IsChecked"] = true;
+                    DataTableData.ImportRow(row);
+                }
+            }
+            else
+            {
+                if (CheckAll)
+                {
+                    CheckAll = false;
+                    MassUpdateCheckBox(CheckAll);
+                }
+                DataTableData.Rows.Clear();
+                string[] stringarray = Search.Split('+');
+                String ComplexSearch = "";
+                foreach (string search1 in stringarray)
+                {
+                    String temp = "Description like '%" + search1 + "%'";
+                    if (String.IsNullOrEmpty(ComplexSearch))
+                    {
+                        ComplexSearch = ComplexSearch + temp;
+                    }
+                    else
+                    {
+                        if (!String.IsNullOrEmpty(search1))
+                        {
+                            ComplexSearch = ComplexSearch + " or " + temp;
+                        }
+                    }
+                }
+
+                foreach (DataRow row in DataTableDataFull.Select(ComplexSearch))
+                {
+                    row["IsChecked"] = false;
+                    DataTableData.ImportRow(row);
+                }
+            }
+        }
+
+        private void CheckAll_Click(object sender, RoutedEventArgs e)
+        {
+            if (String.IsNullOrEmpty(Search))
+                MassUpdateCheckBox((Boolean)(sender as System.Windows.Controls.CheckBox).IsChecked);
+            else
+                MassUpdateCheckBoxWithSearch((Boolean)(sender as System.Windows.Controls.CheckBox).IsChecked);
+        }
+
+        private void MassUpdateCheckBox(Boolean _checked)
+        {
+            ElementDataGrid.SelectedItem = null;
+            NeedRefresh = false;
+            foreach (DataRow row in DataTableData.Rows)
+            {
+                row["IsChecked"] = _checked;
+            }
+            NeedRefresh = true;
+            FilterStatusAll = _checked;
+            FilterStatusNone = !_checked;
+            ButtonApplyClick?.Invoke();
+        }
+
+        private void MassUpdateCheckBoxWithSearch(Boolean _checked)
+        {
+            ElementDataGrid.SelectedItem = null;
+            NeedRefresh = false;
+            foreach (DataRow row in DataTableData.Rows)
+            {
+                row["IsChecked"] = _checked;
+            }
+            NeedRefresh = true;
+            FilterStatusAll = false;
+            FilterStatusNone = false;
+            ButtonApplyClick?.Invoke();
+        }
+
+        private void control_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (NeedResize)
+            {
+                var frameWorkAreaX = MainWindow.AppWindow.frameWorkArea.PointToScreen(new Point(0, 0)).X;
+                var frameWorkAreaActualWidth = MainWindow.AppWindow.frameWorkArea.ActualWidth;
+                if (this.Left + this.ActualWidth > frameWorkAreaX + frameWorkAreaActualWidth - 10)
+                {
+                    this.MaxWidth = frameWorkAreaActualWidth - this.Left + frameWorkAreaX - 10;
+                }
             }
         }
     }

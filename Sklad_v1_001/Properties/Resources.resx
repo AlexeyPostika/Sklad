@@ -513,4 +513,13 @@
   <data name="Search" xml:space="preserve">
     <value>Поиск</value>
   </data>
+  <data name="EmptyFilter" xml:space="preserve">
+    <value>пустой фильтр</value>
+  </data>
+  <data name="WarningNotChoosenFilter" xml:space="preserve">
+    <value>Выберите хотя бы одно значение фильтра</value>
+  </data>
+  <data name="FilterTime" xml:space="preserve">
+    <value>Временной фильтр</value>
+  </data>
 </root>

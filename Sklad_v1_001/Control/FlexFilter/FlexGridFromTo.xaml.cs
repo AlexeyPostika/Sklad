@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Sklad_v1_001.GlobalVariable;
+using Sklad_v1_001.HelperGlobal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -20,7 +22,7 @@ namespace Sklad_v1_001.Control.FlexFilter
     /// <summary>
     /// Interaction logic for FlexGridFromTo.xaml
     /// </summary>
-    public partial class FlexGridFromTo : UserControl, INotifyPropertyChanged
+    public partial class FlexGridFromTo : UserControl, INotifyPropertyChanged, IAbstractGridFilter
     {
         FlexGridFromToWindow flexGridFromToWindow;
         FlexGridFromToWindowInt flexGridFromToWindowInt;
@@ -424,9 +426,9 @@ namespace Sklad_v1_001.Control.FlexFilter
 
             if (IsTypeInt)
             {
-                //flexGridFromToWindowInt.WindowStartupLocation = WindowStartupLocation.Manual;
-                //flexGridFromToWindowInt.Left = this.ButtonFilter.PointToScreen(new Point(0, 0)).X + this.ButtonFilter.ActualWidth;
-                //flexGridFromToWindowInt.Top = location.Y + this.ActualHeight;
+                flexGridFromToWindowInt.WindowStartupLocation = WindowStartupLocation.Manual;
+                flexGridFromToWindowInt.Left = this.ButtonFilter.PointToScreen(new Point(0, 0)).X + this.ButtonFilter.ActualWidth;
+                flexGridFromToWindowInt.Top = location.Y + this.ActualHeight;
                 flexGridFromToWindowInt.AllowDrop = false;
                 flexGridFromToWindowInt.LabelText = Properties.Resources.FilterTitle + " " + this.LabelText;
                 flexGridFromToWindowInt.DefaultMax = (Int32)DefaultMax;
@@ -435,13 +437,13 @@ namespace Sklad_v1_001.Control.FlexFilter
                 flexGridFromToWindowInt.To = (Int32)To;
 
                 needrefresh = true;
-                //flexGridFromToWindowInt.ShowDialog();
+                flexGridFromToWindowInt.ShowDialog();
             }
             else if (IsTypeTime)
             {
-                //flexGridFromToWindowTime.WindowStartupLocation = WindowStartupLocation.Manual;
-                //flexGridFromToWindowTime.Left = this.ButtonFilter.PointToScreen(new Point(0, 0)).X + this.ButtonFilter.ActualWidth;
-                //flexGridFromToWindowTime.Top = location.Y + this.ActualHeight;
+                flexGridFromToWindowTime.WindowStartupLocation = WindowStartupLocation.Manual;
+                flexGridFromToWindowTime.Left = this.ButtonFilter.PointToScreen(new Point(0, 0)).X + this.ButtonFilter.ActualWidth;
+                flexGridFromToWindowTime.Top = location.Y + this.ActualHeight;
                 flexGridFromToWindowTime.AllowDrop = false;
                 flexGridFromToWindowTime.LabelText = Properties.Resources.FilterTitle + " " + this.LabelText;
                 flexGridFromToWindowTime.DefaultMax = DefaultMaxTime;
@@ -450,13 +452,13 @@ namespace Sklad_v1_001.Control.FlexFilter
                 flexGridFromToWindowTime.To = ToTime;
 
                 needrefresh = true;
-                //flexGridFromToWindowTime.ShowDialog();
+                flexGridFromToWindowTime.ShowDialog();
             }
             else
             {
-                //flexGridFromToWindow.WindowStartupLocation = WindowStartupLocation.Manual;
-                //flexGridFromToWindow.Left = this.ButtonFilter.PointToScreen(new Point(0, 0)).X + this.ButtonFilter.ActualWidth;
-                //flexGridFromToWindow.Top = location.Y + this.ActualHeight;
+                flexGridFromToWindow.WindowStartupLocation = WindowStartupLocation.Manual;
+                flexGridFromToWindow.Left = this.ButtonFilter.PointToScreen(new Point(0, 0)).X + this.ButtonFilter.ActualWidth;
+                flexGridFromToWindow.Top = location.Y + this.ActualHeight;
                 flexGridFromToWindow.AllowDrop = false;
                 flexGridFromToWindow.LabelText = Properties.Resources.FilterTitle + " " + this.LabelText;
                 flexGridFromToWindow.DefaultMax = DefaultMax;
@@ -465,7 +467,7 @@ namespace Sklad_v1_001.Control.FlexFilter
                 flexGridFromToWindow.To = To;
 
                 needrefresh = true;
-               // flexGridFromToWindow.ShowDialog();
+                flexGridFromToWindow.ShowDialog();
             }
 
         }
@@ -475,10 +477,10 @@ namespace Sklad_v1_001.Control.FlexFilter
             {
                 From = (double)flexGridFromToWindow.From;
                 To = (double)flexGridFromToWindow.To;
-                //if (flexGridFromToWindow.FilterStatus)
-                //    ImageSource = ImageHelper.GenerateImage("IconClearFilter.png");
-                //else
-                //    ImageSource = ImageHelper.GenerateImage("IconFilter.png");
+                if (flexGridFromToWindow.FilterStatus)
+                    ImageSource = ImageHelper.GenerateImage("IconClearFilter.png");
+                else
+                    ImageSource = ImageHelper.GenerateImage("IconFilter.png");
                 this.FilterStatus = flexGridFromToWindow.FilterStatus;
                 ButtonApplyClick?.Invoke();
             }
@@ -490,10 +492,10 @@ namespace Sklad_v1_001.Control.FlexFilter
             {
                 From = (Int32)flexGridFromToWindowInt.From;
                 To = (Int32)flexGridFromToWindowInt.To;
-                //if (flexGridFromToWindowInt.FilterStatus)
-                //    ImageSource = ImageHelper.GenerateImage("IconClearFilter.png");
-                //else
-                //    ImageSource = ImageHelper.GenerateImage("IconFilter.png");
+                if (flexGridFromToWindowInt.FilterStatus)
+                    ImageSource = ImageHelper.GenerateImage("IconClearFilter.png");
+                else
+                    ImageSource = ImageHelper.GenerateImage("IconFilter.png");
                 this.FilterStatus = flexGridFromToWindowInt.FilterStatus;
                 ButtonApplyClick?.Invoke();
             }
@@ -505,10 +507,10 @@ namespace Sklad_v1_001.Control.FlexFilter
             {
                 FromTime = (String)flexGridFromToWindowTime.From;
                 ToTime = (String)flexGridFromToWindowTime.To;
-                //if (flexGridFromToWindowTime.FilterStatus)
-                //    ImageSource = ImageHelper.GenerateImage("IconClearFilter.png");
-                //else
-                //    ImageSource = ImageHelper.GenerateImage("IconFilter.png");
+                if (flexGridFromToWindowTime.FilterStatus)
+                    ImageSource = ImageHelper.GenerateImage("IconClearFilter.png");
+                else
+                    ImageSource = ImageHelper.GenerateImage("IconFilter.png");
                 this.FilterStatus = flexGridFromToWindowTime.FilterStatus;
                 ButtonApplyClick?.Invoke();
             }

@@ -1,5 +1,6 @@
 ﻿using Sklad_v1_001.Control;
 using Sklad_v1_001.GlobalVariable;
+using Sklad_v1_001.HelperGlobal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,10 +24,10 @@ namespace Sklad_v1_001.Control.FlexMessageBox
     /// <summary>
     /// Логика взаимодействия для FlexMessageBox.xaml
     /// </summary>
-    public partial class FlexMessageBox : INotifyPropertyChanged, IAbstractMessageBox
+    public partial class FlexMessageBox : DialogWindow, INotifyPropertyChanged, IAbstractMessageBox
     {
         [DllImport("user32.dll")]
-        static extern void MessageBeep(uint uType);        
+        static extern void MessageBeep(uint uType);
 
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -44,6 +45,8 @@ namespace Sklad_v1_001.Control.FlexMessageBox
         private Int32 button1value;
         private Int32 button2value;
         private Int32 button3value;
+        private Int32 defaultButton;
+        private MessageBoxButton buttonType;
 
         private String fieldNameForHistory;
 
@@ -172,6 +175,32 @@ namespace Sklad_v1_001.Control.FlexMessageBox
                 imageType = value;
             }
         }
+
+        public MessageBoxButton ButtonType
+        {
+            get
+            {
+                return buttonType;
+            }
+
+            set
+            {
+                buttonType = value;
+            }
+        }
+
+        public Int32 DefaultButton
+        {
+            get
+            {
+                return defaultButton;
+            }
+
+            set
+            {
+                defaultButton = value;
+            }
+        }
         #endregion
 
         public enum MessageBoxIcon
@@ -203,9 +232,9 @@ namespace Sklad_v1_001.Control.FlexMessageBox
         public FlexMessageBox()
         {
             InitializeComponent();
-           // this.Width = 300;
+            // this.Width = 300;
             fieldNameForHistory = "";
-            //this.Topmost = true;
+            this.Topmost = true;
         }
 
         private void ChooseIcons(MessageBoxIcon iconType, string sound = null)
@@ -344,7 +373,7 @@ namespace Sklad_v1_001.Control.FlexMessageBox
                         Button33.Text = Properties.Resources.MessageIgnore;
                         Button33.Image.Source = ImageHelper.GenerateImage("MessageIgnore.png");
                         Button3value = (Int32)System.Windows.Forms.DialogResult.Ignore;
-                        return 3;                        
+                        return 3;
                     }
                 case MessageBoxButtons.OK:
                     {
@@ -369,7 +398,7 @@ namespace Sklad_v1_001.Control.FlexMessageBox
                         Button22.Text = Properties.Resources.MessageCancel;
                         Button22.Image.Source = ImageHelper.GenerateImage("MessageCancel.png");
                         Button2value = (Int32)System.Windows.Forms.DialogResult.Cancel;
-                        return 2; 
+                        return 2;
                     }
                 case MessageBoxButtons.RetryCancel:
                     {
@@ -451,41 +480,41 @@ namespace Sklad_v1_001.Control.FlexMessageBox
 
             }
 
-            //this.ShowDialog();
-            return Value;          
+            this.ShowDialog();
+            return Value;
         }
 
         public MessageBoxResult Show(string text, string caption)
         {
             Description = text;
-            //this.Title = caption;
+            this.Title = caption;
 
             ChooseButtons(MessageBoxButtons.OK);
             ChooseIcons(MessageBoxIcon.None);
 
-            //this.ShowDialog();
+            this.ShowDialog();
             return Value;
         }
 
         public MessageBoxResult Show(string text, string caption, MessageBoxButton buttonType)
         {
             Description = text;
-            //this.Title = caption;
+            this.Title = caption;
 
             MessageBoxButtons _buttonType = (MessageBoxButtons)buttonType;
             ChooseButtons(_buttonType);
             ChooseIcons(MessageBoxIcon.None);
 
-            //this.ShowDialog();
+            this.ShowDialog();
             return Value;
         }
 
         public MessageBoxResult Show(string text, string caption, MessageBoxButton buttonType, MessageBoxImage iconType, string sound = null)
         {
             Description = text;
-            //this.Title = caption;
+            this.Title = caption;
 
-            MessageBoxButtons _buttonType = (MessageBoxButtons)buttonType;            
+            MessageBoxButtons _buttonType = (MessageBoxButtons)buttonType;
 
             MessageBoxIcon _iconType = MessageBoxIcon.None;
 
@@ -493,11 +522,11 @@ namespace Sklad_v1_001.Control.FlexMessageBox
             {
                 _iconType = MessageBoxIcon.None;
             }
-            else if(iconType == MessageBoxImage.Error)
+            else if (iconType == MessageBoxImage.Error)
             {
                 _iconType = MessageBoxIcon.Error;
             }
-            else if(iconType == MessageBoxImage.Hand)
+            else if (iconType == MessageBoxImage.Hand)
             {
                 _iconType = MessageBoxIcon.Hand;
             }
@@ -524,21 +553,23 @@ namespace Sklad_v1_001.Control.FlexMessageBox
             else if (iconType == MessageBoxImage.Information)
             {
                 _iconType = MessageBoxIcon.Information;
-            }                     
-            
+            }
+
             ChooseButtons(_buttonType);
             ChooseIcons(_iconType, sound);
 
-           // this.ShowDialog();
+            this.ShowDialog();
             return Value;
         }
 
         public MessageBoxResult Show(string text, string caption, MessageBoxButton buttonType, MessageBoxImage iconType, Int32 defaultButton)
         {
             Description = text;
-            //this.Title = caption;
+            this.Title = caption;
+            DefaultButton = defaultButton;
+            ButtonType = buttonType;
 
-            MessageBoxButtons _buttonType = (MessageBoxButtons)buttonType;            
+            MessageBoxButtons _buttonType = (MessageBoxButtons)buttonType;
             MessageBoxIcon _iconType = MessageBoxIcon.None;
 
             if (iconType == MessageBoxImage.None)
@@ -635,8 +666,8 @@ namespace Sklad_v1_001.Control.FlexMessageBox
                         }
                 }
             }
-            
-            //this.ShowDialog();            
+
+            this.ShowDialog();
             return Value;
         }
 
@@ -644,7 +675,7 @@ namespace Sklad_v1_001.Control.FlexMessageBox
         {
             this.DescriptionBox.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
             Description = text;
-            //this.Title = caption;
+            this.Title = caption;
             if (_image != null)
             {
                 image.Source = _image;
@@ -680,7 +711,7 @@ namespace Sklad_v1_001.Control.FlexMessageBox
                             Button22.Image.Source = ButtonImages[1];
                             Button22.Text = ButtonText[1];
                             Button2value = (Int32)System.Windows.Forms.DialogResult.No;
-                            break;                           
+                            break;
                         }
 
                     case 3:
@@ -697,10 +728,10 @@ namespace Sklad_v1_001.Control.FlexMessageBox
                             Button32.Text = ButtonText[1];
                             Button2value = (Int32)System.Windows.Forms.DialogResult.No;
 
-                            Button33.Image.Source = ButtonImages[0];
-                            Button33.Text = ButtonText[0];
+                            Button33.Image.Source = ButtonImages[2];
+                            Button33.Text = ButtonText[2];
                             Button3value = (Int32)System.Windows.Forms.DialogResult.Cancel;
-                            break; 
+                            break;
                         }
                     default:
                         {
@@ -711,8 +742,8 @@ namespace Sklad_v1_001.Control.FlexMessageBox
                         }
                 }
             }
-           // ImageType = (Int32)App.LogImageType.None;
-            //this.ShowDialog();            
+            ImageType = (Int32)App.LogImageType.None;
+            this.ShowDialog();
             return Value;
         }
         #endregion
@@ -720,19 +751,92 @@ namespace Sklad_v1_001.Control.FlexMessageBox
         private void Button1_ButtonClick()
         {
             Value = (MessageBoxResult)button1value;
-           // this.Close();
+            this.Close();
         }
 
         private void Button2_ButtonClick()
         {
             Value = (MessageBoxResult)button2value;
-            //this.Close();
+            this.Close();
         }
 
         private void Button3_ButtonClick()
         {
             Value = (MessageBoxResult)button3value;
-           // this.Close();
+            this.Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+
+        {
+            Int32 count = 0;
+            if (ButtonType == MessageBoxButton.OK)
+                count = 1;
+            if (ButtonType == MessageBoxButton.OKCancel)
+                count = 2;
+            if (ButtonType == MessageBoxButton.YesNoCancel)
+                count = 3;
+            if (ButtonType == MessageBoxButton.YesNo)
+                count = 2;
+
+            if (count != 0)
+            {
+                if (count == 1)
+                {
+                    Button11.button.Focus();
+                }
+
+                if (count == 2)
+                {
+                    switch (DefaultButton)
+                    {
+                        case 1:
+                            {
+                                Button21.button.Focus();
+                                break;
+                            }
+                        case 2:
+                            {
+                                Button22.button.Focus();
+                                break;
+                            }
+                        default:
+                            {
+                                Button21.Focus();
+                                break;
+                            }
+                    }
+                }
+
+                if (count == 3)
+                {
+                    switch (DefaultButton)
+                    {
+                        case 1:
+                            {
+                                Button31.button.Focus();
+                                break;
+                            }
+                        case 2:
+                            {
+                                Button32.button.Focus();
+                                break;
+                            }
+
+                        case 3:
+                            {
+                                Button33.button.Focus();
+                                break;
+                            }
+                        default:
+                            {
+                                Button31.button.Focus();
+                                break;
+                            }
+                    }
+                }
+            }
+            DefaultButton = 0;
         }
     }
 }

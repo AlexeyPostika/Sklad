@@ -1,4 +1,5 @@
 ﻿using Sklad_v1_001.GlobalVariable;
+using Sklad_v1_001.HelperGlobal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,12 +12,14 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static Sklad_v1_001.HelperGlobal.MessageBoxTitleHelper;
 
 namespace Sklad_v1_001.Control.FlexFilter
 {
@@ -27,15 +30,16 @@ namespace Sklad_v1_001.Control.FlexFilter
     /// <summary>
     /// Логика взаимодействия для FromToTimeFilter.xaml
     /// </summary>
-    public partial class FlexGridFromToWindowInt : IAbstractButtonFilter, INotifyPropertyChanged
+    public partial class FlexGridFromToWindowInt : DialogWindow, IAbstractButtonFilter, INotifyPropertyChanged
     {
         private Boolean needrefresh;
+        private Boolean needwarning;
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }        
+        }
 
         public static readonly DependencyProperty DefaultMinProperty = DependencyProperty.Register(
                         "DefaultMin",
@@ -151,7 +155,7 @@ namespace Sklad_v1_001.Control.FlexFilter
         {
             get
             {
-                return "Временной фильтр";
+                return Properties.Resources.FilterTime;
             }
 
             set
@@ -207,10 +211,32 @@ namespace Sklad_v1_001.Control.FlexFilter
             }
         }
 
+        public static readonly DependencyProperty DefaultStyleProperty = DependencyProperty.Register(
+                        "DefaultStyle",
+                        typeof(Style),
+                        typeof(FlexGridFromToWindowInt));
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Style DefaultStyle
+        {
+            get
+            {
+
+                return (Style)GetValue(DefaultStyleProperty);
+            }
+            set
+            {
+
+                SetValue(DefaultStyleProperty, value);
+                OnPropertyChanged("DefaultStyle");
+            }
+        }
+
         public FlexGridFromToWindowInt()
         {
             InitializeComponent();
-            //this.Activated += ContentActivated;
+            this.Activated += ContentActivated;
+            DefaultStyle = this.DateTo.TextBox.Style;
             needrefresh = true;
         }
 
@@ -218,18 +244,18 @@ namespace Sklad_v1_001.Control.FlexFilter
 
         private void ContentActivated(object sender, EventArgs e)
         {
-            //var frameWorkAreaX = MainWindow.AppWindow.frameWorkArea.PointToScreen(new Point(0, 0)).X;
-            //this.Left = Left - this.ActualWidth;
-            //if (this.Left <= frameWorkAreaX)
-            //    this.Left = frameWorkAreaX;
-            //this.Activated -= ContentActivated;
+            var frameWorkAreaX = MainWindow.AppWindow.frameWorkArea.PointToScreen(new Point(0, 0)).X;
+            this.Left = Left - this.ActualWidth;
+            if (this.Left <= frameWorkAreaX)
+                this.Left = frameWorkAreaX;
+            this.Activated -= ContentActivated;
         }
 
         private void control_Closing(object sender, CancelEventArgs e)
         {
             try
             {
-                //this.Visibility = Visibility.Hidden;
+                this.Visibility = Visibility.Hidden;
                 e.Cancel = true;
             }
             catch
@@ -245,7 +271,17 @@ namespace Sklad_v1_001.Control.FlexFilter
                     FilterStatus = true;
                 else
                     FilterStatus = false;
-                ButtonApplyClick?.Invoke();
+
+                if (needwarning && From > To)
+                {
+                    this.DateTo.TextBox.Style = (Style)MainWindow.AppWindow.TryFindResource("TextBoxErrorStyle");
+                }
+                else
+                {
+                    this.DateTo.TextBox.Style = DefaultStyle;
+                    this.DateFrom.TextBox.Style = DefaultStyle;
+                    ButtonApplyClick?.Invoke();
+                }
             }
         }
 
@@ -257,7 +293,18 @@ namespace Sklad_v1_001.Control.FlexFilter
                     FilterStatus = true;
                 else
                     FilterStatus = false;
-                ButtonApplyClick?.Invoke();
+
+                if (needwarning && From > To)
+                {
+                    this.DateTo.TextBox.Style = (Style)MainWindow.AppWindow.TryFindResource("TextBoxErrorStyle");
+                }
+                else
+                {
+                    this.DateTo.TextBox.Style = DefaultStyle;
+                    this.DateFrom.TextBox.Style = DefaultStyle;
+                    ButtonApplyClick?.Invoke();
+                }
+                needwarning = true;
             }
         }
 
@@ -267,22 +314,24 @@ namespace Sklad_v1_001.Control.FlexFilter
             From = DefaultMin;
             To = DefaultMax;
             FilterStatus = false;
+            this.DateTo.TextBox.Style = DefaultStyle;
+            this.DateFrom.TextBox.Style = DefaultStyle;
             ButtonApplyClick?.Invoke();
             needrefresh = true;
         }
 
         private void Close_ButtonCloseClick()
         {
-            //FlexControl.FlexMessageBox.FlexMessageBox mb = new FlexControl.FlexMessageBox.FlexMessageBox();
-            //if (To < From)
-            //{
-            //    mb.Show(Properties.Resources.ErrorFilterToSmallerFrom, GenerateTitle(TitleType.Error, Properties.Resources.BadRange), MessageBoxButton.OK, MessageBoxImage.Error);
-            //}
-            //else
-            //{
-            //    this.Visibility = Visibility.Hidden;
-            //    this.Activated += ContentActivated;
-            //}
+            FlexMessageBox.FlexMessageBox mb = new FlexMessageBox.FlexMessageBox();
+            if (To < From)
+            {
+                mb.Show(Properties.Resources.ErrorFilterToSmallerFrom, GenerateTitle(TitleType.Error, Properties.Resources.BadRange), MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                this.Visibility = Visibility.Hidden;
+                this.Activated += ContentActivated;
+            }
         }
     }
 }

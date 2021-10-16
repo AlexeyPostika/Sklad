@@ -104,11 +104,11 @@
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>
                                 <FlexFilter:FlexGridFromTo HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" x:Name="FilterAmount" 
-                                                       To="{Binding ElementName=Page, Path=TagAmountMax, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                                                       From="{Binding ElementName=Page, Path=TagAmountMin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                                                       DefaultMax="{Binding ElementName=Page, Path=DefaulttagAmountMax, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                                                       DefaultMin="{Binding ElementName=Page, Path=DefaulttagAmountMin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                       ImageSource="{Binding ElementName=Page, Path=ClearfilterAmount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                       To="{Binding ElementName=page, Path=AmountMax, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                       From="{Binding ElementName=page, Path=AmountMin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                       DefaultMax="{Binding ElementName=page, Path=DefaultamountMax, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                       DefaultMin="{Binding ElementName=page, Path=DefaultamountMin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                       ImageSource="{Binding ElementName=page, Path=ClearfilterAmount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                        ButtonApplyClick="FilterAmount_ButtonApplyClick"
                                                        LabelText="{x:Static res:Resources.SummaSumm}"
                                                       />

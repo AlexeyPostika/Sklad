@@ -340,6 +340,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на пустой фильтр.
+        /// </summary>
+        public static string EmptyFilter {
+            get {
+                return ResourceManager.GetString("EmptyFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Значение поля ДО меньше значения поля ОТ.
         /// </summary>
         public static string ErrorFilterToSmallerFrom {
@@ -372,6 +381,15 @@ namespace Sklad_v1_001.Properties {
         public static string Exite {
             get {
                 return ResourceManager.GetString("Exite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Временной фильтр.
+        /// </summary>
+        public static string FilterTime {
+            get {
+                return ResourceManager.GetString("FilterTime", resourceCulture);
             }
         }
         
@@ -1218,6 +1236,15 @@ namespace Sklad_v1_001.Properties {
         public static string Vitrina9 {
             get {
                 return ResourceManager.GetString("Vitrina9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Выберите хотя бы одно значение фильтра.
+        /// </summary>
+        public static string WarningNotChoosenFilter {
+            get {
+                return ResourceManager.GetString("WarningNotChoosenFilter", resourceCulture);
             }
         }
         

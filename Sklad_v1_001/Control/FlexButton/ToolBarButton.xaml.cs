@@ -1,5 +1,6 @@
 ﻿using Sklad_v1_001;
 using Sklad_v1_001.GlobalVariable;
+using Sklad_v1_001.HelperGlobal;
 using System;
 using System.Collections.Generic;
 using System.Linq;

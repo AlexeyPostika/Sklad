@@ -20,7 +20,6 @@ using System.Windows.Shapes;
 namespace Sklad_v1_001.Control.FlexFilter
 {
     public class DataContextSpy : Freezable
-
     {
         public DataContextSpy()
 
@@ -52,6 +51,9 @@ namespace Sklad_v1_001.Control.FlexFilter
     ///
     public partial class FlexGridCheckBox : UserControl, INotifyPropertyChanged, IAbstractGridFilter
     {
+        FlexGridCheckBoxWindow flexGridCheckBoxWindow;
+        FlexGridCheckBoxWithImageWindow flexGridCheckBoxWithImageWindow;
+
         public static readonly DependencyProperty IsMultiSelectProperty = DependencyProperty.Register(
                       "IsMultiSelect",
                        typeof(Boolean),
@@ -186,13 +188,9 @@ namespace Sklad_v1_001.Control.FlexFilter
         }
 
 
-
         public static readonly DependencyProperty DataTableDataProperty = DependencyProperty.Register(
-
                         "DataTableData",
-
                         typeof(DataTable),
-
                         typeof(FlexGridCheckBox), new UIPropertyMetadata(new DataTable()));
 
 
@@ -271,8 +269,7 @@ namespace Sklad_v1_001.Control.FlexFilter
         //public event ButtonStoneClickHandler ButtonStonesApplyClick;
         public delegate void ButtonClickHandler(String text = "");
         public event ButtonClickHandler ButtonApplyClick;
-        public event Action ButtonStonesApplyClick; //получаем название события
-
+       
         ConvertData convertdata;
 
         public FlexGridCheckBox()
@@ -284,17 +281,142 @@ namespace Sklad_v1_001.Control.FlexFilter
 
         private void ButtonFilter_ButtonClick()
         {
-            ButtonApplyClick?.Invoke();//flexFilterStonesLogic    
+            Boolean CheckAllTemp = true;
+            if (IsHaveImage)
+            {
+                if (flexGridCheckBoxWithImageWindow == null)
+                {
+                    flexGridCheckBoxWithImageWindow = new FlexGridCheckBoxWithImageWindow();
+                    flexGridCheckBoxWithImageWindow.ButtonApplyClick += new Action(ButtonApplyClickWindow);
+                }
+                var location = this.PointToScreen(new Point(0, 0));
+                flexGridCheckBoxWithImageWindow.WindowStartupLocation = WindowStartupLocation.Manual;
+                flexGridCheckBoxWindow.Width = 350;
+                flexGridCheckBoxWindow.Height = 450;
+                flexGridCheckBoxWithImageWindow.Left = this.ButtonFilter.PointToScreen(new Point(0, 0)).X + this.ButtonFilter.ActualWidth;
+                flexGridCheckBoxWithImageWindow.Top = location.Y + this.ActualHeight;
+                flexGridCheckBoxWithImageWindow.AllowDrop = false;
+
+                foreach (DataRow row in DataTableData.Rows)
+                {
+                    if (row["IsChecked"] != null && convertdata.FlexDataConvertToBoolean(row["IsChecked"].ToString()) == false)
+                    {
+                        CheckAllTemp = false;
+                        break;
+                    }
+                }
+                flexGridCheckBoxWithImageWindow.CheckAll = CheckAllTemp;
+                flexGridCheckBoxWithImageWindow.LabelText = this.LabelText;
+                flexGridCheckBoxWithImageWindow.DataTableData = this.DataTableData;
+                flexGridCheckBoxWithImageWindow.Search = this.DataTableData.TableName;
+                flexGridCheckBoxWithImageWindow.ShowDialog();
+            }
+            else
+            {
+                if (flexGridCheckBoxWindow == null)
+                {
+                    flexGridCheckBoxWindow = new FlexGridCheckBoxWindow();
+                    flexGridCheckBoxWindow.ButtonApplyClick += new Action(ButtonApplyClickWindow);
+                }
+
+                var location = this.PointToScreen(new Point(0, 0));
+                flexGridCheckBoxWindow.WindowStartupLocation = WindowStartupLocation.Manual;
+                flexGridCheckBoxWindow.Width = 350;
+                flexGridCheckBoxWindow.Height = 450;
+                flexGridCheckBoxWindow.Left = this.ButtonFilter.PointToScreen(new Point(0, 0)).X + this.ButtonFilter.ActualWidth;
+                flexGridCheckBoxWindow.Top =  location.Y + this.ActualHeight;
+                flexGridCheckBoxWindow.AllowDrop = false;
+                
+                foreach (DataRow row in DataTableData.Rows)
+                {
+                    if (row["IsChecked"] != null && convertdata.FlexDataConvertToBoolean(row["IsChecked"].ToString()) == false)
+                    {
+                        CheckAllTemp = false;
+                        break;
+                    }
+                }
+                flexGridCheckBoxWindow.CheckAll = CheckAllTemp;
+                flexGridCheckBoxWindow.LabelText = this.LabelText;
+                flexGridCheckBoxWindow.DataTableData = this.DataTableData;
+                flexGridCheckBoxWindow.Search = this.DataTableData.TableName;
+                flexGridCheckBoxWindow.ShowDialog();
+            }
         }
+
 
         public void ClearFilters()
         {
-
+            flexGridCheckBoxWithImageWindow = null;
+            flexGridCheckBoxWindow = null;
         }
 
         private void ButtonApplyClickWindow()
         {
-            ButtonApplyClick?.Invoke();//flexFilterStonesLogic           
+            String data = "";
+            if (IsHaveImage)
+            {
+                this.DataTableData = flexGridCheckBoxWithImageWindow.DataTableData;
+                this.DataTableData.TableName = flexGridCheckBoxWithImageWindow.Search;
+                if (flexGridCheckBoxWithImageWindow.FilterStatusAll)
+                {
+                    ButtonFilter.Image.Source = ImageHelper.GenerateImage("IconFilter.png");
+                    data = "All";
+                    ButtonApplyClick?.Invoke(data);
+                    return;
+                }
+
+                if (flexGridCheckBoxWithImageWindow.FilterStatusNone)
+                {
+                    ButtonFilter.Image.Source = ImageHelper.GenerateImage("IconFilter.png");
+                    data = "";
+                    ButtonApplyClick?.Invoke(data);
+                    return;
+                }
+
+                ButtonFilter.Image.Source = ImageHelper.GenerateImage("IconClearFilter.png");
+                foreach (DataRow row in DataTableData.Rows)
+                {
+                    if (convertdata.FlexDataConvertToBoolean(row["IsChecked"].ToString()))
+                    {
+                        data = data + row["ID"].ToString();
+                    }
+                }
+            }
+            else
+            {
+                this.DataTableData = flexGridCheckBoxWindow.DataTableData;
+                this.DataTableData.TableName = flexGridCheckBoxWindow.Search;
+                if (flexGridCheckBoxWindow.FilterStatusAll)
+                {
+                    ButtonFilter.Image.Source = ImageHelper.GenerateImage("IconFilter.png");
+                    data = "All";
+                    ButtonApplyClick?.Invoke(data);
+                    return;
+                }
+
+                if (flexGridCheckBoxWindow.FilterStatusNone)
+                {
+                    ButtonFilter.Image.Source = ImageHelper.GenerateImage("IconFilter.png");
+                    data = "";
+                    ButtonApplyClick?.Invoke(data);
+                    return;
+                }
+
+                ButtonFilter.Image.Source = ImageHelper.GenerateImage("IconClearFilter.png");
+                foreach (DataRow row in DataTableData.Rows)
+                {
+                    if (convertdata.FlexDataConvertToBoolean(row["IsChecked"].ToString()))
+                    {
+                        data = data + '\'' + row["ID"].ToString() + "'|";
+                    }
+                }
+            }
+
+            if (!String.IsNullOrEmpty(data) && data.Length > 1)
+            {
+                data = data.TrimEnd('|');
+            }
+            ButtonApplyClick?.Invoke(data);
         }
     }
 }

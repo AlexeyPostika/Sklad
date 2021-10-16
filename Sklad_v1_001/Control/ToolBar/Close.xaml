@@ -20,7 +20,13 @@
         <WrapPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Stretch">
         </WrapPanel>
         <Label x:Name="Label"  Content="{Binding ElementName=control, Path=HeaderText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" HorizontalAlignment="Center" Margin="5,5,5,5"/>
-        <FlexButton:SmallButtonNoText x:Name="ButtonClearFilters" Text="{x:Static res:Resources.ResetFilter}"  ButtonClick="ButtonClearFilters_ButtonClick" VerticalAlignment="Top" Grid.Column="1" Margin="0,5,5,5" Visibility ="{Binding ElementName=control, Path=ButtonClearFiltersVisible, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <FlexButton:SmallButtonNoText x:Name="ButtonClose" Text="{x:Static res:Resources.FliterClose}" ButtonClick="ButtonClose_ButtonClick" VerticalAlignment="Top" Grid.Column="2" Margin="0,5,5,5"/>
+        <FlexButton:SmallButtonNoText x:Name="ButtonClearFilters" Text="{x:Static res:Resources.ResetFilter}"  
+                                      ButtonClick="ButtonClearFilters_ButtonClick" 
+                                      VerticalAlignment="Top" Grid.Column="1" Margin="0,5,5,5" 
+                                      Visibility ="{Binding ElementName=control, Path=ButtonClearFiltersVisible, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <FlexButton:SmallButtonNoText x:Name="ButtonClose" 
+                                      Text="{x:Static res:Resources.FliterClose}" 
+                                      ButtonClick="ButtonClose_ButtonClick" 
+                                      VerticalAlignment="Top" Grid.Column="2" Margin="0,5,5,5"/>
     </Grid>
 </UserControl>

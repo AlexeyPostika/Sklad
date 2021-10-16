@@ -30,9 +30,10 @@ namespace Sklad_v1_001.Control.FlexFilter
     /// <summary>
     /// Логика взаимодействия для FromToTimeFilter.xaml
     /// </summary>
-    public partial class FlexGridFromToWindow : IAbstractButtonFilter, INotifyPropertyChanged
+    public partial class FlexGridFromToWindow : DialogWindow, IAbstractButtonFilter, INotifyPropertyChanged
     {
         private Boolean needrefresh;
+        private Boolean needwarning;
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
@@ -53,9 +54,9 @@ namespace Sklad_v1_001.Control.FlexFilter
                 return (Double)GetValue(DefaultMinProperty);
             }
             set
-            {                
+            {
                 SetValue(DefaultMinProperty, value);
-                OnPropertyChanged("DefaultMin");                
+                OnPropertyChanged("DefaultMin");
             }
         }
 
@@ -74,7 +75,7 @@ namespace Sklad_v1_001.Control.FlexFilter
             set
             {
                 SetValue(DefaultMaxProperty, value);
-                OnPropertyChanged("DefaultMax");                
+                OnPropertyChanged("DefaultMax");
             }
         }
 
@@ -152,7 +153,7 @@ namespace Sklad_v1_001.Control.FlexFilter
         {
             get
             {
-                return "Временной фильтр";
+                return Properties.Resources.FilterTime;
             }
 
             set
@@ -208,19 +209,41 @@ namespace Sklad_v1_001.Control.FlexFilter
             }
         }
 
+        public static readonly DependencyProperty DefaultStyleProperty = DependencyProperty.Register(
+                        "DefaultStyle",
+                        typeof(Style),
+                        typeof(FlexGridFromToWindow));
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Style DefaultStyle
+        {
+            get
+            {
+
+                return (Style)GetValue(DefaultStyleProperty);
+            }
+            set
+            {
+
+                SetValue(DefaultStyleProperty, value);
+                OnPropertyChanged("DefaultStyle");
+            }
+        }
+
         public FlexGridFromToWindow()
         {
             InitializeComponent();
-            //this.Activated += ContentActivated;
+            this.Activated += ContentActivated;
+            DefaultStyle = this.DateTo.TextBox.Style;
             needrefresh = true;
         }
 
-        public event Action ButtonApplyClick;         
+        public event Action ButtonApplyClick;
 
         private void control_Closing(object sender, CancelEventArgs e)
         {
             try
-            {                
+            {
                 this.Visibility = Visibility.Hidden;
                 e.Cancel = true;
             }
@@ -231,21 +254,31 @@ namespace Sklad_v1_001.Control.FlexFilter
 
         private void ContentActivated(object sender, EventArgs e)
         {
-            //var frameWorkAreaX = MainWindow.AppWindow.frameWorkArea.PointToScreen(new Point(0, 0)).X;
-            //this.Left = Left - this.ActualWidth;
-            //if (this.Left <= frameWorkAreaX)
-            //    this.Left = frameWorkAreaX;
-            //this.Activated -= ContentActivated;
+            var frameWorkAreaX = MainWindow.AppWindow.frameWorkArea.PointToScreen(new Point(0, 0)).X;
+            this.Left = Left - this.ActualWidth;
+            if (this.Left <= frameWorkAreaX)
+                this.Left = frameWorkAreaX;
+            this.Activated -= ContentActivated;
         }
 
         private void DateTo_TextChanged()
         {
-            if (needrefresh) {
+            if (needrefresh)
+            {
                 if (To != DefaultMax || From != DefaultMin)
                     FilterStatus = true;
                 else
-                    FilterStatus = false;            
-                ButtonApplyClick?.Invoke();
+                    FilterStatus = false;
+                if (needwarning && From > To)
+                {
+                    this.DateTo.TextBox.Style = (Style)MainWindow.AppWindow.TryFindResource("TextBoxErrorStyle");
+                }
+                else
+                {
+                    this.DateTo.TextBox.Style = DefaultStyle;
+                    this.DateFrom.TextBox.Style = DefaultStyle;
+                    ButtonApplyClick?.Invoke();
+                }
             }
         }
 
@@ -257,7 +290,17 @@ namespace Sklad_v1_001.Control.FlexFilter
                     FilterStatus = true;
                 else
                     FilterStatus = false;
-                ButtonApplyClick?.Invoke();
+                if (needwarning && From > To)
+                {
+                    this.DateFrom.TextBox.Style = (Style)MainWindow.AppWindow.TryFindResource("TextBoxErrorStyle");
+                }
+                else
+                {
+                    this.DateTo.TextBox.Style = DefaultStyle;
+                    this.DateFrom.TextBox.Style = DefaultStyle;
+                    ButtonApplyClick?.Invoke();
+                }
+                needwarning = true;
             }
         }
 
@@ -267,13 +310,15 @@ namespace Sklad_v1_001.Control.FlexFilter
             From = DefaultMin;
             To = DefaultMax;
             FilterStatus = false;
+            this.DateTo.TextBox.Style = DefaultStyle;
+            this.DateFrom.TextBox.Style = DefaultStyle;
             ButtonApplyClick?.Invoke();
             needrefresh = true;
         }
 
         private void Close_ButtonCloseClick()
         {
-            Control.FlexMessageBox.FlexMessageBox mb = new Control.FlexMessageBox.FlexMessageBox();
+            FlexMessageBox.FlexMessageBox mb = new FlexMessageBox.FlexMessageBox();
             if (To < From)
             {
                 mb.Show(Properties.Resources.ErrorFilterToSmallerFrom, GenerateTitle(TitleType.Error, Properties.Resources.BadRange), MessageBoxButton.OK, MessageBoxImage.Error);
@@ -281,7 +326,7 @@ namespace Sklad_v1_001.Control.FlexFilter
             else
             {
                 this.Visibility = Visibility.Hidden;
-                //this.Activated += ContentActivated;
+                this.Activated += ContentActivated;
             }
         }
     }

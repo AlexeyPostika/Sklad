@@ -4,11 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sklad_v1_001.GlobalVariable
+namespace Sklad_v1_001.HelperGlobal
 {
     public interface IAbstractRow
     {
         Int32 ID { get; set; }
+    }
+
+    public interface IAbstractRowAdvancedRelated
+    {
+        Int32 PartNumber { get; set; }
+        String Model { get; set; }
+        Int32 Supplier { get; set; }
+    }
+
+    public interface IAbstractRowAdvanced
+    {
+        Int32 ID { get; set; }
+        Int32 TempID { get; set; }
     }
 
     public interface IAbstractButton
