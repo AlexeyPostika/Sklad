@@ -63,6 +63,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         Double defaultamountMax;
 
         Boolean isAllowFilter;
+        Boolean isPaginator;
 
 
         BitmapImage clearfilterManagerNameID;
@@ -76,6 +77,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         private Boolean isEnableBackIn;
         private Boolean isEnableNextEnd;
         private String textOnWhatPage;
+
+        Int32 currentPage;
+        Int32 totalCount;
+        Int32 pageCount;
 
         public bool IsEnableBack
         {
@@ -422,6 +427,61 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 OnPropertyChanged("DefaultamountMax");
             }
         }
+        public Boolean IsPaginator
+        {
+            get
+            {
+                return isPaginator;
+            }
+
+            set
+            {
+                isPaginator = value;
+                OnPropertyChanged("IsPaginator");
+            }
+        }
+
+        public Int32 CurrentPage
+        {
+            get
+            {
+                return currentPage;
+            }
+
+            set
+            {
+                currentPage = value;
+                OnPropertyChanged("CurrentPage");
+            }
+        }
+
+        public Int32 TotalCount
+        {
+            get
+            {
+                return totalCount;
+            }
+
+            set
+            {
+                totalCount = value;
+                OnPropertyChanged("TotalCount");
+            }
+        }
+
+        public Int32 PageCount
+        {
+            get
+            {
+                return pageCount;
+            }
+
+            set
+            {
+                pageCount = value;
+                OnPropertyChanged("PageCount");
+            }
+        }
 
         public LocaleFilter FilterProduct { get => filterDetails; set => filterDetails = value; }
 
@@ -663,29 +723,39 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             {
                 datalist.Add(supplyDocumentLogic.Convert(row, new LocalRow()));
             }
+            TotalCount = summary.SummaryQuantityLine;
+            PageCount = localFilter.PagerowCount;
+            CurrentPage = localFilter.PageNumber;
         }
 
         #endregion
 
         #region Paginator
-        private void ToolBarNextToBack_ButtonBack()
-        {
-
-        }
-
-        private void ToolBarNextToBack_ButtonNext()
-        {
-
-        }
-
+        
         private void ToolbarNextPageData_ButtonBackIn()
         {
-
+            IsPaginator = true;
+            localFilter.PageNumber = 0;
+            Refresh();
+        }
+        private void ToolBarNextToBack_ButtonBack()
+        {
+            IsPaginator = true;
+            localFilter.PageNumber--;
+            Refresh();
+        }
+        private void ToolBarNextToBack_ButtonNext()
+        {
+            IsPaginator = true;
+            localFilter.PageNumber++;
+            Refresh();
         }
 
         private void ToolbarNextPageData_ButtonNextEnd()
         {
-
+            IsPaginator = true;
+            localFilter.PageNumber = (Int32)(Math.Ceiling((double)summary.SummaryQuantityLine / localFilter.PagerowCount) - 1);
+            Refresh();
         }
 
         #endregion
