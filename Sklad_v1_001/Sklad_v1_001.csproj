@@ -777,6 +777,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Control\FlexComboBox\" />
+    <Folder Include="FormUsers\SupplyDocumentPayment\" />
     <Folder Include="Report\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
