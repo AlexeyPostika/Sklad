@@ -18,11 +18,12 @@
     <Grid x:Name="MainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="5" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <TextBlock Name="label" HorizontalAlignment="Center" Text="{Binding ElementName=control, Path=LabelText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <Label Name="label" Height="30" HorizontalAlignment="Center" Content="{Binding  ElementName=control, Path=LabelText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <!--<TextBlock Name="label" Height="30" HorizontalAlignment="Center" Text="{Binding ElementName=control, Path=LabelText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>-->
         <FlexButton:SmallButtonFilter x:Name="ButtonFilter" 
                                       ImageSource="{Binding ElementName=control, Path=ImageSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                     
                                       Width="32" 
