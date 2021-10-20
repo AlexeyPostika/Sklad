@@ -1,0 +1,64 @@
+﻿<Page x:Class="Sklad_v1_001.FormUsers.SupplyDocument.NewSupplyDocument"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Sklad_v1_001.FormUsers.SupplyDocument"
+      xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+      xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
+      xmlns:FlexFilter="clr-namespace:Sklad_v1_001.Control.FlexFilter"
+      xmlns:SimpleControl="clr-namespace:Sklad_v1_001.Control.SimpleControl"
+      xmlns:FlexComboBox="clr-namespace:Sklad_v1_001.Control.FlexComboBox"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="{x:Static res:Resources.SupplyTitly}" 
+      Style="{DynamicResource UsersPageWidth}"
+      x:Name="page">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <GroupBox  Header="{x:Static res:Resources.SupplyDocumentHeader}" Name="Document">
+                <WrapPanel>
+                <Grid x:Name="DocumentGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+                <SimpleControl:EditBoxWithLabel x:Name="NumberDocument" Margin="0,10,0,0"
+                                            Text="{Binding ElementName=page, Path=SyncDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                            LabelText="{x:Static res:Resources.NumberDocument}"
+                                            IsEnabled="False"
+                                            IsReadOnly="True" LabelWidth="100" Width="230"/>
+                <SimpleControl:EditBoxWithLabel  x:Name="DateDocument" Grid.Row="1" 
+                                                 Text="{Binding ElementName=page, Path=SyncDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                 LabelText="{x:Static res:Resources.CreatedDate}"
+                                                 IsEnabled="False"
+                                                 IsReadOnly="True" LabelWidth="40" Width="220"/>
+                <SimpleControl:EditBoxWithLabel x:Name="LastDateDocument"  Grid.Row="2"                                            
+                                                Text="{Binding ElementName=page, Path=SyncDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"                                           
+                                                LabelText="{x:Static res:Resources.LastModifiadDateText}"
+                                                IsEnabled="False"
+                                                IsReadOnly="True" LabelWidth="100" Width="230"/>
+                <FlexComboBox:ComboBoxWithLabel x:Name="UserIDDocument" Grid.Row="1" Grid.Column="1"
+                                                Value="{Binding ElementName=page, Path=SyncDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                LabelText="{x:Static res:Resources.NumberDocument}"
+                                                LabelWidth="100" Width="230"/>
+                <FlexComboBox:ComboBoxWithLabel x:Name="StatusDocument" Grid.Row="2" Grid.Column="1"
+                                                Value="{Binding ElementName=page, Path=SyncDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                LabelText="{x:Static res:Resources.NumberDocument}"
+                                                LabelWidth="100" Width="230"/>
+            </WrapPanel>
+        </GroupBox>
+            
+    </Grid>
+</Page>

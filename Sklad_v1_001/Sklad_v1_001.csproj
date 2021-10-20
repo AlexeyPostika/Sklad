@@ -173,6 +173,9 @@
     <Compile Include="Control\FlexButton\ToolBarButton.xaml.cs">
       <DependentUpon>ToolBarButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexComboBox\ComboBoxWithLabel.xaml.cs">
+      <DependentUpon>ComboBoxWithLabel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexControlDate\FilterDate.xaml.cs">
       <DependentUpon>FilterDate.xaml</DependentUpon>
     </Compile>
@@ -266,6 +269,9 @@
     <Compile Include="Control\FlexTextBox\FlexLabelTextBox.xaml.cs">
       <DependentUpon>FlexLabelTextBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\SimpleControl\EditBoxWithLabel.xaml.cs">
+      <DependentUpon>EditBoxWithLabel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\SimpleControl\EditBoxWithLabelFloatForEdit.xaml.cs">
       <DependentUpon>EditBoxWithLabelFloatForEdit.xaml</DependentUpon>
     </Compile>
@@ -320,6 +326,9 @@
       <DependentUpon>NewSaleDocument.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\SupplyDocumentDetails\SupplyDocumentDetailsLogic.cs" />
+    <Compile Include="FormUsers\SupplyDocument\NewSupplyDocument.xaml.cs">
+      <DependentUpon>NewSupplyDocument.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FormUsers\SupplyDocument\SupplyDocumentGrid.xaml.cs">
       <DependentUpon>SupplyDocumentGrid.xaml</DependentUpon>
     </Compile>
@@ -366,6 +375,10 @@
     <Page Include="Control\FlexButton\ToolBarButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\FlexComboBox\ComboBoxWithLabel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\FlexControlDescription\Description4TextBlock.xaml">
       <SubType>Designer</SubType>
@@ -483,6 +496,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Control\SimpleControl\EditBoxWithLabel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\SimpleControl\EditBoxWithLabelFloatForEdit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -538,6 +555,10 @@
     <Page Include="FormUsers\SaleDocument\NewSaleDocument.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FormUsers\SupplyDocument\NewSupplyDocument.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FormUsers\SupplyDocument\SupplyDocumentGrid.xaml">
       <SubType>Designer</SubType>
