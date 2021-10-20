@@ -673,6 +673,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на №-документа.
+        /// </summary>
+        public static string NumberDocument {
+            get {
+                return ResourceManager.GetString("NumberDocument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на №-телефона.
         /// </summary>
         public static string NumberPhone {
@@ -1002,6 +1011,15 @@ namespace Sklad_v1_001.Properties {
         public static string SupplyDocument4 {
             get {
                 return ResourceManager.GetString("SupplyDocument4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Документ поставки.
+        /// </summary>
+        public static string SupplyDocumentHeader {
+            get {
+                return ResourceManager.GetString("SupplyDocumentHeader", resourceCulture);
             }
         }
         

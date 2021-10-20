@@ -522,4 +522,10 @@
   <data name="FilterTime" xml:space="preserve">
     <value>Временной фильтр</value>
   </data>
+  <data name="SupplyDocumentHeader" xml:space="preserve">
+    <value>Документ поставки</value>
+  </data>
+  <data name="NumberDocument" xml:space="preserve">
+    <value>№-документа</value>
+  </data>
 </root>
