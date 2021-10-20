@@ -776,7 +776,6 @@
     <Resource Include="Icone\IconSaveAs.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Control\FlexComboBox\" />
     <Folder Include="FormUsers\SupplyDocumentPayment\" />
     <Folder Include="Report\" />
   </ItemGroup>
