@@ -173,6 +173,9 @@
     <Compile Include="Control\FlexButton\ToolBarButton.xaml.cs">
       <DependentUpon>ToolBarButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexComboBox\ComboBoxWithLabel.xaml.cs">
+      <DependentUpon>ComboBoxWithLabel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexControlDate\FilterDate.xaml.cs">
       <DependentUpon>FilterDate.xaml</DependentUpon>
     </Compile>
@@ -372,6 +375,10 @@
     <Page Include="Control\FlexButton\ToolBarButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\FlexComboBox\ComboBoxWithLabel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\FlexControlDescription\Description4TextBlock.xaml">
       <SubType>Designer</SubType>
@@ -790,7 +797,6 @@
     <Resource Include="Icone\IconSaveAs.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Control\FlexComboBox\" />
     <Folder Include="FormUsers\SupplyDocumentPayment\" />
     <Folder Include="Report\" />
   </ItemGroup>

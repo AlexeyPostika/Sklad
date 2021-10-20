@@ -8,6 +8,7 @@
       xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
       xmlns:FlexFilter="clr-namespace:Sklad_v1_001.Control.FlexFilter"
       xmlns:SimpleControl="clr-namespace:Sklad_v1_001.Control.SimpleControl"
+      xmlns:FlexComboBox="clr-namespace:Sklad_v1_001.Control.FlexComboBox"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="{x:Static res:Resources.SupplyTitly}" 
@@ -48,14 +49,14 @@
                                                 LabelText="{x:Static res:Resources.LastModifiadDateText}"
                                                 IsEnabled="False"
                                                 IsReadOnly="True" LabelWidth="100" Width="230"/>
-                <SimpleControl:EditBoxWithLabel x:Name="UserIDDocument" Grid.Row="1" Grid.Column="1"
-                                                Text="{Binding ElementName=page, Path=SyncDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                <FlexComboBox:ComboBoxWithLabel x:Name="UserIDDocument" Grid.Row="1" Grid.Column="1"
+                                                Value="{Binding ElementName=page, Path=SyncDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                                 LabelText="{x:Static res:Resources.NumberDocument}"
-                                                IsReadOnly="True" LabelWidth="100" Width="230"/>
-                <SimpleControl:EditBoxWithLabel  x:Name="StatusDocument" Grid.Row="2" Grid.Column="1"
-                                             Text="{Binding ElementName=page, Path=SyncDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                            LabelText="{x:Static res:Resources.NumberDocument}"
-                                            IsReadOnly="True" LabelWidth="100" Width="230"/>
+                                                LabelWidth="100" Width="230"/>
+                <FlexComboBox:ComboBoxWithLabel x:Name="StatusDocument" Grid.Row="2" Grid.Column="1"
+                                                Value="{Binding ElementName=page, Path=SyncDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                LabelText="{x:Static res:Resources.NumberDocument}"
+                                                LabelWidth="100" Width="230"/>
             </WrapPanel>
         </GroupBox>
             
