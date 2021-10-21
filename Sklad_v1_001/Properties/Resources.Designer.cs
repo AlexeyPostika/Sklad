@@ -61,6 +61,24 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Файл инвойса.
+        /// </summary>
+        public static string AddFileInvoice {
+            get {
+                return ResourceManager.GetString("AddFileInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Файл ТТН.
+        /// </summary>
+        public static string AddFileTTN {
+            get {
+                return ResourceManager.GetString("AddFileTTN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Добавить.
         /// </summary>
         public static string ADDLIST {
@@ -286,6 +304,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на УДАЛИТЬ.
+        /// </summary>
+        public static string DELETE {
+            get {
+                return ResourceManager.GetString("DELETE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Поставки.
         /// </summary>
         public static string Deliveries {
@@ -493,11 +520,38 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Компания доставщик.
+        /// </summary>
+        public static string ListDelivery {
+            get {
+                return ResourceManager.GetString("ListDelivery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на К списку документов.
         /// </summary>
         public static string LISTDOCUMENT {
             get {
                 return ResourceManager.GetString("LISTDOCUMENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Оплаты.
+        /// </summary>
+        public static string ListPayment {
+            get {
+                return ResourceManager.GetString("ListPayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Список товаров.
+        /// </summary>
+        public static string ListProducts {
+            get {
+                return ResourceManager.GetString("ListProducts", resourceCulture);
             }
         }
         
@@ -592,6 +646,24 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Модель.
+        /// </summary>
+        public static string Model {
+            get {
+                return ResourceManager.GetString("Model", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ПРИЧИНА.
+        /// </summary>
+        public static string MOTIVE {
+            get {
+                return ResourceManager.GetString("MOTIVE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Наименование.
         /// </summary>
         public static string Name {
@@ -606,6 +678,15 @@ namespace Sklad_v1_001.Properties {
         public static string NameCategory {
             get {
                 return ResourceManager.GetString("NameCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Наименование компании.
+        /// </summary>
+        public static string NameDelivery {
+            get {
+                return ResourceManager.GetString("NameDelivery", resourceCulture);
             }
         }
         
@@ -633,6 +714,15 @@ namespace Sklad_v1_001.Properties {
         public static string NameTypeCategory {
             get {
                 return ResourceManager.GetString("NameTypeCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ТОВАР.
+        /// </summary>
+        public static string NEWPRODUCT {
+            get {
+                return ResourceManager.GetString("NEWPRODUCT", resourceCulture);
             }
         }
         
@@ -691,6 +781,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на №-телефона гол.офисса.
+        /// </summary>
+        public static string NumberPhoneDelivery {
+            get {
+                return ResourceManager.GetString("NumberPhoneDelivery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Номер Сотрудника.
         /// </summary>
         public static string NumberSotrudnika {
@@ -723,6 +822,15 @@ namespace Sklad_v1_001.Properties {
         public static string Otdel {
             get {
                 return ResourceManager.GetString("Otdel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Упаковка.
+        /// </summary>
+        public static string Package {
+            get {
+                return ResourceManager.GetString("Package", resourceCulture);
             }
         }
         
@@ -948,6 +1056,15 @@ namespace Sklad_v1_001.Properties {
         public static string ShtrixCode {
             get {
                 return ResourceManager.GetString("ShtrixCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Размеры продукта.
+        /// </summary>
+        public static string SizeProduct {
+            get {
+                return ResourceManager.GetString("SizeProduct", resourceCulture);
             }
         }
         

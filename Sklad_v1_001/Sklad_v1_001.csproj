@@ -284,6 +284,9 @@
     <Compile Include="Control\ToolBar\Close.xaml.cs">
       <DependentUpon>Close.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\ToolBar\DataViewToolNewSupplyDocument.xaml.cs">
+      <DependentUpon>DataViewToolNewSupplyDocument.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\ToolBar\ToolBarSaveCancel.xaml.cs">
       <DependentUpon>ToolBarSaveCancel.xaml</DependentUpon>
     </Compile>
@@ -326,8 +329,8 @@
       <DependentUpon>NewSaleDocument.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\SupplyDocumentDetails\SupplyDocumentDetailsLogic.cs" />
-    <Compile Include="FormUsers\SupplyDocument\NewSupplyDocument.xaml.cs">
-      <DependentUpon>NewSupplyDocument.xaml</DependentUpon>
+    <Compile Include="FormUsers\SupplyDocument\NewSupplyDocumentGrid.xaml.cs">
+      <DependentUpon>NewSupplyDocumentGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\SupplyDocument\SupplyDocumentGrid.xaml.cs">
       <DependentUpon>SupplyDocumentGrid.xaml</DependentUpon>
@@ -516,6 +519,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Control\ToolBar\DataViewToolNewSupplyDocument.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\ToolBar\ToolBarSaveCancel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -556,7 +563,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="FormUsers\SupplyDocument\NewSupplyDocument.xaml">
+    <Page Include="FormUsers\SupplyDocument\NewSupplyDocumentGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -774,6 +781,9 @@
     <Resource Include="Icone\IconClearAllFilters.png" />
     <Resource Include="Icone\IconClose.png" />
     <Resource Include="Icone\IconClearFilter.png" />
+    <Resource Include="Icone\IconAddProduct.png" />
+    <Resource Include="Icone\IconDelete.png" />
+    <Resource Include="Icone\Store.png" />
     <Content Include="SQLCommand\JDB_DataAdapter.sql" />
     <Content Include="SQLCommand\JDB_POS.sql" />
     <Resource Include="Icone\IconOk.png" />

@@ -528,4 +528,43 @@
   <data name="NumberDocument" xml:space="preserve">
     <value>№-документа</value>
   </data>
+  <data name="ListProducts" xml:space="preserve">
+    <value>Список товаров</value>
+  </data>
+  <data name="DELETE" xml:space="preserve">
+    <value>УДАЛИТЬ</value>
+  </data>
+  <data name="MOTIVE" xml:space="preserve">
+    <value>ПРИЧИНА</value>
+  </data>
+  <data name="NEWPRODUCT" xml:space="preserve">
+    <value>ТОВАР</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Модель</value>
+  </data>
+  <data name="Package" xml:space="preserve">
+    <value>Упаковка</value>
+  </data>
+  <data name="SizeProduct" xml:space="preserve">
+    <value>Размеры продукта</value>
+  </data>
+  <data name="AddFileInvoice" xml:space="preserve">
+    <value>Файл инвойса</value>
+  </data>
+  <data name="AddFileTTN" xml:space="preserve">
+    <value>Файл ТТН</value>
+  </data>
+  <data name="ListDelivery" xml:space="preserve">
+    <value>Компания доставщик</value>
+  </data>
+  <data name="ListPayment" xml:space="preserve">
+    <value>Оплаты</value>
+  </data>
+  <data name="NameDelivery" xml:space="preserve">
+    <value>Наименование компании</value>
+  </data>
+  <data name="NumberPhoneDelivery" xml:space="preserve">
+    <value>№-телефона гол.офисса</value>
+  </data>
 </root>
