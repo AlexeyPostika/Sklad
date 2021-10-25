@@ -828,6 +828,8 @@
     <Resource Include="Icone\IconSaveAs.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="FormUsers\Delivery\" />
+    <Folder Include="FormUsers\Payment\" />
     <Folder Include="FormUsers\SupplyDocumentPayment\" />
     <Folder Include="Report\" />
   </ItemGroup>
