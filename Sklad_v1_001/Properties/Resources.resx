@@ -505,7 +505,7 @@
     <value>Категория</value>
   </data>
   <data name="TagPriceRus" xml:space="preserve">
-    <value>Цена закупки в RUP</value>
+    <value>Цена закупки в RUB</value>
   </data>
   <data name="TagPriceUSA" xml:space="preserve">
     <value>Цена закупки в USA</value>
@@ -566,5 +566,8 @@
   </data>
   <data name="NumberPhoneDelivery" xml:space="preserve">
     <value>№-телефона гол.офисса</value>
+  </data>
+  <data name="PackageYEStoNOT" xml:space="preserve">
+    <value>Упаковка есть?</value>
   </data>
 </root>

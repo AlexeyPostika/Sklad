@@ -13,7 +13,6 @@
       Title="{x:Static res:Resources.SupplyTitly}" 
       Style="{DynamicResource UsersPageWidth}"     
       x:Name="page">
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

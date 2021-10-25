@@ -835,6 +835,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Упаковка есть?.
+        /// </summary>
+        public static string PackageYEStoNOT {
+            get {
+                return ResourceManager.GetString("PackageYEStoNOT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Страница.
         /// </summary>
         public static string PAGE {
@@ -1150,7 +1159,7 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Цена закупки в RUP.
+        ///   Ищет локализованную строку, похожую на Цена закупки в RUB.
         /// </summary>
         public static string TagPriceRus {
             get {

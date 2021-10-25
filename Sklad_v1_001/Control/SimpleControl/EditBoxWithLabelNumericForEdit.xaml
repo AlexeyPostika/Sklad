@@ -10,7 +10,7 @@
     <UserControl.Resources>
         <local:StringToNullableIntConverter x:Key="nullDecimalConv"/>
     </UserControl.Resources>
-    <Grid Height="30" Name="grid" Margin="0, 10, 10, 0">
+    <Grid Height="30" Name="grid" Margin="0, 10, 3, 0">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>

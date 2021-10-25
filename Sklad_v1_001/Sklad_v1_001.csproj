@@ -173,6 +173,9 @@
     <Compile Include="Control\FlexButton\ToolBarButton.xaml.cs">
       <DependentUpon>ToolBarButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexComboBox\ComboBoxToWithLabel.xaml.cs">
+      <DependentUpon>ComboBoxToWithLabel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexComboBox\ComboBoxWithLabel.xaml.cs">
       <DependentUpon>ComboBoxWithLabel.xaml</DependentUpon>
     </Compile>
@@ -263,6 +266,9 @@
     <Compile Include="Control\FlexMessageBox\FlexWindows.xaml.cs">
       <DependentUpon>FlexWindows.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexRadio\FlexRadioButton.xaml.cs">
+      <DependentUpon>FlexRadioButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexTextBox\FlexLabelTextBlock.xaml.cs">
       <DependentUpon>FlexLabelTextBlock.xaml</DependentUpon>
     </Compile>
@@ -325,6 +331,9 @@
     </Compile>
     <Compile Include="FormUsers\Kategor\KategoriiLogic.cs" />
     <Compile Include="FormUsers\Prixod\RegistraciyTovaraLogic.cs" />
+    <Compile Include="FormUsers\Product\NewAddProductItem.xaml.cs">
+      <DependentUpon>NewAddProductItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FormUsers\SaleDocument\NewSaleDocument.xaml.cs">
       <DependentUpon>NewSaleDocument.xaml</DependentUpon>
     </Compile>
@@ -376,6 +385,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Control\FlexButton\ToolBarButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\FlexComboBox\ComboBoxToWithLabel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -491,6 +504,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Control\FlexRadio\FlexRadioButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\FlexTextBox\FlexLabelTextBlock.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -558,6 +575,10 @@
     <Page Include="Control\Zona\Yellow\SelectCategoryYellowTable.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FormUsers\Product\NewAddProductItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FormUsers\SaleDocument\NewSaleDocument.xaml">
       <Generator>MSBuild:Compile</Generator>
