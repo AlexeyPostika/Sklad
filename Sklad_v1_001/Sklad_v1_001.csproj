@@ -329,6 +329,9 @@
     <Compile Include="Control\Zona\Yellow\SelectCategoryYellowTable.xaml.cs">
       <DependentUpon>SelectCategoryYellowTable.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FormUsers\Delivery\NewDeliveryItem.xaml.cs">
+      <DependentUpon>NewDeliveryItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FormUsers\Kategor\KategoriiLogic.cs" />
     <Compile Include="FormUsers\Prixod\RegistraciyTovaraLogic.cs" />
     <Compile Include="FormUsers\Product\NewAddProductItem.xaml.cs">
@@ -338,6 +341,9 @@
       <DependentUpon>NewSaleDocument.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\SupplyDocumentDetails\SupplyDocumentDetailsLogic.cs" />
+    <Compile Include="FormUsers\SupplyDocument\NewSupplyDocumentGrid.xaml.cs">
+      <DependentUpon>NewSupplyDocumentGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FormUsers\SupplyDocument\SupplyDocumentGrid.xaml.cs">
       <DependentUpon>SupplyDocumentGrid.xaml</DependentUpon>
     </Compile>
@@ -573,11 +579,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="FormUsers\Delivery\NewDeliveryItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="FormUsers\Product\NewAddProductItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FormUsers\SaleDocument\NewSaleDocument.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FormUsers\SupplyDocument\NewSupplyDocumentGrid.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -821,7 +835,6 @@
     <Resource Include="Icone\IconSaveAs.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Control\FlexComboBox\" />
     <Folder Include="FormUsers\SupplyDocumentPayment\" />
     <Folder Include="Report\" />
   </ItemGroup>

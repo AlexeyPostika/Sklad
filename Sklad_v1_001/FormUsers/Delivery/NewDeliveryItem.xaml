@@ -1,0 +1,68 @@
+﻿<Page x:Class="Sklad_v1_001.FormUsers.Delivery.NewDeliveryItem"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Sklad_v1_001.FormUsers.Delivery"
+      xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+      xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton"
+      xmlns:SimpleControl="clr-namespace:Sklad_v1_001.Control.SimpleControl"
+      xmlns:FlexTextBox="clr-namespace:Sklad_v1_001.Control.FlexTextBox"
+      xmlns:FlexComboBox="clr-namespace:Sklad_v1_001.Control.FlexComboBox"
+      xmlns:FlexRadioButton="clr-namespace:Sklad_v1_001.Control.FlexRadio"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="NewDeliveryItem"
+      Style="{DynamicResource UsersPageWidth}" 
+      Height="450"
+      Width="350">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Content="Компания доставки" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16" />
+        <Border Style="{DynamicResource BorderStyle}" Margin="10" Grid.Row="1" Grid.ColumnSpan="2">
+            <StackPanel x:Name="delivery" Background="Transparent">
+                <FlexComboBox:ComboBoxWithLabel LabelText="{x:Static res:Resources.NameDelivery}" LabelWidth="160"/>
+                <FlexComboBox:ComboBoxWithLabel LabelText="{x:Static res:Resources.ManagerDelivery}" LabelWidth="160"/>
+                <SimpleControl:EditBoxWithLabel LabelWidth="160"
+                                                IsRequired="Collapsed"
+                                                LabelText="{x:Static res:Resources.NumberPhone}"
+                                                Text="{Binding ElementName=Window, Path=EditValue1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <SimpleControl:EditBoxWithLabel LabelWidth="160"
+                                                IsRequired="Collapsed"
+                                                LabelText="{x:Static res:Resources.NumberPhoneDelivery}"
+                                                Text="{Binding ElementName=Window, Path=EditValue1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <SimpleControl:EditBoxWithLabel LabelWidth="160"
+                                                IsRequired="Collapsed"
+                                                LabelText="{x:Static res:Resources.DeliveryAdress}"
+                                                Text="{Binding ElementName=Window, Path=EditValue1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <!--<FlexTextBox:FlexLabelTextBox LabelText="{x:Static res:Resources.Model}"/>
+                <SimpleControl:EditBoxWithLabelNumericForEdit LabelText="{x:Static res:Resources.Quantity}" LabelWidth="120"/>
+                <SimpleControl:EditBoxWithLabelNumericForEdit LabelText="{x:Static res:Resources.TagPriceUSA}" LabelWidth="120"/>
+                <SimpleControl:EditBoxWithLabelNumericForEdit LabelText="{x:Static res:Resources.TagPriceRus}" LabelWidth="120"/>
+                <FlexTextBox:FlexLabelTextBox LabelText="{x:Static res:Resources.SizeProduct}"/>
+                <FlexRadioButton:FlexRadioButton LabelText="{x:Static res:Resources.PackageYEStoNOT}"
+                                                 YESLabelText="Есть"
+                                                 NOLabelText="Нет"
+                                                 LabelWidth="230"/>-->
+            </StackPanel>
+        </Border>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <FlexButton:ToolBarButton Grid.Column="1" Width="100"
+                                      Text="{x:Static res:Resources.MessageOK}"/>
+            <FlexButton:ToolBarButton Grid.Column="3" Width="100"
+                                      Text="{x:Static res:Resources.CANCEL}"/>
+        </Grid>
+    </Grid>
+</Page>

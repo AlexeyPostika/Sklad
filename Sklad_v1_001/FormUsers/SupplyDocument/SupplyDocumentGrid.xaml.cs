@@ -790,7 +790,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         private void SupplyToolBar_ButtonAdd()
         {      
-           // MainWindow.AppWindow.ButtonNewSupplyDocument(localRow);
+            MainWindow.AppWindow.ButtonNewSupplyDocument(localRow);
         }
     }
 }

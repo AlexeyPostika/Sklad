@@ -570,4 +570,10 @@
   <data name="PackageYEStoNOT" xml:space="preserve">
     <value>Упаковка есть?</value>
   </data>
+  <data name="DeliveryAdress" xml:space="preserve">
+    <value>Адрес доставки</value>
+  </data>
+  <data name="ManagerDelivery" xml:space="preserve">
+    <value>Менеджер компании</value>
+  </data>
 </root>

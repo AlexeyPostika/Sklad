@@ -32,7 +32,7 @@ namespace Sklad_v1_001
         TovarInZona tovarInZona;
         ZacupcaGrid zacupcaGrid;
         SupplyDocumentGrid supplyDocumentGrid;
-        //NewSupplyDocumentGrid newSupplyDocumentGrid;
+        NewSupplyDocumentGrid newSupplyDocumentGrid;
 
         //public static WorkZona AppWindow;
         //public MainWindow mailWindows1;
@@ -124,12 +124,12 @@ namespace Sklad_v1_001
             supplyDocumentGrid = new SupplyDocumentGrid();
             frameWorkArea.Navigate(supplyDocumentGrid); // открытие страницы
         }
-        //public void ButtonNewSupplyDocument(FormUsers.SupplyDocument.LocalRow document)
-        //{
-        //    newSupplyDocumentGrid = new NewSupplyDocumentGrid();
-        //    newSupplyDocumentGrid.Document = document;
-        //    this.frameWorkArea.Navigate(newSupplyDocumentGrid);
-        //}
+        public void ButtonNewSupplyDocument(FormUsers.SupplyDocument.LocalRow document)
+        {
+            newSupplyDocumentGrid = new NewSupplyDocumentGrid();
+            newSupplyDocumentGrid.Document = document;
+            this.frameWorkArea.Navigate(newSupplyDocumentGrid);
+        }
 
 
         #endregion

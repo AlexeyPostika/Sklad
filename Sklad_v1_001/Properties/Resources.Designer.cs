@@ -322,6 +322,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Адрес доставки.
+        /// </summary>
+        public static string DeliveryAdress {
+            get {
+                return ResourceManager.GetString("DeliveryAdress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Описание.
         /// </summary>
         public static string Description {
@@ -579,6 +588,15 @@ namespace Sklad_v1_001.Properties {
         public static string ManagerCompany {
             get {
                 return ResourceManager.GetString("ManagerCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Менеджер компании.
+        /// </summary>
+        public static string ManagerDelivery {
+            get {
+                return ResourceManager.GetString("ManagerDelivery", resourceCulture);
             }
         }
         
