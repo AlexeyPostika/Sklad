@@ -5,7 +5,7 @@
     <Style  x:Key="UsersPageWidth"  TargetType="{x:Type Page}" >
         <Style.Setters>
             <Setter Property="Background" Value="#FFFDFAFA"/>
-            <Setter Property="Height" Value="918"/>
+            <Setter Property="Height" Value="920"/>
         </Style.Setters>
     </Style>
 
@@ -60,7 +60,13 @@
         </Style.Setters>
     </Style>
 
+    <Style x:Key="BorderStyle" TargetType="{x:Type Border}">
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ColorBrushBorder}" />
+        <Setter Property="CornerRadius" Value="4" />
+    </Style>
     <SolidColorBrush x:Key="ColorButtonStaticBorder" Color="#FFCCCCCC"/>
     <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
+    <SolidColorBrush x:Key="ColorBrushBorder" Color="#FFCCCCCC"/>
 
 </ResourceDictionary>

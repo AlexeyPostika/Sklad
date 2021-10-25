@@ -8,10 +8,10 @@
             Style="{DynamicResource UsersControlColor}"
              mc:Ignorable="d" x:Name="control">
     <Grid>
-        <StackPanel Margin="3,0">
+        <StackPanel Margin="3,0" Height="Auto">
             <Label Name="LabelName" Content="{Binding ElementName=control, Path=LabelText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
             <TextBox Name="DescriptionInfo" Text="{Binding ElementName=control, Path=Description, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                     IsEnabled="{Binding ElementName=control, Path=EnableTextBox, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                     IsEnabled="{Binding ElementName=control, Path=EnableTextBox, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Height="30"/>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="Sklad_v1_001.Control.ToolBar.DataViewToolNewSupplyDocument"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sklad_v1_001.Control.ToolBar"
+             mc:Ignorable="d" 
+             xmlns:res="clr-namespace:Sklad_v1_001.Properties"             
+             xmlns:FlexFilter="clr-namespace:Sklad_v1_001.Control.FlexFilter"
+             xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton"
+             xmlns:FlexComboBox="clr-namespace:Sklad_v1_001.Control.FlexComboBox"
+             Name="control">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <WrapPanel Orientation="Horizontal" VerticalAlignment="Stretch">
+            <FlexButton:ToolBarButton x:Name="ButtonNewProduct" Margin="0,0,10,0" Text="{x:Static res:Resources.NEWPRODUCT}" ButtonClick="ButtonNewProduct_ButtonClick" IsEnabled="{Binding ElementName=control, Path=IsEnabledButton1, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VisibilityButton="{Binding ElementName=control, Path=IsVisibleButton1, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <!--<FlexButton:ToolBarButton x:Name="ButtonNewRelatedProduct" Text="{x:Static res:Resources.NEWRELATEDPRODUCT}" ButtonClick="ButtonNewRelatedProduct_ButtonClick" IsEnabled="{Binding ElementName=control, Path=IsEnabledButton2, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VisibilityButton="{Binding ElementName=control, Path=IsVisibleButton2, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <FlexButton:ToolBarButton x:Name="ButtonNewCoupon" Text="{x:Static res:Resources.NEWCOUPON}" ButtonClick="ButtonNewCoupon_ButtonClick" IsEnabled="{Binding ElementName=control, Path=IsEnabledButton3, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VisibilityButton="{Binding ElementName=control, Path=IsVisibleButton3, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <FlexButton:ToolBarButton x:Name="ButtonNewServices" Text="{x:Static res:Resources.NEWSERVICES}" ButtonClick="ButtonNewServices_ButtonClick" IsEnabled="{Binding ElementName=control, Path=IsEnabledButton4, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VisibilityButton="{Binding ElementName=control, Path=IsVisibleButton4, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <FlexButton:ToolBarButton x:Name="ButtonNewPrepayment" Text="{x:Static res:Resources.NEWPREPAYMENT}" ButtonClick="ButtonNewPrepayment_ButtonClick" IsEnabled="{Binding ElementName=control, Path=IsEnabledButton5, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VisibilityButton="{Binding ElementName=control, Path=IsVisibleButton5, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <FlexButton:ToolBarButton x:Name="ButtonNewMotive" Text="{x:Static res:Resources.MOTIVE}" ButtonClick="ButtonMotive_ButtonClick" IsEnabled="{Binding ElementName=control, Path=IsEnabledButton6, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  VisibilityButton="{Binding ElementName=control, Path=IsVisibleButton6, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>-->
+            <FlexButton:ToolBarButton x:Name="ButtonDelete" Text="{x:Static res:Resources.DELETE}" ButtonClick="ButtonDelete_ButtonClick" IsEnabled="{Binding ElementName=control, Path=IsEnabledButton7, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VisibilityButton="{Binding ElementName=control, Path=IsVisibleButton7, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        </WrapPanel>
+    </Grid>
+</UserControl>

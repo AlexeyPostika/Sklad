@@ -173,6 +173,9 @@
     <Compile Include="Control\FlexButton\ToolBarButton.xaml.cs">
       <DependentUpon>ToolBarButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexComboBox\ComboBoxToWithLabel.xaml.cs">
+      <DependentUpon>ComboBoxToWithLabel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexComboBox\ComboBoxWithLabel.xaml.cs">
       <DependentUpon>ComboBoxWithLabel.xaml</DependentUpon>
     </Compile>
@@ -263,6 +266,9 @@
     <Compile Include="Control\FlexMessageBox\FlexWindows.xaml.cs">
       <DependentUpon>FlexWindows.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexRadio\FlexRadioButton.xaml.cs">
+      <DependentUpon>FlexRadioButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexTextBox\FlexLabelTextBlock.xaml.cs">
       <DependentUpon>FlexLabelTextBlock.xaml</DependentUpon>
     </Compile>
@@ -283,6 +289,9 @@
     </Compile>
     <Compile Include="Control\ToolBar\Close.xaml.cs">
       <DependentUpon>Close.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ToolBar\DataViewToolNewSupplyDocument.xaml.cs">
+      <DependentUpon>DataViewToolNewSupplyDocument.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\ToolBar\ToolBarSaveCancel.xaml.cs">
       <DependentUpon>ToolBarSaveCancel.xaml</DependentUpon>
@@ -320,14 +329,20 @@
     <Compile Include="Control\Zona\Yellow\SelectCategoryYellowTable.xaml.cs">
       <DependentUpon>SelectCategoryYellowTable.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FormUsers\Delivery\NewDeliveryItem.xaml.cs">
+      <DependentUpon>NewDeliveryItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FormUsers\Kategor\KategoriiLogic.cs" />
     <Compile Include="FormUsers\Prixod\RegistraciyTovaraLogic.cs" />
+    <Compile Include="FormUsers\Product\NewAddProductItem.xaml.cs">
+      <DependentUpon>NewAddProductItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FormUsers\SaleDocument\NewSaleDocument.xaml.cs">
       <DependentUpon>NewSaleDocument.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\SupplyDocumentDetails\SupplyDocumentDetailsLogic.cs" />
-    <Compile Include="FormUsers\SupplyDocument\NewSupplyDocument.xaml.cs">
-      <DependentUpon>NewSupplyDocument.xaml</DependentUpon>
+    <Compile Include="FormUsers\SupplyDocument\NewSupplyDocumentGrid.xaml.cs">
+      <DependentUpon>NewSupplyDocumentGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\SupplyDocument\SupplyDocumentGrid.xaml.cs">
       <DependentUpon>SupplyDocumentGrid.xaml</DependentUpon>
@@ -373,6 +388,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Control\FlexButton\ToolBarButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\FlexComboBox\ComboBoxToWithLabel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -488,6 +507,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Control\FlexRadio\FlexRadioButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\FlexTextBox\FlexLabelTextBlock.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -515,6 +538,10 @@
     <Page Include="Control\ToolBar\Close.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\ToolBar\DataViewToolNewSupplyDocument.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\ToolBar\ToolBarSaveCancel.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -552,11 +579,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="FormUsers\Delivery\NewDeliveryItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FormUsers\Product\NewAddProductItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FormUsers\SaleDocument\NewSaleDocument.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="FormUsers\SupplyDocument\NewSupplyDocument.xaml">
+    <Page Include="FormUsers\SupplyDocument\NewSupplyDocumentGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -774,6 +809,9 @@
     <Resource Include="Icone\IconClearAllFilters.png" />
     <Resource Include="Icone\IconClose.png" />
     <Resource Include="Icone\IconClearFilter.png" />
+    <Resource Include="Icone\IconAddProduct.png" />
+    <Resource Include="Icone\IconDelete.png" />
+    <Resource Include="Icone\Store.png" />
     <Content Include="SQLCommand\JDB_DataAdapter.sql" />
     <Content Include="SQLCommand\JDB_POS.sql" />
     <Resource Include="Icone\IconOk.png" />
@@ -797,6 +835,7 @@
     <Resource Include="Icone\IconSaveAs.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="FormUsers\Payment\" />
     <Folder Include="FormUsers\SupplyDocumentPayment\" />
     <Folder Include="Report\" />
   </ItemGroup>
