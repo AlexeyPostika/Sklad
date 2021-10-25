@@ -18,7 +18,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="20*"/>
         </Grid.RowDefinitions>
-        <ToolBar:SupplyToolBar/>
+        <ToolBar:SupplyToolBar ButtonAdd="SupplyToolBar_ButtonAdd"/>
 
         <Grid Grid.Row="1" x:Name="SypplyDocumentList">
             <DataGrid x:Name="SypplyDocument" AutoGenerateColumns="False"
