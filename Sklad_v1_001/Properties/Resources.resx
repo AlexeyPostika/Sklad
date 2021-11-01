@@ -576,4 +576,10 @@
   <data name="ManagerDelivery" xml:space="preserve">
     <value>Менеджер компании</value>
   </data>
+  <data name="ADDDELIVERY" xml:space="preserve">
+    <value>Поставщик</value>
+  </data>
+  <data name="ADDPRODUCT" xml:space="preserve">
+    <value>Новый продукт</value>
+  </data>
 </root>

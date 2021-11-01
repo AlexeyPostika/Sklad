@@ -10,11 +10,12 @@
       xmlns:FlexTextBox="clr-namespace:Sklad_v1_001.Control.FlexTextBox"
       xmlns:FlexComboBox="clr-namespace:Sklad_v1_001.Control.FlexComboBox"
       xmlns:FlexRadioButton="clr-namespace:Sklad_v1_001.Control.FlexRadio"
+      xmlns:FlexEditBox="clr-namespace:Sklad_v1_001.Control.FlexEditBox"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="NewDeliveryItem"
       Style="{DynamicResource UsersPageWidth}" 
-      Height="450"
+      Height="400"
       Width="350">
 
     <Grid>
@@ -26,8 +27,8 @@
         <Label Content="Компания доставки" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16" />
         <Border Style="{DynamicResource BorderStyle}" Margin="10" Grid.Row="1" Grid.ColumnSpan="2">
             <StackPanel x:Name="delivery" Background="Transparent">
-                <FlexComboBox:ComboBoxWithLabel LabelText="{x:Static res:Resources.NameDelivery}" LabelWidth="160"/>
-                <FlexComboBox:ComboBoxWithLabel LabelText="{x:Static res:Resources.ManagerDelivery}" LabelWidth="160"/>
+                <FlexEditBox:EditBoxUserWithLabel LabelText="{x:Static res:Resources.NameDelivery}" LabelWidth="160"/>
+                <FlexEditBox:EditBoxUserWithLabel LabelText="{x:Static res:Resources.ManagerDelivery}" LabelWidth="160"/>
                 <SimpleControl:EditBoxWithLabel LabelWidth="160"
                                                 IsRequired="Collapsed"
                                                 LabelText="{x:Static res:Resources.NumberPhone}"
@@ -40,6 +41,12 @@
                                                 IsRequired="Collapsed"
                                                 LabelText="{x:Static res:Resources.DeliveryAdress}"
                                                 Text="{Binding ElementName=Window, Path=EditValue1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <SimpleControl:EditBoxWithLabelDownloadFile x:Name="Invoice"  
+                                                            LabelText="{x:Static res:Resources.Invoice}" LabelWidth="160"
+                                                            ButtonAddClick="Invoice_ButtonAddClick"/>
+                <SimpleControl:EditBoxWithLabelDownloadFile x:Name="TTN"   Margin="0,0,0,10"
+                                                            LabelText="{x:Static res:Resources.TTN}" LabelWidth="160"
+                                                            ButtonAddClick="TTN_ButtonAddClick"/>
                 <!--<FlexTextBox:FlexLabelTextBox LabelText="{x:Static res:Resources.Model}"/>
                 <SimpleControl:EditBoxWithLabelNumericForEdit LabelText="{x:Static res:Resources.Quantity}" LabelWidth="120"/>
                 <SimpleControl:EditBoxWithLabelNumericForEdit LabelText="{x:Static res:Resources.TagPriceUSA}" LabelWidth="120"/>

@@ -11,6 +11,7 @@
       xmlns:FlexTextBox="clr-namespace:Sklad_v1_001.Control.FlexTextBox"
       xmlns:FlexComboBox="clr-namespace:Sklad_v1_001.Control.FlexComboBox"
       xmlns:FlexRadioButton="clr-namespace:Sklad_v1_001.Control.FlexRadio"
+      xmlns:FlexEditBox="clr-namespace:Sklad_v1_001.Control.FlexEditBox"
       Title="NewAddProductItem"
       Style="{DynamicResource UsersPageWidth}" 
       Height="450"
@@ -24,17 +25,17 @@
         <Label Content="Продукт" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16" />
         <Border Style="{DynamicResource BorderStyle}" Margin="10" Grid.Row="1" Grid.ColumnSpan="2">
             <StackPanel x:Name="Product" Background="Transparent">
-                <FlexTextBox:FlexLabelTextBox LabelText="{x:Static res:Resources.NameProduct}"/>
-                <FlexComboBox:ComboBoxWithLabel LabelText="{x:Static res:Resources.CATEGORY}" LabelWidth="70"/>
-                <FlexTextBox:FlexLabelTextBox LabelText="{x:Static res:Resources.Model}"/>
+                <FlexTextBox:FlexLabelTextBox LabelText="{x:Static res:Resources.NameProduct}" EnableTextBox="True"/>
+                <FlexEditBox:EditBoxUserWithLabel LabelText="{x:Static res:Resources.CATEGORY}" LabelWidth="70"/>
+                <FlexTextBox:FlexLabelTextBox LabelText="{x:Static res:Resources.Model}" EnableTextBox="True"/>
                 <SimpleControl:EditBoxWithLabelNumericForEdit LabelText="{x:Static res:Resources.Quantity}" LabelWidth="120"/>
                 <SimpleControl:EditBoxWithLabelNumericForEdit LabelText="{x:Static res:Resources.TagPriceUSA}" LabelWidth="120"/>
                 <SimpleControl:EditBoxWithLabelNumericForEdit LabelText="{x:Static res:Resources.TagPriceRus}" LabelWidth="120"/>
-                <FlexTextBox:FlexLabelTextBox LabelText="{x:Static res:Resources.SizeProduct}"/>
+                <FlexTextBox:FlexLabelTextBox LabelText="{x:Static res:Resources.SizeProduct}" EnableTextBox="True"/>
                 <FlexRadioButton:FlexRadioButton LabelText="{x:Static res:Resources.PackageYEStoNOT}"
-                                                 YESLabelText="Есть"
+                                                 YESLabelText="Да"
                                                  NOLabelText="Нет"
-                                                 LabelWidth="230"/>
+                                                 LabelWidth="235"/>
             </StackPanel>
         </Border>
         <Grid Grid.Row="2">

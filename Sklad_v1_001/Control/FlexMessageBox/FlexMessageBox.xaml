@@ -9,7 +9,8 @@
         xmlns:SimpleControl="clr-namespace:Sklad_v1_001.Control.SimpleControl" 
         xmlns:dialog="clr-namespace:Sklad_v1_001.Control"
         mc:Ignorable="d"  
-        x:Name="Window" Width="300" Icon="/Sklad_v1_001;component/Icone/Sklad.png" 
+        x:Name="Window" Width="300" 
+        Icon="Store.png" 
         WindowStartupLocation ="CenterScreen" ResizeMode="NoResize"
         Loaded="Window_Loaded">
     <Grid>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sklad_v1_001.Control.FlexMessageBox;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -85,10 +86,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         {
             
         }
-
+       
+        #region Продукт
         private void ToolBarProduct_ButtonNewProductClick()
         {
-
+            MainWindow.AppWindow.ButtonNewAddProduct();
         }
 
         private void ToolBarProduct_ButtonDeleteClick()
@@ -110,10 +112,12 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         {
 
         }
+        #endregion
 
+        #region Поставщик
         private void ToolBarDelivery_ButtonNewProductClick()
         {
-
+            MainWindow.AppWindow.ButtonNewDelivery();
         }
 
         private void ToolBarDelivery_ButtonDeleteClick()
@@ -130,5 +134,6 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         {
 
         }
+        #endregion
     }
 }

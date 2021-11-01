@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:FormUsers="clr-namespace:Sklad_v1_001.FormUsers" x:Name="Login" x:Class="Sklad_v1_001.MainWindow"
         xmlns:Convecter ="clr-namespace:Sklad_v1_001.FormUsers"
-        Title="Store"  Icon="Icone/Sklad.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Height="960" Width="1268">
+        Title="Store"  Icon="Icone/Store.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Height="960" Width="1268">
     <!--<Grid Name="Autorizaciy" HorizontalAlignment="Left" Height="274" Margin="66,10,0,0" VerticalAlignment="Top" Width="349">
             <TextBlock HorizontalAlignment="Left" Margin="109,37,0,209" TextWrapping="Wrap" VerticalAlignment="Center" Height="28" Width="133" RenderTransformOrigin="0.299,0.5" FontSize="20" FontWeight="Bold"><Run Language="ru-ru" Text="Авторизация"/></TextBlock>
             <TextBlock x:Name="VvediteImay" HorizontalAlignment="Left" Margin="131,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83"><Run Language="ru-ru" Text="Введите логин:"/></TextBlock>

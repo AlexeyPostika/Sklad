@@ -14,7 +14,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Sklad_v1_001.Control.FlexMenu;
+using Sklad_v1_001.Control.FlexMessageBox;
 using Sklad_v1_001.FormUsers;
+using Sklad_v1_001.FormUsers.Delivery;
+using Sklad_v1_001.FormUsers.Product;
 using Sklad_v1_001.FormUsers.SupplyDocument;
 using Sklad_v1_001.FormUsers.Tovar;
 using Sklad_v1_001.FormUsers.Zacupca;
@@ -33,6 +36,9 @@ namespace Sklad_v1_001
         ZacupcaGrid zacupcaGrid;
         SupplyDocumentGrid supplyDocumentGrid;
         NewSupplyDocumentGrid newSupplyDocumentGrid;
+
+        NewAddProductItem newAddProductItem;
+        NewDeliveryItem newDeliveryItem;
 
         //public static WorkZona AppWindow;
         //public MainWindow mailWindows1;
@@ -131,7 +137,22 @@ namespace Sklad_v1_001
             this.frameWorkArea.Navigate(newSupplyDocumentGrid);
         }
 
+        //
+        public void ButtonNewAddProduct()
+        {
+            FlexWindows addProductWindow = new FlexWindows(Properties.Resources.ADDPRODUCT);
+            newAddProductItem = new NewAddProductItem();
+            addProductWindow.Content = newAddProductItem;
+            addProductWindow.ShowDialog();
+        }
 
+        public void ButtonNewDelivery()
+        {
+            FlexWindows addDeliveryWindow = new FlexWindows(Properties.Resources.ADDDELIVERY);
+            newDeliveryItem = new NewDeliveryItem();
+            addDeliveryWindow.Content = newDeliveryItem;
+            addDeliveryWindow.ShowDialog();
+        }
         #endregion
 
         #region настройки

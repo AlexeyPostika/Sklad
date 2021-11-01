@@ -200,6 +200,12 @@
     <Compile Include="Control\FlexEditBox\EditBoxDeleteWithLabel.xaml.cs">
       <DependentUpon>EditBoxDeleteWithLabel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexEditBox\EditBoxUser.xaml.cs">
+      <DependentUpon>EditBoxUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexEditBox\EditBoxUserWithLabel.xaml.cs">
+      <DependentUpon>EditBoxUserWithLabel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexFilter\FlexGridCheckBox.xaml.cs">
       <DependentUpon>FlexGridCheckBox.xaml</DependentUpon>
     </Compile>
@@ -277,6 +283,9 @@
     </Compile>
     <Compile Include="Control\SimpleControl\EditBoxWithLabel.xaml.cs">
       <DependentUpon>EditBoxWithLabel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\SimpleControl\EditBoxWithLabelDownloadFile.xaml.cs">
+      <DependentUpon>EditBoxWithLabelDownloadFile.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\SimpleControl\EditBoxWithLabelFloatForEdit.xaml.cs">
       <DependentUpon>EditBoxWithLabelFloatForEdit.xaml</DependentUpon>
@@ -423,6 +432,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Control\FlexEditBox\EditBoxUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\FlexEditBox\EditBoxUserWithLabel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\FlexFilter\FlexGridCheckBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -523,6 +540,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Control\SimpleControl\EditBoxWithLabelDownloadFile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\SimpleControl\EditBoxWithLabelFloatForEdit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -580,8 +601,8 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="FormUsers\Delivery\NewDeliveryItem.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FormUsers\Product\NewAddProductItem.xaml">
       <SubType>Designer</SubType>
@@ -592,8 +613,8 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="FormUsers\SupplyDocument\NewSupplyDocumentGrid.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FormUsers\SupplyDocument\SupplyDocumentGrid.xaml">
       <SubType>Designer</SubType>
@@ -801,6 +822,7 @@
     <Resource Include="Icone\AddList_40.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Control\FlexMessageBox\Store.png" />
     <Content Include="DLL\Boxberry.dll" />
     <Content Include="DLL\CDEK.dll" />
     <Content Include="DLL\Interop.DrvFRLib.dll" />
@@ -812,6 +834,7 @@
     <Resource Include="Icone\IconAddProduct.png" />
     <Resource Include="Icone\IconDelete.png" />
     <Resource Include="Icone\Store.png" />
+    <Resource Include="Icone\IconCategory.png" />
     <Content Include="SQLCommand\JDB_DataAdapter.sql" />
     <Content Include="SQLCommand\JDB_POS.sql" />
     <Resource Include="Icone\IconOk.png" />
@@ -835,6 +858,7 @@
     <Resource Include="Icone\IconSaveAs.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="FormUsers\Payment\" />
     <Folder Include="FormUsers\SupplyDocumentPayment\" />
     <Folder Include="Report\" />
   </ItemGroup>

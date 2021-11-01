@@ -61,6 +61,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Поставщик.
+        /// </summary>
+        public static string ADDDELIVERY {
+            get {
+                return ResourceManager.GetString("ADDDELIVERY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Файл инвойса.
         /// </summary>
         public static string AddFileInvoice {
@@ -84,6 +93,15 @@ namespace Sklad_v1_001.Properties {
         public static string ADDLIST {
             get {
                 return ResourceManager.GetString("ADDLIST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Новый продукт.
+        /// </summary>
+        public static string ADDPRODUCT {
+            get {
+                return ResourceManager.GetString("ADDPRODUCT", resourceCulture);
             }
         }
         

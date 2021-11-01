@@ -24,5 +24,15 @@ namespace Sklad_v1_001.FormUsers.Delivery
         {
             InitializeComponent();
         }
+
+        private void Invoice_ButtonAddClick()
+        {
+
+        }
+
+        private void TTN_ButtonAddClick()
+        {
+
+        }
     }
 }

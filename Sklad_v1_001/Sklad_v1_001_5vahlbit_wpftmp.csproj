@@ -1,0 +1,549 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E5596643-F9BB-44B2-92D1-5A09384327A3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sklad_v1_001</RootNamespace>
+    <AssemblyName>Sklad_v1_001</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Control\DialogWindows.cs" />
+    <Compile Include="Control\FlexButton\LevelButton.xaml.cs">
+      <DependentUpon>LevelButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexButton\SmallButtonFilter.xaml.cs">
+      <DependentUpon>SmallButtonFilter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexButton\SmallButtonNoText .xaml.cs">
+      <DependentUpon>SmallButtonNoText .xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexButton\ToolBarButton.xaml.cs">
+      <DependentUpon>ToolBarButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexComboBox\ComboBoxToWithLabel.xaml.cs">
+      <DependentUpon>ComboBoxToWithLabel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexComboBox\ComboBoxWithLabel.xaml.cs">
+      <DependentUpon>ComboBoxWithLabel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexControlDate\FilterDate.xaml.cs">
+      <DependentUpon>FilterDate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexControlDescription\Description4TextBlock.xaml.cs">
+      <DependentUpon>Description4TextBlock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexDateTime\DateTimeDelete.xaml.cs">
+      <DependentUpon>DateTimeDelete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexDateTime\DateTimeDeleteWithLabel.xaml.cs">
+      <DependentUpon>DateTimeDeleteWithLabel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexDateTime\DateTimeWithLabel.xaml.cs">
+      <DependentUpon>DateTimeWithLabel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexEditBox\EditBoxDelete.xaml.cs">
+      <DependentUpon>EditBoxDelete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexEditBox\EditBoxDeleteWithLabel.xaml.cs">
+      <DependentUpon>EditBoxDeleteWithLabel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexEditBox\EditBoxUser.xaml.cs">
+      <DependentUpon>EditBoxUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexEditBox\EditBoxUserWithLabel.xaml.cs">
+      <DependentUpon>EditBoxUserWithLabel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexFilter\FlexGridCheckBox.xaml.cs">
+      <DependentUpon>FlexGridCheckBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexFilter\FlexGridCheckBoxColorWindow.xaml.cs">
+      <DependentUpon>FlexGridCheckBoxColorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexFilter\FlexGridCheckBoxWindow.xaml.cs">
+      <DependentUpon>FlexGridCheckBoxWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexFilter\FlexGridCheckBoxWithImageWindow.xaml.cs">
+      <DependentUpon>FlexGridCheckBoxWithImageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexFilter\FlexGridFilteDateTime.xaml.cs">
+      <DependentUpon>FlexGridFilteDateTime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexFilter\FlexGridFilteDay.xaml.cs">
+      <DependentUpon>FlexGridFilteDay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexFilter\FlexGridFiltePaymentType.xaml.cs">
+      <DependentUpon>FlexGridFiltePaymentType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexFilter\FlexGridFilterCheckbox.xaml.cs">
+      <DependentUpon>FlexGridFilterCheckbox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexFilter\FlexGridFilteRole.xaml.cs">
+      <DependentUpon>FlexGridFilteRole.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexFilter\FlexGridFromTo.xaml.cs">
+      <DependentUpon>FlexGridFromTo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexFilter\FlexGridFromToWindow.xaml.cs">
+      <DependentUpon>FlexGridFromToWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexFilter\FlexGridFromToWindowInt.xaml.cs">
+      <DependentUpon>FlexGridFromToWindowInt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexFilter\FlexGridFromToWindowTime.xaml.cs">
+      <DependentUpon>FlexGridFromToWindowTime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexGridControl\ImageWithCheckBox.xaml.cs">
+      <DependentUpon>ImageWithCheckBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexGridControl\ImageWithText.xaml.cs">
+      <DependentUpon>ImageWithText.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexImage\FlexImageSelect.xaml.cs">
+      <DependentUpon>FlexImageSelect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexImage\ImageList.xaml.cs">
+      <DependentUpon>ImageList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexImage\ImageListPage.xaml.cs">
+      <DependentUpon>ImageListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexMenu\frameMenu.xaml.cs">
+      <DependentUpon>frameMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexMenu\frameMenuPage.xaml.cs">
+      <DependentUpon>frameMenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexMessageBox\FlexMessageBox.xaml.cs">
+      <DependentUpon>FlexMessageBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexMessageBox\FlexWindows.xaml.cs">
+      <DependentUpon>FlexWindows.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexRadio\FlexRadioButton.xaml.cs">
+      <DependentUpon>FlexRadioButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexTextBox\FlexLabelTextBlock.xaml.cs">
+      <DependentUpon>FlexLabelTextBlock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexTextBox\FlexLabelTextBox.xaml.cs">
+      <DependentUpon>FlexLabelTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\SimpleControl\EditBoxWithLabel.xaml.cs">
+      <DependentUpon>EditBoxWithLabel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\SimpleControl\EditBoxWithLabelDownloadFile.xaml.cs">
+      <DependentUpon>EditBoxWithLabelDownloadFile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\SimpleControl\EditBoxWithLabelFloatForEdit.xaml.cs">
+      <DependentUpon>EditBoxWithLabelFloatForEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\SimpleControl\EditBoxWithLabelNumericForEdit.xaml.cs">
+      <DependentUpon>EditBoxWithLabelNumericForEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\SimpleControl\EditBoxWithLabelTime.xaml.cs">
+      <DependentUpon>EditBoxWithLabelTime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ToolBar\Close.xaml.cs">
+      <DependentUpon>Close.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ToolBar\DataViewToolNewSupplyDocument.xaml.cs">
+      <DependentUpon>DataViewToolNewSupplyDocument.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ToolBar\ToolBarSaveCancel.xaml.cs">
+      <DependentUpon>ToolBarSaveCancel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ToolBar\ToolBarNextToBack.xaml.cs">
+      <DependentUpon>ToolBarNextToBack.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ToolBar\ToolBarProductEdit.xaml.cs">
+      <DependentUpon>ToolBarProductEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ToolBar\SupplyToolBar.xaml.cs">
+      <DependentUpon>SupplyToolBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ToolBar\ToolBarZakupkaxaml.xaml.cs">
+      <DependentUpon>ToolBarZakupkaxaml.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Users\FlexUserNameImage.xaml.cs">
+      <DependentUpon>FlexUserNameImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Users\FlexUsersEdit.xaml.cs">
+      <DependentUpon>FlexUsersEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Users\PhotoUserToDolwnost.xaml.cs">
+      <DependentUpon>PhotoUserToDolwnost.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Zona\Green\SelectCategoryGreenTable.xaml.cs">
+      <DependentUpon>SelectCategoryGreenTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Zona\Red\SelectCategoryRedTable.xaml.cs">
+      <DependentUpon>SelectCategoryRedTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Zona\White\SelectCategoryWhiteTable.xaml.cs">
+      <DependentUpon>SelectCategoryWhiteTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Zona\Yellow\SelectCategoryYellowTable.xaml.cs">
+      <DependentUpon>SelectCategoryYellowTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsers\Delivery\NewDeliveryItem.xaml.cs">
+      <DependentUpon>NewDeliveryItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsers\Kategor\KategoriiLogic.cs" />
+    <Compile Include="FormUsers\Prixod\RegistraciyTovaraLogic.cs" />
+    <Compile Include="FormUsers\Product\NewAddProductItem.xaml.cs">
+      <DependentUpon>NewAddProductItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsers\SaleDocument\NewSaleDocument.xaml.cs">
+      <DependentUpon>NewSaleDocument.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsers\SupplyDocumentDetails\SupplyDocumentDetailsLogic.cs" />
+    <Compile Include="FormUsers\SupplyDocument\NewSupplyDocumentGrid.xaml.cs">
+      <DependentUpon>NewSupplyDocumentGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsers\SupplyDocument\SupplyDocumentGrid.xaml.cs">
+      <DependentUpon>SupplyDocumentGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsers\SupplyDocument\SupplyDocumentLogic.cs" />
+    <Compile Include="FormUsers\Tovar\TovarInZona.xaml.cs">
+      <DependentUpon>TovarInZona.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsers\Tovar\TovarItemZona.xaml.cs">
+      <DependentUpon>TovarItemZona.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsers\Tovar\TovarZonaLogic.cs" />
+    <Compile Include="FormUsers\Userss\UserList.xaml.cs">
+      <DependentUpon>UserList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsers\Userss\UserListLogic.cs" />
+    <Compile Include="FormUsers\Zacupca\ZacupcaGrid.xaml.cs">
+      <DependentUpon>ZacupcaGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsers\Zacupca\ZacupcaGridLogic.cs" />
+    <Compile Include="GlobalList\List.cs" />
+    <Compile Include="GlobalVariable\DataBaseData.cs" />
+    <Compile Include="GlobalVariable\FileWork.cs" />
+    <Compile Include="GlobalVariable\ScreenType.cs" />
+    <Compile Include="HelperGlobal\AbsractRow.cs" />
+    <Compile Include="HelperGlobal\ConvertData.cs" />
+    <Compile Include="HelperGlobal\FromToTimeFilter.xaml.cs">
+      <DependentUpon>FromToTimeFilter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HelperGlobal\ImageSql.cs" />
+    <Compile Include="HelperGlobal\MessageBoxTitleHelper.cs" />
+    <Compile Include="SQLCommand\SQLCommanSelect.cs" />
+    <Compile Include="FormUsers\Userss\RegistersUsers.xaml.cs">
+      <DependentUpon>RegistersUsers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FormUsers\Kategor\Kategorii.xaml.cs">
+      <DependentUpon>Kategorii.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsers\Page1.xaml.cs">
+      <DependentUpon>Page1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsers\Prixod\RegistraciyTovara.xaml.cs">
+      <DependentUpon>RegistraciyTovara.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsers\Tovar\TovarZona.xaml.cs">
+      <DependentUpon>TovarZona.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsers\Userss\Adminka.xaml.cs">
+      <DependentUpon>Adminka.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="DataBase\Sklad" />
+    <None Include="DLL\pinpad.ini" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DLL\Boxberry.dll" />
+    <Content Include="DLL\CDEK.dll" />
+    <Content Include="DLL\Interop.DrvFRLib.dll" />
+    <Content Include="DLL\pilot_nt.dll" />
+    <Content Include="SQLCommand\JDB_DataAdapter.sql" />
+    <Content Include="SQLCommand\JDB_POS.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="FormUsers\Payment\" />
+    <Folder Include="FormUsers\SupplyDocumentPayment\" />
+    <Folder Include="Report\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.112.2\build\net40\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.112.2\build\net40\System.Data.SQLite.Core.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.112.2\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.112.2\build\net40\System.Data.SQLite.Core.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup>
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\CrystalReports.AxShockwaveFlashObjects.13.0.4000\lib\net40\AxShockwaveFlashObjects.dll" />
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\Castle.Core.4.4.0\lib\net45\Castle.Core.dll" />
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\CrystalReports.Engine.13.0.4000\lib\net40\CrystalDecisions.CrystalReports.Engine.dll" />
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\CrystalReports.ReportAppServer.ClientDoc.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.ClientDoc.dll">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </ReferencePath>
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\CrystalReports.ReportAppServer.CommLayer.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.CommLayer.dll">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </ReferencePath>
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\CrystalReports.ReportAppServer.CommonControls.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.CommonControls.dll">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </ReferencePath>
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\CrystalReports.ReportAppServer.CommonObjectModel.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.CommonObjectModel.dll">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </ReferencePath>
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\CrystalReports.ReportAppServer.Controllers.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.Controllers.dll">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </ReferencePath>
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\CrystalReports.ReportAppServer.CubeDefModel.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.CubeDefModel.dll">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </ReferencePath>
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\CrystalReports.ReportAppServer.DataDefModel.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.DataDefModel.dll">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </ReferencePath>
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\CrystalReports.ReportAppServer.DataSetConversion.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.DataSetConversion.dll" />
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\CrystalReports.ReportAppServer.ObjectFactory.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.ObjectFactory.dll">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </ReferencePath>
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\CrystalReports.ReportAppServer.Prompting.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.Prompting.dll">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </ReferencePath>
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\CrystalReports.ReportAppServer.ReportDefModel.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.ReportDefModel.dll">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </ReferencePath>
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\CrystalReports.ReportAppServer.XmlSerialize.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.XmlSerialize.dll">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </ReferencePath>
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\CrystalReports.ReportSource.13.0.4000\lib\net40\CrystalDecisions.ReportSource.dll" />
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\CrystalReports.Shared.13.0.4000\lib\net40\CrystalDecisions.Shared.dll" />
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll" />
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll" />
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\DLL\Interop.DrvFRLib.dll">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </ReferencePath>
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\log4net.1.2.10\lib\2.0\log4net.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Microsoft.CSharp.dll" />
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\Moq.4.16.1\lib\net45\Moq.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\mscorlib.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\PresentationCore.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\PresentationFramework.dll" />
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\CrystalReports.WPF.Viewer.13.0.4000\lib\net40\SAPBusinessObjects.WPF.Viewer.dll" />
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\CrystalReports.WPF.ViewerShared.13.0.4000\lib\net40\SAPBusinessObjects.WPF.ViewerShared.dll" />
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\CrystalReports.ShockwaveFlashObjects.13.0.4000\lib\net40\ShockwaveFlashObjects.dll">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </ReferencePath>
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.ComponentModel.DataAnnotations.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Configuration.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Core.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Data.DataSetExtensions.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Data.dll" />
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\System.Data.SQLite.Core.1.0.112.2\lib\net40\System.Data.SQLite.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll" />
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll" />
+    <ReferencePath Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Windows.Forms.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xaml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xml.Linq.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\WindowsBase.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexButton\LevelButton.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexButton\SmallButtonFilter.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexButton\SmallButtonNoText .g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexButton\ToolBarButton.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexComboBox\ComboBoxToWithLabel.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexComboBox\ComboBoxWithLabel.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexControlDescription\Description4TextBlock.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexDateTime\DateTimeDelete.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexDateTime\DateTimeDeleteWithLabel.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexDateTime\DateTimeWithLabel.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexEditBox\EditBoxDelete.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexEditBox\EditBoxDeleteWithLabel.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexEditBox\EditBoxUser.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexEditBox\EditBoxUserWithLabel.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexFilter\FlexGridCheckBox.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexFilter\FlexGridCheckBoxColorWindow.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexFilter\FlexGridCheckBoxWindow.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexFilter\FlexGridCheckBoxWithImageWindow.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexFilter\FlexGridFilteDateTime.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexFilter\FlexGridFilteDay.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexFilter\FlexGridFiltePaymentType.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexFilter\FlexGridFilterCheckbox.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexFilter\FlexGridFilteRole.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexFilter\FlexGridFromToWindow.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexFilter\FlexGridFromToWindowInt.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexFilter\FlexGridFromToWindowTime.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexGridControl\ImageWithCheckBox.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexGridControl\ImageWithText.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexImage\FlexImageSelect.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexImage\ImageList.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexImage\ImageListPage.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexMenu\frameMenu.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexMenu\frameMenuPage.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexMessageBox\FlexMessageBox.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexMessageBox\FlexWindows.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexRadio\FlexRadioButton.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexTextBox\FlexLabelTextBlock.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexTextBox\FlexLabelTextBox.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\SimpleControl\EditBoxWithLabel.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\SimpleControl\EditBoxWithLabelDownloadFile.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\SimpleControl\EditBoxWithLabelFloatForEdit.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\SimpleControl\EditBoxWithLabelNumericForEdit.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\SimpleControl\EditBoxWithLabelTime.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\ToolBar\Close.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\ToolBar\DataViewToolNewSupplyDocument.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\ToolBar\ToolBarSaveCancel.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\ToolBar\ToolBarProductEdit.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\ToolBar\SupplyToolBar.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\ToolBar\ToolBarZakupkaxaml.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\Users\FlexUserNameImage.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\Zona\Green\SelectCategoryGreenTable.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\Zona\Red\SelectCategoryRedTable.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\Zona\White\SelectCategoryWhiteTable.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\Zona\Yellow\SelectCategoryYellowTable.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\FormUsers\Delivery\NewDeliveryItem.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\FormUsers\Product\NewAddProductItem.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\FormUsers\SaleDocument\NewSaleDocument.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\FormUsers\SupplyDocument\NewSupplyDocumentGrid.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\FormUsers\SupplyDocument\SupplyDocumentGrid.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\FormUsers\Tovar\TovarInZona.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\FormUsers\Tovar\TovarItemZona.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\FormUsers\Userss\RegistersUsers.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexControlDate\FilterDate.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\FlexFilter\FlexGridFromTo.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\ToolBar\ToolBarNextToBack.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\Users\FlexUsersEdit.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Control\Users\PhotoUserToDolwnost.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\FormUsers\Kategor\Kategorii.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\FormUsers\Page1.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\FormUsers\Prixod\RegistraciyTovara.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\FormUsers\Tovar\TovarZona.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\FormUsers\Userss\Adminka.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\FormUsers\Userss\UserList.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\FormUsers\Zacupca\ZacupcaGrid.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\HelperGlobal\FromToTimeFilter.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\MainWindow.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\App.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\Sklad_v1_001_Content.g.cs" />
+    <Compile Include="C:\Users\postika\Documents\Visual Studio 2010\Projects\Sklad_v1_001\obj\Debug\GeneratedInternalTypeHelper.g.cs" />
+  </ItemGroup>
+</Project>
