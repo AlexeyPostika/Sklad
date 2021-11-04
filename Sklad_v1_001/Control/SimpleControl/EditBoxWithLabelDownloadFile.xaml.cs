@@ -45,6 +45,26 @@ namespace Sklad_v1_001.Control.SimpleControl
                         typeof(Int32),
                         typeof(EditBoxWithLabelDownloadFile), new UIPropertyMetadata(50));
 
+        public static readonly DependencyProperty SourceProperty = DependencyProperty.Register(
+                       "Source",
+                       typeof(ImageSource),
+                      typeof(EditBoxWithLabelDownloadFile));
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+
+        public ImageSource Source
+        {
+            get
+            {
+                return (ImageSource)this.button.Image.Source;
+            }
+            set
+            {
+                this.button.Image.Source = value as ImageSource;
+                OnPropertyChanged("ImageSource");
+            }
+        }
+
         // Обычное свойство .NET  - обертка над свойством зависимостей
         public string Text
         {
@@ -110,17 +130,7 @@ namespace Sklad_v1_001.Control.SimpleControl
                 this.wrapPanel.Width = value;
             }
         }
-        public String ImageSource
-        {
-            set
-            {
-                this.button.Image.Source = new BitmapImage(new Uri(value, UriKind.Relative));
-            }
-            get
-            {
-                return null;
-            }
-        }
+        
         public event Action ButtonAddClick;
         public EditBoxWithLabelDownloadFile()
         {

@@ -1,4 +1,7 @@
 ﻿using Microsoft.Win32;
+using PdfSharp.Pdf;
+using PdfSharp.Pdf.Advanced;
+using PdfSharp.Pdf.IO;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,13 +10,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using winForms = System.Windows.Forms;
 
 namespace Sklad_v1_001.GlobalVariable
 {
     public class FileWork
-    {
-        List<BitmapImage> listImage;           
+    {        
+        List<BitmapImage> listImage;
+        public ImageSource Source { get; set; }
         public List<BitmapImage> ListImage { get => listImage; set => listImage = value; }
         public FileWork()
         {
@@ -75,8 +81,13 @@ namespace Sklad_v1_001.GlobalVariable
             saveFileDialog.Filter = "Image files (*.png;*.jpeg;*.jpg)|*.png;*.jpeg;*.jpg|All files (*.*)|*.*";
             if (saveFileDialog.ShowDialog() == true)
             {
-                Save(saveFileDialog.FileName, _listImage);
-                return true;
+                if (saveFileDialog.Filter.Split('|', '*')[saveFileDialog.FilterIndex * 3 - 1] == Path.GetExtension(saveFileDialog.FileName))
+                {
+                    Save(saveFileDialog.FileName, _listImage);
+                    return true;
+                }
+                else
+                    return false;
             }
             return false;
         }
@@ -109,5 +120,122 @@ namespace Sklad_v1_001.GlobalVariable
                 }
             }
         }
+        public void LoadImaje()
+        {
+            using (winForms.OpenFileDialog dlg = new winForms.OpenFileDialog())
+            {
+                dlg.DefaultExt = ".jpg";
+                dlg.Filter = "Jpg files|*.jpg|Png files|*.png|Bitmap files|*.bmp";
+
+                winForms.DialogResult result = dlg.ShowDialog();
+                if (result == System.Windows.Forms.DialogResult.OK)
+                {
+                    if (dlg.Filter.Split('|', '*')[dlg.FilterIndex * 3 - 1] == Path.GetExtension(dlg.FileName))
+                        Load(dlg.FileName);
+                }
+            }
+        }
+
+        private void Load(string fileName)
+        {
+            BitmapImage image = new BitmapImage();
+            using (var stream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.StreamSource = stream;
+                image.EndInit();
+            }
+            Source = image;
+        }
+
+        #region PDF
+        public void OpenPDFtoImage()
+        {
+            using (winForms.OpenFileDialog dlg = new winForms.OpenFileDialog())
+            {
+                dlg.DefaultExt = ".pdf";
+                dlg.Filter = "PDF files|*.pdf";
+
+                winForms.DialogResult result = dlg.ShowDialog();
+                if (result == System.Windows.Forms.DialogResult.OK)
+                {
+                    if (dlg.Filter.Split('|', '*')[dlg.FilterIndex * 3 - 1] == Path.GetExtension(dlg.FileName))
+                    {
+                        PdfDocument document = PdfReader.Open(dlg.FileName);
+
+                        int imageCount = 0;
+                        // Iterate pages
+                        foreach (PdfPage page in document.Pages)
+                        {
+                            // Get resources dictionary
+                            PdfDictionary resources = page.Elements.GetDictionary("/Resources");
+                            if (resources != null)
+                            {
+                                // Get external objects dictionary
+                                PdfDictionary xObjects = resources.Elements.GetDictionary("/XObject");
+                                if (xObjects != null)
+                                {
+                                    ICollection<PdfItem> items = xObjects.Elements.Values;
+                                    // Iterate references to external objects
+                                    foreach (PdfItem item in items)
+                                    {
+                                        PdfReference reference = item as PdfReference;
+                                        if (reference != null)
+                                        {
+                                            PdfDictionary xObject = reference.Value as PdfDictionary;
+                                            // Is external object an image?
+                                            if (xObject != null && xObject.Elements.GetString("/Subtype") == "/Image")
+                                            {
+                                                ExportImage(xObject, ref imageCount);                                              
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }                  
+                }
+            }
+        }
+       
+        public void ExportImage(PdfDictionary image, ref int count)
+        {
+            string filter = image.Elements.GetName("/Filter");
+            switch (filter)
+            {
+                case "/DCTDecode":
+                    Source = ExportJpegImage(image, ref count);
+                    break;
+
+                case "/FlateDecode":
+                    ExportAsPngImage(image, ref count);
+                    break;
+            }
+        }
+        static BitmapImage ExportJpegImage(PdfDictionary image, ref int count)
+        {
+            // Fortunately JPEG has native support in PDF and exporting an image is just writing the stream to a file.
+            byte[] stream = image.Stream.Value;
+            FileStream fs = new FileStream(String.Format("Image{0}.jpeg", count++), FileMode.Create, FileAccess.Write);
+            BinaryWriter bw = new BinaryWriter(fs);
+            bw.Write(stream);
+            bw.Close();
+            
+            BitmapImage image1 = new BitmapImage();
+            image1.BeginInit();
+            image1.CacheOption = BitmapCacheOption.OnLoad;
+            image1.StreamSource = fs;
+            image1.EndInit();
+
+            return image1;
+        }
+        static void ExportAsPngImage(PdfDictionary image, ref int count)
+        {
+            int width = image.Elements.GetInteger(PdfImage.Keys.Width);
+            int height = image.Elements.GetInteger(PdfImage.Keys.Height);
+            int bitsPerComponent = image.Elements.GetInteger(PdfImage.Keys.BitsPerComponent);         
+        }
+        #endregion
     }
 }

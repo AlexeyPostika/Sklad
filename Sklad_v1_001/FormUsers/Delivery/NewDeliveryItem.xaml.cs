@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Sklad_v1_001.GlobalVariable;
 
 namespace Sklad_v1_001.FormUsers.Delivery
 {
@@ -20,14 +21,19 @@ namespace Sklad_v1_001.FormUsers.Delivery
     /// </summary>
     public partial class NewDeliveryItem : Page
     {
+        FileWork fileWork;
         public NewDeliveryItem()
         {
             InitializeComponent();
+            fileWork = new FileWork();
         }
 
         private void Invoice_ButtonAddClick()
         {
-
+            fileWork.OpenPDFtoImage();
+            if (fileWork.Source!=null)
+                this.Invoice.Source = ImageHelper.GenerateImage("IconClose.png");
+            //OpenPDFtoImage
         }
 
         private void TTN_ButtonAddClick()
