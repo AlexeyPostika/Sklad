@@ -22,6 +22,7 @@
                          Text="{Binding ElementName=control, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          MaxLength="{Binding ElementName=control, Path=MaxLength, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <FlexButton:SmallButtonFilter x:Name="button" Grid.Column="2"
+                                          ImageSource="{Binding ElementName=control, Path=Source, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                           ButtonClick="button_ButtonClick"/>
                 <!--<Image x:Name="Image" 
                        Source="{Binding ElementName=control, Path=ImageSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->

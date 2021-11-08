@@ -44,6 +44,26 @@ namespace Sklad_v1_001.Control.SimpleControl
                         "MaxLength",
                         typeof(Int32),
                         typeof(EditBoxWithLabelDownloadFile), new UIPropertyMetadata(50));
+        
+        public static readonly DependencyProperty SourceProperty = DependencyProperty.Register(
+                        "Source",
+                        typeof(ImageSource),
+                       typeof(EditBoxWithLabelDownloadFile));
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+
+        public ImageSource Source
+        {
+            get
+            {
+                return (ImageSource)this.button.Image.Source;
+            }
+            set
+            {
+                this.button.Image.Source = value as ImageSource;
+                OnPropertyChanged("Source");
+            }
+        }
 
         // Обычное свойство .NET  - обертка над свойством зависимостей
         public string Text
