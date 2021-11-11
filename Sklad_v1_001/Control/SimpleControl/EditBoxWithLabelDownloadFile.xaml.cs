@@ -230,17 +230,7 @@ namespace Sklad_v1_001.Control.SimpleControl
                 this.wrapPanel.Width = value;
             }
         }
-        public String ImageSource
-        {
-            set
-            {
-                this.button.Image.Source = new BitmapImage(new Uri(value, UriKind.Relative));
-            }
-            get
-            {
-                return null;
-            }
-        }
+        
         public event Action ButtonAddClick;
         public event Action ButtonLoopClick;
         public event Action ButtonClearClick;
