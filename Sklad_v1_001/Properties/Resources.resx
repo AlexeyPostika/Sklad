@@ -582,4 +582,22 @@
   <data name="ADDPRODUCT" xml:space="preserve">
     <value>Новый продукт</value>
   </data>
+  <data name="DeliveryType1" xml:space="preserve">
+    <value>Черновик</value>
+  </data>
+  <data name="DeliveryType2" xml:space="preserve">
+    <value>Отправлен</value>
+  </data>
+  <data name="DeliveryType3" xml:space="preserve">
+    <value>Получено</value>
+  </data>
+  <data name="DeliveryType4" xml:space="preserve">
+    <value>Отменен</value>
+  </data>
+  <data name="EmptyField" xml:space="preserve">
+    <value>пустое поле</value>
+  </data>
+  <data name="ErrorEmptyField" xml:space="preserve">
+    <value>Заполните обязательное поле</value>
+  </data>
 </root>

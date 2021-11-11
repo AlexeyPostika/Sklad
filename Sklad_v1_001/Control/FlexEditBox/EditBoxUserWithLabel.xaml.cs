@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,8 +19,13 @@ namespace Sklad_v1_001.Control.FlexEditBox
     /// <summary>
     /// Логика взаимодействия для EditBoxUserWithLabel.xaml
     /// </summary>
-    public partial class EditBoxUserWithLabel : UserControl
+    public partial class EditBoxUserWithLabel : UserControl, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         // свойство зависимостей
         public static readonly DependencyProperty TextProperty = DependencyProperty.Register(
                         "Text",
@@ -30,6 +36,11 @@ namespace Sklad_v1_001.Control.FlexEditBox
                        "VisisbilityImageSim",
                        typeof(Visibility),
                        typeof(EditBoxUserWithLabel), new UIPropertyMetadata(Visibility.Visible));
+        // свойство зависимостей
+        public static readonly DependencyProperty IsRequiredProperty = DependencyProperty.Register(
+                        "IsRequired",
+                        typeof(Visibility),
+                        typeof(EditBoxUserWithLabel), new UIPropertyMetadata(Visibility.Collapsed));
         // Обычное свойство .NET  - обертка над свойством зависимостей
         public string Text
         {
@@ -42,7 +53,18 @@ namespace Sklad_v1_001.Control.FlexEditBox
             get { return (Visibility)GetValue(VisisbilityImageSimProperty); }
             set { SetValue(VisisbilityImageSimProperty, value); }
         }
-
+        public Visibility IsRequired
+        {
+            get
+            {
+                return (Visibility)GetValue(IsRequiredProperty);
+            }
+            set
+            {
+                SetValue(IsRequiredProperty, value);
+                OnPropertyChanged("IsRequired");
+            }
+        }
         public EditBoxUserWithLabel()
         {
             InitializeComponent();

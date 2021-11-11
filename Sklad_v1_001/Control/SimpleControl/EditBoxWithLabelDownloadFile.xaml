@@ -13,6 +13,8 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <WrapPanel Name="wrapPanel" Width="100" Margin="5,0,0,0">
                 <Label Name="label" Height="30"/>
@@ -21,10 +23,22 @@
             <TextBox Name="TextBox" Margin="0,0,3,0" Grid.Column="1"
                          Text="{Binding ElementName=control, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          MaxLength="{Binding ElementName=control, Path=MaxLength, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <FlexButton:SmallButtonFilter x:Name="button" Grid.Column="2"
+            <FlexButton:SmallButtonFilter x:Name="buttonLoop" Grid.Column="3" Margin="3,0"
+                                          ImageSource="{Binding ElementName=control, Path=SourceLoop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                          Visibility="{Binding ElementName=control, Path=VisibilityLoop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                          IsEnabled="{Binding ElementName=control, Path=IsEnableLoop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                          ButtonClick="buttonLoop_ButtonClick"/>
+            <FlexButton:SmallButtonFilter x:Name="button" Grid.Column="2" 
                                           ImageSource="{Binding ElementName=control, Path=Source, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                          Visibility="{Binding ElementName=control, Path=VisibilityAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                          IsEnabled="{Binding ElementName=control, Path=IsEnableAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                           ButtonClick="button_ButtonClick"/>
-                <!--<Image x:Name="Image" 
+            <FlexButton:SmallButtonFilter x:Name="buttonClear" Grid.Column="4"
+                                          ImageSource="{Binding ElementName=control, Path=SourceCleare, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                          Visibility="{Binding ElementName=control, Path=VisibilityCleare, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                          IsEnabled="{Binding ElementName=control, Path=IsEnableCleare, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                          ButtonClick="buttonClear_ButtonClick"/>
+            <!--<Image x:Name="Image" 
                        Source="{Binding ElementName=control, Path=ImageSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
         
         </Grid>

@@ -49,7 +49,47 @@ namespace Sklad_v1_001.Control.SimpleControl
                         "Source",
                         typeof(ImageSource),
                        typeof(EditBoxWithLabelDownloadFile));
+        //SourceLoop
+        public static readonly DependencyProperty SourceLoopProperty = DependencyProperty.Register(
+                        "SourceLoop",
+                        typeof(ImageSource),
+                       typeof(EditBoxWithLabelDownloadFile));
 
+        //
+        public static readonly DependencyProperty SourceCleareProperty = DependencyProperty.Register(
+                       "SourceCleare",
+                       typeof(ImageSource),
+                      typeof(EditBoxWithLabelDownloadFile));
+
+        public static readonly DependencyProperty VisibilityCleareProperty = DependencyProperty.Register(
+                       "VisibilityCleare",
+                       typeof(Visibility),
+                      typeof(EditBoxWithLabelDownloadFile), new PropertyMetadata(Visibility.Visible));
+
+        public static readonly DependencyProperty VisibilityLoopProperty = DependencyProperty.Register(
+                      "VisibilityLoop",
+                      typeof(Visibility),
+                     typeof(EditBoxWithLabelDownloadFile), new PropertyMetadata(Visibility.Visible));
+      
+        public static readonly DependencyProperty VisibilityAddProperty = DependencyProperty.Register(
+                     "VisibilityAdd",
+                     typeof(Visibility),
+                    typeof(EditBoxWithLabelDownloadFile), new PropertyMetadata(Visibility.Visible));
+
+        public static readonly DependencyProperty IsEnableCleareProperty = DependencyProperty.Register(
+                       "IsEnableCleare",
+                       typeof(Boolean),
+                      typeof(EditBoxWithLabelDownloadFile), new PropertyMetadata(false));
+
+        public static readonly DependencyProperty IsEnableLoopProperty = DependencyProperty.Register(
+                      "IsEnableLoop",
+                      typeof(Boolean),
+                     typeof(EditBoxWithLabelDownloadFile), new PropertyMetadata(false));
+
+        public static readonly DependencyProperty IsEnableAddProperty = DependencyProperty.Register(
+                     "IsEnableAdd",
+                     typeof(Boolean),
+                    typeof(EditBoxWithLabelDownloadFile), new PropertyMetadata(true));
         // Обычное свойство .NET  - обертка над свойством зависимостей
 
         public ImageSource Source
@@ -65,6 +105,66 @@ namespace Sklad_v1_001.Control.SimpleControl
             }
         }
 
+        public ImageSource SourceLoop
+        {
+            get
+            {
+                return (ImageSource)this.buttonLoop.Image.Source;
+            }
+            set
+            {
+                this.buttonLoop.Image.Source = value as ImageSource;
+                OnPropertyChanged("SourceLoop");
+            }
+        }
+        public ImageSource SourceCleare
+        {
+            get
+            {
+                return (ImageSource)this.buttonClear.Image.Source;
+            }
+            set
+            {
+                this.buttonClear.Image.Source = value as ImageSource;
+                OnPropertyChanged("SourceCleare");
+            }
+        }
+
+        public Visibility VisibilityCleare
+        {
+            get { return (Visibility)GetValue(VisibilityCleareProperty); }
+            set { SetValue(VisibilityCleareProperty, value); }         
+            
+        }
+        public Visibility VisibilityLoop
+        {
+            get { return (Visibility)GetValue(VisibilityLoopProperty); }
+            set { SetValue(VisibilityLoopProperty, value); }               
+        }
+        //VisibilityAdd
+        public Visibility VisibilityAdd
+        {
+            get { return (Visibility)GetValue(VisibilityAddProperty); }
+            set { SetValue(VisibilityAddProperty, value); }
+        }
+
+        public Boolean IsEnableCleare
+        {
+            get { return (Boolean)GetValue(IsEnableCleareProperty); }
+            set { SetValue(IsEnableCleareProperty, value); }
+
+        }
+        public Boolean IsEnableLoop
+        {
+            get { return (Boolean)GetValue(IsEnableLoopProperty); }
+            set { SetValue(IsEnableLoopProperty, value); }
+        }
+        //VisibilityAdd
+        public Boolean IsEnableAdd
+        {
+            get { return (Boolean)GetValue(IsEnableAddProperty); }
+            set { SetValue(IsEnableAddProperty, value); }
+        }
         // Обычное свойство .NET  - обертка над свойством зависимостей
         public string Text
         {
@@ -142,14 +242,28 @@ namespace Sklad_v1_001.Control.SimpleControl
             }
         }
         public event Action ButtonAddClick;
+        public event Action ButtonLoopClick;
+        public event Action ButtonClearClick;
         public EditBoxWithLabelDownloadFile()
         {
             InitializeComponent();
             this.button.Image.Source= ImageHelper.GenerateImage("IconAddProduct.png");
+            this.buttonLoop.Image.Source = ImageHelper.GenerateImage("IconSearchPage.png");
+            this.buttonClear.Image.Source = ImageHelper.GenerateImage("IconEraseFaile.png");
         }
         private void button_ButtonClick()
         {
             ButtonAddClick?.Invoke();
+        }
+
+        private void buttonLoop_ButtonClick()
+        {
+            ButtonLoopClick?.Invoke();
+        }  
+
+        private void buttonClear_ButtonClick()
+        {
+            ButtonClearClick?.Invoke();
         }
     }
 }

@@ -349,6 +349,42 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Черновик.
+        /// </summary>
+        public static string DeliveryType1 {
+            get {
+                return ResourceManager.GetString("DeliveryType1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Отправлен.
+        /// </summary>
+        public static string DeliveryType2 {
+            get {
+                return ResourceManager.GetString("DeliveryType2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Получено.
+        /// </summary>
+        public static string DeliveryType3 {
+            get {
+                return ResourceManager.GetString("DeliveryType3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Отменен.
+        /// </summary>
+        public static string DeliveryType4 {
+            get {
+                return ResourceManager.GetString("DeliveryType4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Описание.
         /// </summary>
         public static string Description {
@@ -394,11 +430,29 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на пустое поле.
+        /// </summary>
+        public static string EmptyField {
+            get {
+                return ResourceManager.GetString("EmptyField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на пустой фильтр.
         /// </summary>
         public static string EmptyFilter {
             get {
                 return ResourceManager.GetString("EmptyFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Заполните обязательное поле.
+        /// </summary>
+        public static string ErrorEmptyField {
+            get {
+                return ResourceManager.GetString("ErrorEmptyField", resourceCulture);
             }
         }
         

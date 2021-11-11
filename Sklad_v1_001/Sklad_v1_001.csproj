@@ -849,6 +849,12 @@
     <Resource Include="Icone\IconCategory.png" />
     <Resource Include="Icone\IconLoad.png" />
     <Resource Include="Icone\Iconload.gif" />
+    <Resource Include="Icone\IconSearchPage.png" />
+    <Resource Include="Icone\IconEraseFaile.png" />
+    <Resource Include="Icone\IconListCombo.png" />
+    <Resource Include="Icone\IconListComboDown.png" />
+    <Resource Include="Icone\IconOK16.png" />
+    <Resource Include="Icone\IconMinus.png" />
     <Content Include="SQLCommand\JDB_DataAdapter.sql" />
     <Content Include="SQLCommand\JDB_POS.sql" />
     <Resource Include="Icone\IconOk.png" />

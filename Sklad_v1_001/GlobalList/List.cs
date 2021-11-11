@@ -47,6 +47,11 @@ namespace Sklad_v1_001.GlobalList
         public Int32 ID { get; set; }
         public String Description { get; set; }
     }
+    public class DeliveryType
+    {
+        public Int32 ID { get; set; }
+        public String Description { get; set; }
+    }
     public class DateTimeListFilter
     {
         public ObservableCollection<DateTimeItem> innerList { get; set; }
@@ -138,6 +143,22 @@ namespace Sklad_v1_001.GlobalList
                 new SupplyType {ID=1,Description=Properties.Resources.SupplyDocument2 },
                 new SupplyType {ID=2,Description=Properties.Resources.SupplyDocument3 },
                 new SupplyType {ID=2,Description=Properties.Resources.SupplyDocument4 },
+            };
+        }
+    }
+
+    //DeliveryType
+    public class DeliveryTypeList
+    {
+        public ObservableCollection<DeliveryType> innerList { get; set; }
+        public DeliveryTypeList()
+        {
+            innerList = new ObservableCollection<DeliveryType>()
+            {
+                new DeliveryType {ID=0,Description=Properties.Resources.DeliveryType1 },
+                new DeliveryType {ID=1,Description=Properties.Resources.DeliveryType2 },
+                new DeliveryType {ID=2,Description=Properties.Resources.DeliveryType3 },
+                new DeliveryType {ID=2,Description=Properties.Resources.DeliveryType4 },
             };
         }
     }

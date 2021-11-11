@@ -50,7 +50,7 @@ namespace Sklad_v1_001.Control.FlexEditBox
         public EditBoxUser()
         {
             InitializeComponent();
-            image.Source = ImageHelper.GenerateImage("IconCategory.png");
+            image.Source = ImageHelper.GenerateImage("IconListComboDown.png");
         }
 
         public event Action ButtonClearClick;

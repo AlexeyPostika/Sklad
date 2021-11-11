@@ -175,32 +175,35 @@ namespace Sklad_v1_001.GlobalVariable
 
         public void PDFTo()
         {
-            PdfDocument document = PdfReader.Open(PuthString);
-
-            int imageCount = 0;
-            // Iterate pages
-            foreach (PdfPage page in document.Pages)
+            if (!String.IsNullOrEmpty(PuthString))
             {
-                // Get resources dictionary
-                PdfDictionary resources = page.Elements.GetDictionary("/Resources");
-                if (resources != null)
+                PdfDocument document = PdfReader.Open(PuthString);
+
+                int imageCount = 0;
+                // Iterate pages
+                foreach (PdfPage page in document.Pages)
                 {
-                    // Get external objects dictionary
-                    PdfDictionary xObjects = resources.Elements.GetDictionary("/XObject");
-                    if (xObjects != null)
+                    // Get resources dictionary
+                    PdfDictionary resources = page.Elements.GetDictionary("/Resources");
+                    if (resources != null)
                     {
-                        ICollection<PdfItem> items = xObjects.Elements.Values;
-                        // Iterate references to external objects
-                        foreach (PdfItem item in items)
+                        // Get external objects dictionary
+                        PdfDictionary xObjects = resources.Elements.GetDictionary("/XObject");
+                        if (xObjects != null)
                         {
-                            PdfReference reference = item as PdfReference;
-                            if (reference != null)
+                            ICollection<PdfItem> items = xObjects.Elements.Values;
+                            // Iterate references to external objects
+                            foreach (PdfItem item in items)
                             {
-                                PdfDictionary xObject = reference.Value as PdfDictionary;
-                                // Is external object an image?
-                                if (xObject != null && xObject.Elements.GetString("/Subtype") == "/Image")
+                                PdfReference reference = item as PdfReference;
+                                if (reference != null)
                                 {
-                                    ExportImage(xObject, ref imageCount);
+                                    PdfDictionary xObject = reference.Value as PdfDictionary;
+                                    // Is external object an image?
+                                    if (xObject != null && xObject.Elements.GetString("/Subtype") == "/Image")
+                                    {
+                                        ExportImage(xObject, ref imageCount);
+                                    }
                                 }
                             }
                         }

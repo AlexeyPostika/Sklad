@@ -11,12 +11,13 @@
       xmlns:FlexComboBox="clr-namespace:Sklad_v1_001.Control.FlexComboBox"
       xmlns:FlexRadioButton="clr-namespace:Sklad_v1_001.Control.FlexRadio"
       xmlns:FlexEditBox="clr-namespace:Sklad_v1_001.Control.FlexEditBox"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      mc:Ignorable="d"     
       Title="NewDeliveryItem"
-      Style="{DynamicResource UsersPageWidth}" 
-      Height="400"
-      Width="350">
+      Width="350" Height="390"
+      Style="{DynamicResource UsersPageWidth}"
+      Loaded="page_Loaded"
+      Unloaded="page_Unloaded"
+      x:Name="page">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -27,25 +28,54 @@
         <Label Content="Компания доставки" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16" />
         <Border Style="{DynamicResource BorderStyle}" Margin="10" Grid.Row="1" Grid.ColumnSpan="2">
             <StackPanel x:Name="delivery" Background="Transparent">
-                <FlexEditBox:EditBoxUserWithLabel LabelText="{x:Static res:Resources.NameDelivery}" LabelWidth="160"/>
-                <FlexEditBox:EditBoxUserWithLabel LabelText="{x:Static res:Resources.ManagerDelivery}" LabelWidth="160"/>
-                <SimpleControl:EditBoxWithLabel LabelWidth="160"
-                                                IsRequired="Collapsed"
+                <FlexEditBox:EditBoxUserWithLabel x:Name="NameDeliveryCompany" LabelText="{x:Static res:Resources.NameDelivery}"
+                                                  LabelWidth="158"
+                                                  IsRequired="Visible"
+                                                  IsEnabled="{Binding Path=IsDocument, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  Text="{Binding Path=NameCompany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <FlexEditBox:EditBoxUserWithLabel x:Name="NameManagerDeliveryCompany" LabelText="{x:Static res:Resources.ManagerDelivery}" 
+                                                  LabelWidth="158"       
+                                                  IsRequired="Visible"
+                                                  IsEnabled="{Binding Path=IsDocument, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  Text="{Binding Path=ManagerName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <SimpleControl:EditBoxWithLabel x:Name="PhonesDeliveryCompany" LabelWidth="170"
+                                                IsRequired="Visible"
+                                                IsEnabled="{Binding Path=IsDocument, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                 LabelText="{x:Static res:Resources.NumberPhone}"
-                                                Text="{Binding ElementName=Window, Path=EditValue1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <SimpleControl:EditBoxWithLabel LabelWidth="160"
-                                                IsRequired="Collapsed"
+                                                Text="{Binding Path=Phones, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <SimpleControl:EditBoxWithLabel x:Name="PhonesManagerDeliveryCompany"  LabelWidth="170"
+                                                IsRequired="Visible"
+                                                IsEnabled="{Binding Path=IsDocument, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                 LabelText="{x:Static res:Resources.NumberPhoneDelivery}"
-                                                Text="{Binding ElementName=Window, Path=EditValue1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <SimpleControl:EditBoxWithLabel LabelWidth="160"
-                                                IsRequired="Collapsed"
+                                                Text="{Binding Path=PhonesDetails, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <SimpleControl:EditBoxWithLabel x:Name="AdressDeliveryCompany" LabelWidth="170"
+                                                IsRequired="Visible"
+                                                IsEnabled="{Binding Path=IsDocument, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                 LabelText="{x:Static res:Resources.DeliveryAdress}"
-                                                Text="{Binding ElementName=Window, Path=EditValue1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                                Text="{Binding Path=Adress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <SimpleControl:EditBoxWithLabelDownloadFile x:Name="Invoice"  
-                                                            LabelText="{x:Static res:Resources.Invoice}" LabelWidth="160"
-                                                            ButtonAddClick="Invoice_ButtonAddClick"/>
+                                                            LabelText="{x:Static res:Resources.Invoice}" 
+                                                            LabelWidth="110"
+                                                            IsRequired="Visible"
+                                                            Text="{Binding Path=Invoice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            VisibilityCleare="{Binding Path=VisibilityInvoice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            VisibilityLoop="{Binding Path=VisibilityInvoice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            VisibilityAdd="{Binding Path=VisibilityInvoiceAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            IsEnableLoop="{Binding ElementName=page, Path=IsEnableInvoice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            IsEnableCleare="{Binding ElementName=page, Path=IsEnableInvoice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            IsEnableAdd="{Binding ElementName=page, Path=IsEnableAddInvoice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            ButtonAddClick="Invoice_ButtonAddClick"
+                                                            ButtonLoopClick="Invoice_ButtonLoopClick"
+                                                            ButtonClearClick="Invoice_ButtonClearClick"/>
                 <SimpleControl:EditBoxWithLabelDownloadFile x:Name="TTN"   Margin="0,0,0,10"
-                                                            LabelText="{x:Static res:Resources.TTN}" LabelWidth="160"
+                                                            LabelText="{x:Static res:Resources.TTN}" 
+                                                            LabelWidth="110"
+                                                            IsRequired="Visible"
+                                                            Text="{Binding Path=TTN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            VisibilityCleare="{Binding Path=VisibilityTTN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            VisibilityLoop="{Binding Path=VisibilityTTN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
+                                                            IsEnableCleare="{Binding ElementName=page, Path=IsEnableTTN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            IsEnableAdd="{Binding ElementName=page, Path=IsEnableAddTTN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                             ButtonAddClick="TTN_ButtonAddClick"/>
                 <!--<FlexTextBox:FlexLabelTextBox LabelText="{x:Static res:Resources.Model}"/>
                 <SimpleControl:EditBoxWithLabelNumericForEdit LabelText="{x:Static res:Resources.Quantity}" LabelWidth="120"/>
@@ -66,10 +96,12 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <FlexButton:ToolBarButton Grid.Column="1" Width="100"
-                                      Text="{x:Static res:Resources.MessageOK}"/>
-            <FlexButton:ToolBarButton Grid.Column="3" Width="100"
-                                      Text="{x:Static res:Resources.CANCEL}"/>
+            <FlexButton:ToolBarButton x:Name="OK" Grid.Column="1" Width="100"
+                                      Text="{x:Static res:Resources.MessageOK}"
+                                      ButtonClick="ToolBarButton_ButtonClick"/>
+            <FlexButton:ToolBarButton x:Name="Cancel" Grid.Column="3" Width="100"
+                                      Text="{x:Static res:Resources.CANCEL}"
+                                      ButtonClick="Cancel_ButtonClick"/>
         </Grid>
     </Grid>
 </Page>

@@ -1,6 +1,8 @@
 ﻿using Sklad_v1_001.Control.FlexMessageBox;
+using Sklad_v1_001.FormUsers.Delivery;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,8 +48,15 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
     /// </summary>
     public partial class NewSupplyDocumentGrid : Page
     {
-
+        //работаем с доставкой
+        FlexMessageBox addDeliveryWindow;
+        NewDeliveryItem newDeliveryItem;
+        //******************************
         LocalRow document;
+        Delivery.LocaleRow localeRowDelivery;
+        ObservableCollection<Delivery.LocaleRow> detailsDelivery;
+
+        private Int32 status;
 
         public LocalRow Document
         {
@@ -59,6 +68,12 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             set
             {
                 document = value;
+                if (document == null || document.ID==0)
+                {
+                    status = 0;
+                }
+                else
+                    status = 1;
                 //DocumentID = Document.ID;
                 //this.StackPanelSummary.DataContext = Document;
 
@@ -77,9 +92,26 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 Refresh();
             }
         }
+
+        public Int32 Status
+        {
+            get
+            {
+                return status;
+            }
+
+            set
+            {
+                status = value;              
+            }
+        }
         public NewSupplyDocumentGrid()
         {
             InitializeComponent();
+
+            detailsDelivery = new ObservableCollection<LocaleRow>();
+            Status = 0;
+            this.DataDelivery.ItemsSource = detailsDelivery;
         }
 
         private void Refresh()
@@ -116,8 +148,19 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         #region Поставщик
         private void ToolBarDelivery_ButtonNewProductClick()
-        {
-            MainWindow.AppWindow.ButtonNewDelivery();
+        {         
+            localeRowDelivery = new LocaleRow();
+            newDeliveryItem = new NewDeliveryItem();
+            addDeliveryWindow = new FlexMessageBox();
+            // newDeliveryItem.LocaleRow=
+            newDeliveryItem.Status = Status;
+            addDeliveryWindow.Content = newDeliveryItem;
+            addDeliveryWindow.ShowDialog();
+            if (newDeliveryItem.Document != null && !String.IsNullOrEmpty(newDeliveryItem.Document.NameCompany) && newDeliveryItem.IsClickButtonOK == true)
+            {               
+                localeRowDelivery = newDeliveryItem.Document;
+                detailsDelivery.Add(localeRowDelivery);
+            }
         }
 
         private void ToolBarDelivery_ButtonDeleteClick()

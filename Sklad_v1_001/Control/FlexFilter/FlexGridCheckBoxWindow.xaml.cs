@@ -20,6 +20,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static Sklad_v1_001.HelperGlobal.MessageBoxTitleHelper;
+
 namespace Sklad_v1_001.Control.FlexFilter
 {
     /// <summary>
