@@ -57,13 +57,9 @@
                                                             LabelText="{x:Static res:Resources.Invoice}" 
                                                             LabelWidth="110"
                                                             IsRequired="Visible"
-                                                            Text="{Binding Path=Invoice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                            VisibilityCleare="{Binding Path=VisibilityInvoice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                            VisibilityLoop="{Binding Path=VisibilityInvoice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                            VisibilityAdd="{Binding Path=VisibilityInvoiceAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                            IsEnableLoop="{Binding ElementName=page, Path=IsEnableInvoice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                            IsEnableCleare="{Binding ElementName=page, Path=IsEnableInvoice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                            IsEnableAdd="{Binding ElementName=page, Path=IsEnableAddInvoice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            Text="{Binding Path=Invoice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
+                                                            FilterPuth="Jpg files|*.pdf"
+                                                            Mode="PDF"
                                                             ButtonAddClick="Invoice_ButtonAddClick"
                                                             ButtonLoopClick="Invoice_ButtonLoopClick"
                                                             ButtonClearClick="Invoice_ButtonClearClick"/>
@@ -71,11 +67,9 @@
                                                             LabelText="{x:Static res:Resources.TTN}" 
                                                             LabelWidth="110"
                                                             IsRequired="Visible"
-                                                            Text="{Binding Path=TTN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                            VisibilityCleare="{Binding Path=VisibilityTTN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                            VisibilityLoop="{Binding Path=VisibilityTTN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
-                                                            IsEnableCleare="{Binding ElementName=page, Path=IsEnableTTN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                            IsEnableAdd="{Binding ElementName=page, Path=IsEnableAddTTN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            Text="{Binding Path=TTN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                                           
+                                                            FilterPuth="Jpg files|*.pdf"
+                                                            Mode="PDF"
                                                             ButtonAddClick="TTN_ButtonAddClick"/>
                 <!--<FlexTextBox:FlexLabelTextBox LabelText="{x:Static res:Resources.Model}"/>
                 <SimpleControl:EditBoxWithLabelNumericForEdit LabelText="{x:Static res:Resources.Quantity}" LabelWidth="120"/>

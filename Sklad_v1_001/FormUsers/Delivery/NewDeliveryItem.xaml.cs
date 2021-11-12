@@ -129,21 +129,7 @@ namespace Sklad_v1_001.FormUsers.Delivery
         #region Load Invoice
         private async void Invoice_ButtonAddClick()
         {
-            fileWork = new FileWork();
-            fileWork.OpenPDFtoImage();
-            fileWork = await LoadInvoiceAsync(fileWork);
-            if (fileWork.Source != null)
-            {
-                Document.InvoiceDocumentByte = fileWork.BufferDocument;
-                IsEnableInvoice = true;
-                IsEnableAddInvoice = false;             
-            }
-            else
-            {
-                Document.InvoiceDocumentByte = null;
-                IsEnableInvoice = false;
-                IsEnableAddInvoice = true;              
-            }
+            Document.InvoiceDocumentByte = this.Invoice.ByteFaile;
         }
         private void Invoice_ButtonLoopClick()
         {
@@ -152,30 +138,14 @@ namespace Sklad_v1_001.FormUsers.Delivery
 
         private void Invoice_ButtonClearClick()
         {
-            Document.InvoiceDocumentByte = null;
-            IsEnableInvoice = false;
-            IsEnableAddInvoice = true;
+            
         }
         #endregion
 
         #region TTN
         private async void TTN_ButtonAddClick()
         {
-            fileWork = new FileWork();
-            fileWork.OpenPDFtoImage();
-            fileWork = await LoadInvoiceAsync(fileWork);
-            if (fileWork.Source != null)
-            {
-                Document.TTNDocumentByte = fileWork.BufferDocument;             
-                IsEnableTTN = true;
-                IsEnableAddTTN = false;
-            }
-            else
-            {
-                Document.TTNDocumentByte = null;
-                IsEnableTTN = false;
-                IsEnableAddTTN = true;
-            }               
+            Document.TTNDocumentByte = this.TTN.ByteFaile;
         }
         #endregion
 

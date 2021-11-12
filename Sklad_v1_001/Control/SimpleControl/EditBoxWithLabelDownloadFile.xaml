@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Sklad_v1_001.Control.SimpleControl"
              xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton"
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
              mc:Ignorable="d"
              Name="control">
     <Grid Height="30" Name="grid" Margin="0, 10, 3, 0">
@@ -33,14 +34,18 @@
                                           Visibility="{Binding ElementName=control, Path=VisibilityAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                           IsEnabled="{Binding ElementName=control, Path=IsEnableAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                           ButtonClick="button_ButtonClick"/>
+            <Image x:Name="Image" gif:ImageBehavior.AnimatedSource="/Sklad_v1_001;component/Icone/Iconload.gif"
+                   MaxWidth="30"
+                   MaxHeight="30"
+                   Grid.Column="2"
+                   Visibility="{Binding ElementName=control, Path=VisibilityLoad, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
             <FlexButton:SmallButtonFilter x:Name="buttonClear" Grid.Column="4"
                                           ImageSource="{Binding ElementName=control, Path=SourceCleare, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                           Visibility="{Binding ElementName=control, Path=VisibilityCleare, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                           IsEnabled="{Binding ElementName=control, Path=IsEnableCleare, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                           ButtonClick="buttonClear_ButtonClick"/>
-            <!--<Image x:Name="Image" 
-                       Source="{Binding ElementName=control, Path=ImageSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
-        
+
         </Grid>
     </Grid>
 </UserControl>
