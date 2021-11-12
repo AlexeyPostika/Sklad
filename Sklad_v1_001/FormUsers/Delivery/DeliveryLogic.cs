@@ -222,7 +222,7 @@ namespace Sklad_v1_001.FormUsers.Delivery
                 }
                 else
                 {
-                    imageSourceInvoice = ImageHelper.GenerateImage("IconClose.png");
+                    imageSourceInvoice = ImageHelper.GenerateImage("IconMinus.png");
                 }
                 OnPropertyChanged("InvoiceDocumentByte");
             }
@@ -271,7 +271,7 @@ namespace Sklad_v1_001.FormUsers.Delivery
                 }
                 else
                 {
-                    imageSourceTTN = ImageHelper.GenerateImage("IconClose.png");
+                    imageSourceTTN = ImageHelper.GenerateImage("IconMinus.png");
                 }
                 OnPropertyChanged("TTNDocumentByte");
             }

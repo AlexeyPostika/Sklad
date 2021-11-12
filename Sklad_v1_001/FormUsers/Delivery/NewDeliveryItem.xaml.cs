@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -55,8 +56,8 @@ namespace Sklad_v1_001.FormUsers.Delivery
                       typeof(NewDeliveryItem), new PropertyMetadata(true));
         public static readonly DependencyProperty IsClickButtonOKProperty = DependencyProperty.Register(
                       "IsClickButtonOK",
-                      typeof(Boolean),
-                     typeof(NewDeliveryItem), new PropertyMetadata(false));
+                      typeof(MessageBoxResult),
+                     typeof(NewDeliveryItem), new PropertyMetadata());
 
         public Boolean IsEnableInvoice
         {
@@ -86,12 +87,12 @@ namespace Sklad_v1_001.FormUsers.Delivery
             set { SetValue(IsDocumentProperty, value); }
         }
        
-        public Boolean IsClickButtonOK
+        public MessageBoxResult IsClickButtonOK
         {
-            get { return (Boolean)GetValue(IsClickButtonOKProperty); }
+            get { return (MessageBoxResult)GetValue(IsClickButtonOKProperty); }
             set { SetValue(IsClickButtonOKProperty, value); }
         }
-
+       
         private DeliveryLogic deliveryLogic;
         private LocaleRow localeRow;
         FileWork fileWork;
@@ -195,7 +196,7 @@ namespace Sklad_v1_001.FormUsers.Delivery
         {
             if (FieldVerify())
             {
-                IsClickButtonOK = true;
+                IsClickButtonOK = MessageBoxResult.OK;
                 Window win = Parent as Window;
                 win.Close();
             }
@@ -204,7 +205,7 @@ namespace Sklad_v1_001.FormUsers.Delivery
         private void Cancel_ButtonClick()
         {
             Document = null;
-            IsClickButtonOK = false;
+            IsClickButtonOK = MessageBoxResult.Cancel;
             Window win = Parent as Window;
             win.Close();
         }

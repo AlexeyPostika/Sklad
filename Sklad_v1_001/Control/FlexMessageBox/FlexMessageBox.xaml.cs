@@ -471,15 +471,10 @@ namespace Sklad_v1_001.Control.FlexMessageBox
         public MessageBoxResult Show(string text)
         {
             Description = text;
-
+            Title = text;
             ChooseButtons(MessageBoxButtons.OK);
             ChooseIcons(MessageBoxIcon.None);
-
-            if (String.IsNullOrEmpty(fieldNameForHistory))
-            {
-
-            }
-
+          
             this.ShowDialog();
             return Value;
         }

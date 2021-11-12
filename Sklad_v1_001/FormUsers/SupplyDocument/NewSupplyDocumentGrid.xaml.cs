@@ -155,11 +155,14 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             // newDeliveryItem.LocaleRow=
             newDeliveryItem.Status = Status;
             addDeliveryWindow.Content = newDeliveryItem;
-            addDeliveryWindow.ShowDialog();
-            if (newDeliveryItem.Document != null && !String.IsNullOrEmpty(newDeliveryItem.Document.NameCompany) && newDeliveryItem.IsClickButtonOK == true)
-            {               
-                localeRowDelivery = newDeliveryItem.Document;
-                detailsDelivery.Add(localeRowDelivery);
+            addDeliveryWindow.Show(Properties.Resources.Deliveries);
+            if (newDeliveryItem.IsClickButtonOK == MessageBoxResult.OK)
+            {
+                if (newDeliveryItem.Document != null && !String.IsNullOrEmpty(newDeliveryItem.Document.NameCompany))
+                {
+                    localeRowDelivery = newDeliveryItem.Document;
+                    detailsDelivery.Add(localeRowDelivery);
+                }
             }
         }
 
