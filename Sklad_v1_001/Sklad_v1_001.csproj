@@ -124,6 +124,7 @@
     <Reference Include="PdfSharp.Charting, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
       <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.Charting.dll</HintPath>
     </Reference>
+    <Reference Include="ReachFramework" />
     <Reference Include="SAPBusinessObjects.WPF.Viewer, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <HintPath>..\packages\CrystalReports.WPF.Viewer.13.0.4000\lib\net40\SAPBusinessObjects.WPF.Viewer.dll</HintPath>
     </Reference>
@@ -143,6 +144,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
@@ -395,6 +397,9 @@
     </Compile>
     <Compile Include="HelperGlobal\ImageSql.cs" />
     <Compile Include="HelperGlobal\MessageBoxTitleHelper.cs" />
+    <Compile Include="Report\FlexDocumentWindows.xaml.cs">
+      <DependentUpon>FlexDocumentWindows.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SQLCommand\SQLCommanSelect.cs" />
     <Page Include="Control\FlexButton\LevelButton.xaml">
       <SubType>Designer</SubType>
@@ -726,6 +731,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Report\FlexDocumentWindows.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\StyleDocument.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -880,7 +889,6 @@
   <ItemGroup>
     <Folder Include="FormUsers\Payment\" />
     <Folder Include="FormUsers\SupplyDocumentPayment\" />
-    <Folder Include="Report\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

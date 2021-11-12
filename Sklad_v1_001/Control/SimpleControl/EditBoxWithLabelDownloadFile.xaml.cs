@@ -14,6 +14,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using System.IO.Packaging;
+using System.Windows.Xps;
+using System.Windows.Xps.Packaging;
+using Sklad_v1_001.Report;
+using PdfSharp.Pdf;
+using PdfSharp.Pdf.IO;
+using System.Xml.Linq;
+
 
 namespace Sklad_v1_001.Control.SimpleControl
 {
@@ -333,11 +342,24 @@ namespace Sklad_v1_001.Control.SimpleControl
         private void buttonLoop_ButtonClick()
         {
             FlexMessageBox.FlexMessageBox mg = new FlexMessageBox.FlexMessageBox();
-            PrintDialog printDialog = new PrintDialog();
+            FlexDocumentWindows flexDocumentWindows = new FlexDocumentWindows();
 
-           
 
-            ButtonLoopClick?.Invoke();
+
+            //// Отобразить документ
+            Package package;
+            using (Stream stream = new MemoryStream(ByteFaile))
+            {
+                package = System.IO.Packaging.Package.Open(stream);
+            }
+            XpsDocument xpsDocument = new XpsDocument(package, CompressionOption.SuperFast);
+            //XpsDocument doc = new XpsDocument(fileWork.PuthString, FileAccess.ReadWrite);
+
+            flexDocumentWindows.DocumentXps = xpsDocument.GetFixedDocumentSequence();
+            xpsDocument.Close();
+            mg.Content = flexDocumentWindows;
+            mg.ShowDialog();
+         
         }  
 
         private void buttonClear_ButtonClick()
