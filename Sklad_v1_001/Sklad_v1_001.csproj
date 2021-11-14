@@ -357,6 +357,7 @@
     </Compile>
     <Compile Include="FormUsers\Kategor\KategoriiLogic.cs" />
     <Compile Include="FormUsers\Prixod\RegistraciyTovaraLogic.cs" />
+    <Compile Include="FormUsers\Product\ProductLogic.cs" />
     <Compile Include="FormUsers\Product\NewAddProductItem.xaml.cs">
       <DependentUpon>NewAddProductItem.xaml</DependentUpon>
     </Compile>

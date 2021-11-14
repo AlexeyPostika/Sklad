@@ -57,7 +57,7 @@ namespace Sklad_v1_001.FormUsers.Delivery
         public static readonly DependencyProperty IsClickButtonOKProperty = DependencyProperty.Register(
                       "IsClickButtonOK",
                       typeof(MessageBoxResult),
-                     typeof(NewDeliveryItem), new PropertyMetadata());
+                     typeof(NewDeliveryItem), new PropertyMetadata(MessageBoxResult.Cancel));
 
         public Boolean IsEnableInvoice
         {
@@ -94,11 +94,11 @@ namespace Sklad_v1_001.FormUsers.Delivery
         }
        
         private DeliveryLogic deliveryLogic;
-        private LocaleRow localeRow;
+        private LocaleRow document;
         FileWork fileWork;
 
         public DeliveryLogic DeliveryLogic { get => deliveryLogic; set => deliveryLogic = value; }
-        public LocaleRow Document { get => localeRow; set => localeRow = value; }
+        public LocaleRow Document { get => document; set => document = value; }
 
         public Int32 status;
         public Int32 Status

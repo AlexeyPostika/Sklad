@@ -25,16 +25,32 @@
         <Label Content="Продукт" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16" />
         <Border Style="{DynamicResource BorderStyle}" Margin="10" Grid.Row="1" Grid.ColumnSpan="2">
             <StackPanel x:Name="Product" Background="Transparent">
-                <FlexTextBox:FlexLabelTextBox LabelText="{x:Static res:Resources.NameProduct}" EnableTextBox="True"/>
-                <FlexEditBox:EditBoxUserWithLabel LabelText="{x:Static res:Resources.CATEGORY}" LabelWidth="70"/>
-                <FlexTextBox:FlexLabelTextBox LabelText="{x:Static res:Resources.Model}" EnableTextBox="True"/>
-                <SimpleControl:EditBoxWithLabelNumericForEdit LabelText="{x:Static res:Resources.Quantity}" LabelWidth="120"/>
-                <SimpleControl:EditBoxWithLabelNumericForEdit LabelText="{x:Static res:Resources.TagPriceUSA}" LabelWidth="120"/>
-                <SimpleControl:EditBoxWithLabelNumericForEdit LabelText="{x:Static res:Resources.TagPriceRus}" LabelWidth="120"/>
-                <FlexTextBox:FlexLabelTextBox LabelText="{x:Static res:Resources.SizeProduct}" EnableTextBox="True"/>
+                <FlexTextBox:FlexLabelTextBox x:Name="ProductName"
+                                              LabelText="{x:Static res:Resources.NameProduct}"
+                                              Description="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              EnableTextBox="True"/>
+                <FlexEditBox:EditBoxUserWithLabel x:Name="CategoryName" LabelText="{x:Static res:Resources.CATEGORY}" 
+                                                  Text="{Binding Path=CategoryString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  LabelWidth="70"/>
+                <FlexTextBox:FlexLabelTextBox x:Name="ModelName"  LabelText="{x:Static res:Resources.Model}" 
+                                              Description="{Binding Path=Model, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              EnableTextBox="True"/>
+                <SimpleControl:EditBoxWithLabelNumericForEdit x:Name="QuantityName"  LabelText="{x:Static res:Resources.Quantity}" 
+                                                              Value="{Binding Path=Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                              LabelWidth="120"/>
+                <SimpleControl:EditBoxWithLabelNumericForEdit x:Name="TagPriceUSAName" LabelText="{x:Static res:Resources.TagPriceUSA}" 
+                                                              Value="{Binding Path=TagPriceUSA, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                              LabelWidth="120"/>
+                <SimpleControl:EditBoxWithLabelNumericForEdit x:Name="TagPriceRUSName"  LabelText="{x:Static res:Resources.TagPriceRus}" 
+                                                              Value="{Binding Path=TagPriceRUS, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                              LabelWidth="120"/>
+                <FlexTextBox:FlexLabelTextBox  x:Name="SizeProductName" LabelText="{x:Static res:Resources.SizeProduct}"
+                                              Description="{Binding Path=SizeProduct, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              EnableTextBox="True"/>
                 <FlexRadioButton:FlexRadioButton LabelText="{x:Static res:Resources.PackageYEStoNOT}"
                                                  YESLabelText="Да"
                                                  NOLabelText="Нет"
+                                                 IsRadio="{Binding Path=Package, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                  LabelWidth="235"/>
             </StackPanel>
         </Border>
@@ -47,7 +63,8 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <FlexButton:ToolBarButton Grid.Column="1" Width="100"
-                                      Text="{x:Static res:Resources.MessageOK}"/>
+                                      Text="{x:Static res:Resources.MessageOK}"
+                                      ButtonClick="ToolBarButton_ButtonClick"/>
             <FlexButton:ToolBarButton Grid.Column="3" Width="100"
                                       Text="{x:Static res:Resources.CANCEL}"/>
         </Grid>
