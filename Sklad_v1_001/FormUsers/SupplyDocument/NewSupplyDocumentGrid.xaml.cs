@@ -1,5 +1,6 @@
 ﻿using Sklad_v1_001.Control.FlexMessageBox;
 using Sklad_v1_001.FormUsers.Delivery;
+using Sklad_v1_001.FormUsers.Product;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -48,11 +49,24 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
     /// </summary>
     public partial class NewSupplyDocumentGrid : Page
     {
+        //работаем с продуктами
+        FlexMessageBox addProductWindow;
+        NewAddProductItem newAddProductItem;
+        //******************************
+
         //работаем с доставкой
         FlexMessageBox addDeliveryWindow;
         NewDeliveryItem newDeliveryItem;
         //******************************
+        
+        //остновной документ
         LocalRow document;
+
+        //Продукт
+        Product.LocaleRow localeRowProduct;
+        ObservableCollection<Product.LocaleRow> detailsProduct;
+
+        //доставка
         Delivery.LocaleRow localeRowDelivery;
         ObservableCollection<Delivery.LocaleRow> detailsDelivery;
 
@@ -109,8 +123,13 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         {
             InitializeComponent();
 
-            detailsDelivery = new ObservableCollection<LocaleRow>();
+            detailsProduct = new ObservableCollection<Product.LocaleRow>();
+            detailsDelivery = new ObservableCollection<Delivery.LocaleRow>();
+
             Status = 0;
+
+
+            this.DataProduct.ItemsSource = detailsProduct;
             this.DataDelivery.ItemsSource = detailsDelivery;
         }
 
@@ -122,7 +141,22 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         #region Продукт
         private void ToolBarProduct_ButtonNewProductClick()
         {
-            MainWindow.AppWindow.ButtonNewAddProduct();
+            //MainWindow.AppWindow.ButtonNewAddProduct();
+            detailsProduct = new ObservableCollection<Product.LocaleRow>();
+            newAddProductItem = new NewAddProductItem();
+            addProductWindow = new FlexMessageBox();
+            // newDeliveryItem.LocaleRow=
+            //newAddProductItem.Status = Status;
+            addProductWindow.Content = newAddProductItem;
+            addProductWindow.Show(Properties.Resources.Products);
+            if (newAddProductItem.IsClickButtonOK == MessageBoxResult.OK)
+            {
+                if (newAddProductItem.ProductLocalRow != null )
+                {
+                    localeRowProduct = newAddProductItem.ProductLocalRow;
+                    detailsProduct.Add(localeRowProduct);
+                }
+            }
         }
 
         private void ToolBarProduct_ButtonDeleteClick()
@@ -149,7 +183,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         #region Поставщик
         private void ToolBarDelivery_ButtonNewProductClick()
         {         
-            localeRowDelivery = new LocaleRow();
+            localeRowDelivery = new Delivery.LocaleRow();
             newDeliveryItem = new NewDeliveryItem();
             addDeliveryWindow = new FlexMessageBox();
             // newDeliveryItem.LocaleRow=
