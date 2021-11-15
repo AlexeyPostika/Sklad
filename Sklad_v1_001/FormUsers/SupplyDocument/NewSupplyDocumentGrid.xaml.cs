@@ -141,8 +141,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         #region Продукт
         private void ToolBarProduct_ButtonNewProductClick()
         {
-            //MainWindow.AppWindow.ButtonNewAddProduct();
-            detailsProduct = new ObservableCollection<Product.LocaleRow>();
+            //MainWindow.AppWindow.ButtonNewAddProduct();           
             newAddProductItem = new NewAddProductItem();
             addProductWindow = new FlexMessageBox();
             // newDeliveryItem.LocaleRow=
