@@ -1,6 +1,7 @@
 ﻿using Sklad_v1_001.Control.FlexMessageBox;
 using Sklad_v1_001.FormUsers.Delivery;
 using Sklad_v1_001.FormUsers.Product;
+using Sklad_v1_001.FormUsers.SupplyDocumentPayment;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -58,7 +59,12 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         FlexMessageBox addDeliveryWindow;
         NewDeliveryItem newDeliveryItem;
         //******************************
-        
+
+        //работаем с оплатами
+        FlexMessageBox addSuppluPaymentWindow;
+        NewSupplyDocumentPaymentItem newSupplyDocumentPaymentItem;
+        //******************************
+
         //остновной документ
         LocalRow document;
 
@@ -69,6 +75,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         //доставка
         Delivery.LocaleRow localeRowDelivery;
         ObservableCollection<Delivery.LocaleRow> detailsDelivery;
+
+        //оплата
+        SupplyDocumentPayment.LocaleRow supplyDocumentPaymentLocaleRow;
+        ObservableCollection<SupplyDocumentPayment.LocaleRow> detailsSupplyPayment;
 
         private Int32 status;
 
@@ -125,12 +135,14 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             detailsProduct = new ObservableCollection<Product.LocaleRow>();
             detailsDelivery = new ObservableCollection<Delivery.LocaleRow>();
+            detailsSupplyPayment = new ObservableCollection<SupplyDocumentPayment.LocaleRow>();
 
             Status = 0;
 
 
             this.DataProduct.ItemsSource = detailsProduct;
             this.DataDelivery.ItemsSource = detailsDelivery;
+            this.DataPayment.ItemsSource = detailsSupplyPayment;
         }
 
         private void Refresh()
@@ -204,9 +216,26 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         }
 
+        #endregion
+
+        #region оплата
         private void ToolBarPayment_ButtonNewProductClick()
         {
-
+            supplyDocumentPaymentLocaleRow = new SupplyDocumentPayment.LocaleRow();
+            newSupplyDocumentPaymentItem = new NewSupplyDocumentPaymentItem();
+            addSuppluPaymentWindow = new FlexMessageBox();
+            // newDeliveryItem.LocaleRow=
+            // newSupplyDocumentPaymentItem.Status = Status;
+            addSuppluPaymentWindow.Content = newSupplyDocumentPaymentItem;
+            addSuppluPaymentWindow.Show(Properties.Resources.Payment1);
+            if (newSupplyDocumentPaymentItem.IsClickButtonOK == MessageBoxResult.OK)
+            {
+                if (newSupplyDocumentPaymentItem.PaymentLocalRow != null)
+                {
+                    supplyDocumentPaymentLocaleRow = newSupplyDocumentPaymentItem.PaymentLocalRow;
+                    detailsSupplyPayment.Add(supplyDocumentPaymentLocaleRow);
+                }
+            }
         }
 
         private void ToolBarPayment_ButtonDeleteClick()

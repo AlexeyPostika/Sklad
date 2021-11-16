@@ -132,8 +132,9 @@ namespace Sklad_v1_001.GlobalList
         {
             innerList = new ObservableCollection<PaymentType>()
             {
-                new PaymentType {ID=0,Description=Properties.Resources.Payment1 },
-                new PaymentType {ID=1,Description=Properties.Resources.Payment2 },              
+                new PaymentType {ID=0,Description=Properties.Resources.Payment2 },
+                new PaymentType {ID=1,Description=Properties.Resources.Payment1 }
+                            
             };
         }
     }

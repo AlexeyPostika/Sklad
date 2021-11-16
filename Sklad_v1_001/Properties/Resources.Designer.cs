@@ -79,6 +79,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Файл оплаты.
+        /// </summary>
+        public static string AddFileRRN {
+            get {
+                return ResourceManager.GetString("AddFileRRN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Файл ТТН.
         /// </summary>
         public static string AddFileTTN {

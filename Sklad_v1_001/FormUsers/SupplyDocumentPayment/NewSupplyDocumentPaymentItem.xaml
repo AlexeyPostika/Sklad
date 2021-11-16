@@ -44,9 +44,9 @@
                                                             Text="{Binding Path=RRN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
                                                             FilterPuth="Jpg files|*.jpg"
                                                             Mode="PDF"
-                                                            ButtonAddClick="Invoice_ButtonAddClick"
-                                                            ButtonLoopClick="Invoice_ButtonLoopClick"
-                                                            ButtonClearClick="Invoice_ButtonClearClick"/>
+                                                            ButtonAddClick="RRN_ButtonAddClick"
+                                                            ButtonLoopClick="RRN_ButtonLoopClick"
+                                                            ButtonClearClick="RRN_ButtonClearClick"/>
                 <FlexComboBox:ComboBoxWithLabel x:Name="StatusName" 
                                                 Margin="0,0,0,5"
                                                 LabelText="{x:Static res:Resources.PaymentTypeStatus}" 

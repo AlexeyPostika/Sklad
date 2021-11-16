@@ -624,4 +624,7 @@
   <data name="RRN" xml:space="preserve">
     <value>№-транзакции</value>
   </data>
+  <data name="AddFileRRN" xml:space="preserve">
+    <value>Файл оплаты</value>
+  </data>
 </root>

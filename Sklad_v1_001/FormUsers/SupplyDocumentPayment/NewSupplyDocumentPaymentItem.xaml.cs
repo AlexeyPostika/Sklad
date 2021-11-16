@@ -1,4 +1,5 @@
 ﻿using Sklad_v1_001.Control.FlexMessageBox;
+using Sklad_v1_001.GlobalList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,8 +38,17 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
         public NewSupplyDocumentPaymentItem()
         {
             InitializeComponent();
+            
+            OperationTypeTypeList operationTypeTypeList = new OperationTypeTypeList();
+            PaymentTypeList paymentTypeList = new PaymentTypeList();
 
             PaymentLocalRow = new LocaleRow();
+            
+            OperationTypeName.ComboBoxElement.ItemsSource = operationTypeTypeList.innerList;
+            OperationTypeName.ComboBoxElement.SelectedValue = operationTypeTypeList.innerList.First().ID;
+            
+            StatusName.ComboBoxElement.ItemsSource = paymentTypeList.innerList;
+            StatusName.ComboBoxElement.SelectedValue = paymentTypeList.innerList.First().ID;
 
             this.Product.DataContext = PaymentLocalRow;
         }
@@ -98,5 +108,19 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
             return true;
         }
 
+        private void RRN_ButtonAddClick()
+        {
+
+        }
+
+        private void RRN_ButtonLoopClick()
+        {
+
+        }
+
+        private void RRN_ButtonClearClick()
+        {
+
+        }
     }
 }
