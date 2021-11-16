@@ -52,6 +52,13 @@ namespace Sklad_v1_001.GlobalList
         public Int32 ID { get; set; }
         public String Description { get; set; }
     }
+
+    public class OperationType
+    {
+        public Int32 ID { get; set; }
+        public String Description { get; set; }
+    }
+
     public class DateTimeListFilter
     {
         public ObservableCollection<DateTimeItem> innerList { get; set; }
@@ -126,8 +133,7 @@ namespace Sklad_v1_001.GlobalList
             innerList = new ObservableCollection<PaymentType>()
             {
                 new PaymentType {ID=0,Description=Properties.Resources.Payment1 },
-                new PaymentType {ID=1,Description=Properties.Resources.Payment2 },
-                new PaymentType {ID=2,Description=Properties.Resources.Payment3 },
+                new PaymentType {ID=1,Description=Properties.Resources.Payment2 },              
             };
         }
     }
@@ -159,6 +165,21 @@ namespace Sklad_v1_001.GlobalList
                 new DeliveryType {ID=1,Description=Properties.Resources.DeliveryType2 },
                 new DeliveryType {ID=2,Description=Properties.Resources.DeliveryType3 },
                 new DeliveryType {ID=2,Description=Properties.Resources.DeliveryType4 },
+            };
+        }
+    }
+
+    public class OperationTypeTypeList
+    {
+        public ObservableCollection<OperationType> innerList { get; set; }
+        public OperationTypeTypeList()
+        {
+            innerList = new ObservableCollection<OperationType>()
+            {
+                new OperationType {ID=0,Description=Properties.Resources.OperationType1 },
+                new OperationType {ID=1,Description=Properties.Resources.OperationType2 },
+                new OperationType {ID=2,Description=Properties.Resources.OperationType3 },
+                new OperationType {ID=2,Description=Properties.Resources.OperationType4 },
             };
         }
     }

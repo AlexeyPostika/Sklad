@@ -115,6 +115,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Цена доставки.
+        /// </summary>
+        public static string AmountPayment {
+            get {
+                return ResourceManager.GetString("AmountPayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Применить.
         /// </summary>
         public static string Apply {
@@ -898,6 +907,51 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Тип оплаты.
+        /// </summary>
+        public static string OperationType {
+            get {
+                return ResourceManager.GetString("OperationType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Наличные.
+        /// </summary>
+        public static string OperationType1 {
+            get {
+                return ResourceManager.GetString("OperationType1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Банковская карта.
+        /// </summary>
+        public static string OperationType2 {
+            get {
+                return ResourceManager.GetString("OperationType2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Обмен.
+        /// </summary>
+        public static string OperationType3 {
+            get {
+                return ResourceManager.GetString("OperationType3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Иным способом оплаты.
+        /// </summary>
+        public static string OperationType4 {
+            get {
+                return ResourceManager.GetString("OperationType4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Отчество.
         /// </summary>
         public static string Otchestvo {
@@ -943,7 +997,7 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Наличные.
+        ///   Ищет локализованную строку, похожую на Оплачено.
         /// </summary>
         public static string Payment1 {
             get {
@@ -952,7 +1006,7 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Банковская карта.
+        ///   Ищет локализованную строку, похожую на Не оплачено.
         /// </summary>
         public static string Payment2 {
             get {
@@ -984,6 +1038,15 @@ namespace Sklad_v1_001.Properties {
         public static string PaymentType {
             get {
                 return ResourceManager.GetString("PaymentType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Статус оплаты.
+        /// </summary>
+        public static string PaymentTypeStatus {
+            get {
+                return ResourceManager.GetString("PaymentTypeStatus", resourceCulture);
             }
         }
         
@@ -1083,6 +1146,15 @@ namespace Sklad_v1_001.Properties {
         public static string Role {
             get {
                 return ResourceManager.GetString("Role", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на №-транзакции.
+        /// </summary>
+        public static string RRN {
+            get {
+                return ResourceManager.GetString("RRN", resourceCulture);
             }
         }
         

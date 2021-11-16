@@ -365,6 +365,10 @@
       <DependentUpon>NewSaleDocument.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\SupplyDocumentDetails\SupplyDocumentDetailsLogic.cs" />
+    <Compile Include="FormUsers\SupplyDocumentPayment\NewSupplyDocumentPaymentItem.xaml.cs">
+      <DependentUpon>NewSupplyDocumentPaymentItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsers\SupplyDocumentPayment\SupplyDocumentPaymentLogic.cs" />
     <Compile Include="FormUsers\SupplyDocument\NewSupplyDocumentGrid.xaml.cs">
       <DependentUpon>NewSupplyDocumentGrid.xaml</DependentUpon>
     </Compile>
@@ -630,6 +634,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="FormUsers\SupplyDocumentPayment\NewSupplyDocumentPaymentItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="FormUsers\SupplyDocument\NewSupplyDocumentGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -889,7 +897,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="FormUsers\Payment\" />
-    <Folder Include="FormUsers\SupplyDocumentPayment\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

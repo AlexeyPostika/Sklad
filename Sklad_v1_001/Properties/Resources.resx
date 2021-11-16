@@ -298,10 +298,10 @@
     <value>№-телефона</value>
   </data>
   <data name="Payment1" xml:space="preserve">
-    <value>Наличные</value>
+    <value>Оплачено</value>
   </data>
   <data name="Payment2" xml:space="preserve">
-    <value>Банковская карта</value>
+    <value>Не оплачено</value>
   </data>
   <data name="Payment3" xml:space="preserve">
     <value>Денежный перевод</value>
@@ -599,5 +599,29 @@
   </data>
   <data name="ErrorEmptyField" xml:space="preserve">
     <value>Заполните обязательное поле</value>
+  </data>
+  <data name="AmountPayment" xml:space="preserve">
+    <value>Цена доставки</value>
+  </data>
+  <data name="OperationType" xml:space="preserve">
+    <value>Тип оплаты</value>
+  </data>
+  <data name="OperationType1" xml:space="preserve">
+    <value>Наличные</value>
+  </data>
+  <data name="OperationType2" xml:space="preserve">
+    <value>Банковская карта</value>
+  </data>
+  <data name="OperationType3" xml:space="preserve">
+    <value>Обмен</value>
+  </data>
+  <data name="OperationType4" xml:space="preserve">
+    <value>Иным способом оплаты</value>
+  </data>
+  <data name="PaymentTypeStatus" xml:space="preserve">
+    <value>Статус оплаты</value>
+  </data>
+  <data name="RRN" xml:space="preserve">
+    <value>№-транзакции</value>
   </data>
 </root>
