@@ -123,7 +123,7 @@ namespace Sklad_v1_001.GlobalVariable
                 }
             }
         }
-        public void LoadImaje()
+        public void LoadImage()
         {
             using (winForms.OpenFileDialog dlg = new winForms.OpenFileDialog())
             {
