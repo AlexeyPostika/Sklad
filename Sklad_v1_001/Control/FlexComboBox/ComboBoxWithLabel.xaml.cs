@@ -111,7 +111,7 @@ namespace Sklad_v1_001.Control.FlexComboBox
 
         public ComboBoxWithLabel()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
 
         public event Action SelectTextInput;

@@ -29,8 +29,8 @@
                                                               Value="{Binding Path=Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                                             
                                                               LabelWidth="110"/>
                 
-                <FlexComboBox:ComboBoxWithLabel x:Name="OperationTypeName" LabelText="{x:Static res:Resources.OperationType}"                                              
-                                                Description="{Binding Path=OpertionTypeString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                <FlexComboBox:ComboBoxWithLabel x:Name="OperationTypeName" LabelText="{x:Static res:Resources.OperationType}"  
+                                                Value="{Binding Path=OpertionTypeString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                                
                                                 IsRequired="Visible"
                                                 LabelWidth="110"/>
                 
@@ -50,7 +50,7 @@
                 <FlexComboBox:ComboBoxWithLabel x:Name="StatusName" 
                                                 Margin="0,0,0,5"
                                                 LabelText="{x:Static res:Resources.PaymentTypeStatus}" 
-                                                Description="{Binding Path=StatusString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                Value="{Binding Path=StatusString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                          
                                                 IsRequired="Visible"
                                                 LabelWidth="110"/>
 
