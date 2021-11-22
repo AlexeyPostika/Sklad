@@ -118,7 +118,7 @@ namespace Sklad_v1_001.Control.SimpleControl
         public static readonly DependencyProperty ByteFaileProperty = DependencyProperty.Register(
                      "ByteFaile",
                      typeof(byte[]),
-                    typeof(EditBoxWithLabelDownloadFile));
+                    typeof(EditBoxWithLabelDownloadFile));   
         // Обычное свойство .NET  - обертка над свойством зависимостей
 
         public ImageSource Source
@@ -303,7 +303,28 @@ namespace Sklad_v1_001.Control.SimpleControl
                 case "PDF":
                     fileWork.OpenPDFtoImage(FilterPuth);
                     fileWork = await LoadInvoiceAsync(fileWork);
-                    if (fileWork.Source != null)
+                    if (fileWork.BufferDocument != null)
+                    {
+                        VisibilityLoad = Visibility.Collapsed;
+                        VisibilityAdd = Visibility.Visible;
+                        IsEnableAdd = false;
+                        IsEnableLoop = true;
+                        IsEnableCleare = true;
+                        ByteFaile = fileWork.BufferDocument;
+                    }
+                    else
+                    {
+                        VisibilityLoad = Visibility.Collapsed;
+                        VisibilityAdd = Visibility.Visible;
+                        IsEnableAdd = true;
+                        IsEnableLoop = false;
+                        IsEnableCleare = false;
+                        ByteFaile = null;
+                    }
+                    break;
+                default:
+                    fileWork.LoadImage(FilterPuth);                 
+                    if (fileWork.BufferDocument != null)
                     {
                         VisibilityLoad = Visibility.Collapsed;
                         VisibilityAdd = Visibility.Visible;

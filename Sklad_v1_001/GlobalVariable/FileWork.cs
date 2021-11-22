@@ -252,5 +252,53 @@ namespace Sklad_v1_001.GlobalVariable
             int bitsPerComponent = image.Elements.GetInteger(PdfImage.Keys.BitsPerComponent);
         }
         #endregion
+
+        #region Image
+        //Image --> byte[]
+        public void LoadImage(string _filterPuth)
+        {
+            using (winForms.OpenFileDialog dlg = new winForms.OpenFileDialog())
+            {
+                dlg.DefaultExt = ".jpg";
+                dlg.Filter = _filterPuth;
+
+                winForms.DialogResult result = dlg.ShowDialog();
+                if (result == System.Windows.Forms.DialogResult.OK)
+                {
+                    if (dlg.Filter.Split('|', '*')[dlg.FilterIndex * 3 - 1] == Path.GetExtension(dlg.FileName))
+                        BufferDocument = ImageToByteArray(Image(dlg.FileName));
+                }
+            }
+        }
+        private BitmapImage Image(string fileName)
+        {
+            BitmapImage image = new BitmapImage();
+            using (var stream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.StreamSource = stream;
+                image.EndInit();
+            }
+            return image;
+        }
+
+       
+        public byte[] ImageToByteArray(BitmapImage imageIn)
+        {
+            byte[] data;
+            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(imageIn));
+            using (MemoryStream ms = new MemoryStream())
+            {
+                encoder.Save(ms);
+                data = ms.ToArray();
+            }
+            return data;
+        }
+
+        //byte[] --> Image
+       
+        #endregion
     }
 }

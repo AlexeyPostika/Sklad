@@ -42,8 +42,8 @@
                                                             LabelWidth="110"
                                                             IsRequired="Visible"
                                                             Text="{Binding Path=RRN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
-                                                            FilterPuth="Jpg files|*.jpg"
-                                                            Mode="PDF"
+                                                            FilterPuth="Jpg files|*.jpg|Png files|*.png|Bitmap files|*.bmp"
+                                                            Mode="JPG"
                                                             ButtonAddClick="RRN_ButtonAddClick"
                                                             ButtonLoopClick="RRN_ButtonLoopClick"
                                                             ButtonClearClick="RRN_ButtonClearClick"/>
