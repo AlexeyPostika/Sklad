@@ -1,7 +1,4 @@
 ﻿using Microsoft.Win32;
-using PdfSharp.Pdf;
-using PdfSharp.Pdf.Advanced;
-using PdfSharp.Pdf.IO;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,7 +9,11 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Aspose;
+
 using winForms = System.Windows.Forms;
+using Aspose.Pdf;
+using Aspose.Pdf.Facades;
 
 namespace Sklad_v1_001.GlobalVariable
 {
@@ -173,89 +174,79 @@ namespace Sklad_v1_001.GlobalVariable
         }
 
 
-        public void PDFTo()
+        public void PDFToByte()
         {
-            if (!String.IsNullOrEmpty(PuthString))
-            {
-                PdfDocument document = PdfReader.Open(PuthString);
+            // Initialize FileStream object
+            FileStream fs = new FileStream(PuthString, FileMode.Open, FileAccess.Read);
+            BinaryReader br = new BinaryReader(fs);
+            long numBytes = new FileInfo(PuthString).Length;
 
-                int imageCount = 0;
-                // Iterate pages
-                foreach (PdfPage page in document.Pages)
+            // Load the file contents in the byte array
+            BufferDocument = br.ReadBytes((int)numBytes);
+            fs.Close();
+
+            //Document document = new Document(PuthString);
+            //document.Save("output.xps", Aspose.Pdf.SaveFormat.Xps);
+        }  
+        
+        public String ByteToXPS(byte[] _documentByte)
+        {
+            using (MemoryStream InputStream = new MemoryStream(_documentByte))
+            {
+                Document document = new Document(InputStream);
+                document.Save("output.xps", SaveFormat.Xps);
+                return "output.xps";
+            }
+            return String.Empty;
+        }
+
+        public static void ConvertPDFToJPEG(Byte[] PDFBlob, int resolution, string dataDir)
+        {
+            // Open document
+            using (MemoryStream InputStream = new MemoryStream(PDFBlob))
+            {
+                Aspose.Pdf.Document pdfDocument = new Aspose.Pdf.Document(InputStream);
+
+                for (int pageCount = 1; pageCount <= pdfDocument.Pages.Count; pageCount++)
                 {
-                    // Get resources dictionary
-                    PdfDictionary resources = page.Elements.GetDictionary("/Resources");
-                    if (resources != null)
+
+                    using (FileStream imageStream = new FileStream(dataDir + "image" + pageCount + "_out" + ".jpg", FileMode.Create))
                     {
-                        // Get external objects dictionary
-                        PdfDictionary xObjects = resources.Elements.GetDictionary("/XObject");
-                        if (xObjects != null)
-                        {
-                            ICollection<PdfItem> items = xObjects.Elements.Values;
-                            // Iterate references to external objects
-                            foreach (PdfItem item in items)
-                            {
-                                PdfReference reference = item as PdfReference;
-                                if (reference != null)
-                                {
-                                    PdfDictionary xObject = reference.Value as PdfDictionary;
-                                    // Is external object an image?
-                                    if (xObject != null && xObject.Elements.GetString("/Subtype") == "/Image")
-                                    {
-                                        ExportImage(xObject, ref imageCount);
-                                    }
-                                }
-                            }
-                        }
+                        // Create JPEG device with specified attributes
+                        // Width, Height, Resolution, Quality
+                        // Quality [0-100], 100 is Maximum
+                        // Create Resolution object
+
+                        Aspose.Pdf.Devices.Resolution res = new Aspose.Pdf.Devices.Resolution(resolution);
+                        // JpegDevice jpegDevice = new JpegDevice(500, 700, resolution, 100);
+
+                        // added the following to determine if landscape or not
+                        Int32 height, width = 0;
+
+                        PdfFileInfo info = new PdfFileInfo(pdfDocument);
+                        width = Convert.ToInt32(info.GetPageWidth(pdfDocument.Pages[pageCount].Number));
+                        height = Convert.ToInt32(info.GetPageHeight(pdfDocument.Pages[pageCount].Number));
+
+
+                        Aspose.Pdf.Devices.JpegDevice jpegDevice =
+                        //new Aspose.Pdf.Devices.JpegDevice(Aspose.Pdf.PageSize.A4, res, 100);
+                        new Aspose.Pdf.Devices.JpegDevice(width, height, res, 100);
+                        // Convert a particular page and save the image to stream
+
+                        //Aspose.Pdf.PageSize.A4.IsLandscape = true;
+                        jpegDevice.Process(pdfDocument.Pages[pageCount], imageStream);
+                        // Close stream
+                        imageStream.Close();
                     }
                 }
             }
         }
 
-        public void ExportImage(PdfDictionary image, ref int count)
-        {
-            string filter = image.Elements.GetName("/Filter");
-            switch (filter)
-            {
-                case "/DCTDecode":
-                    Source = ExportJpegImage(image, ref count);
-                    break;
+            #endregion
 
-                case "/FlateDecode":
-                    ExportAsPngImage(image, ref count);
-                    break;
-            }
-        }
-        public BitmapImage ExportJpegImage(PdfDictionary image, ref int count)
-        {
-            // Fortunately JPEG has native support in PDF and exporting an image is just writing the stream to a file.                       
-            BufferDocument = image.Stream.Value;
-
-            FileStream fs = new FileStream(String.Format("Image{0}.jpeg", count++), FileMode.Create, FileAccess.Write);
-            BinaryWriter bw = new BinaryWriter(fs);
-            bw.Write(BufferDocument);
-            bw.Close();
-
-            BitmapImage image1 = new BitmapImage();
-            image1.BeginInit();
-            image1.CacheOption = BitmapCacheOption.OnLoad;
-            image1.StreamSource = fs;
-            image1.EndInit();
-
-
-            return image1;
-        }
-        static void ExportAsPngImage(PdfDictionary image, ref int count)
-        {
-            int width = image.Elements.GetInteger(PdfImage.Keys.Width);
-            int height = image.Elements.GetInteger(PdfImage.Keys.Height);
-            int bitsPerComponent = image.Elements.GetInteger(PdfImage.Keys.BitsPerComponent);
-        }
-        #endregion
-
-        #region Image
-        //Image --> byte[]
-        public void LoadImage(string _filterPuth)
+            #region Image
+            //Image --> byte[]
+            public void LoadImage(string _filterPuth)
         {
             using (winForms.OpenFileDialog dlg = new winForms.OpenFileDialog())
             {

@@ -19,8 +19,6 @@ using System.IO.Packaging;
 using System.Windows.Xps;
 using System.Windows.Xps.Packaging;
 using Sklad_v1_001.Report;
-using PdfSharp.Pdf;
-using PdfSharp.Pdf.IO;
 using System.Xml.Linq;
 
 
@@ -355,32 +353,23 @@ namespace Sklad_v1_001.Control.SimpleControl
 
         static FileWork LoadInvoice(FileWork _fileWork)
         {
-            _fileWork.PDFTo();
+            _fileWork.PDFToByte();
             return _fileWork;
         }
         #endregion
 
         private void buttonLoop_ButtonClick()
-        {
-            FlexMessageBox.FlexMessageBox mg = new FlexMessageBox.FlexMessageBox();
-            FlexDocumentWindows flexDocumentWindows = new FlexDocumentWindows();
-
-
-
-            //// Отобразить документ
-            Package package;
+        {          
             using (Stream stream = new MemoryStream(ByteFaile))
             {
-                package = System.IO.Packaging.Package.Open(stream);
+                FlexDocumentWindows flexDocumentWindows = new FlexDocumentWindows();
+               
+                XpsDocument doc = new XpsDocument(fileWork.ByteToXPS(ByteFaile), FileAccess.ReadWrite);
+                flexDocumentWindows.DocumentXps = doc.GetFixedDocumentSequence();              
+                doc.Close();
+                flexDocumentWindows.ShowDialog();
             }
-            XpsDocument xpsDocument = new XpsDocument(package, CompressionOption.SuperFast);
-            //XpsDocument doc = new XpsDocument(fileWork.PuthString, FileAccess.ReadWrite);
-
-            flexDocumentWindows.DocumentXps = xpsDocument.GetFixedDocumentSequence();
-            xpsDocument.Close();
-            mg.Content = flexDocumentWindows;
-            mg.ShowDialog();
-         
+            //XpsDocument xpsDocument = new XpsDocument(package, CompressionOption.SuperFast);              
         }  
 
         private void buttonClear_ButtonClick()

@@ -157,7 +157,7 @@ namespace Sklad_v1_001.FormUsers.Delivery
 
         static FileWork LoadInvoice(FileWork _fileWork)
         {
-            _fileWork.PDFTo();
+            _fileWork.PDFToByte();
             return _fileWork;
         }
         #endregion
