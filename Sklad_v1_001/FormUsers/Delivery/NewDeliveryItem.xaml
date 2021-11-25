@@ -13,7 +13,8 @@
       xmlns:FlexEditBox="clr-namespace:Sklad_v1_001.Control.FlexEditBox"
       mc:Ignorable="d"     
       Title="NewDeliveryItem"
-      Width="350" Height="390"
+      Width="350" 
+      Height="Auto"
       Style="{DynamicResource UsersPageWidth}"
       Loaded="page_Loaded"
       Unloaded="page_Unloaded"
@@ -82,7 +83,7 @@
                                                  LabelWidth="230"/>-->
             </StackPanel>
         </Border>
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2" Margin="0,0,0,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="Auto"/>

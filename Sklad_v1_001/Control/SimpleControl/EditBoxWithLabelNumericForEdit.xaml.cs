@@ -82,7 +82,7 @@ namespace Sklad_v1_001.Control.SimpleControl
             if (String.IsNullOrEmpty(s.Replace(" ", "")))
                 return 0;
             else
-                return convertdata.FlexDataConvertToInt32(int.Parse(s, culture).ToString());
+                return convertdata.FlexDataConvertToInt64(int.Parse(s, culture).ToString());
         }
     }
 
@@ -106,7 +106,18 @@ namespace Sklad_v1_001.Control.SimpleControl
                       "MaxValue",
                       typeof(Int32),
                       typeof(EditBoxWithLabelNumericForEdit), new UIPropertyMetadata(Int32.MaxValue));
+        
+        public static readonly DependencyProperty IsRequiredProperty = DependencyProperty.Register(
+                      "IsRequired",
+                      typeof(Visibility),
+                      typeof(EditBoxWithLabelNumericForEdit), new UIPropertyMetadata(Visibility.Collapsed));
 
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Visibility IsRequired
+        {
+            get { return (Visibility)GetValue(IsRequiredProperty); }
+            set { SetValue(IsRequiredProperty, value); }           
+        }
         public EditBoxWithLabelNumericForEdit()
         {
             InitializeComponent();                   

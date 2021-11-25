@@ -14,7 +14,7 @@
       xmlns:FlexEditBox="clr-namespace:Sklad_v1_001.Control.FlexEditBox"
       Title="NewAddProductItem"
       Style="{DynamicResource UsersPageWidth}" 
-      Height="450"
+      Height="Auto"
       Width="350">
     <Grid>
         <Grid.RowDefinitions>
@@ -26,35 +26,43 @@
         <Border Style="{DynamicResource BorderStyle}" Margin="10" Grid.Row="1" Grid.ColumnSpan="2">
             <StackPanel x:Name="Product" Background="Transparent">
                 <FlexTextBox:FlexLabelTextBox x:Name="ProductName"
+                                              IsRequired="Visible"
                                               LabelText="{x:Static res:Resources.NameProduct}"
                                               Description="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                               EnableTextBox="True"/>
                 <FlexEditBox:EditBoxUserWithLabel x:Name="CategoryName" LabelText="{x:Static res:Resources.CATEGORY}" 
+                                                  IsRequired="Visible"
                                                   Text="{Binding Path=CategoryString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   LabelWidth="70"/>
                 <FlexTextBox:FlexLabelTextBox x:Name="ModelName"  LabelText="{x:Static res:Resources.Model}" 
+                                              IsRequired="Visible"
                                               Description="{Binding Path=Model, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                               EnableTextBox="True"/>
-                <SimpleControl:EditBoxWithLabelNumericForEdit x:Name="QuantityName"  LabelText="{x:Static res:Resources.Quantity}" 
-                                                              Value="{Binding Path=Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                <SimpleControl:EditBoxWithLabelNumericForEdit x:Name="QuantityName"  LabelText="{x:Static res:Resources.Quantity}"
+                                                              IsRequired="Visible"
+                                                              Value="{Binding Path=Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=\{0:N0\}}"
                                                               LabelWidth="120"/>
-                <SimpleControl:EditBoxWithLabelNumericForEdit x:Name="TagPriceUSAName" LabelText="{x:Static res:Resources.TagPriceUSA}" 
-                                                              Value="{Binding Path=TagPriceUSA, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                              LabelWidth="120"/>
-                <SimpleControl:EditBoxWithLabelNumericForEdit x:Name="TagPriceRUSName"  LabelText="{x:Static res:Resources.TagPriceRus}" 
-                                                              Value="{Binding Path=TagPriceRUS, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                              LabelWidth="120"/>
+                <SimpleControl:EditBoxWithLabelFloatForEdit x:Name="TagPriceUSAName" LabelText="{x:Static res:Resources.TagPriceUSA}" 
+                                                            IsRequired="Visible"
+                                                            Value="{Binding Path=TagPriceUSA, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=\{0:N0\}}"
+                                                            LabelWidth="130"/>
+                <SimpleControl:EditBoxWithLabelFloatForEdit x:Name="TagPriceRUSName"  LabelText="{x:Static res:Resources.TagPriceRus}" 
+                                                            IsRequired="Visible"
+                                                            Value="{Binding Path=TagPriceRUS, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=\{0:N0\}}"
+                                                            LabelWidth="130"/>
                 <FlexTextBox:FlexLabelTextBox  x:Name="SizeProductName" LabelText="{x:Static res:Resources.SizeProduct}"
-                                              Description="{Binding Path=SizeProduct, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                              EnableTextBox="True"/>
-                <FlexRadioButton:FlexRadioButton LabelText="{x:Static res:Resources.PackageYEStoNOT}"
+                                               IsRequired="Visible"
+                                               Description="{Binding Path=SizeProduct, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                               EnableTextBox="True"/>
+                <FlexRadioButton:FlexRadioButton LabelText="{x:Static res:Resources.PackageYEStoNOT}" 
+                                                 IsRequired="Visible"
                                                  YESLabelText="Да"
                                                  NOLabelText="Нет"
                                                  IsRadio="{Binding Path=Package, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                 LabelWidth="235"/>
+                                                 LabelWidth="150"/>
             </StackPanel>
         </Border>
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2" Margin="0,0,0,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="Auto"/>

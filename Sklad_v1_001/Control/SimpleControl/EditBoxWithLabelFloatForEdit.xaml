@@ -6,24 +6,26 @@
              x:Class="Sklad_v1_001.Control.SimpleControl.EditBoxWithLabelFloatForEdit"
              mc:Ignorable="d"
              Name="control">
-    <!--<UserControl.Resources>
+    <UserControl.Resources>
         <local:StringToNullableDoubleConverter x:Key="nullDoubleConv"/>
-    </UserControl.Resources>-->
-    <Grid Height="30" Name="grid" Margin="0, 10, 10, 0">
+    </UserControl.Resources>
+    <Grid Height="30" Name="grid" Margin="0, 10, 3, 0">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Label  Name="label" Margin="5,0,0,0" Width="100" Height="30" 
-                    Content="{Binding ElementName=control, Path=LabelTextString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-            <TextBox  Name="TextBox" Grid.Column="1"
-                     Text="{Binding ElementName=control, Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+            <WrapPanel Name="wrapPanel" Width="Auto" Margin="5,0,0,0">
+                <Label  Name="label" Height="30" Content="{Binding ElementName=control, Path=LabelTextString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <Label Name="required" Margin="-9,0,0,0" FontSize="18" Height="30" Visibility="{Binding ElementName=control, Path=IsRequired, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="Red" Content="*" HorizontalAlignment="Left"/>
+            </WrapPanel>
+            <TextBox Name="TextBox" Grid.Column="1"
+                     Text="{Binding ElementName=control, Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource nullDoubleConv}}" 
                      HorizontalContentAlignment="Right"
                      DataObject.Pasting="TextBox_Pasting" 
                      PreviewTextInput="TextBox_OnPreviewTextInput" 
-                     TextChanged="TextBox_TextChanged"/>
-         </Grid>
+                     TextChanged="TextBox_TextChanged" PreviewKeyDown="TextBox_PreviewKeyDown"/>
+        </Grid>
     </Grid>
 </UserControl>
 
