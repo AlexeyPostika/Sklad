@@ -154,7 +154,7 @@ namespace Sklad_v1_001.GlobalVariable
         }    
 
         #region PDF
-        public String OpenPDFtoImage( string _filterPuth)
+        public String OpenPDF( string _filterPuth)
         {
             using (winForms.OpenFileDialog dlg = new winForms.OpenFileDialog())
             {

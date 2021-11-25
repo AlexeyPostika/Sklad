@@ -299,7 +299,7 @@ namespace Sklad_v1_001.Control.SimpleControl
             switch (Mode)
             {
                 case "PDF":
-                    fileWork.OpenPDFtoImage(FilterPuth);
+                    fileWork.OpenPDF(FilterPuth);
                     fileWork = await LoadInvoiceAsync(fileWork);
                     if (fileWork.BufferDocument != null)
                     {
