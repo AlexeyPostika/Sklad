@@ -14,7 +14,7 @@
       xmlns:FlexEditBox="clr-namespace:Sklad_v1_001.Control.FlexEditBox"
       Title="NewAddProductItem"
       Style="{DynamicResource UsersPageWidth}" 
-      Height="320"
+      Height="Auto"
       Width="350">
     <Grid>
         <Grid.RowDefinitions>
@@ -25,16 +25,18 @@
         <Label Content="Оплата" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16" />
         <Border Style="{DynamicResource BorderStyle}" Margin="10" Grid.Row="1" Grid.ColumnSpan="2">
             <StackPanel x:Name="Product" Background="Transparent">
-                <SimpleControl:EditBoxWithLabelNumericForEdit x:Name="AmounPayment" LabelText="{x:Static res:Resources.AmountPayment}" 
-                                                              Value="{Binding Path=Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                                             
-                                                              LabelWidth="110"/>
+                <SimpleControl:EditBoxWithLabelFloatForEdit x:Name="AmounPayment" LabelText="{x:Static res:Resources.AmountPayment}" 
+                                                            IsRequired="Visible"
+                                                            Value="{Binding Path=Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                                             
+                                                            LabelWidth="110"/>
                 
-                <FlexComboBox:ComboBoxWithLabel x:Name="OperationTypeName" LabelText="{x:Static res:Resources.OperationType}"                                              
-                                                Description="{Binding Path=OpertionTypeString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                <FlexComboBox:ComboBoxWithLabel x:Name="OperationTypeName" LabelText="{x:Static res:Resources.OperationType}"  
+                                                Value="{Binding Path=OpertionTypeString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                                
                                                 IsRequired="Visible"
                                                 LabelWidth="110"/>
                 
-                <FlexTextBox:FlexLabelTextBox  x:Name="DescriptionPayment" LabelText="{x:Static res:Resources.Description}"
+                <FlexTextBox:FlexLabelTextBox x:Name="DescriptionPayment" LabelText="{x:Static res:Resources.Description}"
+                                              IsRequired="Visible"
                                               Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                               EnableTextBox="True"/>
                 <SimpleControl:EditBoxWithLabelDownloadFile x:Name="RRN"                                                           
@@ -42,21 +44,21 @@
                                                             LabelWidth="110"
                                                             IsRequired="Visible"
                                                             Text="{Binding Path=RRN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
-                                                            FilterPuth="Jpg files|*.jpg"
-                                                            Mode="PDF"
+                                                            FilterPuth="Jpg files|*.jpg|Png files|*.png|Bitmap files|*.bmp"
+                                                            Mode="JPG"
                                                             ButtonAddClick="RRN_ButtonAddClick"
                                                             ButtonLoopClick="RRN_ButtonLoopClick"
                                                             ButtonClearClick="RRN_ButtonClearClick"/>
                 <FlexComboBox:ComboBoxWithLabel x:Name="StatusName" 
                                                 Margin="0,0,0,5"
                                                 LabelText="{x:Static res:Resources.PaymentTypeStatus}" 
-                                                Description="{Binding Path=StatusString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                Value="{Binding Path=StatusString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                          
                                                 IsRequired="Visible"
                                                 LabelWidth="110"/>
 
             </StackPanel>
         </Border>
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2" Margin="0,0,0,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="Auto"/>

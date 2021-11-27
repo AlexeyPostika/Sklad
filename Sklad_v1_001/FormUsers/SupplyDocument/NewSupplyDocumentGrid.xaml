@@ -189,9 +189,20 @@
                                             SortMemberPath="RRN" 
                                             CanUserSort="True" 
                                             Binding="{Binding Path=RRN , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                        <DataGridTextColumn Header="{x:Static res:Resources.AddFileRRN}"                                            
-                                            CanUserSort="True" 
-                                            Binding="{Binding Path=ImageSourceRRN , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+
+                        <DataGridTemplateColumn MaxWidth="300">
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <Label Content="{x:Static res:Resources.AddFileRRN}" HorizontalAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding Path=ImageSourceRRN, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                                            
                         <DataGridTextColumn Header="{x:Static res:Resources.LastModifiadDateText}" 
                                             SortMemberPath="LastModicatedDate"
                                             CanUserSort="True" 

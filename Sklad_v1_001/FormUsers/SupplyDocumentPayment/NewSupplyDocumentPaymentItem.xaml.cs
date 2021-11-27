@@ -110,7 +110,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
 
         private void RRN_ButtonAddClick()
         {
-
+            PaymentLocalRow.RRNDocumentByte = this.RRN.ByteFaile;
         }
 
         private void RRN_ButtonLoopClick()

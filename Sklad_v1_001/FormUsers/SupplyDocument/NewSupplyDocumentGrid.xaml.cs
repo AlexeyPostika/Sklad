@@ -2,6 +2,7 @@
 using Sklad_v1_001.FormUsers.Delivery;
 using Sklad_v1_001.FormUsers.Product;
 using Sklad_v1_001.FormUsers.SupplyDocumentPayment;
+using Sklad_v1_001.GlobalList;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -139,6 +140,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             Status = 0;
 
+            SupplyTypeList supplyTypeList = new SupplyTypeList();
+            this.StatusDocument.ComboBoxElement.ItemsSource = supplyTypeList.innerList;
 
             this.DataProduct.ItemsSource = detailsProduct;
             this.DataDelivery.ItemsSource = detailsDelivery;

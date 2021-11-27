@@ -9,7 +9,10 @@
              mc:Ignorable="d" x:Name="control">
     <Grid>
         <StackPanel Margin="3,0" Height="Auto">
-            <Label Name="LabelName" Content="{Binding ElementName=control, Path=LabelText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <WrapPanel Name="wrapPanel" Width="Auto" Margin="5,0,0,0">
+                <Label Name="LabelName" Content="{Binding ElementName=control, Path=LabelText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                <Label Name="required" Margin="-9,0,0,0" FontSize="18" Height="30" Visibility="{Binding ElementName=control, Path=IsRequired, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="Red" Content="*" HorizontalAlignment="Left"/>
+            </WrapPanel>
             <TextBox Name="DescriptionInfo" Text="{Binding ElementName=control, Path=Description, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                      IsEnabled="{Binding ElementName=control, Path=EnableTextBox, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Height="30"/>
         </StackPanel>

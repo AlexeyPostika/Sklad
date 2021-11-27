@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -36,19 +37,36 @@ namespace Sklad_v1_001.Control.SimpleControl
         public object ConvertBack(object value, Type targetType,
             object parameter, CultureInfo culture)
         {
-            string s = (string)value;
+            string s = value.ToString();
             if (String.IsNullOrEmpty(s.Replace(" ", "")))
             {
                 return 0;
             }
             else
             {
-                if (s.Length > decimalPlace + 1 && s.IndexOf(".") < 0)
+                Double output;
+                try
                 {
-                    s = s.Insert(s.Length - decimalPlace, ".");
+                    if (s.Length > decimalPlace + 1 && s.IndexOf(".") < 0)
+                    {
+                        s = s.Insert(s.Length - decimalPlace, ".");
+                    }
+                    s = s.Replace(" ", "").Replace(",", "");
+                    s = Regex.Replace(s, @"\p{Z}", "");
+                    int i = s.IndexOf(".");
+                    if (i > 0)
+                    {
+                        if (s.Length > i + 3)
+                            s = s.Substring(0, i + 3);
+                    }
+
+                    output = (Double)double.Parse(s, culture);
                 }
-                s = s.Replace(" ", "").Replace(",", "");
-                return (Double)double.Parse(s, culture);
+                catch
+                {
+                    output = 0.0;
+                }
+                return output;
             }
         }
     }
@@ -56,9 +74,28 @@ namespace Sklad_v1_001.Control.SimpleControl
     /// <summary>
     /// Логика взаимодействия для EditBoxWithLabelNumeric.xaml
     /// </summary>
-    public partial class EditBoxWithLabelFloatForEdit : UserControl
+    public partial class EditBoxWithLabelFloatForEdit : UserControl, INotifyPropertyChanged
     {
         Int32 decimalPlace = 2;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        // свойство зависимостей
+        public static readonly DependencyProperty IsRequiredProperty = DependencyProperty.Register(
+                        "IsRequired",
+                        typeof(Visibility),
+                        typeof(EditBoxWithLabelFloatForEdit), new UIPropertyMetadata(Visibility.Collapsed));
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Visibility IsRequired
+        {
+            get { return (Visibility)GetValue(IsRequiredProperty); }
+            set { SetValue(IsRequiredProperty, value); }          
+        }
 
         // свойство зависимостей
         public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(
@@ -75,18 +112,18 @@ namespace Sklad_v1_001.Control.SimpleControl
         public static readonly DependencyProperty MinValueProperty = DependencyProperty.Register(
                       "MinValue",
                       typeof(Double),
-                      typeof(EditBoxWithLabelFloatForEdit), new UIPropertyMetadata(Double.MinValue));
+                      typeof(EditBoxWithLabelFloatForEdit), new UIPropertyMetadata(0.0));
 
         public static readonly DependencyProperty MaxValueProperty = DependencyProperty.Register(
                       "MaxValue",
                       typeof(Double),
-                      typeof(EditBoxWithLabelFloatForEdit), new UIPropertyMetadata(Double.MaxValue));
+                      typeof(EditBoxWithLabelFloatForEdit), new UIPropertyMetadata(SqlMoney.MaxValue.ToDouble() - 1));
 
         public EditBoxWithLabelFloatForEdit()
         {
-            InitializeComponent();                   
-        }        
-        
+            InitializeComponent();
+        }
+
         // Обычное свойство .NET  - обертка над свойством зависимостей
         public Double Value
         {
@@ -119,12 +156,12 @@ namespace Sklad_v1_001.Control.SimpleControl
         {
             get
             {
-                return this.label.Content.ToString();
+                return label.Content.ToString();
             }
 
             set
             {
-                this.label.Content = value;
+                label.Content = value;
             }
         }
 
@@ -132,12 +169,12 @@ namespace Sklad_v1_001.Control.SimpleControl
         {
             get
             {
-                return this.label.Width;
+                return wrapPanel.Width;
             }
 
             set
             {
-                this.label.Width = value;
+                wrapPanel.Width = value;
             }
         }
 
@@ -145,12 +182,12 @@ namespace Sklad_v1_001.Control.SimpleControl
         {
             get
             {
-                return this.TextBox.IsReadOnly;
+                return TextBox.IsReadOnly;
             }
 
             set
             {
-                this.TextBox.IsReadOnly = value;                
+                TextBox.IsReadOnly = value;
             }
         }
 
@@ -158,26 +195,17 @@ namespace Sklad_v1_001.Control.SimpleControl
 
         private void TextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
+            TextBox current = sender as TextBox;
+
             if (e.Text == "." || e.Text == ",")
             {
-                TextBox curent = sender as TextBox;
-                curent.CaretIndex = curent.Text.Length - decimalPlace;
+                current.CaretIndex = current.Text.Length - decimalPlace;
             }
 
-            e.Handled = !((Char.IsDigit(e.Text, 0) || ((e.Text == System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator[0].ToString()) && (DS_Count(((TextBox)sender).Text) < 1))));
-
-            /*if (!e.Handled)
-            {
-                String prev = this.TextBox.Text.Remove(this.TextBox.CaretIndex, this.TextBox.Text.Length - this.TextBox.CaretIndex);
-                String next = this.TextBox.Text.Remove(0, this.TextBox.CaretIndex);
-
-                String newvalue = String.Concat(prev, e.Text, next).Replace(',', ' ').Replace('.', ',');
-                Double val = Double.Parse(newvalue);
-                if (val < MinValue || val > MaxValue)
-                {
-                    e.Handled = true;
-                }
-            }*/
+            if (!String.IsNullOrEmpty(e.Text))
+                e.Handled = !((Char.IsDigit(e.Text, 0) || ((e.Text == CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator[0].ToString()) && (DS_Count(((TextBox)sender).Text) < 1))));
+            if (e.Handled)
+                current.Text = current.Text.Replace(e.Text, "");
         }
 
         private void TextBox_Pasting(object sender, DataObjectPastingEventArgs e)
@@ -185,7 +213,9 @@ namespace Sklad_v1_001.Control.SimpleControl
             if (e.DataObject.GetDataPresent(typeof(String)))
             {
                 Boolean res = false;
-                String text = (String)e.DataObject.GetData(typeof(String));               
+                String text = (String)e.DataObject.GetData(typeof(String));
+                string dec_sep = Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+                text = text.Replace(",", dec_sep).Replace(".", dec_sep);
                 float val;
                 res = !float.TryParse(text, out val);
 
@@ -199,7 +229,7 @@ namespace Sklad_v1_001.Control.SimpleControl
                     {
                         e.CancelCommand();
                     }
-                }                
+                }
             }
             else
             {
@@ -219,6 +249,14 @@ namespace Sklad_v1_001.Control.SimpleControl
             TextBox current = sender as TextBox;
             if (current != null)
             {
+                if (MinValue > MaxValue)
+                {
+                    MinValue = 0;
+                    MaxValue = 0;
+                    Value = 0;
+                    e.Handled = true;
+                }
+
                 if (Value < MinValue)
                 {
                     Value = MinValue;
@@ -230,8 +268,28 @@ namespace Sklad_v1_001.Control.SimpleControl
                     Value = MaxValue;
                     e.Handled = true;
                 }
-                TextChanged?.Invoke();
             }
-        }        
+            TextChanged?.Invoke();
+        }
+
+        private void TextBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            TextBox current = sender as TextBox;
+
+            if (current.Text.Length > 3 && current.Text.Contains("."))
+            {
+                if (current.CaretIndex > 1 && e.Key == Key.Back && current.Text.ToCharArray()[current.CaretIndex - 1] == '.')
+                {
+                    current.CaretIndex = current.Text.Length - decimalPlace - 1;
+                    e.Handled = true;
+                }
+
+                if (current.CaretIndex < current.Text.Length && e.Key == Key.Delete && current.Text.ToCharArray()[current.CaretIndex] == '.')
+                {
+                    current.CaretIndex = current.CaretIndex + 1;
+                    e.Handled = true;
+                }
+            }
+        }
     }
 }

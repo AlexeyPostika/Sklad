@@ -49,6 +49,19 @@ namespace Sklad_v1_001.Control.FlexTextBox
             get { return (Boolean)GetValue(EnableTextBoxProperty); }
             set { SetValue(EnableTextBoxProperty, value); }
         }
+
+        // свойство зависимостей
+        public static readonly DependencyProperty IsRequiredProperty = DependencyProperty.Register(
+                        "IsRequired",
+                        typeof(Visibility),
+                        typeof(FlexLabelTextBox), new UIPropertyMetadata(Visibility.Collapsed));
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Visibility IsRequired
+        {
+            get { return (Visibility)GetValue(IsRequiredProperty); }
+            set { SetValue(IsRequiredProperty, value); }           
+        }
         public FlexLabelTextBox()
         {
             InitializeComponent();

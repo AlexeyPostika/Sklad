@@ -30,6 +30,18 @@ namespace Sklad_v1_001.Control.FlexRadio
                         "IsRadioType",
                         typeof(Int32),
                         typeof(FlexRadioButton), new UIPropertyMetadata(2));
+        
+        public static readonly DependencyProperty IsRequiredProperty = DependencyProperty.Register(
+                      "IsRequired",
+                      typeof(Visibility),
+                      typeof(FlexRadioButton), new UIPropertyMetadata(Visibility.Collapsed));
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Visibility IsRequired
+        {
+            get { return (Visibility)GetValue(IsRequiredProperty); }
+            set { SetValue(IsRequiredProperty, value); }
+        }
 
         public Boolean IsRadio
         {
@@ -92,12 +104,12 @@ namespace Sklad_v1_001.Control.FlexRadio
         {
             get
             {
-                return this.label.Width;
+                return this.required.Width;
             }
 
             set
             {
-                this.label.Width = value;
+                this.required.Width = value;
             }
         }
         public FlexRadioButton()

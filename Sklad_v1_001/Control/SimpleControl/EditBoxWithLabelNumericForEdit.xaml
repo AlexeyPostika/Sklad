@@ -16,7 +16,11 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Label Name="label" Margin="5,0,0,0" Width="100" Height="30"/>
+            <WrapPanel Name="wrapPanel" Width="Auto" Margin="5,0,0,0">
+                <Label Name="label" Width="100" Height="30"/>
+                <Label Name="required" Margin="-9,0,0,0" FontSize="18" Height="30" Visibility="{Binding ElementName=control, Path=IsRequired, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="Red" Content="*" HorizontalAlignment="Left"/>
+            </WrapPanel>
+           
             <TextBox Name="TextBox" Grid.Column="1" 
                      Text="{Binding ElementName=control, Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource nullDecimalConv}}" 
                      DataObject.Pasting="TextBox_Pasting" 
