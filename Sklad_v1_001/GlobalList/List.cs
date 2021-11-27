@@ -59,6 +59,13 @@ namespace Sklad_v1_001.GlobalList
         public String Description { get; set; }
     }
 
+    public class GlobalPaymentTypeItem
+    {
+        public Int32 ID { get; set; }
+        public string Description { get; set; }
+    }
+
+
     public class DateTimeListFilter
     {
         public ObservableCollection<DateTimeItem> innerList { get; set; }
@@ -181,6 +188,19 @@ namespace Sklad_v1_001.GlobalList
                 new OperationType {ID=1,Description=Properties.Resources.OperationType2 },
                 new OperationType {ID=2,Description=Properties.Resources.OperationType3 },
                 new OperationType {ID=2,Description=Properties.Resources.OperationType4 },
+            };
+        }
+    }
+    public class ShortGlobalPaymentTypeList
+    {
+        public ObservableCollection<GlobalPaymentTypeItem> innerList { get; set; }
+        public ShortGlobalPaymentTypeList()
+        {
+            innerList = new ObservableCollection<GlobalPaymentTypeItem>()
+            {
+                 new GlobalPaymentTypeItem { ID=0, Description = Properties.Resources.Payment1 },
+                 //new GlobalPaymentTypeItem { ID=2, Description=Properties.Resources.Payment10 }, // закрыть кредит
+                 new GlobalPaymentTypeItem { ID = 1, Description = Properties.Resources.Payment2 } // банковская карта
             };
         }
     }
