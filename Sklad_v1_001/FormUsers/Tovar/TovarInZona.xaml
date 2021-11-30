@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Sklad_v1_001.FormUsers.Tovar"
       xmlns:FlexImage="clr-namespace:Sklad_v1_001.Control.FlexImage"
       xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
-      xmlns:Viewer="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer" x:Class="Sklad_v1_001.FormUsers.Tovar.TovarInZona"
+      x:Class="Sklad_v1_001.FormUsers.Tovar.TovarInZona"
       mc:Ignorable="d" 
       d:DesignHeight="918" d:DesignWidth="800"
       Title="TovarInZona" Style="{DynamicResource UsersPageWidth}">
