@@ -24,6 +24,7 @@ namespace Sklad_v1_001.FormUsers.Product
         private Int32 categoryID;
         private String categoryString;
         private String model;
+        private String barCodeString;
         private Int32 quantity;
         private Decimal tagPriceUSA;
         private Decimal tagPriceRUS;
@@ -112,7 +113,20 @@ namespace Sklad_v1_001.FormUsers.Product
                 OnPropertyChanged("Model");
             }
         }
+        //barCodeString
+        public string BarCodeString
+        {
+            get
+            {
+                return barCodeString;
+            }
 
+            set
+            {
+                barCodeString = value;
+                OnPropertyChanged("BarCodeString");
+            }
+        }
         public Int32 Quantity
         {
             get

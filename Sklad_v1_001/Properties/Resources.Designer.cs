@@ -61,6 +61,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на ДОБАВИТЬ.
+        /// </summary>
+        public static string ADD {
+            get {
+                return ResourceManager.GetString("ADD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Поставщик.
         /// </summary>
         public static string ADDDELIVERY {
@@ -183,6 +192,15 @@ namespace Sklad_v1_001.Properties {
         public static string BadRange {
             get {
                 return ResourceManager.GetString("BadRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Штрих-код.
+        /// </summary>
+        public static string BarCodeID {
+            get {
+                return ResourceManager.GetString("BarCodeID", resourceCulture);
             }
         }
         
@@ -619,7 +637,7 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Компания доставщик.
+        ///   Ищет локализованную строку, похожую на Список компаний доставки.
         /// </summary>
         public static string ListDelivery {
             get {
@@ -637,7 +655,7 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Оплаты.
+        ///   Ищет локализованную строку, похожую на Список оплат.
         /// </summary>
         public static string ListPayment {
             get {

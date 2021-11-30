@@ -74,7 +74,7 @@
                     </DataGrid.Resources>
                     <DataGrid.Columns>
 
-                        <DataGridTemplateColumn >
+                        <!--<DataGridTemplateColumn >
                             <DataGridTemplateColumn.HeaderTemplate>
                                 <DataTemplate>
                                     <CheckBox x:Name="CheckAll" IsChecked="{Binding Source={StaticResource dcSpy1}, Path=DataContext}" Click="CheckAll_Click" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
@@ -85,7 +85,7 @@
                                     <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding Path=IsChecked, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                        </DataGridTemplateColumn>-->
                         <DataGridTextColumn Header="{x:Static res:Resources.ID}" SortMemberPath="ID" CanUserSort="True" Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         <DataGridTextColumn Header="{x:Static res:Resources.Name}" SortMemberPath="Name" CanUserSort="True" Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
                         <DataGridTextColumn Header="{x:Static res:Resources.Model}" SortMemberPath="Model" CanUserSort="True" Binding="{Binding Path=Model, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />

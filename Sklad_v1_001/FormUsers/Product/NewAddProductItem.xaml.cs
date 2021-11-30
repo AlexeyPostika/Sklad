@@ -79,6 +79,14 @@ namespace Sklad_v1_001.FormUsers.Product
                 ModelName.DescriptionInfo.Focus();
                 return false;
             }
+            
+            if (String.IsNullOrEmpty(ProductLocalRow.BarCodeString))
+            {
+                mb = new FlexMessageBox();
+                mb.Show(Properties.Resources.ErrorEmptyField, GenerateTitle(TitleType.Error, Properties.Resources.EmptyField, BarCode.LabelText), MessageBoxButton.OK, MessageBoxImage.Error);
+                BarCode.TextBox.Focus();
+                return false;
+            }
 
             if (String.IsNullOrEmpty(ProductLocalRow.Quantity.ToString()))
             {

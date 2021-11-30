@@ -146,6 +146,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             this.DataProduct.ItemsSource = detailsProduct;
             this.DataDelivery.ItemsSource = detailsDelivery;
             this.DataPayment.ItemsSource = detailsSupplyPayment;
+
+            this.ToolBarDelivery.ButtonNewProduct.Text = Properties.Resources.ADD;
+            this.ToolBarPayment.ButtonNewProduct.Text = Properties.Resources.ADD;
         }
 
         private void Refresh()

@@ -556,10 +556,10 @@
     <value>Файл ТТН</value>
   </data>
   <data name="ListDelivery" xml:space="preserve">
-    <value>Компания доставщик</value>
+    <value>Список компаний доставки</value>
   </data>
   <data name="ListPayment" xml:space="preserve">
-    <value>Оплаты</value>
+    <value>Список оплат</value>
   </data>
   <data name="NameDelivery" xml:space="preserve">
     <value>Наименование компании</value>
@@ -626,5 +626,11 @@
   </data>
   <data name="AddFileRRN" xml:space="preserve">
     <value>Файл оплаты</value>
+  </data>
+  <data name="ADD" xml:space="preserve">
+    <value>ДОБАВИТЬ</value>
+  </data>
+  <data name="BarCodeID" xml:space="preserve">
+    <value>Штрих-код</value>
   </data>
 </root>
