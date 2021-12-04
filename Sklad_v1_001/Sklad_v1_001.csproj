@@ -188,6 +188,9 @@
     <Compile Include="Control\FlexComboBox\ComboBoxToWithLabel.xaml.cs">
       <DependentUpon>ComboBoxToWithLabel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexComboBox\ComboBoxTwoToWithLable.xaml.cs">
+      <DependentUpon>ComboBoxTwoToWithLable.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexComboBox\ComboBoxWithLabel.xaml.cs">
       <DependentUpon>ComboBoxWithLabel.xaml</DependentUpon>
     </Compile>
@@ -425,6 +428,10 @@
     <Page Include="Control\FlexComboBox\ComboBoxToWithLabel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\FlexComboBox\ComboBoxTwoToWithLable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\FlexComboBox\ComboBoxWithLabel.xaml">
       <SubType>Designer</SubType>
