@@ -149,7 +149,7 @@ namespace Sklad_v1_001.FormUsers.Delivery
             DataTable deliveryDetailsList = deliveryDetailsLogic.FillGrid();
             managerDeliveryDetailsList = new ManagerDeliveryList();
             //загрузили имена компаний
-            foreach (DataRow row in deliveryList.Rows)
+            foreach (DataRow row in deliveryDetailsList.Rows)
             {
                 managerDeliveryDetailsList.innerList.Add(deliveryDetailsLogic.ConvertDelivery(row, new ManagerDelivery()));
             }
@@ -324,22 +324,22 @@ namespace Sklad_v1_001.FormUsers.Delivery
 
         private void DeliveryDetailsList_DropDownClosed()
         {
-            if (DeliveryList.Value != 0 && managerDeliveryDetailsList.innerList.Count != 0)
+            if (DeliveryDetailsList.Value != 0 && managerDeliveryDetailsList.innerList.Count != 0)
             {
-                NameDeliveryCompany.Text = managerDeliveryDetailsList.innerList.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(DeliveryList.Value.ToString())) != null ?
-                     managerDeliveryDetailsList.innerList.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(DeliveryList.Value.ToString())).Description :
+                NameManagerDeliveryCompany.Text = managerDeliveryDetailsList.innerList.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(DeliveryDetailsList.Value.ToString())) != null ?
+                     managerDeliveryDetailsList.innerList.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(DeliveryDetailsList.Value.ToString())).Description :
                     Properties.Resources.UndefindField;
             }
 
-            DeliveryList.Visibility = Visibility.Collapsed;
-            NameDeliveryCompany.Visibility = Visibility.Visible;
+            DeliveryDetailsList.Visibility = Visibility.Collapsed;
+            NameManagerDeliveryCompany.Visibility = Visibility.Visible;
         }
 
         private void NameManagerDeliveryCompany_ButtonClearClick()
         {
-            DeliveryList.Visibility = Visibility.Visible;
-            DeliveryList.ComboBoxElement.IsDropDownOpen = true;
-            NameDeliveryCompany.Visibility = Visibility.Collapsed;
+            DeliveryDetailsList.Visibility = Visibility.Visible;
+            DeliveryDetailsList.ComboBoxElement.IsDropDownOpen = true;
+            NameManagerDeliveryCompany.Visibility = Visibility.Collapsed;
         }
     }
 }

@@ -30,7 +30,7 @@
         <Border Style="{DynamicResource BorderStyle}" Margin="10" Grid.Row="1" Grid.ColumnSpan="2">
             <StackPanel x:Name="delivery" Background="Transparent">
                 <FlexComboBox:ComboBoxWithLabel                                    
-                        LabelText="{x:Static res:Resources.NameDelivery}" LabelWidth="73"
+                        LabelText="{x:Static res:Resources.NameDelivery}" LabelWidth="163"
                         IsRequired="Visible"
                         x:Name="DeliveryList" DropDownClosed="DeliveryList_DropDownClosed"
                         Value="{Binding Path=UserID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Visibility="Collapsed"/>
@@ -41,7 +41,7 @@
                                                   Text="{Binding Path=NameCompany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   ButtonClearClick="NameDeliveryCompany_ButtonClearClick"/>
                 <FlexComboBox:ComboBoxWithLabel                                    
-                        LabelText="{x:Static res:Resources.NameDelivery}" LabelWidth="73"
+                        LabelText="{x:Static res:Resources.NameDelivery}" LabelWidth="163"
                         IsRequired="Visible"
                         x:Name="DeliveryDetailsList" DropDownClosed="DeliveryDetailsList_DropDownClosed"
                         Value="{Binding Path=UserID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Visibility="Collapsed"/>
@@ -56,7 +56,7 @@
                                                 IsEnabled="{Binding Path=IsDocument, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                 LabelText="{x:Static res:Resources.NumberPhone}"
                                                 Text="{Binding Path=Phones, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <SimpleControl:EditBoxWithLabel x:Name="PhonesManagerDeliveryCompany"  LabelWidth="170"
+                <SimpleControl:EditBoxWithLabel x:Name="PhonesManagerDeliveryCompany"  LabelWidth="17"
                                                 IsRequired="Visible"
                                                 IsEnabled="{Binding Path=IsDocument, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                 LabelText="{x:Static res:Resources.NumberPhoneDelivery}"
