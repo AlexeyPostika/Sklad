@@ -65,6 +65,21 @@ namespace Sklad_v1_001.GlobalList
         public string Description { get; set; }
     }
 
+    public class ManagerDelivery
+    {
+        public Int32 ID { get; set; }
+        public string Description { get; set; }
+        public string ShortDescription { get; set; }
+    }
+
+    public class ManagerDeliveryList
+    {
+        public ObservableCollection<ManagerDelivery> innerList { get; set; }
+        public ManagerDeliveryList()
+        {
+            innerList = new ObservableCollection<ManagerDelivery>();
+        }
+    }
 
     public class DateTimeListFilter
     {

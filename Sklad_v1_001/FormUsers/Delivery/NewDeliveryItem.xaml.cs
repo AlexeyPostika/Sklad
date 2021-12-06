@@ -1,8 +1,13 @@
 ﻿using Sklad_v1_001.Control.FlexMessageBox;
+using Sklad_v1_001.FormUsers.DeliveryDetails;
+using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.GlobalVariable;
+using Sklad_v1_001.HelperGlobal;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -92,12 +97,19 @@ namespace Sklad_v1_001.FormUsers.Delivery
             get { return (MessageBoxResult)GetValue(IsClickButtonOKProperty); }
             set { SetValue(IsClickButtonOKProperty, value); }
         }
-       
+
+        ConvertData convertData; 
+
         private DeliveryLogic deliveryLogic;
         private LocaleRow document;
         FileWork fileWork;
 
         public DeliveryLogic DeliveryLogic { get => deliveryLogic; set => deliveryLogic = value; }
+        public DeliveryLogic deliveryLogicCom;
+        public DeliveryDetailsLogic deliveryDetailsLogic;
+        ManagerDeliveryList managerDeliveryList;
+        ManagerDeliveryList managerDeliveryDetailsList;
+
         public LocaleRow Document { get => document; set => document = value; }
 
         public Int32 status;
@@ -117,7 +129,34 @@ namespace Sklad_v1_001.FormUsers.Delivery
         public NewDeliveryItem()
         {
             InitializeComponent();
+            convertData = new ConvertData();
+          
             DeliveryLogic = new DeliveryLogic();
+            deliveryLogicCom = new DeliveryLogic();
+            DataTable deliveryList = deliveryLogicCom.FillGrid();           
+            managerDeliveryList = new ManagerDeliveryList();
+            //загрузили имена компаний
+            foreach(DataRow row in deliveryList.Rows)
+            {
+                managerDeliveryList.innerList.Add(deliveryLogicCom.ConvertDelivery(row, new ManagerDelivery()));
+            }
+            DeliveryList.ComboBoxElement.ItemsSource = managerDeliveryList.innerList;
+            DeliveryList.ComboBoxElement.SelectedValue = 0;
+            //------------------------------------------------------------------------------
+
+            //Загрузил менеджеров компании
+            deliveryDetailsLogic = new DeliveryDetailsLogic();
+            DataTable deliveryDetailsList = deliveryDetailsLogic.FillGrid();
+            managerDeliveryDetailsList = new ManagerDeliveryList();
+            //загрузили имена компаний
+            foreach (DataRow row in deliveryList.Rows)
+            {
+                managerDeliveryDetailsList.innerList.Add(deliveryDetailsLogic.ConvertDelivery(row, new ManagerDelivery()));
+            }
+            DeliveryDetailsList.ComboBoxElement.ItemsSource = managerDeliveryDetailsList.innerList;
+            DeliveryDetailsList.ComboBoxElement.SelectedValue = 0;
+            //------------------------------------------------------------------------------
+
             Document = new LocaleRow();
            
             Document.Status = Status;
@@ -216,7 +255,7 @@ namespace Sklad_v1_001.FormUsers.Delivery
                 return false;
             }
             
-            if (String.IsNullOrEmpty(Document.Phones))
+            if (String.IsNullOrEmpty(Document.PhonesCompany))
             {
                 mb = new FlexMessageBox();
                 mb.Show(Properties.Resources.ErrorEmptyField, GenerateTitle(TitleType.Error, Properties.Resources.EmptyField, PhonesDeliveryCompany.LabelText), MessageBoxButton.OK, MessageBoxImage.Error);
@@ -224,7 +263,7 @@ namespace Sklad_v1_001.FormUsers.Delivery
                 return false;
             }
 
-            if (String.IsNullOrEmpty(Document.PhonesDetails))
+            if (String.IsNullOrEmpty(Document.PhonesManager))
             {
                 mb = new FlexMessageBox();
                 mb.Show(Properties.Resources.ErrorEmptyField, GenerateTitle(TitleType.Error, Properties.Resources.EmptyField, PhonesManagerDeliveryCompany.LabelText), MessageBoxButton.OK, MessageBoxImage.Error);
@@ -232,7 +271,7 @@ namespace Sklad_v1_001.FormUsers.Delivery
                 return false;
             }
 
-            if (String.IsNullOrEmpty(Document.Adress))
+            if (String.IsNullOrEmpty(Document.AdressCompany))
             {
                 mb = new FlexMessageBox();
                 mb.Show(Properties.Resources.ErrorEmptyField, GenerateTitle(TitleType.Error, Properties.Resources.EmptyField, AdressDeliveryCompany.LabelText), MessageBoxButton.OK, MessageBoxImage.Error);
@@ -261,6 +300,46 @@ namespace Sklad_v1_001.FormUsers.Delivery
         private void page_Unloaded(object sender, RoutedEventArgs e)
         {
            // Document = null;
+        }
+
+        private void DeliveryList_DropDownClosed()
+        {
+            if (DeliveryList.Value != 0 && managerDeliveryList.innerList.Count != 0)
+            {
+                NameDeliveryCompany.Text = managerDeliveryList.innerList.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(DeliveryList.Value.ToString())) != null ?
+                    managerDeliveryList.innerList.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(DeliveryList.Value.ToString())).Description :
+                    Properties.Resources.UndefindField;
+            }
+
+            DeliveryList.Visibility = Visibility.Collapsed;
+            NameDeliveryCompany.Visibility = Visibility.Visible;
+        }
+
+        private void NameDeliveryCompany_ButtonClearClick()
+        {
+            DeliveryList.Visibility = Visibility.Visible;
+            DeliveryList.ComboBoxElement.IsDropDownOpen = true;
+            NameDeliveryCompany.Visibility = Visibility.Collapsed;
+        }
+
+        private void DeliveryDetailsList_DropDownClosed()
+        {
+            if (DeliveryList.Value != 0 && managerDeliveryDetailsList.innerList.Count != 0)
+            {
+                NameDeliveryCompany.Text = managerDeliveryDetailsList.innerList.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(DeliveryList.Value.ToString())) != null ?
+                     managerDeliveryDetailsList.innerList.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(DeliveryList.Value.ToString())).Description :
+                    Properties.Resources.UndefindField;
+            }
+
+            DeliveryList.Visibility = Visibility.Collapsed;
+            NameDeliveryCompany.Visibility = Visibility.Visible;
+        }
+
+        private void NameManagerDeliveryCompany_ButtonClearClick()
+        {
+            DeliveryList.Visibility = Visibility.Visible;
+            DeliveryList.ComboBoxElement.IsDropDownOpen = true;
+            NameDeliveryCompany.Visibility = Visibility.Collapsed;
         }
     }
 }

@@ -1,9 +1,11 @@
 ﻿using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.GlobalVariable;
 using Sklad_v1_001.HelperGlobal;
+using Sklad_v1_001.SQL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,14 +24,14 @@ namespace Sklad_v1_001.FormUsers.Delivery
         private Int32 iD;
         private String nameCompany;
         private String managerName;
-        private String phones;
-        private String phonesDetails;
-        private String adress;
+        private String phonesCompany;
+        private String phonesManager;
+        private String adressCompany;
         private DateTime? createdDate;
         private Int32 createdUserID;
-        private DateTime? lastModicatedDate;
+        private DateTime? lastModificatedDate;
         private String lastModifiadDateText;
-        private Int32 lastModicatedUserID;
+        private Int32 lastModificatedUserID;
         private Int32 status;
         private String statusString;
 
@@ -82,44 +84,44 @@ namespace Sklad_v1_001.FormUsers.Delivery
             }
         }
 
-        public string Phones
+        public string PhonesCompany
         {
             get
             {
-                return phones;
+                return phonesCompany;
             }
 
             set
             {
-                phones = value;
-                OnPropertyChanged("Phones");
+                phonesCompany = value;
+                OnPropertyChanged("PhonesCompany");
             }
         }
         //PhonesDetails
-        public string PhonesDetails
+        public string PhonesManager
         {
             get
             {
-                return phonesDetails;
+                return phonesManager;
             }
 
             set
             {
-                phonesDetails = value;
-                OnPropertyChanged("PhonesDetails");
+                phonesManager = value;
+                OnPropertyChanged("PhonesManager");
             }
         }
-        public string Adress
+        public string AdressCompany
         {
             get
             {
-                return adress;
+                return adressCompany;
             }
 
             set
             {
-                adress = value;
-                OnPropertyChanged("Adress");
+                adressCompany = value;
+                OnPropertyChanged("AdressCompany");
             }
         }
         public DateTime? CreatedDate
@@ -148,35 +150,35 @@ namespace Sklad_v1_001.FormUsers.Delivery
                 OnPropertyChanged("CreatedUserID");
             }
         }
-        public DateTime? LastModicatedDate
+        public DateTime? LastModificatedDate
         {
             get
             {
-                return lastModicatedDate;
+                return lastModificatedDate;
             }
 
             set
             {
-                lastModicatedDate = value;
+                lastModificatedDate = value;
                 if (!String.IsNullOrEmpty(value.Value.ToString()))
                 {
                     ConvertData convertData = new ConvertData();
                     convertData.DateTimeConvertShortDateString(value);
                 }
-                OnPropertyChanged("LastModicatedDate");
+                OnPropertyChanged("LastModificatedDate");
             }
         }
-        public int LastModicatedUserID
+        public int LastModificatedUserID
         {
             get
             {
-                return lastModicatedUserID;
+                return lastModificatedUserID;
             }
 
             set
             {
-                lastModicatedUserID = value;
-                OnPropertyChanged("LastModicatedUserID");
+                lastModificatedUserID = value;
+                OnPropertyChanged("LastModificatedUserID");
             }
         }
         //lastModifiadDateText
@@ -330,5 +332,70 @@ namespace Sklad_v1_001.FormUsers.Delivery
     }
     public class DeliveryLogic
     {
+        ConvertData convertData;
+
+        string get_store_procedure = "xp_GetDeliveryCompanyTable";
+
+        SQLCommanSelect _sqlRequestSelect = null;
+
+        //результат запроса
+        DataTable _data = null;
+        DataTable _datarow = null;    
+
+        public DeliveryLogic()
+        {
+            _sqlRequestSelect = new SQLCommanSelect();
+
+            convertData = new ConvertData();
+
+            _data = new DataTable();
+            _datarow = new DataTable();
+
+            //----------------------------------------------------------------------------
+            _sqlRequestSelect.AddParametr("@p_TypeScreen", SqlDbType.VarChar, 10);
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeInGrid);
+            //----------------------------------------------------------------------------
+
+        }
+        public DataTable FillGrid()
+        {
+            _sqlRequestSelect.SqlAnswer.datatable.Clear();
+            _data.Clear();
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeGrid);
+
+            _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
+            _data = _sqlRequestSelect.SqlAnswer.datatable;
+            return _data;
+        }
+
+        public LocaleRow Convert(DataRow _dataRow, LocaleRow _localeRow)
+        {
+            convertData = new ConvertData(_dataRow, _localeRow);
+
+            _localeRow.ID = convertData.ConvertDataInt32("ID");
+            _localeRow.NameCompany = convertData.ConvertDataString("NameCompany");
+            _localeRow.PhonesCompany = convertData.ConvertDataString("PhonesCompany");
+            _localeRow.AdressCompany = convertData.ConvertDataString("AdressCompany");
+            _localeRow.ManagerName = convertData.ConvertDataString("ManagerName");
+            _localeRow.PhonesManager = convertData.ConvertDataString("PhonesManager");
+            _localeRow.CreatedDate = convertData.ConvertDataDateTime("CreatedDate");          
+            _localeRow.CreatedUserID = convertData.ConvertDataInt32("CreatedUserID");
+            _localeRow.LastModificatedDate = convertData.ConvertDataDateTime("LastModificatedDate");
+            _localeRow.LastModificatedUserID = convertData.ConvertDataInt32("LastModificatedUserID");
+
+            return _localeRow;
+        }
+
+        public ManagerDelivery ConvertDelivery(DataRow _dataRow, ManagerDelivery _localeRow)
+        {
+            convertData = new ConvertData(_dataRow, _localeRow);
+
+            _localeRow.ID = convertData.ConvertDataInt32("ID");
+            _localeRow.Description = convertData.ConvertDataString("NameCompany");
+            _localeRow.ShortDescription = convertData.ConvertDataString("NameCompany");
+           
+            return _localeRow;
+        }
+
     }
 }
