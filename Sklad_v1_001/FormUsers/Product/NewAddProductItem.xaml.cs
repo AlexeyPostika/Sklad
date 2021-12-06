@@ -1,6 +1,10 @@
 ﻿using Sklad_v1_001.Control.FlexMessageBox;
+using Sklad_v1_001.FormUsers.Category;
+using Sklad_v1_001.HelperGlobal;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,9 +38,27 @@ namespace Sklad_v1_001.FormUsers.Product
         LocaleRow productLocalRow;
         public LocaleRow ProductLocalRow { get => productLocalRow; set => productLocalRow = value; }
 
+        CategoryLogic categoryLogic;
+        ObservableCollection<Category.LocalRow> dataCategory;
+
+        ConvertData convertData;
+
         public NewAddProductItem()
         {
             InitializeComponent();
+            convertData = new ConvertData();
+
+            //загружаем категории
+            categoryLogic = new CategoryLogic();
+            dataCategory = new ObservableCollection<LocalRow>();
+            DataTable dataTable = categoryLogic.FillGrid();
+            foreach(DataRow row in dataTable.Rows)
+            {
+                dataCategory.Add(categoryLogic.Convert(row, new LocalRow()));
+            }
+            UserLogin.ComboBoxElement.ItemsSource = dataCategory;
+            UserLogin.ComboBoxElement.SelectedValue = 0;
+            //-----------------------------------------------------------------------------
 
             ProductLocalRow = new LocaleRow();
 
@@ -122,5 +144,24 @@ namespace Sklad_v1_001.FormUsers.Product
             return true;
         }
 
+        private void CategoryName_ButtonClearClick()
+        {
+            UserLogin.Visibility = Visibility.Visible;
+            UserLogin.ComboBoxElement.IsDropDownOpen = true;
+            CategoryName.Visibility = Visibility.Collapsed;
+        }
+
+        private void UserLogin_DropDownClosed()
+        {
+            if (UserLogin.Value != 0 && dataCategory.Count!=0)
+            {
+                CategoryName.Text = dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())) != null ?
+                    dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())).Description :
+                    Properties.Resources.UndefindField;
+            }
+
+            UserLogin.Visibility = Visibility.Collapsed;
+            CategoryName.Visibility = Visibility.Visible;
+        }
     }
 }

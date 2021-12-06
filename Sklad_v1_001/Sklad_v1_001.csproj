@@ -280,6 +280,7 @@
     <Compile Include="Control\Zona\Yellow\SelectCategoryYellowTable.xaml.cs">
       <DependentUpon>SelectCategoryYellowTable.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FormUsers\Category\CategoryLogic.cs" />
     <Compile Include="FormUsers\DeliveryDetails\DeliveryDetailsLogic.cs" />
     <Compile Include="FormUsers\Delivery\DeliveryLogic.cs" />
     <Compile Include="FormUsers\Delivery\NewDeliveryItem.xaml.cs">
@@ -826,6 +827,7 @@
     <Resource Include="Icone\IconSaveAs.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="FormUsers\CategoryDetails\" />
     <Folder Include="FormUsers\Payment\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

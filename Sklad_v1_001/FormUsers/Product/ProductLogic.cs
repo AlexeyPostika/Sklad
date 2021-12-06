@@ -113,7 +113,7 @@ namespace Sklad_v1_001.FormUsers.Product
                 OnPropertyChanged("Model");
             }
         }
-        //barCodeString
+        
         public string BarCodeString
         {
             get

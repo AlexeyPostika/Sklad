@@ -30,10 +30,17 @@
                                               LabelText="{x:Static res:Resources.NameProduct}"
                                               Description="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                               EnableTextBox="True"/>
+                <FlexComboBox:ComboBoxWithLabel                                    
+                        LabelText="{x:Static res:Resources.CATEGORY}" LabelWidth="73"
+                        IsRequired="Visible"
+                        x:Name="UserLogin" DropDownClosed="UserLogin_DropDownClosed"
+                        Value="{Binding Path=UserID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Visibility="Collapsed"/>
+                
                 <FlexEditBox:EditBoxUserWithLabel x:Name="CategoryName" LabelText="{x:Static res:Resources.CATEGORY}" 
                                                   IsRequired="Visible"
                                                   Text="{Binding Path=CategoryString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                  LabelWidth="70"/>
+                                                  LabelWidth="70"
+                                                  ButtonClearClick="CategoryName_ButtonClearClick"/>
                 <FlexTextBox:FlexLabelTextBox x:Name="ModelName"  LabelText="{x:Static res:Resources.Model}" 
                                               IsRequired="Visible"
                                               Description="{Binding Path=Model, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
