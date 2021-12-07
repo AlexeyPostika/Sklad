@@ -103,12 +103,12 @@ namespace Sklad_v1_001.Control.FlexEditBox
         {
             get
             {
-                return this.label.Width;
+                return this.wrapPanel.Width;
             }
 
             set
             {
-                this.label.Width = value;
+                this.wrapPanel.Width = value;
             }
         }
 

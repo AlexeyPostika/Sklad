@@ -12,7 +12,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <WrapPanel Name="wrapPanel" Width="100" Margin="5,0,0,0">
+            <WrapPanel Name="wrapPanel" Width="Auto" Margin="5,0,0,0">
                 <Label Name="label" Height="30"/>
                 <Label Name="required" Margin="-9,0,0,0" FontSize="18" Height="30" Visibility="{Binding ElementName=control, Path=IsRequired, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="Red" Content="*" HorizontalAlignment="Left"/>
             </WrapPanel>

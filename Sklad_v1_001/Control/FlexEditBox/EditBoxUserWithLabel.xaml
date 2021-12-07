@@ -12,8 +12,8 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <WrapPanel Name="wrapPanel" Margin="5,0,0,0">
-                <Label Grid.Column="0" Name="label" Margin="3,0,0,0" Width="100" Height="30"/>
+            <WrapPanel Name="wrapPanel" Width="Auto" Margin="5,0,0,0">
+                <Label Grid.Column="0" Name="label" Margin="3,0,0,0" Height="30"/>
                 <Label Name="required" Margin="-9,0,0,0" FontSize="18" Height="30" Visibility="{Binding ElementName=control, Path=IsRequired, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="Red" Content="*" HorizontalAlignment="Left"/>
             </WrapPanel>
             <local:EditBoxUser x:Name="EditBoxUser" Grid.Column="1" ButtonClearClick="EditBoxUser_ButtonClearClick" ButtonTextChangedClick="EditBoxUser_ButtonTextChangedClick" 
