@@ -35,33 +35,33 @@
                         x:Name="DeliveryList" DropDownClosed="DeliveryList_DropDownClosed"
                         Value="{Binding Path=UserID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Visibility="Collapsed"/>
                 <FlexEditBox:EditBoxUserWithLabel x:Name="NameDeliveryCompany" LabelText="{x:Static res:Resources.NameDelivery}"
-                                                  LabelWidth="153"
+                                                  LabelWidth="165"
                                                   IsRequired="Visible"
                                                   IsEnabled="{Binding Path=IsDocument, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   Text="{Binding Path=NameCompany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   ButtonClearClick="NameDeliveryCompany_ButtonClearClick"/>
                 <FlexComboBox:ComboBoxWithLabel                                    
-                        LabelText="{x:Static res:Resources.ManagerDelivery}" LabelWidth="163"
+                        LabelText="{x:Static res:Resources.ManagerDelivery}" LabelWidth="165"
                         IsRequired="Visible"
                         x:Name="DeliveryDetailsList" DropDownClosed="DeliveryDetailsList_DropDownClosed"
                         Value="{Binding Path=UserID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Visibility="Collapsed"/>
                 <FlexEditBox:EditBoxUserWithLabel x:Name="NameManagerDeliveryCompany" LabelText="{x:Static res:Resources.ManagerDelivery}" 
-                                                  LabelWidth="152"       
+                                                  LabelWidth="165"       
                                                   IsRequired="Visible"
                                                   IsEnabled="{Binding Path=IsDocument, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   Text="{Binding Path=ManagerName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   ButtonClearClick="NameManagerDeliveryCompany_ButtonClearClick"/>
-                <SimpleControl:EditBoxWithLabel x:Name="PhonesDeliveryCompany" LabelWidth="163"
+                <SimpleControl:EditBoxWithLabel x:Name="PhonesDeliveryCompany" LabelWidth="165"
                                                 IsRequired="Visible"
                                                 IsEnabled="{Binding Path=IsDocument, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                 LabelText="{x:Static res:Resources.NumberPhone}"
                                                 Text="{Binding Path=PhonesCompany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <SimpleControl:EditBoxWithLabel x:Name="PhonesManagerDeliveryCompany"  LabelWidth="163"
+                <SimpleControl:EditBoxWithLabel x:Name="PhonesManagerDeliveryCompany"  LabelWidth="165"
                                                 IsRequired="Visible"
                                                 IsEnabled="{Binding Path=IsDocument, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                 LabelText="{x:Static res:Resources.NumberPhoneDelivery}"
                                                 Text="{Binding Path=PhonesManager, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <SimpleControl:EditBoxWithLabel x:Name="AdressDeliveryCompany" LabelWidth="163"
+                <SimpleControl:EditBoxWithLabel x:Name="AdressDeliveryCompany" LabelWidth="165"
                                                 IsRequired="Visible"
                                                 IsEnabled="{Binding Path=IsDocument, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                 LabelText="{x:Static res:Resources.DeliveryAdress}"
