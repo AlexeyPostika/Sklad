@@ -55,17 +55,17 @@
                                                 IsRequired="Visible"
                                                 IsEnabled="{Binding Path=IsDocument, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                 LabelText="{x:Static res:Resources.NumberPhone}"
-                                                Text="{Binding Path=Phones, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                                Text="{Binding Path=PhonesCompany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <SimpleControl:EditBoxWithLabel x:Name="PhonesManagerDeliveryCompany"  LabelWidth="163"
                                                 IsRequired="Visible"
                                                 IsEnabled="{Binding Path=IsDocument, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                 LabelText="{x:Static res:Resources.NumberPhoneDelivery}"
-                                                Text="{Binding Path=PhonesDetails, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                                Text="{Binding Path=PhonesManager, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <SimpleControl:EditBoxWithLabel x:Name="AdressDeliveryCompany" LabelWidth="163"
                                                 IsRequired="Visible"
                                                 IsEnabled="{Binding Path=IsDocument, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                 LabelText="{x:Static res:Resources.DeliveryAdress}"
-                                                Text="{Binding Path=Adress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                                Text="{Binding Path=AdressCompany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <SimpleControl:EditBoxWithLabelDownloadFile x:Name="Invoice"  
                                                             LabelText="{x:Static res:Resources.Invoice}" 
                                                             LabelWidth="110"

@@ -170,7 +170,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             {
                 if (newAddProductItem.ProductLocalRow != null )
                 {
+                    Int32 tempID = detailsProduct.Count + 1;                 
                     localeRowProduct = newAddProductItem.ProductLocalRow;
+                    localeRowProduct.ID = tempID;
                     detailsProduct.Add(localeRowProduct);
                 }
             }
@@ -211,7 +213,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             {
                 if (newDeliveryItem.Document != null && !String.IsNullOrEmpty(newDeliveryItem.Document.NameCompany))
                 {
+                    Int32 tempID = detailsDelivery.Count + 1;                
                     localeRowDelivery = newDeliveryItem.Document;
+                    localeRowDelivery.ID = tempID;
                     detailsDelivery.Add(localeRowDelivery);
                 }
             }
@@ -238,7 +242,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             {
                 if (newSupplyDocumentPaymentItem.PaymentLocalRow != null)
                 {
+                    Int32 tempID = detailsSupplyPayment.Count + 1;                 
                     supplyDocumentPaymentLocaleRow = newSupplyDocumentPaymentItem.PaymentLocalRow;
+                    supplyDocumentPaymentLocaleRow.ID = tempID;
                     detailsSupplyPayment.Add(supplyDocumentPaymentLocaleRow);
                 }
             }
