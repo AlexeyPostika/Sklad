@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CDEK", "CDEK\CDEK\CDEK.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageTest", "ImageTest\ImageTest.csproj", "{C5BC30B1-CA7E-44B9-BC61-F4FC9D5B59E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebHTMLConvertObject", "WebHTMLConvertObject\WebHTMLConvertObject\WebHTMLConvertObject.csproj", "{191CFCE4-D82F-400E-B08D-70EFEB220252}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{C5BC30B1-CA7E-44B9-BC61-F4FC9D5B59E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5BC30B1-CA7E-44B9-BC61-F4FC9D5B59E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5BC30B1-CA7E-44B9-BC61-F4FC9D5B59E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{191CFCE4-D82F-400E-B08D-70EFEB220252}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{191CFCE4-D82F-400E-B08D-70EFEB220252}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{191CFCE4-D82F-400E-B08D-70EFEB220252}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{191CFCE4-D82F-400E-B08D-70EFEB220252}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
