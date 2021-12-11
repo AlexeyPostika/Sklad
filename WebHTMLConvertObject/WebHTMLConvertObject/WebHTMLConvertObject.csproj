@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="HTML\HTMLPage1.html" />
+    <Resource Include="Readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

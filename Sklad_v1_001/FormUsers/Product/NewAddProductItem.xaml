@@ -48,11 +48,11 @@
                 <SimpleControl:EditBoxWithLabel x:Name="BarCode"  LabelText="{x:Static res:Resources.BarCodeID}"
                                                               IsRequired="Visible"
                                                               Text="{Binding Path=BarCodeString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=\{0:N0\}}"
-                                                              LabelWidth="129"/>
+                                                              LabelWidth="130"/>
                 <SimpleControl:EditBoxWithLabelNumericForEdit x:Name="QuantityName"  LabelText="{x:Static res:Resources.Quantity}"
                                                               IsRequired="Visible"
                                                               Value="{Binding Path=Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=\{0:N0\}}"
-                                                              LabelWidth="120"/>
+                                                              LabelWidth="130"/>
                 <SimpleControl:EditBoxWithLabelFloatForEdit x:Name="TagPriceUSAName" LabelText="{x:Static res:Resources.TagPriceUSA}" 
                                                             IsRequired="Visible"
                                                             Value="{Binding Path=TagPriceUSA, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=\{0:N0\}}"
