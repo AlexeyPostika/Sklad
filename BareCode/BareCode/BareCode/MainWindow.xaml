@@ -1,0 +1,38 @@
+﻿<Window x:Class="BareCode.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BareCode"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="1234" Icon="IconBarCode.png">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <TextBox x:Name="textBlock" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="350" Width="275" 
+                   ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
+            <Button x:Name="button" Content="Generated" HorizontalAlignment="Left" Margin="35,380,0,0" VerticalAlignment="Top" Width="75"
+                Click="button_Click"/>
+            <Button x:Name="button1" Content="Print" HorizontalAlignment="Left" Margin="115,380,0,0" VerticalAlignment="Top" Width="75"
+                    Click="button1_Click"/>
+        </Grid>
+        <Grid Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="350"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Name="Column7" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+            <DocumentViewer x:Name="documentViewer" HorizontalAlignment="Left" Margin="355,1,-584,0" VerticalAlignment="Top" Width="580">
+            </DocumentViewer>
+        </Grid>
+
+        <!--<Grid x:Name="GridData" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto"
+              HorizontalAlignment="Left" Height="400" Margin="290,10,0,0" VerticalAlignment="Top" Width="495">
+            </Grid>-->
+
+
+
+    </Grid>
+</Window>
