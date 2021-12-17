@@ -12,6 +12,43 @@ using System.Threading.Tasks;
 
 namespace Sklad_v1_001.FormUsers.DeliveryDetails
 {
+    public class LocalFilter : IAbstractRow, INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        private Int32 iD;
+        private String documentID;
+        public int ID
+        {
+            get
+            {
+                return iD;
+            }
+
+            set
+            {
+                iD = value;
+                OnPropertyChanged("ID");
+            }
+        }
+
+        public string DocumentID
+        {
+            get
+            {
+                return documentID;
+            }
+
+            set
+            {
+                documentID = value;
+                OnPropertyChanged("DocumentID");
+            }
+        }
+    }
     public class LocaleRow : IAbstractRow, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -214,6 +251,9 @@ namespace Sklad_v1_001.FormUsers.DeliveryDetails
             //----------------------------------------------------------------------------
             _sqlRequestSelect.AddParametr("@p_TypeScreen", SqlDbType.VarChar, 10);
             _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeGrid);
+
+            _sqlRequestSelect.AddParametr("@p_DocumentID", SqlDbType.VarChar);
+            _sqlRequestSelect.SetParametrValue("@p_DocumentID", "All");
             //----------------------------------------------------------------------------
         }
         public DataTable FillGrid()
@@ -221,6 +261,18 @@ namespace Sklad_v1_001.FormUsers.DeliveryDetails
             _sqlRequestSelect.SqlAnswer.datatable.Clear();
             _data.Clear();
             _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeGrid);
+
+            _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
+            _data = _sqlRequestSelect.SqlAnswer.datatable;
+            return _data;
+        }
+
+        public DataTable FillGrid(LocalFilter _localFilter)
+        {
+            _sqlRequestSelect.SqlAnswer.datatable.Clear();
+            _data.Clear();
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeGrid);
+            _sqlRequestSelect.SetParametrValue("@p_DocumentID", _localFilter.DocumentID);
 
             _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
             _data = _sqlRequestSelect.SqlAnswer.datatable;

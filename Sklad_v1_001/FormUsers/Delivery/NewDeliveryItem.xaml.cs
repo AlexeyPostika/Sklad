@@ -145,17 +145,7 @@ namespace Sklad_v1_001.FormUsers.Delivery
             //------------------------------------------------------------------------------
 
             //Загрузил менеджеров компании
-            deliveryDetailsLogic = new DeliveryDetailsLogic();
-            DataTable deliveryDetailsList = deliveryDetailsLogic.FillGrid();
-            managerDeliveryDetailsList = new ManagerDeliveryList();
-            //загрузили имена компаний
-            foreach (DataRow row in deliveryDetailsList.Rows)
-            {
-                managerDeliveryDetailsList.innerList.Add(deliveryDetailsLogic.ConvertDelivery(row, new ManagerDelivery()));
-            }
-            DeliveryDetailsList.ComboBoxElement.ItemsSource = managerDeliveryDetailsList.innerList;
-            DeliveryDetailsList.ComboBoxElement.SelectedValue = 0;
-            //------------------------------------------------------------------------------
+            deliveryDetailsLogic = new DeliveryDetailsLogic();      
 
             Document = new LocaleRow();
            
@@ -309,6 +299,20 @@ namespace Sklad_v1_001.FormUsers.Delivery
                 NameDeliveryCompany.Text = managerDeliveryList.innerList.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(DeliveryList.Value.ToString())) != null ?
                     managerDeliveryList.innerList.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(DeliveryList.Value.ToString())).Description :
                     Properties.Resources.UndefindField;
+
+                LocalFilter localFilter = new LocalFilter();
+                localFilter.DocumentID = managerDeliveryList.innerList.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(DeliveryList.Value.ToString())) != null ?
+                    managerDeliveryList.innerList.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(DeliveryList.Value.ToString())).ID.ToString():"";
+                DataTable deliveryDetailsList = deliveryDetailsLogic.FillGrid(localFilter);
+                managerDeliveryDetailsList = new ManagerDeliveryList();
+                //загрузили имена компаний
+                foreach (DataRow row in deliveryDetailsList.Rows)
+                {
+                    managerDeliveryDetailsList.innerList.Add(deliveryDetailsLogic.ConvertDelivery(row, new ManagerDelivery()));
+                }
+                DeliveryDetailsList.ComboBoxElement.ItemsSource = managerDeliveryDetailsList.innerList;
+                DeliveryDetailsList.ComboBoxElement.SelectedValue = 0;
+                //------------------------------------------------------------------------------
             }
 
             DeliveryList.Visibility = Visibility.Collapsed;
