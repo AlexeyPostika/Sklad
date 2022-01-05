@@ -371,14 +371,17 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
     public class LocalRow : INotifyPropertyChanged
     {
+        //SupplyDocument
+        private Int32 addUserID;
+        private Int32 userID;
         private Int32 iD;
-        private Int32 nameClientID;
         private Int32 status;
         private String statusString;
-        private String delivery;
-        private String managerName;
-        private String tTN;
-        private String invoice;
+        private Int32 count;
+        private Decimal amount;
+        private Int32 reffID;
+        private DateTime reffDate;
+        private Int64 supplyDocumentNumber;
         private DateTime? createdDate;
         private String createdDateString;
         private Int32 createdUserID;
@@ -387,8 +390,54 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         private String lastModificatedDateString;
         private Int32 lastModificatedUserID;
         private String lastModificatedUserIDString;
-        private Int32 count;
-        private Decimal amount;
+
+        //Category
+        private String massCategoryID;
+        private String massName;
+        private String massDescription;
+        //CategoryDetails
+        private String massCategoryDetailsID;
+        private String massIDCategory;
+        private String massCategoryDetailsName;
+        private String massCategoryDetailsDescription;
+
+        //Delivery
+        private String massDeliveryID;
+        private String massNameCompanyDelivery;
+        private String massPhonesDelivery;
+        private String massAdressDelivery;
+        private String massCountryDelivery;
+        //DeliveryDetails
+        private String massDeliveryDetailsID;
+        private String massIDDelivery;
+        private String massManagerName;
+        private String massPhonesDeliveryDetails;
+
+        //SupplyDocumentDetails
+        private String massSupplyDocumentDetailsID;
+        private String massSupplyDocumentDetailsName;
+        private String massSupplyDocumentDetailsQuantity;
+        private String massSupplyDocumentDetailsTagPriceUSA;
+        private String massSupplyDocumentDetailsTagPriceRUS;
+        private String massSupplyDocumentDetailsCategoryID;
+        private String massSupplyDocumentDetailsCategoryDetailsID;
+        private String massSupplyDocumentDetailsImageProduct;
+
+        //SupplyDocumentDelivery
+        private String massSupplyDocumentDeliveryID;
+        private String massSupplyDocumentDeliveryDeliveryID;
+        private String massSupplyDocumentDeliveryDeliveryDetailsID;
+        //@p_MassSupplyDocumentDeliveryDocumentID nvarchar(MAX) = '',
+        private String massSupplyDocumentDeliveryTTN;
+        private String massSupplyDocumentDeliveryImageTTN;
+        private String massSupplyDocumentDeliveryInvoice;
+        private String massSupplyDocumentDeliveryImageInvoice;
+
+        //SupplyDocumentPayment
+        private String massSupplyDocumentPaymentID;
+        private String massSupplyDocumentPaymentAmount;
+        private String massSupplyDocumentPaymentOperationType;
+        private String massSupplyDocumentPaymentDescription;
 
         public Int32 ID
         {
@@ -401,20 +450,6 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             {
                 iD = value;
                 OnPropertyChanged("ID");
-            }
-        }
-
-        public Int32 NameClientID
-        {
-            get
-            {
-                return nameClientID;
-            }
-
-            set
-            {
-                nameClientID = value;
-                OnPropertyChanged("NameClientID");
             }
         }
 
@@ -445,62 +480,6 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 OnPropertyChanged("StatusString");
             }
         }
-        public string Delivery
-        {
-            get
-            {
-                return delivery;
-            }
-
-            set
-            {
-                delivery = value;
-                OnPropertyChanged("Delivery");
-            }
-        }
-
-        public string ManagerName
-        {
-            get
-            {
-                return managerName;
-            }
-
-            set
-            {
-                managerName = value;
-                OnPropertyChanged("ManagerName");
-            }
-        }
-
-        public string TTN
-        {
-            get
-            {
-                return tTN;
-            }
-
-            set
-            {
-                tTN = value;
-                OnPropertyChanged("TTN");
-            }
-        }
-
-        public string Invoice
-        {
-            get
-            {
-                return invoice;
-            }
-
-            set
-            {
-                invoice = value;
-                OnPropertyChanged("Invoice");
-            }
-        }
-
         public DateTime? CreatedDate
         {
             get
@@ -639,6 +618,461 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             }
         }
 
+        public string MassCategoryID
+        {
+            get
+            {
+                return massCategoryID;
+            }
+
+            set
+            {
+                massCategoryID = value;
+                OnPropertyChanged("MassCategoryID");
+            }
+        }
+        public string MassName
+        {
+            get
+            {
+                return massName;
+            }
+
+            set
+            {
+                massName = value;
+                OnPropertyChanged("MassName");
+            }
+        }
+        public string MassDescription
+        {
+            get
+            {
+                return massDescription;
+            }
+
+            set
+            {
+                massDescription = value;
+                OnPropertyChanged("MassDescription");
+            }
+        }
+        public string MassCategoryDetailsID
+        {
+            get
+            {
+                return massCategoryDetailsID;
+            }
+
+            set
+            {
+                massCategoryDetailsID = value;
+                OnPropertyChanged("MassCategoryDetailsID");
+            }
+        }
+        public string MassIDCategory
+        {
+            get
+            {
+                return massIDCategory;
+            }
+
+            set
+            {
+                massIDCategory = value;
+                OnPropertyChanged("MassIDCategory");
+            }
+        }
+        public string MassCategoryDetailsName
+        {
+            get
+            {
+                return massCategoryDetailsName;
+            }
+
+            set
+            {
+                massCategoryDetailsName = value;
+                OnPropertyChanged("MassCategoryDetailsName");
+            }
+        }
+        public string MassCategoryDetailsDescription
+        {
+            get
+            {
+                return massCategoryDetailsDescription;
+            }
+
+            set
+            {
+                massCategoryDetailsDescription = value;
+                OnPropertyChanged("MassCategoryDetailsDescription");
+            }
+        }
+        public string MassDeliveryID
+        {
+            get
+            {
+                return massDeliveryID;
+            }
+
+            set
+            {
+                massDeliveryID = value;
+                OnPropertyChanged("MassDeliveryID");
+            }
+        }
+        public string MassNameCompanyDelivery
+        {
+            get
+            {
+                return massNameCompanyDelivery;
+            }
+
+            set
+            {
+                massNameCompanyDelivery = value;
+                OnPropertyChanged("MassNameCompanyDelivery");
+            }
+        }
+        public string MassPhonesDelivery
+        {
+            get
+            {
+                return massPhonesDelivery;
+            }
+
+            set
+            {
+                massPhonesDelivery = value;
+                OnPropertyChanged("MassPhonesDelivery");
+            }
+        }
+        public string MassAdressDelivery
+        {
+            get
+            {
+                return massAdressDelivery;
+            }
+
+            set
+            {
+                massAdressDelivery = value;
+                OnPropertyChanged("MassAdressDelivery");
+            }
+        }
+        public string MassCountryDelivery
+        {
+            get
+            {
+                return massCountryDelivery;
+            }
+
+            set
+            {
+                massCountryDelivery = value;
+                OnPropertyChanged("MassCountryDelivery");
+            }
+        }
+        public string MassDeliveryDetailsID
+        {
+            get
+            {
+                return massDeliveryDetailsID;
+            }
+
+            set
+            {
+                massDeliveryDetailsID = value;
+                OnPropertyChanged("MassDeliveryDetailsID");
+            }
+        }
+        public string MassIDDelivery
+        {
+            get
+            {
+                return massIDDelivery;
+            }
+
+            set
+            {
+                massIDDelivery = value;
+                OnPropertyChanged("MassIDDelivery");
+            }
+        }
+        public string MassManagerName
+        {
+            get
+            {
+                return massManagerName;
+            }
+
+            set
+            {
+                massManagerName = value;
+                OnPropertyChanged("MassManagerName");
+            }
+        }
+        public string MassPhonesDeliveryDetails
+        {
+            get
+            {
+                return massPhonesDeliveryDetails;
+            }
+
+            set
+            {
+                massPhonesDeliveryDetails = value;
+                OnPropertyChanged("MassPhonesDeliveryDetails");
+            }
+        }
+        public string MassSupplyDocumentDetailsID
+        {
+            get
+            {
+                return massSupplyDocumentDetailsID;
+            }
+
+            set
+            {
+                massSupplyDocumentDetailsID = value;
+                OnPropertyChanged("MassSupplyDocumentDetailsID");
+            }
+        }
+        public string MassSupplyDocumentDetailsName
+        {
+            get
+            {
+                return massSupplyDocumentDetailsName;
+            }
+
+            set
+            {
+                massSupplyDocumentDetailsName = value;
+                OnPropertyChanged("MassSupplyDocumentDetailsName");
+            }
+        }
+        public string MassSupplyDocumentDetailsQuantity
+        {
+            get
+            {
+                return massSupplyDocumentDetailsQuantity;
+            }
+
+            set
+            {
+                massSupplyDocumentDetailsQuantity = value;
+                OnPropertyChanged("MassSupplyDocumentDetailsQuantity");
+            }
+        }
+        public string MassSupplyDocumentDetailsTagPriceUSA
+        {
+            get
+            {
+                return massSupplyDocumentDetailsTagPriceUSA;
+            }
+
+            set
+            {
+                massSupplyDocumentDetailsTagPriceUSA = value;
+                OnPropertyChanged("MassSupplyDocumentDetailsTagPriceUSA");
+            }
+        }
+        public string MassSupplyDocumentDetailsTagPriceRUS
+        {
+            get
+            {
+                return massSupplyDocumentDetailsTagPriceRUS;
+            }
+
+            set
+            {
+                massSupplyDocumentDetailsTagPriceRUS = value;
+                OnPropertyChanged("MassSupplyDocumentDetailsTagPriceRUS");
+            }
+        }
+        public string MassSupplyDocumentDetailsCategoryID
+        {
+            get
+            {
+                return massSupplyDocumentDetailsCategoryID;
+            }
+
+            set
+            {
+                massSupplyDocumentDetailsCategoryID = value;
+                OnPropertyChanged("MassSupplyDocumentDetailsCategoryID");
+            }
+        }
+        public string MassSupplyDocumentDetailsCategoryDetailsID
+        {
+            get
+            {
+                return massSupplyDocumentDetailsCategoryDetailsID;
+            }
+
+            set
+            {
+                massSupplyDocumentDetailsCategoryDetailsID = value;
+                OnPropertyChanged("MassSupplyDocumentDetailsCategoryDetailsID");
+            }
+        }
+        public string MassSupplyDocumentDetailsImageProduct
+        {
+            get
+            {
+                return massSupplyDocumentDetailsImageProduct;
+            }
+
+            set
+            {
+                massSupplyDocumentDetailsImageProduct = value;
+                OnPropertyChanged("MassSupplyDocumentDetailsImageProduct");
+            }
+        }
+        public string MassSupplyDocumentDeliveryID
+        {
+            get
+            {
+                return massSupplyDocumentDeliveryID;
+            }
+
+            set
+            {
+                massSupplyDocumentDeliveryID = value;
+                OnPropertyChanged("MassSupplyDocumentDeliveryID");
+            }
+        }
+        public string MassSupplyDocumentDeliveryDeliveryID
+        {
+            get
+            {
+                return massSupplyDocumentDeliveryDeliveryID;
+            }
+
+            set
+            {
+                massSupplyDocumentDeliveryDeliveryID = value;
+                OnPropertyChanged("MassSupplyDocumentDeliveryDeliveryID");
+            }
+        }
+        public string MassSupplyDocumentDeliveryDeliveryDetailsID
+        {
+            get
+            {
+                return massSupplyDocumentDeliveryDeliveryDetailsID;
+            }
+
+            set
+            {
+                massSupplyDocumentDeliveryDeliveryDetailsID = value;
+                OnPropertyChanged("MassSupplyDocumentDeliveryDeliveryDetailsID");
+            }
+        }
+        public string MassSupplyDocumentDeliveryTTN
+        {
+            get
+            {
+                return massSupplyDocumentDeliveryTTN;
+            }
+
+            set
+            {
+                massSupplyDocumentDeliveryTTN = value;
+                OnPropertyChanged("MassSupplyDocumentDeliveryTTN");
+            }
+        }
+        public string MassSupplyDocumentDeliveryImageTTN
+        {
+            get
+            {
+                return massSupplyDocumentDeliveryImageTTN;
+            }
+
+            set
+            {
+                massSupplyDocumentDeliveryImageTTN = value;
+                OnPropertyChanged("MassSupplyDocumentDeliveryImageTTN");
+            }
+        }
+        public string MassSupplyDocumentDeliveryInvoice
+        {
+            get
+            {
+                return massSupplyDocumentDeliveryInvoice;
+            }
+
+            set
+            {
+                massSupplyDocumentDeliveryInvoice = value;
+                OnPropertyChanged("MassSupplyDocumentDeliveryInvoice");
+            }
+        }
+        public string MassSupplyDocumentDeliveryImageInvoice
+        {
+            get
+            {
+                return massSupplyDocumentDeliveryImageInvoice;
+            }
+
+            set
+            {
+                massSupplyDocumentDeliveryImageInvoice = value;
+                OnPropertyChanged("MassSupplyDocumentDeliveryImageInvoice");
+            }
+        }
+        public string MassSupplyDocumentPaymentID
+        {
+            get
+            {
+                return massSupplyDocumentPaymentID;
+            }
+
+            set
+            {
+                massSupplyDocumentPaymentID = value;
+                OnPropertyChanged("MassSupplyDocumentPaymentID");
+            }
+        }
+        public string MassSupplyDocumentPaymentAmount
+        {
+            get
+            {
+                return massSupplyDocumentPaymentAmount;
+            }
+
+            set
+            {
+                massSupplyDocumentPaymentAmount = value;
+                OnPropertyChanged("MassSupplyDocumentPaymentAmount");
+            }
+        }
+        public string MassSupplyDocumentPaymentOperationType
+        {
+            get
+            {
+                return massSupplyDocumentPaymentOperationType;
+            }
+
+            set
+            {
+                massSupplyDocumentPaymentOperationType = value;
+                OnPropertyChanged("MassSupplyDocumentPaymentOperationType");
+            }
+        }
+        public string MassSupplyDocumentPaymentDescription
+        {
+            get
+            {
+                return massSupplyDocumentPaymentDescription;
+            }
+
+            set
+            {
+                massSupplyDocumentPaymentDescription = value;
+                OnPropertyChanged("MassSupplyDocumentPaymentDescription");
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {
@@ -759,9 +1193,12 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         string get_filters_procedure = "xp_GetSupplyDocumentFilter";
         string get_summary_procedure = "xp_GetSupplyDocumentSummary";
 
+        string get_save_procedure = "xp_SaveSupplyDocument";
+
         SQLCommanSelect _sqlRequestSelect = null;
         SQLCommanSelect _sqlRequestSelectFilters = null;
         SQLCommanSelect _sqlRequestSelectSummary = null;
+        SQLCommanSelect _sqlRequestSelectSave = null;
 
         //результат запроса
         DataTable _data = null;
@@ -817,6 +1254,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSelect = new SQLCommanSelect();
             _sqlRequestSelectFilters = new SQLCommanSelect();
             _sqlRequestSelectSummary = new SQLCommanSelect();
+            _sqlRequestSelectSave = new SQLCommanSelect();
 
             //----------------------------------------------------------------------------
             _sqlRequestSelect.AddParametr("@p_TypeScreen", SqlDbType.VarChar, 10);
@@ -916,6 +1354,139 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSelectSummary.AddParametr("@p_TagPriceVATRUS_Max", SqlDbType.Money);
             _sqlRequestSelectSummary.SetParametrValue("@p_TagPriceVATRUS_Max", System.Data.SqlTypes.SqlMoney.MaxValue);
             //----------------------------------------------------------------------------
+
+            _sqlRequestSelectSave.AddParametr("@p_AddUserID", SqlDbType.Int);
+            _sqlRequestSelectSave.SetParametrValue("@p_AddUserID", 1);
+
+            _sqlRequestSelectSave.AddParametr("@p_UserID", SqlDbType.Int);
+            _sqlRequestSelectSave.SetParametrValue("@p_UserID", 0);
+
+            _sqlRequestSelectSave.AddParametr("@p_ID", SqlDbType.Int);
+            _sqlRequestSelectSave.SetParametrValue("@p_ID", 0);
+
+            _sqlRequestSelectSave.AddParametr("@p_Status", SqlDbType.Int);
+            _sqlRequestSelectSave.SetParametrValue("@p_Status", 0);
+
+            _sqlRequestSelectSave.AddParametr("@p_Count", SqlDbType.Int);
+            _sqlRequestSelectSave.SetParametrValue("@p_Count", 0);
+
+            _sqlRequestSelectSave.AddParametr("@p_Amount", SqlDbType.Money);
+            _sqlRequestSelectSave.SetParametrValue("@p_Amount", 0);
+
+            _sqlRequestSelectSave.AddParametr("@p_ReffID", SqlDbType.Int);
+            _sqlRequestSelectSave.SetParametrValue("@p_ReffID", 0);
+
+            _sqlRequestSelectSave.AddParametr("@p_ReffDate", SqlDbType.DateTime);
+            _sqlRequestSelectSave.SetParametrValue("@p_ReffDate", DateTime.Now);
+
+            _sqlRequestSelectSave.AddParametr("@p_SupplyDocumentNumber", SqlDbType.BigInt);
+            _sqlRequestSelectSave.SetParametrValue("@p_SupplyDocumentNumber", 0);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassCategoryID", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassCategoryID", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassName", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassName", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassDescription", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassDescription", String.Empty);
+            
+            _sqlRequestSelectSave.AddParametr("@p_MassCategoryDetailsID", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassCategoryDetailsID", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassIDCategory", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassIDCategory", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassCategoryDetailsName", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassCategoryDetailsName", String.Empty);
+           
+            _sqlRequestSelectSave.AddParametr("@p_MassCategoryDetailsDescription", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassCategoryDetailsDescription", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassDeliveryID", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassDeliveryID", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassNameCompanyDelivery", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassNameCompanyDelivery", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassPhonesDelivery", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassPhonesDelivery", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassAdressDelivery", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassAdressDelivery", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassCountryDelivery", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassCountryDelivery", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassDeliveryDetailsID", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassDeliveryDetailsID", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassIDDelivery", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassIDDelivery", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassManagerName", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassManagerName", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassPhonesDeliveryDetails", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassPhonesDeliveryDetails", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDetailsID", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDetailsID", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDetailsName", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDetailsName", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDetailsQuantity", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDetailsQuantity", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDetailsTagPriceUSA", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDetailsTagPriceUSA", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDetailsTagPriceRUS", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDetailsTagPriceRUS", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDetailsCategoryID", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDetailsCategoryID", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDetailsCategoryDetailsID", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDetailsCategoryDetailsID", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDetailsImageProduct", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDetailsImageProduct", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDeliveryID", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDeliveryID", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDeliveryDeliveryID", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDeliveryDeliveryID", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDeliveryDeliveryDetailsID", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDeliveryDeliveryDetailsID", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDeliveryTTN", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDeliveryTTN", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDeliveryImageTTN", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDeliveryImageTTN", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDeliveryInvoice", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDeliveryInvoice", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDeliveryImageInvoice", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDeliveryImageInvoice", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentPaymentID", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentPaymentID", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentPaymentAmount", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentPaymentAmount", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentPaymentOperationType", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentPaymentOperationType", String.Empty);
+
+            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentPaymentDescription", SqlDbType.NVarChar);
+            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentPaymentDescription", String.Empty);
+
         }
 
         public DataTable FillGrid()
@@ -1032,10 +1603,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _localeRow.LastModificatedUserID = convertData.ConvertDataInt32("LastModificatedUserID");
             _localeRow.CreatedUserIDString= convertData.ConvertDataString("CreatedUserIDString");
             _localeRow.LastModificatedUserIDString = convertData.ConvertDataString("LastModificatedUserIDString");
-            _localeRow.Invoice = convertData.ConvertDataString("Invoice");
-            _localeRow.TTN = convertData.ConvertDataString("TTN");
-            _localeRow.ManagerName = convertData.ConvertDataString("ManagerName");
-            _localeRow.Delivery = convertData.ConvertDataString("Delivery");
+            //_localeRow.Invoice = convertData.ConvertDataString("Invoice");
+            //_localeRow.TTN = convertData.ConvertDataString("TTN");
+            //_localeRow.ManagerName = convertData.ConvertDataString("ManagerName");
+            //_localeRow.Delivery = convertData.ConvertDataString("Delivery");
             _localeRow.Amount = (Decimal)convertData.ConvertDataDouble("Amount");
             _localeRow.Count = convertData.ConvertDataInt32("Count");
          
