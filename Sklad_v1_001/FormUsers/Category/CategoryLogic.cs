@@ -62,11 +62,14 @@ namespace Sklad_v1_001.FormUsers.Category
     public class LocalRow : INotifyPropertyChanged
     {
         private Int32 iD;
+        private Int32 detailsID;
         private String categoryName;
         private String categoryDescription;
         private String description;
         private Int32 categoryID;
-        
+        private String categoryDetailsName;
+        private String categoryDetailsDescription;
+
         private DateTime? createdDate;
         private String createdDateString;
         private Int32 createdUserID;
@@ -88,6 +91,20 @@ namespace Sklad_v1_001.FormUsers.Category
             {
                 iD = value;
                 OnPropertyChanged("ID");
+            }
+        }
+
+        public int DetailsID
+        {
+            get
+            {
+                return detailsID;
+            }
+
+            set
+            {
+                detailsID = value;
+                OnPropertyChanged("DetailsID");
             }
         }
 
@@ -256,7 +273,35 @@ namespace Sklad_v1_001.FormUsers.Category
                 lastModificatedUserIDString = value;
                 OnPropertyChanged("LastModificatedUserIDString");
             }
-        }      
+        }
+
+        public String CategoryDetailsName
+        {
+            get
+            {
+                return categoryDetailsName;
+            }
+
+            set
+            {
+                categoryDetailsName = value;
+                OnPropertyChanged("CategoryDetailsName");
+            }
+        }
+
+        public String CategoryDetailsDescription
+        {
+            get
+            {
+                return categoryDetailsDescription;
+            }
+
+            set
+            {
+                categoryDetailsDescription = value;
+                OnPropertyChanged("CategoryDetailsDescription");
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)

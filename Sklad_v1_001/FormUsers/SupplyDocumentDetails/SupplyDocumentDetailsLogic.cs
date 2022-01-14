@@ -82,7 +82,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
         private Int64 documentID;
         private String name;
         private Int32 quantity;
-        
+        private Byte[] imageProduct;
+        private Int32 categoryID;
+        private Int32 categoryDetailsID;
+
         // цены      
         private Double tagPriceUSA;
         private Double currencyUSA;
@@ -305,6 +308,47 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             {
                 lastModificatedUserIDString = value;
                 OnPropertyChanged("LastModificatedUserIDString");
+            }
+        }
+
+        public byte[] ImageProduct
+        {
+            get
+            {
+                return imageProduct;
+            }
+
+            set
+            {
+                imageProduct = value;
+                OnPropertyChanged("ImageProduct");
+            }
+        }
+
+        public int CategoryID
+        {
+            get
+            {
+                return categoryID;
+            }
+
+            set
+            {
+                categoryID = value;
+                OnPropertyChanged("CategoryID");
+            }
+        }
+        public int CategoryDetailsID
+        {
+            get
+            {
+                return categoryDetailsID;
+            }
+
+            set
+            {
+                categoryDetailsID = value;
+                OnPropertyChanged("CategoryDetailsID");
             }
         }
     }

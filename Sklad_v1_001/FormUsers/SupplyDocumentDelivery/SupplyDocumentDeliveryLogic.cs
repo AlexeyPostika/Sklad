@@ -9,12 +9,70 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Media;
 
-namespace Sklad_v1_001.FormUsers.Delivery
+namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
 {
-    public class LocaleRow : IAbstractRow, INotifyPropertyChanged
+    public class LocaleFilter : INotifyPropertyChanged
+    {
+        Int32 documentID;
+        Int32 productID;
+        string typeScreen;
+
+        public Int32 DocumentID
+        {
+            get
+            {
+                return documentID;
+            }
+
+            set
+            {
+                documentID = value;
+                OnPropertyChanged("DocumentID");
+            }
+        }
+
+        public string TypeScreen
+        {
+            get
+            {
+                return typeScreen;
+            }
+
+            set
+            {
+                typeScreen = value;
+                OnPropertyChanged("TypeScreen");
+            }
+        }
+
+        public int ProductID
+        {
+            get
+            {
+                return productID;
+            }
+
+            set
+            {
+                productID = value;
+                OnPropertyChanged("ProductID");
+            }
+        }
+
+        public LocaleFilter()
+        {
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+   
+    public class LocaleRow : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
@@ -22,7 +80,9 @@ namespace Sklad_v1_001.FormUsers.Delivery
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         private Int32 iD;
-        private Int32 detailsID;
+        private Int32 deliveryID;
+        private Int32 deliveryDetailsID;
+
         private String nameCompany;
         private String managerName;
         private String phonesCompany;
@@ -57,20 +117,7 @@ namespace Sklad_v1_001.FormUsers.Delivery
                 OnPropertyChanged("ID");
             }
         }
-        
-        public int DetailsID
-        {
-            get
-            {
-                return detailsID;
-            }
 
-            set
-            {
-                detailsID = value;
-                OnPropertyChanged("DetailsID");
-            }
-        }
         public string NameCompany
         {
             get
@@ -292,7 +339,7 @@ namespace Sklad_v1_001.FormUsers.Delivery
                 OnPropertyChanged("TTNDocumentByte");
             }
         }
-       
+
         public ImageSource ImageSourceTTN
         {
             get
@@ -306,7 +353,7 @@ namespace Sklad_v1_001.FormUsers.Delivery
                 OnPropertyChanged("ImageSourceTTN");
             }
         }
-        
+
         public Int32 Status
         {
             get
@@ -334,81 +381,97 @@ namespace Sklad_v1_001.FormUsers.Delivery
 
             set
             {
-                statusString = value;               
+                statusString = value;
                 OnPropertyChanged("StatusString");
             }
         }
+
+        public int DeliveryID
+        {
+            get
+            {
+                return deliveryID;
+            }
+
+            set
+            {
+                deliveryID = value;
+                OnPropertyChanged("DeliveryID");
+            }
+        }
+
+        public int DeliveryDetailsID
+        {
+            get
+            {
+                return deliveryDetailsID;
+            }
+
+            set
+            {
+                deliveryDetailsID = value;
+                OnPropertyChanged("DeliveryDetailsID");
+            }
+        }
+
         public LocaleRow()
         {
             ImageSourceTTN = ImageHelper.GenerateImage("IconMinus.png");
             ImageSourceInvoice = ImageHelper.GenerateImage("IconMinus.png");
         }
     }
-    public class DeliveryLogic
+
+    public class SupplyDocumentDeliveryLogic
     {
-        ConvertData convertData;
+        string get_store_procedure = "xp_GetSupplyDocumentDetailsTable";
 
-        string get_store_procedure = "xp_GetDeliveryCompanyTable";
-
+        // запрос
         SQLCommanSelect _sqlRequestSelect = null;
-
-        //результат запроса
+        
+        // результаты запроса
         DataTable _data = null;
-        DataTable _datarow = null;    
+        DataTable _datarow = null;
 
-        public DeliveryLogic()
+        public SupplyDocumentDeliveryLogic()
         {
             _sqlRequestSelect = new SQLCommanSelect();
 
-            convertData = new ConvertData();
 
             _data = new DataTable();
             _datarow = new DataTable();
 
             //----------------------------------------------------------------------------
             _sqlRequestSelect.AddParametr("@p_TypeScreen", SqlDbType.VarChar, 10);
-            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeInGrid);
-            //----------------------------------------------------------------------------
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeName);
 
+            _sqlRequestSelect.AddParametr("@p_DocumentID", SqlDbType.BigInt);
+            _sqlRequestSelect.SetParametrValue("@p_DocumentID", 0);
+
+            _sqlRequestSelect.AddParametr("@p_ProductID", SqlDbType.Int);
+            _sqlRequestSelect.SetParametrValue("@p_ProductID", 0);
         }
+
         public DataTable FillGrid()
         {
             _sqlRequestSelect.SqlAnswer.datatable.Clear();
             _data.Clear();
-            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeGrid);
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeName);
 
             _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
             _data = _sqlRequestSelect.SqlAnswer.datatable;
             return _data;
         }
 
-        public LocaleRow Convert(DataRow _dataRow, LocaleRow _localeRow)
+        public DataTable FillGrid(Int32 _productID)
         {
-            convertData = new ConvertData(_dataRow, _localeRow);
+            _sqlRequestSelect.SqlAnswer.datatable.Clear();
+            _data.Clear();
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeItem);
+            _sqlRequestSelect.SetParametrValue("@p_ProductID", _productID);
 
-            _localeRow.ID = convertData.ConvertDataInt32("ID");
-            _localeRow.NameCompany = convertData.ConvertDataString("NameCompany");
-            _localeRow.PhonesCompany = convertData.ConvertDataString("PhonesCompany");
-            _localeRow.AdressCompany = convertData.ConvertDataString("AdressCompany");
-            _localeRow.ManagerName = convertData.ConvertDataString("ManagerName");
-            _localeRow.PhonesManager = convertData.ConvertDataString("PhonesManager");
-            _localeRow.CreatedDate = convertData.ConvertDataDateTime("CreatedDate");          
-            _localeRow.CreatedUserID = convertData.ConvertDataInt32("CreatedUserID");
-            _localeRow.LastModificatedDate = convertData.ConvertDataDateTime("LastModificatedDate");
-            _localeRow.LastModificatedUserID = convertData.ConvertDataInt32("LastModificatedUserID");
-
-            return _localeRow;
-        }
-
-        public ManagerDelivery ConvertDelivery(DataRow _dataRow, ManagerDelivery _localeRow)
-        {
-            convertData = new ConvertData(_dataRow, _localeRow);
-
-            _localeRow.ID = convertData.ConvertDataInt32("ID");
-            _localeRow.Description = convertData.ConvertDataString("NameCompany");
-            _localeRow.ShortDescription = convertData.ConvertDataString("NameCompany");
-           
-            return _localeRow;
+            _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
+            _data = _sqlRequestSelect.SqlAnswer.datatable;
+            return _data;
         }
 
     }

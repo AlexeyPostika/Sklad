@@ -295,6 +295,7 @@
     <Compile Include="FormUsers\SaleDocument\NewSaleDocument.xaml.cs">
       <DependentUpon>NewSaleDocument.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FormUsers\SupplyDocumentDelivery\SupplyDocumentDeliveryLogic.cs" />
     <Compile Include="FormUsers\SupplyDocumentDetails\SupplyDocumentDetailsLogic.cs" />
     <Compile Include="FormUsers\SupplyDocumentPayment\NewSupplyDocumentPaymentItem.xaml.cs">
       <DependentUpon>NewSupplyDocumentPaymentItem.xaml</DependentUpon>
