@@ -1,6 +1,8 @@
 ﻿using Sklad_v1_001.Control.FlexMessageBox;
 using Sklad_v1_001.FormUsers.Delivery;
 using Sklad_v1_001.FormUsers.Product;
+using Sklad_v1_001.FormUsers.SupplyDocumentDelivery;
+using Sklad_v1_001.FormUsers.SupplyDocumentDetails;
 using Sklad_v1_001.FormUsers.SupplyDocumentPayment;
 using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.HelperGlobal;
@@ -85,14 +87,17 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         ObservableCollection<Product.LocaleRow> detailsProduct;
 
         //доставка
-        ObservableCollection<SupplyDocumentDelivery.LocaleRow> detailsSupplyDocumentDelivery;
+        SupplyDocumentDeliveryLogic supplyDocumentDeliveryLogic;
+        ObservableCollection<SupplyDocumentDelivery.LocaleRow> supplyDocumentDelivery;
 
         //SupplyDocumentDetails
+        SupplyDocumentDetailsLogic supplyDocumentDetailsLogic;
         ObservableCollection<SupplyDocumentDetails.LocaleRow> supplyDocumentDetails;
 
         //оплата
+        SupplyDocumentPaymentLogic supplyDocumentPaymentLogic;
         SupplyDocumentPayment.LocaleRow supplyDocumentPaymentLocaleRow;
-        ObservableCollection<SupplyDocumentPayment.LocaleRow> detailsSupplyPayment;
+        ObservableCollection<SupplyDocumentPayment.LocaleRow> supplyDocumentPayment;
 
         private Int32 status;
 
@@ -148,10 +153,15 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             InitializeComponent();
 
             supplyDocumentLogic = new SupplyDocumentLogic();
+            supplyDocumentDetailsLogic = new SupplyDocumentDetailsLogic();
+            supplyDocumentDeliveryLogic = new SupplyDocumentDeliveryLogic();
+            supplyDocumentPaymentLogic = new SupplyDocumentPaymentLogic();
 
             detailsProduct = new ObservableCollection<Product.LocaleRow>();
-            detailsSupplyDocumentDelivery = new ObservableCollection<SupplyDocumentDelivery.LocaleRow>();
-            detailsSupplyPayment = new ObservableCollection<SupplyDocumentPayment.LocaleRow>();
+
+            supplyDocumentDetails = new ObservableCollection<SupplyDocumentDetails.LocaleRow>();
+            supplyDocumentDelivery = new ObservableCollection<SupplyDocumentDelivery.LocaleRow>();
+            supplyDocumentPayment = new ObservableCollection<SupplyDocumentPayment.LocaleRow>();
 
             dataListCategory = new ObservableCollection<Category.LocalRow>();
             dataListDelivery = new ObservableCollection<Delivery.LocaleRow>();
@@ -163,8 +173,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             this.StatusDocument.ComboBoxElement.ItemsSource = supplyTypeList.innerList;
 
             this.DataProduct.ItemsSource = detailsProduct;
-            this.DataDelivery.ItemsSource = detailsSupplyDocumentDelivery;
-            this.DataPayment.ItemsSource = detailsSupplyPayment;
+            this.DataDelivery.ItemsSource = supplyDocumentDelivery;
+            this.DataPayment.ItemsSource = supplyDocumentPayment;
 
             this.ToolBarDelivery.ButtonNewProduct.Text = Properties.Resources.ADD;
             this.ToolBarPayment.ButtonNewProduct.Text = Properties.Resources.ADD;
@@ -180,19 +190,16 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         {
             //MainWindow.AppWindow.ButtonNewAddProduct();           
             newAddProductItem = new NewAddProductItem();
-            addProductWindow = new FlexMessageBox();
-            // newDeliveryItem.LocaleRow=
-            //newAddProductItem.Status = Status;
+            addProductWindow = new FlexMessageBox();           
             addProductWindow.Content = newAddProductItem;
             addProductWindow.Show(Properties.Resources.Products);
             if (newAddProductItem.IsClickButtonOK == MessageBoxResult.OK)
             {
                 if (newAddProductItem.ProductLocalRow != null )
-                {
-                    Int32 tempID = detailsProduct.Count + 1;                 
-                    localeRowProduct = newAddProductItem.ProductLocalRow;
-                    localeRowProduct.ID = tempID;
+                {                           
+                    localeRowProduct = newAddProductItem.ProductLocalRow;                  
                     detailsProduct.Add(localeRowProduct);
+                    supplyDocumentDetails.Add(supplyDocumentDetailsLogic.ConvertProductToSupplyDocumentDetails(localeRowProduct, new SupplyDocumentDetails.LocaleRow()));
                 }
             }
         }
@@ -231,11 +238,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             if (newDeliveryItem.IsClickButtonOK == MessageBoxResult.OK)
             {
                 if (newDeliveryItem.Document != null && !String.IsNullOrEmpty(newDeliveryItem.Document.NameCompany))
-                {
-                    Int32 tempID = detailsSupplyDocumentDelivery.Count + 1;                
-                    localeRowDelivery = newDeliveryItem.Document;
-                    localeRowDelivery.ID = tempID;
-                   //detailsSupplyDocumentDelivery.Add(localeRowDelivery);
+                {                             
+                    localeRowDelivery = newDeliveryItem.Document;                  
+                    supplyDocumentDelivery.Add(supplyDocumentDeliveryLogic.ConvertDeliveryToSupplyDocumentDelivery(localeRowDelivery, new SupplyDocumentDelivery.LocaleRow()));
                 }
             }
         }
@@ -252,19 +257,15 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         {
             supplyDocumentPaymentLocaleRow = new SupplyDocumentPayment.LocaleRow();
             newSupplyDocumentPaymentItem = new NewSupplyDocumentPaymentItem();
-            addSuppluPaymentWindow = new FlexMessageBox();
-            // newDeliveryItem.LocaleRow=
-            // newSupplyDocumentPaymentItem.Status = Status;
+            addSuppluPaymentWindow = new FlexMessageBox();      
             addSuppluPaymentWindow.Content = newSupplyDocumentPaymentItem;
             addSuppluPaymentWindow.Show(Properties.Resources.Payment1);
             if (newSupplyDocumentPaymentItem.IsClickButtonOK == MessageBoxResult.OK)
             {
                 if (newSupplyDocumentPaymentItem.PaymentLocalRow != null)
-                {
-                    Int32 tempID = detailsSupplyPayment.Count + 1;                 
-                    supplyDocumentPaymentLocaleRow = newSupplyDocumentPaymentItem.PaymentLocalRow;
-                    supplyDocumentPaymentLocaleRow.ID = tempID;
-                    detailsSupplyPayment.Add(supplyDocumentPaymentLocaleRow);
+                {                       
+                    supplyDocumentPaymentLocaleRow = newSupplyDocumentPaymentItem.PaymentLocalRow;                  
+                    supplyDocumentPayment.Add(supplyDocumentPaymentLocaleRow);
                 }
             }
         }
@@ -419,7 +420,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 }
 
                 //сопуствующие товары
-                foreach (SupplyDocumentDelivery.LocaleRow currentrow in detailsSupplyDocumentDelivery)
+                foreach (SupplyDocumentDelivery.LocaleRow currentrow in supplyDocumentDelivery)
                 {
                     Document.MassSupplyDocumentDeliveryID = Document.MassSupplyDocumentDeliveryID + currentrow.ID.ToString() + '|';
                     Document.MassSupplyDocumentDeliveryDeliveryID = Document.MassSupplyDocumentDeliveryDeliveryID + currentrow.DeliveryID.ToString() + '|';
@@ -431,7 +432,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 }              
 
                 //виды оплат
-                foreach (SupplyDocumentPayment.LocaleRow currentrow in detailsSupplyPayment)
+                foreach (SupplyDocumentPayment.LocaleRow currentrow in supplyDocumentPayment)
                 {
                     Document.MassSupplyDocumentPaymentID = Document.MassSupplyDocumentPaymentID + currentrow.ID.ToString() + '|';
                     Document.MassSupplyDocumentPaymentAmount = Document.MassSupplyDocumentPaymentAmount + currentrow.ID.ToString() + '|';
@@ -439,13 +440,35 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     Document.MassSupplyDocumentPaymentDescription = Document.MassSupplyDocumentPaymentDescription + currentrow.ID.ToString() + '|';                   
                 }
 
-                Document.ID = supplyDocumentLogic.SaveRow(Document);
+                //Document.ID = supplyDocumentLogic.SaveRow(Document);
                 //UpdateCurrentDocument(Document.ID);
                 //MainWindow.AppWindow.DataChanged[ToString()] = false;
 
                 return Document.ID;
             }
             return 0;
+        }
+        #endregion
+
+        #region ToolBarNewSupplyDocument
+        private void SupplyDocumentDetailsToolBar_ButtonSave()
+        {
+            Save();
+        }
+
+        private void SupplyDocumentDetailsToolBar_ButtonSaveclose()
+        {
+
+        }
+
+        private void SupplyDocumentDetailsToolBar_ButtonListCancel()
+        {
+
+        }
+
+        private void SupplyDocumentDetailsToolBar_ButtonApply()
+        {
+
         }
         #endregion
     }

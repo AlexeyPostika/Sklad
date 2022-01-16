@@ -244,6 +244,9 @@
     <Compile Include="Control\ToolBar\DataViewToolNewSupplyDocument.xaml.cs">
       <DependentUpon>DataViewToolNewSupplyDocument.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\ToolBar\NewSupplyDocumentDetailsToolBar.xaml.cs">
+      <DependentUpon>NewSupplyDocumentDetailsToolBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\ToolBar\ToolBarSaveCancel.xaml.cs">
       <DependentUpon>ToolBarSaveCancel.xaml</DependentUpon>
     </Compile>
@@ -517,6 +520,10 @@
     <Page Include="Control\ToolBar\DataViewToolNewSupplyDocument.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\ToolBar\NewSupplyDocumentDetailsToolBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Control\ToolBar\ToolBarSaveCancel.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -805,6 +812,11 @@
     <Resource Include="Icone\IconListComboDown.png" />
     <Resource Include="Icone\IconOK16.png" />
     <Resource Include="Icone\IconMinus.png" />
+    <Resource Include="Icone\IconSaveToClose32.png" />
+    <Resource Include="Icone\IconSaveClose_x24.png" />
+    <Resource Include="Icone\IconSave_x24.png" />
+    <Resource Include="Icone\IconOK_x24.png" />
+    <Resource Include="Icone\IconToList_x24.png" />
     <Content Include="SQLCommand\JDB_DataAdapter.sql" />
     <Content Include="SQLCommand\JDB_POS.sql" />
     <Resource Include="Icone\IconOk.png" />

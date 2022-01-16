@@ -87,9 +87,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
         private Int32 categoryDetailsID;
 
         // цены      
-        private Double tagPriceUSA;
+        private Decimal tagPriceUSA;
         private Double currencyUSA;
-        private Double tagPriceRUS;
+        private Decimal tagPriceRUS;
         private Double currencyRUS;
         
         //стандартные поля
@@ -154,7 +154,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
                 OnPropertyChanged("Quantity");
             }
         }
-        public double TagPriceUSA
+        public Decimal TagPriceUSA
         {
             get
             {
@@ -180,7 +180,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
                 OnPropertyChanged("CurrencyUSA");
             }
         }
-        public double TagPriceRUS
+        public Decimal TagPriceRUS
         {
             get
             {
@@ -430,9 +430,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             _localeRow.Name = convertData.ConvertDataString("Name");
             _localeRow.Quantity = convertData.ConvertDataInt32("Quantity");
            
-            _localeRow.TagPriceUSA = convertData.ConvertDataDouble("TagPriceUSA");
+            _localeRow.TagPriceUSA = convertData.ConvertDataDecimal("TagPriceUSA");
             _localeRow.CurrencyUSA = convertData.ConvertDataInt32("CurrencyUSA");
-            _localeRow.TagPriceRUS = convertData.ConvertDataDouble("TagPriceRUS");
+            _localeRow.TagPriceRUS = convertData.ConvertDataDecimal("TagPriceRUS");
             _localeRow.CurrencyRUS = convertData.ConvertDataDouble("CurrencyRUS");
 
             _localeRow.CreatedDate = convertData.ConvertDataDateTime("CreatedDate");
@@ -445,6 +445,29 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             return _localeRow;
         }
 
+        public LocaleRow ConvertProductToSupplyDocumentDetails(Product.LocaleRow _row, LocaleRow _localeRow)
+        {
+            // SaleDocumentDetailsList statusList = new SaleDocumentDetailsList();
+            ConvertData convertData = new ConvertData();
 
+            _localeRow.ID = _row.ID;
+            //_localeRow.DocumentID = _row.DocumentID;
+            _localeRow.Name = _row.Name;
+            _localeRow.Quantity = _row.Quantity;
+
+            _localeRow.TagPriceUSA = _row.TagPriceUSA;
+            _localeRow.CurrencyUSA = 841;
+            _localeRow.TagPriceRUS = _row.TagPriceRUS;
+            _localeRow.CurrencyRUS = 663;
+
+            _localeRow.CreatedDate = _row.CreatedDate;
+            _localeRow.CreatedDateString = convertData.DateTimeConvertShortString(_localeRow.CreatedDate);
+            _localeRow.LastModificatedDate = _row.LastModicatedDate;
+            _localeRow.LastModificatedDateString = convertData.DateTimeConvertShortString(_localeRow.LastModificatedDate);
+            _localeRow.CreatedUserID = _row.CreatedUserID;
+            _localeRow.LastModificatedUserID = _row.LastModificatedUserID;
+
+            return _localeRow;
+        }
     }
 }

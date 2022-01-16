@@ -221,11 +221,12 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
             set
             {
                 lastModificatedDate = value;
-                if (!String.IsNullOrEmpty(value.Value.ToString()))
-                {
-                    ConvertData convertData = new ConvertData();
-                    convertData.DateTimeConvertShortDateString(value);
-                }
+                if (lastModificatedDate!=null)
+                    if (!String.IsNullOrEmpty(value.Value.ToString()))
+                    {
+                        ConvertData convertData = new ConvertData();
+                        convertData.DateTimeConvertShortDateString(value);
+                    }
                 OnPropertyChanged("LastModificatedDate");
             }
         }
@@ -472,6 +473,28 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
             _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
             _data = _sqlRequestSelect.SqlAnswer.datatable;
             return _data;
+        }
+
+        //
+        public LocaleRow ConvertDeliveryToSupplyDocumentDelivery(Delivery.LocaleRow _row, LocaleRow _localeRow)
+        {
+            // SaleDocumentDetailsList statusList = new SaleDocumentDetailsList();           
+            _localeRow.ID = _row.ID;
+            _localeRow.NameCompany = _row.NameCompany;
+            _localeRow.PhonesCompany = _row.PhonesCompany;
+            _localeRow.AdressCompany = _row.AdressCompany;
+            _localeRow.ManagerName = _row.ManagerName;
+            _localeRow.PhonesManager = _row.PhonesManager;
+            _localeRow.CreatedDate = _row.CreatedDate;
+            _localeRow.CreatedUserID = _row.CreatedUserID;
+            _localeRow.LastModificatedDate = _row.LastModificatedDate;
+            _localeRow.LastModificatedUserID = _row.LastModificatedUserID;
+            _localeRow.TTN = _row.TTN;
+            _localeRow.ImageSourceTTN = _row.ImageSourceTTN;
+            _localeRow.Invoice = _row.Invoice;
+            _localeRow.ImageSourceInvoice = _row.ImageSourceInvoice;
+
+            return _localeRow;
         }
 
     }

@@ -33,8 +33,8 @@ namespace Sklad_v1_001.FormUsers.Product
         private DateTime? createdDate;
         private Int32 createdUserID;
         private DateTime? lastModicatedDate;
-        private String lastModifiadDateText;
-        private Int32 lastModicatedUserID;
+        private String lastModificatedDateText;
+        private Int32 lastModificatedUserID;
         private Int32 status;
         private String statusString;
 
@@ -240,30 +240,30 @@ namespace Sklad_v1_001.FormUsers.Product
                 OnPropertyChanged("LastModicatedDate");
             }
         }
-        public int LastModicatedUserID
+        public int LastModificatedUserID
         {
             get
             {
-                return lastModicatedUserID;
+                return lastModificatedUserID;
             }
 
             set
             {
-                lastModicatedUserID = value;
+                lastModificatedUserID = value;
                 OnPropertyChanged("LastModicatedUserID");
             }
         }
         //lastModifiadDateText
-        public String LastModifiadDateText
+        public String LastModificatedDateText
         {
             get
             {
-                return lastModifiadDateText;
+                return lastModificatedDateText;
             }
 
             set
             {
-                lastModifiadDateText = value;
+                lastModificatedDateText = value;
                 OnPropertyChanged("LastModifiadDateText");
             }
         }
