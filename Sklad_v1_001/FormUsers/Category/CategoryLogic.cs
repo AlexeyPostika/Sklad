@@ -62,7 +62,7 @@ namespace Sklad_v1_001.FormUsers.Category
     public class LocalRow : INotifyPropertyChanged
     {
         private Int32 iD;
-        private Int32 detailsID;
+        private Int32 categoryDetailsID;
         private String categoryName;
         private String categoryDescription;
         private String description;
@@ -94,17 +94,17 @@ namespace Sklad_v1_001.FormUsers.Category
             }
         }
 
-        public int DetailsID
+        public int CategoryDetailsID
         {
             get
             {
-                return detailsID;
+                return categoryDetailsID;
             }
 
             set
             {
-                detailsID = value;
-                OnPropertyChanged("DetailsID");
+                categoryDetailsID = value;
+                OnPropertyChanged("CategoryDetailsID");
             }
         }
 
@@ -355,10 +355,13 @@ namespace Sklad_v1_001.FormUsers.Category
         {          
             convertData = new ConvertData(_dataRow, _localeRow);
 
-            _localeRow.ID = convertData.ConvertDataInt32("ID");
+            _localeRow.ID = convertData.ConvertDataInt32("CategoryDetailsID");
+            _localeRow.CategoryDetailsID= convertData.ConvertDataInt32("CategoryDetailsID");
             _localeRow.CategoryName = convertData.ConvertDataString("CategoryName");
             _localeRow.CategoryDescription = convertData.ConvertDataString("CategoryDescription");       
-            _localeRow.Description = convertData.ConvertDataString("Description");
+            _localeRow.Description = convertData.ConvertDataString("CategoryDetailsName"); // наименование подкатегории
+            _localeRow.CategoryDetailsDescription= convertData.ConvertDataString("CategoryDetailsDescription");
+
             _localeRow.CategoryID = convertData.ConvertDataInt32("CategoryID");
 
             _localeRow.CreatedDate = convertData.ConvertDataDateTime("CreatedDate");

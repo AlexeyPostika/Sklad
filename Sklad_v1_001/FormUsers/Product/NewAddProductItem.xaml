@@ -33,17 +33,19 @@
                 <FlexComboBox:ComboBoxWithLabel                                    
                         LabelText="{x:Static res:Resources.CATEGORY}" LabelWidth="80"
                         IsRequired="Visible"
-                        x:Name="UserLogin" DropDownClosed="UserLogin_DropDownClosed"
-                        Value="{Binding Path=UserID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Visibility="Collapsed"/>
+                        x:Name="UserLogin" 
+                        DropDownClosed="UserLogin_DropDownClosed"
+                        Value="{Binding Path=CategoryDetailsID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                        Visibility="Collapsed"/>
                 
                 <FlexEditBox:EditBoxUserWithLabel x:Name="CategoryName" LabelText="{x:Static res:Resources.CATEGORY}" 
                                                   IsRequired="Visible"
-                                                  Text="{Binding Path=CategoryString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  Text="{Binding Path=CategoryDetailsName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                                  
                                                   LabelWidth="80"
                                                   ButtonClearClick="CategoryName_ButtonClearClick"/>
                 <FlexTextBox:FlexLabelTextBox x:Name="ModelName"  LabelText="{x:Static res:Resources.Model}" 
                                               IsRequired="Visible"
-                                              Description="{Binding Path=Model, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              Description="{Binding Path=Model, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                             
                                               EnableTextBox="True"/>
                 <SimpleControl:EditBoxWithLabel x:Name="BarCode"  LabelText="{x:Static res:Resources.BarCodeID}"
                                                               IsRequired="Visible"

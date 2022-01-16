@@ -84,7 +84,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
         private Int32 quantity;
         private Byte[] imageProduct;
         private Int32 categoryID;
+        private String categoryName;
+        private String categoryDescription;
         private Int32 categoryDetailsID;
+        private String categoryDetailsName;
+        private String categoryDetailsDescription;
 
         // цены      
         private Decimal tagPriceUSA;
@@ -338,6 +342,33 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
                 OnPropertyChanged("CategoryID");
             }
         }
+        public String CategoryName
+        {
+            get
+            {
+                return categoryName;
+            }
+
+            set
+            {
+                categoryName = value;
+                OnPropertyChanged("CategoryName");
+            }
+        }
+
+        public string CategoryDescription
+        {
+            get
+            {
+                return categoryDescription;
+            }
+
+            set
+            {
+                categoryDescription = value;
+                OnPropertyChanged("CategoryDescription");
+            }
+        }
         public int CategoryDetailsID
         {
             get
@@ -349,6 +380,32 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             {
                 categoryDetailsID = value;
                 OnPropertyChanged("CategoryDetailsID");
+            }
+        }
+        public string CategoryDetailsName
+        {
+            get
+            {
+                return categoryDetailsName;
+            }
+
+            set
+            {
+                categoryDetailsName = value;
+                OnPropertyChanged("CategoryDetailsName");
+            }
+        }
+        public string CategoryDetailsDescription
+        {
+            get
+            {
+                return categoryDetailsDescription;
+            }
+
+            set
+            {
+                categoryDetailsDescription = value;
+                OnPropertyChanged("CategoryDetailsDescription");
             }
         }
     }
@@ -448,22 +505,40 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
         public LocaleRow ConvertProductToSupplyDocumentDetails(Product.LocaleRow _row, LocaleRow _localeRow)
         {
             // SaleDocumentDetailsList statusList = new SaleDocumentDetailsList();
-            ConvertData convertData = new ConvertData();
-
+            ConvertData convertData = new ConvertData();         
+           
+            //категории
+            _localeRow.CategoryID = _row.CategoryID;
+            _localeRow.CategoryName = _row.CategoryName;
+            _localeRow.CategoryDescription = _row.CategoryDescription;
+            //подкатегории
+            _localeRow.CategoryDetailsID = _row.CategoryDetailsID;
+            _localeRow.CategoryDetailsName = _row.CategoryDetailsName;
+            _localeRow.CategoryDetailsDescription = _row.CategoryDetailsDescription;
+            
+            //продукт
             _localeRow.ID = _row.ID;
-            //_localeRow.DocumentID = _row.DocumentID;
             _localeRow.Name = _row.Name;
             _localeRow.Quantity = _row.Quantity;
-
             _localeRow.TagPriceUSA = _row.TagPriceUSA;
             _localeRow.CurrencyUSA = 841;
             _localeRow.TagPriceRUS = _row.TagPriceRUS;
             _localeRow.CurrencyRUS = 663;
 
-            _localeRow.CreatedDate = _row.CreatedDate;
-            _localeRow.CreatedDateString = convertData.DateTimeConvertShortString(_localeRow.CreatedDate);
-            _localeRow.LastModificatedDate = _row.LastModicatedDate;
+            //стандартные данные
+            if (_localeRow.ID == 0)
+            {
+                _localeRow.CreatedDate = DateTime.Now;
+                _localeRow.LastModificatedDate = DateTime.Now;
+            }
+            else
+            {
+                _localeRow.CreatedDate = _row.CreatedDate;
+                _localeRow.LastModificatedDate = _row.LastModicatedDate;
+            }         
+            _localeRow.CreatedDateString = convertData.DateTimeConvertShortString(_localeRow.CreatedDate);         
             _localeRow.LastModificatedDateString = convertData.DateTimeConvertShortString(_localeRow.LastModificatedDate);
+
             _localeRow.CreatedUserID = _row.CreatedUserID;
             _localeRow.LastModificatedUserID = _row.LastModificatedUserID;
 

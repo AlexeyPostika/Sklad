@@ -386,7 +386,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     Document.MassName = Document.MassName + currentrow.CategoryName.ToString() + '|';
                     Document.MassDescription = Document.MassDescription + currentrow.Description.ToString() + '|';
                     //подкатегория
-                    Document.MassCategoryDetailsID = Document.MassCategoryDetailsID + currentrow.DetailsID.ToString() + '|';
+                    Document.MassCategoryDetailsID = Document.MassCategoryDetailsID + currentrow.CategoryDetailsID.ToString() + '|';
                     Document.MassIDCategory = Document.MassIDCategory + currentrow.ID.ToString() + '|';
                     Document.MassCategoryDetailsName = Document.MassCategoryDetailsName + currentrow.CategoryDetailsName.ToString() + '|';
                     Document.MassCategoryDetailsDescription = Document.MassCategoryDetailsDescription + currentrow.CategoryDetailsDescription.ToString() + '|';

@@ -86,7 +86,7 @@ namespace Sklad_v1_001.FormUsers.Product
                 return false;
             }
 
-            if (String.IsNullOrEmpty(ProductLocalRow.CategoryString))
+            if (String.IsNullOrEmpty(ProductLocalRow.CategoryName))
             {
                 mb = new FlexMessageBox();
                 mb.Show(Properties.Resources.ErrorEmptyField, GenerateTitle(TitleType.Error, Properties.Resources.EmptyField, CategoryName.LabelText), MessageBoxButton.OK, MessageBoxImage.Error);
@@ -155,9 +155,21 @@ namespace Sklad_v1_001.FormUsers.Product
         {
             if (UserLogin.Value != 0 && dataCategory.Count!=0)
             {
-                CategoryName.Text = dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())) != null ?
-                    dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())).Description :
+                CategoryName.Text = dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())) != null ?
+                    dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())).Description :
                     Properties.Resources.UndefindField;
+                
+                ProductLocalRow.CategoryDetailsDescription = dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())) != null ?
+                  dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())).CategoryDetailsDescription : Properties.Resources.UndefindField;
+
+                ProductLocalRow.CategoryID= dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())) != null ?
+                    dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())).CategoryID : 0;
+                
+                ProductLocalRow.CategoryName = dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())) != null ?
+                    dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())).CategoryName : Properties.Resources.UndefindField;
+
+                ProductLocalRow.CategoryDescription = dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())) != null ?
+                    dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())).CategoryDescription : Properties.Resources.UndefindField;
             }
 
             UserLogin.Visibility = Visibility.Collapsed;
