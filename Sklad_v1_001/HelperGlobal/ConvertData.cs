@@ -190,7 +190,24 @@ using System.Threading.Tasks;
              }
              return 0.0;
          }
-         public DateTime? ConvertDataDateTime(string _columnname)
+
+        public Decimal ConvertDataDecimal(string _columnname)
+        {
+            Decimal i = 0;
+            if (_columnname != null && localdatarow.Table.Columns.Contains(_columnname) && localdatarow[_columnname].ToString() != null && !String.IsNullOrEmpty(localdatarow[_columnname].ToString()))
+            {
+                //string[] tempmass = localdatarow[_columnname].ToString().Split(',', '.');
+                //string temp = tempmass.Length > 1 ? tempmass[0] + "," + tempmass[1] : tempmass[0];
+                //localdatarow[_columnname].ToString().Replace(",", ".");
+                if (Decimal.TryParse(localdatarow[_columnname].ToString(), out i))
+                    return i;
+                else
+                    return 0;
+            }
+            return 0;
+        }
+
+        public DateTime? ConvertDataDateTime(string _columnname)
          {
              DateTime i = new DateTime();
              if (_columnname != null && localdatarow.Table.Columns.Contains(_columnname) && localdatarow[_columnname].ToString() != null && !String.IsNullOrEmpty(localdatarow[_columnname].ToString()))
@@ -361,6 +378,19 @@ using System.Threading.Tasks;
                     return 0.0;
             }
             return 0.0;
+        }
+
+        public Decimal FlexDataConvertToDecimal(string _columnname)
+        {
+            Decimal i = 0;
+            if (_columnname != null)
+            {
+                if (Decimal.TryParse(_columnname.ToString(), out i))
+                    return i;
+                else
+                    return 0;
+            }
+            return 0;
         }
 
         public String FlexDataConvertToDateString(DateTime? _columnname)

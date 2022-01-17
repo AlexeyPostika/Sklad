@@ -22,7 +22,12 @@ namespace Sklad_v1_001.FormUsers.Product
         private Int32 iD;
         private String name;
         private Int32 categoryID;
-        private String categoryString;
+        private String categoryName;
+        private String categoryDescription;
+        private Int32 categoryDetailsID;
+        private String categoryDetailsName;
+        private String categoryDetailsDescription;
+
         private String model;
         private String barCodeString;
         private Int32 quantity;
@@ -33,8 +38,8 @@ namespace Sklad_v1_001.FormUsers.Product
         private DateTime? createdDate;
         private Int32 createdUserID;
         private DateTime? lastModicatedDate;
-        private String lastModifiadDateText;
-        private Int32 lastModicatedUserID;
+        private String lastModificatedDateText;
+        private Int32 lastModificatedUserID;
         private Int32 status;
         private String statusString;
 
@@ -87,19 +92,73 @@ namespace Sklad_v1_001.FormUsers.Product
                 OnPropertyChanged("CategoryID");
             }
         }
-        public String CategoryString
+        public String CategoryName
         {
             get
             {
-                return categoryString;
+                return categoryName;
             }
 
             set
             {
-                categoryString = value;
-                OnPropertyChanged("CategoryString");
+                categoryName = value;
+                OnPropertyChanged("CategoryName");
             }
         }
+
+        public string CategoryDescription
+        {
+            get
+            {
+                return categoryDescription;
+            }
+
+            set
+            {
+                categoryDescription = value;
+                OnPropertyChanged("CategoryDescription");
+            }
+        }
+        public int CategoryDetailsID
+        {
+            get
+            {
+                return categoryDetailsID;
+            }
+
+            set
+            {
+                categoryDetailsID = value;
+                OnPropertyChanged("CategoryDetailsID");
+            }
+        }
+        public string CategoryDetailsName
+        {
+            get
+            {
+                return categoryDetailsName;
+            }
+
+            set
+            {
+                categoryDetailsName = value;
+                OnPropertyChanged("CategoryDetailsName");
+            }
+        }
+        public string CategoryDetailsDescription
+        {
+            get
+            {
+                return categoryDetailsDescription;
+            }
+
+            set
+            {
+                categoryDetailsDescription = value;
+                OnPropertyChanged("CategoryDetailsDescription");
+            }
+        }
+
         public string Model
         {
             get
@@ -240,30 +299,30 @@ namespace Sklad_v1_001.FormUsers.Product
                 OnPropertyChanged("LastModicatedDate");
             }
         }
-        public int LastModicatedUserID
+        public int LastModificatedUserID
         {
             get
             {
-                return lastModicatedUserID;
+                return lastModificatedUserID;
             }
 
             set
             {
-                lastModicatedUserID = value;
+                lastModificatedUserID = value;
                 OnPropertyChanged("LastModicatedUserID");
             }
         }
         //lastModifiadDateText
-        public String LastModifiadDateText
+        public String LastModificatedDateText
         {
             get
             {
-                return lastModifiadDateText;
+                return lastModificatedDateText;
             }
 
             set
             {
-                lastModifiadDateText = value;
+                lastModificatedDateText = value;
                 OnPropertyChanged("LastModifiadDateText");
             }
         }
@@ -395,7 +454,8 @@ namespace Sklad_v1_001.FormUsers.Product
                 statusString = value;               
                 OnPropertyChanged("StatusString");
             }
-        }
+        }      
+
         public LocaleRow()
         {
             ImageSourceTTN = ImageHelper.GenerateImage("IconMinus.png");

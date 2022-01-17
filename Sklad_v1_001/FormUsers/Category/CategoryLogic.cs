@@ -62,11 +62,14 @@ namespace Sklad_v1_001.FormUsers.Category
     public class LocalRow : INotifyPropertyChanged
     {
         private Int32 iD;
+        private Int32 categoryDetailsID;
         private String categoryName;
         private String categoryDescription;
         private String description;
         private Int32 categoryID;
-        
+        private String categoryDetailsName;
+        private String categoryDetailsDescription;
+
         private DateTime? createdDate;
         private String createdDateString;
         private Int32 createdUserID;
@@ -88,6 +91,20 @@ namespace Sklad_v1_001.FormUsers.Category
             {
                 iD = value;
                 OnPropertyChanged("ID");
+            }
+        }
+
+        public int CategoryDetailsID
+        {
+            get
+            {
+                return categoryDetailsID;
+            }
+
+            set
+            {
+                categoryDetailsID = value;
+                OnPropertyChanged("CategoryDetailsID");
             }
         }
 
@@ -256,7 +273,35 @@ namespace Sklad_v1_001.FormUsers.Category
                 lastModificatedUserIDString = value;
                 OnPropertyChanged("LastModificatedUserIDString");
             }
-        }      
+        }
+
+        public String CategoryDetailsName
+        {
+            get
+            {
+                return categoryDetailsName;
+            }
+
+            set
+            {
+                categoryDetailsName = value;
+                OnPropertyChanged("CategoryDetailsName");
+            }
+        }
+
+        public String CategoryDetailsDescription
+        {
+            get
+            {
+                return categoryDetailsDescription;
+            }
+
+            set
+            {
+                categoryDetailsDescription = value;
+                OnPropertyChanged("CategoryDetailsDescription");
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
@@ -310,10 +355,13 @@ namespace Sklad_v1_001.FormUsers.Category
         {          
             convertData = new ConvertData(_dataRow, _localeRow);
 
-            _localeRow.ID = convertData.ConvertDataInt32("ID");
+            _localeRow.ID = convertData.ConvertDataInt32("CategoryDetailsID");
+            _localeRow.CategoryDetailsID= convertData.ConvertDataInt32("CategoryDetailsID");
             _localeRow.CategoryName = convertData.ConvertDataString("CategoryName");
             _localeRow.CategoryDescription = convertData.ConvertDataString("CategoryDescription");       
-            _localeRow.Description = convertData.ConvertDataString("Description");
+            _localeRow.Description = convertData.ConvertDataString("CategoryDetailsName"); // наименование подкатегории
+            _localeRow.CategoryDetailsDescription= convertData.ConvertDataString("CategoryDetailsDescription");
+
             _localeRow.CategoryID = convertData.ConvertDataInt32("CategoryID");
 
             _localeRow.CreatedDate = convertData.ConvertDataDateTime("CreatedDate");

@@ -421,7 +421,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         private String massSupplyDocumentDetailsTagPriceRUS;
         private String massSupplyDocumentDetailsCategoryID;
         private String massSupplyDocumentDetailsCategoryDetailsID;
-        private String massSupplyDocumentDetailsImageProduct;
+        private Byte[] massSupplyDocumentDetailsImageProduct;
 
         //SupplyDocumentDelivery
         private String massSupplyDocumentDeliveryID;
@@ -450,6 +450,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             {
                 iD = value;
                 OnPropertyChanged("ID");
+            }
+        }
+
+        public Int32 UserID
+        {
+            get
+            {
+                return userID;
+            }
+
+            set
+            {
+                userID = value;
+                OnPropertyChanged("UserID");
             }
         }
 
@@ -917,7 +931,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 OnPropertyChanged("MassSupplyDocumentDetailsCategoryDetailsID");
             }
         }
-        public string MassSupplyDocumentDetailsImageProduct
+        public byte[] MassSupplyDocumentDetailsImageProduct
         {
             get
             {
@@ -1073,6 +1087,47 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 OnPropertyChanged("MassSupplyDocumentPaymentDescription");
             }
         }
+
+        public int ReffID
+        {
+            get
+            {
+                return reffID;
+            }
+
+            set
+            {
+                reffID = value;
+                OnPropertyChanged("ReffID");
+            }
+        }
+        public DateTime ReffDate
+        {
+            get
+            {
+                return reffDate;
+            }
+
+            set
+            {
+                reffDate = value;
+                OnPropertyChanged("ReffDate");
+            }
+        }
+        public long SupplyDocumentNumber
+        {
+            get
+            {
+                return supplyDocumentNumber;
+            }
+
+            set
+            {
+                supplyDocumentNumber = value;
+                OnPropertyChanged("SupplyDocumentNumber");
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {
@@ -1198,7 +1253,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         SQLCommanSelect _sqlRequestSelect = null;
         SQLCommanSelect _sqlRequestSelectFilters = null;
         SQLCommanSelect _sqlRequestSelectSummary = null;
-        SQLCommanSelect _sqlRequestSelectSave = null;
+        SQLCommanSelect _sqlRequestSave = null;
 
         //результат запроса
         DataTable _data = null;
@@ -1254,7 +1309,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSelect = new SQLCommanSelect();
             _sqlRequestSelectFilters = new SQLCommanSelect();
             _sqlRequestSelectSummary = new SQLCommanSelect();
-            _sqlRequestSelectSave = new SQLCommanSelect();
+            _sqlRequestSave = new SQLCommanSelect();
 
             //----------------------------------------------------------------------------
             _sqlRequestSelect.AddParametr("@p_TypeScreen", SqlDbType.VarChar, 10);
@@ -1355,137 +1410,137 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSelectSummary.SetParametrValue("@p_TagPriceVATRUS_Max", System.Data.SqlTypes.SqlMoney.MaxValue);
             //----------------------------------------------------------------------------
 
-            _sqlRequestSelectSave.AddParametr("@p_AddUserID", SqlDbType.Int);
-            _sqlRequestSelectSave.SetParametrValue("@p_AddUserID", 1);
+            _sqlRequestSave.AddParametr("@p_AddUserID", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_AddUserID", 1);
 
-            _sqlRequestSelectSave.AddParametr("@p_UserID", SqlDbType.Int);
-            _sqlRequestSelectSave.SetParametrValue("@p_UserID", 0);
+            _sqlRequestSave.AddParametr("@p_UserID", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_UserID", 0);
 
-            _sqlRequestSelectSave.AddParametr("@p_ID", SqlDbType.Int);
-            _sqlRequestSelectSave.SetParametrValue("@p_ID", 0);
+            _sqlRequestSave.AddParametr("@p_ID", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_ID", 0);
 
-            _sqlRequestSelectSave.AddParametr("@p_Status", SqlDbType.Int);
-            _sqlRequestSelectSave.SetParametrValue("@p_Status", 0);
+            _sqlRequestSave.AddParametr("@p_Status", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_Status", 0);
 
-            _sqlRequestSelectSave.AddParametr("@p_Count", SqlDbType.Int);
-            _sqlRequestSelectSave.SetParametrValue("@p_Count", 0);
+            _sqlRequestSave.AddParametr("@p_Count", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_Count", 0);
 
-            _sqlRequestSelectSave.AddParametr("@p_Amount", SqlDbType.Money);
-            _sqlRequestSelectSave.SetParametrValue("@p_Amount", 0);
+            _sqlRequestSave.AddParametr("@p_Amount", SqlDbType.Money);
+            _sqlRequestSave.SetParametrValue("@p_Amount", 0);
 
-            _sqlRequestSelectSave.AddParametr("@p_ReffID", SqlDbType.Int);
-            _sqlRequestSelectSave.SetParametrValue("@p_ReffID", 0);
+            _sqlRequestSave.AddParametr("@p_ReffID", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_ReffID", 0);
 
-            _sqlRequestSelectSave.AddParametr("@p_ReffDate", SqlDbType.DateTime);
-            _sqlRequestSelectSave.SetParametrValue("@p_ReffDate", DateTime.Now);
+            _sqlRequestSave.AddParametr("@p_ReffDate", SqlDbType.DateTime);
+            _sqlRequestSave.SetParametrValue("@p_ReffDate", DateTime.Now);
 
-            _sqlRequestSelectSave.AddParametr("@p_SupplyDocumentNumber", SqlDbType.BigInt);
-            _sqlRequestSelectSave.SetParametrValue("@p_SupplyDocumentNumber", 0);
+            _sqlRequestSave.AddParametr("@p_SupplyDocumentNumber", SqlDbType.BigInt);
+            _sqlRequestSave.SetParametrValue("@p_SupplyDocumentNumber", 0);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassCategoryID", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassCategoryID", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassCategoryID", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassCategoryID", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassName", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassName", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassName", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassName", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassDescription", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassDescription", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassDescription", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassDescription", String.Empty);
             
-            _sqlRequestSelectSave.AddParametr("@p_MassCategoryDetailsID", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassCategoryDetailsID", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassCategoryDetailsID", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassCategoryDetailsID", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassIDCategory", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassIDCategory", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassIDCategory", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassIDCategory", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassCategoryDetailsName", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassCategoryDetailsName", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassCategoryDetailsName", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassCategoryDetailsName", String.Empty);
            
-            _sqlRequestSelectSave.AddParametr("@p_MassCategoryDetailsDescription", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassCategoryDetailsDescription", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassCategoryDetailsDescription", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassCategoryDetailsDescription", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassDeliveryID", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassDeliveryID", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassDeliveryID", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassDeliveryID", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassNameCompanyDelivery", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassNameCompanyDelivery", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassNameCompanyDelivery", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassNameCompanyDelivery", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassPhonesDelivery", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassPhonesDelivery", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassPhonesDelivery", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassPhonesDelivery", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassAdressDelivery", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassAdressDelivery", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassAdressDelivery", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassAdressDelivery", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassCountryDelivery", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassCountryDelivery", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassCountryDelivery", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassCountryDelivery", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassDeliveryDetailsID", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassDeliveryDetailsID", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassDeliveryDetailsID", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassDeliveryDetailsID", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassIDDelivery", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassIDDelivery", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassIDDelivery", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassIDDelivery", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassManagerName", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassManagerName", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassManagerName", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassManagerName", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassPhonesDeliveryDetails", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassPhonesDeliveryDetails", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassPhonesDeliveryDetails", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassPhonesDeliveryDetails", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDetailsID", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDetailsID", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentDetailsID", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsID", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDetailsName", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDetailsName", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentDetailsName", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsName", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDetailsQuantity", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDetailsQuantity", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentDetailsQuantity", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsQuantity", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDetailsTagPriceUSA", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDetailsTagPriceUSA", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentDetailsTagPriceUSA", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsTagPriceUSA", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDetailsTagPriceRUS", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDetailsTagPriceRUS", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentDetailsTagPriceRUS", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsTagPriceRUS", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDetailsCategoryID", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDetailsCategoryID", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentDetailsCategoryID", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsCategoryID", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDetailsCategoryDetailsID", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDetailsCategoryDetailsID", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentDetailsCategoryDetailsID", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsCategoryDetailsID", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDetailsImageProduct", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDetailsImageProduct", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentDetailsImageProduct", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsImageProduct", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDeliveryID", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDeliveryID", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentDeliveryID", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryID", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDeliveryDeliveryID", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDeliveryDeliveryID", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentDeliveryDeliveryID", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryDeliveryID", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDeliveryDeliveryDetailsID", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDeliveryDeliveryDetailsID", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentDeliveryDeliveryDetailsID", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryDeliveryDetailsID", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDeliveryTTN", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDeliveryTTN", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentDeliveryTTN", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryTTN", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDeliveryImageTTN", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDeliveryImageTTN", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentDeliveryImageTTN", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryImageTTN", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDeliveryInvoice", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDeliveryInvoice", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentDeliveryInvoice", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryInvoice", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentDeliveryImageInvoice", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentDeliveryImageInvoice", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentDeliveryImageInvoice", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryImageInvoice", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentPaymentID", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentPaymentID", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentPaymentID", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentID", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentPaymentAmount", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentPaymentAmount", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentPaymentAmount", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentAmount", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentPaymentOperationType", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentPaymentOperationType", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentPaymentOperationType", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentOperationType", String.Empty);
 
-            _sqlRequestSelectSave.AddParametr("@p_MassSupplyDocumentPaymentDescription", SqlDbType.NVarChar);
-            _sqlRequestSelectSave.SetParametrValue("@p_MassSupplyDocumentPaymentDescription", String.Empty);
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentPaymentDescription", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentDescription", String.Empty);
 
         }
 
@@ -1574,6 +1629,68 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSelectSummary.ComplexRequest(get_summary_procedure, CommandType.StoredProcedure, null);
             _data = _sqlRequestSelectSummary.SqlAnswer.datatable;
             return _data;
+        }
+      
+        public Int32 SaveRow(LocalRow row)
+        {
+            //SupplyDocument
+            _sqlRequestSave.SetParametrValue("@p_UserID", row.UserID);
+            _sqlRequestSave.SetParametrValue("@p_ID", row.ID);
+            _sqlRequestSave.SetParametrValue("@p_Status", row.Status);
+            _sqlRequestSave.SetParametrValue("@p_Count", row.Count);
+            _sqlRequestSave.SetParametrValue("@p_Amount", row.Amount);
+            _sqlRequestSave.SetParametrValue("@p_ReffID", row.ReffID);
+            _sqlRequestSave.SetParametrValue("@p_ReffDate", row.ReffDate);
+            _sqlRequestSave.SetParametrValue("@p_SupplyDocumentNumber", row.SupplyDocumentNumber);
+
+            //Категория товара
+            _sqlRequestSave.SetParametrValue("@p_MassCategoryID", row.MassCategoryID);
+            _sqlRequestSave.SetParametrValue("@p_MassName", row.MassName);
+            _sqlRequestSave.SetParametrValue("@p_MassDescription", row.MassDescription);
+            //Подкатегория товара
+            _sqlRequestSave.SetParametrValue("@p_MassCategoryDetailsID", row.MassCategoryDetailsID);
+            _sqlRequestSave.SetParametrValue("@p_MassIDCategory", row.MassIDCategory);
+            _sqlRequestSave.SetParametrValue("@p_MassCategoryDetailsName", row.MassCategoryDetailsName);
+            _sqlRequestSave.SetParametrValue("@p_MassCategoryDetailsDescription", row.MassCategoryDetailsDescription);
+
+            //Delivery
+            _sqlRequestSave.SetParametrValue("@p_MassDeliveryID", row.MassDeliveryID);
+            _sqlRequestSave.SetParametrValue("@p_MassNameCompanyDelivery", row.MassNameCompanyDelivery);
+            _sqlRequestSave.SetParametrValue("@p_MassPhonesDelivery", row.MassPhonesDelivery);
+            _sqlRequestSave.SetParametrValue("@MassCountryDelivery", row.MassCountryDelivery);
+            //DeliveryDetails
+            _sqlRequestSave.SetParametrValue("@p_MassDeliveryDetailsID", row.MassDeliveryDetailsID);
+            _sqlRequestSave.SetParametrValue("@p_MassIDDelivery", row.MassIDDelivery);
+            _sqlRequestSave.SetParametrValue("@p_MassManagerName", row.MassManagerName);
+            _sqlRequestSave.SetParametrValue("@p_MassPhonesDeliveryDetails", row.MassPhonesDeliveryDetails);
+
+            //SupplyDocumentDetails
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsID", row.MassSupplyDocumentDetailsID);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsName", row.MassSupplyDocumentDetailsName);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsQuantity", row.MassSupplyDocumentDetailsQuantity);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsTagPriceUSA", row.MassSupplyDocumentDetailsTagPriceUSA);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsTagPriceRUS", row.MassSupplyDocumentDetailsTagPriceRUS);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsCategoryID", row.MassSupplyDocumentDetailsCategoryID);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsCategoryDetailsID", row.MassSupplyDocumentDetailsCategoryDetailsID);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsImageProduct", row.MassSupplyDocumentDetailsImageProduct);
+
+            //SupplyDocumentDeliverry
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryID", row.MassSupplyDocumentDeliveryID);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryDeliveryID", row.MassSupplyDocumentDeliveryDeliveryID);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryDeliveryDetailsID", row.MassSupplyDocumentDeliveryDeliveryDetailsID);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryTTN", row.MassSupplyDocumentDeliveryTTN);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryImageTTN", row.MassSupplyDocumentDeliveryImageTTN);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryInvoice", row.MassSupplyDocumentDeliveryInvoice);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryImageInvoice", row.MassSupplyDocumentDeliveryImageInvoice);
+
+            //SupplyDocumentPayment
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentID", row.MassSupplyDocumentPaymentID);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentAmount", row.MassSupplyDocumentPaymentAmount);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentOperationType", row.MassSupplyDocumentPaymentOperationType);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentDescription", row.MassSupplyDocumentPaymentDescription);
+
+            _sqlRequestSave.ComplexRequest(get_save_procedure, CommandType.StoredProcedure, null);
+            return (Int32)_sqlRequestSave.SqlAnswer.result;
         }
 
         public RowsFilters ConvertFilter(DataRow _dataRow, RowsFilters _localeRow)

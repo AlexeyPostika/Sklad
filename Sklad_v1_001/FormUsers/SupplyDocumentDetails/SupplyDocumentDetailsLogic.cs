@@ -82,11 +82,18 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
         private Int64 documentID;
         private String name;
         private Int32 quantity;
-        
+        private Byte[] imageProduct;
+        private Int32 categoryID;
+        private String categoryName;
+        private String categoryDescription;
+        private Int32 categoryDetailsID;
+        private String categoryDetailsName;
+        private String categoryDetailsDescription;
+
         // цены      
-        private Double tagPriceUSA;
+        private Decimal tagPriceUSA;
         private Double currencyUSA;
-        private Double tagPriceRUS;
+        private Decimal tagPriceRUS;
         private Double currencyRUS;
         
         //стандартные поля
@@ -151,7 +158,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
                 OnPropertyChanged("Quantity");
             }
         }
-        public double TagPriceUSA
+        public Decimal TagPriceUSA
         {
             get
             {
@@ -177,7 +184,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
                 OnPropertyChanged("CurrencyUSA");
             }
         }
-        public double TagPriceRUS
+        public Decimal TagPriceRUS
         {
             get
             {
@@ -307,6 +314,100 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
                 OnPropertyChanged("LastModificatedUserIDString");
             }
         }
+
+        public byte[] ImageProduct
+        {
+            get
+            {
+                return imageProduct;
+            }
+
+            set
+            {
+                imageProduct = value;
+                OnPropertyChanged("ImageProduct");
+            }
+        }
+
+        public int CategoryID
+        {
+            get
+            {
+                return categoryID;
+            }
+
+            set
+            {
+                categoryID = value;
+                OnPropertyChanged("CategoryID");
+            }
+        }
+        public String CategoryName
+        {
+            get
+            {
+                return categoryName;
+            }
+
+            set
+            {
+                categoryName = value;
+                OnPropertyChanged("CategoryName");
+            }
+        }
+
+        public string CategoryDescription
+        {
+            get
+            {
+                return categoryDescription;
+            }
+
+            set
+            {
+                categoryDescription = value;
+                OnPropertyChanged("CategoryDescription");
+            }
+        }
+        public int CategoryDetailsID
+        {
+            get
+            {
+                return categoryDetailsID;
+            }
+
+            set
+            {
+                categoryDetailsID = value;
+                OnPropertyChanged("CategoryDetailsID");
+            }
+        }
+        public string CategoryDetailsName
+        {
+            get
+            {
+                return categoryDetailsName;
+            }
+
+            set
+            {
+                categoryDetailsName = value;
+                OnPropertyChanged("CategoryDetailsName");
+            }
+        }
+        public string CategoryDetailsDescription
+        {
+            get
+            {
+                return categoryDetailsDescription;
+            }
+
+            set
+            {
+                categoryDetailsDescription = value;
+                OnPropertyChanged("CategoryDetailsDescription");
+            }
+        }
     }
 
     public class SupplyDocumentDetailsLogic
@@ -386,9 +487,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             _localeRow.Name = convertData.ConvertDataString("Name");
             _localeRow.Quantity = convertData.ConvertDataInt32("Quantity");
            
-            _localeRow.TagPriceUSA = convertData.ConvertDataDouble("TagPriceUSA");
+            _localeRow.TagPriceUSA = convertData.ConvertDataDecimal("TagPriceUSA");
             _localeRow.CurrencyUSA = convertData.ConvertDataInt32("CurrencyUSA");
-            _localeRow.TagPriceRUS = convertData.ConvertDataDouble("TagPriceRUS");
+            _localeRow.TagPriceRUS = convertData.ConvertDataDecimal("TagPriceRUS");
             _localeRow.CurrencyRUS = convertData.ConvertDataDouble("CurrencyRUS");
 
             _localeRow.CreatedDate = convertData.ConvertDataDateTime("CreatedDate");
@@ -401,6 +502,47 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             return _localeRow;
         }
 
+        public LocaleRow ConvertProductToSupplyDocumentDetails(Product.LocaleRow _row, LocaleRow _localeRow)
+        {
+            // SaleDocumentDetailsList statusList = new SaleDocumentDetailsList();
+            ConvertData convertData = new ConvertData();         
+           
+            //категории
+            _localeRow.CategoryID = _row.CategoryID;
+            _localeRow.CategoryName = _row.CategoryName;
+            _localeRow.CategoryDescription = _row.CategoryDescription;
+            //подкатегории
+            _localeRow.CategoryDetailsID = _row.CategoryDetailsID;
+            _localeRow.CategoryDetailsName = _row.CategoryDetailsName;
+            _localeRow.CategoryDetailsDescription = _row.CategoryDetailsDescription;
+            
+            //продукт
+            _localeRow.ID = _row.ID;
+            _localeRow.Name = _row.Name;
+            _localeRow.Quantity = _row.Quantity;
+            _localeRow.TagPriceUSA = _row.TagPriceUSA;
+            _localeRow.CurrencyUSA = 841;
+            _localeRow.TagPriceRUS = _row.TagPriceRUS;
+            _localeRow.CurrencyRUS = 663;
 
+            //стандартные данные
+            if (_localeRow.ID == 0)
+            {
+                _localeRow.CreatedDate = DateTime.Now;
+                _localeRow.LastModificatedDate = DateTime.Now;
+            }
+            else
+            {
+                _localeRow.CreatedDate = _row.CreatedDate;
+                _localeRow.LastModificatedDate = _row.LastModicatedDate;
+            }         
+            _localeRow.CreatedDateString = convertData.DateTimeConvertShortString(_localeRow.CreatedDate);         
+            _localeRow.LastModificatedDateString = convertData.DateTimeConvertShortString(_localeRow.LastModificatedDate);
+
+            _localeRow.CreatedUserID = _row.CreatedUserID;
+            _localeRow.LastModificatedUserID = _row.LastModificatedUserID;
+
+            return _localeRow;
+        }
     }
 }
