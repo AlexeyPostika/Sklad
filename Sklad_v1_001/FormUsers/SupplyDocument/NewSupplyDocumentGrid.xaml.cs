@@ -379,32 +379,32 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 Document.MassSupplyDocumentPaymentOperationType="";
                 Document.MassSupplyDocumentPaymentDescription="";
 
-                //категория
-                foreach (Category.LocalRow currentrow in dataListCategory)
-                {
-                    Document.MassCategoryID = Document.MassCategoryID + currentrow.ID.ToString() + '|';
-                    Document.MassName = Document.MassName + currentrow.CategoryName.ToString() + '|';
-                    Document.MassDescription = Document.MassDescription + currentrow.Description.ToString() + '|';
-                    //подкатегория
-                    Document.MassCategoryDetailsID = Document.MassCategoryDetailsID + currentrow.CategoryDetailsID.ToString() + '|';
-                    Document.MassIDCategory = Document.MassIDCategory + currentrow.ID.ToString() + '|';
-                    Document.MassCategoryDetailsName = Document.MassCategoryDetailsName + currentrow.CategoryDetailsName.ToString() + '|';
-                    Document.MassCategoryDetailsDescription = Document.MassCategoryDetailsDescription + currentrow.CategoryDetailsDescription.ToString() + '|';
-                }
+                ////категория
+                //foreach (Category.LocalRow currentrow in dataListCategory)
+                //{
+                //    Document.MassCategoryID = Document.MassCategoryID + currentrow.ID.ToString() + '|';
+                //    Document.MassName = Document.MassName + currentrow.CategoryName.ToString() + '|';
+                //    Document.MassDescription = Document.MassDescription + currentrow.Description.ToString() + '|';
+                //    //подкатегория
+                //    Document.MassCategoryDetailsID = Document.MassCategoryDetailsID + currentrow.CategoryDetailsID.ToString() + '|';
+                //    Document.MassIDCategory = Document.MassIDCategory + currentrow.ID.ToString() + '|';
+                //    Document.MassCategoryDetailsName = Document.MassCategoryDetailsName + currentrow.CategoryDetailsName.ToString() + '|';
+                //    Document.MassCategoryDetailsDescription = Document.MassCategoryDetailsDescription + currentrow.CategoryDetailsDescription.ToString() + '|';
+                //}
                
-                //компания доставка
-                foreach (Delivery.LocaleRow currentrow in dataListDelivery)
-                {
-                    Document.MassDeliveryID = Document.MassDeliveryID + currentrow.ID.ToString() + '|';
-                    Document.MassNameCompanyDelivery = Document.MassNameCompanyDelivery + currentrow.NameCompany.ToString() + '|';
-                    Document.MassPhonesDelivery = Document.MassPhonesDelivery + currentrow.PhonesCompany.ToString() + '|';
-                    Document.MassCountryDelivery = Document.MassCountryDelivery + "0" + '|';
-                    //детали
-                    Document.MassDeliveryDetailsID = Document.MassDeliveryDetailsID + currentrow.DetailsID.ToString() + '|';
-                    Document.MassIDDelivery = Document.MassIDDelivery + currentrow.ID.ToString() + '|';
-                    Document.MassManagerName = Document.MassManagerName + currentrow.ManagerName.ToString() + '|';
-                    Document.MassPhonesDeliveryDetails = Document.MassPhonesDeliveryDetails + currentrow.PhonesManager.ToString() + '|';
-                }
+                ////компания доставка
+                //foreach (Delivery.LocaleRow currentrow in dataListDelivery)
+                //{
+                //    Document.MassDeliveryID = Document.MassDeliveryID + currentrow.ID.ToString() + '|';
+                //    Document.MassNameCompanyDelivery = Document.MassNameCompanyDelivery + currentrow.NameCompany.ToString() + '|';
+                //    Document.MassPhonesDelivery = Document.MassPhonesDelivery + currentrow.PhonesCompany.ToString() + '|';
+                //    Document.MassCountryDelivery = Document.MassCountryDelivery + "0" + '|';
+                //    //детали
+                //    Document.MassDeliveryDetailsID = Document.MassDeliveryDetailsID + currentrow.DetailsID.ToString() + '|';
+                //    Document.MassIDDelivery = Document.MassIDDelivery + currentrow.ID.ToString() + '|';
+                //    Document.MassManagerName = Document.MassManagerName + currentrow.ManagerName.ToString() + '|';
+                //    Document.MassPhonesDeliveryDetails = Document.MassPhonesDeliveryDetails + currentrow.PhonesManager.ToString() + '|';
+                //}
 
                 //продукты
                 foreach (SupplyDocumentDetails.LocaleRow currentrow in supplyDocumentDetails)

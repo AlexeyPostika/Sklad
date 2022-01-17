@@ -175,5 +175,37 @@ namespace Sklad_v1_001.FormUsers.Product
             UserLogin.Visibility = Visibility.Collapsed;
             CategoryName.Visibility = Visibility.Visible;
         }
+
+        private void CategoryName_ButtonTextChangedClick()
+        {
+            if (dataCategory.Count != 0)
+            {
+                CategoryName.Text = dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())) != null ?
+                    dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())).Description :
+                    Properties.Resources.UndefindField;
+
+                ProductLocalRow.CategoryDetailsDescription = dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())) != null ?
+                  dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())).CategoryDetailsDescription : Properties.Resources.UndefindField;
+
+                ProductLocalRow.CategoryID = dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())) != null ?
+                    dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())).CategoryID : 0;
+
+                ProductLocalRow.CategoryName = dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())) != null ?
+                    dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())).CategoryName : Properties.Resources.UndefindField;
+
+                ProductLocalRow.CategoryDescription = dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())) != null ?
+                    dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())).CategoryDescription : Properties.Resources.UndefindField;
+            }   
+            else
+            {
+                ProductLocalRow.CategoryDetailsID = 0;
+                ProductLocalRow.CategoryDetailsDescription =  Properties.Resources.UndefindField;
+
+                ProductLocalRow.CategoryID =  0;
+                ProductLocalRow.CategoryName =  Properties.Resources.UndefindField;
+                ProductLocalRow.CategoryDescription =  Properties.Resources.UndefindField;
+
+            }
+        }
     }
 }

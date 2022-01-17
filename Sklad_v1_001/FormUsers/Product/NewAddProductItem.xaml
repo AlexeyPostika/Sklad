@@ -42,6 +42,7 @@
                                                   IsRequired="Visible"
                                                   Text="{Binding Path=CategoryDetailsName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                                  
                                                   LabelWidth="80"
+                                                  ButtonTextChangedClick="CategoryName_ButtonTextChangedClick"
                                                   ButtonClearClick="CategoryName_ButtonClearClick"/>
                 <FlexTextBox:FlexLabelTextBox x:Name="ModelName"  LabelText="{x:Static res:Resources.Model}" 
                                               IsRequired="Visible"
