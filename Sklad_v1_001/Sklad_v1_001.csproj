@@ -817,6 +817,7 @@
     <Resource Include="Icone\IconSave_x24.png" />
     <Resource Include="Icone\IconOK_x24.png" />
     <Resource Include="Icone\IconToList_x24.png" />
+    <Resource Include="Icone\IconPackage_x16.png" />
     <Content Include="SQLCommand\JDB_DataAdapter.sql" />
     <Content Include="SQLCommand\JDB_POS.sql" />
     <Resource Include="Icone\IconOk.png" />

@@ -84,7 +84,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         //Продукт
         Product.LocaleRow localeRowProduct;
-        ObservableCollection<Product.LocaleRow> detailsProduct;
+        //ObservableCollection<Product.LocaleRow> detailsProduct;
 
         //доставка
         SupplyDocumentDeliveryLogic supplyDocumentDeliveryLogic;
@@ -157,7 +157,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             supplyDocumentDeliveryLogic = new SupplyDocumentDeliveryLogic();
             supplyDocumentPaymentLogic = new SupplyDocumentPaymentLogic();
 
-            detailsProduct = new ObservableCollection<Product.LocaleRow>();
+            //detailsProduct = new ObservableCollection<Product.LocaleRow>();
 
             supplyDocumentDetails = new ObservableCollection<SupplyDocumentDetails.LocaleRow>();
             supplyDocumentDelivery = new ObservableCollection<SupplyDocumentDelivery.LocaleRow>();
@@ -172,7 +172,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             SupplyTypeList supplyTypeList = new SupplyTypeList();
             this.StatusDocument.ComboBoxElement.ItemsSource = supplyTypeList.innerList;
 
-            this.DataProduct.ItemsSource = detailsProduct;
+            this.DataProduct.ItemsSource = supplyDocumentDetails;
             this.DataDelivery.ItemsSource = supplyDocumentDelivery;
             this.DataPayment.ItemsSource = supplyDocumentPayment;
 
@@ -197,8 +197,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             {
                 if (newAddProductItem.ProductLocalRow != null )
                 {                           
-                    localeRowProduct = newAddProductItem.ProductLocalRow;                  
-                    detailsProduct.Add(localeRowProduct);
+                    localeRowProduct = newAddProductItem.ProductLocalRow;                                    
                     supplyDocumentDetails.Add(supplyDocumentDetailsLogic.ConvertProductToSupplyDocumentDetails(localeRowProduct, new SupplyDocumentDetails.LocaleRow()));
                 }
             }

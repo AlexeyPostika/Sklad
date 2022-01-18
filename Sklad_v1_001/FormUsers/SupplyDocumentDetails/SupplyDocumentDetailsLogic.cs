@@ -8,6 +8,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
 {
@@ -95,7 +96,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
         private Double currencyUSA;
         private Decimal tagPriceRUS;
         private Double currencyRUS;
-        
+        private Boolean package;
+        private ImageSource imageSourcePackage;
+
         //стандартные поля
         private DateTime? createdDate;
         private String createdDateString;
@@ -210,6 +213,43 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
                 OnPropertyChanged("CurrencyRUS");
             }
         }
+
+        public Boolean Package
+        {
+            get
+            {
+                return package;
+            }
+
+            set
+            {
+                package = value;
+                if (package)
+                {
+                    imageSourcePackage = ImageHelper.GenerateImage("IconPackage_x16.png");
+                }
+                else
+                {
+                    imageSourcePackage = ImageHelper.GenerateImage("IconMinus.png");
+                }
+                OnPropertyChanged("Package");
+            }
+        }
+
+        public ImageSource ImageSourcePackage
+        {
+            get
+            {
+                return imageSourcePackage;
+            }
+
+            set
+            {
+                imageSourcePackage = value;
+                OnPropertyChanged("ImageSourcePackage");
+            }
+        }
+
         public DateTime? CreatedDate
         {
             get
@@ -524,6 +564,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             _localeRow.CurrencyUSA = 841;
             _localeRow.TagPriceRUS = _row.TagPriceRUS;
             _localeRow.CurrencyRUS = 663;
+            _localeRow.Package = _row.Package;
 
             //стандартные данные
             if (_localeRow.ID == 0)
