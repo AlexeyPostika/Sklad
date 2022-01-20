@@ -182,7 +182,7 @@ namespace Sklad_v1_001.FormUsers.Product
             {
                 CategoryName.Text = dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())) != null ?
                     dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())).Description :
-                    Properties.Resources.UndefindField;
+                   CategoryName.Text;
 
                 ProductLocalRow.CategoryDetailsDescription = dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())) != null ?
                   dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())).CategoryDetailsDescription : Properties.Resources.UndefindField;
