@@ -197,8 +197,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             {
                 if (newAddProductItem.ProductLocalRow != null )
                 {                           
-                    localeRowProduct = newAddProductItem.ProductLocalRow;                                    
-                    supplyDocumentDetails.Add(supplyDocumentDetailsLogic.ConvertProductToSupplyDocumentDetails(localeRowProduct, new SupplyDocumentDetails.LocaleRow()));
+                    localeRowProduct = newAddProductItem.ProductLocalRow;
+                    SupplyDocumentDetails.LocaleRow locale = new SupplyDocumentDetails.LocaleRow();
+                    locale.TempID = supplyDocumentDetails.Count() + 1;
+                    supplyDocumentDetails.Add(supplyDocumentDetailsLogic.ConvertProductToSupplyDocumentDetails(localeRowProduct, locale));
                 }
             }
         }

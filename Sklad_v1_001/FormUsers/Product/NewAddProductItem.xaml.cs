@@ -86,7 +86,7 @@ namespace Sklad_v1_001.FormUsers.Product
                 return false;
             }
 
-            if (String.IsNullOrEmpty(ProductLocalRow.CategoryName))
+            if (String.IsNullOrEmpty(ProductLocalRow.CategoryDetailsName))
             {
                 mb = new FlexMessageBox();
                 mb.Show(Properties.Resources.ErrorEmptyField, GenerateTitle(TitleType.Error, Properties.Resources.EmptyField, CategoryName.LabelText), MessageBoxButton.OK, MessageBoxImage.Error);

@@ -79,7 +79,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
         }
         
         // основная инфоррмация
-        private Int32 iD;       
+        private Int32 iD;
+        private Int32 tempID;
         private Int64 documentID;
         private String name;
         private Int32 quantity;
@@ -97,6 +98,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
         private Decimal tagPriceRUS;
         private Double currencyRUS;
         private Boolean package;
+        private String model;
         private ImageSource imageSourcePackage;
 
         //стандартные поля
@@ -122,6 +124,21 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
                 OnPropertyChanged("ID");
             }
         }
+
+        public Int32 TempID
+        {
+            get
+            {
+                return tempID;
+            }
+
+            set
+            {
+                tempID = value;
+                OnPropertyChanged("TempID");
+            }
+        }
+
         public long DocumentID
         {
             get
@@ -233,6 +250,19 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
                     imageSourcePackage = ImageHelper.GenerateImage("IconMinus.png");
                 }
                 OnPropertyChanged("Package");
+            }
+        }
+        public string Model
+        {
+            get
+            {
+                return model;
+            }
+
+            set
+            {
+                model = value;
+                OnPropertyChanged("Model");
             }
         }
 
@@ -565,6 +595,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             _localeRow.TagPriceRUS = _row.TagPriceRUS;
             _localeRow.CurrencyRUS = 663;
             _localeRow.Package = _row.Package;
+            _localeRow.Model = _row.Model;
 
             //стандартные данные
             if (_localeRow.ID == 0)

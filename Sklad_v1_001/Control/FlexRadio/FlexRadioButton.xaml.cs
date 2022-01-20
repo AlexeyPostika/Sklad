@@ -136,10 +136,10 @@ namespace Sklad_v1_001.Control.FlexRadio
             switch (IsRadioType)
             {
                 case 1:
-                    IsRadio = false;
+                    IsRadio = true;
                     break;
                 case 2:
-                    IsRadio = true;
+                    IsRadio = false;
                     break;
             }
         }
