@@ -76,7 +76,11 @@
                 <ToolBar:DataViewToolNewSupplyDocument x:Name="ToolBarProduct"
                                                        ButtonNewProductClick="ToolBarProduct_ButtonNewProductClick"
                                                        ButtonDeleteClick="ToolBarProduct_ButtonDeleteClick"/>
-                <DataGrid x:Name="DataProduct" Margin="0,10,0,0"
+                <DataGrid x:Name="DataProduct" 
+                          ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                          ScrollViewer.VerticalScrollBarVisibility="Auto"
+                          MaxHeight="80"
+                          Margin="0,10,0,0"
                           AutoGenerateColumns="False">
                     <DataGrid.Resources>
                         <local:DataContextSpy x:Key="dcSpy1" DataContext="{Binding ElementName=Page, Path=CheckAll, Mode=TwoWay}"/>
@@ -136,7 +140,11 @@
                 <ToolBar:DataViewToolNewSupplyDocument x:Name="ToolBarDelivery"
                                                        ButtonNewProductClick="ToolBarDelivery_ButtonNewProductClick"
                                                        ButtonDeleteClick="ToolBarDelivery_ButtonDeleteClick"/>
-                <DataGrid x:Name="DataDelivery" Margin="0,10,0,0"
+                <DataGrid x:Name="DataDelivery" 
+                          ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                          ScrollViewer.VerticalScrollBarVisibility="Auto"
+                          MaxHeight="80"
+                          Margin="0,10,0,0"
                           AutoGenerateColumns="False">
                    
                     <DataGrid.Columns>
@@ -186,7 +194,11 @@
                 <ToolBar:DataViewToolNewSupplyDocument x:Name="ToolBarPayment"
                                                        ButtonNewProductClick="ToolBarPayment_ButtonNewProductClick"
                                                        ButtonDeleteClick="ToolBarPayment_ButtonDeleteClick"/>
-                <DataGrid x:Name="DataPayment" Margin="0,10,0,0"
+                <DataGrid x:Name="DataPayment" 
+                          ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                          ScrollViewer.VerticalScrollBarVisibility="Auto"
+                          MaxHeight="80"
+                          Margin="0,10,0,0"
                           AutoGenerateColumns="False">
 
                     <DataGrid.Columns>
