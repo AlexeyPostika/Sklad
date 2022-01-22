@@ -1,5 +1,6 @@
 ﻿using Sklad_v1_001.Control.FlexMessageBox;
 using Sklad_v1_001.FormUsers.Category;
+using Sklad_v1_001.GlobalAttributes;
 using Sklad_v1_001.HelperGlobal;
 using System;
 using System.Collections.Generic;
@@ -35,29 +36,38 @@ namespace Sklad_v1_001.FormUsers.Product
             get { return (MessageBoxResult)GetValue(IsClickButtonOKProperty); }
             set { SetValue(IsClickButtonOKProperty, value); }
         }
+
+        Attributes attributes;
+
         LocaleRow productLocalRow;
         public LocaleRow ProductLocalRow { get => productLocalRow; set => productLocalRow = value; }
 
         CategoryLogic categoryLogic;
-        ObservableCollection<Category.LocalRow> dataCategory;
+        ObservableCollection<GlobalList.Category> dataCategory;
+        ObservableCollection<GlobalList.CategoryDetails> dataCategoryDetails;
 
         ConvertData convertData;
 
-        public NewAddProductItem()
+        public NewAddProductItem(Attributes _attributes)
         {
             InitializeComponent();
+
+            this.attributes = _attributes;
+
             convertData = new ConvertData();
 
             //загружаем категории
             categoryLogic = new CategoryLogic();
-            dataCategory = new ObservableCollection<LocalRow>();
-            DataTable dataTable = categoryLogic.FillGrid();
-            foreach(DataRow row in dataTable.Rows)
-            {
-                dataCategory.Add(categoryLogic.Convert(row, new LocalRow()));
-            }
-            UserLogin.ComboBoxElement.ItemsSource = dataCategory;
-            UserLogin.ComboBoxElement.SelectedValue = 0;
+            dataCategory = new ObservableCollection<GlobalList.Category>();
+            dataCategoryDetails = new ObservableCollection<GlobalList.CategoryDetails>();
+            dataCategory = attributes.datalistCategory;
+            dataCategoryDetails = attributes.datalistCategoryDetails;
+
+            CategoryCat.ComboBoxElement.ItemsSource = dataCategory;
+            CategoryCat.ComboBoxElement.SelectedValue = 0;
+
+            CategoryDetails.ComboBoxElement.ItemsSource = dataCategoryDetails;
+            CategoryDetails.ComboBoxElement.SelectedValue = 0;
             //-----------------------------------------------------------------------------
 
             ProductLocalRow = new LocaleRow();
@@ -144,57 +154,50 @@ namespace Sklad_v1_001.FormUsers.Product
             return true;
         }
 
-        private void CategoryName_ButtonClearClick()
+        private void CategoryDetailsName_ButtonClearClick()
         {
-            UserLogin.Visibility = Visibility.Visible;
-            UserLogin.ComboBoxElement.IsDropDownOpen = true;
-            CategoryName.Visibility = Visibility.Collapsed;
+            CategoryDetails.Visibility = Visibility.Visible;
+            CategoryDetails.ComboBoxElement.IsDropDownOpen = true;
+            CategoryDetailsName.Visibility = Visibility.Collapsed;
         }
 
-        private void UserLogin_DropDownClosed()
+        private void CategoryDetails_DropDownClosed()
         {
-            if (UserLogin.Value != 0 && dataCategory.Count!=0)
+            if (CategoryDetails.Value != 0 && dataCategoryDetails.Count != 0)
             {
-                CategoryName.Text = dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())) != null ?
-                    dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())).Description :
-                    Properties.Resources.UndefindField;
-                
-                ProductLocalRow.CategoryDetailsDescription = dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())) != null ?
-                  dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())).CategoryDetailsDescription : Properties.Resources.UndefindField;
+                CategoryDetailsName.Text = dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())) != null ?
+                    dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())).Description : Properties.Resources.UndefindField;
 
-                ProductLocalRow.CategoryID= dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())) != null ?
-                    dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())).CategoryID : 0;
-                
-                ProductLocalRow.CategoryName = dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())) != null ?
-                    dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())).CategoryName : Properties.Resources.UndefindField;
+                ProductLocalRow.CategoryDetailsName = dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())) != null ?
+                 dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())).Description : Properties.Resources.UndefindField;
 
-                ProductLocalRow.CategoryDescription = dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())) != null ?
-                    dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())).CategoryDescription : Properties.Resources.UndefindField;
-            }
+                ProductLocalRow.CategoryDetailsDescription = dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())) != null ?
+                  dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())).Name : Properties.Resources.UndefindField;
 
-            UserLogin.Visibility = Visibility.Collapsed;
-            CategoryName.Visibility = Visibility.Visible;
+                ProductLocalRow.CategoryID = dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())) != null ?
+                    dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())).CategoryID : 0;
+            
+            }          
+
+            CategoryDetails.Visibility = Visibility.Collapsed;
+            CategoryDetailsName.Visibility = Visibility.Visible;
         }
 
-        private void CategoryName_ButtonTextChangedClick()
+        private void CategoryDetailsName_ButtonTextChangedClick()
         {
             if (dataCategory.Count != 0)
             {
-                CategoryName.Text = dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())) != null ?
-                    dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())).Description :
-                   CategoryName.Text;
+                CategoryDetailsName.Text = dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())) != null ?
+                    dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())).Description : CategoryDetailsName.Text;
 
-                ProductLocalRow.CategoryDetailsDescription = dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())) != null ?
-                  dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())).CategoryDetailsDescription : Properties.Resources.UndefindField;
+                ProductLocalRow.CategoryDetailsName = dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())) != null ?
+                 dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())).Description : Properties.Resources.UndefindField;
 
-                ProductLocalRow.CategoryID = dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())) != null ?
-                    dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())).CategoryID : 0;
+                ProductLocalRow.CategoryDetailsDescription = dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())) != null ?
+                  dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())).Name : Properties.Resources.UndefindField;
 
-                ProductLocalRow.CategoryName = dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())) != null ?
-                    dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())).CategoryName : Properties.Resources.UndefindField;
-
-                ProductLocalRow.CategoryDescription = dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())) != null ?
-                    dataCategory.FirstOrDefault(x => x.CategoryDetailsID == convertData.FlexDataConvertToInt32(UserLogin.Value.ToString())).CategoryDescription : Properties.Resources.UndefindField;
+                ProductLocalRow.CategoryID = dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())) != null ?
+                    dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())).CategoryID : 0;
             }   
             else
             {
@@ -207,5 +210,73 @@ namespace Sklad_v1_001.FormUsers.Product
 
             }
         }
+
+        #region Category
+        private void CategoryName_ButtonClearClick()
+        {
+            CategoryCat.Visibility = Visibility.Visible;
+            CategoryCat.ComboBoxElement.IsDropDownOpen = true;
+            CategoryName.Visibility = Visibility.Collapsed;
+        }
+        private void CategoryCat_DropDownClosed()
+        {
+            if (CategoryCat.Value != 0 && dataCategory.Count != 0)
+            {
+                CategoryName.Text = dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryCat.Value.ToString())) != null ?
+                    dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryCat.Value.ToString())).Description : Properties.Resources.UndefindField;
+
+                ProductLocalRow.CategoryName = dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryCat.Value.ToString())) != null ?
+                   dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryCat.Value.ToString())).Description : Properties.Resources.UndefindField; 
+
+                ProductLocalRow.CategoryID = dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryCat.Value.ToString())) != null ?
+                    dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryCat.Value.ToString())).ID : 0;
+
+                ProductLocalRow.CategoryDescription = dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryCat.Value.ToString())) != null ?
+                    dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryCat.Value.ToString())).Name : Properties.Resources.UndefindField;
+            }
+            ObservableCollection<GlobalList.CategoryDetails> dataCategoryDetailsTemp = new ObservableCollection<GlobalList.CategoryDetails>();
+            foreach (GlobalList.CategoryDetails categoryDetails in dataCategoryDetails)
+            {
+                if (categoryDetails.CategoryID== ProductLocalRow.ID)
+                    dataCategoryDetailsTemp.Add(categoryDetails);
+            }
+
+            CategoryDetails.ComboBoxElement.ItemsSource = dataCategoryDetailsTemp;
+            CategoryDetails.ComboBoxElement.SelectedValue = 0;
+
+            CategoryCat.Visibility = Visibility.Collapsed;
+            CategoryName.Visibility = Visibility.Visible;
+        }
+
+        private void CategoryName_ButtonTextChangedClick()
+        {
+            if (dataCategory.Count != 0)
+            {
+                CategoryDetailsName.Text = dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())) != null ?
+                    dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())).Description :
+                   CategoryDetailsName.Text;
+
+                ProductLocalRow.CategoryName = dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryCat.Value.ToString())) != null ?
+                    dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryCat.Value.ToString())).Description : Properties.Resources.UndefindField;
+
+                ProductLocalRow.CategoryID = dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryCat.Value.ToString())) != null ?
+                    dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryCat.Value.ToString())).ID : 0;
+
+                ProductLocalRow.CategoryDescription = dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryCat.Value.ToString())) != null ?
+                    dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryCat.Value.ToString())).Name : Properties.Resources.UndefindField;
+            }
+            else
+            {
+                ProductLocalRow.CategoryDetailsID = 0;
+                ProductLocalRow.CategoryDetailsDescription = Properties.Resources.UndefindField;
+
+                ProductLocalRow.CategoryID = 0;
+                ProductLocalRow.ID = 0;
+                ProductLocalRow.CategoryName = Properties.Resources.UndefindField;
+                ProductLocalRow.CategoryDescription = Properties.Resources.UndefindField;
+
+            }
+        }
+        #endregion
     }
 }

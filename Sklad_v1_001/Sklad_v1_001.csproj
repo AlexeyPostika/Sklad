@@ -283,6 +283,7 @@
     <Compile Include="Control\Zona\Yellow\SelectCategoryYellowTable.xaml.cs">
       <DependentUpon>SelectCategoryYellowTable.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FormUsers\CategoryDetails\CategoryDetailsLigic.cs" />
     <Compile Include="FormUsers\Category\CategoryLogic.cs" />
     <Compile Include="FormUsers\DeliveryDetails\DeliveryDetailsLogic.cs" />
     <Compile Include="FormUsers\Delivery\DeliveryLogic.cs" />
@@ -326,6 +327,7 @@
       <DependentUpon>ZacupcaGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\Zacupca\ZacupcaGridLogic.cs" />
+    <Compile Include="GlobalAttributes\Attributes.cs" />
     <Compile Include="GlobalList\List.cs" />
     <Compile Include="GlobalVariable\DataBaseData.cs" />
     <Compile Include="GlobalVariable\FileWork.cs" />
@@ -339,6 +341,14 @@
     <Compile Include="HelperGlobal\MessageBoxTitleHelper.cs" />
     <Compile Include="Report\FlexDocumentWindows.xaml.cs">
       <DependentUpon>FlexDocumentWindows.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SQLCommand\ShemaStorаge.cs">
+      <DependentUpon>ShemaStorаge.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SQLCommand\ShemaStorаge.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShemaStorаge.xsd</DependentUpon>
     </Compile>
     <Compile Include="SQLCommand\SQLCommanSelect.cs" />
     <Page Include="Control\FlexButton\LevelButton.xaml">
@@ -714,6 +724,17 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="SQLCommand\ShemaStorаge.xsc">
+      <DependentUpon>ShemaStorаge.xsd</DependentUpon>
+    </None>
+    <None Include="SQLCommand\ShemaStorаge.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ShemaStorаge.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="SQLCommand\ShemaStorаge.xss">
+      <DependentUpon>ShemaStorаge.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -841,7 +862,6 @@
     <Resource Include="Icone\IconSaveAs.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="FormUsers\CategoryDetails\" />
     <Folder Include="FormUsers\Payment\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

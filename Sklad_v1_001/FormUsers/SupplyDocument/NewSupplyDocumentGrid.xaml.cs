@@ -4,6 +4,7 @@ using Sklad_v1_001.FormUsers.Product;
 using Sklad_v1_001.FormUsers.SupplyDocumentDelivery;
 using Sklad_v1_001.FormUsers.SupplyDocumentDetails;
 using Sklad_v1_001.FormUsers.SupplyDocumentPayment;
+using Sklad_v1_001.GlobalAttributes;
 using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.HelperGlobal;
 using System;
@@ -54,6 +55,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
     /// </summary>
     public partial class NewSupplyDocumentGrid : Page
     {
+        Attributes attributes;
         //работаем с продуктами
         FlexMessageBox addProductWindow;
         NewAddProductItem newAddProductItem;
@@ -148,9 +150,13 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 status = value;              
             }
         }
-        public NewSupplyDocumentGrid()
+
+
+        public NewSupplyDocumentGrid(Attributes _attributes)
         {
             InitializeComponent();
+
+            this.attributes = _attributes;
 
             supplyDocumentLogic = new SupplyDocumentLogic();
             supplyDocumentDetailsLogic = new SupplyDocumentDetailsLogic();
@@ -189,7 +195,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         private void ToolBarProduct_ButtonNewProductClick()
         {
             //MainWindow.AppWindow.ButtonNewAddProduct();           
-            newAddProductItem = new NewAddProductItem();
+            newAddProductItem = new NewAddProductItem(attributes);
             addProductWindow = new FlexMessageBox();           
             addProductWindow.Content = newAddProductItem;
             addProductWindow.Show(Properties.Resources.Products);
@@ -230,7 +236,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         private void ToolBarDelivery_ButtonNewProductClick()
         {
             Delivery.LocaleRow localeRowDelivery = new Delivery.LocaleRow();
-            newDeliveryItem = new NewDeliveryItem();
+            newDeliveryItem = new NewDeliveryItem(attributes);
             addDeliveryWindow = new FlexMessageBox();
             // newDeliveryItem.LocaleRow=
             newDeliveryItem.Status = Status;

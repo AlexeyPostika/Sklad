@@ -21,6 +21,7 @@ using Sklad_v1_001.FormUsers.Product;
 using Sklad_v1_001.FormUsers.SupplyDocument;
 using Sklad_v1_001.FormUsers.Tovar;
 using Sklad_v1_001.FormUsers.Zacupca;
+using Sklad_v1_001.GlobalAttributes;
 
 namespace Sklad_v1_001
 {
@@ -29,6 +30,7 @@ namespace Sklad_v1_001
     /// </summary>
     public partial class MainWindow : Window
     {
+        Attributes attributes;
 
         frameMenu _pageframeMenuLevel1;
         TovarZona tovarZona;
@@ -60,6 +62,8 @@ namespace Sklad_v1_001
         public MainWindow()
         {
             InitializeComponent();
+
+            attributes = new Attributes();
 
             AppWindow = this;
 
@@ -127,12 +131,12 @@ namespace Sklad_v1_001
         private void ButtonDeliveryOpen()
         {
            // zacupcaGrid = new ZacupcaGrid();
-            supplyDocumentGrid = new SupplyDocumentGrid();
+            supplyDocumentGrid = new SupplyDocumentGrid(attributes);
             frameWorkArea.Navigate(supplyDocumentGrid); // открытие страницы
         }
         public void ButtonNewSupplyDocument(FormUsers.SupplyDocument.LocalRow document)
         {
-            newSupplyDocumentGrid = new NewSupplyDocumentGrid();
+            newSupplyDocumentGrid = new NewSupplyDocumentGrid(attributes);
             newSupplyDocumentGrid.Document = document;
             this.frameWorkArea.Navigate(newSupplyDocumentGrid);
         }
@@ -141,7 +145,7 @@ namespace Sklad_v1_001
         public void ButtonNewAddProduct()
         {
             FlexWindows addProductWindow = new FlexWindows(Properties.Resources.ADDPRODUCT);
-            newAddProductItem = new NewAddProductItem();
+            newAddProductItem = new NewAddProductItem(attributes);
             addProductWindow.Content = newAddProductItem;
             addProductWindow.ShowDialog();
         }
@@ -149,7 +153,7 @@ namespace Sklad_v1_001
         public void ButtonNewDelivery()
         {
             FlexWindows addDeliveryWindow = new FlexWindows(Properties.Resources.ADDDELIVERY);
-            newDeliveryItem = new NewDeliveryItem();
+            newDeliveryItem = new NewDeliveryItem(attributes);
             addDeliveryWindow.Content = newDeliveryItem;
             addDeliveryWindow.ShowDialog();
         }

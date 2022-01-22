@@ -25,12 +25,16 @@ namespace Sklad_v1_001.GlobalList
     public class Category
     {
         public Int32 ID { get; set; }
+        public String Name { get; set; }
         public String Description { get; set; }
     }
     //отвечает за подкатегории
     public class CategoryDetails
     {
         public Int32 ID { get; set; }
+        public Int32 CategoryID { get; set; }
+        public String Name { get; set; }
+
         public String Description { get; set; }
     }
 

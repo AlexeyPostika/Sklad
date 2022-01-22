@@ -1,5 +1,6 @@
 ﻿using Sklad_v1_001.Control.FlexMessageBox;
 using Sklad_v1_001.FormUsers.DeliveryDetails;
+using Sklad_v1_001.GlobalAttributes;
 using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.GlobalVariable;
 using Sklad_v1_001.HelperGlobal;
@@ -98,6 +99,8 @@ namespace Sklad_v1_001.FormUsers.Delivery
             set { SetValue(IsClickButtonOKProperty, value); }
         }
 
+        Attributes attributes;
+
         ConvertData convertData; 
 
         private DeliveryLogic deliveryLogic;
@@ -126,21 +129,25 @@ namespace Sklad_v1_001.FormUsers.Delivery
             }
         }
 
-        public NewDeliveryItem()
+        public NewDeliveryItem(Attributes _attributes)
         {
             InitializeComponent();
+
+            this.attributes = _attributes;
+
             convertData = new ConvertData();
           
             DeliveryLogic = new DeliveryLogic();
             deliveryLogicCom = new DeliveryLogic();
-            DataTable deliveryList = deliveryLogicCom.FillGrid();           
-            managerDeliveryList = new ManagerDeliveryList();
+            //DataTable deliveryList = deliveryLogicCom.FillGrid();           
+            //managerDeliveryList = new ManagerDeliveryList();
+
+            //foreach(DataRow row in deliveryList.Rows)
+            //{
+            //    managerDeliveryList.innerList.Add(deliveryLogicCom.ConvertDelivery(row, new ManagerDelivery()));
+            //}
             //загрузили имена компаний
-            foreach(DataRow row in deliveryList.Rows)
-            {
-                managerDeliveryList.innerList.Add(deliveryLogicCom.ConvertDelivery(row, new ManagerDelivery()));
-            }
-            DeliveryList.ComboBoxElement.ItemsSource = managerDeliveryList.innerList;
+            DeliveryList.ComboBoxElement.ItemsSource = attributes.managerDeliveryList.innerList;
             DeliveryList.ComboBoxElement.SelectedValue = 0;
             //------------------------------------------------------------------------------
 

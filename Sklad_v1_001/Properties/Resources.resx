@@ -633,4 +633,7 @@
   <data name="BarCodeID" xml:space="preserve">
     <value>Штрих-код</value>
   </data>
+  <data name="CATEGORYDETAILS" xml:space="preserve">
+    <value>Подкатегория</value>
+  </data>
 </root>

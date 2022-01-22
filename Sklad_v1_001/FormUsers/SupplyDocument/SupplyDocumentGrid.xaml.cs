@@ -1,5 +1,6 @@
 ﻿using Sklad_v1_001.Control.FlexMessageBox;
 using Sklad_v1_001.FormUsers.SupplyDocumentDetails;
+using Sklad_v1_001.GlobalAttributes;
 using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.GlobalVariable;
 using Sklad_v1_001.HelperGlobal;
@@ -483,6 +484,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             }
         }
 
+        Attributes attributes;
+
         public LocaleFilter FilterProduct { get => filterDetails; set => filterDetails = value; }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -492,9 +495,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
 
-        public SupplyDocumentGrid()
+        public SupplyDocumentGrid(Attributes _attributes)
         {
             InitializeComponent();
+
+            this.attributes = _attributes;
 
             FilterIDManagerName = new DataTable();
             FilterIDDelivery = new DataTable();

@@ -250,6 +250,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Подкатегория.
+        /// </summary>
+        public static string CATEGORYDETAILS {
+            get {
+                return ResourceManager.GetString("CATEGORYDETAILS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на &lt;ВЫБРАТЬ&gt;.
         /// </summary>
         public static string CategoryDetails0 {

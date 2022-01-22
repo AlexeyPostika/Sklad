@@ -1,5 +1,6 @@
 ﻿using Sklad_v1_001.GlobalVariable;
 using Sklad_v1_001.HelperGlobal;
+using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.SQL;
 using System;
 using System.Collections.Generic;
@@ -351,7 +352,7 @@ namespace Sklad_v1_001.FormUsers.Category
             return _data;
         }
 
-        public LocalRow Convert(DataRow _dataRow, LocalRow _localeRow)
+        public LocalRow ConvertAll(DataRow _dataRow, LocalRow _localeRow)
         {          
             convertData = new ConvertData(_dataRow, _localeRow);
 
@@ -361,7 +362,6 @@ namespace Sklad_v1_001.FormUsers.Category
             _localeRow.CategoryDescription = convertData.ConvertDataString("CategoryDescription");       
             _localeRow.Description = convertData.ConvertDataString("CategoryDetailsName"); // наименование подкатегории
             _localeRow.CategoryDetailsDescription= convertData.ConvertDataString("CategoryDetailsDescription");
-
             _localeRow.CategoryID = convertData.ConvertDataInt32("CategoryID");
 
             _localeRow.CreatedDate = convertData.ConvertDataDateTime("CreatedDate");
@@ -373,6 +373,16 @@ namespace Sklad_v1_001.FormUsers.Category
             _localeRow.CreatedUserIDString = convertData.ConvertDataString("CreatedUserIDString");
             _localeRow.LastModificatedUserIDString = convertData.ConvertDataString("LastModificatedUserIDString");
             
+            return _localeRow;
+        }
+        public GlobalList.Category ConvertCategory(DataRow _dataRow, GlobalList.Category _localeRow)
+        {
+            convertData = new ConvertData(_dataRow, _localeRow);
+
+            _localeRow.ID = convertData.ConvertDataInt32("CategoryID");
+            _localeRow.Description = convertData.ConvertDataString("CategoryName");
+            _localeRow.Name = convertData.ConvertDataString("CategoryDescription");
+
             return _localeRow;
         }
 
