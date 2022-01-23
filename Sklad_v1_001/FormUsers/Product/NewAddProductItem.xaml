@@ -15,7 +15,8 @@
       Title="NewAddProductItem"
       Style="{DynamicResource UsersPageWidth}" 
       Height="Auto"
-      Width="350">
+      Width="350"
+      x:Name="control">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -30,35 +31,32 @@
                                               LabelText="{x:Static res:Resources.NameProduct}"
                                               Description="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                               EnableTextBox="True"/>
-                <FlexComboBox:ComboBoxWithLabel                                    
+                <FlexComboBox:ComboBoxAddEditToWithLabel                                    
                         LabelText="{x:Static res:Resources.CATEGORY}" LabelWidth="100"
                         IsRequired="Visible"
                         x:Name="CategoryCat" 
+                        SelectionChanged="CategoryCat_SelectionChanged"
                         DropDownClosed="CategoryCat_DropDownClosed"
+                        ButtonAdd="CategoryCat_ButtonAdd"
+                        ButtonEdit="CategoryCat_ButtonEdit"                   
                         Value="{Binding Path=ID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                        Visibility="Collapsed"/>
+                        Visibility="Visible"/>
                 
-                <FlexEditBox:EditBoxUserWithLabel x:Name="CategoryName" LabelText="{x:Static res:Resources.CATEGORY}" 
-                                                  IsRequired="Visible"
-                                                  Text="{Binding Path=CategoryName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                                  
-                                                  LabelWidth="100"
-                                                  ButtonTextChangedClick="CategoryName_ButtonTextChangedClick"
-                                                  ButtonClearClick="CategoryName_ButtonClearClick"/>
+              
 
-                <FlexComboBox:ComboBoxWithLabel                                    
+                <FlexComboBox:ComboBoxAddEditToWithLabel                                    
                         LabelText="{x:Static res:Resources.CATEGORYDETAILS}" LabelWidth="100"
                         IsRequired="Visible"
                         x:Name="CategoryDetails" 
                         DropDownClosed="CategoryDetails_DropDownClosed"
+                        SelectionChanged="CategoryDetails_SelectionChanged"
+                        ButtonAdd="CategoryDetails_ButtonAdd"
+                        ButtonEdit="CategoryDetails_ButtonEdit"
+                        IsEnableEdit="{Binding ElementName=control, Path=IsEnableEdit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         Value="{Binding Path=CategoryDetailsID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                        Visibility="Collapsed"/>
+                        Visibility="Visible"/>
 
-                <FlexEditBox:EditBoxUserWithLabel x:Name="CategoryDetailsName" LabelText="{x:Static res:Resources.CATEGORYDETAILS}" 
-                                                  IsRequired="Visible"
-                                                  Text="{Binding Path=CategoryDetailsName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                                  
-                                                  LabelWidth="100"
-                                                  ButtonTextChangedClick="CategoryDetailsName_ButtonTextChangedClick"
-                                                  ButtonClearClick="CategoryDetailsName_ButtonClearClick"/>
+              
                 
                 <FlexTextBox:FlexLabelTextBox x:Name="ModelName"  LabelText="{x:Static res:Resources.Model}" 
                                               IsRequired="Visible"

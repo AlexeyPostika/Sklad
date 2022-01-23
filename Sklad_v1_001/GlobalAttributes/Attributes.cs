@@ -2,6 +2,7 @@
 using Sklad_v1_001.FormUsers.CategoryDetails;
 using Sklad_v1_001.FormUsers.Delivery;
 using Sklad_v1_001.GlobalList;
+using Sklad_v1_001.HelperGlobal;
 using Sklad_v1_001.SQLCommand;
 using Sklad_v1_001.SQLCommand.ShemaStorаgeTableAdapters;
 using System;
@@ -16,10 +17,11 @@ namespace Sklad_v1_001.GlobalAttributes
 {
     public class Attributes
     {
+        ConvertData convertData;
         //работа с схемой БД 
         ShemaStorаge shemaStorage;
         GetCategoryTableTableAdapter getCategoryTableTableAdapter;
-        GetDeliveryCompanyTableTableAdapter getDeliveryCompanyTableTableAdapter;
+        GetDeliveryCompanyTableTableAdapter getDeliveryCompanyTableTableAdapter;        
 
         //Объекты
         //категории 
@@ -38,7 +40,7 @@ namespace Sklad_v1_001.GlobalAttributes
         {
             shemaStorage = new ShemaStorаge();
             getCategoryTableTableAdapter = new GetCategoryTableTableAdapter();
-            getDeliveryCompanyTableTableAdapter = new GetDeliveryCompanyTableTableAdapter();
+            getDeliveryCompanyTableTableAdapter = new GetDeliveryCompanyTableTableAdapter();          
 
             categoryLogic = new CategoryLogic();
             categoryDetails = new CategoryDetailsLigic();
@@ -56,7 +58,7 @@ namespace Sklad_v1_001.GlobalAttributes
         }
 
         //заполним Category и CategoryDetails
-        private void FillCategory()
+        public void FillCategory()
         {
             getCategoryTableTableAdapter.FillCategoryTable(shemaStorage.GetCategoryTable, "grid", String.Empty);
             //getCategoryTableTableAdapter.GetCategoryTable("Grid", "");
@@ -65,16 +67,15 @@ namespace Sklad_v1_001.GlobalAttributes
                 datalistCategory.Add(categoryLogic.ConvertCategory(row, new Category()));
             }
         }
-        private void FillCategoryDetails()
+        public void FillCategoryDetails()
         {
             getCategoryTableTableAdapter.FillCategoryTable(shemaStorage.GetCategoryTable, "ingrid", String.Empty);
             //getCategoryTableTableAdapter.GetCategoryTable("Grid", "");
             foreach (DataRow row in shemaStorage.GetCategoryTable)
             {
-                datalistCategoryDetails.Add(categoryDetails.ConvertCategoryDetails(row, new CategoryDetails())); 
+                datalistCategoryDetails.Add(categoryDetails.ConvertCategoryDetails(row, new CategoryDetails()));
             }
         }
-
 
         //заполним Delivery и DeliveryDetails
         private void FillDelivery()

@@ -316,8 +316,10 @@ namespace Sklad_v1_001.FormUsers.Category
         ConvertData convertData;
 
         string get_store_procedure = "xp_GetCategoryTable";
+        string save_store_procedure = "xp_SaveCategory";
 
         SQLCommanSelect _sqlRequestSelect = null;
+        SQLCommanSelect _sqlRequestSave = null;
 
         //результат запроса
         DataTable _data = null;
@@ -330,6 +332,7 @@ namespace Sklad_v1_001.FormUsers.Category
             _datarow = new DataTable();
 
             _sqlRequestSelect = new SQLCommanSelect();
+            _sqlRequestSave = new SQLCommanSelect();
 
             //----------------------------------------------------------------------------
             _sqlRequestSelect.AddParametr("@p_TypeScreen", SqlDbType.VarChar, 10);
@@ -337,6 +340,19 @@ namespace Sklad_v1_001.FormUsers.Category
 
             _sqlRequestSelect.AddParametr("@p_CategoryID", SqlDbType.NVarChar, 50);
             _sqlRequestSelect.SetParametrValue("@p_CategoryID", "");
+            //----------------------------------------------------------------------------
+
+            _sqlRequestSave.AddParametr("@p_AddUserID", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_AddUserID", 1);
+
+            _sqlRequestSave.AddParametr("@p_ID", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_ID", 0);
+
+            _sqlRequestSave.AddParametr("@p_Name", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_Name", "");
+
+            _sqlRequestSave.AddParametr("@p_Description", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_Description", "");
             //----------------------------------------------------------------------------
 
         }
@@ -353,15 +369,15 @@ namespace Sklad_v1_001.FormUsers.Category
         }
 
         public LocalRow ConvertAll(DataRow _dataRow, LocalRow _localeRow)
-        {          
+        {
             convertData = new ConvertData(_dataRow, _localeRow);
 
             _localeRow.ID = convertData.ConvertDataInt32("CategoryDetailsID");
-            _localeRow.CategoryDetailsID= convertData.ConvertDataInt32("CategoryDetailsID");
+            _localeRow.CategoryDetailsID = convertData.ConvertDataInt32("CategoryDetailsID");
             _localeRow.CategoryName = convertData.ConvertDataString("CategoryName");
-            _localeRow.CategoryDescription = convertData.ConvertDataString("CategoryDescription");       
+            _localeRow.CategoryDescription = convertData.ConvertDataString("CategoryDescription");
             _localeRow.Description = convertData.ConvertDataString("CategoryDetailsName"); // наименование подкатегории
-            _localeRow.CategoryDetailsDescription= convertData.ConvertDataString("CategoryDetailsDescription");
+            _localeRow.CategoryDetailsDescription = convertData.ConvertDataString("CategoryDetailsDescription");
             _localeRow.CategoryID = convertData.ConvertDataInt32("CategoryID");
 
             _localeRow.CreatedDate = convertData.ConvertDataDateTime("CreatedDate");
@@ -372,7 +388,7 @@ namespace Sklad_v1_001.FormUsers.Category
             _localeRow.LastModificatedUserID = convertData.ConvertDataInt32("LastModificatedUserID");
             _localeRow.CreatedUserIDString = convertData.ConvertDataString("CreatedUserIDString");
             _localeRow.LastModificatedUserIDString = convertData.ConvertDataString("LastModificatedUserIDString");
-            
+
             return _localeRow;
         }
         public GlobalList.Category ConvertCategory(DataRow _dataRow, GlobalList.Category _localeRow)
@@ -386,5 +402,14 @@ namespace Sklad_v1_001.FormUsers.Category
             return _localeRow;
         }
 
+        public Int32 SaveRow(GlobalList.Category row)
+        {           
+            _sqlRequestSave.SetParametrValue("@p_ID", row.ID);
+            _sqlRequestSave.SetParametrValue("@p_Description", row.Name);
+            _sqlRequestSave.SetParametrValue("@p_Name", row.Description);
+
+            _sqlRequestSave.ComplexRequest(save_store_procedure, CommandType.StoredProcedure, null);
+            return (Int32)_sqlRequestSave.SqlAnswer.result;
+        }
     }
 }

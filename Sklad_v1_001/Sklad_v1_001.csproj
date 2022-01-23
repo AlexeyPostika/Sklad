@@ -115,6 +115,9 @@
     <Compile Include="Control\FlexButton\ToolBarButton.xaml.cs">
       <DependentUpon>ToolBarButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexComboBox\ComboBoxAddEditToWithlabel.xaml.cs">
+      <DependentUpon>ComboBoxAddEditToWithlabel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexComboBox\ComboBoxToWithLabel.xaml.cs">
       <DependentUpon>ComboBoxToWithLabel.xaml</DependentUpon>
     </Compile>
@@ -285,6 +288,9 @@
     </Compile>
     <Compile Include="FormUsers\CategoryDetails\CategoryDetailsLigic.cs" />
     <Compile Include="FormUsers\Category\CategoryLogic.cs" />
+    <Compile Include="FormUsers\Category\NewCategoryItem.xaml.cs">
+      <DependentUpon>NewCategoryItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FormUsers\DeliveryDetails\DeliveryDetailsLogic.cs" />
     <Compile Include="FormUsers\Delivery\DeliveryLogic.cs" />
     <Compile Include="FormUsers\Delivery\NewDeliveryItem.xaml.cs">
@@ -366,6 +372,10 @@
     <Page Include="Control\FlexButton\ToolBarButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\FlexComboBox\ComboBoxAddEditToWithlabel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\FlexComboBox\ComboBoxToWithLabel.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -570,6 +580,10 @@
     <Page Include="Control\Zona\Yellow\SelectCategoryYellowTable.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FormUsers\Category\NewCategoryItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FormUsers\Delivery\NewDeliveryItem.xaml">
       <SubType>Designer</SubType>
@@ -839,6 +853,7 @@
     <Resource Include="Icone\IconOK_x24.png" />
     <Resource Include="Icone\IconToList_x24.png" />
     <Resource Include="Icone\IconPackage_x16.png" />
+    <Resource Include="Icone\IconEdit_x16.png" />
     <Content Include="SQLCommand\JDB_DataAdapter.sql" />
     <Content Include="SQLCommand\JDB_POS.sql" />
     <Resource Include="Icone\IconOk.png" />

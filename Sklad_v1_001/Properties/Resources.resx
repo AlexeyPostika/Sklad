@@ -636,4 +636,7 @@
   <data name="CATEGORYDETAILS" xml:space="preserve">
     <value>Подкатегория</value>
   </data>
+  <data name="CategoryName" xml:space="preserve">
+    <value>Наименование категории</value>
+  </data>
 </root>
