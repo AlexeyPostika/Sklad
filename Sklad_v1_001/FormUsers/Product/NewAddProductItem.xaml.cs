@@ -198,18 +198,13 @@ namespace Sklad_v1_001.FormUsers.Product
 
         private void CategoryDetailsName_ButtonClearClick()
         {
-            //CategoryDetails.Visibility = Visibility.Visible;
-            //CategoryDetails.ComboBoxElement.IsDropDownOpen = true;
-            //CategoryDetailsName.Visibility = Visibility.Collapsed;
+           
         }
 
         private void CategoryDetails_DropDownClosed()
         {
             if (CategoryDetails.Value != 0 && dataCategoryDetails.Count != 0)
-            {
-                //CategoryDetailsName.Text = dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())) != null ?
-                //    dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())).Description : Properties.Resources.UndefindField;
-
+            {                
                 ProductLocalRow.CategoryDetailsName = dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())) != null ?
                  dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())).Description : Properties.Resources.UndefindField;
 
@@ -222,18 +217,13 @@ namespace Sklad_v1_001.FormUsers.Product
             }
 
             CategoryCat.ComboBoxElement.SelectedValue = ProductLocalRow.CategoryID;
-
-            //CategoryDetails.Visibility = Visibility.Collapsed;
-            //CategoryDetailsName.Visibility = Visibility.Visible;
+          
         }
 
         private void CategoryDetailsName_ButtonTextChangedClick()
         {
             if (dataCategory.Count != 0)
-            {
-                //CategoryDetailsName.Text = dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())) != null ?
-                //    dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())).Description : CategoryDetailsName.Text;
-
+            {            
                 ProductLocalRow.CategoryDetailsName = dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())) != null ?
                  dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())).Description : Properties.Resources.UndefindField;
 
@@ -270,17 +260,12 @@ namespace Sklad_v1_001.FormUsers.Product
         }
         private void CategoryName_ButtonClearClick()
         {
-            //CategoryCat.Visibility = Visibility.Visible;
-            //CategoryCat.ComboBoxElement.IsDropDownOpen = true;
-           // CategoryName.Visibility = Visibility.Collapsed;
+            
         }
         private void CategoryCat_DropDownClosed()
         {
             if (CategoryCat.Value != 0 && dataCategory.Count != 0)
             {
-                //CategoryName.Text = dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryCat.Value.ToString())) != null ?
-                //    dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryCat.Value.ToString())).Description : Properties.Resources.UndefindField;
-
                 ProductLocalRow.CategoryName = dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryCat.Value.ToString())) != null ?
                    dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryCat.Value.ToString())).Description : Properties.Resources.UndefindField; 
 
@@ -299,19 +284,12 @@ namespace Sklad_v1_001.FormUsers.Product
 
             CategoryDetails.ComboBoxElement.ItemsSource = dataCategoryDetailsTemp;
             CategoryDetails.ComboBoxElement.SelectedValue = 0;
-
-            //CategoryCat.Visibility = Visibility.Collapsed;
-           // CategoryName.Visibility = Visibility.Visible;
         }
 
         private void CategoryName_ButtonTextChangedClick()
         {
             if (dataCategory.Count != 0)
             {
-                //CategoryDetailsName.Text = dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())) != null ?
-                //    dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())).Description :
-                //   CategoryDetailsName.Text;
-
                 ProductLocalRow.CategoryName = dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryCat.Value.ToString())) != null ?
                     dataCategory.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryCat.Value.ToString())).Description : Properties.Resources.UndefindField;
 
@@ -356,7 +334,21 @@ namespace Sklad_v1_001.FormUsers.Product
 
         private void CategoryCat_ButtonEdit()
         {
-
+            newCategoryItem = new NewCategoryItem(attributes);
+            addCategoryWindow = new FlexMessageBox();
+            newCategoryItem.CategoryRow = dataCategory.First(x=>x.ID== convertData.FlexDataConvertToInt32(CategoryCat.Value.ToString()));
+            addCategoryWindow.Content = newCategoryItem;
+            addCategoryWindow.Show(Properties.Resources.CATEGORY);
+            if (newCategoryItem.IsClickButtonOK == MessageBoxResult.OK)
+            {
+                if (newCategoryItem.CategoryRow != null)
+                {
+                    ProductLocalRow.CategoryName = newCategoryItem.CategoryRow.Description;
+                    ProductLocalRow.CategoryID = newCategoryItem.CategoryRow.ID;
+                    ProductLocalRow.CategoryDescription = newCategoryItem.CategoryRow.Name;
+                    CategoryCat.ComboBoxElement.SelectedValue = ProductLocalRow.CategoryID;
+                }
+            }
         }
         #endregion
 

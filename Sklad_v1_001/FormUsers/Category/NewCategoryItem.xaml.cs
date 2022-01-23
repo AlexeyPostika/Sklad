@@ -51,6 +51,7 @@ namespace Sklad_v1_001.FormUsers.Category
             set
             {
                 categoryRow = value;
+                this.DataContext = value;
                 OnPropertyChanged("CategoryRow");
             }
         }
