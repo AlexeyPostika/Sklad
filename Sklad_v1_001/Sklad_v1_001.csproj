@@ -287,6 +287,9 @@
       <DependentUpon>SelectCategoryYellowTable.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\CategoryDetails\CategoryDetailsLigic.cs" />
+    <Compile Include="FormUsers\CategoryDetails\NewCategoryDetailsItem.xaml.cs">
+      <DependentUpon>NewCategoryDetailsItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FormUsers\Category\CategoryLogic.cs" />
     <Compile Include="FormUsers\Category\NewCategoryItem.xaml.cs">
       <DependentUpon>NewCategoryItem.xaml</DependentUpon>
@@ -578,6 +581,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Control\Zona\Yellow\SelectCategoryYellowTable.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FormUsers\CategoryDetails\NewCategoryDetailsItem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

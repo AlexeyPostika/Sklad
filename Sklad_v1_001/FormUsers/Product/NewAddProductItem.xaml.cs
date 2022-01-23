@@ -1,5 +1,6 @@
 ﻿using Sklad_v1_001.Control.FlexMessageBox;
 using Sklad_v1_001.FormUsers.Category;
+using Sklad_v1_001.FormUsers.CategoryDetails;
 using Sklad_v1_001.GlobalAttributes;
 using Sklad_v1_001.HelperGlobal;
 using System;
@@ -65,8 +66,8 @@ namespace Sklad_v1_001.FormUsers.Product
         FlexMessageBox addCategoryWindow;
         NewCategoryItem newCategoryItem;
         //работаем с CategoryDetails
-        //FlexMessageBox addCategoryWindow;
-        //NewCategoryItem newCategoryItem;
+        FlexMessageBox addCategoryDetailsWindow;
+        NewCategoryDetailsItem newCategoryDetailsItem;
 
         LocaleRow productLocalRow;
         public LocaleRow ProductLocalRow { get => productLocalRow; set => productLocalRow = value; }
@@ -323,7 +324,9 @@ namespace Sklad_v1_001.FormUsers.Product
             if (newCategoryItem.IsClickButtonOK == MessageBoxResult.OK)
             {
                 if (newCategoryItem.CategoryRow != null)
-                {                   
+                {
+                    dataCategory = attributes.datalistCategory;
+                   
                     ProductLocalRow.CategoryName = newCategoryItem.CategoryRow.Description;
                     ProductLocalRow.CategoryID = newCategoryItem.CategoryRow.ID;
                     ProductLocalRow.CategoryDescription = newCategoryItem.CategoryRow.Name;
@@ -343,6 +346,8 @@ namespace Sklad_v1_001.FormUsers.Product
             {
                 if (newCategoryItem.CategoryRow != null)
                 {
+                    dataCategory = attributes.datalistCategory;
+                    
                     ProductLocalRow.CategoryName = newCategoryItem.CategoryRow.Description;
                     ProductLocalRow.CategoryID = newCategoryItem.CategoryRow.ID;
                     ProductLocalRow.CategoryDescription = newCategoryItem.CategoryRow.Name;
@@ -355,12 +360,92 @@ namespace Sklad_v1_001.FormUsers.Product
         #region CategoryDetailsAdd
         private void CategoryDetails_ButtonAdd()
         {
+            if (CategoryCat.Value > 0)
+            {
 
+                newCategoryDetailsItem = new NewCategoryDetailsItem(attributes);
+                addCategoryDetailsWindow = new FlexMessageBox();
+                
+                GlobalList.CategoryDetails categoryDetailsTemp = new GlobalList.CategoryDetails();               
+
+                categoryDetailsTemp.CategoryIDString = dataCategory.FirstOrDefault(x => x.ID == CategoryCat.Value) != null ?
+                   dataCategory.FirstOrDefault(x => x.ID == CategoryCat.Value).Description : "";
+
+                categoryDetailsTemp.CategoryID = dataCategory.FirstOrDefault(x => x.ID == CategoryCat.Value) != null ?
+                  dataCategory.FirstOrDefault(x => x.ID == CategoryCat.Value).ID : 0;
+
+                newCategoryDetailsItem.CategoryDetailsRow = categoryDetailsTemp;
+
+                addCategoryDetailsWindow.Content = newCategoryDetailsItem;
+                addCategoryDetailsWindow.Show(Properties.Resources.CATEGORYDETAILS);
+                if (newCategoryDetailsItem.IsClickButtonOK == MessageBoxResult.OK)
+                {
+                    if (newCategoryDetailsItem.CategoryDetailsRow != null)
+                    {
+                        dataCategory = attributes.datalistCategory;
+                        dataCategoryDetails = attributes.datalistCategoryDetails;
+
+                        ProductLocalRow.CategoryDetailsName = newCategoryDetailsItem.CategoryDetailsRow.Description;
+                        ProductLocalRow.CategoryID = newCategoryDetailsItem.CategoryDetailsRow.CategoryID;
+                        ProductLocalRow.CategoryDetailsDescription = newCategoryDetailsItem.CategoryDetailsRow.Name;
+                        ProductLocalRow.ID = newCategoryDetailsItem.CategoryDetailsRow.ID;
+                        CategoryCat.ComboBoxElement.SelectedValue = ProductLocalRow.CategoryID;
+                        CategoryDetails.ComboBoxElement.SelectedValue = ProductLocalRow.ID;
+                    }
+                }
+            }
+            else
+            {
+                FlexMessageBox mb;
+                mb = new FlexMessageBox();
+                mb.Show(Properties.Resources.ErrorCategory0, GenerateTitle(TitleType.Error, Properties.Resources.EmptyField, CategoryCat.LabelText), MessageBoxButton.OK, MessageBoxImage.Error);
+                CategoryCat.ComboBoxElement.Focus();
+            }
         }
 
         private void CategoryDetails_ButtonEdit()
         {
+            if (CategoryCat.Value > 0)
+            {
+                newCategoryDetailsItem = new NewCategoryDetailsItem(attributes);
+                addCategoryDetailsWindow = new FlexMessageBox();
+                GlobalList.CategoryDetails categoryDetailsTemp = new GlobalList.CategoryDetails();
+                if (CategoryDetails.Value > 0)
+                    categoryDetailsTemp = dataCategoryDetails.First(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString()));
 
+                categoryDetailsTemp.CategoryIDString = dataCategory.FirstOrDefault(x => x.ID == categoryDetailsTemp.CategoryID) != null ?
+                   dataCategory.FirstOrDefault(x => x.ID == categoryDetailsTemp.CategoryID).Description : "";
+
+                categoryDetailsTemp.CategoryID = dataCategory.FirstOrDefault(x => x.ID == categoryDetailsTemp.CategoryID) != null ?
+                  dataCategory.FirstOrDefault(x => x.ID == categoryDetailsTemp.CategoryID).ID : 0;
+
+                newCategoryDetailsItem.CategoryDetailsRow = categoryDetailsTemp;
+
+                addCategoryDetailsWindow.Content = newCategoryDetailsItem;
+                addCategoryDetailsWindow.Show(Properties.Resources.CATEGORYDETAILS);
+                if (newCategoryDetailsItem.IsClickButtonOK == MessageBoxResult.OK)
+                {
+                    if (newCategoryDetailsItem.CategoryDetailsRow != null)
+                    {
+                        dataCategory = attributes.datalistCategory;
+                        dataCategoryDetails = attributes.datalistCategoryDetails;
+                        ProductLocalRow.CategoryDetailsName = newCategoryDetailsItem.CategoryDetailsRow.Description;
+                        ProductLocalRow.CategoryID = newCategoryDetailsItem.CategoryDetailsRow.CategoryID;
+                        ProductLocalRow.CategoryDetailsDescription = newCategoryDetailsItem.CategoryDetailsRow.Name;
+                        ProductLocalRow.ID = newCategoryDetailsItem.CategoryDetailsRow.ID;
+                        CategoryCat.ComboBoxElement.SelectedValue = dataCategory.FirstOrDefault(x => x.ID == ProductLocalRow.CategoryID).ID;
+                        CategoryDetails.ComboBoxElement.SelectedValue = newCategoryDetailsItem.CategoryDetailsRow.ID;
+                    }
+                }
+            }
+            else
+            {
+                FlexMessageBox mb;
+                mb = new FlexMessageBox();
+                mb.Show(Properties.Resources.ErrorCategory0, GenerateTitle(TitleType.Error, Properties.Resources.EmptyField, CategoryCat.LabelText), MessageBoxButton.OK, MessageBoxImage.Error);
+                CategoryCat.ComboBoxElement.Focus();              
+            }
+           
         }
 
         #endregion

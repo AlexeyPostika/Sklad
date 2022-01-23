@@ -639,4 +639,7 @@
   <data name="CategoryName" xml:space="preserve">
     <value>Наименование категории</value>
   </data>
+  <data name="ErrorCategory0" xml:space="preserve">
+    <value>Выберите категорию</value>
+  </data>
 </root>

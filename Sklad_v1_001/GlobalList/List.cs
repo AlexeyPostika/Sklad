@@ -33,6 +33,7 @@ namespace Sklad_v1_001.GlobalList
     {
         public Int32 ID { get; set; }
         public Int32 CategoryID { get; set; }
+        public String CategoryIDString { get; set; }
         public String Name { get; set; }
 
         public String Description { get; set; }

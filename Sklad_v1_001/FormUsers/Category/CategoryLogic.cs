@@ -396,7 +396,7 @@ namespace Sklad_v1_001.FormUsers.Category
             convertData = new ConvertData(_dataRow, _localeRow);
 
             _localeRow.ID = convertData.ConvertDataInt32("CategoryID");
-            _localeRow.Description = convertData.ConvertDataString("CategoryName");
+            _localeRow.Description = convertData.ConvertDataString("CategoryName");        
             _localeRow.Name = convertData.ConvertDataString("CategoryDescription");
 
             return _localeRow;

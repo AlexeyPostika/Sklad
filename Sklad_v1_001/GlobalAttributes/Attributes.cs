@@ -60,6 +60,7 @@ namespace Sklad_v1_001.GlobalAttributes
         //заполним Category и CategoryDetails
         public void FillCategory()
         {
+            datalistCategory.Clear();
             getCategoryTableTableAdapter.FillCategoryTable(shemaStorage.GetCategoryTable, "grid", String.Empty);
             //getCategoryTableTableAdapter.GetCategoryTable("Grid", "");
             foreach(DataRow row in shemaStorage.GetCategoryTable)
@@ -69,6 +70,7 @@ namespace Sklad_v1_001.GlobalAttributes
         }
         public void FillCategoryDetails()
         {
+            datalistCategoryDetails.Clear();
             getCategoryTableTableAdapter.FillCategoryTable(shemaStorage.GetCategoryTable, "ingrid", String.Empty);
             //getCategoryTableTableAdapter.GetCategoryTable("Grid", "");
             foreach (DataRow row in shemaStorage.GetCategoryTable)
@@ -80,6 +82,7 @@ namespace Sklad_v1_001.GlobalAttributes
         //заполним Delivery и DeliveryDetails
         private void FillDelivery()
         {
+            datalistDelivery.Clear();
             getDeliveryCompanyTableTableAdapter.FillDeliveryCompanyTable(shemaStorage.GetDeliveryCompanyTable, "ingrid");
             //getCategoryTableTableAdapter.GetCategoryTable("Grid", "");
             foreach (DataRow row in shemaStorage.GetDeliveryCompanyTable)
@@ -89,6 +92,7 @@ namespace Sklad_v1_001.GlobalAttributes
         }
         private void FillDeliveryGrid()
         {
+            managerDeliveryList.innerList.Clear();
             getDeliveryCompanyTableTableAdapter.FillDeliveryCompanyTable(shemaStorage.GetDeliveryCompanyTable, "Grid");
             //getCategoryTableTableAdapter.GetCategoryTable("Grid", "");
             foreach (DataRow row in shemaStorage.GetDeliveryCompanyTable)

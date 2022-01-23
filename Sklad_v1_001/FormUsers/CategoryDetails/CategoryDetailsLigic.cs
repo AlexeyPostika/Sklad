@@ -1,4 +1,5 @@
 ﻿using Sklad_v1_001.HelperGlobal;
+using Sklad_v1_001.SQL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -204,8 +205,36 @@ namespace Sklad_v1_001.FormUsers.CategoryDetails
     {
         ConvertData convertData;
 
+        string save_store_procedure = "xp_SaveCategoryDetails";
+        
+        SQLCommanSelect _sqlRequestSave = null;
+        //результат запроса
+        DataTable _data = null;
+        DataTable _datarow = null;
+
         public CategoryDetailsLigic()
-        {           
+        {
+            _data = new DataTable();
+            _datarow = new DataTable();
+
+            _sqlRequestSave = new SQLCommanSelect();
+            
+            //----------------------------------------------------------------------------
+
+            _sqlRequestSave.AddParametr("@p_AddUserID", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_AddUserID", 1);
+
+            _sqlRequestSave.AddParametr("@p_ID", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_ID", 0);
+
+            _sqlRequestSave.AddParametr("@p_CategoryID", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_CategoryID", 0);
+
+            _sqlRequestSave.AddParametr("@p_Name", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_Name", "");
+
+            _sqlRequestSave.AddParametr("@p_Description", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_Description", "");
         }
 
         public LocalRow Convert(DataRow _dataRow, LocalRow _localeRow)
@@ -235,9 +264,21 @@ namespace Sklad_v1_001.FormUsers.CategoryDetails
             _localeRow.ID = convertData.ConvertDataInt32("CategoryDetailsID");
             _localeRow.Description = convertData.ConvertDataString("CategoryDetailsName");
             _localeRow.CategoryID= convertData.ConvertDataInt32("CategoryID");
+            _localeRow.CategoryIDString = convertData.ConvertDataString("CategoryName");
             _localeRow.Name = convertData.ConvertDataString("CategoryDetailsDescription");
 
             return _localeRow;
+        }
+
+        public Int32 SaveRow(GlobalList.CategoryDetails row)
+        {
+            _sqlRequestSave.SetParametrValue("@p_ID", row.ID);
+            _sqlRequestSave.SetParametrValue("@p_CategoryID", row.CategoryID);
+            _sqlRequestSave.SetParametrValue("@p_Description", row.Name);
+            _sqlRequestSave.SetParametrValue("@p_Name", row.Description);
+
+            _sqlRequestSave.ComplexRequest(save_store_procedure, CommandType.StoredProcedure, null);
+            return (Int32)_sqlRequestSave.SqlAnswer.result;
         }
     }
 }

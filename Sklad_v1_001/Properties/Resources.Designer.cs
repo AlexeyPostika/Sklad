@@ -502,6 +502,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Выберите категорию.
+        /// </summary>
+        public static string ErrorCategory0 {
+            get {
+                return ResourceManager.GetString("ErrorCategory0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Заполните обязательное поле.
         /// </summary>
         public static string ErrorEmptyField {
