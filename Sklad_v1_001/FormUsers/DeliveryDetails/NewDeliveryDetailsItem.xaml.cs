@@ -17,17 +17,17 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static Sklad_v1_001.HelperGlobal.MessageBoxTitleHelper;
 
-namespace Sklad_v1_001.FormUsers.Delivery
+namespace Sklad_v1_001.FormUsers.DeliveryDetails
 {
     /// <summary>
     /// Логика взаимодействия для NewDeliveryItem.xaml
     /// </summary>
-    public partial class NewDeliveryItem : Page, INotifyPropertyChanged
+    public partial class NewDeliveryDetailsItem : Page, INotifyPropertyChanged
     {
         public static readonly DependencyProperty IsClickButtonOKProperty = DependencyProperty.Register(
                     "IsClickButtonOK",
                     typeof(MessageBoxResult),
-                   typeof(NewDeliveryItem), new PropertyMetadata(MessageBoxResult.Cancel));
+                   typeof(NewDeliveryDetailsItem), new PropertyMetadata(MessageBoxResult.Cancel));
         public MessageBoxResult IsClickButtonOK
         {
             get { return (MessageBoxResult)GetValue(IsClickButtonOKProperty); }
@@ -38,21 +38,21 @@ namespace Sklad_v1_001.FormUsers.Delivery
 
         Attributes attributes;
 
-        GlobalList.DeliveryCompany deliveryCompanyRow;
-        DeliveryLogic deliveryLogic;
+        GlobalList.DeliveryCompanyDetails deliveryCompanyDetailsRow;
+        DeliveryDetailsLogic deliveryDetailsLogic;
 
-        public GlobalList.DeliveryCompany DeliveryCompanyRow
+        public GlobalList.DeliveryCompanyDetails DeliveryCompanyDetailsRow
         {
             get
             {
-                return deliveryCompanyRow;
+                return deliveryCompanyDetailsRow;
             }
 
             set
             {
-                deliveryCompanyRow = value;
+                deliveryCompanyDetailsRow = value;
                 this.DataContext = value;
-                OnPropertyChanged("DeliveryCompanyRow");
+                OnPropertyChanged("DeliveryCompanyDetailsRow");
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;
@@ -61,16 +61,16 @@ namespace Sklad_v1_001.FormUsers.Delivery
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public NewDeliveryItem(Attributes _attributes)
+        public NewDeliveryDetailsItem(Attributes _attributes)
         {
             InitializeComponent();
 
-            DeliveryCompanyRow = new GlobalList.DeliveryCompany();
-            deliveryLogic = new DeliveryLogic();
+            DeliveryCompanyDetailsRow = new GlobalList.DeliveryCompanyDetails();
+            deliveryDetailsLogic = new DeliveryDetailsLogic();
 
             this.attributes = _attributes;
 
-            this.control.DataContext = DeliveryCompanyRow;
+            this.control.DataContext = DeliveryCompanyDetailsRow;
         }
         
         #region OKCancel   
@@ -78,10 +78,10 @@ namespace Sklad_v1_001.FormUsers.Delivery
         {
             if (FieldVerify())
             {
-                DeliveryCompanyRow.ID = deliveryLogic.SaveRow(DeliveryCompanyRow);
-                if (DeliveryCompanyRow.ID > 0)
+                DeliveryCompanyDetailsRow.ID = deliveryDetailsLogic.SaveRow(DeliveryCompanyDetailsRow);
+                if (DeliveryCompanyDetailsRow.ID > 0)
                 {
-                    attributes.FillDeliverycompany();//обновить категории
+                    attributes.FillDeliveryCompanyDetails();//обновить категории
                     IsClickButtonOK = MessageBoxResult.OK;
                     Window win = Parent as Window;
                     win.Close();
@@ -100,7 +100,7 @@ namespace Sklad_v1_001.FormUsers.Delivery
         {
             FlexMessageBox mb;
 
-            if (String.IsNullOrEmpty(DeliveryCompanyRow.Description))
+            if (String.IsNullOrEmpty(DeliveryCompanyDetailsRow.DeliveryIDString))
             {
                 mb = new FlexMessageBox();
                 mb.Show(Properties.Resources.ErrorEmptyField, GenerateTitle(TitleType.Error, Properties.Resources.EmptyField, NameCompany.LabelText), MessageBoxButton.OK, MessageBoxImage.Error);
@@ -108,21 +108,22 @@ namespace Sklad_v1_001.FormUsers.Delivery
                 return false;
             }
 
-            if (String.IsNullOrEmpty(DeliveryCompanyRow.Phones))
+            if (String.IsNullOrEmpty(DeliveryCompanyDetailsRow.Description))
             {
                 mb = new FlexMessageBox();
-                mb.Show(Properties.Resources.ErrorEmptyField, GenerateTitle(TitleType.Error, Properties.Resources.EmptyField, PhonesCompany.LabelText), MessageBoxButton.OK, MessageBoxImage.Error);
-                PhonesCompany.DescriptionInfo.Focus();
+                mb.Show(Properties.Resources.ErrorEmptyField, GenerateTitle(TitleType.Error, Properties.Resources.EmptyField, ManagerCompany.LabelText), MessageBoxButton.OK, MessageBoxImage.Error);
+                ManagerCompany.DescriptionInfo.Focus();
                 return false;
             }
 
-            if (String.IsNullOrEmpty(DeliveryCompanyRow.AdressCompany))
+            if (String.IsNullOrEmpty(DeliveryCompanyDetailsRow.Phones))
             {
                 mb = new FlexMessageBox();
-                mb.Show(Properties.Resources.ErrorEmptyField, GenerateTitle(TitleType.Error, Properties.Resources.EmptyField, AdressCompany.LabelText), MessageBoxButton.OK, MessageBoxImage.Error);
-                AdressCompany.DescriptionInfo.Focus();
+                mb.Show(Properties.Resources.ErrorEmptyField, GenerateTitle(TitleType.Error, Properties.Resources.EmptyField, PhonesManager.LabelText), MessageBoxButton.OK, MessageBoxImage.Error);
+                PhonesManager.DescriptionInfo.Focus();
                 return false;
             }
+            
             return true;
         }
 

@@ -98,6 +98,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
         private Decimal tagPriceRUS;
         private Double currencyRUS;
         private Boolean package;
+        private String sizeProduct;
         private String model;
         private ImageSource imageSourcePackage;
 
@@ -252,6 +253,21 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
                 OnPropertyChanged("Package");
             }
         }
+       
+        public string SizeProduct
+        {
+            get
+            {
+                return sizeProduct;
+            }
+
+            set
+            {
+                sizeProduct = value;
+                OnPropertyChanged("SizeProduct");
+            }
+        }
+
         public string Model
         {
             get
@@ -596,6 +612,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             _localeRow.CurrencyRUS = 663;
             _localeRow.Package = _row.Package;
             _localeRow.Model = _row.Model;
+            _localeRow.SizeProduct = _row.SizeProduct;
 
             //стандартные данные
             if (_localeRow.ID == 0)

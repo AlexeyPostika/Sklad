@@ -1,0 +1,115 @@
+﻿<Page x:Class="Sklad_v1_001.FormUsers.SupplyDocumentDelivery.SupplyDocumentDeliveryItem"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Sklad_v1_001.FormUsers.Delivery"
+      xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+      xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton"
+      xmlns:SimpleControl="clr-namespace:Sklad_v1_001.Control.SimpleControl"
+      xmlns:FlexTextBox="clr-namespace:Sklad_v1_001.Control.FlexTextBox"
+      xmlns:FlexComboBox="clr-namespace:Sklad_v1_001.Control.FlexComboBox"
+      xmlns:FlexRadioButton="clr-namespace:Sklad_v1_001.Control.FlexRadio"
+      xmlns:FlexEditBox="clr-namespace:Sklad_v1_001.Control.FlexEditBox"
+      mc:Ignorable="d"     
+      Title="NewDeliveryItem"
+      Width="350" 
+      Height="Auto"
+      Style="{DynamicResource UsersPageWidth}"
+      Loaded="page_Loaded"
+      Unloaded="page_Unloaded"
+      x:Name="page">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Content="Компания доставки" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16" />
+        <Border Style="{DynamicResource BorderStyle}" Margin="10" Grid.Row="1" Grid.ColumnSpan="2">
+            <StackPanel x:Name="delivery" Background="Transparent">
+                <FlexComboBox:ComboBoxAddEditToWithLabel x:Name="DeliveryCompany"                                    
+                                                         LabelText="{x:Static res:Resources.NameDelivery}" LabelWidth="165"
+                                                         IsRequired="Visible"         
+                                                         SelectionChanged="DeliveryCompany_SelectionChanged"
+                                                         DropDownClosed="DeliveryCompany_DropDownClosed"
+                                                         ButtonAdd="DeliveryCompany_ButtonAdd"
+                                                         ButtonEdit="DeliveryCompany_ButtonEdit"
+                                                         IsEnableEdit="{Binding ElementName=page, Path=IsEnableAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         Value="{Binding Path=DeliveryID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <FlexComboBox:ComboBoxAddEditToWithLabel x:Name="DeliveryCompanyDetails"                                
+                                                         LabelText="{x:Static res:Resources.ManagerDelivery}" LabelWidth="165"
+                                                         IsRequired="Visible"   
+                                                         SelectionChanged="DeliveryCompanyDetails_SelectionChanged"
+                                                         DropDownClosed="DeliveryCompanyDetails_DropDownClosed"
+                                                         ButtonAdd="DeliveryCompanyDetails_ButtonAdd"
+                                                         ButtonEdit="DeliveryCompanyDetails_ButtonEdit"
+                                                         IsEnableEdit="{Binding ElementName=page, Path=IsEnableEdit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         Value="{Binding Path=DeliveryDetailsID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                
+                <SimpleControl:EditBoxWithLabel x:Name="PhonesDeliveryCompany" LabelWidth="165"
+                                                IsRequired="Visible"
+                                                IsEnabled="{Binding Path=IsDocument, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                LabelText="{x:Static res:Resources.NumberPhone}"
+                                                Text="{Binding Path=PhonesManager, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                
+                <SimpleControl:EditBoxWithLabel x:Name="PhonesManagerDeliveryCompany"  LabelWidth="165"
+                                                IsRequired="Visible"
+                                                IsEnabled="{Binding Path=IsDocument, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                LabelText="{x:Static res:Resources.NumberPhoneDelivery}"
+                                                Text="{Binding Path=PhonesCompany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                
+                <SimpleControl:EditBoxWithLabel x:Name="AdressDeliveryCompany" LabelWidth="165"
+                                                IsRequired="Visible"
+                                                IsEnabled="{Binding Path=IsDocument, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                LabelText="{x:Static res:Resources.DeliveryAdress}"
+                                                Text="{Binding Path=AdressCompany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                
+                <SimpleControl:EditBoxWithLabelDownloadFile x:Name="Invoice"  
+                                                            LabelText="{x:Static res:Resources.Invoice}" 
+                                                            LabelWidth="110"
+                                                            IsRequired="Visible"
+                                                            Text="{Binding Path=Invoice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
+                                                            FilterPuth="Jpg files|*.pdf"
+                                                            Mode="PDF"
+                                                            ButtonAddClick="Invoice_ButtonAddClick"
+                                                            ButtonLoopClick="Invoice_ButtonLoopClick"
+                                                            ButtonClearClick="Invoice_ButtonClearClick"/>
+                <SimpleControl:EditBoxWithLabelDownloadFile x:Name="TTN"   Margin="0,0,0,10"
+                                                            LabelText="{x:Static res:Resources.TTN}" 
+                                                            LabelWidth="110"
+                                                            IsRequired="Visible"
+                                                            Text="{Binding Path=TTN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                                           
+                                                            FilterPuth="Jpg files|*.pdf"
+                                                            Mode="PDF"
+                                                            ButtonAddClick="TTN_ButtonAddClick"/>
+                <!--<FlexTextBox:FlexLabelTextBox LabelText="{x:Static res:Resources.Model}"/>
+                <SimpleControl:EditBoxWithLabelNumericForEdit LabelText="{x:Static res:Resources.Quantity}" LabelWidth="120"/>
+                <SimpleControl:EditBoxWithLabelNumericForEdit LabelText="{x:Static res:Resources.TagPriceUSA}" LabelWidth="120"/>
+                <SimpleControl:EditBoxWithLabelNumericForEdit LabelText="{x:Static res:Resources.TagPriceRus}" LabelWidth="120"/>
+                <FlexTextBox:FlexLabelTextBox LabelText="{x:Static res:Resources.SizeProduct}"/>
+                <FlexRadioButton:FlexRadioButton LabelText="{x:Static res:Resources.PackageYEStoNOT}"
+                                                 YESLabelText="Есть"
+                                                 NOLabelText="Нет"
+                                                 LabelWidth="230"/>-->
+            </StackPanel>
+        </Border>
+        <Grid Grid.Row="2" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <FlexButton:ToolBarButton x:Name="OK" Grid.Column="1" Width="100"
+                                      Text="{x:Static res:Resources.MessageOK}"
+                                      ButtonClick="ToolBarButton_ButtonClick"/>
+            <FlexButton:ToolBarButton x:Name="Cancel" Grid.Column="3" Width="100"
+                                      Text="{x:Static res:Resources.CANCEL}"
+                                      ButtonClick="Cancel_ButtonClick"/>
+        </Grid>
+    </Grid>
+</Page>

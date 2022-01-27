@@ -1,6 +1,7 @@
 ﻿using Sklad_v1_001.FormUsers.Category;
 using Sklad_v1_001.FormUsers.CategoryDetails;
 using Sklad_v1_001.FormUsers.Delivery;
+using Sklad_v1_001.FormUsers.DeliveryDetails;
 using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.HelperGlobal;
 using Sklad_v1_001.SQLCommand;
@@ -21,7 +22,7 @@ namespace Sklad_v1_001.GlobalAttributes
         //работа с схемой БД 
         ShemaStorаge shemaStorage;
         GetCategoryTableTableAdapter getCategoryTableTableAdapter;
-        GetDeliveryCompanyTableTableAdapter getDeliveryCompanyTableTableAdapter;        
+        GetDeliveryCompanyTableAdapter getDeliveryCompanyTableAdapter;        
 
         //Объекты
         //категории 
@@ -33,14 +34,15 @@ namespace Sklad_v1_001.GlobalAttributes
 
         //Delivery and DeliveryDetails
         DeliveryLogic deliverLogic;
-        public ManagerDeliveryList managerDeliveryList;
-        public ObservableCollection<FormUsers.Delivery.LocaleRow> datalistDelivery;
+        DeliveryDetailsLogic deliveryDetailsLogic;
+        public ObservableCollection<DeliveryCompany> datalistDeliveryCompany;
+        public ObservableCollection<DeliveryCompanyDetails> datalistDeliveryDetailsCompany;
 
         public Attributes()
         {
             shemaStorage = new ShemaStorаge();
             getCategoryTableTableAdapter = new GetCategoryTableTableAdapter();
-            getDeliveryCompanyTableTableAdapter = new GetDeliveryCompanyTableTableAdapter();          
+            getDeliveryCompanyTableAdapter = new GetDeliveryCompanyTableAdapter();          
 
             categoryLogic = new CategoryLogic();
             categoryDetails = new CategoryDetailsLigic();
@@ -50,10 +52,11 @@ namespace Sklad_v1_001.GlobalAttributes
             FillCategoryDetails();
 
             deliverLogic = new DeliveryLogic();
-            datalistDelivery = new ObservableCollection<FormUsers.Delivery.LocaleRow>();
-            managerDeliveryList = new ManagerDeliveryList();
-            FillDelivery();
-            FillDeliveryGrid();
+            deliveryDetailsLogic = new DeliveryDetailsLogic();
+            datalistDeliveryCompany = new ObservableCollection<DeliveryCompany>();
+            datalistDeliveryDetailsCompany = new ObservableCollection<DeliveryCompanyDetails>();
+            FillDeliverycompany();
+            FillDeliveryCompanyDetails();
 
         }
 
@@ -80,24 +83,23 @@ namespace Sklad_v1_001.GlobalAttributes
         }
 
         //заполним Delivery и DeliveryDetails
-        private void FillDelivery()
+        public void FillDeliverycompany()
         {
-            datalistDelivery.Clear();
-            getDeliveryCompanyTableTableAdapter.FillDeliveryCompanyTable(shemaStorage.GetDeliveryCompanyTable, "ingrid");
-            //getCategoryTableTableAdapter.GetCategoryTable("Grid", "");
+            datalistDeliveryCompany.Clear();
+            getDeliveryCompanyTableAdapter.FillDeliveryCompany(shemaStorage.GetDeliveryCompanyTable, "Grid");
+            
             foreach (DataRow row in shemaStorage.GetDeliveryCompanyTable)
             {
-                datalistDelivery.Add(deliverLogic.Convert(row, new LocaleRow()));            
+                datalistDeliveryCompany.Add(deliverLogic.ConvertDelivery(row, new DeliveryCompany()));            
             }
         }
-        private void FillDeliveryGrid()
+        public void FillDeliveryCompanyDetails()
         {
-            managerDeliveryList.innerList.Clear();
-            getDeliveryCompanyTableTableAdapter.FillDeliveryCompanyTable(shemaStorage.GetDeliveryCompanyTable, "Grid");
-            //getCategoryTableTableAdapter.GetCategoryTable("Grid", "");
+            datalistDeliveryDetailsCompany.Clear();
+            getDeliveryCompanyTableAdapter.FillDeliveryCompany(shemaStorage.GetDeliveryCompanyTable, "ingrid");            
             foreach (DataRow row in shemaStorage.GetDeliveryCompanyTable)
-            {               
-                managerDeliveryList.innerList.Add(deliverLogic.ConvertDelivery(row, new ManagerDelivery()));
+            {
+                datalistDeliveryDetailsCompany.Add(deliveryDetailsLogic.ConvertDeliveryDetails(row, new DeliveryCompanyDetails()));
             }
         }
     }

@@ -78,7 +78,9 @@ namespace Sklad_v1_001.FormUsers.Category
         #region OKCancel       
         private void Cancel_ButtonClick()
         {
-
+            IsClickButtonOK = MessageBoxResult.Cancel;
+            Window win = Parent as Window;
+            win.Close();
         }
 
         private void OK_ButtonClick()

@@ -69,7 +69,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         //работаем с доставкой
         FlexMessageBox addDeliveryWindow;
-        NewDeliveryItem newDeliveryItem;
+        SupplyDocumentDeliveryItem supplyDocumentDeliveryItem;
         ObservableCollection<Delivery.LocaleRow> dataListDelivery;
         ObservableCollection<DeliveryDetails.LocaleRow> dataListDeliveryDetails;
 
@@ -235,19 +235,19 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         #region Поставщик
         private void ToolBarDelivery_ButtonNewProductClick()
         {
-            Delivery.LocaleRow localeRowDelivery = new Delivery.LocaleRow();
-            newDeliveryItem = new NewDeliveryItem(attributes);
+            SupplyDocumentDelivery.LocaleRow localeRowDelivery = new SupplyDocumentDelivery.LocaleRow();
+            supplyDocumentDeliveryItem = new SupplyDocumentDeliveryItem(attributes);
             addDeliveryWindow = new FlexMessageBox();
             // newDeliveryItem.LocaleRow=
-            newDeliveryItem.Status = Status;
-            addDeliveryWindow.Content = newDeliveryItem;
+            supplyDocumentDeliveryItem.Status = Status;
+            addDeliveryWindow.Content = supplyDocumentDeliveryItem;
             addDeliveryWindow.Show(Properties.Resources.Deliveries);
-            if (newDeliveryItem.IsClickButtonOK == MessageBoxResult.OK)
+            if (supplyDocumentDeliveryItem.IsClickButtonOK == MessageBoxResult.OK)
             {
-                if (newDeliveryItem.Document != null && !String.IsNullOrEmpty(newDeliveryItem.Document.NameCompany))
+                if (supplyDocumentDeliveryItem.DeliveryRow != null && !String.IsNullOrEmpty(supplyDocumentDeliveryItem.DeliveryRow.NameCompany))
                 {                             
-                    localeRowDelivery = newDeliveryItem.Document;                  
-                    supplyDocumentDelivery.Add(supplyDocumentDeliveryLogic.ConvertDeliveryToSupplyDocumentDelivery(localeRowDelivery, new SupplyDocumentDelivery.LocaleRow()));
+                    localeRowDelivery = supplyDocumentDeliveryItem.DeliveryRow;                  
+                    supplyDocumentDelivery.Add(localeRowDelivery);
                 }
             }
         }
@@ -442,12 +442,12 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 foreach (SupplyDocumentPayment.LocaleRow currentrow in supplyDocumentPayment)
                 {
                     Document.MassSupplyDocumentPaymentID = Document.MassSupplyDocumentPaymentID + currentrow.ID.ToString() + '|';
-                    Document.MassSupplyDocumentPaymentAmount = Document.MassSupplyDocumentPaymentAmount + currentrow.ID.ToString() + '|';
-                    Document.MassSupplyDocumentPaymentOperationType = Document.MassSupplyDocumentPaymentOperationType + currentrow.ID.ToString() + '|';
-                    Document.MassSupplyDocumentPaymentDescription = Document.MassSupplyDocumentPaymentDescription + currentrow.ID.ToString() + '|';                   
+                    Document.MassSupplyDocumentPaymentAmount = Document.MassSupplyDocumentPaymentAmount + currentrow.Amount.ToString() + '|';
+                    Document.MassSupplyDocumentPaymentOperationType = Document.MassSupplyDocumentPaymentOperationType + currentrow.OpertionType.ToString() + '|';
+                    Document.MassSupplyDocumentPaymentDescription = Document.MassSupplyDocumentPaymentDescription + currentrow.Description.ToString() + '|';                   
                 }
 
-                //Document.ID = supplyDocumentLogic.SaveRow(Document);
+                Document.ID = supplyDocumentLogic.SaveRow(Document);
                 //UpdateCurrentDocument(Document.ID);
                 //MainWindow.AppWindow.DataChanged[ToString()] = false;
 

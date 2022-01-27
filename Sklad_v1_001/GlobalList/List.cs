@@ -35,7 +35,6 @@ namespace Sklad_v1_001.GlobalList
         public Int32 CategoryID { get; set; }
         public String CategoryIDString { get; set; }
         public String Name { get; set; }
-
         public String Description { get; set; }
     }
 
@@ -70,22 +69,25 @@ namespace Sklad_v1_001.GlobalList
         public string Description { get; set; }
     }
 
-    public class ManagerDelivery
+    public class DeliveryCompany
     {
         public Int32 ID { get; set; }
         public string Description { get; set; }
         public string ShortDescription { get; set; }
+        public String Phones { get; set; }
+        public String AdressCompany { get; set; }
     }
-
-    public class ManagerDeliveryList
+    public class DeliveryCompanyDetails
     {
-        public ObservableCollection<ManagerDelivery> innerList { get; set; }
-        public ManagerDeliveryList()
-        {
-            innerList = new ObservableCollection<ManagerDelivery>();
-        }
+        public Int32 ID { get; set; }       
+        public Int32 DeliveryID { get; set; }
+        public String DeliveryIDString { get; set; }
+        public String ManagerName { get; set; }
+        public String Phones { get; set; }
+        public String Description { get; set; } // ManagerName
     }
 
+ 
     public class DateTimeListFilter
     {
         public ObservableCollection<DateTimeItem> innerList { get; set; }

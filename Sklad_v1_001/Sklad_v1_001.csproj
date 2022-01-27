@@ -295,9 +295,15 @@
       <DependentUpon>NewCategoryItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\DeliveryDetails\DeliveryDetailsLogic.cs" />
+    <Compile Include="FormUsers\DeliveryDetails\NewDeliveryDetailsItem.xaml.cs">
+      <DependentUpon>NewDeliveryDetailsItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FormUsers\Delivery\DeliveryLogic.cs" />
     <Compile Include="FormUsers\Delivery\NewDeliveryItem.xaml.cs">
       <DependentUpon>NewDeliveryItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsers\SupplyDocumentDelivery\SupplyDocumentDeliveryItem.xaml.cs">
+      <DependentUpon>SupplyDocumentDeliveryItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\Kategor\KategoriiLogic.cs" />
     <Compile Include="FormUsers\Prixod\RegistraciyTovaraLogic.cs" />
@@ -592,7 +598,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FormUsers\DeliveryDetails\NewDeliveryDetailsItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="FormUsers\Delivery\NewDeliveryItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FormUsers\SupplyDocumentDelivery\SupplyDocumentDeliveryItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

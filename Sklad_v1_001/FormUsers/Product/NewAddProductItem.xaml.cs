@@ -214,11 +214,11 @@ namespace Sklad_v1_001.FormUsers.Product
 
                 ProductLocalRow.CategoryID = dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())) != null ?
                     dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())).CategoryID : 0;
-            
-            }
 
-            CategoryCat.ComboBoxElement.SelectedValue = ProductLocalRow.CategoryID;
-          
+                ProductLocalRow.ID = dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())) != null ?
+                   dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())).ID : 0;
+
+            }                    
         }
 
         private void CategoryDetailsName_ButtonTextChangedClick()
@@ -233,6 +233,9 @@ namespace Sklad_v1_001.FormUsers.Product
 
                 ProductLocalRow.CategoryID = dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())) != null ?
                     dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())).CategoryID : 0;
+
+                ProductLocalRow.ID = dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())) != null ?
+                  dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())).ID : 0;
             }   
             else
             {
@@ -259,10 +262,7 @@ namespace Sklad_v1_001.FormUsers.Product
                 IsEnableAdd = false;
             }
         }
-        private void CategoryName_ButtonClearClick()
-        {
-            
-        }
+       
         private void CategoryCat_DropDownClosed()
         {
             if (CategoryCat.Value != 0 && dataCategory.Count != 0)
@@ -279,7 +279,7 @@ namespace Sklad_v1_001.FormUsers.Product
             ObservableCollection<GlobalList.CategoryDetails> dataCategoryDetailsTemp = new ObservableCollection<GlobalList.CategoryDetails>();
             foreach (GlobalList.CategoryDetails categoryDetails in dataCategoryDetails)
             {
-                if (categoryDetails.CategoryID== ProductLocalRow.ID)
+                if (categoryDetails.CategoryID== ProductLocalRow.CategoryID)
                     dataCategoryDetailsTemp.Add(categoryDetails);
             }
 
@@ -389,7 +389,7 @@ namespace Sklad_v1_001.FormUsers.Product
                         ProductLocalRow.CategoryID = newCategoryDetailsItem.CategoryDetailsRow.CategoryID;
                         ProductLocalRow.CategoryDetailsDescription = newCategoryDetailsItem.CategoryDetailsRow.Name;
                         ProductLocalRow.ID = newCategoryDetailsItem.CategoryDetailsRow.ID;
-                        CategoryCat.ComboBoxElement.SelectedValue = ProductLocalRow.CategoryID;
+                        CategoryCat.ComboBoxElement.SelectedValue = dataCategory.FirstOrDefault(x => x.ID == ProductLocalRow.CategoryID).ID;
                         CategoryDetails.ComboBoxElement.SelectedValue = ProductLocalRow.ID;
                     }
                 }
@@ -433,6 +433,7 @@ namespace Sklad_v1_001.FormUsers.Product
                         ProductLocalRow.CategoryID = newCategoryDetailsItem.CategoryDetailsRow.CategoryID;
                         ProductLocalRow.CategoryDetailsDescription = newCategoryDetailsItem.CategoryDetailsRow.Name;
                         ProductLocalRow.ID = newCategoryDetailsItem.CategoryDetailsRow.ID;
+                       
                         CategoryCat.ComboBoxElement.SelectedValue = dataCategory.FirstOrDefault(x => x.ID == ProductLocalRow.CategoryID).ID;
                         CategoryDetails.ComboBoxElement.SelectedValue = newCategoryDetailsItem.CategoryDetailsRow.ID;
                     }

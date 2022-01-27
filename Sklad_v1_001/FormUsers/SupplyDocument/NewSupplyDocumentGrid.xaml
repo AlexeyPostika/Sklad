@@ -112,7 +112,7 @@
                         <DataGridTextColumn Header="{x:Static res:Resources.Quantity}" SortMemberPath="KtIDDescription" CanUserSort="True" Binding="{Binding Path=Quantity , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         <DataGridTextColumn Header="{x:Static res:Resources.TagPriceUSA}" SortMemberPath="Size" CanUserSort="True" Binding="{Binding Path=TagPriceUSA , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
                         <DataGridTextColumn Header="{x:Static res:Resources.TagPriceRus}" SortMemberPath="Color" CanUserSort="True" Binding="{Binding Path=TagPriceRUS , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
-                        <DataGridTextColumn Header="{x:Static res:Resources.SizeProduct}" SortMemberPath="TagPriceWithVAT" CanUserSort="True" Binding="{Binding Path=SizeProduct , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
+                        <DataGridTextColumn Header="{x:Static res:Resources.SizeProduct}" SortMemberPath="SizeProduct" CanUserSort="True" Binding="{Binding Path=SizeProduct , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
                         <!--<DataGridTextColumn Header="{x:Static res:Resources.Currency}" SortMemberPath="Currency" CanUserSort="True" Binding="{Binding Path=CurrencyShortDescription , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />-->
                         <DataGridTextColumn Header="{x:Static res:Resources.Package}" SortMemberPath="Gender" CanUserSort="True" Binding="{Binding Path=Package, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         <DataGridTemplateColumn MaxWidth="300">

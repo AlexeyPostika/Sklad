@@ -394,6 +394,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Компания транспортировки.
+        /// </summary>
+        public static string DeliveriesCompany {
+            get {
+                return ResourceManager.GetString("DeliveriesCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Адрес доставки.
         /// </summary>
         public static string DeliveryAdress {

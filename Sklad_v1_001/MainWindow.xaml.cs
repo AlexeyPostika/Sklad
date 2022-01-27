@@ -19,6 +19,7 @@ using Sklad_v1_001.FormUsers;
 using Sklad_v1_001.FormUsers.Delivery;
 using Sklad_v1_001.FormUsers.Product;
 using Sklad_v1_001.FormUsers.SupplyDocument;
+using Sklad_v1_001.FormUsers.SupplyDocumentDelivery;
 using Sklad_v1_001.FormUsers.Tovar;
 using Sklad_v1_001.FormUsers.Zacupca;
 using Sklad_v1_001.GlobalAttributes;
@@ -40,7 +41,7 @@ namespace Sklad_v1_001
         NewSupplyDocumentGrid newSupplyDocumentGrid;
 
         NewAddProductItem newAddProductItem;
-        NewDeliveryItem newDeliveryItem;
+        SupplyDocumentDeliveryItem supplyDocumentDeliveryItem;
 
         //public static WorkZona AppWindow;
         //public MainWindow mailWindows1;
@@ -153,8 +154,8 @@ namespace Sklad_v1_001
         public void ButtonNewDelivery()
         {
             FlexWindows addDeliveryWindow = new FlexWindows(Properties.Resources.ADDDELIVERY);
-            newDeliveryItem = new NewDeliveryItem(attributes);
-            addDeliveryWindow.Content = newDeliveryItem;
+            supplyDocumentDeliveryItem = new SupplyDocumentDeliveryItem(attributes);
+            addDeliveryWindow.Content = supplyDocumentDeliveryItem;
             addDeliveryWindow.ShowDialog();
         }
         #endregion

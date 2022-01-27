@@ -40,7 +40,7 @@
                         ButtonAdd="CategoryCat_ButtonAdd"
                         ButtonEdit="CategoryCat_ButtonEdit"    
                         IsEnableEdit="{Binding ElementName=control, Path=IsEnableAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        Value="{Binding Path=ID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                        Value="{Binding Path=CategoryID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                         Visibility="Visible"/>
                 
               

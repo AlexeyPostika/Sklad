@@ -642,4 +642,7 @@
   <data name="ErrorCategory0" xml:space="preserve">
     <value>Выберите категорию</value>
   </data>
+  <data name="DeliveriesCompany" xml:space="preserve">
+    <value>Компания транспортировки</value>
+  </data>
 </root>

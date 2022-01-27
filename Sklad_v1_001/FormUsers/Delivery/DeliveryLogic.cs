@@ -22,12 +22,15 @@ namespace Sklad_v1_001.FormUsers.Delivery
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         private Int32 iD;
-        private Int32 detailsID;
+        private Int32 deliveryID;
+        private Int32 deliveryDetailsID;    
         private String nameCompany;
-        private String managerName;
-        private String phonesCompany;
-        private String phonesManager;
         private String adressCompany;
+        private String phonesCompany;
+
+        private String managerName;
+        private String phonesManager;
+       
         private DateTime? createdDate;
         private Int32 createdUserID;
         private DateTime? lastModificatedDate;
@@ -57,18 +60,32 @@ namespace Sklad_v1_001.FormUsers.Delivery
                 OnPropertyChanged("ID");
             }
         }
-        
-        public int DetailsID
+       
+        public int DeliveryID
         {
             get
             {
-                return detailsID;
+                return deliveryID;
             }
 
             set
             {
-                detailsID = value;
-                OnPropertyChanged("DetailsID");
+                deliveryID = value;
+                OnPropertyChanged("DeliveryID");
+            }
+        }
+
+        public int DeliveryDetailsID
+        {
+            get
+            {
+                return deliveryDetailsID;
+            }
+
+            set
+            {
+                deliveryDetailsID = value;
+                OnPropertyChanged("DeliveryDetailsID");
             }
         }
         public string NameCompany
@@ -349,8 +366,11 @@ namespace Sklad_v1_001.FormUsers.Delivery
         ConvertData convertData;
 
         string get_store_procedure = "xp_GetDeliveryCompanyTable";
+        string save_store_procedure = "xp_SaveDeliveryCompany";
+
 
         SQLCommanSelect _sqlRequestSelect = null;
+        SQLCommanSelect _sqlRequestSave = null;
 
         //результат запроса
         DataTable _data = null;
@@ -359,6 +379,7 @@ namespace Sklad_v1_001.FormUsers.Delivery
         public DeliveryLogic()
         {
             _sqlRequestSelect = new SQLCommanSelect();
+            _sqlRequestSave = new SQLCommanSelect();
 
             convertData = new ConvertData();
 
@@ -368,6 +389,26 @@ namespace Sklad_v1_001.FormUsers.Delivery
             //----------------------------------------------------------------------------
             _sqlRequestSelect.AddParametr("@p_TypeScreen", SqlDbType.VarChar, 10);
             _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeInGrid);
+            //----------------------------------------------------------------------------
+
+            _sqlRequestSave.AddParametr("@p_AddUserID", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_AddUserID", 1);
+
+            _sqlRequestSave.AddParametr("@p_ID", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_ID", 0);
+
+            _sqlRequestSave.AddParametr("@p_NameCompany", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_NameCompany", "");
+
+            _sqlRequestSave.AddParametr("@p_Phones", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_Phones", "");
+
+            _sqlRequestSave.AddParametr("@p_Adress", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_Adress", "");
+            
+            _sqlRequestSave.AddParametr("@p_Country", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_Country", "");
+
             //----------------------------------------------------------------------------
 
         }
@@ -382,11 +423,25 @@ namespace Sklad_v1_001.FormUsers.Delivery
             return _data;
         }
 
+        public Int32 SaveRow(GlobalList.DeliveryCompany row)
+        {
+            _sqlRequestSave.SetParametrValue("@p_ID", row.ID);
+            _sqlRequestSave.SetParametrValue("@p_NameCompany", row.Description);
+            _sqlRequestSave.SetParametrValue("@p_Phones", row.Phones);
+            _sqlRequestSave.SetParametrValue("@p_Adress", row.AdressCompany);
+            _sqlRequestSave.SetParametrValue("@p_Country", String.Empty);
+
+            _sqlRequestSave.ComplexRequest(save_store_procedure, CommandType.StoredProcedure, null);
+            return (Int32)_sqlRequestSave.SqlAnswer.result;
+        }
+
+
         public LocaleRow Convert(DataRow _dataRow, LocaleRow _localeRow)
         {
             convertData = new ConvertData(_dataRow, _localeRow);
 
-            _localeRow.ID = convertData.ConvertDataInt32("ID");
+            _localeRow.ID = convertData.ConvertDataInt32("DeliveryDetailsID");
+            _localeRow.DeliveryDetailsID = convertData.ConvertDataInt32("DeliveryDetailsID");
             _localeRow.NameCompany = convertData.ConvertDataString("NameCompany");
             _localeRow.PhonesCompany = convertData.ConvertDataString("PhonesCompany");
             _localeRow.AdressCompany = convertData.ConvertDataString("AdressCompany");
@@ -400,14 +455,16 @@ namespace Sklad_v1_001.FormUsers.Delivery
             return _localeRow;
         }
 
-        public ManagerDelivery ConvertDelivery(DataRow _dataRow, ManagerDelivery _localeRow)
+        public DeliveryCompany ConvertDelivery(DataRow _dataRow, DeliveryCompany _localeRow)
         {
             convertData = new ConvertData(_dataRow, _localeRow);
 
-            _localeRow.ID = convertData.ConvertDataInt32("ID");
+            _localeRow.ID = convertData.ConvertDataInt32("DeliveryID");
             _localeRow.Description = convertData.ConvertDataString("NameCompany");
             _localeRow.ShortDescription = convertData.ConvertDataString("NameCompany");
-           
+            _localeRow.Phones= convertData.ConvertDataString("PhonesCompany");
+            _localeRow.AdressCompany = convertData.ConvertDataString("AdressCompany");
+
             return _localeRow;
         }
 
