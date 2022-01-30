@@ -142,6 +142,24 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Итого в RUS.
+        /// </summary>
+        public static string AmountRUS {
+            get {
+                return ResourceManager.GetString("AmountRUS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Итого в USA.
+        /// </summary>
+        public static string AmountUSA {
+            get {
+                return ResourceManager.GetString("AmountUSA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Применить.
         /// </summary>
         public static string Apply {
@@ -192,6 +210,15 @@ namespace Sklad_v1_001.Properties {
         public static string BadRange {
             get {
                 return ResourceManager.GetString("BadRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Оплачено.
+        /// </summary>
+        public static string BalanceAmount {
+            get {
+                return ResourceManager.GetString("BalanceAmount", resourceCulture);
             }
         }
         
@@ -1195,6 +1222,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Остаток.
+        /// </summary>
+        public static string RemainsAmount {
+            get {
+                return ResourceManager.GetString("RemainsAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Сбросить фильтер.
         /// </summary>
         public static string ResetFilter {
@@ -1371,6 +1407,15 @@ namespace Sklad_v1_001.Properties {
         public static string SupplyDocumentHeader {
             get {
                 return ResourceManager.GetString("SupplyDocumentHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Суммы.
+        /// </summary>
+        public static string SupplyDocumentHeaderSummary {
+            get {
+                return ResourceManager.GetString("SupplyDocumentHeaderSummary", resourceCulture);
             }
         }
         

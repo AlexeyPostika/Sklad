@@ -645,4 +645,19 @@
   <data name="DeliveriesCompany" xml:space="preserve">
     <value>Компания транспортировки</value>
   </data>
+  <data name="AmountRUS" xml:space="preserve">
+    <value>Итого в RUS</value>
+  </data>
+  <data name="AmountUSA" xml:space="preserve">
+    <value>Итого в USA</value>
+  </data>
+  <data name="BalanceAmount" xml:space="preserve">
+    <value>Оплачено</value>
+  </data>
+  <data name="RemainsAmount" xml:space="preserve">
+    <value>Остаток</value>
+  </data>
+  <data name="SupplyDocumentHeaderSummary" xml:space="preserve">
+    <value>Суммы</value>
+  </data>
 </root>
