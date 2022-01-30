@@ -326,24 +326,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         Int32 Save()
         {
-            ConvertData convertdata = new ConvertData();
-            /*
-             *  //SupplyDocument
-            _sqlRequestSave.SetParametrValue("@p_UserID", row.UserID);
-            _sqlRequestSave.SetParametrValue("@p_ID", row.ID);
-            _sqlRequestSave.SetParametrValue("@p_Status", row.Status);
-            _sqlRequestSave.SetParametrValue("@p_Count", row.Count);
-            _sqlRequestSave.SetParametrValue("@p_Amount", row.Amount);
-            _sqlRequestSave.SetParametrValue("@p_ReffID", row.ReffID);
-            _sqlRequestSave.SetParametrValue("@p_ReffDate", row.ReffDate);
-            _sqlRequestSave.SetParametrValue("@p_SupplyDocumentNumber", row.SupplyDocumentNumber);
-
-            //Категория товара
-            _sqlRequestSave.SetParametrValue("@p_MassCategoryID", row.);
-            _sqlRequestSave.SetParametrValue("@p_MassName", row.);
-            _sqlRequestSave.SetParametrValue("@p_MassDescription", row.);
-            
-             */
+            ConvertData convertdata = new ConvertData();         
 
             if (FieldVerify(supplyDocumentDetails))
             {
@@ -385,40 +368,15 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 Document.MassSupplyDocumentDeliveryImageTTN="";
                 Document.MassSupplyDocumentDeliveryInvoice="";
                 Document.MassSupplyDocumentDeliveryImageInvoice="";
+                Document.MassSupplyDocumentDeliveryAmountUSA = "";
+                Document.MassSupplyDocumentDeliveryAmountRUS = "";
 
                 //SupplyDocumentPayment
                 Document.MassSupplyDocumentPaymentID="";
                 Document.MassSupplyDocumentPaymentAmount="";
                 Document.MassSupplyDocumentPaymentOperationType="";
                 Document.MassSupplyDocumentPaymentDescription="";
-
-                ////категория
-                //foreach (Category.LocalRow currentrow in dataListCategory)
-                //{
-                //    Document.MassCategoryID = Document.MassCategoryID + currentrow.ID.ToString() + '|';
-                //    Document.MassName = Document.MassName + currentrow.CategoryName.ToString() + '|';
-                //    Document.MassDescription = Document.MassDescription + currentrow.Description.ToString() + '|';
-                //    //подкатегория
-                //    Document.MassCategoryDetailsID = Document.MassCategoryDetailsID + currentrow.CategoryDetailsID.ToString() + '|';
-                //    Document.MassIDCategory = Document.MassIDCategory + currentrow.ID.ToString() + '|';
-                //    Document.MassCategoryDetailsName = Document.MassCategoryDetailsName + currentrow.CategoryDetailsName.ToString() + '|';
-                //    Document.MassCategoryDetailsDescription = Document.MassCategoryDetailsDescription + currentrow.CategoryDetailsDescription.ToString() + '|';
-                //}
-               
-                ////компания доставка
-                //foreach (Delivery.LocaleRow currentrow in dataListDelivery)
-                //{
-                //    Document.MassDeliveryID = Document.MassDeliveryID + currentrow.ID.ToString() + '|';
-                //    Document.MassNameCompanyDelivery = Document.MassNameCompanyDelivery + currentrow.NameCompany.ToString() + '|';
-                //    Document.MassPhonesDelivery = Document.MassPhonesDelivery + currentrow.PhonesCompany.ToString() + '|';
-                //    Document.MassCountryDelivery = Document.MassCountryDelivery + "0" + '|';
-                //    //детали
-                //    Document.MassDeliveryDetailsID = Document.MassDeliveryDetailsID + currentrow.DetailsID.ToString() + '|';
-                //    Document.MassIDDelivery = Document.MassIDDelivery + currentrow.ID.ToString() + '|';
-                //    Document.MassManagerName = Document.MassManagerName + currentrow.ManagerName.ToString() + '|';
-                //    Document.MassPhonesDeliveryDetails = Document.MassPhonesDeliveryDetails + currentrow.PhonesManager.ToString() + '|';
-                //}
-
+              
                 //продукты
                 foreach (SupplyDocumentDetails.LocaleRow currentrow in supplyDocumentDetails)
                 {
@@ -441,7 +399,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     Document.MassSupplyDocumentDeliveryTTN = Document.MassSupplyDocumentDeliveryTTN + currentrow.TTN.ToString() + '|';
                     //Document.MassSupplyDocumentDeliveryImageTTN = Document.MassSupplyDocumentDeliveryImageTTN + currentrow.Model.ToString() + '|';
                     Document.MassSupplyDocumentDeliveryInvoice = Document.MassSupplyDocumentDeliveryInvoice + currentrow.Invoice.ToString() + '|';
-                   // Document.MassSupplyDocumentDeliveryImageInvoice = Document.MassSupplyDocumentDeliveryImageInvoice + currentrow.Model.ToString() + '|';                 
+                    // Document.MassSupplyDocumentDeliveryImageInvoice = Document.MassSupplyDocumentDeliveryImageInvoice + currentrow.Model.ToString() + '|';   
+                    Document.MassSupplyDocumentDeliveryAmountUSA = Document.MassSupplyDocumentDeliveryAmountUSA + currentrow.AmountUSA.ToString() + '|';
+                    Document.MassSupplyDocumentDeliveryAmountRUS= Document.MassSupplyDocumentDeliveryAmountRUS + currentrow.AmountRUS.ToString() + '|';
                 }              
 
                 //виды оплат
@@ -480,6 +440,13 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         }
 
         private void SupplyDocumentDetailsToolBar_ButtonApply()
+        {
+
+        }
+        #endregion
+
+        #region Калькулятор
+        private void Сalculat()
         {
 
         }

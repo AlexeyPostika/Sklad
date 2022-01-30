@@ -660,4 +660,10 @@
   <data name="SupplyDocumentHeaderSummary" xml:space="preserve">
     <value>Суммы</value>
   </data>
+  <data name="DelivaryAmountRUS" xml:space="preserve">
+    <value>Цен. дост в RUS</value>
+  </data>
+  <data name="DelivaryAmountUSA" xml:space="preserve">
+    <value>Цен. дост в USA</value>
+  </data>
 </root>

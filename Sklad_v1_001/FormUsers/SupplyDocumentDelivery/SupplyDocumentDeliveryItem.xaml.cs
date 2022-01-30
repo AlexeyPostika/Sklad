@@ -314,6 +314,21 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
                 TTN.TextBox.Focus();
                 return false;
             }
+            if (DeliveryRow.AmountUSA<0)
+            {
+                mb = new FlexMessageBox();
+                mb.Show(Properties.Resources.ErrorEmptyField, GenerateTitle(TitleType.Error, Properties.Resources.EmptyField, AmounPaymentUSA.LabelText), MessageBoxButton.OK, MessageBoxImage.Error);
+                AmounPaymentUSA.TextBox.Focus();
+                return false;
+            }
+
+            if (DeliveryRow.AmountRUS < 0)
+            {
+                mb = new FlexMessageBox();
+                mb.Show(Properties.Resources.ErrorEmptyField, GenerateTitle(TitleType.Error, Properties.Resources.EmptyField, AmounPaymentRUS.LabelText), MessageBoxButton.OK, MessageBoxImage.Error);
+                AmounPaymentRUS.TextBox.Focus();
+                return false;
+            }
             return true;
         }
 

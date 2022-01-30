@@ -432,6 +432,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         private String massSupplyDocumentDeliveryImageTTN;
         private String massSupplyDocumentDeliveryInvoice;
         private String massSupplyDocumentDeliveryImageInvoice;
+        private String massSupplyDocumentDeliveryAmountUSA;
+        private String massSupplyDocumentDeliveryAmountRUS;
 
         //SupplyDocumentPayment
         private String massSupplyDocumentPaymentID;
@@ -1035,6 +1037,35 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 OnPropertyChanged("MassSupplyDocumentDeliveryImageInvoice");
             }
         }
+
+        public string MassSupplyDocumentDeliveryAmountUSA
+        {
+            get
+            {
+                return massSupplyDocumentDeliveryAmountUSA;
+            }
+
+            set
+            {
+                massSupplyDocumentDeliveryAmountUSA = value;
+                OnPropertyChanged("MassSupplyDocumentDeliveryAmountUSA");
+            }
+        }
+      
+        public string MassSupplyDocumentDeliveryAmountRUS
+        {
+            get
+            {
+                return massSupplyDocumentDeliveryAmountRUS;
+            }
+
+            set
+            {
+                massSupplyDocumentDeliveryAmountRUS = value;
+                OnPropertyChanged("MassSupplyDocumentDeliveryAmountRUS");
+            }
+        }
+
         public string MassSupplyDocumentPaymentID
         {
             get
@@ -1486,7 +1517,13 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             _sqlRequestSave.AddParametr("@p_MassSupplyDocumentDeliveryImageInvoice", SqlDbType.NVarChar);
             _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryImageInvoice", String.Empty);
-          
+
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentDeliveryAmountUSA", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryAmountUSA", String.Empty);
+
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentDeliveryAmountRUS", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryAmountRUS", String.Empty);
+
             _sqlRequestSave.AddParametr("@p_MassSupplyDocumentPaymentID", SqlDbType.NVarChar);
             _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentID", String.Empty);
 
@@ -1618,6 +1655,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryImageTTN", row.MassSupplyDocumentDeliveryImageTTN);
             _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryInvoice", row.MassSupplyDocumentDeliveryInvoice);
             _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryImageInvoice", row.MassSupplyDocumentDeliveryImageInvoice);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryAmountUSA", row.MassSupplyDocumentDeliveryAmountUSA);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryAmountRUS", row.MassSupplyDocumentDeliveryAmountRUS);
 
             //SupplyDocumentPayment
             _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentID", row.MassSupplyDocumentPaymentID);

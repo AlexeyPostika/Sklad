@@ -101,47 +101,47 @@
                                                 Text="{Binding ElementName=page, Path=SyncDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"                                           
                                                 LabelText="{x:Static res:Resources.AmountRUS}"
                                                 IsEnabled="False"
-                                                IsReadOnly="True" LabelWidth="100" Width="275"/>
+                                                IsReadOnly="True" LabelWidth="100" Width="280"/>
 
                     </StackPanel>
                 </Border>
-                <Label Content="Поставки" Margin="120,0,0,0" Grid.Column="1"/>
+                <Label Content="Доставка" Margin="120,0,0,0" Grid.Column="1"/>
                 <Border Style="{DynamicResource BorderStyle}" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1">
                     <StackPanel>
                         <SimpleControl:EditBoxWithLabel x:Name="DeliveryQuantitySummary"                                         
                                                 Text="{Binding ElementName=page, Path=SyncDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"                                           
                                                 LabelText="{x:Static res:Resources.Quantity}"
                                                 IsEnabled="False"
-                                                IsReadOnly="True" LabelWidth="100" Width="275"/>
+                                                IsReadOnly="True" LabelWidth="100" Width="280"/>
 
                         <SimpleControl:EditBoxWithLabel x:Name="DeliveryTagPriceUSASummary"                                          
                                                 Text="{Binding ElementName=page, Path=SyncDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"                                           
                                                 LabelText="{x:Static res:Resources.AmountUSA}"
                                                 IsEnabled="False"
-                                                IsReadOnly="True" LabelWidth="100" Width="275"/>
+                                                IsReadOnly="True" LabelWidth="100" Width="280"/>
 
                         <SimpleControl:EditBoxWithLabel x:Name="DeliveryTagPriceRUSSummary"                                   
                                                 Text="{Binding ElementName=page, Path=SyncDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"                                           
                                                 LabelText="{x:Static res:Resources.AmountRUS}"
                                                 IsEnabled="False"
-                                                IsReadOnly="True" LabelWidth="100" Width="275" Margin="0,0,0,5" />
+                                                IsReadOnly="True" LabelWidth="100" Width="280" Margin="0,0,0,5" />
 
                     </StackPanel>
                 </Border>
-                <Label Content="Оплаты" Margin="120,0,0,0" Grid.Column="2"/>
+                <Label Content="Оплата" Margin="120,0,0,0" Grid.Column="2"/>
                 <Border Style="{DynamicResource BorderStyle}" Margin="10,0,0,0" Grid.Row="1" Grid.Column="2">
                     <StackPanel>
                         <SimpleControl:EditBoxWithLabel x:Name="PaymentQuantitySummary"                                       
                                                 Text="{Binding ElementName=page, Path=SyncDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"                                           
                                                 LabelText="{x:Static res:Resources.RemainsAmount}"
                                                 IsEnabled="False"
-                                                IsReadOnly="True" LabelWidth="100" Width="275"/>
+                                                IsReadOnly="True" LabelWidth="100" Width="280"/>
 
                         <SimpleControl:EditBoxWithLabel x:Name="PaymentTagPriceRUSSummary"                                      
                                                 Text="{Binding ElementName=page, Path=SyncDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"                                           
                                                 LabelText="{x:Static res:Resources.BalanceAmount}"
                                                 IsEnabled="False"
-                                                IsReadOnly="True" LabelWidth="100" Width="275" Margin="0,0,0,5" />
+                                                IsReadOnly="True" LabelWidth="100" Width="280" Margin="0,0,0,5" />
                     </StackPanel>
                 </Border>
             </Grid>
@@ -259,7 +259,9 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="{x:Static res:Resources.LastModifiadDateText}" SortMemberPath="Model" CanUserSort="True" Binding="{Binding Path=LastModifiadDateText , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                        <!--<DataGridTextColumn Header="{x:Static res:Resources.LastModifiadDateText}" SortMemberPath="Model" CanUserSort="True" Binding="{Binding Path=LastModifiadDateText , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />-->
+                        <DataGridTextColumn Header="{x:Static res:Resources.DelivaryAmountUSA}" SortMemberPath="Status" CanUserSort="True" Binding="{Binding Path=AmountUSA , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
+                        <DataGridTextColumn Header="{x:Static res:Resources.DelivaryAmountRUS}" SortMemberPath="Invoice" CanUserSort="True" Binding="{Binding Path=AmountRUS , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
 
                     </DataGrid.Columns>
                 </DataGrid>

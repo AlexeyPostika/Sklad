@@ -89,6 +89,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
         private String phonesCompany;
         private String phonesManager;
         private String adressCompany;
+
+        private Decimal amountUSA;
+        private Decimal amountRUS;
+
         private DateTime? createdDate;
         private Int32 createdUserID;
         private DateTime? lastModificatedDate;
@@ -427,6 +431,34 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
             {
                 deliveryDetailsID = value;
                 OnPropertyChanged("DeliveryDetailsID");
+            }
+        }
+      
+        public Decimal AmountUSA
+        {
+            get
+            {
+                return amountUSA;
+            }
+
+            set
+            {
+                amountUSA = value;
+                OnPropertyChanged("AmountUSA");
+            }
+        }
+      
+        public Decimal AmountRUS
+        {
+            get
+            {
+                return amountRUS;
+            }
+
+            set
+            {
+                amountRUS = value;
+                OnPropertyChanged("AmountRUS");
             }
         }
 

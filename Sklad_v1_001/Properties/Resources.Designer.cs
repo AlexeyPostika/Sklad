@@ -412,6 +412,24 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Цен. дост в RUS.
+        /// </summary>
+        public static string DelivaryAmountRUS {
+            get {
+                return ResourceManager.GetString("DelivaryAmountRUS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Цен. дост в USA.
+        /// </summary>
+        public static string DelivaryAmountUSA {
+            get {
+                return ResourceManager.GetString("DelivaryAmountUSA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Поставки.
         /// </summary>
         public static string Deliveries {
