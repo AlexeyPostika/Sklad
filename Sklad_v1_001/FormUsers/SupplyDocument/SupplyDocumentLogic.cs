@@ -421,7 +421,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         private String massSupplyDocumentDetailsTagPriceRUS;
         private String massSupplyDocumentDetailsCategoryID;
         private String massSupplyDocumentDetailsCategoryDetailsID;
-        private Byte[] massSupplyDocumentDetailsImageProduct;
+        private String massSupplyDocumentDetailsImageProduct;
 
         //SupplyDocumentDelivery
         private String massSupplyDocumentDeliveryID;
@@ -931,7 +931,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 OnPropertyChanged("MassSupplyDocumentDetailsCategoryDetailsID");
             }
         }
-        public byte[] MassSupplyDocumentDetailsImageProduct
+        public String MassSupplyDocumentDetailsImageProduct
         {
             get
             {
@@ -1132,6 +1132,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public LocalRow()
+        {
+            ReffDate = DateTime.Now;
         }
     }
 
@@ -1428,11 +1433,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSave.AddParametr("@p_Amount", SqlDbType.Money);
             _sqlRequestSave.SetParametrValue("@p_Amount", 0);
 
-            _sqlRequestSave.AddParametr("@p_ReffID", SqlDbType.Int);
-            _sqlRequestSave.SetParametrValue("@p_ReffID", 0);
+            //_sqlRequestSave.AddParametr("@p_ReffID", SqlDbType.Int);
+            //_sqlRequestSave.SetParametrValue("@p_ReffID", 0);
 
-            _sqlRequestSave.AddParametr("@p_ReffDate", SqlDbType.DateTime);
-            _sqlRequestSave.SetParametrValue("@p_ReffDate", DateTime.Now);
+            //_sqlRequestSave.AddParametr("@p_ReffDate", SqlDbType.DateTime);
+            //_sqlRequestSave.SetParametrValue("@p_ReffDate", DateTime.Now);
 
             _sqlRequestSave.AddParametr("@p_SupplyDocumentNumber", SqlDbType.BigInt);
             _sqlRequestSave.SetParametrValue("@p_SupplyDocumentNumber", 0);
@@ -1591,8 +1596,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSave.SetParametrValue("@p_Status", row.Status);
             _sqlRequestSave.SetParametrValue("@p_Count", row.Count);
             _sqlRequestSave.SetParametrValue("@p_Amount", row.Amount);
-            _sqlRequestSave.SetParametrValue("@p_ReffID", row.ReffID);
-            _sqlRequestSave.SetParametrValue("@p_ReffDate", row.ReffDate);
+            //_sqlRequestSave.SetParametrValue("@p_ReffID", row.ReffID);
+            //_sqlRequestSave.SetParametrValue("@p_ReffDate", row.ReffDate);
             _sqlRequestSave.SetParametrValue("@p_SupplyDocumentNumber", row.SupplyDocumentNumber);         
 
             //SupplyDocumentDetails

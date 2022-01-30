@@ -603,7 +603,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             _localeRow.CategoryDetailsDescription = _row.CategoryDetailsDescription;
             
             //продукт
-            _localeRow.ID = _row.ID;
+            //_localeRow.ID = _row.ID;
             _localeRow.Name = _row.Name;
             _localeRow.Quantity = _row.Quantity;
             _localeRow.TagPriceUSA = _row.TagPriceUSA;

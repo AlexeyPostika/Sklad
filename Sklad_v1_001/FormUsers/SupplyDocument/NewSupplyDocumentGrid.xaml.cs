@@ -184,6 +184,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             this.ToolBarDelivery.ButtonNewProduct.Text = Properties.Resources.ADD;
             this.ToolBarPayment.ButtonNewProduct.Text = Properties.Resources.ADD;
+
+            this.DataContext = Document;
         }
 
         private void Refresh()
@@ -246,7 +248,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             {
                 if (supplyDocumentDeliveryItem.DeliveryRow != null && !String.IsNullOrEmpty(supplyDocumentDeliveryItem.DeliveryRow.NameCompany))
                 {                             
-                    localeRowDelivery = supplyDocumentDeliveryItem.DeliveryRow;                  
+                    localeRowDelivery = supplyDocumentDeliveryItem.DeliveryRow;
+
+                    SupplyDocumentDelivery.LocaleRow locale = new SupplyDocumentDelivery.LocaleRow();                          
+                    localeRowDelivery.ID = 0;
+                    locale.TempID = supplyDocumentDelivery.Count() + 1;
                     supplyDocumentDelivery.Add(localeRowDelivery);
                 }
             }
@@ -369,7 +375,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 Document.MassSupplyDocumentDetailsTagPriceRUS = "";
                 Document.MassSupplyDocumentDetailsCategoryID = "";
                 Document.MassSupplyDocumentDetailsCategoryDetailsID = "";
-                Document.MassSupplyDocumentDetailsImageProduct = new byte[] { };
+                Document.MassSupplyDocumentDetailsImageProduct = "";
 
                 //SupplyDocumentDeliverry
                 Document.MassSupplyDocumentDeliveryID="";

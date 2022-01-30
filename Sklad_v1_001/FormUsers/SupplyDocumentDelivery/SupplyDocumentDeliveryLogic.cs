@@ -80,6 +80,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         private Int32 iD;
+        private Int32 tempID;
         private Int32 deliveryID;
         private Int32 deliveryDetailsID;
 
@@ -115,6 +116,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
             {
                 iD = value;
                 OnPropertyChanged("ID");
+            }
+        }
+        //tempID
+        public int TempID
+        {
+            get
+            {
+                return tempID;
+            }
+
+            set
+            {
+                tempID = value;
+                OnPropertyChanged("TempID");
             }
         }
 
