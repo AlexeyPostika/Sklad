@@ -101,6 +101,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         SupplyDocumentPayment.LocaleRow supplyDocumentPaymentLocaleRow;
         ObservableCollection<SupplyDocumentPayment.LocaleRow> supplyDocumentPayment;
 
+        //Суммы
+        RowSummary summary;
+
         private Int32 status;
 
         public LocalRow Document
@@ -158,12 +161,12 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             this.attributes = _attributes;
 
+            summary = new RowSummary();
+
             supplyDocumentLogic = new SupplyDocumentLogic();
             supplyDocumentDetailsLogic = new SupplyDocumentDetailsLogic();
             supplyDocumentDeliveryLogic = new SupplyDocumentDeliveryLogic();
             supplyDocumentPaymentLogic = new SupplyDocumentPaymentLogic();
-
-            //detailsProduct = new ObservableCollection<Product.LocaleRow>();
 
             supplyDocumentDetails = new ObservableCollection<SupplyDocumentDetails.LocaleRow>();
             supplyDocumentDelivery = new ObservableCollection<SupplyDocumentDelivery.LocaleRow>();
@@ -172,8 +175,6 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             dataListCategory = new ObservableCollection<Category.LocalRow>();
             dataListDelivery = new ObservableCollection<Delivery.LocaleRow>();
             dataListDeliveryDetails = new ObservableCollection<DeliveryDetails.LocaleRow>();
-
-            Status = 0;
 
             SupplyTypeList supplyTypeList = new SupplyTypeList();
             this.StatusDocument.ComboBoxElement.ItemsSource = supplyTypeList.innerList;
@@ -186,11 +187,12 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             this.ToolBarPayment.ButtonNewProduct.Text = Properties.Resources.ADD;
 
             this.DataContext = Document;
+            this.DocumentSummary.DataContext = summary;
         }
 
         private void Refresh()
         {
-            
+            CalculateSummary();
         }
        
         #region Продукт
@@ -211,11 +213,12 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     supplyDocumentDetails.Add(supplyDocumentDetailsLogic.ConvertProductToSupplyDocumentDetails(localeRowProduct, locale));
                 }
             }
+            CalculateSummary();
         }
 
         private void ToolBarProduct_ButtonDeleteClick()
         {
-
+            CalculateSummary();
         }
 
         private void CheckAll_Click(object sender, RoutedEventArgs e)
@@ -256,11 +259,12 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     supplyDocumentDelivery.Add(localeRowDelivery);
                 }
             }
+            CalculateSummary();
         }
 
         private void ToolBarDelivery_ButtonDeleteClick()
         {
-
+            CalculateSummary();
         }
 
         #endregion
@@ -281,11 +285,12 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     supplyDocumentPayment.Add(supplyDocumentPaymentLocaleRow);
                 }
             }
+            CalculateSummary();
         }
 
         private void ToolBarPayment_ButtonDeleteClick()
         {
-
+            CalculateSummary();
         }
         #endregion
 
@@ -445,9 +450,57 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         }
         #endregion
 
-        #region Калькулятор
-        private void Сalculat()
+        #region CalculateSummary 
+
+        //просто проверка денег
+        void CalculateSummary()
         {
+           // screenState = false;
+            Int32 SummaryQuantityProductTemp = 0;
+            decimal SummaryTagPriceWithUCATemp = 0;
+            decimal SummaryTagPriceWithRUSTemp = 0;
+
+            Int32 SummaryQuantityDeliveryTemp = 0;
+            decimal SummaryAmountUCATemp = 0;
+            decimal SummaryAmountRUSTemp = 0;
+
+            decimal SummaryPaymentBalansTemp = 0;
+            decimal SummaryPaymentRemainsTemp = 0;
+
+            foreach (SupplyDocumentDetails.LocaleRow row in supplyDocumentDetails)
+            {
+                SummaryQuantityProductTemp = SummaryQuantityProductTemp + row.Quantity;
+                SummaryTagPriceWithUCATemp = SummaryTagPriceWithUCATemp + row.TagPriceUSA;
+                SummaryTagPriceWithRUSTemp = SummaryTagPriceWithRUSTemp + row.TagPriceRUS;               
+            }
+
+            SummaryQuantityDeliveryTemp = supplyDocumentDelivery.Count();
+            foreach (SupplyDocumentDelivery.LocaleRow row in supplyDocumentDelivery)
+            {               
+                SummaryAmountUCATemp = SummaryAmountUCATemp + row.AmountUSA;
+                SummaryAmountRUSTemp = SummaryAmountRUSTemp + row.AmountRUS;
+            }
+
+            foreach (SupplyDocumentPayment.LocaleRow row in supplyDocumentPayment)
+            {
+                if (row.Status == 1)
+                {
+                    SummaryPaymentBalansTemp = SummaryPaymentBalansTemp + row.Amount;
+                }
+                else              
+                    SummaryPaymentRemainsTemp = SummaryPaymentRemainsTemp + row.Amount;
+            }
+
+            summary.SummaryQuantityProduct = SummaryQuantityProductTemp;
+            summary.SummaryTagPriceWithUCA = SummaryTagPriceWithUCATemp;
+            summary.SummaryTagPriceWithRUS = SummaryTagPriceWithRUSTemp;
+
+            summary.SummaryQuantityDelivery = SummaryQuantityDeliveryTemp;
+            summary.SummaryAmountUCA = SummaryAmountUCATemp;
+            summary.SummaryAmountRUS = SummaryAmountRUSTemp;
+
+            summary.SummaryPaymentBalans = SummaryPaymentBalansTemp;
+            summary.SummaryPaymentRemains = SummaryPaymentRemainsTemp;
 
         }
         #endregion

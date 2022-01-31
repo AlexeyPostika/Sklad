@@ -1172,19 +1172,120 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
     }
 
     public class RowSummary : INotifyPropertyChanged
-    {
-        private Int32 summaryQuantityLine;
-        public Int32 SummaryQuantityLine
+    {      
+        Int32 summaryQuantityProduct;
+        decimal summaryTagPriceWithUCA;
+        decimal summaryTagPriceWithRUS;
+
+        Int32 summaryQuantityDelivery;
+        decimal summaryAmountUCA;
+        decimal summaryAmountRUS;
+
+        decimal summaryPaymentBalans;
+        decimal summaryPaymentRemains;
+        public Int32 SummaryQuantityProduct
         {
             get
             {
-                return summaryQuantityLine;
+                return summaryQuantityProduct;
             }
 
             set
             {
-                summaryQuantityLine = value;
-                OnPropertyChanged("SummaryQuantityLine");
+                summaryQuantityProduct = value;
+                OnPropertyChanged("SummaryQuantityProduct");
+            }
+        }
+
+        public decimal SummaryTagPriceWithUCA
+        {
+            get
+            {
+                return summaryTagPriceWithUCA;
+            }
+
+            set
+            {
+                summaryTagPriceWithUCA = value;
+                OnPropertyChanged("SummaryTagPriceWithUCA");
+            }
+        }
+        public decimal SummaryTagPriceWithRUS
+        {
+            get
+            {
+                return summaryTagPriceWithRUS;
+            }
+
+            set
+            {
+                summaryTagPriceWithRUS = value;
+                OnPropertyChanged("SummaryTagPriceWithRUS");
+            }
+        }
+        public int SummaryQuantityDelivery
+        {
+            get
+            {
+                return summaryQuantityDelivery;
+            }
+
+            set
+            {
+                summaryQuantityDelivery = value;
+                OnPropertyChanged("SummaryQuantityDelivery");
+            }
+        }
+        public decimal SummaryAmountUCA
+        {
+            get
+            {
+                return summaryAmountUCA;
+            }
+
+            set
+            {
+                summaryAmountUCA = value;
+                OnPropertyChanged("SummaryAmountUCA");
+            }
+        }
+        public decimal SummaryAmountRUS
+        {
+            get
+            {
+                return summaryAmountRUS;
+            }
+
+            set
+            {
+                summaryAmountRUS = value;
+                OnPropertyChanged("SummaryAmountRUS");
+            }
+        }
+        public decimal SummaryPaymentBalans
+        {
+            get
+            {
+                return summaryPaymentBalans;
+            }
+
+            set
+            {
+                summaryPaymentBalans = value;
+                OnPropertyChanged("SummaryPaymentBalans");
+            }
+        }
+        public decimal SummaryPaymentRemains
+        {
+            get
+            {
+                return summaryPaymentRemains;
+            }
+
+            set
+            {
+                summaryPaymentRemains = value;
+                OnPropertyChanged("SummaryPaymentRemains");
             }
         }
 
