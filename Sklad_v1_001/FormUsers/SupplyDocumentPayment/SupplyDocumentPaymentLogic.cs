@@ -86,6 +86,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
             set
             {
                 opertionTypeString = value;
+                if (!String.IsNullOrEmpty(opertionType.ToString()))
+                {
+                    OperationTypeTypeList operationTypeTypeList = new OperationTypeTypeList();
+                    opertionTypeString = operationTypeTypeList.innerList.FirstOrDefault(x => x.ID == opertionType) != null ? operationTypeTypeList.innerList.FirstOrDefault(x => x.ID == opertionType).Description : Properties.Resources.UndefindField;
+                }
                 OnPropertyChanged("OpertionTypeString");
             }
         }

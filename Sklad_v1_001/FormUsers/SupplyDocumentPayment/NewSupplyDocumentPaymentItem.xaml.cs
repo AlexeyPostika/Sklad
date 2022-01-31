@@ -74,7 +74,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
                 return false;
             }
 
-            if (String.IsNullOrEmpty(PaymentLocalRow.OpertionTypeString))
+            if (String.IsNullOrEmpty(PaymentLocalRow.OpertionType.ToString()))
             {
                 mb = new FlexMessageBox();
                 mb.Show(Properties.Resources.ErrorEmptyField, GenerateTitle(TitleType.Error, Properties.Resources.EmptyField, OperationTypeName.LabelText), MessageBoxButton.OK, MessageBoxImage.Error);
@@ -98,7 +98,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
                 return false;
             }
 
-            if (String.IsNullOrEmpty(PaymentLocalRow.StatusString))
+            if (String.IsNullOrEmpty(PaymentLocalRow.Status.ToString()))
             {
                 mb = new FlexMessageBox();
                 mb.Show(Properties.Resources.ErrorEmptyField, GenerateTitle(TitleType.Error, Properties.Resources.EmptyField, StatusName.LabelText), MessageBoxButton.OK, MessageBoxImage.Error);

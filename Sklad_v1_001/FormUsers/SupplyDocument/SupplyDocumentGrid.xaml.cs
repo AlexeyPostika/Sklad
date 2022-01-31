@@ -728,7 +728,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             {
                 datalist.Add(supplyDocumentLogic.Convert(row, new LocalRow()));
             }
-            TotalCount = summary.SummaryQuantityLine;
+            TotalCount = summary.SummaryQuantityProduct;
             PageCount = localFilter.PagerowCount;
             CurrentPage = localFilter.PageNumber;
         }
@@ -759,7 +759,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         private void ToolbarNextPageData_ButtonNextEnd()
         {
             IsPaginator = true;
-            localFilter.PageNumber = (Int32)(Math.Ceiling((double)summary.SummaryQuantityLine / localFilter.PagerowCount) - 1);
+            localFilter.PageNumber = (Int32)(Math.Ceiling((double)summary.SummaryQuantityProduct / localFilter.PagerowCount) - 1);
             Refresh();
         }
 
