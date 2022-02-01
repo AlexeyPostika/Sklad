@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,17 +20,188 @@ namespace Sklad_v1_001.Control.ToolBar
     /// <summary>
     /// Логика взаимодействия для ToolBarNextToBack.xaml
     /// </summary>
-    public partial class ToolBarNextToBack : UserControl
+    public partial class ToolBarNextToBack : UserControl, INotifyPropertyChanged
     {
-        public static readonly DependencyProperty WidthOnWhatPageProperty = DependencyProperty.Register(
-          "WidthOnWhatPage",
-          typeof(Int32),
-          typeof(ToolBarNextToBack), new UIPropertyMetadata(50));
-
-        public Int32 WidthOnWhatPage
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
         {
-            get { return (Int32)GetValue(WidthOnWhatPageProperty); }
-            set { SetValue(WidthOnWhatPageProperty, value); }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public static readonly DependencyProperty LabelTextProperty = DependencyProperty.Register(
+                      "LabelText",
+                      typeof(String),
+                      typeof(ToolBarNextToBack), new UIPropertyMetadata(""));
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public String LabelText
+        {
+            get { return (String)GetValue(LabelTextProperty); }
+            set { SetValue(LabelTextProperty, value); }
+        }
+
+        public static readonly DependencyProperty CurrentPageProperty = DependencyProperty.Register(
+                     "CurrentPage",
+                     typeof(Int32),
+                     typeof(ToolBarNextToBack), new UIPropertyMetadata(1, new PropertyChangedCallback(CurrentPageChanget)));
+
+        //// Обычное свойство .NET  - обертка над свойством зависимостей
+        public Int32 CurrentPage
+        {
+            get
+            {
+                return (Int32)GetValue(CurrentPageProperty);
+            }
+            set
+            {
+                SetValue(CurrentPageProperty, value);
+                ChangeLabelString();
+                OnPropertyChanged("CurrentPage");
+            }
+        }
+
+        public static readonly DependencyProperty TotalCountProperty = DependencyProperty.Register(
+                       "TotalCount",
+                       typeof(Int32),
+                       typeof(ToolBarNextToBack), new UIPropertyMetadata(0, new PropertyChangedCallback(CurrentPageChanget)));
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Int32 TotalCount
+        {
+            get
+            {
+                return (Int32)GetValue(TotalCountProperty);
+            }
+            set
+            {
+                SetValue(TotalCountProperty, value);
+                OnPropertyChanged("TotalCount");
+            }
+        }
+
+        public static readonly DependencyProperty PageCountProperty = DependencyProperty.Register(
+                       "PageCount",
+                       typeof(Int32),
+                       typeof(ToolBarNextToBack), new UIPropertyMetadata(0, new PropertyChangedCallback(CurrentPageChanget)));
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Int32 PageCount
+        {
+            get
+            {
+                return (Int32)GetValue(PageCountProperty);
+            }
+            set
+            {
+                SetValue(PageCountProperty, value);
+                OnPropertyChanged("PageCount");
+            }
+        }
+
+        public static void CurrentPageChanget(DependencyObject depObject, DependencyPropertyChangedEventArgs args)
+        {
+            ToolBarNextToBack paginator = (ToolBarNextToBack)depObject;
+            paginator.ChangeLabelString();
+        }
+
+        public static readonly DependencyProperty PrevPageEnableProperty = DependencyProperty.Register(
+                       "PrevPageEnable",
+                       typeof(Boolean),
+                       typeof(ToolBarNextToBack), new UIPropertyMetadata(false));
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Boolean PrevPageEnable
+        {
+            get
+            {
+                return (Boolean)GetValue(PrevPageEnableProperty);
+            }
+            set
+            {
+                SetValue(PrevPageEnableProperty, value);
+                OnPropertyChanged("PrevPageEnable");
+            }
+        }
+        public static readonly DependencyProperty HomePageEnableProperty = DependencyProperty.Register(
+                      "HomePageEnable",
+                      typeof(Boolean),
+                      typeof(ToolBarNextToBack), new UIPropertyMetadata(false));
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Boolean HomePageEnable
+        {
+            get
+            {
+                return (Boolean)GetValue(HomePageEnableProperty);
+            }
+            set
+            {
+                SetValue(HomePageEnableProperty, value);
+                OnPropertyChanged("HomePageEnable");
+            }
+        }
+
+        public static readonly DependencyProperty NextPageEnableProperty = DependencyProperty.Register(
+                       "NextPageEnable",
+                       typeof(Boolean),
+                       typeof(ToolBarNextToBack), new UIPropertyMetadata(true));
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Boolean NextPageEnable
+        {
+            get
+            {
+                return (Boolean)GetValue(NextPageEnableProperty);
+            }
+            set
+            {
+                SetValue(NextPageEnableProperty, value);
+                OnPropertyChanged("NextPageEnable");
+            }
+        }
+
+        public static readonly DependencyProperty EndPageEnableProperty = DependencyProperty.Register(
+                       "EndPageEnable",
+                       typeof(Boolean),
+                       typeof(ToolBarNextToBack), new UIPropertyMetadata(true));
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Boolean EndPageEnable
+        {
+            get
+            {
+                return (Boolean)GetValue(EndPageEnableProperty);
+            }
+            set
+            {
+                SetValue(EndPageEnableProperty, value);
+                OnPropertyChanged("EndPageEnable");
+            }
+        }
+
+
+
+        private void ChangeLabelString()
+        {
+            PrevPageEnable = CurrentPage != 0;
+            HomePageEnable = CurrentPage != 0;
+            if (TotalCount != 0)
+            {
+                if (PageCount != 0)
+                {
+                    LabelText = Properties.Resources.PAGE + " " + (CurrentPage + 1).ToString("N0", CultureInfo.GetCultureInfo("en-US")) + " " + Properties.Resources.PageIn + " " + Math.Ceiling((double)TotalCount / PageCount).ToString("N0", CultureInfo.GetCultureInfo("en-US"));
+                    NextPageEnable = CurrentPage != (Int32)(Math.Ceiling((double)TotalCount / PageCount) - 1);
+                    EndPageEnable = CurrentPage != (Int32)(Math.Ceiling((double)TotalCount / PageCount) - 1);
+                }
+            }
+            else
+            {
+                LabelText = Properties.Resources.PAGE + " 0 " + Properties.Resources.PageIn + " 0";
+                HomePageEnable = false;
+                EndPageEnable = false;
+                NextPageEnable = false;
+                PrevPageEnable = false;
+            }
         }
 
         public static readonly DependencyProperty TextOnWhatPageProperty = DependencyProperty.Register(

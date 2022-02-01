@@ -492,11 +492,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             }
 
             summary.SummaryQuantityProduct = SummaryQuantityProductTemp;
-            summary.SummaryTagPriceWithUCA = SummaryTagPriceWithUCATemp;
-            summary.SummaryTagPriceWithRUS = SummaryTagPriceWithRUSTemp;
+            summary.SummaryProductTagPriceUSA = SummaryTagPriceWithUCATemp;
+            summary.SummaryProductTagPriceRUS = SummaryTagPriceWithRUSTemp;
 
-            summary.SummaryQuantityDelivery = SummaryQuantityDeliveryTemp;
-            summary.SummaryAmountUCA = SummaryAmountUCATemp;
+            summary.SummaryDeliveryQuantity = SummaryQuantityDeliveryTemp;
+            summary.SummaryAmountUSA = SummaryAmountUCATemp;
             summary.SummaryAmountRUS = SummaryAmountRUSTemp;
 
             summary.SummaryPaymentBalans = SummaryPaymentBalansTemp;

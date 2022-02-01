@@ -1105,6 +1105,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на из.
+        /// </summary>
+        public static string PageIn {
+            get {
+                return ResourceManager.GetString("PageIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Оплачено.
         /// </summary>
         public static string Payment1 {

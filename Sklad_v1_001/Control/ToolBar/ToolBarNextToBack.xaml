@@ -13,9 +13,8 @@
             <ColumnDefinition Width="400*"/>
         </Grid.ColumnDefinitions>
         <!--на какой странице/сколько страниц-->
-        <Label x:Name="OnWhatPage" HorizontalAlignment="Center" Margin="10,4"
-               Width="{Binding Path=WidthOnWhatPage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-               Content="{Binding Path=TextOnWhatPage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <Label x:Name="label" HorizontalAlignment="Center" Margin="10,4"
+               Width="Auto" Height="30" Content="{Binding ElementName=control, Path=LabelText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
         <!--в начало-->
         <Button x:Name="BackInButton"  Grid.Column="2" HorizontalAlignment="Left" Margin="1,4,0,4" 

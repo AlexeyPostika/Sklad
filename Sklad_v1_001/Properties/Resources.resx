@@ -666,4 +666,7 @@
   <data name="DelivaryAmountUSA" xml:space="preserve">
     <value>Цен. дост в USA</value>
   </data>
+  <data name="PageIn" xml:space="preserve">
+    <value>из</value>
+  </data>
 </root>

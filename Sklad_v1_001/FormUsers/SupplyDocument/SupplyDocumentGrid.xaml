@@ -156,6 +156,8 @@
                                    IsEnableNext="{Binding ElementName=page, Path=IsEnableNext, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                    IsEnableBackIn="{Binding ElementName=page, Path=IsEnableBackIn, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                    IsEnableNextEnd="{Binding ElementName=page, Path=IsEnableNextEnd, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                   TextOnWhatPage="{Binding ElementName=page, Path=TextOnWhatPage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                                   CurrentPage="{Binding ElementName=page, Path=CurrentPage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   TotalCount="{Binding ElementName=page, Path=TotalCount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   PageCount="{Binding ElementName=page, Path=PageCount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
     </Grid>
 </Page>

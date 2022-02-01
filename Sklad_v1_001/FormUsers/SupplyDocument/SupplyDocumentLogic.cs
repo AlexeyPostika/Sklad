@@ -16,6 +16,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
     public class LocalFilter : INotifyPropertyChanged
     {
         private string search;
+        private Int32 iD;
         private string screenTypeGrid;
 
         private String deliveryID;
@@ -54,6 +55,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             {
                 search = value;
                 OnPropertyChanged("Search");
+            }
+        }
+
+         public Int32 ID
+        {
+            get
+            {
+                return iD;
+            }
+
+            set
+            {
+                iD = value;
+                OnPropertyChanged("ID");
             }
         }
 
@@ -380,6 +395,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         private Int32 count;
         private Decimal amount;
         private Int32 reffID;
+        private String invoice;
+        private String tTN;
+        private String managerName;
+        private String delivery;
+
         private DateTime reffDate;
         private Int64 supplyDocumentNumber;
         private DateTime? createdDate;
@@ -496,6 +516,63 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 OnPropertyChanged("StatusString");
             }
         }
+
+        public String Invoice
+        {
+            get
+            {
+                return invoice;
+            }
+
+            set
+            {
+                invoice = value;
+                OnPropertyChanged("StatusString");
+            }
+        }
+       
+        public String TTN
+        {
+            get
+            {
+                return tTN;
+            }
+
+            set
+            {
+                tTN = value;
+                OnPropertyChanged("TTN");
+            }
+        }
+      
+        public String ManagerName
+        {
+            get
+            {
+                return managerName;
+            }
+
+            set
+            {
+                managerName = value;
+                OnPropertyChanged("ManagerName");
+            }
+        }
+        
+        public String Delivery
+        {
+            get
+            {
+                return delivery;
+            }
+
+            set
+            {
+                delivery = value;
+                OnPropertyChanged("Delivery");
+            }
+        }
+
         public DateTime? CreatedDate
         {
             get
@@ -1172,17 +1249,31 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
     }
 
     public class RowSummary : INotifyPropertyChanged
-    {      
+    {
+        Int32 summaryQuantityLine;
         Int32 summaryQuantityProduct;
-        decimal summaryTagPriceWithUCA;
-        decimal summaryTagPriceWithRUS;
+        decimal summaryProductTagPriceUSA;
+        decimal summaryProductTagPriceRUS;
 
-        Int32 summaryQuantityDelivery;
-        decimal summaryAmountUCA;
+        Int32 summaryDeliveryQuantity;
+        decimal summaryAmountUSA;
         decimal summaryAmountRUS;
 
         decimal summaryPaymentBalans;
         decimal summaryPaymentRemains;
+        public Int32 SummaryQuantityLine
+        {
+            get
+            {
+                return summaryQuantityLine;
+            }
+
+            set
+            {
+                summaryQuantityLine = value;
+                OnPropertyChanged("SummaryQuantityLine");
+            }
+        }
         public Int32 SummaryQuantityProduct
         {
             get
@@ -1197,56 +1288,56 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             }
         }
 
-        public decimal SummaryTagPriceWithUCA
+        public decimal SummaryProductTagPriceUSA
         {
             get
             {
-                return summaryTagPriceWithUCA;
+                return summaryProductTagPriceUSA;
             }
 
             set
             {
-                summaryTagPriceWithUCA = value;
-                OnPropertyChanged("SummaryTagPriceWithUCA");
+                summaryProductTagPriceUSA = value;
+                OnPropertyChanged("SummaryProductTagPriceUSA");
             }
         }
-        public decimal SummaryTagPriceWithRUS
+        public decimal SummaryProductTagPriceRUS
         {
             get
             {
-                return summaryTagPriceWithRUS;
+                return summaryProductTagPriceRUS;
             }
 
             set
             {
-                summaryTagPriceWithRUS = value;
-                OnPropertyChanged("SummaryTagPriceWithRUS");
+                summaryProductTagPriceRUS = value;
+                OnPropertyChanged("SummaryProductTagPriceRUS");
             }
         }
-        public int SummaryQuantityDelivery
+        public int SummaryDeliveryQuantity
         {
             get
             {
-                return summaryQuantityDelivery;
+                return summaryDeliveryQuantity;
             }
 
             set
             {
-                summaryQuantityDelivery = value;
-                OnPropertyChanged("SummaryQuantityDelivery");
+                summaryDeliveryQuantity = value;
+                OnPropertyChanged("SummaryDeliveryQuantity");
             }
         }
-        public decimal SummaryAmountUCA
+        public decimal SummaryAmountUSA
         {
             get
             {
-                return summaryAmountUCA;
+                return summaryAmountUSA;
             }
 
             set
             {
-                summaryAmountUCA = value;
-                OnPropertyChanged("SummaryAmountUCA");
+                summaryAmountUSA = value;
+                OnPropertyChanged("SummaryAmountUSA");
             }
         }
         public decimal SummaryAmountRUS
@@ -1513,6 +1604,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSelectSummary.AddParametr("@p_Search", SqlDbType.Int);
             _sqlRequestSelectSummary.SetParametrValue("@p_Search", "");
 
+            _sqlRequestSelectSummary.AddParametr("@p_ID", SqlDbType.Int);
+            _sqlRequestSelectSummary.SetParametrValue("@p_ID", 0);
+
             _sqlRequestSelectSummary.AddParametr("@p_CreatedUserID", SqlDbType.Int);
             _sqlRequestSelectSummary.SetParametrValue("@p_CreatedUserID", 0);
 
@@ -1707,19 +1801,19 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSelectSummary.SqlAnswer.datatable.Clear();
             _data.Clear();
 
-            _sqlRequestSelectSummary.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeGrid);
             _sqlRequestSelectSummary.SetParametrValue("@p_Search", _localFilter.Search);
-            _sqlRequestSelectSummary.SetParametrValue("@p_CreatedUserID ", _localFilter.CreatedByUserID);
-            _sqlRequestSelectSummary.SetParametrValue("@p_LastModifiedUserID ", _localFilter.LastModifiedByUserID);
+            _sqlRequestSelectSummary.SetParametrValue("@p_ID", _localFilter.ID);
+            _sqlRequestSelectSummary.SetParametrValue("@p_CreatedUserID", _localFilter.CreatedByUserID);
+            _sqlRequestSelectSummary.SetParametrValue("@p_LastModifiedUserID", _localFilter.LastModifiedByUserID);
             _sqlRequestSelectSummary.SetParametrValue("@p_Status", _localFilter.Status);
+            _sqlRequestSelectSummary.SetParametrValue("@p_FromCreatedDate", _localFilter.FromCreatedDate);
+            _sqlRequestSelectSummary.SetParametrValue("@p_ToCreatedDate", _localFilter.ToCreatedDate);
+            _sqlRequestSelectSummary.SetParametrValue("@p_FromLastModifiedDate", _localFilter.FromLastModifiedDate);
+            _sqlRequestSelectSummary.SetParametrValue("@p_ToLastModifiedDate", _localFilter.ToLastModifiedDate);
             _sqlRequestSelectSummary.SetParametrValue("@p_Quantity_Min", _localFilter.QuantityMin);
-            _sqlRequestSelectSummary.SetParametrValue("@p_Quantity_Max ", _localFilter.QuantityMax);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Quantity_Max", _localFilter.QuantityMax);
             _sqlRequestSelectSummary.SetParametrValue("@p_TagPriceVATRUS_Min", _localFilter.AmountMin);
-            _sqlRequestSelectSummary.SetParametrValue("@p_TagPriceVATRUS_Max ", _localFilter.AmountMax);
-            _sqlRequestSelectSummary.SetParametrValue("@p_FromCreatedDate ", _localFilter.FromCreatedDate);
-            _sqlRequestSelectSummary.SetParametrValue("@p_ToCreatedDate ", _localFilter.ToCreatedDate);
-            _sqlRequestSelectSummary.SetParametrValue("@p_FromLastModifiedDate ", _localFilter.FromLastModifiedDate);
-            _sqlRequestSelectSummary.SetParametrValue("@p_ToLastModifiedDate ", _localFilter.ToLastModifiedDate);
+            _sqlRequestSelectSummary.SetParametrValue("@p_TagPriceVATRUS_Max", _localFilter.AmountMax);
 
             _sqlRequestSelectSummary.ComplexRequest(get_summary_procedure, CommandType.StoredProcedure, null);
             _data = _sqlRequestSelectSummary.SqlAnswer.datatable;
@@ -1796,17 +1890,31 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _localeRow.LastModificatedUserID = convertData.ConvertDataInt32("LastModificatedUserID");
             _localeRow.CreatedUserIDString= convertData.ConvertDataString("CreatedUserIDString");
             _localeRow.LastModificatedUserIDString = convertData.ConvertDataString("LastModificatedUserIDString");
-            //_localeRow.Invoice = convertData.ConvertDataString("Invoice");
-            //_localeRow.TTN = convertData.ConvertDataString("TTN");
-            //_localeRow.ManagerName = convertData.ConvertDataString("ManagerName");
-            //_localeRow.Delivery = convertData.ConvertDataString("Delivery");
+            _localeRow.Invoice = convertData.ConvertDataString("Invoice");
+            _localeRow.TTN = convertData.ConvertDataString("TTN");
+            _localeRow.ManagerName = convertData.ConvertDataString("ManagerName");
+            _localeRow.Delivery = convertData.ConvertDataString("Delivery");
             _localeRow.Amount = (Decimal)convertData.ConvertDataDouble("Amount");
             _localeRow.Count = convertData.ConvertDataInt32("Count");
          
             return _localeRow;
         }
 
+        //данные для суммы
+        public void ConvertSummary(DataRow _dataRow, RowSummary _localeRow)
+        {
+            ConvertData convertData = new ConvertData(_dataRow, _localeRow);
+            _localeRow.SummaryQuantityLine = convertData.ConvertDataInt32("SummaryQuantityLine");
+            _localeRow.SummaryQuantityProduct = convertData.ConvertDataInt32("ProductQuantity");
+            _localeRow.SummaryProductTagPriceUSA = convertData.ConvertDataDecimal("ProductTagPriceUSA");
+            _localeRow.SummaryProductTagPriceRUS = convertData.ConvertDataInt32("ProductTagPriceRUS");
+            _localeRow.SummaryDeliveryQuantity = convertData.ConvertDataInt32("DeliveryQuantity");
+            _localeRow.SummaryAmountUSA = convertData.ConvertDataDecimal("AmountUSA");
+            _localeRow.SummaryAmountRUS = convertData.ConvertDataInt32("AmountRUS");
+            _localeRow.SummaryPaymentBalans = convertData.ConvertDataDecimal("PaymentAmountBalans");
+            _localeRow.SummaryPaymentRemains = convertData.ConvertDataDecimal("PaymentAmountRemains");
 
+        }
 
         public DataTable GetFilter(String filterName)
         {

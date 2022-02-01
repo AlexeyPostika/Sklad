@@ -728,15 +728,30 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             {
                 datalist.Add(supplyDocumentLogic.Convert(row, new LocalRow()));
             }
-            TotalCount = summary.SummaryQuantityProduct;
+
+            CalculateSummary();
+
+            TotalCount = summary.SummaryQuantityLine;
             PageCount = localFilter.PagerowCount;
             CurrentPage = localFilter.PageNumber;
         }
 
         #endregion
 
+        #region CalculateSummary
+        public void CalculateSummary()
+        {
+            DataTable datatable1 = supplyDocumentLogic.FillSummary(localFilter);
+            foreach (DataRow row in datatable1.Rows)
+            {
+                supplyDocumentLogic.ConvertSummary(row, summary);
+            }
+          
+        }
+        #endregion
+
         #region Paginator
-        
+
         private void ToolbarNextPageData_ButtonBackIn()
         {
             IsPaginator = true;
@@ -759,7 +774,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         private void ToolbarNextPageData_ButtonNextEnd()
         {
             IsPaginator = true;
-            localFilter.PageNumber = (Int32)(Math.Ceiling((double)summary.SummaryQuantityProduct / localFilter.PagerowCount) - 1);
+            localFilter.PageNumber = (Int32)(Math.Ceiling((double)summary.SummaryQuantityLine / localFilter.PagerowCount) - 1);
             Refresh();
         }
 
