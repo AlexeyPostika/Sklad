@@ -1601,17 +1601,17 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSelect.SetParametrValue("@p_Sort", 0);
             //----------------------------------------------------------------------------
 
-            _sqlRequestSelectSummary.AddParametr("@p_Search", SqlDbType.Int);
+            _sqlRequestSelectSummary.AddParametr("@p_Search", SqlDbType.NVarChar);
             _sqlRequestSelectSummary.SetParametrValue("@p_Search", "");
 
             _sqlRequestSelectSummary.AddParametr("@p_ID", SqlDbType.Int);
             _sqlRequestSelectSummary.SetParametrValue("@p_ID", 0);
 
-            _sqlRequestSelectSummary.AddParametr("@p_CreatedUserID", SqlDbType.Int);
-            _sqlRequestSelectSummary.SetParametrValue("@p_CreatedUserID", 0);
+            _sqlRequestSelectSummary.AddParametr("@p_CreatedUserID", SqlDbType.NVarChar);
+            _sqlRequestSelectSummary.SetParametrValue("@p_CreatedUserID", "");
 
-            _sqlRequestSelectSummary.AddParametr("@p_LastModifiedUserID", SqlDbType.Int);
-            _sqlRequestSelectSummary.SetParametrValue("@p_LastModifiedUserID", 0);
+            _sqlRequestSelectSummary.AddParametr("@p_LastModifiedUserID", SqlDbType.NVarChar);
+            _sqlRequestSelectSummary.SetParametrValue("@p_LastModifiedUserID", "");
 
             _sqlRequestSelectSummary.AddParametr("@p_Status", SqlDbType.NVarChar);
             _sqlRequestSelectSummary.SetParametrValue("@p_Status", "");
@@ -1628,11 +1628,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSelectSummary.AddParametr("@p_ToLastModifiedDate", SqlDbType.DateTime);
             _sqlRequestSelectSummary.SetParametrValue("@p_ToLastModifiedDate", DateTime.Now);
 
-            _sqlRequestSelectSummary.AddParametr("@p_Quantity_Min", SqlDbType.Money);
+            _sqlRequestSelectSummary.AddParametr("@p_Quantity_Min", SqlDbType.Int);
             _sqlRequestSelectSummary.SetParametrValue("@p_Quantity_Min", 0);
 
-            _sqlRequestSelectSummary.AddParametr("@p_Quantity_Max", SqlDbType.Money);
-            _sqlRequestSelectSummary.SetParametrValue("@p_Quantity_Max", SqlMoney.MaxValue);
+            _sqlRequestSelectSummary.AddParametr("@p_Quantity_Max", SqlDbType.Int);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Quantity_Max", 0);
 
             _sqlRequestSelectSummary.AddParametr("@p_TagPriceVATRUS_Min", SqlDbType.Money);
             _sqlRequestSelectSummary.SetParametrValue("@p_TagPriceVATRUS_Min", System.Data.SqlTypes.SqlMoney.MaxValue);
@@ -1904,7 +1904,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         public void ConvertSummary(DataRow _dataRow, RowSummary _localeRow)
         {
             ConvertData convertData = new ConvertData(_dataRow, _localeRow);
-            _localeRow.SummaryQuantityLine = convertData.ConvertDataInt32("SummaryQuantityLine");
+            _localeRow.SummaryQuantityLine = convertData.ConvertDataInt32("QuantityLine");
             _localeRow.SummaryQuantityProduct = convertData.ConvertDataInt32("ProductQuantity");
             _localeRow.SummaryProductTagPriceUSA = convertData.ConvertDataDecimal("ProductTagPriceUSA");
             _localeRow.SummaryProductTagPriceRUS = convertData.ConvertDataInt32("ProductTagPriceRUS");
