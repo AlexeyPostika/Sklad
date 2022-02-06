@@ -458,6 +458,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         //SupplyDocumentPayment
         private String massSupplyDocumentPaymentID;
         private String massSupplyDocumentPaymentAmount;
+        private String massSupplyDocumentPaymentStatus;
         private String massSupplyDocumentPaymentOperationType;
         private String massSupplyDocumentPaymentDescription;
 
@@ -1142,7 +1143,19 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 OnPropertyChanged("MassSupplyDocumentDeliveryAmountRUS");
             }
         }
+        public string MassSupplyDocumentPaymentStatus
+        {
+            get
+            {
+                return massSupplyDocumentPaymentStatus;
+            }
 
+            set
+            {
+                massSupplyDocumentPaymentStatus = value;
+                OnPropertyChanged("MassSupplyDocumentPaymentStatus");
+            }
+        }
         public string MassSupplyDocumentPaymentID
         {
             get
