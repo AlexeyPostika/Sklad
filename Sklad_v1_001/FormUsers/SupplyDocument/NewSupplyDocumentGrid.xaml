@@ -90,13 +90,13 @@
                                             IsReadOnly="True" LabelWidth="100" Width="280"/>
 
                         <SimpleControl:EditBoxWithLabel  x:Name="ProductTagPriceUSASummary"
-                                                 Text="{Binding Path=SummaryTagPriceWithUCA, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}"
+                                                 Text="{Binding Path=SummaryProductTagPriceUSA, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}"
                                                  LabelText="{x:Static res:Resources.AmountUSA}"
                                                  IsEnabled="False"
                                                  IsReadOnly="True" LabelWidth="100" Width="280"/>
 
                         <SimpleControl:EditBoxWithLabel x:Name="ProductTagPriceRUSSummary" Margin="0,0,0,5"                                  
-                                                Text="{Binding Path=SummaryTagPriceWithRUS, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}"                                           
+                                                Text="{Binding Path=SummaryProductTagPriceRUS, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}"                                           
                                                 LabelText="{x:Static res:Resources.AmountRUS}"
                                                 IsEnabled="False"
                                                 IsReadOnly="True" LabelWidth="100" Width="280"/>
@@ -107,13 +107,13 @@
                 <Border Style="{DynamicResource BorderStyle}" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1">
                     <StackPanel>
                         <SimpleControl:EditBoxWithLabel x:Name="DeliveryQuantitySummary"                                         
-                                                Text="{Binding Path=SummaryQuantityDelivery, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"                                           
+                                                Text="{Binding Path=SummaryDeliveryQuantity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"                                           
                                                 LabelText="{x:Static res:Resources.Quantity}"
                                                 IsEnabled="False"
                                                 IsReadOnly="True" LabelWidth="100" Width="280"/>
 
                         <SimpleControl:EditBoxWithLabel x:Name="DeliveryTagPriceUSASummary"                                          
-                                                Text="{Binding Path=SummaryAmountUCA, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}"                                           
+                                                Text="{Binding Path=SummaryAmountUSA, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}"                                           
                                                 LabelText="{x:Static res:Resources.AmountUSA}"
                                                 IsEnabled="False"
                                                 IsReadOnly="True" LabelWidth="100" Width="280"/>

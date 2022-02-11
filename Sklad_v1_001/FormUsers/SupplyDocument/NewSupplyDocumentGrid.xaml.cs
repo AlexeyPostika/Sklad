@@ -418,6 +418,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     Document.MassSupplyDocumentPaymentOperationType = Document.MassSupplyDocumentPaymentOperationType + currentrow.OpertionType.ToString() + '|';
                     Document.MassSupplyDocumentPaymentDescription = Document.MassSupplyDocumentPaymentDescription + currentrow.Description.ToString() + '|';                   
                 }
+                Document.Amount = summary.SummaryProductTagPriceRUS;
+                Document.Count = summary.SummaryQuantityProduct;
 
                 Document.ID = supplyDocumentLogic.SaveRow(Document);
                 //UpdateCurrentDocument(Document.ID);
