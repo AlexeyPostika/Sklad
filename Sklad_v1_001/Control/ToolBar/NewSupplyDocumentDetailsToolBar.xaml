@@ -20,6 +20,7 @@
         <FlexButton:ToolBarButton x:Name="ButtonListcansel" Grid.Column="2" Margin="15,0,0,0" Text="{x:Static res:Resources.LISTDOCUMENT}" ButtonClick="ButtonListcansel_ButtonClick"/>
         <FlexButton:ToolBarButton x:Name="BottonApplyb" Grid.Column="3" Margin="15,0,15,0" Text="{x:Static res:Resources.APPLYBUTTON}" 
                                   IsEnabled="{Binding ElementName=control, Path=IsEnableApply, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                  Visibility="{Binding ElementName=control, Path=VisibilityApply, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                   ButtonClick="BottonApply_ButtonClick"/>
     </Grid>
 </UserControl>

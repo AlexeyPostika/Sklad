@@ -135,7 +135,12 @@ namespace Sklad_v1_001
             supplyDocumentGrid = new SupplyDocumentGrid(attributes);
             frameWorkArea.Navigate(supplyDocumentGrid); // открытие страницы
         }
-        public void ButtonNewSupplyDocument(FormUsers.SupplyDocument.LocalRow document)
+        public void ButtonNewSupplyDocument()
+        {
+            newSupplyDocumentGrid = new NewSupplyDocumentGrid(attributes);          
+            this.frameWorkArea.Navigate(newSupplyDocumentGrid);
+        }
+        public void ButtonNewSupplyDocumentF(FormUsers.SupplyDocument.LocalRow document)
         {
             newSupplyDocumentGrid = new NewSupplyDocumentGrid(attributes);
             newSupplyDocumentGrid.Document = document;

@@ -18,11 +18,13 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="20*"/>
         </Grid.RowDefinitions>
-        <ToolBar:SupplyToolBar ButtonAdd="SupplyToolBar_ButtonAdd"/>
+        <ToolBar:SupplyToolBar ButtonAdd="SupplyToolBar_ButtonAdd"
+                               ButtonEdit="SupplyToolBar_ButtonEdit"/>
 
         <Grid Grid.Row="1" x:Name="SypplyDocumentList">
             <DataGrid x:Name="SypplyDocument" AutoGenerateColumns="False"
-                      SelectionChanged="SypplyDocument_SelectionChanged">
+                      SelectionChanged="SypplyDocument_SelectionChanged"
+                      MouseDoubleClick="SypplyDocument_MouseDoubleClick">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="Auto"/>
                     <!--<DataGridTextColumn Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NameProduct}" Width="450"/>-->

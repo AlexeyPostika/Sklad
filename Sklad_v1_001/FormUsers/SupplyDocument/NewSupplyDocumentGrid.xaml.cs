@@ -147,21 +147,21 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 }
                 else
                     status = 1;
-                //DocumentID = Document.ID;
-                //this.StackPanelSummary.DataContext = Document;
+            
+                this.DataContext = Document;
 
-                //switch (Document.Status)
-                //{
-                //    case 0:
-                //        DocumentToolbar.ButtonApply.Visibility = Visibility.Visible;
-                //        DocumentToolbar.ButtonPrintLabels.IsEnabled = false;
-                //        break;
-                //    case 1:
-                //    case 2:
-                //        DocumentToolbar.ButtonApply.Visibility = Visibility.Visible;
-                //        DocumentToolbar.ButtonPrintLabels.IsEnabled = true;
-                //        break;
-                //}
+                switch (Document.Status)
+                {
+                    case 0:
+                    case 1:
+                        SupplyDocumentDetailsToolBar.VisibilityApply = Visibility.Visible;
+                        //SupplyDocumentDetailsToolBar.ButtonPrintLabels.IsEnabled = false;
+                        break;                  
+                    case 2:
+                        SupplyDocumentDetailsToolBar.VisibilityApply = Visibility.Collapsed;
+                        //DocumentToolbar.ButtonPrintLabels.IsEnabled = true;
+                        break;
+                }
                 Refresh();
             }
         }
@@ -232,7 +232,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             DataTable dataTableSupplyDocumentPayment = supplyDocumentPaymentLogic.FillGrid(Document.ID);
             foreach (DataRow row in dataTableSupplyDocumentPayment.Rows)
             {
-                supplyDocumentDetails.Add(supplyDocumentDetailsLogic.Convert(row, new SupplyDocumentDetails.LocaleRow()));
+                supplyDocumentPayment.Add(supplyDocumentPaymentLogic.Convert(row, new SupplyDocumentPayment.LocaleRow()));
             }
 
             CalculateSummary();

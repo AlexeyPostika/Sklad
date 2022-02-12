@@ -26,7 +26,7 @@
                                                  ButtonSaveclose="SupplyDocumentDetailsToolBar_ButtonSaveclose"
                                                  ButtonListCancel="SupplyDocumentDetailsToolBar_ButtonListCancel"
                                                  ButtonApply="SupplyDocumentDetailsToolBar_ButtonApply"
-                                                 IsEnableApply="{Binding ElementName=page, Path=IsPaymentAddButton , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                                                 IsEnableApply="{Binding ElementName=page, Path=IsApplyDocument , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
         <GroupBox Name="DocumentDetails" Grid.Row="1" Margin="0,0,10,10"
             Header="{x:Static res:Resources.SupplyDocumentHeader}" >
@@ -43,7 +43,7 @@
                     </Grid.ColumnDefinitions>
                 </Grid>
                 <SimpleControl:EditBoxWithLabel x:Name="NumberDocument" Margin="0,10,0,0"
-                                            Text="{Binding ElementName=page, Path=SyncDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                            Text="{Binding Path=DocumentNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                             LabelText="{x:Static res:Resources.NumberDocument}"
                                             IsEnabled="False"
                                             IsReadOnly="True" LabelWidth="100" Width="280"/>

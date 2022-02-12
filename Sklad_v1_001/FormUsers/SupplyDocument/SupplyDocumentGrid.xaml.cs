@@ -780,6 +780,13 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         #endregion
 
+        #region Edit
+        public void EditDetails(LocalRow _localRow)
+        {
+            MainWindow.AppWindow.ButtonNewSupplyDocumentF(_localRow);
+        }
+        #endregion
+
         private void SypplyDocument_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             LocalRow currentrow = this.SypplyDocument.SelectedItem as LocalRow;
@@ -810,7 +817,26 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         private void SupplyToolBar_ButtonAdd()
         {      
-            MainWindow.AppWindow.ButtonNewSupplyDocument(localRow);
+            MainWindow.AppWindow.ButtonNewSupplyDocument();
+        }
+
+        private void SupplyToolBar_ButtonEdit()
+        {
+
+            LocalRow currentrow = this.SypplyDocument.SelectedItem as LocalRow;
+            if (currentrow != null)
+            {
+                EditDetails(currentrow);
+            }
+        }
+
+        private void SypplyDocument_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            LocalRow currentrow = this.SypplyDocument.SelectedItem as LocalRow;
+            if (currentrow != null)
+            {
+                EditDetails(currentrow);
+            }
         }
     }
 }

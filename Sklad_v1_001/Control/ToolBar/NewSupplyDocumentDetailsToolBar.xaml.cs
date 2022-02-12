@@ -25,12 +25,23 @@ namespace Sklad_v1_001.Control.ToolBar
            "IsEnableApply",
            typeof(Boolean),
            typeof(NewSupplyDocumentDetailsToolBar), new UIPropertyMetadata(true));
+        
+        public static readonly DependencyProperty VisibilityApplyProperty = DependencyProperty.Register(
+          "VisibilityApply",
+          typeof(Visibility),
+          typeof(NewSupplyDocumentDetailsToolBar), new UIPropertyMetadata(Visibility.Visible));
 
         public Boolean IsEnableApply
         {
             get { return (Boolean)GetValue(IsEnableApplyProperty); }
             set { SetValue(IsEnableApplyProperty, value); }
         }
+        public Visibility VisibilityApply
+        {
+            get { return (Visibility)GetValue(VisibilityApplyProperty); }
+            set { SetValue(VisibilityApplyProperty, value); }
+        }
+
 
         public event Action ButtonSave;
         public event Action ButtonSaveclose;
