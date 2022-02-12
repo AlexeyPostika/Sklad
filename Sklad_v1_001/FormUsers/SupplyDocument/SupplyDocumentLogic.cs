@@ -1274,6 +1274,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         decimal summaryPaymentBalans;
         decimal summaryPaymentRemains;
+       
         public Int32 SummaryQuantityLine
         {
             get

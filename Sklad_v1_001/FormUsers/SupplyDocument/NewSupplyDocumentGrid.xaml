@@ -25,7 +25,8 @@
                                                  ButtonSave="SupplyDocumentDetailsToolBar_ButtonSave"
                                                  ButtonSaveclose="SupplyDocumentDetailsToolBar_ButtonSaveclose"
                                                  ButtonListCancel="SupplyDocumentDetailsToolBar_ButtonListCancel"
-                                                 ButtonApply="SupplyDocumentDetailsToolBar_ButtonApply"/>
+                                                 ButtonApply="SupplyDocumentDetailsToolBar_ButtonApply"
+                                                 IsEnableApply="{Binding ElementName=page, Path=IsPaymentAddButton , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
         <GroupBox Name="DocumentDetails" Grid.Row="1" Margin="0,0,10,10"
             Header="{x:Static res:Resources.SupplyDocumentHeader}" >
@@ -126,7 +127,7 @@
 
                     </StackPanel>
                 </Border>
-                <Label Content="Оплата" Margin="120,0,0,0" Grid.Column="2"/>
+                <Label Content="Итого" Margin="120,0,0,0" Grid.Column="2"/>
                 <Border Style="{DynamicResource BorderStyle}" Margin="10,0,0,0" Grid.Row="1" Grid.Column="2">
                     <StackPanel>
                         <SimpleControl:EditBoxWithLabel x:Name="PaymentQuantitySummary"                                       
@@ -270,8 +271,9 @@
                     Margin="0,0,10,10">
                     <StackPanel>
                         <ToolBar:DataViewToolNewSupplyDocument x:Name="ToolBarPayment"
-                                                       ButtonNewProductClick="ToolBarPayment_ButtonNewProductClick"
-                                                       ButtonDeleteClick="ToolBarPayment_ButtonDeleteClick"/>
+                                                               ButtonNewProductClick="ToolBarPayment_ButtonNewProductClick"
+                                                               ButtonDeleteClick="ToolBarPayment_ButtonDeleteClick"
+                                                               IsEnabledButton1="{Binding ElementName=page, Path=IsPaymentAddButton , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                         <DataGrid x:Name="DataPayment" 
                           ScrollViewer.HorizontalScrollBarVisibility="Auto"
                           ScrollViewer.VerticalScrollBarVisibility="Auto"

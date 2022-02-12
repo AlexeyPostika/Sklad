@@ -80,6 +80,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         private Int32 iD;
+        private Int64 documentNumber;
         private Int32 tempID;
         private Int32 deliveryID;
         private Int32 deliveryDetailsID;
@@ -92,6 +93,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
 
         private Decimal amountUSA;
         private Decimal amountRUS;
+
+        private String description;
 
         private DateTime? createdDate;
         private Int32 createdUserID;
@@ -120,6 +123,19 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
             {
                 iD = value;
                 OnPropertyChanged("ID");
+            }
+        }
+        public Int64 DocumentNumber
+        {
+            get
+            {
+                return documentNumber;
+            }
+
+            set
+            {
+                documentNumber = value;
+                OnPropertyChanged("DocumentNumber");
             }
         }
         //tempID
@@ -461,6 +477,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
                 OnPropertyChanged("AmountRUS");
             }
         }
+       
+        public String Description
+        {
+            get
+            {
+                return description;
+            }
+
+            set
+            {
+                description = value;
+                OnPropertyChanged("Description");
+            }
+        }
 
         public LocaleRow()
         {
@@ -471,7 +501,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
 
     public class SupplyDocumentDeliveryLogic
     {
-        string get_store_procedure = "xp_GetSupplyDocumentDetailsTable";
+        string get_store_procedure = "xp_GetSupplyDocumentDeliveryTable";
 
         // запрос
         SQLCommanSelect _sqlRequestSelect = null;
@@ -494,9 +524,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
 
             _sqlRequestSelect.AddParametr("@p_DocumentID", SqlDbType.BigInt);
             _sqlRequestSelect.SetParametrValue("@p_DocumentID", 0);
-
-            _sqlRequestSelect.AddParametr("@p_ProductID", SqlDbType.Int);
-            _sqlRequestSelect.SetParametrValue("@p_ProductID", 0);
+        
         }
 
         public DataTable FillGrid()
@@ -510,17 +538,48 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
             return _data;
         }
 
-        public DataTable FillGrid(Int32 _productID)
+        public DataTable FillGrid(Int32 _documentID)
         {
             _sqlRequestSelect.SqlAnswer.datatable.Clear();
             _data.Clear();
-            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeItem);
-            _sqlRequestSelect.SetParametrValue("@p_ProductID", _productID);
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeName);
+            _sqlRequestSelect.SetParametrValue("@p_DocumentID", _documentID);
 
             _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
             _data = _sqlRequestSelect.SqlAnswer.datatable;
             return _data;
         }
+
+        public LocaleRow Convert(DataRow _dataRow, LocaleRow _localeRow)
+        {
+            // SaleDocumentDetailsList statusList = new SaleDocumentDetailsList(); 
+            ConvertData convertData = new ConvertData(_dataRow, _localeRow);
+            _localeRow.ID = convertData.ConvertDataInt32("ID");
+            _localeRow.DeliveryID = convertData.ConvertDataInt32("DeliveryID");
+            _localeRow.NameCompany = convertData.ConvertDataString("NameCompany");
+            _localeRow.PhonesCompany = convertData.ConvertDataString("PhonesCompany");
+            _localeRow.AdressCompany = convertData.ConvertDataString("AdressCompany");
+            _localeRow.DeliveryDetailsID = convertData.ConvertDataInt32("DeliveryDetailsID");
+            _localeRow.ManagerName = convertData.ConvertDataString("ManagerName");
+            _localeRow.PhonesManager = convertData.ConvertDataString("PhonesManager");
+            _localeRow.TTN = convertData.ConvertDataString("TTN");
+            //_localeRow.ImageSourceTTN = convertData.ConvertDataInt32("ID");
+            _localeRow.Invoice = convertData.ConvertDataString("Invoice");
+            // _localeRow.ImageSourceInvoice = convertData.ConvertDataInt32("ID");
+            _localeRow.AmountUSA = convertData.ConvertDataDecimal("AmountUSA");
+            _localeRow.AmountRUS = convertData.ConvertDataDecimal("AmountRUS");
+            _localeRow.Description = convertData.ConvertDataString("Description");
+            _localeRow.DocumentNumber = convertData.ConvertDataInt64("DocumentNumber");
+
+            _localeRow.CreatedDate = convertData.ConvertDataDateTime("CreatedDate");
+            _localeRow.CreatedUserID = convertData.ConvertDataInt32("ID");
+            _localeRow.LastModificatedDate = convertData.ConvertDataDateTime("LastModificatedDate");
+            _localeRow.LastModifiadDateText = convertData.DateTimeConvertShortDateString(_localeRow.LastModificatedDate);
+            _localeRow.LastModificatedUserID = convertData.ConvertDataInt32("ID");
+                                    
+            return _localeRow;
+        }
+
 
         ////
         //public LocaleRow ConvertDeliveryToSupplyDocumentDelivery(Delivery.LocaleRow _row, LocaleRow _localeRow)

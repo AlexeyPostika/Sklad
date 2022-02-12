@@ -21,15 +21,15 @@ namespace Sklad_v1_001.Control.ToolBar
     /// </summary>
     public partial class NewSupplyDocumentDetailsToolBar : UserControl
     {
-        public static readonly DependencyProperty IsEnableAddProperty = DependencyProperty.Register(
-           "IsEnableAdd",
+        public static readonly DependencyProperty IsEnableApplyProperty = DependencyProperty.Register(
+           "IsEnableApply",
            typeof(Boolean),
            typeof(NewSupplyDocumentDetailsToolBar), new UIPropertyMetadata(true));
 
-        public Boolean IsEnableAdd
+        public Boolean IsEnableApply
         {
-            get { return (Boolean)GetValue(IsEnableAddProperty); }
-            set { SetValue(IsEnableAddProperty, value); }
+            get { return (Boolean)GetValue(IsEnableApplyProperty); }
+            set { SetValue(IsEnableApplyProperty, value); }
         }
 
         public event Action ButtonSave;

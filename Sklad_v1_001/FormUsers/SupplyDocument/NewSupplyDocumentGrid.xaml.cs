@@ -10,6 +10,7 @@ using Sklad_v1_001.HelperGlobal;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,6 +56,30 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
     /// </summary>
     public partial class NewSupplyDocumentGrid : Page
     {
+        //IsPaymentAddButton
+        //AmountMax
+        public static readonly DependencyProperty IsPaymentAddButtonProperty = DependencyProperty.Register(
+                   "IsPaymentAddButton",
+                   typeof(Boolean),
+                  typeof(NewSupplyDocumentGrid), new PropertyMetadata(true));
+
+        //IsApplyDocument
+        public static readonly DependencyProperty IsApplyDocumentProperty = DependencyProperty.Register(
+                  "IsApplyDocument",
+                  typeof(Boolean),
+                 typeof(NewSupplyDocumentGrid), new PropertyMetadata(false));
+        public Boolean IsPaymentAddButton
+        {
+            get { return (Boolean)GetValue(IsPaymentAddButtonProperty); }
+            set { SetValue(IsPaymentAddButtonProperty, value); }
+        }
+        public Boolean IsApplyDocument
+        {
+            get { return (Boolean)GetValue(IsApplyDocumentProperty); }
+            set { SetValue(IsApplyDocumentProperty, value); }
+        }
+
+
         Attributes attributes;
         //работаем с продуктами
         FlexMessageBox addProductWindow;
@@ -89,11 +114,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         //ObservableCollection<Product.LocaleRow> detailsProduct;
 
         //доставка
-        SupplyDocumentDeliveryLogic supplyDocumentDeliveryLogic;
+        SupplyDocumentDeliveryLogic supplyDocumentDeliveryLogic;      
         ObservableCollection<SupplyDocumentDelivery.LocaleRow> supplyDocumentDelivery;
 
         //SupplyDocumentDetails
-        SupplyDocumentDetailsLogic supplyDocumentDetailsLogic;
+        SupplyDocumentDetailsLogic supplyDocumentDetailsLogic;      
         ObservableCollection<SupplyDocumentDetails.LocaleRow> supplyDocumentDetails;
 
         //оплата
@@ -174,7 +199,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             dataListCategory = new ObservableCollection<Category.LocalRow>();
             dataListDelivery = new ObservableCollection<Delivery.LocaleRow>();
-            dataListDeliveryDetails = new ObservableCollection<DeliveryDetails.LocaleRow>();
+            dataListDeliveryDetails = new ObservableCollection<DeliveryDetails.LocaleRow>();          
 
             SupplyTypeList supplyTypeList = new SupplyTypeList();
             this.StatusDocument.ComboBoxElement.ItemsSource = supplyTypeList.innerList;
@@ -192,6 +217,24 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         private void Refresh()
         {
+            DataTable dataTableSupplyDocumentDetails = supplyDocumentDetailsLogic.FillGrid(Document.ID);
+            foreach(DataRow row in dataTableSupplyDocumentDetails.Rows)
+            {
+                supplyDocumentDetails.Add(supplyDocumentDetailsLogic.Convert(row, new SupplyDocumentDetails.LocaleRow()));
+            }
+           
+            DataTable dataTableSupplyDocumentDelivery = supplyDocumentDeliveryLogic.FillGrid(Document.ID);
+            foreach (DataRow row in dataTableSupplyDocumentDelivery.Rows)
+            {
+                supplyDocumentDelivery.Add(supplyDocumentDeliveryLogic.Convert(row, new SupplyDocumentDelivery.LocaleRow()));
+            }
+           
+            DataTable dataTableSupplyDocumentPayment = supplyDocumentPaymentLogic.FillGrid(Document.ID);
+            foreach (DataRow row in dataTableSupplyDocumentPayment.Rows)
+            {
+                supplyDocumentDetails.Add(supplyDocumentDetailsLogic.Convert(row, new SupplyDocumentDetails.LocaleRow()));
+            }
+
             CalculateSummary();
         }
        
@@ -241,7 +284,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         private void ToolBarDelivery_ButtonNewProductClick()
         {
             SupplyDocumentDelivery.LocaleRow localeRowDelivery = new SupplyDocumentDelivery.LocaleRow();
-            supplyDocumentDeliveryItem = new SupplyDocumentDeliveryItem(attributes);
+            supplyDocumentDeliveryItem = new SupplyDocumentDeliveryItem(attributes);          
             addDeliveryWindow = new FlexMessageBox();
             // newDeliveryItem.LocaleRow=
             supplyDocumentDeliveryItem.Status = Status;
@@ -274,8 +317,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         {
             supplyDocumentPaymentLocaleRow = new SupplyDocumentPayment.LocaleRow();
             newSupplyDocumentPaymentItem = new NewSupplyDocumentPaymentItem();
-            addSuppluPaymentWindow = new FlexMessageBox();      
+            addSuppluPaymentWindow = new FlexMessageBox();
+            newSupplyDocumentPaymentItem.AmountMax = (Double)summary.SummaryPaymentRemains;
             addSuppluPaymentWindow.Content = newSupplyDocumentPaymentItem;
+
             addSuppluPaymentWindow.Show(Properties.Resources.Payment1);
             if (newSupplyDocumentPaymentItem.IsClickButtonOK == MessageBoxResult.OK)
             {
@@ -460,50 +505,71 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         {
            // screenState = false;
             Int32 SummaryQuantityProductTemp = 0;
-            decimal SummaryTagPriceWithUCATemp = 0;
+            decimal SummaryTagPriceWithUSATemp = 0;
             decimal SummaryTagPriceWithRUSTemp = 0;
 
             Int32 SummaryQuantityDeliveryTemp = 0;
-            decimal SummaryAmountUCATemp = 0;
+            decimal SummaryAmountUSATemp = 0;
             decimal SummaryAmountRUSTemp = 0;
 
-            decimal SummaryPaymentBalansTemp = 0;
-            decimal SummaryPaymentRemainsTemp = 0;
+            decimal SummaryPaymentBalansTemp = 0; //Оплачено
+            decimal SummaryPaymentRemainsTemp = 0; // остаток         
 
             foreach (SupplyDocumentDetails.LocaleRow row in supplyDocumentDetails)
             {
                 SummaryQuantityProductTemp = SummaryQuantityProductTemp + row.Quantity;
-                SummaryTagPriceWithUCATemp = SummaryTagPriceWithUCATemp + row.TagPriceUSA;
-                SummaryTagPriceWithRUSTemp = SummaryTagPriceWithRUSTemp + row.TagPriceRUS;               
+                SummaryTagPriceWithUSATemp = SummaryTagPriceWithUSATemp + row.TagPriceUSA;
+                SummaryTagPriceWithRUSTemp = SummaryTagPriceWithRUSTemp + row.TagPriceRUS; 
             }
 
             SummaryQuantityDeliveryTemp = supplyDocumentDelivery.Count();
             foreach (SupplyDocumentDelivery.LocaleRow row in supplyDocumentDelivery)
             {               
-                SummaryAmountUCATemp = SummaryAmountUCATemp + row.AmountUSA;
+                SummaryAmountUSATemp = SummaryAmountUSATemp + row.AmountUSA;
                 SummaryAmountRUSTemp = SummaryAmountRUSTemp + row.AmountRUS;
             }
+
+            SummaryPaymentRemainsTemp = SummaryAmountRUSTemp + SummaryTagPriceWithRUSTemp;
 
             foreach (SupplyDocumentPayment.LocaleRow row in supplyDocumentPayment)
             {
                 if (row.Status == 1)
                 {
-                    SummaryPaymentBalansTemp = SummaryPaymentBalansTemp + row.Amount;
+                    SummaryPaymentBalansTemp = SummaryPaymentBalansTemp + row.Amount;                  
                 }
                 else              
                     SummaryPaymentRemainsTemp = SummaryPaymentRemainsTemp + row.Amount;
             }
+            
+            if (SummaryPaymentBalansTemp< SummaryPaymentRemainsTemp)
+            {
+                SummaryPaymentRemainsTemp -= SummaryPaymentBalansTemp;
+                IsPaymentAddButton = true;
+            }
+            else
+            {
+                IsPaymentAddButton = false;
+            }
 
             summary.SummaryQuantityProduct = SummaryQuantityProductTemp;
-            summary.SummaryProductTagPriceUSA = SummaryTagPriceWithUCATemp;
+            summary.SummaryProductTagPriceUSA = SummaryTagPriceWithUSATemp;
             summary.SummaryProductTagPriceRUS = SummaryTagPriceWithRUSTemp;
 
             summary.SummaryDeliveryQuantity = SummaryQuantityDeliveryTemp;
-            summary.SummaryAmountUSA = SummaryAmountUCATemp;
+            summary.SummaryAmountUSA = SummaryAmountUSATemp;
             summary.SummaryAmountRUS = SummaryAmountRUSTemp;
 
-            summary.SummaryPaymentBalans = SummaryPaymentBalansTemp;
-            summary.SummaryPaymentRemains = SummaryPaymentRemainsTemp;
+            summary.SummaryPaymentBalans = SummaryPaymentBalansTemp < 0 ? Math.Abs(SummaryPaymentBalansTemp) : SummaryPaymentBalansTemp;
+            summary.SummaryPaymentRemains = SummaryPaymentRemainsTemp < 0 ? Math.Abs(SummaryPaymentRemainsTemp) : SummaryPaymentRemainsTemp; 
+            
+            if (SummaryPaymentBalansTemp > SummaryPaymentRemainsTemp)
+            {
+                IsApplyDocument = true;
+            }
+          else
+            {
+                IsApplyDocument = false;
+            }
 
         }
         #endregion

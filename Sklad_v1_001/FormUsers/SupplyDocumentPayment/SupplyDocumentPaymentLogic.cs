@@ -1,9 +1,11 @@
 ﻿using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.GlobalVariable;
 using Sklad_v1_001.HelperGlobal;
+using Sklad_v1_001.SQL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +21,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         private Int32 iD;
+        private Int32 documentID;
         private Decimal amount;
         private Int32 opertionType;
         private String opertionTypeString;
@@ -28,9 +31,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
 
         private DateTime? createdDate;
         private Int32 createdUserID;
-        private DateTime? lastModicatedDate;
+        private DateTime? lastModificatedDate;
         private String lastModifiadDateText;
-        private Int32 lastModicatedUserID;
+        private Int32 lastModificatedUserID;
 
         private String rRN;
         private Byte[] rRNDocumentByte;
@@ -49,6 +52,21 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
                 OnPropertyChanged("ID");
             }
         }
+
+        public int DocumentID
+        {
+            get
+            {
+                return documentID;
+            }
+
+            set
+            {
+                documentID = value;
+                OnPropertyChanged("DocumentID");
+            }
+        }
+
         public Decimal Amount
         {
             get
@@ -73,6 +91,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
             set
             {
                 opertionType = value;
+                if (!String.IsNullOrEmpty(opertionType.ToString()))
+                {
+                    OperationTypeTypeList operationTypeTypeList = new OperationTypeTypeList();
+                    opertionTypeString = operationTypeTypeList.innerList.FirstOrDefault(x => x.ID == opertionType) != null ? operationTypeTypeList.innerList.FirstOrDefault(x => x.ID == opertionType).Description : Properties.Resources.UndefindField;
+                }
                 OnPropertyChanged("OpertionType");
             }
         }
@@ -85,12 +108,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
 
             set
             {
-                opertionTypeString = value;
-                if (!String.IsNullOrEmpty(opertionType.ToString()))
-                {
-                    OperationTypeTypeList operationTypeTypeList = new OperationTypeTypeList();
-                    opertionTypeString = operationTypeTypeList.innerList.FirstOrDefault(x => x.ID == opertionType) != null ? operationTypeTypeList.innerList.FirstOrDefault(x => x.ID == opertionType).Description : Properties.Resources.UndefindField;
-                }
+                opertionTypeString = value;            
                 OnPropertyChanged("OpertionTypeString");
             }
         }
@@ -134,35 +152,35 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
                 OnPropertyChanged("CreatedUserID");
             }
         }
-        public DateTime? LastModicatedDate
+        public DateTime? LastModificatedDate
         {
             get
             {
-                return lastModicatedDate;
+                return lastModificatedDate;
             }
 
             set
             {
-                lastModicatedDate = value;
+                lastModificatedDate = value;
                 if (!String.IsNullOrEmpty(value.Value.ToString()))
                 {
                     ConvertData convertData = new ConvertData();
-                    convertData.DateTimeConvertShortDateString(value);
+                    lastModifiadDateText = convertData.DateTimeConvertShortDateString(value);
                 }
-                OnPropertyChanged("LastModicatedDate");
+                OnPropertyChanged("LastModificatedDate");
             }
         }
-        public int LastModicatedUserID
+        public int LastModificatedUserID
         {
             get
             {
-                return lastModicatedUserID;
+                return lastModificatedUserID;
             }
 
             set
             {
-                lastModicatedUserID = value;
-                OnPropertyChanged("LastModicatedUserID");
+                lastModificatedUserID = value;
+                OnPropertyChanged("LastModificatedUserID");
             }
         }
         //lastModifiadDateText
@@ -267,5 +285,62 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
     }
     public class SupplyDocumentPaymentLogic
     {
+        string get_store_procedure = "xp_GetSupplyDocumentPaymentTable";
+
+        // запрос
+        SQLCommanSelect _sqlRequestSelect = null;
+
+        // результаты запроса
+        DataTable _data = null;
+        DataTable _datarow = null;
+        
+        public SupplyDocumentPaymentLogic()
+        {
+            _sqlRequestSelect = new SQLCommanSelect();
+
+
+            _data = new DataTable();
+            _datarow = new DataTable();
+
+            //----------------------------------------------------------------------------
+            _sqlRequestSelect.AddParametr("@p_TypeScreen", SqlDbType.VarChar, 10);
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeName);
+
+            _sqlRequestSelect.AddParametr("@p_DocumentID", SqlDbType.BigInt);
+            _sqlRequestSelect.SetParametrValue("@p_DocumentID", 0);
+
+        }
+
+        public DataTable FillGrid(Int32 _documentID)
+        {
+            _sqlRequestSelect.SqlAnswer.datatable.Clear();
+            _data.Clear();
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeName);
+            _sqlRequestSelect.SetParametrValue("@p_DocumentID", _documentID);
+
+            _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
+            _data = _sqlRequestSelect.SqlAnswer.datatable;
+            return _data;
+        }
+
+        public LocaleRow Convert(DataRow _dataRow, LocaleRow _localeRow)
+        {
+            // SaleDocumentDetailsList statusList = new SaleDocumentDetailsList(); 
+            ConvertData convertData = new ConvertData(_dataRow, _localeRow);
+            _localeRow.ID = convertData.ConvertDataInt32("ID");
+            _localeRow.DocumentID = convertData.ConvertDataInt32("DocumentID");
+            _localeRow.Status = convertData.ConvertDataInt32("Status");
+            _localeRow.OpertionType = convertData.ConvertDataInt32("OpertionType");
+            _localeRow.Amount = convertData.ConvertDataDecimal("Amount");
+            _localeRow.Description = convertData.ConvertDataString("Description");
+
+            _localeRow.CreatedDate = convertData.ConvertDataDateTime("CreatedDate");
+            _localeRow.CreatedUserID = convertData.ConvertDataInt32("ID");
+            _localeRow.LastModificatedDate = convertData.ConvertDataDateTime("LastModificatedDate");           
+            _localeRow.LastModificatedUserID = convertData.ConvertDataInt32("ID");
+
+            return _localeRow;
+        }
+
     }
 }

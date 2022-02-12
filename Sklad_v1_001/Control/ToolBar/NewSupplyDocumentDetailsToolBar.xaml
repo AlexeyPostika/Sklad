@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:Sklad_v1_001.Control.ToolBar"
              xmlns:res="clr-namespace:Sklad_v1_001.Properties"
              xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton"
-             mc:Ignorable="d">
+             mc:Ignorable="d"
+             Name="control">
     <Grid>
         <Grid.ColumnDefinitions>           
             <ColumnDefinition/>          
@@ -17,6 +18,8 @@
         <FlexButton:ToolBarButton x:Name="ButtonSaveb" Margin="5,0,0,0" Text="{x:Static res:Resources.SAVELIST}" ButtonClick="ButtonSave_ButtonClick"/>
         <FlexButton:ToolBarButton x:Name="ButtonSaveClose" Grid.Column="1" Margin="15,0,0,0" Text="{x:Static res:Resources.SAVECLOCE}" ButtonClick="ButtonSaveClose_ButtonClick"/>
         <FlexButton:ToolBarButton x:Name="ButtonListcansel" Grid.Column="2" Margin="15,0,0,0" Text="{x:Static res:Resources.LISTDOCUMENT}" ButtonClick="ButtonListcansel_ButtonClick"/>
-        <FlexButton:ToolBarButton x:Name="BottonApplyb" Grid.Column="3" Margin="15,0,15,0" Text="{x:Static res:Resources.APPLYBUTTON}" ButtonClick="BottonApply_ButtonClick"/>
+        <FlexButton:ToolBarButton x:Name="BottonApplyb" Grid.Column="3" Margin="15,0,15,0" Text="{x:Static res:Resources.APPLYBUTTON}" 
+                                  IsEnabled="{Binding ElementName=control, Path=IsEnableApply, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                  ButtonClick="BottonApply_ButtonClick"/>
     </Grid>
 </UserControl>

@@ -77,6 +77,18 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
                     typeof(Boolean),
                    typeof(SupplyDocumentDeliveryItem), new PropertyMetadata(false));
 
+        
+        public static readonly DependencyProperty AmountUSAMaxProperty = DependencyProperty.Register(
+                  "AmountUSAMax",
+                  typeof(Double),
+                 typeof(SupplyDocumentDeliveryItem));
+
+        
+        public static readonly DependencyProperty AmountRUSMaxProperty = DependencyProperty.Register(
+                  "AmountRUSMax",
+                  typeof(Double),
+                 typeof(SupplyDocumentDeliveryItem));
+
         public Boolean IsEnableInvoice
         {
             get { return (Boolean)GetValue(IsEnableInvoiceProperty); }
@@ -121,6 +133,17 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
         {
             get { return (Boolean)GetValue(IsEnableEditProperty); }
             set { SetValue(IsEnableEditProperty, value); }
+        }
+        //
+        public Double AmountUSAMax
+        {
+            get { return (Double)GetValue(AmountUSAMaxProperty); }
+            set { SetValue(AmountUSAMaxProperty, value); }
+        }
+        public Double AmountRUSMax
+        {
+            get { return (Double)GetValue(AmountRUSMaxProperty); }
+            set { SetValue(AmountRUSMaxProperty, value); }
         }
 
         Attributes attributes;

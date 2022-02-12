@@ -15,7 +15,8 @@
       Title="NewAddProductItem"
       Style="{DynamicResource UsersPageWidth}" 
       Height="Auto"
-      Width="350">
+      Width="350"
+      Name="page">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -25,9 +26,10 @@
         <Label Content="Оплата" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16" />
         <Border Style="{DynamicResource BorderStyle}" Margin="10" Grid.Row="1" Grid.ColumnSpan="2">
             <StackPanel x:Name="Product" Background="Transparent">
-                <SimpleControl:EditBoxWithLabelFloatForEdit x:Name="AmounPayment" LabelText="{x:Static res:Resources.AmountPayment}" 
+                <SimpleControl:EditBoxWithLabelFloatForEdit x:Name="AmounPayment" LabelText="Сумма оплаты" 
                                                             IsRequired="Visible"
-                                                            Value="{Binding Path=Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                                             
+                                                            Value="{Binding Path=Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"   
+                                                            MaxValue="{Binding ElementName=page, Path=AmountMax, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                             LabelWidth="110"/>
                 
                 <FlexComboBox:ComboBoxWithLabel x:Name="OperationTypeName" LabelText="{x:Static res:Resources.OperationType}"  

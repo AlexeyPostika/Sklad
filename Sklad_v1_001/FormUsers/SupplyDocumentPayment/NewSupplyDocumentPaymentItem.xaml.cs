@@ -27,11 +27,24 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
                     "IsClickButtonOK",
                     typeof(MessageBoxResult),
                    typeof(NewSupplyDocumentPaymentItem), new PropertyMetadata(MessageBoxResult.Cancel));
+        //AmountMax
+        public static readonly DependencyProperty AmountMaxProperty = DependencyProperty.Register(
+                   "AmountMax",
+                   typeof(Double),
+                  typeof(NewSupplyDocumentPaymentItem));
+
         public MessageBoxResult IsClickButtonOK
         {
             get { return (MessageBoxResult)GetValue(IsClickButtonOKProperty); }
             set { SetValue(IsClickButtonOKProperty, value); }
         }
+
+        public Double AmountMax
+        {
+            get { return (Double)GetValue(AmountMaxProperty); }
+            set { SetValue(AmountMaxProperty, value); }
+        }
+
         LocaleRow paymentLocalRow;
         public LocaleRow PaymentLocalRow { get => paymentLocalRow; set => paymentLocalRow = value; }
 

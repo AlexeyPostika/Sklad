@@ -601,7 +601,7 @@
     <value>Заполните обязательное поле</value>
   </data>
   <data name="AmountPayment" xml:space="preserve">
-    <value>Цена доставки</value>
+    <value>Сумма оплаты</value>
   </data>
   <data name="OperationType" xml:space="preserve">
     <value>Тип оплаты</value>

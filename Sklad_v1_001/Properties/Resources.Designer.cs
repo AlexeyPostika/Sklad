@@ -133,7 +133,7 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Цена доставки.
+        ///   Ищет локализованную строку, похожую на Сумма оплаты.
         /// </summary>
         public static string AmountPayment {
             get {
