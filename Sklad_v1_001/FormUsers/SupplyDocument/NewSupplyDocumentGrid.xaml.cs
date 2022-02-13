@@ -162,7 +162,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                         //DocumentToolbar.ButtonPrintLabels.IsEnabled = true;
                         break;
                 }
-                Refresh();
+                if (document.ID>0)
+                    Refresh();
             }
         }
 
@@ -186,6 +187,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             this.attributes = _attributes;
 
+            Document = new LocalRow();
             summary = new RowSummary();
 
             supplyDocumentLogic = new SupplyDocumentLogic();
@@ -213,11 +215,12 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             this.DataContext = Document;
             this.DocumentSummary.DataContext = summary;
+           // Refresh();
         }
 
         private void Refresh()
         {
-            DataTable dataTableSupplyDocumentDetails = supplyDocumentDetailsLogic.FillGrid(Document.ID);
+            DataTable dataTableSupplyDocumentDetails = supplyDocumentDetailsLogic.FillGridDocument(Document.ID);
             foreach(DataRow row in dataTableSupplyDocumentDetails.Rows)
             {
                 supplyDocumentDetails.Add(supplyDocumentDetailsLogic.Convert(row, new SupplyDocumentDetails.LocaleRow()));
@@ -239,24 +242,54 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         }
        
         #region Продукт
-        private void ToolBarProduct_ButtonNewProductClick()
+
+        private void EditProduct(SupplyDocumentDetails.LocaleRow currentrow = null)
         {
-            //MainWindow.AppWindow.ButtonNewAddProduct();           
             newAddProductItem = new NewAddProductItem(attributes);
-            addProductWindow = new FlexMessageBox();           
+            addProductWindow = new FlexMessageBox();
+            newAddProductItem.ProductLocalRow = currentrow != null ? supplyDocumentDetailsLogic.ConvertSupplyDocumentDetailsToProduct(new Product.LocaleRow(), currentrow) : new Product.LocaleRow();
             addProductWindow.Content = newAddProductItem;
             addProductWindow.Show(Properties.Resources.Products);
             if (newAddProductItem.IsClickButtonOK == MessageBoxResult.OK)
             {
-                if (newAddProductItem.ProductLocalRow != null )
-                {                           
-                    localeRowProduct = newAddProductItem.ProductLocalRow;
+                if (newAddProductItem.ProductLocalRow != null)
+                {
                     SupplyDocumentDetails.LocaleRow locale = new SupplyDocumentDetails.LocaleRow();
-                    locale.TempID = supplyDocumentDetails.Count() + 1;
-                    supplyDocumentDetails.Add(supplyDocumentDetailsLogic.ConvertProductToSupplyDocumentDetails(localeRowProduct, locale));
+                    localeRowProduct = newAddProductItem.ProductLocalRow;
+                    if (newAddProductItem.ProductLocalRow.ID == 0)
+                    {                            
+                        locale.TempID = supplyDocumentDetails.Count() + 1;
+                        supplyDocumentDetails.Add(supplyDocumentDetailsLogic.ConvertProductToSupplyDocumentDetails(localeRowProduct, locale));
+                    }
+                    else
+                    {
+                        locale = supplyDocumentDetails.FirstOrDefault(x => x.ID == localeRowProduct.ID);
+                        supplyDocumentDetails.Remove(locale);
+                        if (locale == null)
+                            locale = new SupplyDocumentDetails.LocaleRow();
+                        supplyDocumentDetailsLogic.ConvertProductToSupplyDocumentDetails(localeRowProduct, locale);                      
+                        locale.TempID = supplyDocumentDetails.Count() + 1;
+                        supplyDocumentDetails.Add(locale);
+                    }
                 }
             }
             CalculateSummary();
+        }
+
+        private void ToolBarProduct_ButtonNewProductClick()
+        {
+            //MainWindow.AppWindow.ButtonNewAddProduct();           
+            EditProduct();
+        }
+
+        private void DataProduct_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            SupplyDocumentDetails.LocaleRow currentrow = this.DataProduct.SelectedItem as SupplyDocumentDetails.LocaleRow;
+            if (currentrow != null)
+            {
+                //MainWindow.AppWindow.ButtonNewAddProductF(supplyDocumentDetailsLogic.ConvertSupplyDocumentDetailsToProduct(new Product.LocaleRow(), currentrow));
+                EditProduct(currentrow);
+            }
         }
 
         private void ToolBarProduct_ButtonDeleteClick()
@@ -409,6 +442,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 Document.MassSupplyDocumentDetailsCategoryID = "";
                 Document.MassSupplyDocumentDetailsCategoryDetailsID = "";
                 Document.MassSupplyDocumentDetailsImageProduct = "";
+                Document.MassSupplyDocumentDetailsModel = "";
+                Document.MassSupplyDocumentDetailsSizeProduct = "";
+                Document.MassSupplyDocumentDetailsSize = "";
+                Document.MassSupplyDocumentDetailsBarCode = "";
 
                 //SupplyDocumentDeliverry
                 Document.MassSupplyDocumentDeliveryID="";
@@ -426,6 +463,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 Document.MassSupplyDocumentPaymentAmount="";
                 Document.MassSupplyDocumentPaymentOperationType="";
                 Document.MassSupplyDocumentPaymentDescription="";
+                Document.MassSupplyDocumentPaymentStatus = "";
               
                 //продукты
                 foreach (SupplyDocumentDetails.LocaleRow currentrow in supplyDocumentDetails)
@@ -437,7 +475,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     Document.MassSupplyDocumentDetailsTagPriceRUS = Document.MassSupplyDocumentDetailsTagPriceRUS + currentrow.TagPriceRUS.ToString() + '|';
                     Document.MassSupplyDocumentDetailsCategoryID = Document.MassSupplyDocumentDetailsCategoryID + currentrow.CategoryID.ToString() + '|';
                     Document.MassSupplyDocumentDetailsCategoryDetailsID = Document.MassSupplyDocumentDetailsCategoryDetailsID + currentrow.CategoryDetailsID.ToString() + '|';
-                    //Document.MassSupplyDocumentDetailsImageProduct = Document.MassSupplyDocumentDetailsImageProduct + currentrow.ImageProduct.ToString() + '|';                
+                    Document.MassSupplyDocumentDetailsModel = Document.MassSupplyDocumentDetailsModel + currentrow.Model+ '|';
+                    Document.MassSupplyDocumentDetailsSizeProduct = Document.MassSupplyDocumentDetailsSizeProduct + currentrow.SizeProduct + '|';
+                    Document.MassSupplyDocumentDetailsSize = Document.MassSupplyDocumentDetailsSize + currentrow.Package + '|';
+                    //Document.MassSupplyDocumentDetailsImageProduct = Document.MassSupplyDocumentDetailsImageProduct + currentrow.ImageProduct.ToString() + '|'; 
+                    Document.MassSupplyDocumentDetailsBarCode = Document.MassSupplyDocumentDetailsBarCode + currentrow.BarCodeString + '|';                  
                 }
 
                 //сопуствующие товары
@@ -535,15 +577,14 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             {
                 if (row.Status == 1)
                 {
-                    SummaryPaymentBalansTemp = SummaryPaymentBalansTemp + row.Amount;                  
-                }
-                else              
-                    SummaryPaymentRemainsTemp = SummaryPaymentRemainsTemp + row.Amount;
+                    SummaryPaymentBalansTemp = SummaryPaymentBalansTemp + row.Amount;
+                    SummaryPaymentRemainsTemp = SummaryPaymentRemainsTemp - row.Amount;
+                }           
+                
             }
             
             if (SummaryPaymentBalansTemp< SummaryPaymentRemainsTemp)
-            {
-                SummaryPaymentRemainsTemp -= SummaryPaymentBalansTemp;
+            {             
                 IsPaymentAddButton = true;
             }
             else
@@ -573,5 +614,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         }
         #endregion
+
+        
     }
 }

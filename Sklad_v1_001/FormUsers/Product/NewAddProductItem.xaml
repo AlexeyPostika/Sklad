@@ -83,11 +83,12 @@
                                                IsRequired="Visible"
                                                Description="{Binding Path=SizeProduct, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                EnableTextBox="True"/>
-                <FlexRadioButton:FlexRadioButton LabelText="{x:Static res:Resources.PackageYEStoNOT}" 
+                <FlexRadioButton:FlexRadioButton x:Name="RadioYEStoNO" LabelText="{x:Static res:Resources.PackageYEStoNOT}" 
                                                  IsRequired="Visible"
                                                  YESLabelText="Да"
                                                  NOLabelText="Нет"
                                                  IsRadio="{Binding Path=Package, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                 IsRadioType="{Binding Path=RadioType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                  LabelWidth="150"/>
             </StackPanel>
         </Border>

@@ -101,6 +101,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
         private String sizeProduct;
         private String model;
         private ImageSource imageSourcePackage;
+        private String barCodeString;
 
         //стандартные поля
         private DateTime? createdDate;
@@ -293,6 +294,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             {
                 imageSourcePackage = value;
                 OnPropertyChanged("ImageSourcePackage");
+            }
+        }
+
+        public string BarCodeString
+        {
+            get
+            {
+                return barCodeString;
+            }
+
+            set
+            {
+                barCodeString = value;
+                OnPropertyChanged("BarCodeString");
             }
         }
 
@@ -517,13 +532,13 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
 
             //----------------------------------------------------------------------------
             _sqlRequestSelect.AddParametr("@p_TypeScreen", SqlDbType.VarChar, 10);
-            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeName);
-
-            _sqlRequestSelect.AddParametr("@p_DocumentID", SqlDbType.BigInt);
-            _sqlRequestSelect.SetParametrValue("@p_DocumentID", 0);
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeName);          
 
             _sqlRequestSelect.AddParametr("@p_ProductID", SqlDbType.Int);
             _sqlRequestSelect.SetParametrValue("@p_ProductID", 0);
+            
+            _sqlRequestSelect.AddParametr("@p_DocumentID", SqlDbType.BigInt);
+            _sqlRequestSelect.SetParametrValue("@p_DocumentID", 0);
         }
 
         public DataTable FillGrid()
@@ -537,12 +552,26 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             return _data;
         }
 
-        public DataTable FillGrid(Int32 _productID)
+        public DataTable FillGridDocument(Int32 _documentID)
         {
             _sqlRequestSelect.SqlAnswer.datatable.Clear();
             _data.Clear();
-            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeItem);
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeName);
+            _sqlRequestSelect.SetParametrValue("@p_ProductID", 0);
+            _sqlRequestSelect.SetParametrValue("@p_DocumentID", _documentID);
+
+            _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
+            _data = _sqlRequestSelect.SqlAnswer.datatable;
+            return _data;
+        }
+
+        public DataTable FillGridProduct(Int32 _productID)
+        {
+            _sqlRequestSelect.SqlAnswer.datatable.Clear();
+            _data.Clear();
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeName);
             _sqlRequestSelect.SetParametrValue("@p_ProductID", _productID);
+            _sqlRequestSelect.SetParametrValue("@p_DocumentID", 0);
 
             _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
             _data = _sqlRequestSelect.SqlAnswer.datatable;
@@ -577,6 +606,15 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             _localeRow.CurrencyUSA = convertData.ConvertDataInt32("CurrencyUSA");
             _localeRow.TagPriceRUS = convertData.ConvertDataDecimal("TagPriceRUS");
             _localeRow.CurrencyRUS = convertData.ConvertDataDouble("CurrencyRUS");
+            _localeRow.CategoryID= convertData.ConvertDataInt32("CategoryID");
+            _localeRow.CategoryName = convertData.ConvertDataString("CategoryName");
+            _localeRow.CategoryDetailsID = convertData.ConvertDataInt32("CategoryDetailsID");
+            _localeRow.CategoryDetailsName = convertData.ConvertDataString("CategoryDetailsName");
+
+            _localeRow.Model = convertData.ConvertDataString("Model");
+            _localeRow.SizeProduct = convertData.ConvertDataString("SizeProduct");
+            _localeRow.Package = convertData.ConvertDataBoolean("Size");
+            _localeRow.BarCodeString= convertData.ConvertDataString("BarCodeString");
 
             _localeRow.CreatedDate = convertData.ConvertDataDateTime("CreatedDate");
             _localeRow.CreatedDateString = convertData.DateTimeConvertShortString(_localeRow.CreatedDate);
@@ -613,6 +651,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             _localeRow.Package = _row.Package;
             _localeRow.Model = _row.Model;
             _localeRow.SizeProduct = _row.SizeProduct;
+            _localeRow.BarCodeString = _row.BarCodeString;
 
             //стандартные данные
             if (_localeRow.ID == 0)
@@ -632,6 +671,49 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             _localeRow.LastModificatedUserID = _row.LastModificatedUserID;
 
             return _localeRow;
+        }
+
+        public Product.LocaleRow ConvertSupplyDocumentDetailsToProduct(Product.LocaleRow _row, LocaleRow _localeRow)
+        {
+            // SaleDocumentDetailsList statusList = new SaleDocumentDetailsList();
+            ConvertData convertData = new ConvertData();
+            _row.ID = _localeRow.ID;
+            //категории
+            _row.CategoryID = _localeRow.CategoryID;
+            _row.CategoryName = _localeRow.CategoryName;
+            _row.CategoryDescription = _localeRow.CategoryDescription;
+            //подкатегории
+            _row.CategoryDetailsID = _localeRow.CategoryDetailsID;
+            _row.CategoryDetailsName = _localeRow.CategoryDetailsName;
+            _row.CategoryDetailsDescription = _localeRow.CategoryDetailsDescription;
+
+            //продукт
+            //_localeRow.ID = _row.ID;
+            _row.Name = _localeRow.Name;
+            _row.Quantity = _localeRow.Quantity;
+            _row.TagPriceUSA = _localeRow.TagPriceUSA;           
+            _row.TagPriceRUS = _localeRow.TagPriceRUS;          
+            _row.Package = _localeRow.Package;
+            _row.RadioType = _localeRow.Package ? 1 : 2;
+            _row.Model = _localeRow.Model;
+            _row.SizeProduct = _localeRow.SizeProduct;
+            _row.BarCodeString = _localeRow.BarCodeString;
+
+            //стандартные данные
+            if (_localeRow.ID == 0)
+            {
+                _row.CreatedDate = DateTime.Now;          
+            }
+            else
+            {
+                _row.CreatedDate = _localeRow.CreatedDate;
+                _row.LastModicatedDate = _localeRow.LastModificatedDate;
+            }         
+
+            _row.CreatedUserID = _localeRow.CreatedUserID;
+            _row.LastModificatedUserID = _localeRow.LastModificatedUserID;
+
+            return _row;
         }
     }
 }

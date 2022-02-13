@@ -442,6 +442,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         private String massSupplyDocumentDetailsCategoryID;
         private String massSupplyDocumentDetailsCategoryDetailsID;
         private String massSupplyDocumentDetailsImageProduct;
+        private String massSupplyDocumentDetailsModel;
+        private String massSupplyDocumentDetailsSizeProduct;
+        private String massSupplyDocumentDetailsSize;
+        private String massSupplyDocumentDetailsBarCode;
 
         //SupplyDocumentDelivery
         private String massSupplyDocumentDeliveryID;
@@ -1024,6 +1028,63 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 OnPropertyChanged("MassSupplyDocumentDetailsImageProduct");
             }
         }
+
+        public String MassSupplyDocumentDetailsModel
+        {
+            get
+            {
+                return massSupplyDocumentDetailsModel;
+            }
+
+            set
+            {
+                massSupplyDocumentDetailsModel = value;
+                OnPropertyChanged("MassSupplyDocumentDetailsModel");
+            }
+        }
+
+        public String MassSupplyDocumentDetailsSizeProduct
+        {
+            get
+            {
+                return massSupplyDocumentDetailsSizeProduct;
+            }
+
+            set
+            {
+                massSupplyDocumentDetailsSizeProduct = value;
+                OnPropertyChanged("MassSupplyDocumentDetailsSizeProduct");
+            }
+        }
+      
+        public String MassSupplyDocumentDetailsSize
+        {
+            get
+            {
+                return massSupplyDocumentDetailsSize;
+            }
+
+            set
+            {
+                massSupplyDocumentDetailsSize = value;
+                OnPropertyChanged("MassSupplyDocumentDetailsSize");
+            }
+        }
+
+        public String MassSupplyDocumentDetailsBarCode
+        {
+            get
+            {
+                return massSupplyDocumentDetailsBarCode;
+            }
+
+            set
+            {
+                massSupplyDocumentDetailsBarCode = value;
+                OnPropertyChanged("MassSupplyDocumentDetailsBarCode");
+            }
+        }
+
         public string MassSupplyDocumentDeliveryID
         {
             get
@@ -1705,7 +1766,19 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             _sqlRequestSave.AddParametr("@p_MassSupplyDocumentDetailsImageProduct", SqlDbType.NVarChar);
             _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsImageProduct", String.Empty);
-        
+
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentDetailsModel", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsModel", String.Empty);
+
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentDetailsSizeProduct", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsSizeProduct", String.Empty);
+
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentDetailsSize", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsSize", String.Empty);
+
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentDetailsBarCode", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsBarCode", String.Empty);
+
             _sqlRequestSave.AddParametr("@p_MassSupplyDocumentDeliveryID", SqlDbType.NVarChar);
             _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryID", String.Empty);
 
@@ -1741,6 +1814,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             _sqlRequestSave.AddParametr("@p_MassSupplyDocumentPaymentOperationType", SqlDbType.NVarChar);
             _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentOperationType", String.Empty);
+          
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentPaymentStatus", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentStatus", String.Empty);
 
             _sqlRequestSave.AddParametr("@p_MassSupplyDocumentPaymentDescription", SqlDbType.NVarChar);
             _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentDescription", String.Empty);          
@@ -1856,6 +1932,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsCategoryDetailsID", row.MassSupplyDocumentDetailsCategoryDetailsID);
             _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsImageProduct", row.MassSupplyDocumentDetailsImageProduct);
 
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsModel", row.MassSupplyDocumentDetailsModel);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsSizeProduct", row.MassSupplyDocumentDetailsSizeProduct);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailssize", row.MassSupplyDocumentDetailsSize);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsBarCode", row.MassSupplyDocumentDetailsBarCode);
+
             //SupplyDocumentDeliverry
             _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryID", row.MassSupplyDocumentDeliveryID);
             _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryDeliveryID", row.MassSupplyDocumentDeliveryDeliveryID);
@@ -1871,6 +1952,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentID", row.MassSupplyDocumentPaymentID);
             _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentAmount", row.MassSupplyDocumentPaymentAmount);
             _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentOperationType", row.MassSupplyDocumentPaymentOperationType);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentStatus", row.MassSupplyDocumentPaymentStatus);
             _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentDescription", row.MassSupplyDocumentPaymentDescription);
 
             _sqlRequestSave.ComplexRequest(get_save_procedure, CommandType.StoredProcedure, null);

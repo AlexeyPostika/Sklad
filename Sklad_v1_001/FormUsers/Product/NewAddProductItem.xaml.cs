@@ -6,6 +6,7 @@ using Sklad_v1_001.HelperGlobal;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -26,8 +27,14 @@ namespace Sklad_v1_001.FormUsers.Product
     /// <summary>
     /// Логика взаимодействия для NewAddProductItem.xaml
     /// </summary>
-    public partial class NewAddProductItem : Page
+    public partial class NewAddProductItem : Page, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         public static readonly DependencyProperty IsClickButtonOKProperty = DependencyProperty.Register(
                     "IsClickButtonOK",
                     typeof(MessageBoxResult),
@@ -70,7 +77,35 @@ namespace Sklad_v1_001.FormUsers.Product
         NewCategoryDetailsItem newCategoryDetailsItem;
 
         LocaleRow productLocalRow;
-        public LocaleRow ProductLocalRow { get => productLocalRow; set => productLocalRow = value; }
+        public LocaleRow ProductLocalRow
+        {
+            get
+            {
+                return productLocalRow;
+            }
+
+            set
+            {
+                productLocalRow = value;      
+                if (value!=null)
+                {
+                    if (value.Package)
+                    {
+                        value.RadioType = 2;
+                        RadioYEStoNO.NO.IsChecked = false;
+                    }
+                    else
+                    {
+                        value.RadioType = 1;
+                        RadioYEStoNO.YES.IsChecked = true;
+                    }
+                       
+                }
+                this.Product.DataContext = ProductLocalRow;
+
+                OnPropertyChanged("ProductLocalRow");
+            }
+        }
 
         CategoryLogic categoryLogic;
         ObservableCollection<GlobalList.Category> dataCategory;
@@ -100,9 +135,7 @@ namespace Sklad_v1_001.FormUsers.Product
             CategoryDetails.ComboBoxElement.SelectedValue = 0;
             //-----------------------------------------------------------------------------
 
-            ProductLocalRow = new LocaleRow();
-
-            this.Product.DataContext = ProductLocalRow;
+            ProductLocalRow = new LocaleRow();        
         }
 
         private void ToolBarButton_ButtonClick()

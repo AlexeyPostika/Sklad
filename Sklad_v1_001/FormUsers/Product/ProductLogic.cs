@@ -35,6 +35,7 @@ namespace Sklad_v1_001.FormUsers.Product
         private Decimal tagPriceRUS;
         private String sizeProduct;
         private Boolean package;
+        private Int32 radioType;
         private DateTime? createdDate;
         private Int32 createdUserID;
         private DateTime? lastModicatedDate;
@@ -250,11 +251,24 @@ namespace Sklad_v1_001.FormUsers.Product
 
             set
             {
-                package = value;
+                package = value;               
                 OnPropertyChanged("Package");
             }
         }
+       
+        public Int32 RadioType
+        {
+            get
+            {
+                return radioType;
+            }
 
+            set
+            {
+                radioType = value;
+                OnPropertyChanged("RadioType");
+            }
+        }
         public DateTime? CreatedDate
         {
             get

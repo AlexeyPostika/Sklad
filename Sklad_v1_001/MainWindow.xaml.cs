@@ -156,10 +156,28 @@ namespace Sklad_v1_001
             addProductWindow.ShowDialog();
         }
 
+        public void ButtonNewAddProductF(FormUsers.Product.LocaleRow _localeRow)
+        {
+            FlexWindows addProductWindow = new FlexWindows(Properties.Resources.ADDPRODUCT);
+            newAddProductItem = new NewAddProductItem(attributes);
+            newAddProductItem.ProductLocalRow = _localeRow;
+            addProductWindow.Content = newAddProductItem;
+            addProductWindow.ShowDialog();
+        }
+
         public void ButtonNewDelivery()
         {
             FlexWindows addDeliveryWindow = new FlexWindows(Properties.Resources.ADDDELIVERY);
             supplyDocumentDeliveryItem = new SupplyDocumentDeliveryItem(attributes);
+            addDeliveryWindow.Content = supplyDocumentDeliveryItem;
+            addDeliveryWindow.ShowDialog();
+        }
+
+        public void ButtonNewDeliveryF(FormUsers.SupplyDocumentDelivery.LocaleRow _localeRow)
+        {
+            FlexWindows addDeliveryWindow = new FlexWindows(Properties.Resources.ADDDELIVERY);
+            supplyDocumentDeliveryItem = new SupplyDocumentDeliveryItem(attributes);
+            supplyDocumentDeliveryItem.DeliveryRow = _localeRow;
             addDeliveryWindow.Content = supplyDocumentDeliveryItem;
             addDeliveryWindow.ShowDialog();
         }

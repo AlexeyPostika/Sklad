@@ -48,8 +48,7 @@ namespace Sklad_v1_001.Control.FlexRadio
             get { return (Boolean)GetValue(IsRadioProperty); }
             set
             {
-
-                SetValue(IsRadioProperty, value);                
+                SetValue(IsRadioProperty, value);               
             }
         }
         public Int32 IsRadioType
@@ -114,15 +113,13 @@ namespace Sklad_v1_001.Control.FlexRadio
         }
         public FlexRadioButton()
         {
-            InitializeComponent();
-            NO.IsChecked = IsRadio;
+            InitializeComponent();         
         }
 
         private void YES_Checked(object sender, RoutedEventArgs e)
         {
             NO.IsChecked = false;
             IsRadioType = 1;
-
         }
 
         private void NO_Checked(object sender, RoutedEventArgs e)
@@ -136,10 +133,14 @@ namespace Sklad_v1_001.Control.FlexRadio
             switch (IsRadioType)
             {
                 case 1:
+                    this.YES.IsChecked = true;
+                    this.NO.IsChecked = false;
                     IsRadio = true;
                     break;
                 case 2:
                     IsRadio = false;
+                    this.YES.IsChecked = false;
+                    this.NO.IsChecked = true;
                     break;
             }
         }
