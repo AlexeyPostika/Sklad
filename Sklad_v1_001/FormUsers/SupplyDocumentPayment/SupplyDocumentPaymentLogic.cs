@@ -330,9 +330,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
             _localeRow.ID = convertData.ConvertDataInt32("ID");
             _localeRow.DocumentID = convertData.ConvertDataInt32("DocumentID");
             _localeRow.Status = convertData.ConvertDataInt32("Status");
-            _localeRow.OpertionType = convertData.ConvertDataInt32("OpertionType");
+            _localeRow.OpertionType = convertData.ConvertDataInt32("OperationType");
             _localeRow.Amount = convertData.ConvertDataDecimal("Amount");
             _localeRow.Description = convertData.ConvertDataString("Description");
+            _localeRow.RRN = convertData.ConvertDataString("RRN");
 
             _localeRow.CreatedDate = convertData.ConvertDataDateTime("CreatedDate");
             _localeRow.CreatedUserID = convertData.ConvertDataInt32("ID");

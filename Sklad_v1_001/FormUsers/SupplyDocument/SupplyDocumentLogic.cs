@@ -465,6 +465,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         private String massSupplyDocumentPaymentStatus;
         private String massSupplyDocumentPaymentOperationType;
         private String massSupplyDocumentPaymentDescription;
+        private String massSupplyDocumentPaymentRRN;
 
         public Int32 ID
         {
@@ -1256,6 +1257,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 OnPropertyChanged("MassSupplyDocumentPaymentOperationType");
             }
         }
+       
         public string MassSupplyDocumentPaymentDescription
         {
             get
@@ -1267,6 +1269,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             {
                 massSupplyDocumentPaymentDescription = value;
                 OnPropertyChanged("MassSupplyDocumentPaymentDescription");
+            }
+        }
+
+        public string MassSupplyDocumentPaymentRRN
+        {
+            get
+            {
+                return massSupplyDocumentPaymentRRN;
+            }
+
+            set
+            {
+                massSupplyDocumentPaymentRRN = value;
+                OnPropertyChanged("MassSupplyDocumentPaymentRRN");
             }
         }
 
@@ -1819,7 +1835,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentStatus", String.Empty);
 
             _sqlRequestSave.AddParametr("@p_MassSupplyDocumentPaymentDescription", SqlDbType.NVarChar);
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentDescription", String.Empty);          
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentDescription", String.Empty);
+
+            _sqlRequestSave.AddParametr("@p_MassSupplyDocumentPaymentRRN", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentRRN", String.Empty);
 
         }
 
@@ -1954,6 +1973,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentOperationType", row.MassSupplyDocumentPaymentOperationType);
             _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentStatus", row.MassSupplyDocumentPaymentStatus);
             _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentDescription", row.MassSupplyDocumentPaymentDescription);
+            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentRRN", row.MassSupplyDocumentPaymentRRN);
 
             _sqlRequestSave.ComplexRequest(get_save_procedure, CommandType.StoredProcedure, null);
             return (Int32)_sqlRequestSave.SqlAnswer.result;

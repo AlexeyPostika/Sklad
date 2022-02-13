@@ -314,28 +314,51 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         #endregion
 
         #region Поставщик
-        private void ToolBarDelivery_ButtonNewProductClick()
-        {
+
+        private void EditDelivery(SupplyDocumentDelivery.LocaleRow currentrow = null)
+        {           
             SupplyDocumentDelivery.LocaleRow localeRowDelivery = new SupplyDocumentDelivery.LocaleRow();
-            supplyDocumentDeliveryItem = new SupplyDocumentDeliveryItem(attributes);          
+            supplyDocumentDeliveryItem = new SupplyDocumentDeliveryItem(attributes);
             addDeliveryWindow = new FlexMessageBox();
-            // newDeliveryItem.LocaleRow=
-            supplyDocumentDeliveryItem.Status = Status;
+            supplyDocumentDeliveryItem.DeliveryRow= currentrow != null ? currentrow : new SupplyDocumentDelivery.LocaleRow();
+            supplyDocumentDeliveryItem.Status = Document.Status;
             addDeliveryWindow.Content = supplyDocumentDeliveryItem;
             addDeliveryWindow.Show(Properties.Resources.Deliveries);
             if (supplyDocumentDeliveryItem.IsClickButtonOK == MessageBoxResult.OK)
             {
                 if (supplyDocumentDeliveryItem.DeliveryRow != null && !String.IsNullOrEmpty(supplyDocumentDeliveryItem.DeliveryRow.NameCompany))
-                {                             
+                {
                     localeRowDelivery = supplyDocumentDeliveryItem.DeliveryRow;
-
-                    SupplyDocumentDelivery.LocaleRow locale = new SupplyDocumentDelivery.LocaleRow();                          
-                    localeRowDelivery.ID = 0;
-                    locale.TempID = supplyDocumentDelivery.Count() + 1;
-                    supplyDocumentDelivery.Add(localeRowDelivery);
+                    SupplyDocumentDelivery.LocaleRow locale = new SupplyDocumentDelivery.LocaleRow();
+                    if (localeRowDelivery.ID == 0)
+                    {               
+                        localeRowDelivery.TempID = supplyDocumentDelivery.Count() + 1;
+                        supplyDocumentDelivery.Add(localeRowDelivery);
+                    }
+                    else
+                    {
+                        locale = supplyDocumentDelivery.FirstOrDefault(x => x.ID == localeRowDelivery.ID);
+                        supplyDocumentDelivery.Remove(locale);
+                        locale = localeRowDelivery;
+                        locale.TempID = supplyDocumentDelivery.Count() + 1;
+                        supplyDocumentDelivery.Add(locale);
+                    }
                 }
             }
-            CalculateSummary();
+            CalculateSummary();         
+        }
+        private void ToolBarDelivery_ButtonNewProductClick()
+        {
+            EditDelivery();
+        }
+
+        private void DataDelivery_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            SupplyDocumentDelivery.LocaleRow currentrow = this.DataDelivery.SelectedItem as SupplyDocumentDelivery.LocaleRow;
+            if (currentrow != null)
+            {               
+                EditDelivery(currentrow);
+            }
         }
 
         private void ToolBarDelivery_ButtonDeleteClick()
@@ -346,24 +369,50 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         #endregion
 
         #region оплата
-        private void ToolBarPayment_ButtonNewProductClick()
+        private void EditPayment(SupplyDocumentPayment.LocaleRow currentrow = null)
         {
             supplyDocumentPaymentLocaleRow = new SupplyDocumentPayment.LocaleRow();
             newSupplyDocumentPaymentItem = new NewSupplyDocumentPaymentItem();
             addSuppluPaymentWindow = new FlexMessageBox();
             newSupplyDocumentPaymentItem.AmountMax = (Double)summary.SummaryPaymentRemains;
+            newSupplyDocumentPaymentItem.PaymentLocalRow = currentrow != null ? currentrow : new SupplyDocumentPayment.LocaleRow();
             addSuppluPaymentWindow.Content = newSupplyDocumentPaymentItem;
-
             addSuppluPaymentWindow.Show(Properties.Resources.Payment1);
             if (newSupplyDocumentPaymentItem.IsClickButtonOK == MessageBoxResult.OK)
             {
                 if (newSupplyDocumentPaymentItem.PaymentLocalRow != null)
-                {                       
-                    supplyDocumentPaymentLocaleRow = newSupplyDocumentPaymentItem.PaymentLocalRow;                  
-                    supplyDocumentPayment.Add(supplyDocumentPaymentLocaleRow);
+                {
+                    SupplyDocumentPayment.LocaleRow paymentLocalRow = newSupplyDocumentPaymentItem.PaymentLocalRow;
+                    SupplyDocumentPayment.LocaleRow locale = new SupplyDocumentPayment.LocaleRow();
+                    if (paymentLocalRow.ID == 0)
+                    {
+                        supplyDocumentPayment.Add(paymentLocalRow);
+                    }
+                    else
+                    {
+                        locale = supplyDocumentPayment.FirstOrDefault(x => x.ID == paymentLocalRow.ID);
+                        supplyDocumentPayment.Remove(locale);                      
+                        locale = paymentLocalRow;
+                        supplyDocumentPayment.Add(locale);
+                    }
                 }
             }
             CalculateSummary();
+        }
+
+        private void ToolBarPayment_ButtonNewProductClick()
+        {
+            EditPayment();
+            CalculateSummary();
+        }
+
+        private void DataPayment_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            SupplyDocumentPayment.LocaleRow currentrow = this.DataPayment.SelectedItem as SupplyDocumentPayment.LocaleRow;
+            if (currentrow != null)
+            {
+                EditPayment(currentrow);
+            }
         }
 
         private void ToolBarPayment_ButtonDeleteClick()
@@ -503,6 +552,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     Document.MassSupplyDocumentPaymentAmount = Document.MassSupplyDocumentPaymentAmount + currentrow.Amount.ToString() + '|';
                     Document.MassSupplyDocumentPaymentStatus = Document.MassSupplyDocumentPaymentStatus + currentrow.Status.ToString() + '|';
                     Document.MassSupplyDocumentPaymentOperationType = Document.MassSupplyDocumentPaymentOperationType + currentrow.OpertionType.ToString() + '|';
+                    Document.MassSupplyDocumentPaymentRRN = Document.MassSupplyDocumentPaymentRRN+ currentrow.RRN.ToString() + '|';
                     Document.MassSupplyDocumentPaymentDescription = Document.MassSupplyDocumentPaymentDescription + currentrow.Description.ToString() + '|';                   
                 }
                 Document.Amount = summary.SummaryProductTagPriceRUS;
@@ -613,8 +663,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             }
 
         }
+
+
         #endregion
 
-        
+     
     }
 }

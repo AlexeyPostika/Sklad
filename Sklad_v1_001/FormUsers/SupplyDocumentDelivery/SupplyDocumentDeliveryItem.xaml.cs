@@ -164,7 +164,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
         ObservableCollection<DeliveryCompanyDetails> dataDeliveryCompanyDetails;
         //DeliveryCompanyDetails deliveryCompanyDetails;
 
-        public LocaleRow DeliveryRow { get => deliveryRow; set => deliveryRow = value; }
+        public LocaleRow DeliveryRow
+        {
+            get
+            {
+                return deliveryRow;
+            }
+
+            set
+            {
+                deliveryRow = value;
+                this.delivery.DataContext = DeliveryRow;
+                OnPropertyChanged("ProductLocalRow");
+            }
+        }
 
         public Int32 status;
         public Int32 Status

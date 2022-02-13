@@ -2,6 +2,7 @@
 using Sklad_v1_001.GlobalList;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,8 +22,14 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
     /// <summary>
     /// Логика взаимодействия для NewAddProductItem.xaml
     /// </summary>
-    public partial class NewSupplyDocumentPaymentItem : Page
+    public partial class NewSupplyDocumentPaymentItem : Page, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         public static readonly DependencyProperty IsClickButtonOKProperty = DependencyProperty.Register(
                     "IsClickButtonOK",
                     typeof(MessageBoxResult),
@@ -46,7 +53,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
         }
 
         LocaleRow paymentLocalRow;
-        public LocaleRow PaymentLocalRow { get => paymentLocalRow; set => paymentLocalRow = value; }
+        public LocaleRow PaymentLocalRow
+        {
+            get
+            {
+                return paymentLocalRow;
+            }
+
+            set
+            {
+                paymentLocalRow = value;
+                this.Product.DataContext = PaymentLocalRow;
+                OnPropertyChanged("ProductLocalRow");
+            }
+        }
 
         public NewSupplyDocumentPaymentItem()
         {
