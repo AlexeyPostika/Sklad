@@ -62,6 +62,7 @@
                                                 LabelText="{x:Static res:Resources.UserName}"
                                                 LabelWidth="100" Width="280"/>
                 <FlexComboBox:ComboBoxWithLabel x:Name="StatusDocument" Grid.Row="2" Grid.Column="1"
+                                                IsEnabled="False"
                                                 Value="{Binding Path=Status, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                                 LabelText="{x:Static res:Resources.Status}"
                                                 LabelWidth="50" Width="230"/>

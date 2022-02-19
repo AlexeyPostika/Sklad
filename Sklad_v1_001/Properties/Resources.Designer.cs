@@ -412,6 +412,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на удаление.
+        /// </summary>
+        public static string Deletion {
+            get {
+                return ResourceManager.GetString("Deletion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Цен. дост в RUS.
         /// </summary>
         public static string DelivaryAmountRUS {
@@ -1236,6 +1245,15 @@ namespace Sklad_v1_001.Properties {
         public static string Quantity {
             get {
                 return ResourceManager.GetString("Quantity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Вы действительно хотите удалить данную запись?.
+        /// </summary>
+        public static string QuestionDelete {
+            get {
+                return ResourceManager.GetString("QuestionDelete", resourceCulture);
             }
         }
         

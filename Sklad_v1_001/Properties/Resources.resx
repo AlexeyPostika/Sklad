@@ -669,4 +669,10 @@
   <data name="PageIn" xml:space="preserve">
     <value>из</value>
   </data>
+  <data name="Deletion" xml:space="preserve">
+    <value>удаление</value>
+  </data>
+  <data name="QuestionDelete" xml:space="preserve">
+    <value>Вы действительно хотите удалить данную запись?</value>
+  </data>
 </root>

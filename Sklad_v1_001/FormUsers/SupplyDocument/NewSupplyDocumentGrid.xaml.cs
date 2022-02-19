@@ -23,6 +23,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static Sklad_v1_001.HelperGlobal.MessageBoxTitleHelper;
 
 namespace Sklad_v1_001.FormUsers.SupplyDocument
 {
@@ -79,6 +80,38 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             set { SetValue(IsApplyDocumentProperty, value); }
         }
 
+        public struct ComplexKey
+        {
+            int id;
+            int type;
+
+            public int Id
+            {
+                get
+                {
+                    return id;
+                }
+
+                set
+                {
+                    id = value;
+                }
+            }
+
+            public int Type
+            {
+                get
+                {
+                    return type;
+                }
+
+                set
+                {
+                    type = value;
+                }
+            }
+        }
+
 
         Attributes attributes;
         //работаем с продуктами
@@ -125,6 +158,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         SupplyDocumentPaymentLogic supplyDocumentPaymentLogic;
         SupplyDocumentPayment.LocaleRow supplyDocumentPaymentLocaleRow;
         ObservableCollection<SupplyDocumentPayment.LocaleRow> supplyDocumentPayment;
+
+        //коллекция для удаления строк
+        ObservableCollection<ComplexKey> datalistDeleted;
 
         //Суммы
         RowSummary summary;
@@ -199,6 +235,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             supplyDocumentDelivery = new ObservableCollection<SupplyDocumentDelivery.LocaleRow>();
             supplyDocumentPayment = new ObservableCollection<SupplyDocumentPayment.LocaleRow>();
 
+            datalistDeleted = new ObservableCollection<ComplexKey>();
+
             dataListCategory = new ObservableCollection<Category.LocalRow>();
             dataListDelivery = new ObservableCollection<Delivery.LocaleRow>();
             dataListDeliveryDetails = new ObservableCollection<DeliveryDetails.LocaleRow>();          
@@ -215,6 +253,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             this.DataContext = Document;
             this.DocumentSummary.DataContext = summary;
+
+            UserIDDocument.ComboBoxElement.ItemsSource = attributes.datalistUsers;
            // Refresh();
         }
 
@@ -294,6 +334,28 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         private void ToolBarProduct_ButtonDeleteClick()
         {
+            if (DataProduct.SelectedItems.Count > 0)
+            {
+                FlexMessageBox mb = new FlexMessageBox();
+                MessageBoxResult dialogresult = mb.Show(Properties.Resources.QuestionDelete, GenerateTitle(TitleType.Question, Properties.Resources.Deletion), MessageBoxButton.OKCancel, MessageBoxImage.Question, 3);
+                if (dialogresult == MessageBoxResult.OK)
+                {
+                    var currentRowViews = DataProduct.SelectedItems;
+                    foreach (SupplyDocumentDetails.LocaleRow currentrow in currentRowViews)
+                    {
+                        SupplyDocumentDetails.LocaleRow deleteProduct = supplyDocumentDetails.LastOrDefault(x => x.TempID == currentrow.TempID);                      
+                        ComplexKey complexKey = new ComplexKey();
+                        complexKey.Id = deleteProduct.ID;
+                        complexKey.Type = 1;
+                        datalistDeleted.Add(complexKey);
+                    }
+                    foreach (ComplexKey complex in datalistDeleted)
+                    {
+                        SupplyDocumentDetails.LocaleRow deleteProduct = supplyDocumentDetails.LastOrDefault(x => x.ID == complex.Id);
+                        supplyDocumentDetails.Remove(deleteProduct);
+                    }
+                }                 
+            }
             CalculateSummary();
         }
 
@@ -363,6 +425,30 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         private void ToolBarDelivery_ButtonDeleteClick()
         {
+            datalistDeleted.Clear();
+
+            if (DataDelivery.SelectedItems.Count > 0)
+            {
+                FlexMessageBox mb = new FlexMessageBox();
+                MessageBoxResult dialogresult = mb.Show(Properties.Resources.QuestionDelete, GenerateTitle(TitleType.Question, Properties.Resources.Deletion), MessageBoxButton.OKCancel, MessageBoxImage.Question, 3);
+                if (dialogresult == MessageBoxResult.OK)
+                {
+                    var currentRowViews = DataDelivery.SelectedItems;
+                    foreach (SupplyDocumentDelivery.LocaleRow currentrow in currentRowViews)
+                    {
+                        SupplyDocumentDelivery.LocaleRow deleteDelivery = supplyDocumentDelivery.LastOrDefault(x => x.TempID == currentrow.TempID);
+                        ComplexKey complexKey = new ComplexKey();
+                        complexKey.Id = deleteDelivery.TempID;
+                        complexKey.Type = 2;
+                        datalistDeleted.Add(complexKey);
+                    }
+                    foreach (ComplexKey complex in datalistDeleted)
+                    {
+                        SupplyDocumentDelivery.LocaleRow deleteDelivery = supplyDocumentDelivery.LastOrDefault(x => x.TempID == complex.Id);
+                        supplyDocumentDelivery.Remove(deleteDelivery);
+                    }
+                }
+            }
             CalculateSummary();
         }
 
@@ -417,6 +503,28 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         private void ToolBarPayment_ButtonDeleteClick()
         {
+            if (DataPayment.SelectedItems.Count > 0)
+            {
+                FlexMessageBox mb = new FlexMessageBox();
+                MessageBoxResult dialogresult = mb.Show(Properties.Resources.QuestionDelete, GenerateTitle(TitleType.Question, Properties.Resources.Deletion), MessageBoxButton.OKCancel, MessageBoxImage.Question, 3);
+                if (dialogresult == MessageBoxResult.OK)
+                {
+                    var currentRowViews = DataPayment.SelectedItems;
+                    foreach (SupplyDocumentPayment.LocaleRow currentrow in currentRowViews)
+                    {
+                        SupplyDocumentPayment.LocaleRow deletePayment = supplyDocumentPayment.LastOrDefault(x => x.ID == currentrow.ID);                      
+                        ComplexKey complexKey = new ComplexKey();
+                        complexKey.Id = deletePayment.ID;
+                        complexKey.Type = 3;
+                        datalistDeleted.Add(complexKey);
+                    }
+                    foreach (ComplexKey complex in datalistDeleted)
+                    {
+                        SupplyDocumentPayment.LocaleRow deletePayment = supplyDocumentPayment.LastOrDefault(x => x.ID == complex.Id);
+                        supplyDocumentPayment.Remove(deletePayment);
+                    }
+                }
+            }
             CalculateSummary();
         }
         #endregion

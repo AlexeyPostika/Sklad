@@ -1,4 +1,5 @@
-﻿using Sklad_v1_001.GlobalList;
+﻿using Sklad_v1_001.GlobalAttributes;
+using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.HelperGlobal;
 using Sklad_v1_001.SQL;
 using System;
@@ -184,13 +185,10 @@ namespace Sklad_v1_001.FormUsers.Userss
             convertData = new ConvertData();
         }
 
-        public DataTable Select()
+        public DataTable FillGrid()
         {
             _sqlSting.SqlAnswer.datatable.Clear();
-            _table.Clear();
-
-            //_sqlSting.SetParametrValue("@p_rowcountpage", filterlocal.RowsCountPage);
-            //_sqlSting.SetParametrValue("@p_pagecountrow", filterlocal.PageCountRows);
+            _table.Clear();      
 
             _sqlSting.ComplexRequest(_getSelectProductTable, CommandType.StoredProcedure, null);
             _table = _sqlSting.SqlAnswer.datatable;
@@ -213,6 +211,30 @@ namespace Sklad_v1_001.FormUsers.Userss
             localrow.Dolwnost = convertData.ConvertDataString("Dolwnost");
           
             return localrow;
+        }
+        //users
+        public users ConvertToUsers(DataRow _row, users _users)
+        {
+            VetrinaList listVetrina = new VetrinaList();
+            convertData = new ConvertData(_row, _users);
+            _users.ID = convertData.ConvertDataInt32("ID");
+            _users.FirstName = convertData.ConvertDataString("FirstName");
+            _users.LastName = convertData.ConvertDataString("LastName");
+            _users.SecondName = convertData.ConvertDataString("SecondName");
+            _users.Login = convertData.ConvertDataString("Login");
+            _users.Password = convertData.ConvertDataString("Password");
+            _users.Email = convertData.ConvertDataString("Email");
+            _users.RoleID = convertData.ConvertDataInt32("RoleID");
+            _users.Phone = convertData.ConvertDataString("Phone");
+            _users.Active = convertData.ConvertDataBoolean("Active");
+            if (_users.LastName!="" && _users.FirstName!="" && _users.SecondName != "")
+            {
+                _users.Name = _users.LastName + " " + _users.FirstName + " " + _users.SecondName;
+                _users.ShortName = _users.LastName + " " + _users.FirstName.Substring(0, 1) + "." + _users.SecondName.Substring(0, 1);
+                _users.Description = _users.ShortName;
+            }
+           
+            return _users;
         }
     }
 }
