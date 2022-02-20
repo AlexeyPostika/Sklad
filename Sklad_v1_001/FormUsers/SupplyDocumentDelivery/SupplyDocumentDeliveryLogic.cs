@@ -496,6 +496,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
         {
             ImageSourceTTN = ImageHelper.GenerateImage("IconMinus.png");
             ImageSourceInvoice = ImageHelper.GenerateImage("IconMinus.png");
+            Description = "";
         }
     }
 

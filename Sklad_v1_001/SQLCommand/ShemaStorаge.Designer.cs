@@ -2253,7 +2253,7 @@ namespace Sklad_v1_001.SQLCommand {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public SupplyDocumentDeliveryRow AddSupplyDocumentDeliveryRow(int DocumentID, int DeliveryID, int DeliveryDetailsID, string DeliveryTTN, byte ImageTTN, string Invoice, byte ImageInvoice, decimal AmountUSA, decimal AmountRUS, string Description, System.DateTime CreatedDate, int CreatedUserID, System.DateTime LastModificatedDate, int LastModificatedUserID, string TTN) {
+            public SupplyDocumentDeliveryRow AddSupplyDocumentDeliveryRow(int DocumentID, int DeliveryID, int DeliveryDetailsID, string DeliveryTTN, byte[] ImageTTN, string Invoice, byte[] ImageInvoice, decimal AmountUSA, decimal AmountRUS, string Description, string CreatedDate, int CreatedUserID, string LastModificatedDate, int LastModificatedUserID, string TTN) {
                 SupplyDocumentDeliveryRow rowSupplyDocumentDeliveryRow = ((SupplyDocumentDeliveryRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         DocumentID,
@@ -2321,11 +2321,11 @@ namespace Sklad_v1_001.SQLCommand {
                 base.Columns.Add(this.columnDeliveryDetailsID);
                 this.columnDeliveryTTN = new global::System.Data.DataColumn("DeliveryTTN", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDeliveryTTN);
-                this.columnImageTTN = new global::System.Data.DataColumn("ImageTTN", typeof(byte), null, global::System.Data.MappingType.Element);
+                this.columnImageTTN = new global::System.Data.DataColumn("ImageTTN", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnImageTTN);
                 this.columnInvoice = new global::System.Data.DataColumn("Invoice", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnInvoice);
-                this.columnImageInvoice = new global::System.Data.DataColumn("ImageInvoice", typeof(byte), null, global::System.Data.MappingType.Element);
+                this.columnImageInvoice = new global::System.Data.DataColumn("ImageInvoice", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnImageInvoice);
                 this.columnAmountUSA = new global::System.Data.DataColumn("AmountUSA", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAmountUSA);
@@ -2333,11 +2333,11 @@ namespace Sklad_v1_001.SQLCommand {
                 base.Columns.Add(this.columnAmountRUS);
                 this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDescription);
-                this.columnCreatedDate = new global::System.Data.DataColumn("CreatedDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                this.columnCreatedDate = new global::System.Data.DataColumn("CreatedDate", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCreatedDate);
                 this.columnCreatedUserID = new global::System.Data.DataColumn("CreatedUserID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCreatedUserID);
-                this.columnLastModificatedDate = new global::System.Data.DataColumn("LastModificatedDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                this.columnLastModificatedDate = new global::System.Data.DataColumn("LastModificatedDate", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLastModificatedDate);
                 this.columnLastModificatedUserID = new global::System.Data.DataColumn("LastModificatedUserID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLastModificatedUserID);
@@ -2714,11 +2714,11 @@ namespace Sklad_v1_001.SQLCommand {
                         decimal TagPriceRUS, 
                         int CategoryID, 
                         int CategoryDetailsID, 
-                        byte ImageProduct, 
+                        byte[] ImageProduct, 
                         string Barcodes, 
-                        System.DateTime CreatedDate, 
+                        string CreatedDate, 
                         int CreatedUserID, 
-                        System.DateTime LastModificatedDate, 
+                        string LastModificatedDate, 
                         int LastModificatedUserID, 
                         string Model, 
                         string SizeProduct, 
@@ -2798,15 +2798,15 @@ namespace Sklad_v1_001.SQLCommand {
                 base.Columns.Add(this.columnCategoryID);
                 this.columnCategoryDetailsID = new global::System.Data.DataColumn("CategoryDetailsID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCategoryDetailsID);
-                this.columnImageProduct = new global::System.Data.DataColumn("ImageProduct", typeof(byte), null, global::System.Data.MappingType.Element);
+                this.columnImageProduct = new global::System.Data.DataColumn("ImageProduct", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnImageProduct);
                 this.columnBarcodes = new global::System.Data.DataColumn("Barcodes", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBarcodes);
-                this.columnCreatedDate = new global::System.Data.DataColumn("CreatedDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                this.columnCreatedDate = new global::System.Data.DataColumn("CreatedDate", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCreatedDate);
                 this.columnCreatedUserID = new global::System.Data.DataColumn("CreatedUserID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCreatedUserID);
-                this.columnLastModificatedDate = new global::System.Data.DataColumn("LastModificatedDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                this.columnLastModificatedDate = new global::System.Data.DataColumn("LastModificatedDate", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLastModificatedDate);
                 this.columnLastModificatedUserID = new global::System.Data.DataColumn("LastModificatedUserID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLastModificatedUserID);
@@ -4414,10 +4414,10 @@ namespace Sklad_v1_001.SQLCommand {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public byte ImageTTN {
+            public byte[] ImageTTN {
                 get {
                     try {
-                        return ((byte)(this[this.tableSupplyDocumentDelivery.ImageTTNColumn]));
+                        return ((byte[])(this[this.tableSupplyDocumentDelivery.ImageTTNColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("Значение для столбца \'ImageTTN\' в таблице \'SupplyDocumentDelivery\' равно DBNull.", e);
@@ -4446,10 +4446,10 @@ namespace Sklad_v1_001.SQLCommand {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public byte ImageInvoice {
+            public byte[] ImageInvoice {
                 get {
                     try {
-                        return ((byte)(this[this.tableSupplyDocumentDelivery.ImageInvoiceColumn]));
+                        return ((byte[])(this[this.tableSupplyDocumentDelivery.ImageInvoiceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("Значение для столбца \'ImageInvoice\' в таблице \'SupplyDocumentDelivery\' равно DBNu" +
@@ -4514,10 +4514,10 @@ namespace Sklad_v1_001.SQLCommand {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime CreatedDate {
+            public string CreatedDate {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableSupplyDocumentDelivery.CreatedDateColumn]));
+                        return ((string)(this[this.tableSupplyDocumentDelivery.CreatedDateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("Значение для столбца \'CreatedDate\' в таблице \'SupplyDocumentDelivery\' равно DBNul" +
@@ -4548,10 +4548,10 @@ namespace Sklad_v1_001.SQLCommand {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime LastModificatedDate {
+            public string LastModificatedDate {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableSupplyDocumentDelivery.LastModificatedDateColumn]));
+                        return ((string)(this[this.tableSupplyDocumentDelivery.LastModificatedDateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("Значение для столбца \'LastModificatedDate\' в таблице \'SupplyDocumentDelivery\' рав" +
@@ -4910,10 +4910,10 @@ namespace Sklad_v1_001.SQLCommand {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public byte ImageProduct {
+            public byte[] ImageProduct {
                 get {
                     try {
-                        return ((byte)(this[this.tableSupplyDocumentDetails.ImageProductColumn]));
+                        return ((byte[])(this[this.tableSupplyDocumentDetails.ImageProductColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("Значение для столбца \'ImageProduct\' в таблице \'SupplyDocumentDetails\' равно DBNul" +
@@ -4943,10 +4943,10 @@ namespace Sklad_v1_001.SQLCommand {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime CreatedDate {
+            public string CreatedDate {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableSupplyDocumentDetails.CreatedDateColumn]));
+                        return ((string)(this[this.tableSupplyDocumentDetails.CreatedDateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("Значение для столбца \'CreatedDate\' в таблице \'SupplyDocumentDetails\' равно DBNull" +
@@ -4977,10 +4977,10 @@ namespace Sklad_v1_001.SQLCommand {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime LastModificatedDate {
+            public string LastModificatedDate {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableSupplyDocumentDetails.LastModificatedDateColumn]));
+                        return ((string)(this[this.tableSupplyDocumentDetails.LastModificatedDateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("Значение для столбца \'LastModificatedDate\' в таблице \'SupplyDocumentDetails\' равн" +

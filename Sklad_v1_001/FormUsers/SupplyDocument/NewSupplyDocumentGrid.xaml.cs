@@ -7,6 +7,7 @@ using Sklad_v1_001.FormUsers.SupplyDocumentPayment;
 using Sklad_v1_001.GlobalAttributes;
 using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.HelperGlobal;
+using Sklad_v1_001.SQLCommand;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -165,6 +166,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         //Суммы
         RowSummary summary;
 
+        //схема структуры SupplyDocument
+        ShemaStorаge shemaStorаge;
+
         private Int32 status;
 
         public LocalRow Document
@@ -225,6 +229,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             Document = new LocalRow();
             summary = new RowSummary();
+
+            shemaStorаge = new ShemaStorаge();
 
             supplyDocumentLogic = new SupplyDocumentLogic();
             supplyDocumentDetailsLogic = new SupplyDocumentDetailsLogic();
@@ -571,6 +577,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             if (FieldVerify(supplyDocumentDetails))
             {
+                shemaStorаge.SupplyDocumentDetails.Clear();
+                shemaStorаge.SupplyDocumentDelivery.Clear();
+                shemaStorаge.SupplyDocumentPayment.Clear();
+
+                //строка
                 Document.MassCategoryID = "";
                 Document.MassName = "";
                 Document.MassDescription = "";
@@ -622,52 +633,105 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 Document.MassSupplyDocumentPaymentOperationType="";
                 Document.MassSupplyDocumentPaymentDescription="";
                 Document.MassSupplyDocumentPaymentStatus = "";
-              
-                //продукты
+
+                //продукты                   
                 foreach (SupplyDocumentDetails.LocaleRow currentrow in supplyDocumentDetails)
                 {
-                    Document.MassSupplyDocumentDetailsID = Document.MassSupplyDocumentDetailsID + currentrow.ID.ToString() + '|';
-                    Document.MassSupplyDocumentDetailsName = Document.MassSupplyDocumentDetailsName + currentrow.Name.ToString() + '|';
-                    Document.MassSupplyDocumentDetailsQuantity = Document.MassSupplyDocumentDetailsQuantity + currentrow.Quantity.ToString() + '|';
-                    Document.MassSupplyDocumentDetailsTagPriceUSA = Document.MassSupplyDocumentDetailsTagPriceUSA + currentrow.TagPriceUSA.ToString() + '|';
-                    Document.MassSupplyDocumentDetailsTagPriceRUS = Document.MassSupplyDocumentDetailsTagPriceRUS + currentrow.TagPriceRUS.ToString() + '|';
-                    Document.MassSupplyDocumentDetailsCategoryID = Document.MassSupplyDocumentDetailsCategoryID + currentrow.CategoryID.ToString() + '|';
-                    Document.MassSupplyDocumentDetailsCategoryDetailsID = Document.MassSupplyDocumentDetailsCategoryDetailsID + currentrow.CategoryDetailsID.ToString() + '|';
-                    Document.MassSupplyDocumentDetailsModel = Document.MassSupplyDocumentDetailsModel + currentrow.Model+ '|';
-                    Document.MassSupplyDocumentDetailsSizeProduct = Document.MassSupplyDocumentDetailsSizeProduct + currentrow.SizeProduct + '|';
-                    Document.MassSupplyDocumentDetailsSize = Document.MassSupplyDocumentDetailsSize + currentrow.Package + '|';
-                    //Document.MassSupplyDocumentDetailsImageProduct = Document.MassSupplyDocumentDetailsImageProduct + currentrow.ImageProduct.ToString() + '|'; 
-                    Document.MassSupplyDocumentDetailsBarCode = Document.MassSupplyDocumentDetailsBarCode + currentrow.BarCodeString + '|';                  
+                    //Document.MassSupplyDocumentDetailsID = Document.MassSupplyDocumentDetailsID + currentrow.ID.ToString() + '|';
+                    //Document.MassSupplyDocumentDetailsName = Document.MassSupplyDocumentDetailsName + currentrow.Name.ToString() + '|';
+                    //Document.MassSupplyDocumentDetailsQuantity = Document.MassSupplyDocumentDetailsQuantity + currentrow.Quantity.ToString() + '|';
+                    //Document.MassSupplyDocumentDetailsTagPriceUSA = Document.MassSupplyDocumentDetailsTagPriceUSA + currentrow.TagPriceUSA.ToString() + '|';
+                    //Document.MassSupplyDocumentDetailsTagPriceRUS = Document.MassSupplyDocumentDetailsTagPriceRUS + currentrow.TagPriceRUS.ToString() + '|';
+                    //Document.MassSupplyDocumentDetailsCategoryID = Document.MassSupplyDocumentDetailsCategoryID + currentrow.CategoryID.ToString() + '|';
+                    //Document.MassSupplyDocumentDetailsCategoryDetailsID = Document.MassSupplyDocumentDetailsCategoryDetailsID + currentrow.CategoryDetailsID.ToString() + '|';
+                    //Document.MassSupplyDocumentDetailsModel = Document.MassSupplyDocumentDetailsModel + currentrow.Model+ '|';
+                    //Document.MassSupplyDocumentDetailsSizeProduct = Document.MassSupplyDocumentDetailsSizeProduct + currentrow.SizeProduct + '|';
+                    //Document.MassSupplyDocumentDetailsSize = Document.MassSupplyDocumentDetailsSize + currentrow.Package + '|';
+                    ////Document.MassSupplyDocumentDetailsImageProduct = Document.MassSupplyDocumentDetailsImageProduct + currentrow.ImageProduct.ToString() + '|'; 
+                    //Document.MassSupplyDocumentDetailsBarCode = Document.MassSupplyDocumentDetailsBarCode + currentrow.BarCodeString + '|';
+                    DataRow row = shemaStorаge.SupplyDocumentDetails.NewRow();
+                    row["DocumentID"] = 0;
+                    row["Name"] = currentrow.Name;
+                    row["Quantity"] = currentrow.Quantity;
+                    row["TagPriceUSA"] = currentrow.TagPriceUSA;
+                    row["TagPriceRUS"] = currentrow.TagPriceRUS;
+                    row["CategoryID"] = currentrow.CategoryID;
+                    row["CategoryDetailsID"] = currentrow.CategoryDetailsID;
+                    if (currentrow.ImageProduct!=null)
+                        row["ImageProduct"] = currentrow.ImageProduct;
+                    row["Barcodes"] = currentrow.BarCodeString;
+                    row["CreatedDate"] = currentrow.CreatedDate == null ? DateTime.Now : currentrow.CreatedDate;
+                    row["CreatedUserID"] = currentrow.CreatedUserID;
+                    row["LastModificatedDate"] = DateTime.Now;
+                    row["LastModificatedUserID"] = Document.UserID;
+                    row["Model"] = currentrow.Model;
+                    row["SizeProduct"] = currentrow.SizeProduct;
+                    row["Size"] = false;
+                    shemaStorаge.SupplyDocumentDetails.Rows.Add(row);                    
                 }
 
-                //сопуствующие товары
+                //сопуствующие товары             
                 foreach (SupplyDocumentDelivery.LocaleRow currentrow in supplyDocumentDelivery)
                 {
-                    Document.MassSupplyDocumentDeliveryID = Document.MassSupplyDocumentDeliveryID + currentrow.ID.ToString() + '|';
-                    Document.MassSupplyDocumentDeliveryDeliveryID = Document.MassSupplyDocumentDeliveryDeliveryID + currentrow.DeliveryID.ToString() + '|';
-                    Document.MassSupplyDocumentDeliveryDeliveryDetailsID = Document.MassSupplyDocumentDeliveryDeliveryDetailsID + currentrow.DeliveryDetailsID.ToString() + '|';
-                    Document.MassSupplyDocumentDeliveryTTN = Document.MassSupplyDocumentDeliveryTTN + currentrow.TTN.ToString() + '|';
-                    //Document.MassSupplyDocumentDeliveryImageTTN = Document.MassSupplyDocumentDeliveryImageTTN + currentrow.Model.ToString() + '|';
-                    Document.MassSupplyDocumentDeliveryInvoice = Document.MassSupplyDocumentDeliveryInvoice + currentrow.Invoice.ToString() + '|';
-                    // Document.MassSupplyDocumentDeliveryImageInvoice = Document.MassSupplyDocumentDeliveryImageInvoice + currentrow.Model.ToString() + '|';   
-                    Document.MassSupplyDocumentDeliveryAmountUSA = Document.MassSupplyDocumentDeliveryAmountUSA + currentrow.AmountUSA.ToString() + '|';
-                    Document.MassSupplyDocumentDeliveryAmountRUS= Document.MassSupplyDocumentDeliveryAmountRUS + currentrow.AmountRUS.ToString() + '|';
-                }              
+                    //Document.MassSupplyDocumentDeliveryID = Document.MassSupplyDocumentDeliveryID + currentrow.ID.ToString() + '|';
+                    //Document.MassSupplyDocumentDeliveryDeliveryID = Document.MassSupplyDocumentDeliveryDeliveryID + currentrow.DeliveryID.ToString() + '|';
+                    //Document.MassSupplyDocumentDeliveryDeliveryDetailsID = Document.MassSupplyDocumentDeliveryDeliveryDetailsID + currentrow.DeliveryDetailsID.ToString() + '|';
+                    //Document.MassSupplyDocumentDeliveryTTN = Document.MassSupplyDocumentDeliveryTTN + currentrow.TTN.ToString() + '|';
+                    ////Document.MassSupplyDocumentDeliveryImageTTN = Document.MassSupplyDocumentDeliveryImageTTN + currentrow.Model.ToString() + '|';
+                    //Document.MassSupplyDocumentDeliveryInvoice = Document.MassSupplyDocumentDeliveryInvoice + currentrow.Invoice.ToString() + '|';
+                    //// Document.MassSupplyDocumentDeliveryImageInvoice = Document.MassSupplyDocumentDeliveryImageInvoice + currentrow.Model.ToString() + '|';   
+                    //Document.MassSupplyDocumentDeliveryAmountUSA = Document.MassSupplyDocumentDeliveryAmountUSA + currentrow.AmountUSA.ToString() + '|';
+                    //Document.MassSupplyDocumentDeliveryAmountRUS = Document.MassSupplyDocumentDeliveryAmountRUS + currentrow.AmountRUS.ToString() + '|';
+                    
+                    DataRow row = shemaStorаge.SupplyDocumentDelivery.NewRow();
+                    row["DocumentID"] = 0;
+                    row["DeliveryID"] = currentrow.DeliveryID;
+                    row["DeliveryDetailsID"] = currentrow.DeliveryDetailsID;
+                    row["DeliveryTTN"] = "";
+                    if (currentrow.TTNDocumentByte != null)
+                        row["ImageTTN"] = currentrow.TTNDocumentByte;
+                    row["Invoice"] = currentrow.Invoice;
+                    if (currentrow.InvoiceDocumentByte != null)
+                        row["ImageInvoice"] = currentrow.InvoiceDocumentByte;
+                    row["AmountUSA"] = currentrow.AmountUSA;
+                    row["AmountRUS"] = currentrow.AmountRUS;
+                    row["Description"] = currentrow.Description;
+                    row["TTN"] = currentrow.TTN;
+                    row["CreatedDate"] = currentrow.CreatedDate == null ? DateTime.Now : currentrow.CreatedDate;
+                    row["CreatedUserID"] = currentrow.CreatedUserID;
+                    row["LastModificatedDate"] = DateTime.Now;
+                    row["LastModificatedUserID"] = Document.UserID;                
+                    shemaStorаge.SupplyDocumentDelivery.Rows.Add(row);
+                }
 
                 //виды оплат
+                shemaStorаge.SupplyDocumentPayment.Clear();
                 foreach (SupplyDocumentPayment.LocaleRow currentrow in supplyDocumentPayment)
                 {
-                    Document.MassSupplyDocumentPaymentID = Document.MassSupplyDocumentPaymentID + currentrow.ID.ToString() + '|';
-                    Document.MassSupplyDocumentPaymentAmount = Document.MassSupplyDocumentPaymentAmount + currentrow.Amount.ToString() + '|';
-                    Document.MassSupplyDocumentPaymentStatus = Document.MassSupplyDocumentPaymentStatus + currentrow.Status.ToString() + '|';
-                    Document.MassSupplyDocumentPaymentOperationType = Document.MassSupplyDocumentPaymentOperationType + currentrow.OpertionType.ToString() + '|';
-                    Document.MassSupplyDocumentPaymentRRN = Document.MassSupplyDocumentPaymentRRN+ currentrow.RRN.ToString() + '|';
-                    Document.MassSupplyDocumentPaymentDescription = Document.MassSupplyDocumentPaymentDescription + currentrow.Description.ToString() + '|';                   
+                    //Document.MassSupplyDocumentPaymentID = Document.MassSupplyDocumentPaymentID + currentrow.ID.ToString() + '|';
+                    //Document.MassSupplyDocumentPaymentAmount = Document.MassSupplyDocumentPaymentAmount + currentrow.Amount.ToString() + '|';
+                    //Document.MassSupplyDocumentPaymentStatus = Document.MassSupplyDocumentPaymentStatus + currentrow.Status.ToString() + '|';
+                    //Document.MassSupplyDocumentPaymentOperationType = Document.MassSupplyDocumentPaymentOperationType + currentrow.OpertionType.ToString() + '|';
+                    //Document.MassSupplyDocumentPaymentRRN = Document.MassSupplyDocumentPaymentRRN+ currentrow.RRN.ToString() + '|';
+                    //Document.MassSupplyDocumentPaymentDescription = Document.MassSupplyDocumentPaymentDescription + currentrow.Description.ToString() + '|';
+
+                    DataRow row = shemaStorаge.SupplyDocumentPayment.NewRow();
+                    row["DocumentID"] = 0;
+                    row["Status"] = currentrow.Status;
+                    row["OperationType"] = currentrow.OpertionType;
+                    row["Amount"] = currentrow.Amount;                
+                    row["Description"] = currentrow.Description;
+                    row["RRN"] = currentrow.RRN;
+                    row["CreatedDate"] = currentrow.CreatedDate == null ? DateTime.Now : currentrow.CreatedDate;
+                    row["CreatedUserID"] = currentrow.CreatedUserID;
+                    row["LastModificatedDate"] = DateTime.Now;
+                    row["LastModificatedUserID"] = Document.UserID;
+                    shemaStorаge.SupplyDocumentPayment.Rows.Add(row);
                 }
                 Document.Amount = summary.SummaryProductTagPriceRUS;
                 Document.Count = summary.SummaryQuantityProduct;
-
-                Document.ID = supplyDocumentLogic.SaveRow(Document);
+                Document.ShemaStorаgeLocal = shemaStorаge;
+                Document.ID = supplyDocumentLogic.SaveRowTable(Document);
                 //UpdateCurrentDocument(Document.ID);
                 //MainWindow.AppWindow.DataChanged[ToString()] = false;
 
