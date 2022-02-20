@@ -555,6 +555,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
             // SaleDocumentDetailsList statusList = new SaleDocumentDetailsList(); 
             ConvertData convertData = new ConvertData(_dataRow, _localeRow);
             _localeRow.ID = convertData.ConvertDataInt32("ID");
+            _localeRow.TempID = convertData.ConvertDataInt32("ID");
             _localeRow.DeliveryID = convertData.ConvertDataInt32("DeliveryID");
             _localeRow.NameCompany = convertData.ConvertDataString("NameCompany");
             _localeRow.PhonesCompany = convertData.ConvertDataString("PhonesCompany");

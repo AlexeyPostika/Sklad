@@ -472,6 +472,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     SupplyDocumentPayment.LocaleRow locale = new SupplyDocumentPayment.LocaleRow();
                     if (paymentLocalRow.ID == 0)
                     {
+                        paymentLocalRow.TempID = supplyDocumentPayment.Count() + 1;
                         supplyDocumentPayment.Add(paymentLocalRow);
                     }
                     else
@@ -512,15 +513,15 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     var currentRowViews = DataPayment.SelectedItems;
                     foreach (SupplyDocumentPayment.LocaleRow currentrow in currentRowViews)
                     {
-                        SupplyDocumentPayment.LocaleRow deletePayment = supplyDocumentPayment.LastOrDefault(x => x.ID == currentrow.ID);                      
+                        SupplyDocumentPayment.LocaleRow deletePayment = supplyDocumentPayment.LastOrDefault(x => x.TempID == currentrow.TempID);                      
                         ComplexKey complexKey = new ComplexKey();
-                        complexKey.Id = deletePayment.ID;
+                        complexKey.Id = deletePayment.TempID;
                         complexKey.Type = 3;
                         datalistDeleted.Add(complexKey);
                     }
                     foreach (ComplexKey complex in datalistDeleted)
                     {
-                        SupplyDocumentPayment.LocaleRow deletePayment = supplyDocumentPayment.LastOrDefault(x => x.ID == complex.Id);
+                        SupplyDocumentPayment.LocaleRow deletePayment = supplyDocumentPayment.LastOrDefault(x => x.TempID == complex.Id);
                         supplyDocumentPayment.Remove(deletePayment);
                     }
                 }
@@ -741,7 +742,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 
             }
             
-            if (SummaryPaymentBalansTemp< SummaryPaymentRemainsTemp)
+            if (SummaryPaymentRemainsTemp>0)
             {             
                 IsPaymentAddButton = true;
             }
@@ -761,7 +762,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             summary.SummaryPaymentBalans = SummaryPaymentBalansTemp < 0 ? Math.Abs(SummaryPaymentBalansTemp) : SummaryPaymentBalansTemp;
             summary.SummaryPaymentRemains = SummaryPaymentRemainsTemp < 0 ? Math.Abs(SummaryPaymentRemainsTemp) : SummaryPaymentRemainsTemp; 
             
-            if (SummaryPaymentBalansTemp > SummaryPaymentRemainsTemp)
+            if (SummaryPaymentRemainsTemp <= 0)
             {
                 IsApplyDocument = true;
             }

@@ -598,6 +598,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             ConvertData convertData = new ConvertData(_dataRow, _localeRow);
            
             _localeRow.ID = convertData.ConvertDataInt32("ID");
+            _localeRow.TempID = convertData.ConvertDataInt32("ID");
             _localeRow.DocumentID = convertData.ConvertDataInt32("DocumentID");
             _localeRow.Name = convertData.ConvertDataString("Name");
             _localeRow.Quantity = convertData.ConvertDataInt32("Quantity");
