@@ -100,6 +100,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
         private Boolean package;
         private String sizeProduct;
         private String model;
+        private Byte[] imageProductByte;
         private ImageSource imageSourcePackage;
         private String barCodeString;
 
@@ -282,7 +283,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
                 OnPropertyChanged("Model");
             }
         }
+        // private Byte[] imageProductByte;
+        public Byte[] ImageProductByte
+        {
+            get
+            {
+                return imageProductByte;
+            }
 
+            set
+            {
+                imageProductByte = value;
+                OnPropertyChanged("ImageProductByte");
+            }
+        }
         public ImageSource ImageSourcePackage
         {
             get
@@ -616,6 +630,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             _localeRow.SizeProduct = convertData.ConvertDataString("SizeProduct");
             _localeRow.Package = convertData.ConvertDataBoolean("Size");
             _localeRow.BarCodeString= convertData.ConvertDataString("BarCodeString");
+            //_localeRow.ImageProductByte = _dataRow["ImageProduct"];
 
             _localeRow.CreatedDate = convertData.ConvertDataDateTime("CreatedDate");
             _localeRow.CreatedDateString = convertData.DateTimeConvertShortString(_localeRow.CreatedDate);
