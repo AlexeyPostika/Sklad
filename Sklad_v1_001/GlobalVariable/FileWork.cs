@@ -176,26 +176,44 @@ namespace Sklad_v1_001.GlobalVariable
 
         public void PDFToByte()
         {
-            // Initialize FileStream object
-            FileStream fs = new FileStream(PuthString, FileMode.Open, FileAccess.Read);
-            BinaryReader br = new BinaryReader(fs);
-            long numBytes = new FileInfo(PuthString).Length;
+            try
+            {
+                // Initialize FileStream object
+                FileStream fs = new FileStream(PuthString, FileMode.Open, FileAccess.Read);
+                BinaryReader br = new BinaryReader(fs);
+                long numBytes = new FileInfo(PuthString).Length;
 
-            // Load the file contents in the byte array
-            BufferDocument = br.ReadBytes((int)numBytes);
-            fs.Close();
+                // Load the file contents in the byte array
+                BufferDocument = br.ReadBytes((int)numBytes);
+                fs.Close();
+            }
+            catch(Exception e)
+            {
+                BufferDocument = null;
+            }
 
             //Document document = new Document(PuthString);
             //document.Save("output.xps", Aspose.Pdf.SaveFormat.Xps);
         }  
         
-        public String ByteToXPS(byte[] _documentByte)
+        public String ByteToXPS(byte[] _documentByte, String _nameFile)
         {
             using (MemoryStream InputStream = new MemoryStream(_documentByte))
             {
                 Document document = new Document(InputStream);
-                document.Save("output.xps", SaveFormat.Xps);
-                return "output.xps";
+                document.Save(_nameFile, SaveFormat.Xps);              
+                return _nameFile;
+            }
+            return String.Empty;
+        }
+
+        public String ByteToPDF(byte[] _documentByte)
+        {
+            using (MemoryStream InputStream = new MemoryStream(_documentByte))
+            {
+                Aspose.Pdf.Document pdfDocument = new Aspose.Pdf.Document(InputStream);
+                pdfDocument.Save("output.pdf", SaveFormat.Pdf);
+                return "output.pdf";
             }
             return String.Empty;
         }
@@ -244,7 +262,7 @@ namespace Sklad_v1_001.GlobalVariable
 
             #endregion
 
-            #region Image
+        #region Image
             //Image --> byte[]
             public void LoadImage(string _filterPuth)
         {

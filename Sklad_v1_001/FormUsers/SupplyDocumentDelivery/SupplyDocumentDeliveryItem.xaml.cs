@@ -174,7 +174,23 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
             set
             {
                 deliveryRow = value;
+                if (value != null)
+                {
+                    this.Invoice.ByteFaile = value.InvoiceDocumentByte;
+                    this.Invoice.NameFile = "Invoice";
+                    this.TTN.ByteFaile = value.TTNDocumentByte;
+                    this.TTN.NameFile = "TTN";
+                    if (value.InvoiceDocumentByte!=null)
+                        this.Invoice.IsEnableLoop = true;
+                    else
+                        this.Invoice.IsEnableLoop = false;
+                    if (value.TTNDocumentByte != null)
+                        this.TTN.IsEnableLoop = true;
+                    else
+                        this.TTN.IsEnableLoop = false;
+                }
                 this.delivery.DataContext = DeliveryRow;
+
                 OnPropertyChanged("ProductLocalRow");
             }
         }

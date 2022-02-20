@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
 {
@@ -102,6 +103,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
         private String model;
         private Byte[] imageProductByte;
         private ImageSource imageSourcePackage;
+        private BitmapImage photoProductImage;
         private String barCodeString;
 
         //стандартные поля
@@ -311,6 +313,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             }
         }
 
+        
+        public BitmapImage PhotoProductImage
+        {
+            get
+            {
+                return photoProductImage;
+            }
+
+            set
+            {
+                photoProductImage = value;
+                OnPropertyChanged("PhotoProductImage");
+            }
+        }
         public string BarCodeString
         {
             get
@@ -610,7 +626,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
         {
            // SaleDocumentDetailsList statusList = new SaleDocumentDetailsList();
             ConvertData convertData = new ConvertData(_dataRow, _localeRow);
-           
+            ImageSql imageSql = new ImageSql();
+
             _localeRow.ID = convertData.ConvertDataInt32("ID");
             _localeRow.TempID = convertData.ConvertDataInt32("ID");
             _localeRow.DocumentID = convertData.ConvertDataInt32("DocumentID");
@@ -630,8 +647,12 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             _localeRow.SizeProduct = convertData.ConvertDataString("SizeProduct");
             _localeRow.Package = convertData.ConvertDataBoolean("Size");
             _localeRow.BarCodeString= convertData.ConvertDataString("BarCodeString");
-            //_localeRow.ImageProductByte = _dataRow["ImageProduct"];
-
+            if (_dataRow["ImageProduct"] as byte[] != null)
+            {
+                _localeRow.ImageProductByte = _dataRow["ImageProduct"] as byte[];
+                _localeRow.PhotoProductImage = imageSql.BytesToImageSource(_localeRow.ImageProductByte);
+            }
+           
             _localeRow.CreatedDate = convertData.ConvertDataDateTime("CreatedDate");
             _localeRow.CreatedDateString = convertData.DateTimeConvertShortString(_localeRow.CreatedDate);
             _localeRow.LastModificatedDate = convertData.ConvertDataDateTime("LastModificatedDate");

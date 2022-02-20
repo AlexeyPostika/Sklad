@@ -116,9 +116,12 @@ namespace Sklad_v1_001.Control.SimpleControl
         public static readonly DependencyProperty ByteFaileProperty = DependencyProperty.Register(
                      "ByteFaile",
                      typeof(byte[]),
-                    typeof(EditBoxWithLabelDownloadFile));   
-        // Обычное свойство .NET  - обертка над свойством зависимостей
-
+                    typeof(EditBoxWithLabelDownloadFile));
+        // Обычное свойство .NET  - обертка над свойством зависимостей          
+        public static readonly DependencyProperty NameFileProperty = DependencyProperty.Register(
+                    "NameFile",
+                    typeof(String),
+                   typeof(EditBoxWithLabelDownloadFile), new PropertyMetadata(""));
         public ImageSource Source
         {
             get
@@ -214,6 +217,13 @@ namespace Sklad_v1_001.Control.SimpleControl
             get { return (Byte[])GetValue(ByteFaileProperty); }
             set { SetValue(ByteFaileProperty, value); }
         }
+
+        public String NameFile
+        {
+            get { return (String)GetValue(NameFileProperty); }
+            set { SetValue(NameFileProperty, value); }
+        }
+
         // Обычное свойство .NET  - обертка над свойством зависимостей
         public string Text
         {
@@ -287,6 +297,9 @@ namespace Sklad_v1_001.Control.SimpleControl
         public EditBoxWithLabelDownloadFile()
         {
             InitializeComponent();
+
+            fileWork = new FileWork();
+
             this.button.Image.Source= ImageHelper.GenerateImage("IconAddProduct.png");
             this.buttonLoop.Image.Source = ImageHelper.GenerateImage("IconSearchPage.png");
             this.buttonClear.Image.Source = ImageHelper.GenerateImage("IconEraseFaile.png");
@@ -359,12 +372,13 @@ namespace Sklad_v1_001.Control.SimpleControl
         #endregion
 
         private void buttonLoop_ButtonClick()
-        {          
+        {
+           
             using (Stream stream = new MemoryStream(ByteFaile))
             {
                 FlexDocumentWindows flexDocumentWindows = new FlexDocumentWindows();
                
-                XpsDocument doc = new XpsDocument(fileWork.ByteToXPS(ByteFaile), FileAccess.ReadWrite);
+                XpsDocument doc = new XpsDocument(fileWork.ByteToXPS(ByteFaile, NameFile), FileAccess.ReadWrite);
                 flexDocumentWindows.DocumentXps = doc.GetFixedDocumentSequence();              
                 doc.Close();
                 flexDocumentWindows.ShowDialog();

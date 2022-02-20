@@ -565,9 +565,15 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
             _localeRow.ManagerName = convertData.ConvertDataString("ManagerName");
             _localeRow.PhonesManager = convertData.ConvertDataString("PhonesManager");
             _localeRow.TTN = convertData.ConvertDataString("TTN");
-            //_localeRow.ImageSourceTTN = convertData.ConvertDataInt32("ID");
             _localeRow.Invoice = convertData.ConvertDataString("Invoice");
-            // _localeRow.ImageSourceInvoice = convertData.ConvertDataInt32("ID");
+            if (_dataRow["ImageTTN"] as byte[] != null)
+            {
+                _localeRow.TTNDocumentByte = _dataRow["ImageTTN"] as byte[];
+            }                     
+            if (_dataRow["ImageInvoice"] as byte[] != null)
+            {
+                _localeRow.InvoiceDocumentByte = _dataRow["ImageInvoice"] as byte[];
+            }            
             _localeRow.AmountUSA = convertData.ConvertDataDecimal("AmountUSA");
             _localeRow.AmountRUS = convertData.ConvertDataDecimal("AmountRUS");
             _localeRow.Description = convertData.ConvertDataString("Description");
