@@ -5,12 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Sklad_v1_001.Control.FlexTextBox"
              xmlns:res="clr-namespace:Sklad_v1_001.Properties"
-            Style="{DynamicResource UsersControlColor}"
              mc:Ignorable="d" x:Name="control">
     <Grid>
         <StackPanel Margin="3,0">
-            <Label Name="LabelName" Content="{Binding ElementName=control, Path=LabelText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-            <TextBox Name="DescriptionInfo" Text="{Binding ElementName=control, Path=Description, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+            <Label Name="LabelName" Style="{DynamicResource GridLabelStyle}"  Content="{Binding ElementName=control, Path=LabelText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <TextBox Name="DescriptionInfo" Style="{DynamicResource TextBoxStyle}" Text="{Binding ElementName=control, Path=Description, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                        IsEnabled="{Binding ElementName=control, Path=EnableTextBox, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
                        Height="{Binding ElementName=control, Path=HeightTextBlock, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                        TextWrapping="Wrap"

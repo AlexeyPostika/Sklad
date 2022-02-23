@@ -11,7 +11,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Name="label" Width="60" Height="30"/>
+            <Label Grid.Column="0" Name="label" Style="{DynamicResource LabelStyle}" Width="60" Height="30"/>
             <local:EditBoxDelete x:Name="EditBoxDelete" Grid.Column="1"  Text="{Binding ElementName=control, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ButtonTextChangedClick="EditBoxDelete_ButtonTextChangedClick" ButtonClearClick="EditBoxDelete_ButtonClearClick"/>
         </Grid>
     </Grid>

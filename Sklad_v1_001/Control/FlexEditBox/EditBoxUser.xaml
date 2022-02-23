@@ -11,8 +11,8 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <TextBox Name="TextField" Padding="0,0,30,0" Text="{Binding ElementName=control, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TextField_TextChanged"/>
-        <Button Name="button" HorizontalAlignment="Right" Click="button_Click" Focusable="False" Visibility="{Binding ElementName=control, Path=VisibilityImage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+        <TextBox Name="TextField" Style="{DynamicResource TextBoxStyle}" Padding="0,0,30,0" Text="{Binding ElementName=control, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TextField_TextChanged"/>
+        <Button Name="button" Style="{DynamicResource ButtonSmallStyle}" HorizontalAlignment="Right" Click="button_Click" Focusable="False" Visibility="{Binding ElementName=control, Path=VisibilityImage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <Image Name="image" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"/>
         </Button>
     </Grid>

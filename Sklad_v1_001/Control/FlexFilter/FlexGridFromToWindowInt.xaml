@@ -1,21 +1,22 @@
 ﻿<dialog:DialogWindow x:Class="Sklad_v1_001.Control.FlexFilter.FlexGridFromToWindowInt"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Sklad_v1_001.Control.FlexFilter"
-        xmlns:res="clr-namespace:Sklad_v1_001.Properties"
-        xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton"
-        xmlns:SimpleControl="clr-namespace:Sklad_v1_001.Control.SimpleControl"
-        xmlns:dialog="clr-namespace:Sklad_v1_001.Control"
-        mc:Ignorable="d"        
-        xmlns:Toolbar="clr-namespace:Sklad_v1_001.Control.Toolbar"         
-        x:Name="control"
-        SizeToContent="WidthAndHeight"
-        WindowStartupLocation = "CenterScreen"
-        ResizeMode="NoResize"  
-        Closing="control_Closing" 
-        WindowStyle="None">
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:local="clr-namespace:Sklad_v1_001.Control.FlexFilter"
+                     xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+                     xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton"
+                     xmlns:SimpleControl="clr-namespace:Sklad_v1_001.Control.SimpleControl"
+                     xmlns:dialog="clr-namespace:Sklad_v1_001.Control"
+                     mc:Ignorable="d"        
+                     xmlns:Toolbar="clr-namespace:Sklad_v1_001.Control.Toolbar"         
+                     x:Name="control"
+                     SizeToContent="WidthAndHeight"
+                     WindowStartupLocation = "CenterScreen"
+                     ResizeMode="NoResize"  
+                     Closing="control_Closing" 
+                     Style="{DynamicResource WindowStyleItem2}"
+                     WindowStyle="None">
 
     <Grid x:Name="FilterPanel">
         <Grid.ColumnDefinitions>
@@ -30,7 +31,7 @@
         </Grid.RowDefinitions>
         <Toolbar:Close ButtonClearFiltersVisible="Visible" ButtonClearFiltersClick="Close_ButtonClearFiltersClick" ButtonCloseClick="Close_ButtonCloseClick" HeaderText="{Binding ElementName=control, Path=LabelText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.ColumnSpan="3"/>
         <SimpleControl:EditBoxWithLabelNumericForEdit TextChanged="DateFrom_TextChanged" HorizontalAlignment="Center" x:Name="DateFrom" Grid.Row="1" Width="200" LabelWidth="0" Value="{Binding ElementName=control, Path=From, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-        <Label Content="-" Grid.Column="1" HorizontalContentAlignment="Center" Grid.Row="1"/>
+        <Label Style="{DynamicResource LabelStyle }" Content="-" Grid.Column="1" HorizontalContentAlignment="Center" Grid.Row="1"/>
         <SimpleControl:EditBoxWithLabelNumericForEdit TextChanged="DateTo_TextChanged" Grid.Column="2" x:Name="DateTo" Width="200" LabelWidth="0" Value="{Binding ElementName=control, Path=To, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Row="1"/>
     </Grid>
 </dialog:DialogWindow>

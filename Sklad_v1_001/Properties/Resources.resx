@@ -565,7 +565,7 @@
     <value>Наименование компании</value>
   </data>
   <data name="NumberPhoneDelivery" xml:space="preserve">
-    <value>№-телефона гол.офисса</value>
+    <value>№-тел. гол.офисса</value>
   </data>
   <data name="PackageYEStoNOT" xml:space="preserve">
     <value>Упаковка есть?</value>
@@ -674,5 +674,8 @@
   </data>
   <data name="QuestionDelete" xml:space="preserve">
     <value>Вы действительно хотите удалить данную запись?</value>
+  </data>
+  <data name="CurrentDay" xml:space="preserve">
+    <value>Сегодня</value>
   </data>
 </root>

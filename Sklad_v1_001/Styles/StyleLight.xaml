@@ -1,0 +1,67 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"              
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+                    x:Class="Sklad_v1_001.StyleLight">
+
+    <SolidColorBrush x:Key="ColorBrushBackground" Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="ColorBrushForeground" Color="#FF000000"/>
+    <SolidColorBrush x:Key="ColorBrushBorder" Color="#FFABAdB3"/>
+
+    <SolidColorBrush x:Key="ColorBrushDataGridRowBackground" Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="ColorBrushDataGridAlternatingRowBackground" Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="ColorBrushDataGridBackground" Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="ColorBrushDataGridForeground" Color="#FF000000"/>
+    <SolidColorBrush x:Key="ColorBrushDataGridBorder" Color="#FF333333"/>
+    <SolidColorBrush x:Key="ColorBrushDataGridLines" Color="#FF333333"/>
+    <SolidColorBrush x:Key="ColorBrushDataGridHeaderBackGround" Color="#FF6AB6EC"/>
+    <SolidColorBrush x:Key="ColorBrushDataGridSortArrow" Color="#FF000000"/>
+
+    <SolidColorBrush x:Key="ColorBrushLabelForeground" Color="#FF000000"/>
+    <SolidColorBrush x:Key="ColorBrushFrameBackground" Color="#FFFFFFFF"/>
+
+    <SolidColorBrush x:Key="ColorBrushProgressBarActive" Color="#FF3399ff"/>
+    <SolidColorBrush x:Key="ColorBrushProgressBarBackground" Color="#FFEEEEEE"/>
+    <Color x:Key="ColorProgressBarBackground">#FF3399ff</Color>
+
+    <Color x:Key="ColorBackground">#FFFFFFFF</Color>
+    <Color x:Key="ColorForeground">#FF000000</Color>
+    <Color x:Key="ColorBorder">#FF333333</Color>
+
+    <Color x:Key="ColorToolbarStart">#FF6AB6EC</Color>
+    <Color x:Key="ColorToolbarEnd">#FFB7DEF9</Color>
+
+    <Color x:Key="ColorChartStart">#FFB7DEF9</Color>
+    <Color x:Key="ColorChartEnd">#FF6AB6EC</Color>
+
+    <Color x:Key="CColorButtonMouseOverBackground">#FFB7DEF9</Color>
+
+    <SolidColorBrush x:Key="ColorButtonStaticBackground" Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="ColorButtonStaticBorder" Color="#FFABAdB3"/>
+    <SolidColorBrush x:Key="ColorButtonMouseOverBackground" Color="#FFB7DEF9"/>
+    <SolidColorBrush x:Key="ColorButtonMouseOverBorder" Color="#FF555555"/>
+    <SolidColorBrush x:Key="ColorButtonPressedBackground" Color="#FFB7DEF9"/>
+    <SolidColorBrush x:Key="ColorButtonPressedBorder" Color="#FF555555"/>
+    <SolidColorBrush x:Key="ColorButtonDisabledBackground" Color="#FFAAAAAA"/>
+    <SolidColorBrush x:Key="ColorButtonDisabledBorder" Color="#FF999999"/>
+    <SolidColorBrush x:Key="ColorButtonDisabledForeground" Color="#F0FFFFFF"/>
+
+    <SolidColorBrush x:Key="ColorComboBoxBackground" Color="#FFFFFFFF"/>
+
+    <SolidColorBrush x:Key="ColorSmallButtonStaticBackground" Color="#FFFFFFFF"/>
+
+    <Color x:Key="RadioControlLightColor">#FFFFFFFF</Color>
+    <Color x:Key="RadioControlMouseOverColor">#FF3399ff</Color>
+    <Color x:Key="RadioControlPressedColor">#FFFFFFFF</Color>
+    <Color x:Key="RadioGlyphColor">#FF000000</Color>
+    <Color x:Key="RadioBorderLightColor">#FF000000</Color>
+
+    <SolidColorBrush x:Key="GroupBoxForeground" Color="#FF000000"/>
+    <SolidColorBrush x:Key="GroupBoxBorder" Color="#FFABAdB3"/>
+
+    <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
+    <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
+    <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+
+    <SolidColorBrush x:Key="ColorFilterButtonBorder" Color="#FFFFFFFF"/>
+</ResourceDictionary>

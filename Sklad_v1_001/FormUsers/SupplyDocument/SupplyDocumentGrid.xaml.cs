@@ -838,5 +838,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 EditDetails(currentrow);
             }
         }
+
+        private void FilterToDateLastModifiedDate_ButtonFilterSelected(Control.FlexFilter.FlexGridFilteDateTime flexGridFilteDateTime)
+        {
+
+        }
     }
 }

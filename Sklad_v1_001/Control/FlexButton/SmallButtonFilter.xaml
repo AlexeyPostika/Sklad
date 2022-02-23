@@ -7,7 +7,9 @@
              mc:Ignorable="d" Name="control">
 
     <Grid>
-        <Button Name="button" Click="button_Click" IsEnabled="{Binding ElementName=control, Path=IsImageEnable, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+        <Button Name="button"
+                Style="{DynamicResource RoundBorderButtonStyle}"
+                Click="button_Click" IsEnabled="{Binding ElementName=control, Path=IsImageEnable, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <StackPanel Orientation="Vertical" >
                 <Image x:Name="Image" HorizontalAlignment="Center" Source="{Binding ElementName=control, Path=ImageSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Stretch="None" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
             </StackPanel>

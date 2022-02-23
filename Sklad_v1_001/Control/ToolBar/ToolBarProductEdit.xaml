@@ -7,7 +7,6 @@
              xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton"
              xmlns:res="clr-namespace:Sklad_v1_001.Properties"
              mc:Ignorable="d" 
-             Style="{DynamicResource UsersControl}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid  Style="{DynamicResource Grid}">
         <Grid.ColumnDefinitions>

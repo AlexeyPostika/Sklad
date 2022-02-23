@@ -8,11 +8,12 @@
              mc:Ignorable="d">
     <Grid>
         <Button Name="button" 
+                Style="{DynamicResource RoundBorderButtonStyle}"
                 Click="button_Click" Visibility="{Binding ElementName=control, Path=VisibilityButton, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
                 IsEnabled="{Binding ElementName=control, Path=IsEnabledRule, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
             <StackPanel Orientation="Horizontal">
                 <Image Name="Image" Margin="10,0,0,0" Stretch="None" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
-                <Label  Margin="3,0,10,0" Name="TextField"/>
+                <Label Style="{DynamicResource LabelStyle}" Margin="3,0,10,0" Name="TextField"/>
             </StackPanel>
         </Button>
     </Grid>

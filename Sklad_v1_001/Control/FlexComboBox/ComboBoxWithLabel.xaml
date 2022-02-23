@@ -12,18 +12,19 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <WrapPanel Name="wrapPanel" Width="Auto" Margin="5,0,0,0">
-                <Label x:Name="label" Margin="3,0,0,0" Height="30"/>
-                <Label Name="required" Margin="-9,0,0,0" FontSize="18" Height="30" Visibility="{Binding ElementName=control, Path=IsRequired, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="Red" Content="*" HorizontalAlignment="Left"/>
+                <Label x:Name="label" Style="{DynamicResource LabelStyle}" Margin="3,0,0,0" Height="30"/>
+                <Label Name="required" Style="{DynamicResource LabelStyle}" Margin="-9,0,0,0" FontSize="18" Height="30" Visibility="{Binding ElementName=control, Path=IsRequired, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="Red" Content="*" HorizontalAlignment="Left"/>
             </WrapPanel>
-            <ComboBox x:Name="ComboBoxElement"                                     
-                SelectedValuePath="ID"
-                DisplayMemberPath="{Binding ElementName=control, Path=Description, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"                    
-                Grid.Column="1" 
-                  SelectionChanged="ComboBoxItem_SelectionChanged"
-                  SelectedItem="{Binding ElementName=control, Path=Item, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"    
-                  SelectedValue="{Binding ElementName=control, Path=Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                  TextInput="ComboBoxElement_TextInput"
-                  DropDownClosed="ComboBoxElement_DropDownClosed"/>
+            <ComboBox x:Name="ComboBoxElement"      
+                      Style="{DynamicResource ComboBoxStyleStandart}"
+                      SelectedValuePath="ID"
+                      DisplayMemberPath="{Binding ElementName=control, Path=Description, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"                    
+                      Grid.Column="1" 
+                      SelectionChanged="ComboBoxItem_SelectionChanged"
+                      SelectedItem="{Binding ElementName=control, Path=Item, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"    
+                      SelectedValue="{Binding ElementName=control, Path=Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                      TextInput="ComboBoxElement_TextInput"
+                      DropDownClosed="ComboBoxElement_DropDownClosed"/>
         </Grid>
     </Grid>
 </UserControl>

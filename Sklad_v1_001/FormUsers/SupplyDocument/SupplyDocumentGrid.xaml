@@ -22,7 +22,12 @@
                                ButtonEdit="SupplyToolBar_ButtonEdit"/>
 
         <Grid Grid.Row="1" x:Name="SypplyDocumentList">
-            <DataGrid x:Name="SypplyDocument" AutoGenerateColumns="False"
+            <DataGrid x:Name="SypplyDocument" 
+                      Style="{DynamicResource DataGridStyle}" 
+                      ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" 
+                      RowStyle="{DynamicResource DataGridRowStyle}" 
+                      CellStyle="{DynamicResource DataGridCellStyle}"
+                      AutoGenerateColumns="False"
                       SelectionChanged="SypplyDocument_SelectionChanged"
                       MouseDoubleClick="SypplyDocument_MouseDoubleClick">
                 <DataGrid.Columns>
@@ -130,7 +135,12 @@
         </Grid>
 
         <Grid Grid.Row="3" x:Name="SypplyDocumentDetailsList">
-            <DataGrid x:Name="SypplyDocumentDetails" AutoGenerateColumns="False">
+            <DataGrid x:Name="SypplyDocumentDetails"
+                      Style="{DynamicResource DataGridStyle}" 
+                      ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" 
+                      RowStyle="{DynamicResource DataGridRowStyle}" 
+                      CellStyle="{DynamicResource DataGridCellStyle}"
+                      AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <!--<DataGridTextColumn Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="Auto"/>-->
                     <DataGridTextColumn Header="{x:Static res:Resources.ID}" SortMemberPath="ProductID" CanUserSort="True" Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />

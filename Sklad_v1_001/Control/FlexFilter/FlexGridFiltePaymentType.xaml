@@ -14,13 +14,14 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="30" />
         </Grid.ColumnDefinitions>
-        <Label Margin="0,0,0,0" Content="{x:Static res:Resources.PaymentType}" HorizontalAlignment="Center"/>
+        <Label Margin="0,0,0,0" Style="{DynamicResource LabelStyle}" Content="{x:Static res:Resources.PaymentType}" HorizontalAlignment="Center"/>
         <ComboBox x:Name="FilterID"                                     
                 SelectedValuePath="ID"
                 DisplayMemberPath="Description" 
                 SelectionChanged="FilterID_SelectionChanged"                   
-                Grid.Column="1"
+                ItemContainerStyle="{DynamicResource ComboBoxItemStyle}" 
+                Style="{StaticResource ComboBoxStyleButtonDropDown}" Grid.Column="1"
                 SelectedValue="{Binding ElementName=control, Path=Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                Loaded="FilterID_Loaded"/>        
+                Loaded="FilterID_Loaded"/>
     </Grid>
 </UserControl>

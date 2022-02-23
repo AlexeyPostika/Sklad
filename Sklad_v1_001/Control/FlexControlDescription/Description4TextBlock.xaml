@@ -23,28 +23,28 @@
             <RowDefinition Height="25"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Label x:Name="labelAdress" Grid.Row="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
+        <Label x:Name="labelAdress" Style="{DynamicResource LabelStyle}" Grid.Row="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
                    Content="{x:Static res:Resources.Adress}"
                    Width="{Binding ElementName=control, Path=WidthLabel, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-        <Label x:Name="labelAdress1" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+        <Label x:Name="labelAdress1" Style="{DynamicResource LabelStyle}" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
                    Content="{Binding ElementName=control, Path=ValueAdress, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                    Width="Auto"/>
-        <Label x:Name="labelTypeBelivery" Grid.Row="2"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
+        <Label x:Name="labelTypeBelivery" Style="{DynamicResource LabelStyle}" Grid.Row="2"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
                    Content="{x:Static res:Resources.TypeВelivery}"
                    Width="{Binding ElementName=control, Path=WidthLabel, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-        <Label x:Name="labelTypeBelivery1" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+        <Label x:Name="labelTypeBelivery1" Style="{DynamicResource LabelStyle}" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
                    Content="{Binding ElementName=control, Path=ValueTypeBelivery, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                    Width="Auto"/>
-        <Label x:Name="labelNumvberPhon" Grid.Row="3"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
+        <Label x:Name="labelNumvberPhon" Style="{DynamicResource LabelStyle}" Grid.Row="3"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
                    Content="{x:Static res:Resources.NumberPhone}"
                    Width="{Binding ElementName=control, Path=WidthLabel, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-        <Label x:Name="labelNumvberPhon1" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+        <Label x:Name="labelNumvberPhon1" Style="{DynamicResource LabelStyle}" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
                    Content="{Binding ElementName=control, Path=ValueNumvberPhon, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                    Width="Auto"/>
-        <Label x:Name="labelNmae" Grid.Row="4"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
+        <Label x:Name="labelNmae" Grid.Row="4" Style="{DynamicResource LabelStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
                    Content="{x:Static res:Resources.NmaeManager}"
                    Width="{Binding ElementName=control, Path=WidthLabel, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-        <Label x:Name="labelNmae1" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+        <Label x:Name="labelNmae1" Grid.Row="4" Style="{DynamicResource LabelStyle}" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
                    Content="{Binding ElementName=control, Path=ValueNmae, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                    Width="Auto"/>
     </Grid>

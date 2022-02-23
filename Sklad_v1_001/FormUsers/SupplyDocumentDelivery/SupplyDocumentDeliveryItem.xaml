@@ -70,12 +70,12 @@
                 <SimpleControl:EditBoxWithLabelFloatForEdit x:Name="AmounPaymentUSA" LabelText="{x:Static res:Resources.DelivaryAmountUSA}" 
                                                             IsRequired="Visible"
                                                             Value="{Binding Path=AmountUSA, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                                              
-                                                            LabelWidth="110"/>
+                                                            LabelWidth="130"/>
 
                 <SimpleControl:EditBoxWithLabelFloatForEdit x:Name="AmounPaymentRUS" LabelText="{x:Static res:Resources.DelivaryAmountRUS}" 
                                                             IsRequired="Visible"
                                                             Value="{Binding Path=AmountRUS, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                                            
-                                                            LabelWidth="110"/>
+                                                            LabelWidth="130"/>
                 
                 <SimpleControl:EditBoxWithLabelDownloadFile x:Name="Invoice"  
                                                             LabelText="{x:Static res:Resources.Invoice}" 

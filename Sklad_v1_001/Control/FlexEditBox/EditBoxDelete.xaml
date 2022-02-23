@@ -9,8 +9,8 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <TextBox Name="TextField" Padding="0,0,30,0" TextChanged="textBlock_TextChanged"/>
-        <Button  Name="button" HorizontalAlignment="Right" Click="button_Click" Focusable="False">
+        <TextBox Name="TextField" Style="{DynamicResource TextBoxStyle}" Padding="0,0,30,0" TextChanged="textBlock_TextChanged"/>
+        <Button  Name="button" Style="{DynamicResource ButtonSmallStyle}" HorizontalAlignment="Right" Click="button_Click" Focusable="False">
             <Image Name="image" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None" />
         </Button>
     </Grid>

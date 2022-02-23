@@ -2,24 +2,8 @@
 using Sklad_v1_001.HelperGlobal;
 using static Sklad_v1_001.HelperGlobal.MessageBoxTitleHelper;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Interop;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
 
 namespace Sklad_v1_001.Control.FlexFilter
 {
@@ -30,7 +14,7 @@ namespace Sklad_v1_001.Control.FlexFilter
     /// <summary>
     /// Логика взаимодействия для FromToTimeFilter.xaml
     /// </summary>
-    public partial class FlexGridFromToWindow : DialogWindow, IAbstractButtonFilter, INotifyPropertyChanged
+    public partial class FlexGridFromToWindow : DialogWindow, INotifyPropertyChanged
     {
         private Boolean needrefresh;
         private Boolean needwarning;
@@ -149,44 +133,44 @@ namespace Sklad_v1_001.Control.FlexFilter
             }
         }
 
-        string IAbstractButtonFilter.Text
-        {
-            get
-            {
-                return Properties.Resources.FilterTime;
-            }
+        //string IAbstractButtonFilter.Text
+        //{
+        //    get
+        //    {
+        //        return Properties.Resources.FilterTime;
+        //    }
 
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        //    set
+        //    {
+        //        throw new NotImplementedException();
+        //    }
+        //}
 
-        string IAbstractButtonFilter.From
-        {
-            get
-            {
-                return DateFrom.Value.ToString();
-            }
+        //string IAbstractButtonFilter.From
+        //{
+        //    //get
+        //    //{
+        //    //    return DateFrom.Value.ToString();
+        //    //}
 
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        //    //set
+        //    //{
+        //    //    throw new NotImplementedException();
+        //    //}
+        //}
 
-        string IAbstractButtonFilter.To
-        {
-            get
-            {
-                return DateTo.Value.ToString();
-            }
+        //string IAbstractButtonFilter.To
+        //{
+        //    //get
+        //    //{
+        //    //    return DateTo.Value.ToString();
+        //    //}
 
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        //    //set
+        //    //{
+        //    //    throw new NotImplementedException();
+        //    //}
+        //}
 
         public static readonly DependencyProperty LabelTextProperty = DependencyProperty.Register(
                         "LabelText",
@@ -233,8 +217,8 @@ namespace Sklad_v1_001.Control.FlexFilter
         public FlexGridFromToWindow()
         {
             InitializeComponent();
-            this.Activated += ContentActivated;
-            DefaultStyle = this.DateTo.TextBox.Style;
+            Activated += ContentActivated;
+            //DefaultStyle = DateTo.TextBox.Style;
             needrefresh = true;
         }
 
@@ -244,7 +228,8 @@ namespace Sklad_v1_001.Control.FlexFilter
         {
             try
             {
-                this.Visibility = Visibility.Hidden;
+                Visibility = Visibility.Hidden;
+                Activated += ContentActivated;
                 e.Cancel = true;
             }
             catch
@@ -255,10 +240,24 @@ namespace Sklad_v1_001.Control.FlexFilter
         private void ContentActivated(object sender, EventArgs e)
         {
             var frameWorkAreaX = MainWindow.AppWindow.frameWorkArea.PointToScreen(new Point(0, 0)).X;
-            this.Left = Left - this.ActualWidth;
-            if (this.Left <= frameWorkAreaX)
-                this.Left = frameWorkAreaX;
-            this.Activated -= ContentActivated;
+            var frameWorkAreaActualWidth = MainWindow.AppWindow.frameWorkArea.ActualWidth;
+            if (Left - ActualWidth <= frameWorkAreaX)
+            {
+                Left = frameWorkAreaX;
+            }
+            else
+            {
+                Left = Left - ActualWidth;
+            }
+            if (Left + ActualWidth > frameWorkAreaX + frameWorkAreaActualWidth)
+            {
+                Left = frameWorkAreaX + frameWorkAreaActualWidth - ActualWidth;
+            }
+            if (Left + ActualWidth > frameWorkAreaX + frameWorkAreaActualWidth)
+            {
+                MaxWidth = frameWorkAreaActualWidth - Left + frameWorkAreaX;
+            }
+            Activated -= ContentActivated;
         }
 
         private void DateTo_TextChanged()
@@ -271,12 +270,12 @@ namespace Sklad_v1_001.Control.FlexFilter
                     FilterStatus = false;
                 if (needwarning && From > To)
                 {
-                    this.DateTo.TextBox.Style = (Style)MainWindow.AppWindow.TryFindResource("TextBoxErrorStyle");
+                   // DateTo.TextBox.Style = (Style)MainWindow.AppWindow.TryFindResource("TextBoxErrorStyle");
                 }
                 else
                 {
-                    this.DateTo.TextBox.Style = DefaultStyle;
-                    this.DateFrom.TextBox.Style = DefaultStyle;
+                    //DateTo.TextBox.Style = DefaultStyle;
+                    //DateFrom.TextBox.Style = DefaultStyle;
                     ButtonApplyClick?.Invoke();
                 }
             }
@@ -292,12 +291,12 @@ namespace Sklad_v1_001.Control.FlexFilter
                     FilterStatus = false;
                 if (needwarning && From > To)
                 {
-                    this.DateFrom.TextBox.Style = (Style)MainWindow.AppWindow.TryFindResource("TextBoxErrorStyle");
+                    //DateFrom.TextBox.Style = (Style)MainWindow.AppWindow.TryFindResource("TextBoxErrorStyle");
                 }
                 else
                 {
-                    this.DateTo.TextBox.Style = DefaultStyle;
-                    this.DateFrom.TextBox.Style = DefaultStyle;
+                    //DateTo.TextBox.Style = DefaultStyle;
+                    //DateFrom.TextBox.Style = DefaultStyle;
                     ButtonApplyClick?.Invoke();
                 }
                 needwarning = true;
@@ -310,23 +309,23 @@ namespace Sklad_v1_001.Control.FlexFilter
             From = DefaultMin;
             To = DefaultMax;
             FilterStatus = false;
-            this.DateTo.TextBox.Style = DefaultStyle;
-            this.DateFrom.TextBox.Style = DefaultStyle;
+            //DateTo.TextBox.Style = DefaultStyle;
+            //DateFrom.TextBox.Style = DefaultStyle;
             ButtonApplyClick?.Invoke();
             needrefresh = true;
         }
 
         private void Close_ButtonCloseClick()
         {
-            FlexMessageBox.FlexMessageBox mb = new FlexMessageBox.FlexMessageBox();
+            Control.FlexMessageBox.FlexMessageBox mb = new Control.FlexMessageBox.FlexMessageBox();
             if (To < From)
             {
                 mb.Show(Properties.Resources.ErrorFilterToSmallerFrom, GenerateTitle(TitleType.Error, Properties.Resources.BadRange), MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
-                this.Visibility = Visibility.Hidden;
-                this.Activated += ContentActivated;
+                Visibility = Visibility.Hidden;
+                Activated += ContentActivated;
             }
         }
     }

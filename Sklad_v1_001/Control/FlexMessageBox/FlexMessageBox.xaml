@@ -28,12 +28,12 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Image x:Name="image" Margin="20,10,0,15" HorizontalAlignment="Center" VerticalAlignment="Center" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
-            <Label x:Name="DescriptionBox" Margin="10,10,30,15" Content="{Binding ElementName=Window, Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <Label x:Name="DescriptionBox" Margin="10,10,30,15" Style="{DynamicResource LabelStyle}" Content="{Binding ElementName=Window, Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         </Grid>
 
         <Grid Name="Grid1"  Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>                
+                <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <FlexButton:ToolBarButton x:Name="Button11" Grid.Row="1" Text="{x:Static res:Resources.MessageOK}" ButtonClick="Button1_ButtonClick" Margin="25 , 1, 25, 15"  HorizontalAlignment="Center"/>
         </Grid>
@@ -41,11 +41,11 @@
         <Grid Name="Grid2" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>                
+                <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <FlexButton:ToolBarButton x:Name="Button21" Grid.Row="1" Text="{x:Static res:Resources.MessageOK}" ButtonClick="Button1_ButtonClick" Margin="20 , 1, 15, 15" HorizontalAlignment="Right"/>
             <FlexButton:ToolBarButton x:Name="Button22" Grid.Row="1" Grid.Column="1" Text="{x:Static res:Resources.MessageOK}" ButtonClick="Button2_ButtonClick" Margin="15 , 1, 20, 15" HorizontalAlignment="Left"/>
-       </Grid>
+        </Grid>
 
         <Grid Name="Grid3" Grid.Row="1">
             <Grid.ColumnDefinitions>

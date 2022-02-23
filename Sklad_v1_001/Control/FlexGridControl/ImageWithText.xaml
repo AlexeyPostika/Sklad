@@ -8,7 +8,7 @@
     <Grid>
         <StackPanel Orientation="Horizontal">
             <Image Name="Image" Margin="10,0,0,0" Stretch="None" Source="{Binding ElementName=Page, Path=ImageSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" RenderOptions.BitmapScalingMode="NearestNeighbor" />
-            <Label Margin="3,0,10,0" Name="TextField" Content="{Binding ElementName=Page, Path=LabelText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <Label Style="{DynamicResource LabelStyle}" Margin="3,0,10,0" Name="TextField" Content="{Binding ElementName=Page, Path=LabelText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
     </Grid>
 </UserControl>

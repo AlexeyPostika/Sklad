@@ -1,31 +1,39 @@
 ﻿<dialog:DialogWindow x:Class="Sklad_v1_001.Control.FlexFilter.FlexGridCheckBoxWithImageWindow"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Sklad_v1_001.Control.FlexFilter"
-             xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton" 
-             xmlns:FlexFilter="clr-namespace:Sklad_v1_001.Control.FlexFilter"
-             xmlns:res="clr-namespace:Sklad_v1_001.Properties"
-             xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             xmlns:dialog="clr-namespace:Sklad_v1_001.Control"
-             mc:Ignorable="d" x:Name="control"
-             xmlns:Toolbar="clr-namespace:Sklad_v1_001.Control.Toolbar"                         
-             MouseEnter="control_MouseEnter"
-             MouseMove="control_MouseMove"
-             xmlns:FlexGridControl="clr-namespace:Sklad_v1_001.Control.FlexGridControl">
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                     xmlns:local="clr-namespace:Sklad_v1_001.Control.FlexFilter"
+                     xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton" 
+                     xmlns:FlexFilter="clr-namespace:Sklad_v1_001.Control.FlexFilter"
+                     xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                     xmlns:dialog="clr-namespace:Sklad_v1_001.Control"
+                     xmlns:FlexEditBox="clr-namespace:Sklad_v1_001.Control.FlexEditBox"
+                     Style="{DynamicResource WindowStyleItem2}" 
+                     mc:Ignorable="d" x:Name="control"
+                     xmlns:Toolbar="clr-namespace:Sklad_v1_001.Control.Toolbar"                         
+                     MouseEnter="control_MouseEnter"
+                     MouseMove="control_MouseMove"
+                     xmlns:FlexGridControl="clr-namespace:Sklad_v1_001.Control.FlexGridControl">
 
     <Grid x:Name="PopupFilter" MaxHeight="462">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Toolbar:Close x:Name="Toolbar" Width="Auto" ButtonCloseClick="Close_ButtonCloseClick" ButtonClearFiltersVisible="Collapsed" HeaderText ="{x:Static res:Resources.FilterTitle}"/>
+        <FlexEditBox:EditBoxDeleteWithLabel LabelText="{x:Static res:Resources.Search}" Grid.Row="1" x:Name="SearchFilter" VerticalAlignment="Center" Text="{Binding Path=Search, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" ButtonClearClick="SearchFilter_ButtonClearClick" ButtonTextChangedClick="SearchFilter_ButtonTextChangedClick" Margin="10,0,0,0"/>
         <DataGrid Name="ElementDataGrid" 
-                  AutoGenerateColumns="False"                                   
+                  AutoGenerateColumns="False" 
+                  Style="{DynamicResource DataGridStyle}" 
+                  ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" 
+                  RowStyle="{DynamicResource DataGridRowStyle}" 
+                  CellStyle="{DynamicResource DataGridCellStyle}"                   
                   CanUserAddRows="False"                               
                   MouseLeftButtonUp="ElementDataGrid_MouseLeftButtonUp"
-                  Grid.Row="1"                   
+                  Grid.Row="2"                   
                   Sorting="ElementDataGrid_Sorting">
             <DataGrid.Resources>
                 <local:DataContextSpy x:Key="dcSpy" DataContext="{Binding ElementName=control, Path=LabelText, Mode=TwoWay}"/>
@@ -36,16 +44,12 @@
                 <DataGridTemplateColumn Width="50">
                     <DataGridTemplateColumn.HeaderTemplate>
                         <DataTemplate>
-                            <CheckBox x:Name="CheckAll" IsChecked="{Binding Source={StaticResource dcSpy1}, Path=DataContext}" 
-                                      Click="CheckAll_Click" HorizontalAlignment="Center" 
-                                      HorizontalContentAlignment="Center"/>
+                            <CheckBox x:Name="CheckAll" IsChecked="{Binding Source={StaticResource dcSpy1}, Path=DataContext}" Style="{DynamicResource CheckBoxStyle}" Click="CheckAll_Click" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.HeaderTemplate>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" 
-                                      IsChecked="{Binding Path=IsChecked, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
-                                      Click="CheckBox_Click"/>
+                            <CheckBox HorizontalAlignment="Center" Style="{DynamicResource CheckBoxStyle}" VerticalAlignment="Center" IsChecked="{Binding Path=IsChecked, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Click="CheckBox_Click"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -53,14 +57,11 @@
                 <DataGridTemplateColumn IsReadOnly="True" SortMemberPath="Description" CanUserSort="True" Header="{Binding Source={StaticResource dcSpy}, Path=DataContext}" Width="Auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <FlexGridControl:ImageWithText HorizontalAlignment="Left" VerticalAlignment="Center" 
-                                                           ImageSource="{Binding ImageSource, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" 
-                                                           LabelText="{Binding Description, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" 
-                                                           KeyboardNavigation.DirectionalNavigation="None" KeyboardNavigation.TabNavigation="None"/>
+                            <FlexGridControl:ImageWithText HorizontalAlignment="Left" VerticalAlignment="Center" ImageSource="{Binding ImageSource, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" LabelText="{Binding Description, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" KeyboardNavigation.DirectionalNavigation="None" KeyboardNavigation.TabNavigation="None"/>
                             <!--<Label Style="{DynamicResource GridLabelStyle}" Content="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>              
+                </DataGridTemplateColumn>
 
             </DataGrid.Columns>
         </DataGrid>

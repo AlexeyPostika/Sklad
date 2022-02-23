@@ -7,12 +7,12 @@
              mc:Ignorable="d" Name="control">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <WrapPanel Name="wrapPanel"  Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Label x:Name="label" />
-            <Label Name="required" Margin="-9,0,0,0" FontSize="18" Height="30" Visibility="{Binding ElementName=control, Path=IsRequired, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="Red" Content="*" HorizontalAlignment="Left"/>
+            <Label x:Name="label" Style="{DynamicResource LabelStyle}"  />
+            <Label Name="required" Style="{DynamicResource LabelStyle}"  Margin="-9,0,0,0" FontSize="18" Height="30" Visibility="{Binding ElementName=control, Path=IsRequired, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="Red" Content="*" HorizontalAlignment="Left"/>
             <RadioButton x:Name="YES"  Margin="0,7,0,0" Checked="YES_Checked" HorizontalAlignment="Center"/>
-            <Label x:Name="YESlabel" />
+            <Label x:Name="YESlabel" Style="{DynamicResource LabelStyle}"  />
             <RadioButton x:Name="NO" Margin="0,7,0,0" Checked="NO_Checked" HorizontalAlignment="Center"/>
-            <Label x:Name="NOlabel" />
+            <Label x:Name="NOlabel" Style="{DynamicResource LabelStyle}" />
         </WrapPanel>
     </Grid>
 </UserControl>

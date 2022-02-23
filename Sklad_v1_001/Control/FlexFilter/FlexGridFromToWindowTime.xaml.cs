@@ -32,6 +32,7 @@ namespace Sklad_v1_001.Control.FlexFilter
     public partial class FlexGridFromToWindowTime : IAbstractButtonFilter, INotifyPropertyChanged
     {
         private Boolean needrefresh;
+        private Boolean needwarning;
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
@@ -201,6 +202,27 @@ namespace Sklad_v1_001.Control.FlexFilter
             }
         }
 
+        public static readonly DependencyProperty DefaultStyleProperty = DependencyProperty.Register(
+                       "DefaultStyle",
+                       typeof(Style),
+                       typeof(FlexGridFromToWindowTime));
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Style DefaultStyle
+        {
+            get
+            {
+
+                return (Style)GetValue(DefaultStyleProperty);
+            }
+            set
+            {
+
+                SetValue(DefaultStyleProperty, value);
+                OnPropertyChanged("DefaultStyle");
+            }
+        }
+
         public FlexGridFromToWindowTime()
         {
             InitializeComponent();
@@ -262,6 +284,63 @@ namespace Sklad_v1_001.Control.FlexFilter
                 else
                     FilterStatus = false;
                 ButtonApplyClick?.Invoke();
+            }
+        }
+
+        private void DateTo_TextChanged()
+        {
+            if (needrefresh)
+            {
+                if (To != DefaultMax || From != DefaultMin)
+                    FilterStatus = true;
+                else
+                    FilterStatus = false;
+
+                DateTime FromTime;
+                DateTime ToTime;
+
+                DateTime.TryParse(From, out FromTime);
+                DateTime.TryParse(To, out ToTime);
+
+                if (needwarning && FromTime > ToTime)
+                {
+                    DateTo.TextBox.Style = (Style)MainWindow.AppWindow.TryFindResource("FilterBorderErrorStyle");
+                }
+                else
+                {
+                    DateTo.TextBox.Style = DefaultStyle;
+                    DateFrom.TextBox.Style = DefaultStyle;
+                    ButtonApplyClick?.Invoke();
+                }
+            }
+        }
+
+        private void DateFrom_TextChanged()
+        {
+            if (needrefresh)
+            {
+                if (To != DefaultMax || From != DefaultMin)
+                    FilterStatus = true;
+                else
+                    FilterStatus = false;
+
+                DateTime FromTime;
+                DateTime ToTime;
+
+                DateTime.TryParse(From, out FromTime);
+                DateTime.TryParse(To, out ToTime);
+
+                if (needwarning && FromTime > ToTime)
+                {
+                    DateFrom.TextBox.Style = (Style)MainWindow.AppWindow.TryFindResource("FilterBorderErrorStyle");
+                }
+                else
+                {
+                    DateTo.TextBox.Style = DefaultStyle;
+                    DateFrom.TextBox.Style = DefaultStyle;
+                    ButtonApplyClick?.Invoke();
+                }
+                needwarning = true;
             }
         }
     }

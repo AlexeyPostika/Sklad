@@ -12,7 +12,9 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Label Name="label" Margin="5,0,0,0" Width="100" Height="30"/>
+            <Label Name="label"
+                   Style="{DynamicResource LabelStyle}"
+                   Margin="5,0,0,0" Width="100" Height="30"/>
             <local:DateTimeDelete x:Name="DateTimeDelete" Grid.Column="1" SelectedDateChangedClick="DateTimeDelete_SelectedDateChangedClick"/>
         </Grid>
     </Grid>

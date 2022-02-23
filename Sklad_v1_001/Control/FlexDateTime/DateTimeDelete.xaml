@@ -10,8 +10,12 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <DatePicker Padding="0,0,30,0" Name="DatePicker" SelectedDateChanged="DatePicker_SelectedDateChanged"/>
-        <Button  Name="button" HorizontalAlignment="Right" Click="button_Click">
+        <DatePicker Name="DatePicker"
+                    Style="{DynamicResource DatePickerStyle }"
+                    Padding="0,0,30,0"  SelectedDateChanged="DatePicker_SelectedDateChanged"/>
+        <Button  Name="button" 
+                 Style="{DynamicResource RoundBorderButtonStyle}"
+                 HorizontalAlignment="Right" Click="button_Click">
                 <Image Name="image" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None" />
             </Button>
     </Grid>

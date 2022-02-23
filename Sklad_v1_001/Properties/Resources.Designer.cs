@@ -358,6 +358,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Сегодня.
+        /// </summary>
+        public static string CurrentDay {
+            get {
+                return ResourceManager.GetString("CurrentDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на За сегодня.
         /// </summary>
         public static string DateTimeDescription1 {
@@ -997,7 +1006,7 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на №-телефона гол.офисса.
+        ///   Ищет локализованную строку, похожую на №-тел. гол.офисса.
         /// </summary>
         public static string NumberPhoneDelivery {
             get {

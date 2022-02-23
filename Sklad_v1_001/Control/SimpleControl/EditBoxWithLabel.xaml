@@ -13,10 +13,10 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <WrapPanel Name="wrapPanel" Width="Auto" Margin="5,0,0,0">
-                <Label Name="label" Height="30"/>
-                <Label Name="required" Margin="-9,0,0,0" FontSize="18" Height="30" Visibility="{Binding ElementName=control, Path=IsRequired, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="Red" Content="*" HorizontalAlignment="Left"/>
+                <Label Name="label" Style="{DynamicResource LabelStyle}"  Height="30"/>
+                <Label Name="required" Style="{DynamicResource LabelStyle}"  Margin="-9,0,0,0" FontSize="18" Height="30" Visibility="{Binding ElementName=control, Path=IsRequired, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="Red" Content="*" HorizontalAlignment="Left"/>
             </WrapPanel>
-            <TextBox Name="TextBox" Grid.Column="1" 
+            <TextBox Name="TextBox" Grid.Column="1"                    
                      Text="{Binding ElementName=control, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      HorizontalContentAlignment="{Binding ElementName=control, Path=HorizontalTextAlignment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      TextChanged="TextBox_TextChanged" 

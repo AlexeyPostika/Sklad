@@ -12,17 +12,15 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="30" />
         </Grid.ColumnDefinitions>
-        <Label x:Name="ControlLabel" Margin="0,0,0,0" HorizontalAlignment="Right" Grid.Column="1"/>
-        <CheckBox x:Name="CheckAll" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center"
+        <Label x:Name="ControlLabel" Style="{DynamicResource LabelStyle}" HorizontalAlignment="Right"/>
+        <CheckBox x:Name="CheckAll" Style="{DynamicResource CheckBoxStyle}" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
           IsChecked="{Binding ElementName=control, Path=IsChecked, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Checked="CheckAll_Checked" Unchecked="CheckAll_Unchecked"/>
         <ComboBox x:Name="FilterID"                                    
                 SelectedValuePath="ID"
                 DisplayMemberPath="Description" 
-                SelectionChanged="FilterID_SelectionChanged" Grid.Column="4"
+                SelectionChanged="FilterID_SelectionChanged" Style="{StaticResource ComboBoxStyleButtonDropDown}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle}" Grid.Column="2"
                 SelectedValue="{Binding ElementName=control, Path=Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                 Loaded="FilterID_Loaded"/>
     </Grid>

@@ -18,10 +18,10 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <WrapPanel Name="wrapPanel" Width="Auto" Margin="5,0,0,0">
-                <Label Name="label" Height="30"/>
-                <Label Name="required" Margin="-9,0,0,0" FontSize="18" Height="30" Visibility="{Binding ElementName=control, Path=IsRequired, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="Red" Content="*" HorizontalAlignment="Left"/>
+                <Label Name="label" Style="{DynamicResource LabelStyle}" Height="30"/>
+                <Label Name="required" Style="{DynamicResource LabelStyle}" Margin="-9,0,0,0" FontSize="18" Height="30" Visibility="{Binding ElementName=control, Path=IsRequired, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="Red" Content="*" HorizontalAlignment="Left"/>
             </WrapPanel>
-            <TextBox Name="TextBox" Margin="0,0,3,0" Grid.Column="1"
+            <TextBox Name="TextBox" Style="{DynamicResource TextBoxStyle}" Margin="0,0,3,0" Grid.Column="1"
                          Text="{Binding ElementName=control, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          MaxLength="{Binding ElementName=control, Path=MaxLength, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <FlexButton:SmallButtonFilter x:Name="buttonLoop" Grid.Column="3" Margin="3,0"

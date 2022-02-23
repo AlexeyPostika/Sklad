@@ -22,8 +22,7 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <Label Name="label" Height="30" HorizontalAlignment="Center" Content="{Binding  ElementName=control, Path=LabelText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-        <!--<TextBlock Name="label" Height="30" HorizontalAlignment="Center" Text="{Binding ElementName=control, Path=LabelText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>-->
+        <TextBlock Name="label" Style="{DynamicResource TextBlockStyle}" Height="30" HorizontalAlignment="Center" Text="{Binding ElementName=control, Path=LabelText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         <FlexButton:SmallButtonFilter x:Name="ButtonFilter" 
                                       ImageSource="{Binding ElementName=control, Path=ImageSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                     
                                       Width="32" 

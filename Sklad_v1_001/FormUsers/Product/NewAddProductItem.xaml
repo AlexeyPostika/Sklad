@@ -32,7 +32,7 @@
                                               Description="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                               EnableTextBox="True"/>
                 <FlexComboBox:ComboBoxAddEditToWithLabel                                    
-                        LabelText="{x:Static res:Resources.CATEGORY}" LabelWidth="100"
+                        LabelText="{x:Static res:Resources.CATEGORY}" LabelWidth="120"
                         IsRequired="Visible"
                         x:Name="CategoryCat" 
                         SelectionChanged="CategoryCat_SelectionChanged"
@@ -42,11 +42,9 @@
                         IsEnableEdit="{Binding ElementName=control, Path=IsEnableAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         Value="{Binding Path=CategoryID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                         Visibility="Visible"/>
-                
-              
 
                 <FlexComboBox:ComboBoxAddEditToWithLabel                                    
-                        LabelText="{x:Static res:Resources.CATEGORYDETAILS}" LabelWidth="100"
+                        LabelText="{x:Static res:Resources.CATEGORYDETAILS}" LabelWidth="120"
                         IsRequired="Visible"
                         x:Name="CategoryDetails" 
                         DropDownClosed="CategoryDetails_DropDownClosed"
@@ -66,19 +64,19 @@
                 <SimpleControl:EditBoxWithLabel x:Name="BarCode"  LabelText="{x:Static res:Resources.BarCodeID}"
                                                               IsRequired="Visible"
                                                               Text="{Binding Path=BarCodeString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=\{0:N0\}}"
-                                                              LabelWidth="130"/>
+                                                              LabelWidth="150"/>
                 <SimpleControl:EditBoxWithLabelNumericForEdit x:Name="QuantityName"  LabelText="{x:Static res:Resources.Quantity}"
                                                               IsRequired="Visible"
                                                               Value="{Binding Path=Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=\{0:N0\}}"
-                                                              LabelWidth="130"/>
+                                                              LabelWidth="150"/>
                 <SimpleControl:EditBoxWithLabelFloatForEdit x:Name="TagPriceUSAName" LabelText="{x:Static res:Resources.TagPriceUSA}" 
                                                             IsRequired="Visible"
                                                             Value="{Binding Path=TagPriceUSA, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=\{0:N0\}}"
-                                                            LabelWidth="130"/>
+                                                            LabelWidth="150"/>
                 <SimpleControl:EditBoxWithLabelFloatForEdit x:Name="TagPriceRUSName"  LabelText="{x:Static res:Resources.TagPriceRus}" 
                                                             IsRequired="Visible"
                                                             Value="{Binding Path=TagPriceRUS, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=\{0:N0\}}"
-                                                            LabelWidth="130"/>
+                                                            LabelWidth="150"/>
                 <FlexTextBox:FlexLabelTextBox  x:Name="SizeProductName" LabelText="{x:Static res:Resources.SizeProduct}"
                                                IsRequired="Visible"
                                                Description="{Binding Path=SizeProduct, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -89,7 +87,7 @@
                                                  NOLabelText="Нет"
                                                  IsRadio="{Binding Path=Package, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                  IsRadioType="{Binding Path=RadioType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                 LabelWidth="150"/>
+                                                 LabelWidth="120"/>
             </StackPanel>
         </Border>
         <Grid Grid.Row="2" Margin="0,0,0,10">

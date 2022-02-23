@@ -12,6 +12,7 @@
              mc:Ignorable="d" x:Name="control"                  
              MouseEnter="control_MouseEnter"
              MouseMove="control_MouseMove"
+             Style="{DynamicResource WindowStyleItem2}" 
              SizeChanged="control_SizeChanged">
     <Grid x:Name="PopupFilter" MaxHeight="462">
         <Grid.RowDefinitions>
@@ -23,6 +24,10 @@
         <Toolbar:Close x:Name="Toolbar" Width="Auto" ButtonCloseClick="Close_ButtonCloseClick" ButtonClearFiltersVisible="Collapsed" HeaderText ="{Binding Path=TitleText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         <FlexEditBox:EditBoxDeleteWithLabel LabelText="{x:Static res:Resources.Search}" Grid.Row="1" x:Name="SearchFilter" VerticalAlignment="Center" Text="{Binding Path=Search, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" ButtonClearClick="SearchFilter_ButtonClearClick" ButtonTextChangedClick="SearchFilter_ButtonTextChangedClick" Margin="10,0,0,0"/>
         <DataGrid Name="ElementDataGrid" 
+                  Style="{DynamicResource DataGridStyle}" 
+                  ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" 
+                  RowStyle="{DynamicResource DataGridRowStyle}" 
+                  CellStyle="{DynamicResource DataGridCellStyle}"   
                   AutoGenerateColumns="False"                                    
                   CanUserAddRows="False"                               
                   MouseLeftButtonUp="ElementDataGrid_MouseLeftButtonUp"
@@ -46,7 +51,7 @@
                     </DataGridTemplateColumn.HeaderTemplate>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding Path=IsChecked, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" MouseLeftButtonUp="ElementDataGrid_MouseLeftButtonUp" Click="CheckBox_Click"/>
+                            <CheckBox HorizontalAlignment="Center"  Style="{DynamicResource CheckBoxStyle}" VerticalAlignment="Center" IsChecked="{Binding Path=IsChecked, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" MouseLeftButtonUp="ElementDataGrid_MouseLeftButtonUp" Click="CheckBox_Click"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

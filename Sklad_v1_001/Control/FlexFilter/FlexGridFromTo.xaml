@@ -7,11 +7,14 @@
              xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton" 
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
-             d:DesignHeight="32" d:DesignWidth="300" Name="control" Background="#FFF2FDFC">
+             d:DesignHeight="32" d:DesignWidth="300" Name="control">
     <UserControl.Resources>
         <sys:String x:Key="HeaderText">Header Text</sys:String>
-        <!--<Style x:Key="HeadetTextStyle" TargetType="{}"-->
+        <Style x:Key="HeaderTextStyle" TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="Content" Value="{DynamicResource HeaderText}" />
+        </Style>
     </UserControl.Resources>
+
     <Grid x:Name="MainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -19,10 +22,7 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <Label Name="label" Height="30" HorizontalAlignment="Center" Content="{Binding  ElementName=control, Path=LabelText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-        <FlexButton:SmallButtonFilter x:Name="ButtonFilter" 
-                                      Width="32" Height="32" Grid.Column="2" 
-                                      ButtonClick="ButtonFilter_ButtonClick" 
-                                      ImageSource="{Binding ElementName=control, Path=ImageSource, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <TextBlock Style="{DynamicResource TextBlockStyle}" Name="label" Height="Auto" HorizontalAlignment="Center" Text="{Binding  ElementName=control, Path=LabelText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <FlexButton:SmallButtonFilter x:Name="ButtonFilter" Width="32" Height="32" Grid.Column="2" ButtonClick="ButtonFilter_ButtonClick" ImageSource="{Binding ElementName=control, Path=ImageSource, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
     </Grid>
 </UserControl>

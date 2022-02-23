@@ -15,6 +15,7 @@
         Closing="control_Closing"
         SizeToContent="WidthAndHeight"
         WindowStartupLocation = "CenterScreen"
+        Style="{DynamicResource WindowStyleItem2}"
         ResizeMode="NoResize" WindowStyle="None" >
 
     <Grid x:Name="FilterPanel">
@@ -29,8 +30,8 @@
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
         <Toolbar:Close ButtonClearFiltersVisible="Visible" ButtonClearFiltersClick="Close_ButtonClearFiltersClick" ButtonCloseClick="Close_ButtonCloseClick" HeaderText="{Binding ElementName=control, Path=LabelText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.ColumnSpan="3"/>
-        <SimpleControl:EditBoxWithLabelTime Margin="5 0 0 0" HorizontalAlignment="Center" x:Name="DateFrom" ValueChanged="Date_TextChanged" Grid.Row="1" Width="120" LabelWidth="0" Value="{Binding ElementName=control, Path=From, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-        <Label Content="-" Grid.Column="1" HorizontalContentAlignment="Center" Grid.Row="1"/>
-        <SimpleControl:EditBoxWithLabelTime Margin="5 0 0 0" Grid.Column="2" x:Name="DateTo" ValueChanged="Date_TextChanged" Width="120" LabelWidth="0" Value="{Binding ElementName=control, Path=To, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Row="1"/>
+        <SimpleControl:EditBoxWithLabelTime HorizontalAlignment="Center" x:Name="DateFrom" ValueChanged="DateFrom_TextChanged" Grid.Row="1" Width="120" LabelWidth="0" Value="{Binding ElementName=control, Path=From, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <Label Style="{DynamicResource LabelStyle}" Content="-" Grid.Column="1" HorizontalContentAlignment="Center" Grid.Row="1"/>
+        <SimpleControl:EditBoxWithLabelTime Grid.Column="2" x:Name="DateTo" ValueChanged="DateTo_TextChanged" Width="120" LabelWidth="0" Value="{Binding ElementName=control, Path=To, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Row="1"/>
     </Grid>
 </dialog:DialogWindow>

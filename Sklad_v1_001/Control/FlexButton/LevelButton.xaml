@@ -7,7 +7,9 @@
              Style="{DynamicResource MenuButton}"
              mc:Ignorable="d" x:Name="control">
     <Grid>
-        <Button Name="button" Click="button_Click" HorizontalContentAlignment="Stretch" >
+        <Button Name="button"
+                Style="{DynamicResource RoundBorderButtonStyle}"
+                Click="button_Click" HorizontalContentAlignment="Stretch" >
             <Grid HorizontalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -16,7 +18,7 @@
                 </Grid.ColumnDefinitions>
                 <Image x:Name="Image" Stretch="Fill" Margin="5,3,0,3" HorizontalAlignment="Left" RenderOptions.BitmapScalingMode="NearestNeighbor" MaxHeight="30" MaxWidth="30"/>
                 <Image x:Name="ImageWarning" Stretch="None" Margin="0,3,-10,0" HorizontalAlignment="Right" VerticalAlignment="Top" RenderOptions.BitmapScalingMode="NearestNeighbor" Visibility="Collapsed"/>
-                <Label x:Name="TextField" Grid.Column="1" HorizontalAlignment="Stretch" Margin="15,0,0,0"/>
+                <Label x:Name="TextField" Style="{DynamicResource LabelStyle}" Grid.Column="1" HorizontalAlignment="Stretch" Margin="15,0,0,0"/>
                 <Image x:Name="ImageDown" Stretch="None" Margin="0,5,0,5" HorizontalAlignment="Left"  Grid.Column="2"/>
                 <Image x:Name="ImageUp" Stretch="None" Margin="0,5,0,5" HorizontalAlignment="Left" Grid.Column="2"/>
             </Grid>
