@@ -392,6 +392,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             supplyDocumentDeliveryItem.Status = Document.Status;
             addDeliveryWindow.Content = supplyDocumentDeliveryItem;
             addDeliveryWindow.Show(Properties.Resources.Deliveries);
+            //тут проблема посмотреть, не правильно добавляется ID
             if (supplyDocumentDeliveryItem.IsClickButtonOK == MessageBoxResult.OK)
             {
                 if (supplyDocumentDeliveryItem.DeliveryRow != null && !String.IsNullOrEmpty(supplyDocumentDeliveryItem.DeliveryRow.NameCompany))
@@ -405,7 +406,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     }
                     else
                     {
-                        locale = supplyDocumentDelivery.FirstOrDefault(x => x.ID == localeRowDelivery.ID);
+                        locale = supplyDocumentDelivery.FirstOrDefault(x => x.TempID == localeRowDelivery.ID);
                         supplyDocumentDelivery.Remove(locale);
                         locale = localeRowDelivery;
                         locale.TempID = supplyDocumentDelivery.Count() + 1;
