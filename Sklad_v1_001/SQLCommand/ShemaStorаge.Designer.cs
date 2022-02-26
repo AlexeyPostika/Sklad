@@ -3119,7 +3119,7 @@ namespace Sklad_v1_001.SQLCommand {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public SupplyDocumentPaymentRow AddSupplyDocumentPaymentRow(string DocumentID, string Status, string OperationType, string Amount, string Description, string CreatedDate, string CreatedUserID, string LastModificatedDate, string LastModificatedUserID, string RRN) {
+            public SupplyDocumentPaymentRow AddSupplyDocumentPaymentRow(string DocumentID, string Status, string OperationType, decimal Amount, string Description, string CreatedDate, string CreatedUserID, string LastModificatedDate, string LastModificatedUserID, string RRN) {
                 SupplyDocumentPaymentRow rowSupplyDocumentPaymentRow = ((SupplyDocumentPaymentRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         DocumentID,
@@ -3175,7 +3175,7 @@ namespace Sklad_v1_001.SQLCommand {
                 base.Columns.Add(this.columnStatus);
                 this.columnOperationType = new global::System.Data.DataColumn("OperationType", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOperationType);
-                this.columnAmount = new global::System.Data.DataColumn("Amount", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnAmount = new global::System.Data.DataColumn("Amount", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAmount);
                 this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDescription);
@@ -5317,10 +5317,10 @@ namespace Sklad_v1_001.SQLCommand {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Amount {
+            public decimal Amount {
                 get {
                     try {
-                        return ((string)(this[this.tableSupplyDocumentPayment.AmountColumn]));
+                        return ((decimal)(this[this.tableSupplyDocumentPayment.AmountColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("Значение для столбца \'Amount\' в таблице \'SupplyDocumentPayment\' равно DBNull.", e);

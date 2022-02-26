@@ -147,8 +147,8 @@
             </Grid>
         </GroupBox>
 
-        <Grid Grid.Row="3" ScrollViewer.VerticalScrollBarVisibility="Auto">
-            <StackPanel>
+        <Grid Grid.Row="3">
+            <StackPanel  ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible">
                 <GroupBox  Header="{x:Static res:Resources.ListProducts}" 
                    Name="ListProductDocument"                  
                    Margin="0,0,10,10">

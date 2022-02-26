@@ -10,7 +10,7 @@
       ResizeMode="NoResize"
       Height="800" Width="800"
       Title="FlexDocumentWindows"
-      x:Name="page">
+      x:Name="page" Icon="Store.png">
 
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
         
