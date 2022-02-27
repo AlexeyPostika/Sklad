@@ -392,6 +392,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         private Int32 addUserID;
         private Int32 userID;
         private Int32 iD;
+        private Int32 lineDocument;
         private Int32 status;
         private String statusString;
         private Int32 count;
@@ -481,8 +482,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 iD = value;
                 OnPropertyChanged("ID");
             }
-        }
+        }      
+        public Int32 LineDocument
+        {
+            get
+            {
+                return lineDocument;
+            }
 
+            set
+            {
+                lineDocument = value;
+                OnPropertyChanged("LineDocument");
+            }
+        }
         public Int32 UserID
         {
             get
@@ -2063,6 +2076,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             ConvertData convertData = new ConvertData(_dataRow, _localeRow);
 
             _localeRow.ID = convertData.ConvertDataInt32("ID");
+            _localeRow.LineDocument= convertData.ConvertDataInt32("LineDocument");
             _localeRow.Status = convertData.ConvertDataInt32("Status");
             _localeRow.StatusString = supplyTypeList.innerList.FirstOrDefault(x => x.ID == _localeRow.Status) != null ?
                                             supplyTypeList.innerList.FirstOrDefault(x => x.ID == _localeRow.Status).Description : Properties.Resources.UndefindField;

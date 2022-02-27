@@ -18,7 +18,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
         <ToolBar:NewSupplyDocumentDetailsToolBar x:Name="SupplyDocumentDetailsToolBar" Margin="0,10"
@@ -30,7 +30,7 @@
 
         <GroupBox Name="DocumentDetails" Grid.Row="1" Margin="0,0,10,10"
             Header="{x:Static res:Resources.SupplyDocumentHeader}" >
-                <WrapPanel>
+            <WrapPanel>
                 <Grid x:Name="DocumentGrid">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -147,33 +147,41 @@
             </Grid>
         </GroupBox>
 
-        <Grid Grid.Row="3">
-            <StackPanel  ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible">
-                <GroupBox  Header="{x:Static res:Resources.ListProducts}" 
-                   Name="ListProductDocument"                  
-                   Margin="0,0,10,10">
-                    <StackPanel>
-                        <ToolBar:DataViewToolNewSupplyDocument x:Name="ToolBarProduct"
-                                                       ButtonNewProductClick="ToolBarProduct_ButtonNewProductClick"
-                                                       ButtonDeleteClick="ToolBarProduct_ButtonDeleteClick"/>
-                        <DataGrid x:Name="DataProduct" 
-                                  Style="{DynamicResource DataGridStyle}" 
-                                  ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" 
-                                  RowStyle="{DynamicResource DataGridRowStyle}" 
-                                  CellStyle="{DynamicResource DataGridCellStyle}"
-                                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                                  ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                  MaxHeight="250"
-                                  Margin="0,10,0,0"
-                                  AutoGenerateColumns="False"
-                                  MouseDoubleClick="DataProduct_MouseDoubleClick">
-                            <DataGrid.Resources>
-                                <local:DataContextSpy x:Key="dcSpy1" DataContext="{Binding ElementName=Page, Path=CheckAll, Mode=TwoWay}"/>
-                                <local:DataContextSpy x:Key="dcSpy3" DataContext="{Binding ElementName=Page, Path=NonStatusVisibility, Mode=TwoWay}"/>
-                            </DataGrid.Resources>
-                            <DataGrid.Columns>
+        <TabControl x:Name="tabControl" Grid.Row="3" Style="{DynamicResource TabControlStyle}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <TabItem Header="{x:Static res:Resources.ListProducts}" Style="{DynamicResource TabItemStyle}" x:Name="ProductData">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="131*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <ToolBar:DataViewToolNewSupplyDocument x:Name="ToolBarProduct"
+                                                           Margin="10,10,0,0"
+                                                           Grid.ColumnSpan="2"
+                                                           ButtonNewProductClick="ToolBarProduct_ButtonNewProductClick"
+                                                           ButtonDeleteClick="ToolBarProduct_ButtonDeleteClick"/>
+                    <DataGrid x:Name="DataProduct" 
+                              Grid.RowSpan="2"
+                              Grid.ColumnSpan="2"
+                              Grid.Row="1"
+                              Style="{DynamicResource DataGridStyle}" 
+                              ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" 
+                              RowStyle="{DynamicResource DataGridRowStyle}" 
+                              CellStyle="{DynamicResource DataGridCellStyle}"
+                              ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                              ScrollViewer.VerticalScrollBarVisibility="Auto"
+                              AutoGenerateColumns="False"
+                              MouseDoubleClick="DataProduct_MouseDoubleClick">
+                        <DataGrid.Resources>
+                            <local:DataContextSpy x:Key="dcSpy1" DataContext="{Binding ElementName=Page, Path=CheckAll, Mode=TwoWay}"/>
+                            <local:DataContextSpy x:Key="dcSpy3" DataContext="{Binding ElementName=Page, Path=NonStatusVisibility, Mode=TwoWay}"/>
+                        </DataGrid.Resources>
+                        <DataGrid.Columns>
 
-                                <!--<DataGridTemplateColumn >
+                            <!--<DataGridTemplateColumn >
                             <DataGridTemplateColumn.HeaderTemplate>
                                 <DataTemplate>
                                     <CheckBox x:Name="CheckAll" IsChecked="{Binding Source={StaticResource dcSpy1}, Path=DataContext}" Click="CheckAll_Click" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
@@ -185,166 +193,182 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>-->
-                                <DataGridTextColumn Header="{x:Static res:Resources.ID}" SortMemberPath="ID" CanUserSort="True" Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Visibility="Collapsed"/>
-                                <DataGridTextColumn Header="{x:Static res:Resources.ID}" SortMemberPath="ID" CanUserSort="True" Binding="{Binding Path=TempID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-                                <DataGridTextColumn Header="{x:Static res:Resources.Name}" SortMemberPath="Name" CanUserSort="True" Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  MaxWidth="500"/>
-                                <DataGridTextColumn Header="{x:Static res:Resources.Model}" SortMemberPath="Model" CanUserSort="True" Binding="{Binding Path=Model, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                                <DataGridTextColumn Header="{x:Static res:Resources.CATEGORY}" 
+                            <DataGridTextColumn Header="{x:Static res:Resources.ID}" SortMemberPath="ID" CanUserSort="True" Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Visibility="Collapsed"/>
+                            <DataGridTextColumn Header="{x:Static res:Resources.ID}" SortMemberPath="ID" CanUserSort="True" Binding="{Binding Path=LineDocument, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                            <DataGridTextColumn Header="{x:Static res:Resources.Name}" SortMemberPath="Name" CanUserSort="True" Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  MaxWidth="500"/>
+                            <DataGridTextColumn Header="{x:Static res:Resources.Model}" SortMemberPath="Model" CanUserSort="True" Binding="{Binding Path=Model, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                            <DataGridTextColumn Header="{x:Static res:Resources.CATEGORY}" 
                                     SortMemberPath="ShowcaseID" 
                                     CanUserSort="True" 
                                     Binding="{Binding Path=CategoryDetailsName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  
                                     Visibility="{Binding Source={StaticResource dcSpy3}, Path=DataContext}"/>
-                                <DataGridTextColumn Header="{x:Static res:Resources.Quantity}" SortMemberPath="KtIDDescription" CanUserSort="True" Binding="{Binding Path=Quantity , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                                <DataGridTextColumn Header="{x:Static res:Resources.TagPriceUSA}" SortMemberPath="Size" CanUserSort="True" Binding="{Binding Path=TagPriceUSA , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
-                                <DataGridTextColumn Header="{x:Static res:Resources.TagPriceRus}" SortMemberPath="Color" CanUserSort="True" Binding="{Binding Path=TagPriceRUS , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
-                                <DataGridTextColumn Header="{x:Static res:Resources.SizeProduct}" SortMemberPath="SizeProduct" CanUserSort="True" Binding="{Binding Path=SizeProduct , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
-                                <!--<DataGridTextColumn Header="{x:Static res:Resources.Currency}" SortMemberPath="Currency" CanUserSort="True" Binding="{Binding Path=CurrencyShortDescription , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />-->
-                                <DataGridTextColumn Header="{x:Static res:Resources.Package}" SortMemberPath="Gender" CanUserSort="True" Binding="{Binding Path=Package, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                                <DataGridTemplateColumn MaxWidth="100">
-                                    <DataGridTemplateColumn.HeaderTemplate>
-                                        <DataTemplate>
-                                            <Label Content="{x:Static res:Resources.Package}" HorizontalAlignment="Center" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.HeaderTemplate>
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Image Source="{Binding Path=ImageSourcePackage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </StackPanel>
-                </GroupBox>
+                            <DataGridTextColumn Header="{x:Static res:Resources.Quantity}" SortMemberPath="KtIDDescription" CanUserSort="True" Binding="{Binding Path=Quantity , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                            <DataGridTextColumn Header="{x:Static res:Resources.TagPriceUSA}" SortMemberPath="Size" CanUserSort="True" Binding="{Binding Path=TagPriceUSA , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
+                            <DataGridTextColumn Header="{x:Static res:Resources.TagPriceRus}" SortMemberPath="Color" CanUserSort="True" Binding="{Binding Path=TagPriceRUS , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
+                            <DataGridTextColumn Header="{x:Static res:Resources.SizeProduct}" SortMemberPath="SizeProduct" CanUserSort="True" Binding="{Binding Path=SizeProduct , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
+                            <!--<DataGridTextColumn Header="{x:Static res:Resources.Currency}" SortMemberPath="Currency" CanUserSort="True" Binding="{Binding Path=CurrencyShortDescription , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />-->
+                            <DataGridTextColumn Header="{x:Static res:Resources.Package}" SortMemberPath="Gender" CanUserSort="True" Binding="{Binding Path=Package, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                            <DataGridTemplateColumn MaxWidth="100">
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <Label Content="{x:Static res:Resources.Package}" HorizontalAlignment="Center" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding Path=ImageSourcePackage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="{x:Static res:Resources.ListDelivery}" Style="{DynamicResource TabItemStyle}" x:Name="ListDeliveryDocument">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="131*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <ToolBar:DataViewToolNewSupplyDocument x:Name="ToolBarDelivery"
+                                                           Margin="10,10,0,0"
+                                                           Grid.ColumnSpan="2"
+                                                           ButtonNewProductClick="ToolBarDelivery_ButtonNewProductClick"
+                                                           ButtonDeleteClick="ToolBarDelivery_ButtonDeleteClick"/>
+                    <DataGrid x:Name="DataDelivery" 
+                              Grid.RowSpan="2"
+                              Grid.ColumnSpan="2"
+                              Grid.Row="1"
+                              Style="{DynamicResource DataGridStyle}" 
+                              ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" 
+                              RowStyle="{DynamicResource DataGridRowStyle}" 
+                              CellStyle="{DynamicResource DataGridCellStyle}"
+                              ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                              ScrollViewer.VerticalScrollBarVisibility="Auto"
+                              AutoGenerateColumns="False"
+                              MouseDoubleClick="DataDelivery_MouseDoubleClick">
 
-                <GroupBox  Header="{x:Static res:Resources.ListDelivery}" 
-                   Name="ListDeliveryDocument"                 
-                   Margin="0,0,10,10">
-                    <StackPanel>
-                        <ToolBar:DataViewToolNewSupplyDocument x:Name="ToolBarDelivery"
-                                                       ButtonNewProductClick="ToolBarDelivery_ButtonNewProductClick"
-                                                       ButtonDeleteClick="ToolBarDelivery_ButtonDeleteClick"/>
-                        <DataGrid x:Name="DataDelivery" 
-                                  Style="{DynamicResource DataGridStyle}" 
-                                  ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" 
-                                  RowStyle="{DynamicResource DataGridRowStyle}" 
-                                  CellStyle="{DynamicResource DataGridCellStyle}"
-                                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                                  ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                  MaxHeight="500"
-                                  Margin="0,10,0,0"
-                                  AutoGenerateColumns="False"
-                                  MouseDoubleClick="DataDelivery_MouseDoubleClick">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="{x:Static res:Resources.ID}" SortMemberPath="ID" CanUserSort="True" Binding="{Binding Path=LineDocument, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                            <DataGridTextColumn Header="{x:Static res:Resources.NameDelivery}" SortMemberPath="NameDelivery" CanUserSort="True" Binding="{Binding Path=NameCompany, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                            <DataGridTextColumn Header="{x:Static res:Resources.ManagerCompany}" SortMemberPath="ManagerName" CanUserSort="True" Binding="{Binding Path=ManagerName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                            <DataGridTextColumn Header="{x:Static res:Resources.NumberPhone}" SortMemberPath="Phones" CanUserSort="True" Binding="{Binding Path=PhonesCompany, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                            <DataGridTextColumn Header="{x:Static res:Resources.NumberPhoneDelivery}" SortMemberPath="Model" CanUserSort="True" Binding="{Binding Path=PhonesManager, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                            <DataGridTextColumn Header="{x:Static res:Resources.Status}" SortMemberPath="Status" CanUserSort="True" Binding="{Binding Path=StatusString , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                            <DataGridTextColumn Header="{x:Static res:Resources.Invoice}" SortMemberPath="Invoice" CanUserSort="True" Binding="{Binding Path=Invoice , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                            <DataGridTemplateColumn MaxWidth="300">
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <Label Content="{x:Static res:Resources.AddFileInvoice}" HorizontalAlignment="Center" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding Path=ImageSourceInvoice, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="{x:Static res:Resources.TTN}" SortMemberPath="TTN" CanUserSort="True" Binding="{Binding Path=TTN , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                            <DataGridTemplateColumn MaxWidth="300">
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <Label Content="{x:Static res:Resources.AddFileTTN}" HorizontalAlignment="Center" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding Path=ImageSourceTTN, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <!--<DataGridTextColumn Header="{x:Static res:Resources.LastModifiadDateText}" SortMemberPath="Model" CanUserSort="True" Binding="{Binding Path=LastModifiadDateText , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />-->
+                            <DataGridTextColumn Header="{x:Static res:Resources.DelivaryAmountUSA}" SortMemberPath="Status" CanUserSort="True" Binding="{Binding Path=AmountUSA , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
+                            <DataGridTextColumn Header="{x:Static res:Resources.DelivaryAmountRUS}" SortMemberPath="Invoice" CanUserSort="True" Binding="{Binding Path=AmountRUS , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
 
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="{x:Static res:Resources.NameDelivery}" SortMemberPath="NameDelivery" CanUserSort="True" Binding="{Binding Path=NameCompany, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                                <DataGridTextColumn Header="{x:Static res:Resources.ManagerCompany}" SortMemberPath="ManagerName" CanUserSort="True" Binding="{Binding Path=ManagerName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                                <DataGridTextColumn Header="{x:Static res:Resources.NumberPhone}" SortMemberPath="Phones" CanUserSort="True" Binding="{Binding Path=PhonesCompany, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                                <DataGridTextColumn Header="{x:Static res:Resources.NumberPhoneDelivery}" SortMemberPath="Model" CanUserSort="True" Binding="{Binding Path=PhonesManager, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                                <DataGridTextColumn Header="{x:Static res:Resources.Status}" SortMemberPath="Status" CanUserSort="True" Binding="{Binding Path=StatusString , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                                <DataGridTextColumn Header="{x:Static res:Resources.Invoice}" SortMemberPath="Invoice" CanUserSort="True" Binding="{Binding Path=Invoice , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                                <DataGridTemplateColumn MaxWidth="300">
-                                    <DataGridTemplateColumn.HeaderTemplate>
-                                        <DataTemplate>
-                                            <Label Content="{x:Static res:Resources.AddFileInvoice}" HorizontalAlignment="Center" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.HeaderTemplate>
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Image Source="{Binding Path=ImageSourceInvoice, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTextColumn Header="{x:Static res:Resources.TTN}" SortMemberPath="TTN" CanUserSort="True" Binding="{Binding Path=TTN , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                                <DataGridTemplateColumn MaxWidth="300">
-                                    <DataGridTemplateColumn.HeaderTemplate>
-                                        <DataTemplate>
-                                            <Label Content="{x:Static res:Resources.AddFileTTN}" HorizontalAlignment="Center" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.HeaderTemplate>
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Image Source="{Binding Path=ImageSourceTTN, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                                <!--<DataGridTextColumn Header="{x:Static res:Resources.LastModifiadDateText}" SortMemberPath="Model" CanUserSort="True" Binding="{Binding Path=LastModifiadDateText , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />-->
-                                <DataGridTextColumn Header="{x:Static res:Resources.DelivaryAmountUSA}" SortMemberPath="Status" CanUserSort="True" Binding="{Binding Path=AmountUSA , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
-                                <DataGridTextColumn Header="{x:Static res:Resources.DelivaryAmountRUS}" SortMemberPath="Invoice" CanUserSort="True" Binding="{Binding Path=AmountRUS , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="{x:Static res:Resources.ListPayment}" Style="{DynamicResource TabItemStyle}" x:Name="ListPaymentDocument" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="131*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <ToolBar:DataViewToolNewSupplyDocument x:Name="ToolBarPayment"
+                                                           Margin="10,10,0,0"
+                                                           Grid.ColumnSpan="2"
+                                                           ButtonNewProductClick="ToolBarPayment_ButtonNewProductClick"
+                                                           ButtonDeleteClick="ToolBarPayment_ButtonDeleteClick"
+                                                           IsEnabledButton1="{Binding ElementName=page, Path=IsPaymentAddButton , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                    <DataGrid x:Name="DataPayment" 
+                              Grid.RowSpan="2"
+                              Grid.ColumnSpan="2"
+                              Grid.Row="1"
+                              Style="{DynamicResource DataGridStyle}" 
+                              ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" 
+                              RowStyle="{DynamicResource DataGridRowStyle}" 
+                              CellStyle="{DynamicResource DataGridCellStyle}"
+                              ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                              ScrollViewer.VerticalScrollBarVisibility="Auto"                           
+                              AutoGenerateColumns="False"
+                              MouseDoubleClick="DataPayment_MouseDoubleClick">
 
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </StackPanel>
-                </GroupBox>
-
-                <GroupBox  Header="{x:Static res:Resources.ListPayment}" 
-                   Name="ListPaymentDocument"                 
-                    Margin="0,0,10,10">
-                    <StackPanel>
-                        <ToolBar:DataViewToolNewSupplyDocument x:Name="ToolBarPayment"
-                                                               ButtonNewProductClick="ToolBarPayment_ButtonNewProductClick"
-                                                               ButtonDeleteClick="ToolBarPayment_ButtonDeleteClick"
-                                                               IsEnabledButton1="{Binding ElementName=page, Path=IsPaymentAddButton , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-                        <DataGrid x:Name="DataPayment" 
-                                  Style="{DynamicResource DataGridStyle}" 
-                                  ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" 
-                                  RowStyle="{DynamicResource DataGridRowStyle}" 
-                                  CellStyle="{DynamicResource DataGridCellStyle}"
-                                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                                  ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                  MaxHeight="250"
-                                  Margin="0,10,0,0"
-                                  AutoGenerateColumns="False"
-                                  MouseDoubleClick="DataPayment_MouseDoubleClick">
-
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="{x:Static res:Resources.ID}" 
-                                            SortMemberPath="ProductID" 
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="{x:Static res:Resources.ID}" 
+                                            SortMemberPath="ID" 
                                             CanUserSort="True" 
-                                            Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Visibility="Collapsed"/>
-                                <DataGridTextColumn Header="{x:Static res:Resources.AmountPayment}" 
+                                            Binding="{Binding Path=LineDocument, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Visibility="Collapsed"/>
+                            <DataGridTextColumn Header="{x:Static res:Resources.AmountPayment}" 
                                             SortMemberPath="Model" 
                                             CanUserSort="True" 
                                             Binding="{Binding Path=Amount , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
-                                <DataGridTextColumn Header="{x:Static res:Resources.OperationType}" 
+                            <DataGridTextColumn Header="{x:Static res:Resources.OperationType}" 
                                             SortMemberPath="OpertionType" 
                                             CanUserSort="True" 
                                             Binding="{Binding Path=OpertionTypeString , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                                <DataGridTextColumn Header="{x:Static res:Resources.Description}"
+                            <DataGridTextColumn Header="{x:Static res:Resources.Description}"
                                             SortMemberPath="Description" 
                                             CanUserSort="True" 
                                             Binding="{Binding Path=Description , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                                <DataGridTextColumn Header="{x:Static res:Resources.Status}" 
+                            <DataGridTextColumn Header="{x:Static res:Resources.Status}" 
                                             SortMemberPath="Status" 
                                             CanUserSort="True" 
                                             Binding="{Binding Path=StatusString , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                                <DataGridTextColumn Header="{x:Static res:Resources.RRN}" 
+                            <DataGridTextColumn Header="{x:Static res:Resources.RRN}" 
                                             SortMemberPath="RRN" 
                                             CanUserSort="True" 
                                             Binding="{Binding Path=RRN , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
 
-                                <DataGridTemplateColumn MaxWidth="300">
-                                    <DataGridTemplateColumn.HeaderTemplate>
-                                        <DataTemplate>
-                                            <Label Content="{x:Static res:Resources.AddFileRRN}" HorizontalAlignment="Center" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.HeaderTemplate>
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Image Source="{Binding Path=ImageSourceRRN, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
+                            <DataGridTemplateColumn MaxWidth="300">
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <Label Content="{x:Static res:Resources.AddFileRRN}" HorizontalAlignment="Center" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding Path=ImageSourceRRN, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
 
-                                <DataGridTextColumn Header="{x:Static res:Resources.LastModifiadDateText}" 
+                            <DataGridTextColumn Header="{x:Static res:Resources.LastModifiadDateText}" 
                                             SortMemberPath="LastModicatedDate"
                                             CanUserSort="True" 
                                             Binding="{Binding Path=LastModifiadDateText , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </StackPanel>
-                </GroupBox>
-            </StackPanel>
-        </Grid>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Page>

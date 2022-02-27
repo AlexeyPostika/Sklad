@@ -21,6 +21,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         private Int32 iD;
+        private Int32 lineDocument;
         private Int32 tempID;
         private Int32 documentID;
         private Decimal amount;
@@ -53,7 +54,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
                 OnPropertyChanged("ID");
             }
         }
-        //
+        public Int32 LineDocument
+        {
+            get
+            {
+                return lineDocument;
+            }
+
+            set
+            {
+                lineDocument = value;
+                OnPropertyChanged("LineDocument");
+            }
+        }
+
         public int TempID
         {
             get
@@ -342,6 +356,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
             // SaleDocumentDetailsList statusList = new SaleDocumentDetailsList(); 
             ConvertData convertData = new ConvertData(_dataRow, _localeRow);
             _localeRow.ID = convertData.ConvertDataInt32("ID");
+            _localeRow.LineDocument = convertData.ConvertDataInt32("LineDocument");
             _localeRow.TempID = convertData.ConvertDataInt32("ID");
             _localeRow.DocumentID = convertData.ConvertDataInt32("DocumentID");
             _localeRow.Status = convertData.ConvertDataInt32("Status");

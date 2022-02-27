@@ -81,6 +81,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
         
         // основная инфоррмация
         private Int32 iD;
+        private Int32 lineDocument;
         private Int32 tempID;
         private Int64 documentID;
         private String name;
@@ -127,6 +128,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             {
                 iD = value;
                 OnPropertyChanged("ID");
+            }
+        }
+
+        public Int32 LineDocument
+        {
+            get
+            {
+                return lineDocument;
+            }
+
+            set
+            {
+                lineDocument = value;
+                OnPropertyChanged("LineDocument");
             }
         }
 
@@ -629,6 +644,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             ImageSql imageSql = new ImageSql();
 
             _localeRow.ID = convertData.ConvertDataInt32("ID");
+            _localeRow.LineDocument = convertData.ConvertDataInt32("LineDocument");
             _localeRow.TempID = convertData.ConvertDataInt32("ID");
             _localeRow.DocumentID = convertData.ConvertDataInt32("DocumentID");
             _localeRow.Name = convertData.ConvertDataString("Name");

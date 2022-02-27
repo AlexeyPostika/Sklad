@@ -80,6 +80,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         private Int32 iD;
+        private Int32 lineDocument;
         private Int64 documentNumber;
         private Int32 tempID;
         private Int32 deliveryID;
@@ -123,6 +124,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
             {
                 iD = value;
                 OnPropertyChanged("ID");
+            }
+        }
+
+        public Int32 LineDocument
+        {
+            get
+            {
+                return lineDocument;
+            }
+
+            set
+            {
+                lineDocument = value;
+                OnPropertyChanged("LineDocument");
             }
         }
         public Int64 DocumentNumber
@@ -556,6 +571,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
             // SaleDocumentDetailsList statusList = new SaleDocumentDetailsList(); 
             ConvertData convertData = new ConvertData(_dataRow, _localeRow);
             _localeRow.ID = convertData.ConvertDataInt32("ID");
+            _localeRow.LineDocument = convertData.ConvertDataInt32("LineDocument");
             _localeRow.TempID = convertData.ConvertDataInt32("ID");
             _localeRow.DeliveryID = convertData.ConvertDataInt32("DeliveryID");
             _localeRow.NameCompany = convertData.ConvertDataString("NameCompany");

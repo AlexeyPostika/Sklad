@@ -246,10 +246,7 @@ namespace Sklad_v1_001.FormUsers.Product
                   dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())).Name : Properties.Resources.UndefindField;
 
                 ProductLocalRow.CategoryID = dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())) != null ?
-                    dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())).CategoryID : 0;
-
-                ProductLocalRow.ID = dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())) != null ?
-                   dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())).ID : 0;
+                    dataCategoryDetails.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(CategoryDetails.Value.ToString())).CategoryID : 0;              
 
             }                    
         }
