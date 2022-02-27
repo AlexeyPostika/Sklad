@@ -8,7 +8,7 @@
              xmlns:FlexUser="clr-namespace:Sklad_v1_001.Control.Users"
              xmlns:res="clr-namespace:Sklad_v1_001.Properties"
              mc:Ignorable="d" 
-              Style="{DynamicResource MenuControl}"
+             Style="{DynamicResource MenuControl}"
              d:DesignHeight="818" d:DesignWidth="230" Name ="Menu" Loaded="Menu_Loaded">
     <Grid Name="Osnova">
         <Grid.RowDefinitions>

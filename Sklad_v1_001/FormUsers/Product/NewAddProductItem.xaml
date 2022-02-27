@@ -13,7 +13,7 @@
       xmlns:FlexRadioButton="clr-namespace:Sklad_v1_001.Control.FlexRadio"
       xmlns:FlexEditBox="clr-namespace:Sklad_v1_001.Control.FlexEditBox"
       Title="NewAddProductItem"
-      Style="{DynamicResource UsersPageWidth}" 
+      Style="{DynamicResource PageStyle}"
       Height="Auto"
       Width="350"
       x:Name="control">
