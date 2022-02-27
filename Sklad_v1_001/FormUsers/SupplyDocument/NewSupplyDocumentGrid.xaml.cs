@@ -139,7 +139,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         NewSupplyDocumentPaymentItem newSupplyDocumentPaymentItem;
         //******************************
 
-        //остновной документ
+        //остновной документ      
         LocalRow document;
         SupplyDocumentLogic supplyDocumentLogic;
 
@@ -170,6 +170,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         ShemaStorаge shemaStorаge;
 
         private Int32 status;
+        Boolean newDocument;
+
+        public Boolean NewDocument
+        {
+            get
+            {
+                return newDocument;
+            }
+
+            set
+            {
+                newDocument = value;
+            }
+        }
 
         public LocalRow Document
         {
@@ -189,6 +203,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     status = 1;
             
                 this.DataContext = Document;
+                NewDocument = Document.ID == 0;
 
                 switch (Document.Status)
                 {
@@ -305,6 +320,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     if (newAddProductItem.ProductLocalRow.ID == 0)
                     {                            
                         locale.TempID = supplyDocumentDetails.Count() + 1;
+                        locale.LineDocument = supplyDocumentDetails.Count() + 1;
                         supplyDocumentDetails.Add(supplyDocumentDetailsLogic.ConvertProductToSupplyDocumentDetails(localeRowProduct, locale));
                     }
                     else
@@ -315,6 +331,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                             locale = new SupplyDocumentDetails.LocaleRow();
                         supplyDocumentDetailsLogic.ConvertProductToSupplyDocumentDetails(localeRowProduct, locale);                      
                         locale.TempID = supplyDocumentDetails.Count() + 1;
+                        locale.LineDocument = supplyDocumentDetails.Count() + 1;
                         supplyDocumentDetails.Add(locale);
                     }
                 }
@@ -402,6 +419,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     if (localeRowDelivery.ID == 0)
                     {               
                         localeRowDelivery.TempID = supplyDocumentDelivery.Count() + 1;
+                        locale.LineDocument = supplyDocumentDetails.Count() + 1;
                         supplyDocumentDelivery.Add(localeRowDelivery);
                     }
                     else
@@ -410,6 +428,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                         supplyDocumentDelivery.Remove(locale);
                         locale = localeRowDelivery;
                         locale.TempID = supplyDocumentDelivery.Count() + 1;
+                        locale.LineDocument = supplyDocumentDetails.Count() + 1;
                         supplyDocumentDelivery.Add(locale);
                     }
                 }
@@ -480,6 +499,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     if (paymentLocalRow.ID == 0)
                     {
                         paymentLocalRow.TempID = supplyDocumentPayment.Count() + 1;
+                        locale.LineDocument = supplyDocumentDetails.Count() + 1;
                         supplyDocumentPayment.Add(paymentLocalRow);
                     }
                     else
@@ -487,6 +507,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                         locale = supplyDocumentPayment.FirstOrDefault(x => x.ID == paymentLocalRow.ID);
                         supplyDocumentPayment.Remove(locale);                      
                         locale = paymentLocalRow;
+                        locale.LineDocument = supplyDocumentDetails.Count() + 1;
                         supplyDocumentPayment.Add(locale);
                     }
                 }
@@ -582,74 +603,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 shemaStorаge.SupplyDocumentDelivery.Clear();
                 shemaStorаge.SupplyDocumentPayment.Clear();
 
-                //строка
-                Document.MassCategoryID = "";
-                Document.MassName = "";
-                Document.MassDescription = "";
-                //Подкатегория товара
-                Document.MassCategoryDetailsID="";
-                Document.MassIDCategory="";
-                Document.MassCategoryDetailsName="";
-                Document.MassCategoryDetailsDescription="";
-
-                //Delivery
-                Document.MassDeliveryID = "";
-                Document.MassNameCompanyDelivery = "";
-                Document.MassPhonesDelivery = "";
-                Document.MassCountryDelivery = "";
-                //DeliveryDetails
-                Document.MassDeliveryDetailsID = "";
-                Document.MassIDDelivery = "";
-                Document.MassManagerName = "";
-                Document.MassPhonesDeliveryDetails = "";
-
-                //SupplyDocumentDetails
-                Document.MassSupplyDocumentDetailsID = "";
-                Document.MassSupplyDocumentDetailsName = "";
-                Document.MassSupplyDocumentDetailsQuantity = "";
-                Document.MassSupplyDocumentDetailsTagPriceUSA = "";
-                Document.MassSupplyDocumentDetailsTagPriceRUS = "";
-                Document.MassSupplyDocumentDetailsCategoryID = "";
-                Document.MassSupplyDocumentDetailsCategoryDetailsID = "";
-                Document.MassSupplyDocumentDetailsImageProduct = "";
-                Document.MassSupplyDocumentDetailsModel = "";
-                Document.MassSupplyDocumentDetailsSizeProduct = "";
-                Document.MassSupplyDocumentDetailsSize = "";
-                Document.MassSupplyDocumentDetailsBarCode = "";
-
-                //SupplyDocumentDeliverry
-                Document.MassSupplyDocumentDeliveryID="";
-                Document.MassSupplyDocumentDeliveryDeliveryID="";
-                Document.MassSupplyDocumentDeliveryDeliveryDetailsID="";
-                Document.MassSupplyDocumentDeliveryTTN="";
-                Document.MassSupplyDocumentDeliveryImageTTN="";
-                Document.MassSupplyDocumentDeliveryInvoice="";
-                Document.MassSupplyDocumentDeliveryImageInvoice="";
-                Document.MassSupplyDocumentDeliveryAmountUSA = "";
-                Document.MassSupplyDocumentDeliveryAmountRUS = "";
-
-                //SupplyDocumentPayment
-                Document.MassSupplyDocumentPaymentID="";
-                Document.MassSupplyDocumentPaymentAmount="";
-                Document.MassSupplyDocumentPaymentOperationType="";
-                Document.MassSupplyDocumentPaymentDescription="";
-                Document.MassSupplyDocumentPaymentStatus = "";
-
                 //продукты                   
                 foreach (SupplyDocumentDetails.LocaleRow currentrow in supplyDocumentDetails)
-                {
-                    //Document.MassSupplyDocumentDetailsID = Document.MassSupplyDocumentDetailsID + currentrow.ID.ToString() + '|';
-                    //Document.MassSupplyDocumentDetailsName = Document.MassSupplyDocumentDetailsName + currentrow.Name.ToString() + '|';
-                    //Document.MassSupplyDocumentDetailsQuantity = Document.MassSupplyDocumentDetailsQuantity + currentrow.Quantity.ToString() + '|';
-                    //Document.MassSupplyDocumentDetailsTagPriceUSA = Document.MassSupplyDocumentDetailsTagPriceUSA + currentrow.TagPriceUSA.ToString() + '|';
-                    //Document.MassSupplyDocumentDetailsTagPriceRUS = Document.MassSupplyDocumentDetailsTagPriceRUS + currentrow.TagPriceRUS.ToString() + '|';
-                    //Document.MassSupplyDocumentDetailsCategoryID = Document.MassSupplyDocumentDetailsCategoryID + currentrow.CategoryID.ToString() + '|';
-                    //Document.MassSupplyDocumentDetailsCategoryDetailsID = Document.MassSupplyDocumentDetailsCategoryDetailsID + currentrow.CategoryDetailsID.ToString() + '|';
-                    //Document.MassSupplyDocumentDetailsModel = Document.MassSupplyDocumentDetailsModel + currentrow.Model+ '|';
-                    //Document.MassSupplyDocumentDetailsSizeProduct = Document.MassSupplyDocumentDetailsSizeProduct + currentrow.SizeProduct + '|';
-                    //Document.MassSupplyDocumentDetailsSize = Document.MassSupplyDocumentDetailsSize + currentrow.Package + '|';
-                    ////Document.MassSupplyDocumentDetailsImageProduct = Document.MassSupplyDocumentDetailsImageProduct + currentrow.ImageProduct.ToString() + '|'; 
-                    //Document.MassSupplyDocumentDetailsBarCode = Document.MassSupplyDocumentDetailsBarCode + currentrow.BarCodeString + '|';
+                {                    
                     DataRow row = shemaStorаge.SupplyDocumentDetails.NewRow();
                     row["DocumentID"] = 0;
                     row["Name"] = currentrow.Name;
@@ -673,17 +629,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
                 //сопуствующие товары             
                 foreach (SupplyDocumentDelivery.LocaleRow currentrow in supplyDocumentDelivery)
-                {
-                    //Document.MassSupplyDocumentDeliveryID = Document.MassSupplyDocumentDeliveryID + currentrow.ID.ToString() + '|';
-                    //Document.MassSupplyDocumentDeliveryDeliveryID = Document.MassSupplyDocumentDeliveryDeliveryID + currentrow.DeliveryID.ToString() + '|';
-                    //Document.MassSupplyDocumentDeliveryDeliveryDetailsID = Document.MassSupplyDocumentDeliveryDeliveryDetailsID + currentrow.DeliveryDetailsID.ToString() + '|';
-                    //Document.MassSupplyDocumentDeliveryTTN = Document.MassSupplyDocumentDeliveryTTN + currentrow.TTN.ToString() + '|';
-                    ////Document.MassSupplyDocumentDeliveryImageTTN = Document.MassSupplyDocumentDeliveryImageTTN + currentrow.Model.ToString() + '|';
-                    //Document.MassSupplyDocumentDeliveryInvoice = Document.MassSupplyDocumentDeliveryInvoice + currentrow.Invoice.ToString() + '|';
-                    //// Document.MassSupplyDocumentDeliveryImageInvoice = Document.MassSupplyDocumentDeliveryImageInvoice + currentrow.Model.ToString() + '|';   
-                    //Document.MassSupplyDocumentDeliveryAmountUSA = Document.MassSupplyDocumentDeliveryAmountUSA + currentrow.AmountUSA.ToString() + '|';
-                    //Document.MassSupplyDocumentDeliveryAmountRUS = Document.MassSupplyDocumentDeliveryAmountRUS + currentrow.AmountRUS.ToString() + '|';
-                    
+                {                                     
                     DataRow row = shemaStorаge.SupplyDocumentDelivery.NewRow();
                     row["DocumentID"] = 0;
                     row["DeliveryID"] = currentrow.DeliveryID;
@@ -709,13 +655,6 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 shemaStorаge.SupplyDocumentPayment.Clear();
                 foreach (SupplyDocumentPayment.LocaleRow currentrow in supplyDocumentPayment)
                 {
-                    //Document.MassSupplyDocumentPaymentID = Document.MassSupplyDocumentPaymentID + currentrow.ID.ToString() + '|';
-                    //Document.MassSupplyDocumentPaymentAmount = Document.MassSupplyDocumentPaymentAmount + currentrow.Amount.ToString() + '|';
-                    //Document.MassSupplyDocumentPaymentStatus = Document.MassSupplyDocumentPaymentStatus + currentrow.Status.ToString() + '|';
-                    //Document.MassSupplyDocumentPaymentOperationType = Document.MassSupplyDocumentPaymentOperationType + currentrow.OpertionType.ToString() + '|';
-                    //Document.MassSupplyDocumentPaymentRRN = Document.MassSupplyDocumentPaymentRRN+ currentrow.RRN.ToString() + '|';
-                    //Document.MassSupplyDocumentPaymentDescription = Document.MassSupplyDocumentPaymentDescription + currentrow.Description.ToString() + '|';
-
                     DataRow row = shemaStorаge.SupplyDocumentPayment.NewRow();
                     row["DocumentID"] = 0;
                     row["Status"] = currentrow.Status;
@@ -733,9 +672,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 Document.Count = summary.SummaryQuantityProduct;
                 Document.ShemaStorаgeLocal = shemaStorаge;
                 Document.ID = supplyDocumentLogic.SaveRowTable(Document);
-                //UpdateCurrentDocument(Document.ID);
-                //MainWindow.AppWindow.DataChanged[ToString()] = false;
-
+               
                 return Document.ID;
             }
             return 0;
@@ -750,12 +687,13 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         private void SupplyDocumentDetailsToolBar_ButtonSaveclose()
         {
-
+            if (Save() > 0)
+                MainWindow.AppWindow.ButtonSupplyDocumentF(Document, NewDocument);
         }
 
         private void SupplyDocumentDetailsToolBar_ButtonListCancel()
         {
-
+            MainWindow.AppWindow.ButtonSupplyDocumentF(Document, NewDocument);
         }
 
         private void SupplyDocumentDetailsToolBar_ButtonApply()

@@ -80,7 +80,7 @@ namespace Sklad_v1_001
             //перемещение
             PageframeMenuLevel.ButtonTransferDocumentOpen += new Action(ButtonTransferDocumentOpen);
             //поставки
-            PageframeMenuLevel.ButtonDeliveryOpen += new Action(ButtonDeliveryOpen);
+            PageframeMenuLevel.ButtonDeliveryOpen += new Action(ButtonSupplyDocument);
             //настройки                
             PageframeMenuLevel.ButtonSettingsOpen += new Action(ButtonSettingsOpen);
             //выход
@@ -129,17 +129,27 @@ namespace Sklad_v1_001
         #endregion
 
         #region поставки
-        private void ButtonDeliveryOpen()
+        private void ButtonSupplyDocument()
         {
            // zacupcaGrid = new ZacupcaGrid();
             supplyDocumentGrid = new SupplyDocumentGrid(attributes);
             frameWorkArea.Navigate(supplyDocumentGrid); // открытие страницы
         }
+        public void ButtonSupplyDocumentF(FormUsers.SupplyDocument.LocalRow _localRow, Boolean _isDocumentChanged = false)
+        {
+            // zacupcaGrid = new ZacupcaGrid();
+            if (_localRow != null && _isDocumentChanged)
+                supplyDocumentGrid = new SupplyDocumentGrid(attributes);
+            frameWorkArea.Navigate(supplyDocumentGrid); // открытие страницы
+        }
+
+
         public void ButtonNewSupplyDocument()
         {
             newSupplyDocumentGrid = new NewSupplyDocumentGrid(attributes);          
             this.frameWorkArea.Navigate(newSupplyDocumentGrid);
         }
+
         public void ButtonNewSupplyDocumentF(FormUsers.SupplyDocument.LocalRow document)
         {
             newSupplyDocumentGrid = new NewSupplyDocumentGrid(attributes);
