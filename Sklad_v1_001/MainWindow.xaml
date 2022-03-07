@@ -11,7 +11,7 @@
     <Grid Background="#FFF7F7F7" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -33,7 +33,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="51,-3,0,0" TextWrapping="Wrap" Text="S" VerticalAlignment="Top" Height="95" Width="91" FontSize="95" FontWeight="Bold" FontFamily="Castellar" TextAlignment="Center" RenderTransformOrigin="0.835,0.484"/>
         <TextBlock HorizontalAlignment="Left" Margin="113,47,0,0" TextWrapping="Wrap" Text="tore" VerticalAlignment="Top" Height="38" Width="122" FontSize="40" FontWeight="Bold" FontFamily="Castellar" TextAlignment="Center" RenderTransformOrigin="0.835,0.484"/>
         <Grid Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#FF292933">
-            <Frame x:Name="frameWorkArea" HorizontalAlignment="Stretch" NavigationUIVisibility="Hidden"  VerticalAlignment="Stretch"/>
+            <Frame x:Name="frameWorkArea" Grid.RowSpan="2" NavigationUIVisibility="Hidden"/>
         </Grid>
     </Grid>
 </Window>

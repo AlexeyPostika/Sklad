@@ -10,7 +10,8 @@
     <Style  x:Key="UsersPageWidth"  TargetType="{x:Type Page}" >
         <Style.Setters>
             <Setter Property="Background" Value="#FFFDFAFA"/>
-            <Setter Property="Height" Value="920"/>
+            <Setter Property="Height" Value="Auto"/>
+            <Setter Property="Width" Value="Auto"/>
         </Style.Setters>
     </Style>
 

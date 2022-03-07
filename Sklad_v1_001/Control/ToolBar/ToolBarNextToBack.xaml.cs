@@ -190,8 +190,8 @@ namespace Sklad_v1_001.Control.ToolBar
                 if (PageCount != 0)
                 {
                     LabelText = Properties.Resources.PAGE + " " + (CurrentPage + 1).ToString("N0", CultureInfo.GetCultureInfo("en-US")) + " " + Properties.Resources.PageIn + " " + Math.Ceiling((double)TotalCount / PageCount).ToString("N0", CultureInfo.GetCultureInfo("en-US"));
-                    NextPageEnable = CurrentPage != (Int32)(Math.Ceiling((double)TotalCount / PageCount) - 1);
-                    EndPageEnable = CurrentPage != (Int32)(Math.Ceiling((double)TotalCount / PageCount) - 1);
+                    NextPageEnable = CurrentPage >= (Int32)(Math.Ceiling((double)TotalCount / PageCount) - 1) ? false : true;
+                    EndPageEnable = CurrentPage >= (Int32)(Math.Ceiling((double)TotalCount / PageCount) - 1) ? false : true;
                 }
             }
             else

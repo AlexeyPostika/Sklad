@@ -9,7 +9,7 @@
       xmlns:FlexFilter="clr-namespace:Sklad_v1_001.Control.FlexFilter"
       mc:Ignorable="d" 
       Title="{x:Static res:Resources.SupplyTitly}" 
-      Style="{DynamicResource UsersPageWidth}"
+      Style="{DynamicResource UsersPageWidth}"    
       x:Name="page">
     <Grid>
         <Grid.RowDefinitions>
