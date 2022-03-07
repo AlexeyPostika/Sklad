@@ -843,5 +843,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         {
 
         }
+
+        private void SypplyDocument_Loaded(object sender, RoutedEventArgs e)
+        {
+            localFilter.PagerowCount = (Int32)(SypplyDocumentList.ActualHeight) / 40;        
+            Refresh();         
+        }
     }
 }

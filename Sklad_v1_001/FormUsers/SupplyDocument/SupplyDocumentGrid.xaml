@@ -28,6 +28,7 @@
                       RowStyle="{DynamicResource DataGridRowStyle}" 
                       CellStyle="{DynamicResource DataGridCellStyle}"
                       AutoGenerateColumns="False"
+                      Loaded="SypplyDocument_Loaded"
                       SelectionChanged="SypplyDocument_SelectionChanged"
                       MouseDoubleClick="SypplyDocument_MouseDoubleClick">
                 <DataGrid.Columns>
