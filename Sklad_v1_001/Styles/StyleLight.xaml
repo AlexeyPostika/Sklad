@@ -12,9 +12,9 @@
     <SolidColorBrush x:Key="ColorBrushDataGridAlternatingRowBackground" Color="#FFFFFFFF"/>
     <SolidColorBrush x:Key="ColorBrushDataGridBackground" Color="#FFFFFFFF"/>
     <SolidColorBrush x:Key="ColorBrushDataGridForeground" Color="#FF000000"/>
-    <SolidColorBrush x:Key="ColorBrushDataGridBorder" Color="#FF333333"/>
-    <SolidColorBrush x:Key="ColorBrushDataGridLines" Color="#FF333333"/>
-    <SolidColorBrush x:Key="ColorBrushDataGridHeaderBackGround" Color="#FF6AB6EC"/>
+    <SolidColorBrush x:Key="ColorBrushDataGridBorder" Color="#FFC0C010"/>
+    <SolidColorBrush x:Key="ColorBrushDataGridLines" Color="#FFC0C010"/>
+    <SolidColorBrush x:Key="ColorBrushDataGridHeaderBackGround" Color="#FFC0C010"/> <!--#FF6AB6EC-->
     <SolidColorBrush x:Key="ColorBrushDataGridSortArrow" Color="#FF000000"/>
 
     <SolidColorBrush x:Key="ColorBrushLabelForeground" Color="#FF000000"/>
@@ -38,7 +38,7 @@
 
     <SolidColorBrush x:Key="ColorButtonStaticBackground" Color="#FFFFFFFF"/>
     <SolidColorBrush x:Key="ColorButtonStaticBorder" Color="#FFABAdB3"/>
-    <SolidColorBrush x:Key="ColorButtonMouseOverBackground" Color="#FFB7DEF9"/>
+    <SolidColorBrush x:Key="ColorButtonMouseOverBackground" Color="#FFEFEF15"/>
     <SolidColorBrush x:Key="ColorButtonMouseOverBorder" Color="#FF555555"/>
     <SolidColorBrush x:Key="ColorButtonPressedBackground" Color="#FFB7DEF9"/>
     <SolidColorBrush x:Key="ColorButtonPressedBorder" Color="#FF555555"/>

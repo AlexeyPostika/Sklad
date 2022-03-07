@@ -1539,8 +1539,8 @@
         <Setter Property="FontFamily" Value="Arial"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="ColumnWidth" Value="Auto"/>
-        <Setter Property="MinRowHeight" Value="25"/>
-        <Setter Property="RowHeight" Value="25"/>
+        <Setter Property="MinRowHeight" Value="35"/>
+        <Setter Property="RowHeight" Value="35"/>
         <Setter Property="CanUserAddRows" Value="False"/>
         <Setter Property="BorderThickness" Value="1 1 1 1"/>
         <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected"/>

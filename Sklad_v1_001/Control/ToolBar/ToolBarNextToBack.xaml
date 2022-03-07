@@ -14,7 +14,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <!--на какой странице/сколько страниц-->
-        <Label x:Name="label" Margin="10,0,0,0"
+        <Label x:Name="label" Margin="10,0,0,0" Style="{DynamicResource LabelStyle}"
                Width="Auto" Height="30" Content="{Binding ElementName=control, Path=LabelText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
         <Grid Grid.Column="3" Margin="0,0,10,0">
@@ -29,41 +29,41 @@
             </Grid.ColumnDefinitions>
             
             <!--в начало-->
-            <Button x:Name="BackInButton" HorizontalAlignment="Left"            
+            <Button x:Name="BackInButton" HorizontalAlignment="Left" Style="{DynamicResource RoundBorderButtonStyle}"        
                 Click="BackInButton_Click"
                 IsEnabled="{Binding ElementName=control, Path=HomePageEnable, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
                 <StackPanel Width="Auto" Orientation="Horizontal">
                     <Image Source="/Sklad_v1_001;component/Icone/Controllu/BackIn_32px.png" Margin="5,1" Height="24" Width="26" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5"/>
-                    <TextBlock Text="{x:Static res:Resources.BACKIN}" Width="80" Height="20"/>
+                    <Label Content="{x:Static res:Resources.BACKIN}" Style="{DynamicResource LabelStyle}"/>
                 </StackPanel>
             </Button>
 
             <!--предыдущая страница-->
-            <Button x:Name="BackButton" Grid.Column="2" HorizontalAlignment="Left"                
+            <Button x:Name="BackButton" Grid.Column="2" HorizontalAlignment="Left" Style="{DynamicResource RoundBorderButtonStyle}"               
                 Click="BackButton_Click"
                 IsEnabled="{Binding ElementName=control, Path=PrevPageEnable, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
                 <StackPanel Width="Auto" Orientation="Horizontal">
                     <Image Source="/Sklad_v1_001;component/Icone/Controllu/back_32px.png" Margin="5,1" Height="24" Width="26" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5"/>
-                    <TextBlock Text="{x:Static res:Resources.BACK}" Width="80" Height="20"/>
+                    <Label Content="{x:Static res:Resources.BACK}" Style="{DynamicResource LabelStyle}"/>
                 </StackPanel>
             </Button>
 
             <!--следующая страниц-->
-            <Button x:Name="NextButoon" Grid.Column="4" HorizontalAlignment="Left"               
+            <Button x:Name="NextButoon" Grid.Column="4" HorizontalAlignment="Left" Style="{DynamicResource RoundBorderButtonStyle}"           
                 Click="NextButoon_Click"
                 IsEnabled="{Binding ElementName=control, Path=NextPageEnable, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
                 <StackPanel Width="Auto" Orientation="Horizontal">
-                    <TextBlock Text="{x:Static res:Resources.NEXT}" Width="80" Height="20" TextAlignment="Right"/>
+                    <Label Content="{x:Static res:Resources.NEXT}" Style="{DynamicResource LabelStyle}"/>
                     <Image Source="/Sklad_v1_001;component/Icone/Controllu/next_page_32px.png" Margin="5,1" Height="24" Width="26" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5"/>
                 </StackPanel>
             </Button>
 
             <!--в конец-->
-            <Button x:Name="NextEndButoon" Grid.Column="6" HorizontalAlignment="Left"              
+            <Button x:Name="NextEndButoon" Grid.Column="6" HorizontalAlignment="Left" Style="{DynamicResource RoundBorderButtonStyle}"             
                 Click="NextEndButoon_Click"
                 IsEnabled="{Binding ElementName=control, Path=EndPageEnable, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
                 <StackPanel Width="Auto" Orientation="Horizontal">
-                    <TextBlock Text="{x:Static res:Resources.NEXTEXIT}" Width="80" Height="20" TextAlignment="Right"/>
+                    <Label Content="{x:Static res:Resources.NEXTEXIT}" Style="{DynamicResource LabelStyle}"/>
                     <Image Source="/Sklad_v1_001;component/Icone/Controllu/NextExit_32px.png" Margin="5,1" Height="24" Width="26" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5"/>
                 </StackPanel>
             </Button>
