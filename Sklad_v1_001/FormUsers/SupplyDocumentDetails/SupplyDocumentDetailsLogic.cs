@@ -100,7 +100,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
         private Decimal tagPriceRUS;
         private Double currencyRUS;
         private Boolean package;
-        private String sizeProduct;
+        private String sizeProduct;        
         private String model;
         private Byte[] imageProductByte;
         private ImageSource imageSourcePackage;
@@ -286,7 +286,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
                 OnPropertyChanged("SizeProduct");
             }
         }
-
+       
         public string Model
         {
             get

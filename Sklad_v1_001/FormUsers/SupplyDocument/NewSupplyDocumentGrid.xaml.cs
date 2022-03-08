@@ -623,7 +623,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     row["LastModificatedUserID"] = Document.UserID;
                     row["Model"] = currentrow.Model;
                     row["SizeProduct"] = currentrow.SizeProduct;
-                    row["Size"] = false;
+                    row["Size"] = currentrow.Package;
                     shemaStorаge.SupplyDocumentDetails.Rows.Add(row);                    
                 }
 
