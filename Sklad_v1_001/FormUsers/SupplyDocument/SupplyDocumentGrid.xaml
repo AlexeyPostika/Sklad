@@ -52,7 +52,7 @@
                     </DataGridTemplateColumn>
 
                     <DataGridTextColumn Binding="{Binding Path=Invoice, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.Invoice}" Width="Auto"/>
-                    <DataGridTextColumn Binding="{Binding Path=TTN, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.TTN}" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding Path=SupplyDocumentNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NumberDocument}" Width="Auto"/>
 
                     <DataGridTemplateColumn x:Name="FilterManagerName" Width="Auto" IsReadOnly="True" SortMemberPath="ShortLDisplayNameUser" CanUserSort="True">
                         <DataGridTemplateColumn.HeaderTemplate>

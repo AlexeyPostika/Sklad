@@ -2076,6 +2076,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             ConvertData convertData = new ConvertData(_dataRow, _localeRow);
 
             _localeRow.ID = convertData.ConvertDataInt32("ID");
+            _localeRow.SupplyDocumentNumber = convertData.ConvertDataInt64("SupplyDocumentNumber");
             _localeRow.LineDocument= convertData.ConvertDataInt32("LineDocument");
             _localeRow.Status = convertData.ConvertDataInt32("Status");
             _localeRow.StatusString = supplyTypeList.innerList.FirstOrDefault(x => x.ID == _localeRow.Status) != null ?
@@ -2085,7 +2086,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _localeRow.LastModificatedDate = convertData.ConvertDataDateTime("LastModificatedDate");
             _localeRow.LastModificatedDateString = convertData.DateTimeConvertShortString(_localeRow.LastModificatedDate);
             _localeRow.CreatedUserID = convertData.ConvertDataInt32("CreatedUserID");
-            _localeRow.LastModificatedUserID = convertData.ConvertDataInt32("LastModificatedUserID");
+            _localeRow.LastModificatedUserID = convertData.ConvertDataInt32("LUserId");
             _localeRow.CreatedUserIDString= convertData.ConvertDataString("CreatedUserIDString");
             _localeRow.LastModificatedUserIDString = convertData.ConvertDataString("LastModificatedUserIDString");
             _localeRow.Invoice = convertData.ConvertDataString("Invoice");

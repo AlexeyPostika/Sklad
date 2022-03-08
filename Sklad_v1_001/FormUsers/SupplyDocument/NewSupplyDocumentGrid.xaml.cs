@@ -208,8 +208,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 switch (Document.Status)
                 {
                     case 0:
+                        SupplyDocumentDetailsToolBar.VisibilityApply = Visibility.Visible;
+                        SupplyDocumentDetailsToolBar.BottonApplyb.IsEnabled = true;
+                        SupplyDocumentDetailsToolBar.ButtonSaveb.IsEnabled = true;
+                        SupplyDocumentDetailsToolBar.ButtonSaveClose.IsEnabled = true;
+                        SupplyDocumentDetailsToolBar.ButtonListcansel.IsEnabled = true;
+                        UserIDDocument.IsEnabled = true;
+                        break;
                     case 1:
                         SupplyDocumentDetailsToolBar.VisibilityApply = Visibility.Visible;
+                        SupplyDocumentDetailsToolBar.BottonApplyb.IsEnabled = false;
+                        SupplyDocumentDetailsToolBar.ButtonSaveb.IsEnabled = false;
+                        SupplyDocumentDetailsToolBar.ButtonSaveClose.IsEnabled = false;
+                        SupplyDocumentDetailsToolBar.ButtonListcansel.IsEnabled = true;
+                        UserIDDocument.IsEnabled = false;
                         //SupplyDocumentDetailsToolBar.ButtonPrintLabels.IsEnabled = false;
                         break;                  
                     case 2:
