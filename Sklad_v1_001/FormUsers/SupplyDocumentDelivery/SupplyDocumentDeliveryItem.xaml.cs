@@ -226,9 +226,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
             //загрузили имена компаний
             DeliveryCompany.ComboBoxElement.ItemsSource = dataDeliveryCompany;
             DeliveryCompany.ComboBoxElement.SelectedValue = 0;
+
+            DeliveryCompanyDetails.ComboBoxElement.ItemsSource = dataDeliveryCompanyDetails;
             //------------------------------------------------------------------------------
 
-         
+
             DeliveryRow = new LocaleRow();
            
             DeliveryRow.Status = Status;

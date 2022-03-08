@@ -765,7 +765,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             summary.SummaryPaymentBalans = SummaryPaymentBalansTemp < 0 ? Math.Abs(SummaryPaymentBalansTemp) : SummaryPaymentBalansTemp;
             summary.SummaryPaymentRemains = SummaryPaymentRemainsTemp < 0 ? Math.Abs(SummaryPaymentRemainsTemp) : SummaryPaymentRemainsTemp; 
             
-            if (SummaryPaymentRemainsTemp <= 0)
+            if (Math.Abs(SummaryPaymentRemainsTemp) <= 0)
             {
                 IsApplyDocument = true;
             }
