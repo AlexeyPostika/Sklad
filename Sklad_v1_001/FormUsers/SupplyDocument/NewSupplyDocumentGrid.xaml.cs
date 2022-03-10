@@ -756,15 +756,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 }           
                 
             }
-            
-            if (SummaryPaymentRemainsTemp>0)
-            {             
-                IsPaymentAddButton = true;
-            }
-            else
-            {
-                IsPaymentAddButton = false;
-            }
+
 
             summary.SummaryQuantityProduct = SummaryQuantityProductTemp;
             summary.SummaryProductTagPriceUSA = SummaryTagPriceWithUSATemp;
@@ -775,16 +767,45 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             summary.SummaryAmountRUS = SummaryAmountRUSTemp;
 
             summary.SummaryPaymentBalans = SummaryPaymentBalansTemp < 0 ? Math.Abs(SummaryPaymentBalansTemp) : SummaryPaymentBalansTemp;
-            summary.SummaryPaymentRemains = SummaryPaymentRemainsTemp < 0 ? Math.Abs(SummaryPaymentRemainsTemp) : SummaryPaymentRemainsTemp; 
-            
-            if (Math.Abs(SummaryPaymentRemainsTemp) <= 0)
+            summary.SummaryPaymentRemains = SummaryPaymentRemainsTemp < 0 ? Math.Abs(SummaryPaymentRemainsTemp) : SummaryPaymentRemainsTemp;
+
+            switch (Document.Status)
             {
-                IsApplyDocument = true;
+                case 0:
+                    if (SummaryPaymentRemainsTemp > 0)
+                    {
+                        IsPaymentAddButton = true;
+                    }
+                    else
+                    {
+                        IsPaymentAddButton = false;
+                    }
+
+                    if (Math.Abs(SummaryPaymentRemainsTemp) <= 0)
+                    {
+                        IsApplyDocument = true;
+                    }
+                    else
+                    {
+                        IsApplyDocument = false;
+                    }
+                    ToolBarProduct.ButtonNewProduct.IsEnabled = true;
+                    ToolBarProduct.ButtonDelete.IsEnabled = true;
+                    ToolBarDelivery.ButtonNewProduct.IsEnabled = true;
+                    ToolBarDelivery.ButtonDelete.IsEnabled = true;
+                    ToolBarPayment.ButtonDelete.IsEnabled = true;
+                    break;
+                case 1:
+                    IsPaymentAddButton = false;
+                    IsApplyDocument = false;
+                    ToolBarProduct.ButtonNewProduct.IsEnabled = false;
+                    ToolBarProduct.ButtonDelete.IsEnabled = false;
+                    ToolBarDelivery.ButtonNewProduct.IsEnabled = false;
+                    ToolBarDelivery.ButtonDelete.IsEnabled = false;
+                    ToolBarPayment.ButtonDelete.IsEnabled = false;
+                    break;
             }
-          else
-            {
-                IsApplyDocument = false;
-            }
+           
 
         }
 
@@ -796,7 +817,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         {
             if (Save() > 0)
             {
-                Document.SupplyDocumentNumber = supplyDocumentLogic.SetRow(Document);
+                Document.ID = supplyDocumentLogic.SetRow(Document);
                 MainWindow.AppWindow.ButtonSupplyDocumentF(Document, NewDocument);
             }
         }

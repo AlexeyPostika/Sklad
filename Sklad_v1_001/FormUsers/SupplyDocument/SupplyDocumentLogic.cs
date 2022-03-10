@@ -1907,7 +1907,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSet.AddParametr("@p_DocumentID", SqlDbType.Int);
             _sqlRequestSet.SetParametrValue("@p_DocumentID", 0);
 
-            _sqlRequestSet.AddParametr("@p_DocumentNumber", SqlDbType.Int);
+            _sqlRequestSet.AddParametr("@p_DocumentNumber", SqlDbType.BigInt);
             _sqlRequestSet.SetParametrValue("@p_DocumentNumber", 0);
         }
 
