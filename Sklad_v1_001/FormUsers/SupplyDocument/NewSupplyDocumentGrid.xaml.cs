@@ -710,7 +710,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         private void SupplyDocumentDetailsToolBar_ButtonApply()
         {
-
+            Sucsess();
         }
         #endregion
 
@@ -791,6 +791,16 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         #endregion
 
-     
+        #region SetSupplyDocument
+        private void Sucsess()
+        {
+            if (Save() > 0)
+            {
+                Document.SupplyDocumentNumber = supplyDocumentLogic.SetRow(Document);
+                MainWindow.AppWindow.ButtonSupplyDocumentF(Document, NewDocument);
+            }
+        }
+        #endregion
+
     }
 }

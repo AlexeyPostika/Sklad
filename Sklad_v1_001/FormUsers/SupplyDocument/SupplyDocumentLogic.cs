@@ -1588,11 +1588,14 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         string get_save_procedure = "xp_SaveSupplyDocument";
         string get_save_procedure_table = "xp_SaveSupplyDocumentTable";
 
+        string set_store_procedure = "xp_SetSupplyDocumentID";
+
         SQLCommanSelect _sqlRequestSelect = null;
         SQLCommanSelect _sqlRequestSelectFilters = null;
         SQLCommanSelect _sqlRequestSelectSummary = null;
         SQLCommanSelect _sqlRequestSave = null;
         SQLCommanSelect _sqlRequestSaveTable = null;
+        SQLCommanSelect _sqlRequestSet = null;
 
         //результат запроса
         DataTable _data = null;
@@ -1654,6 +1657,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSelectSummary = new SQLCommanSelect();
             _sqlRequestSave = new SQLCommanSelect();
             _sqlRequestSaveTable = new SQLCommanSelect();
+            _sqlRequestSet = new SQLCommanSelect();
 
             //----------------------------------------------------------------------------
             _sqlRequestSelect.AddParametr("@p_TypeScreen", SqlDbType.VarChar, 10);
@@ -1896,6 +1900,15 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSaveTable.AddParametr("@p_tablePayment", SqlDbType.Structured);
             _sqlRequestSaveTable.SetParametrValue("@p_tablePayment", shemaStorаge.SupplyDocumentPayment);
 
+            //----------------------------------------------------------------------------
+            _sqlRequestSet.AddParametr("@p_AddUserID", SqlDbType.Int);
+            _sqlRequestSet.SetParametrValue("@p_AddUserID", 1);
+
+            _sqlRequestSet.AddParametr("@p_DocumentID", SqlDbType.Int);
+            _sqlRequestSet.SetParametrValue("@p_DocumentID", 0);
+
+            _sqlRequestSet.AddParametr("@p_DocumentNumber", SqlDbType.Int);
+            _sqlRequestSet.SetParametrValue("@p_DocumentNumber", 0);
         }
 
         public DataTable FillGrid()
@@ -2059,6 +2072,16 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             return (Int32)_sqlRequestSaveTable.SqlAnswer.result;
         }
 
+        public Int32 SetRow(LocalRow row)
+        {
+            //SupplyDocument
+            _sqlRequestSet.SetParametrValue("@p_AddUserID", row.UserID);
+            _sqlRequestSet.SetParametrValue("@p_DocumentID", row.ID);
+            _sqlRequestSet.SetParametrValue("@p_DocumentNumber", row.SupplyDocumentNumber);
+
+            _sqlRequestSet.ComplexRequest(set_store_procedure, CommandType.StoredProcedure, null);
+            return (Int32)_sqlRequestSet.SqlAnswer.result;
+        }
 
         public RowsFilters ConvertFilter(DataRow _dataRow, RowsFilters _localeRow)
         {
