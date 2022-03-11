@@ -17,7 +17,7 @@
       Height="Auto"
       Width="350"
       x:Name="control">
-    <Grid>
+    <Grid x:Name="ProductGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>

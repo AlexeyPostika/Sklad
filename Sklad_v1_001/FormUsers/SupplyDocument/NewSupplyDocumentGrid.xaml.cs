@@ -320,6 +320,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         {
             newAddProductItem = new NewAddProductItem(attributes);
             addProductWindow = new FlexMessageBox();
+            newAddProductItem.StatusDocument = Document.Status == 0;
             newAddProductItem.ProductLocalRow = currentrow != null ? supplyDocumentDetailsLogic.ConvertSupplyDocumentDetailsToProduct(new Product.LocaleRow(), currentrow) : new Product.LocaleRow();
             addProductWindow.Content = newAddProductItem;
             addProductWindow.Show(Properties.Resources.Products);

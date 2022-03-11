@@ -50,6 +50,11 @@ namespace Sklad_v1_001.FormUsers.Product
                      typeof(Boolean),
                     typeof(NewAddProductItem), new PropertyMetadata(false));
 
+        public static readonly DependencyProperty StatusDocumentProperty = DependencyProperty.Register(
+                    "StatusDocument",
+                    typeof(Boolean),
+                   typeof(NewAddProductItem), new PropertyMetadata(false));
+
         public MessageBoxResult IsClickButtonOK
         {
             get { return (MessageBoxResult)GetValue(IsClickButtonOKProperty); }
@@ -65,6 +70,14 @@ namespace Sklad_v1_001.FormUsers.Product
         {
             get { return (Boolean)GetValue(IsEnableEditProperty); }
             set { SetValue(IsEnableEditProperty, value); }
+        }
+
+        public Boolean StatusDocument
+        {
+            get { return (Boolean)GetValue(StatusDocumentProperty); }
+            set { SetValue(StatusDocumentProperty, value);
+                ProductGrid.IsEnabled = StatusDocument;
+            }
         }
 
         Attributes attributes;
@@ -88,7 +101,7 @@ namespace Sklad_v1_001.FormUsers.Product
             {
                 productLocalRow = value;      
                 if (value!=null)
-                {
+                {                   
                     if (value.Package)
                     {
                         value.RadioType = 2;
