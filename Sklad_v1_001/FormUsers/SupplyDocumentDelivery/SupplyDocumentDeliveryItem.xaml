@@ -20,7 +20,7 @@
       Unloaded="page_Unloaded"
       x:Name="page">
 
-    <Grid>
+    <Grid x:Name="DeliveryGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>

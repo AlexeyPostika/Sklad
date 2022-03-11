@@ -419,7 +419,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             supplyDocumentDeliveryItem = new SupplyDocumentDeliveryItem(attributes);
             addDeliveryWindow = new FlexMessageBox();
             supplyDocumentDeliveryItem.DeliveryRow= currentrow != null ? currentrow : new SupplyDocumentDelivery.LocaleRow();
-            supplyDocumentDeliveryItem.Status = Document.Status;
+
+            supplyDocumentDeliveryItem.StatusDocument = Document.Status==0;
             addDeliveryWindow.Content = supplyDocumentDeliveryItem;
             addDeliveryWindow.Show(Properties.Resources.Deliveries);
             //тут проблема посмотреть, не правильно добавляется ID

@@ -88,6 +88,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
                   "AmountRUSMax",
                   typeof(Double),
                  typeof(SupplyDocumentDeliveryItem));
+        
+        public static readonly DependencyProperty StatusDocumentProperty = DependencyProperty.Register(
+                   "StatusDocument",
+                   typeof(Boolean),
+                  typeof(SupplyDocumentDeliveryItem), new PropertyMetadata(false));
 
         public Boolean IsEnableInvoice
         {
@@ -146,6 +151,16 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
             set { SetValue(AmountRUSMaxProperty, value); }
         }
 
+        public Boolean StatusDocument
+        {
+            get { return (Boolean)GetValue(StatusDocumentProperty); }
+            set
+            {
+                SetValue(StatusDocumentProperty, value);
+                DeliveryGrid.IsEnabled = StatusDocument;
+            }
+        }
+
         Attributes attributes;
 
         ConvertData convertData;
@@ -193,21 +208,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
 
                 OnPropertyChanged("ProductLocalRow");
             }
-        }
-
-        public Int32 status;
-        public Int32 Status
-        {
-            get
-            {
-                return status;
-            }
-
-            set
-            {
-                status = value;              
-            }
-        }
+        }      
 
         public SupplyDocumentDeliveryItem(Attributes _attributes)
         {
@@ -231,9 +232,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
             //------------------------------------------------------------------------------
 
 
-            DeliveryRow = new LocaleRow();
-           
-            DeliveryRow.Status = Status;
+            DeliveryRow = new LocaleRow();        
             
             
             this.delivery.DataContext = DeliveryRow;
@@ -295,7 +294,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
 
         private void page_Loaded(object sender, RoutedEventArgs e)
         {
-            if (Status == 0)
+            if (StatusDocument)
             {
                 IsDocument = true;
                 IsEnableAddTTN = true;
