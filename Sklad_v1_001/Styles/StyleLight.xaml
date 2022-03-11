@@ -13,7 +13,7 @@
     <SolidColorBrush x:Key="ColorBrushDataGridBackground" Color="#FFFFFFFF"/>
     <SolidColorBrush x:Key="ColorBrushDataGridForeground" Color="#FF000000"/>
     <SolidColorBrush x:Key="ColorBrushDataGridBorder" Color="#FFC0C010"/>
-    <SolidColorBrush x:Key="ColorBrushDataGridLines" Color="#FFC0C010"/>
+    <SolidColorBrush x:Key="ColorBrushDataGridLines" Color="#FF000000"/>
     <SolidColorBrush x:Key="ColorBrushDataGridHeaderBackGround" Color="#FFC0C010"/> <!--#FF6AB6EC-->
     <SolidColorBrush x:Key="ColorBrushDataGridSortArrow" Color="#FF000000"/>
 
@@ -28,7 +28,7 @@
     <Color x:Key="ColorForeground">#FF000000</Color>
     <Color x:Key="ColorBorder">#FF333333</Color>
 
-    <Color x:Key="ColorToolbarStart">#FF6AB6EC</Color>
+    <Color x:Key="ColorToolbarStart">#FFC0C010</Color>   
     <Color x:Key="ColorToolbarEnd">#FFB7DEF9</Color>
 
     <Color x:Key="ColorChartStart">#FFB7DEF9</Color>

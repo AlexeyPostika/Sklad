@@ -11,8 +11,7 @@
              xmlns:Toolbar="clr-namespace:Sklad_v1_001.Control.Toolbar"
              mc:Ignorable="d" x:Name="control"                  
              MouseEnter="control_MouseEnter"
-             MouseMove="control_MouseMove"
-             Style="{DynamicResource WindowStyleItem2}" 
+             MouseMove="control_MouseMove"            
              SizeChanged="control_SizeChanged">
     <Grid x:Name="PopupFilter" MaxHeight="462">
         <Grid.RowDefinitions>
