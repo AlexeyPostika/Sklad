@@ -51,19 +51,19 @@
                 
                 <SimpleControl:EditBoxWithLabel x:Name="PhonesDeliveryCompany" LabelWidth="165"
                                                 IsRequired="Visible"
-                                                IsEnabled="{Binding Path=IsDocument, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                IsEnabled="{Binding ElementName=page, Path=StatusDocument, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                 LabelText="{x:Static res:Resources.NumberPhone}"
                                                 Text="{Binding Path=PhonesManager, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 
                 <SimpleControl:EditBoxWithLabel x:Name="PhonesManagerDeliveryCompany"  LabelWidth="165"
                                                 IsRequired="Visible"
-                                                IsEnabled="{Binding Path=IsDocument, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                IsEnabled="{Binding ElementName=page,  Path=StatusDocument, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                 LabelText="{x:Static res:Resources.NumberPhoneDelivery}"
                                                 Text="{Binding Path=PhonesCompany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 
                 <SimpleControl:EditBoxWithLabel x:Name="AdressDeliveryCompany" LabelWidth="165"
                                                 IsRequired="Visible"
-                                                IsEnabled="{Binding Path=IsDocument, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                IsEnabled="{Binding ElementName=page, Path=StatusDocument, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                 LabelText="{x:Static res:Resources.DeliveryAdress}"
                                                 Text="{Binding Path=AdressCompany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 

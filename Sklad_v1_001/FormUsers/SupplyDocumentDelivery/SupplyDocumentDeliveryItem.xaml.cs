@@ -156,8 +156,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
             get { return (Boolean)GetValue(StatusDocumentProperty); }
             set
             {
-                SetValue(StatusDocumentProperty, value);
-                DeliveryGrid.IsEnabled = StatusDocument;
+                SetValue(StatusDocumentProperty, value);                
             }
         }
 
@@ -203,6 +202,19 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
                         this.TTN.IsEnableLoop = true;
                     else
                         this.TTN.IsEnableLoop = false;
+
+                    DeliveryCompany.IsEnabled = StatusDocument;
+                    DeliveryCompanyDetails.IsEnabled = StatusDocument;
+                    IsDocument = StatusDocument;
+                    IsDocument = StatusDocument;
+                    AdressDeliveryCompany.IsEnabled = StatusDocument;
+                    AmounPaymentUSA.IsEnabled = StatusDocument;
+                    AmounPaymentRUS.IsEnabled = StatusDocument;
+                    this.Invoice.IsEnableAdd = StatusDocument;
+                    this.TTN.IsEnableAdd = StatusDocument;
+                    this.Invoice.TextBox.IsEnabled = StatusDocument;
+                    this.TTN.TextBox.IsEnabled = StatusDocument;
+                    this.OK.IsEnabled = StatusDocument;
                 }
                 this.delivery.DataContext = DeliveryRow;
 
