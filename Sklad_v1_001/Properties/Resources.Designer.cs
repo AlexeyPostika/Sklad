@@ -781,6 +781,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Список поставок.
+        /// </summary>
+        public static string ListSupplyDocument {
+            get {
+                return ResourceManager.GetString("ListSupplyDocument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Расположение.
         /// </summary>
         public static string Location {
@@ -957,6 +966,15 @@ namespace Sklad_v1_001.Properties {
         public static string NewSaleDocument {
             get {
                 return ResourceManager.GetString("NewSaleDocument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Новая поставка.
+        /// </summary>
+        public static string NewSupplyDocument {
+            get {
+                return ResourceManager.GetString("NewSupplyDocument", resourceCulture);
             }
         }
         

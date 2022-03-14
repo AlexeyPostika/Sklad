@@ -55,12 +55,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
         public static readonly DependencyProperty IsEnableAddTTNProperty = DependencyProperty.Register(
                        "IsEnableAddTTN",
                        typeof(Boolean),
-                      typeof(SupplyDocumentDeliveryItem), new PropertyMetadata(true));
-      
-        public static readonly DependencyProperty IsDocumentProperty = DependencyProperty.Register(
-                       "IsDocument",
-                       typeof(Boolean),
-                      typeof(SupplyDocumentDeliveryItem), new PropertyMetadata(true));
+                      typeof(SupplyDocumentDeliveryItem), new PropertyMetadata(true));      
         
         public static readonly DependencyProperty IsClickButtonOKProperty = DependencyProperty.Register(
                       "IsClickButtonOK",
@@ -116,12 +111,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
             get { return (Boolean)GetValue(IsEnableAddTTNProperty); }
             set { SetValue(IsEnableAddTTNProperty, value); }
         }
-        public Boolean IsDocument
-        {
-            get { return (Boolean)GetValue(IsDocumentProperty); }
-            set { SetValue(IsDocumentProperty, value); }
-        }
-       
+     
         public MessageBoxResult IsClickButtonOK
         {
             get { return (MessageBoxResult)GetValue(IsClickButtonOKProperty); }
@@ -204,9 +194,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
                         this.TTN.IsEnableLoop = false;
 
                     DeliveryCompany.IsEnabled = StatusDocument;
-                    DeliveryCompanyDetails.IsEnabled = StatusDocument;
-                    IsDocument = StatusDocument;
-                    IsDocument = StatusDocument;
+                    DeliveryCompanyDetails.IsEnabled = StatusDocument;                  
                     AdressDeliveryCompany.IsEnabled = StatusDocument;
                     AmounPaymentUSA.IsEnabled = StatusDocument;
                     AmounPaymentRUS.IsEnabled = StatusDocument;
@@ -215,6 +203,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
                     this.Invoice.TextBox.IsEnabled = StatusDocument;
                     this.TTN.TextBox.IsEnabled = StatusDocument;
                     this.OK.IsEnabled = StatusDocument;
+                    this.Cancel.IsEnabled = StatusDocument;
                 }
                 this.delivery.DataContext = DeliveryRow;
 
@@ -308,13 +297,13 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
         {
             if (StatusDocument)
             {
-                IsDocument = true;
+                StatusDocument = true;
                 IsEnableAddTTN = true;
                 IsEnableAddInvoice = true;              
             }
             else
             {
-                IsDocument = false;
+                StatusDocument = false;
                 IsEnableAddTTN = false;
                 IsEnableAddInvoice = false;
             }

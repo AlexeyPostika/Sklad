@@ -40,6 +40,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
                    typeof(Double),
                   typeof(NewSupplyDocumentPaymentItem));
 
+        public static readonly DependencyProperty StatusDocumentProperty = DependencyProperty.Register(
+                    "StatusDocument",
+                    typeof(Boolean),
+                   typeof(NewSupplyDocumentPaymentItem), new PropertyMetadata(false));
+
         public MessageBoxResult IsClickButtonOK
         {
             get { return (MessageBoxResult)GetValue(IsClickButtonOKProperty); }
@@ -50,6 +55,12 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
         {
             get { return (Double)GetValue(AmountMaxProperty); }
             set { SetValue(AmountMaxProperty, value); }
+        }
+
+        public Boolean StatusDocument
+        {
+            get { return (Boolean)GetValue(StatusDocumentProperty); }
+            set { SetValue(StatusDocumentProperty, value); }
         }
 
         LocaleRow paymentLocalRow;
@@ -63,6 +74,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
             set
             {
                 paymentLocalRow = value;
+
+                Product.IsEnabled = StatusDocument;
+                this.OK.IsEnabled = StatusDocument;
+                this.Cancel.IsEnabled = StatusDocument;
+
                 this.Product.DataContext = PaymentLocalRow;
                 OnPropertyChanged("ProductLocalRow");
             }

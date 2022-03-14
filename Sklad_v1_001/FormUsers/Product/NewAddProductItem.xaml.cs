@@ -75,9 +75,7 @@ namespace Sklad_v1_001.FormUsers.Product
         public Boolean StatusDocument
         {
             get { return (Boolean)GetValue(StatusDocumentProperty); }
-            set { SetValue(StatusDocumentProperty, value);
-                ProductGrid.IsEnabled = StatusDocument;
-            }
+            set { SetValue(StatusDocumentProperty, value);}
         }
 
         Attributes attributes;
@@ -112,7 +110,8 @@ namespace Sklad_v1_001.FormUsers.Product
                         value.RadioType = 1;
                         RadioYEStoNO.YES.IsChecked = true;
                     }
-                       
+                    Product.IsEnabled = StatusDocument;
+
                 }
                 this.Product.DataContext = ProductLocalRow;
 

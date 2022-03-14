@@ -33,6 +33,10 @@
                 </StackPanel>
                 
                 <FlexButton:LevelButton Margin="0,4,0,4" x:Name="ButtonDelivery" ButtonClick="ButtonDelivery_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.Deliveries}"/>
+                <StackPanel Visibility="{Binding ElementName=Menu, Path=VisibilitySupply, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                    <FlexButton:LevelButton x:Name="ButtonNewSupplyDocument" ButtonClick="ButtonNewSupplyDocument_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.NewSupplyDocument}"/>
+                    <FlexButton:LevelButton  x:Name="ButtonListSupplyDocument" ButtonClick="ButtonListSupplyDocument_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.ListSupplyDocument}"/>
+                </StackPanel>
                 <FlexButton:LevelButton Margin="0,0,0,4" x:Name="ButtonTransferDocument" ButtonClick="ButtonTransferDocument_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.TransferDocument}"/>
                 <FlexButton:LevelButton Margin="0,0,0,4" x:Name="ButtonSettings" ButtonClick="ButtonSettings_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.Settings}"/>
             </StackPanel>

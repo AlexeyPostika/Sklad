@@ -12,10 +12,11 @@
     <Grid >
         <FlexMenu:frameMenu ButtonProductOpen="FrameMenu_ButtonProductOpen"
                             ButtonProductEditOpen="FrameMenu_ButtonProductEditOpen"
-                                ButtonNewSaleDocumentOpen="FrameMenu_ButtonSaleDocumentOpen"
-                                ButtonTransferDocumentOpen="FrameMenu_ButtonTransferDocumentOpen"
-                                ButtonDeliveryOpen="FrameMenu_ButtonDeliveryOpen"
-                                ButtonSettingsOpen="FrameMenu_ButtonSettingsOpen"
-                                ButtonExiteOpen="FrameMenu_ButtonExiteOpen"/>
+                            ButtonNewSaleDocumentOpen="FrameMenu_ButtonSaleDocumentOpen"
+                            ButtonTransferDocumentOpen="FrameMenu_ButtonTransferDocumentOpen"
+                            ButtonDeliveryNewSupplyOpen="frameMenu_ButtonDeliveryNewSupplyOpen"
+                            ButtonDeliveryListSupplyOpen="FrameMenu_ButtonDeliveryOpen"
+                            ButtonSettingsOpen="FrameMenu_ButtonSettingsOpen"
+                            ButtonExiteOpen="FrameMenu_ButtonExiteOpen"/>
     </Grid>
 </Page>

@@ -27,6 +27,12 @@ namespace Sklad_v1_001.Control.FlexMenu
                         "VisibilitySale",
                         typeof(Visibility),
                         typeof(frameMenu), new UIPropertyMetadata(Visibility.Collapsed));
+
+        public static readonly DependencyProperty VisibilitySupplyProperty = DependencyProperty.Register(
+                       "VisibilitySupply",
+                       typeof(Visibility),
+                       typeof(frameMenu), new UIPropertyMetadata(Visibility.Collapsed));
+
         // Обычное свойство .NET  - обертка над свойством зависимостей
         public Visibility VisibilitySale
         {
@@ -40,14 +46,28 @@ namespace Sklad_v1_001.Control.FlexMenu
             }
         }
 
+        public Visibility VisibilitySupply
+        {
+            get
+            {
+                return (Visibility)GetValue(VisibilitySupplyProperty);
+            }
+            set
+            {
+                SetValue(VisibilitySupplyProperty, value);
+            }
+        }
+
 
         public event Action ButtonProductOpen;
         public event Action ButtonProductEditOpen;
         //операция продажа
         public event Action ButtonNewSaleDocumentOpen;
         public event Action ButtonListSaleDocumentOpen;
-        //
-        public event Action ButtonDeliveryOpen;
+        //операция поставки
+        public event Action ButtonDeliveryNewSupplyOpen;
+        public event Action ButtonDeliveryListSupplyOpen;
+
         public event Action ButtonTransferDocumentOpen;
         public event Action ButtonSettingsOpen;
         public event Action ButtonExiteOpen;
@@ -69,31 +89,45 @@ namespace Sklad_v1_001.Control.FlexMenu
         private void ButtonProduct_ButtonClick()
         {
             VisibilitySale = Visibility.Collapsed;
+            VisibilitySupply = Visibility.Collapsed;
             ButtonProductOpen?.Invoke();
         }
 
         private void ButtonProductEdit_ButtonClick()
         {
             VisibilitySale = Visibility.Collapsed;
+            VisibilitySupply = Visibility.Collapsed;
             ButtonProductEditOpen?.Invoke();
         }
+        #region SupplyDocument
         private void ButtonDelivery_ButtonClick()
         {
             VisibilitySale = Visibility.Collapsed;
-            ButtonDeliveryOpen?.Invoke();
+            VisibilitySupply = Visibility.Visible;
         }
 
-       
+        private void ButtonNewSupplyDocument_ButtonClick()
+        {
+            ButtonDeliveryNewSupplyOpen?.Invoke();
+        }
+
+        private void ButtonListSupplyDocument_ButtonClick()
+        {
+            ButtonDeliveryListSupplyOpen?.Invoke();
+        }
+        #endregion
 
         private void ButtonTransferDocument_ButtonClick()
         {
             VisibilitySale = Visibility.Collapsed;
+            VisibilitySupply = Visibility.Collapsed;
             ButtonTransferDocumentOpen?.Invoke();
         }
 
         private void ButtonSettings_ButtonClick()
         {
             VisibilitySale = Visibility.Collapsed;
+            VisibilitySupply = Visibility.Collapsed;
             ButtonSettingsOpen?.Invoke();
         }
 
@@ -106,6 +140,7 @@ namespace Sklad_v1_001.Control.FlexMenu
         private void ButtonSaleDocument_ButtonClick()
         {
             VisibilitySale = Visibility.Visible;
+            VisibilitySupply = Visibility.Collapsed;
         }
 
         private void ButtonNewSaleDocument_ButtonClick()
@@ -118,5 +153,7 @@ namespace Sklad_v1_001.Control.FlexMenu
             ButtonListSaleDocumentOpen?.Invoke();
         }
         #endregion
+
+      
     }
 }

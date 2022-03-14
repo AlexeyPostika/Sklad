@@ -209,7 +209,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 {
                     case 0:
                         SupplyDocumentDetailsToolBar.VisibilityApply = Visibility.Visible;
-                        SupplyDocumentDetailsToolBar.BottonApplyb.IsEnabled = true;
+                        SupplyDocumentDetailsToolBar.BottonApplyb.IsEnabled = false;
                         SupplyDocumentDetailsToolBar.ButtonSaveb.IsEnabled = true;
                         SupplyDocumentDetailsToolBar.ButtonSaveClose.IsEnabled = true;
                         SupplyDocumentDetailsToolBar.ButtonListcansel.IsEnabled = true;
@@ -501,7 +501,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             newSupplyDocumentPaymentItem = new NewSupplyDocumentPaymentItem();
             addSuppluPaymentWindow = new FlexMessageBox();
             newSupplyDocumentPaymentItem.AmountMax = (Double)summary.SummaryPaymentRemains;
-            newSupplyDocumentPaymentItem.PaymentLocalRow = currentrow != null ? currentrow : new SupplyDocumentPayment.LocaleRow();
+            newSupplyDocumentPaymentItem.StatusDocument = Document.Status == 0;
+            newSupplyDocumentPaymentItem.PaymentLocalRow = currentrow != null ? currentrow : new SupplyDocumentPayment.LocaleRow();          
             addSuppluPaymentWindow.Content = newSupplyDocumentPaymentItem;
             addSuppluPaymentWindow.Show(Properties.Resources.Payment1);
             if (newSupplyDocumentPaymentItem.IsClickButtonOK == MessageBoxResult.OK)

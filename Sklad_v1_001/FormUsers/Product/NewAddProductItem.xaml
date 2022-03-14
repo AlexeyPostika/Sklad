@@ -23,7 +23,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Label Content="Продукт" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16" />
+        <Label x:Name="labelText" Content="Продукт" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16" />
         <Border Style="{DynamicResource BorderStyle}" Margin="10" Grid.Row="1" Grid.ColumnSpan="2">
             <StackPanel x:Name="Product" Background="Transparent">
                 <FlexTextBox:FlexLabelTextBox x:Name="ProductName"

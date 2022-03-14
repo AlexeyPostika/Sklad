@@ -24,7 +24,10 @@ namespace Sklad_v1_001.Control.FlexMenu
         public event Action ButtonProductEditOpen;
         public event Action ButtonSaleDocumentOpen;
         public event Action ButtonTransferDocumentOpen;
+        
+        public event Action ButtonDeliveryNewSupplyOpen;
         public event Action ButtonDeliveryOpen;
+
         public event Action ButtonSettingsOpen;
         public event Action ButtonExiteOpen;
         public frameMenuPage()
@@ -52,6 +55,11 @@ namespace Sklad_v1_001.Control.FlexMenu
             ButtonTransferDocumentOpen?.Invoke();
         }
 
+        private void frameMenu_ButtonDeliveryNewSupplyOpen()
+        {
+            ButtonDeliveryNewSupplyOpen?.Invoke();
+        }
+
         private void FrameMenu_ButtonDeliveryOpen()
         {
             ButtonDeliveryOpen?.Invoke();
@@ -65,6 +73,8 @@ namespace Sklad_v1_001.Control.FlexMenu
         private void FrameMenu_ButtonExiteOpen()
         {
             ButtonExiteOpen?.Invoke();
-        }        
+        }
+
+      
     }
 }

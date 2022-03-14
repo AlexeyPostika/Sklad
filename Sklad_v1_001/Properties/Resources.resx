@@ -678,4 +678,10 @@
   <data name="CurrentDay" xml:space="preserve">
     <value>Сегодня</value>
   </data>
+  <data name="ListSupplyDocument" xml:space="preserve">
+    <value>Список поставок</value>
+  </data>
+  <data name="NewSupplyDocument" xml:space="preserve">
+    <value>Новая поставка</value>
+  </data>
 </root>

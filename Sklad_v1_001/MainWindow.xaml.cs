@@ -80,14 +80,15 @@ namespace Sklad_v1_001
             //перемещение
             PageframeMenuLevel.ButtonTransferDocumentOpen += new Action(ButtonTransferDocumentOpen);
             //поставки
-            PageframeMenuLevel.ButtonDeliveryOpen += new Action(ButtonSupplyDocument);
+            PageframeMenuLevel.ButtonDeliveryNewSupplyOpen += new Action(ButtonNewSupplyDocument);
+            PageframeMenuLevel.ButtonDeliveryListSupplyOpen += new Action(ButtonSupplyDocument);
             //настройки                
             PageframeMenuLevel.ButtonSettingsOpen += new Action(ButtonSettingsOpen);
             //выход
             PageframeMenuLevel.ButtonExiteOpen += new Action(ButtonExiteOpen);
 
         }
-
+   
         #region Product
         public void ButtonProductOpen()
         {
@@ -146,7 +147,8 @@ namespace Sklad_v1_001
 
         public void ButtonNewSupplyDocument()
         {
-            newSupplyDocumentGrid = new NewSupplyDocumentGrid(attributes);          
+            newSupplyDocumentGrid = new NewSupplyDocumentGrid(attributes);
+            newSupplyDocumentGrid.Status = 0;
             this.frameWorkArea.Navigate(newSupplyDocumentGrid);
         }
 
