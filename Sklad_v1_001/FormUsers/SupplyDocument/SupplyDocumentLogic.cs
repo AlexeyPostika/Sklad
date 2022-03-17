@@ -1957,7 +1957,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSelect.SetParametrValue("@p_PageNumber", _localFilter.PageNumber);
             _sqlRequestSelect.SetParametrValue("@p_PagerowCount", _localFilter.PagerowCount);
             _sqlRequestSelect.SetParametrValue("@p_SortColumn", _localFilter.SortColumn);
-            _sqlRequestSelect.SetParametrValue("@p_Sort", _localFilter.Sort);
+            _sqlRequestSelect.SetParametrValue("@p_Sort", _localFilter.Sort); //тест github
 
             _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
             _data = _sqlRequestSelect.SqlAnswer.datatable;
