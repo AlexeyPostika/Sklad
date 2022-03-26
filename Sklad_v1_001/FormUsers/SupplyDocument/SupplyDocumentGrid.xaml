@@ -54,7 +54,7 @@
                     <DataGridTextColumn Binding="{Binding Path=Invoice, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.Invoice}" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding Path=SupplyDocumentNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NumberDocument}" Width="Auto"/>
 
-                    <DataGridTemplateColumn x:Name="FilterManagerName" Width="Auto" IsReadOnly="True" SortMemberPath="ShortLDisplayNameUser" CanUserSort="True">
+                    <!--<DataGridTemplateColumn x:Name="FilterManagerName" Width="Auto" IsReadOnly="True" SortMemberPath="ShortLDisplayNameUser" CanUserSort="True">
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>
                                 <FlexFilter:FlexGridCheckBox x:Name="FilterManagerNameID"
@@ -70,9 +70,9 @@
                                 <Label Content="{Binding Path=ManagerName, Mode=OneWay}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
+                    </DataGridTemplateColumn>-->
 
-                    <DataGridTemplateColumn x:Name="FilterDelivery" Width="Auto" IsReadOnly="True" SortMemberPath="ShortLDisplayNameUser" CanUserSort="True">
+                    <!--<DataGridTemplateColumn x:Name="FilterDelivery" Width="Auto" IsReadOnly="True" SortMemberPath="ShortLDisplayNameUser" CanUserSort="True">
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>
                                 <FlexFilter:FlexGridCheckBox x:Name="FilterDeliveryID"
@@ -88,7 +88,7 @@
                                 <Label Content="{Binding Path=Delivery, Mode=OneWay}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
+                    </DataGridTemplateColumn>-->
 
                     <DataGridTemplateColumn x:Name="FilterStatus" Width="Auto" IsReadOnly="True" SortMemberPath="ShortLDisplayNameUser" CanUserSort="True">
                         <DataGridTemplateColumn.HeaderTemplate>
