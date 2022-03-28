@@ -35,7 +35,7 @@
                     <DataGridTextColumn Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="Auto"/>
                     <!--<DataGridTextColumn Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NameProduct}" Width="450"/>-->
 
-                    <DataGridTemplateColumn IsReadOnly="True" CanUserSort="True" Width="Auto">
+                    <!--<DataGridTemplateColumn IsReadOnly="True" CanUserSort="True" Width="Auto">
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>
                                 <FlexFilter:FlexGridFilteDateTime x:Name="FilterToDateLastModifiedDate" ButtonFilterSelected="FilterToDateLastModifiedDate_ButtonFilterSelected"
@@ -49,8 +49,9 @@
                                 <Label Content="{Binding Path=LastModificatedDateString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-
+                    </DataGridTemplateColumn>-->
+                    
+                    <DataGridTextColumn Binding="{Binding Path=LastModificatedDateString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.LastModifiadDateText}" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding Path=Invoice, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.Invoice}" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding Path=SupplyDocumentNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NumberDocument}" Width="Auto"/>
 
