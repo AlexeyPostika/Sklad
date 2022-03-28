@@ -19,7 +19,8 @@
             <RowDefinition Height="20*"/>
         </Grid.RowDefinitions>
         <ToolBar:SupplyToolBar ButtonAdd="SupplyToolBar_ButtonAdd"
-                               ButtonEdit="SupplyToolBar_ButtonEdit"/>
+                               ButtonEdit="SupplyToolBar_ButtonEdit"
+                               ButtonClear="SupplyToolBar_ButtonClear"/>
 
         <Grid Grid.Row="1" x:Name="SypplyDocumentList">
             <DataGrid x:Name="SypplyDocument" 

@@ -684,4 +684,7 @@
   <data name="NewSupplyDocument" xml:space="preserve">
     <value>Новая поставка</value>
   </data>
+  <data name="CLEAR" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
 </root>

@@ -15,6 +15,9 @@
             <ColumnDefinition Width="60" MaxWidth="80"/>
             <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="60" MaxWidth="80"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="60" MaxWidth="80"/>
+            <ColumnDefinition Width="5"/>
         </Grid.ColumnDefinitions>
 
         <Button x:Name="ApplyButton" Grid.Column="1"
@@ -61,6 +64,22 @@
                     </Grid.RowDefinitions>
                     <Image Source="/Sklad_v1_001;component/Icone/IconEdit.png"  HorizontalAlignment="Right" StretchDirection="DownOnly" Stretch="UniformToFill" Margin="10,0,10,0"/>
                     <TextBlock Grid.Row="1" Text="{x:Static res:Resources.EDITBUTTON}" Width="Auto" HorizontalAlignment="Center" />
+                </Grid>
+            </StackPanel>
+        </Button>
+
+        <Button x:Name="ClearButton" Grid.Column="7"
+                HorizontalAlignment="Left" Width="auto"                
+                Click="ClearButton_Click"
+                IsEnabled="{Binding ElementName=control, Path=IsEnableAdd, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+            <StackPanel Width="Auto" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="75"/>
+                        <RowDefinition Height="24"/>
+                    </Grid.RowDefinitions>
+                    <Image Source="/Sklad_v1_001;component/Icone/IconClearAllFilters_X32.png"  HorizontalAlignment="Right" StretchDirection="DownOnly" Stretch="UniformToFill" Margin="10,0,10,0"/>
+                    <TextBlock Grid.Row="1" Text="{x:Static res:Resources.CLEAR}" Width="Auto" HorizontalAlignment="Center" />
                 </Grid>
             </StackPanel>
         </Button>

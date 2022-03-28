@@ -845,6 +845,12 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             }
         }
 
+        private void SupplyToolBar_ButtonClear()
+        {
+            InitFilters();
+            Refresh();
+        }
+
         private void SypplyDocument_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             LocalRow currentrow = this.SypplyDocument.SelectedItem as LocalRow;
@@ -878,5 +884,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         {
 
         }
+
+        
     }
 }
