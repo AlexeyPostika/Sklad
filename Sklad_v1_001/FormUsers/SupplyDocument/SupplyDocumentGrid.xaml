@@ -54,7 +54,7 @@
                     <DataGridTextColumn Binding="{Binding Path=Invoice, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.Invoice}" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding Path=SupplyDocumentNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NumberDocument}" Width="Auto"/>
 
-                    <DataGridTemplateColumn x:Name="FilterManagerName" Width="Auto" IsReadOnly="True" SortMemberPath="ShortLDisplayNameUser" CanUserSort="True">
+                    <!--<DataGridTemplateColumn x:Name="FilterManagerName" Width="Auto" IsReadOnly="True" SortMemberPath="ShortLDisplayNameUser" CanUserSort="True">
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>
                                 <FlexFilter:FlexGridCheckBox x:Name="FilterManagerNameID"
@@ -70,9 +70,9 @@
                                 <Label Content="{Binding Path=ManagerName, Mode=OneWay}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
+                    </DataGridTemplateColumn>-->
 
-                    <DataGridTemplateColumn x:Name="FilterDelivery" Width="Auto" IsReadOnly="True" SortMemberPath="ShortLDisplayNameUser" CanUserSort="True">
+                    <!--<DataGridTemplateColumn x:Name="FilterDelivery" Width="Auto" IsReadOnly="True" SortMemberPath="ShortLDisplayNameUser" CanUserSort="True">
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>
                                 <FlexFilter:FlexGridCheckBox x:Name="FilterDeliveryID"
@@ -88,7 +88,7 @@
                                 <Label Content="{Binding Path=Delivery, Mode=OneWay}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
+                    </DataGridTemplateColumn>-->
 
                     <DataGridTemplateColumn x:Name="FilterStatus" Width="Auto" IsReadOnly="True" SortMemberPath="ShortLDisplayNameUser" CanUserSort="True">
                         <DataGridTemplateColumn.HeaderTemplate>
@@ -145,9 +145,9 @@
                 <DataGrid.Columns>
                     --><!--<DataGridTextColumn Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="Auto"/>--><!--
                     <DataGridTextColumn Header="{x:Static res:Resources.ID}" SortMemberPath="ProductID" CanUserSort="True" Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                <DataGridTextColumn Header="{x:Static res:Resources.Description}" SortMemberPath="Description" CanUserSort="True" Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
-                <DataGridTextColumn Header="{x:Static res:Resources.ProductType}" SortMemberPath="TypeDescription" CanUserSort="True" Binding="{Binding Path=TypeDescription, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                <DataGridTextColumn Header="{x:Static res:Resources.Quantity}" Binding="{Binding Path=Quantity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  SortMemberPath="Quantity" />
+                    <DataGridTextColumn Header="{x:Static res:Resources.Description}" SortMemberPath="Description" CanUserSort="True" Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
+                    <DataGridTextColumn Header="{x:Static res:Resources.ProductType}" SortMemberPath="TypeDescription" CanUserSort="True" Binding="{Binding Path=TypeDescription, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                    <DataGridTextColumn Header="{x:Static res:Resources.Quantity}" Binding="{Binding Path=Quantity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  SortMemberPath="Quantity" />
                     <DataGridTextColumn Header="{x:Static res:Resources.TagPriceRus}" CanUserSort="True" Binding="{Binding Path=TagPriceRUS , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
                 
                     --><!--<DataGridTextColumn Header="{x:Static res:Resources.TagPriceWithOutVAT}" SortMemberPath="TagPriceWithOutVAT" CanUserSort="True" Binding="{Binding Path=TagPriceWithOutVAT , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />--><!--
