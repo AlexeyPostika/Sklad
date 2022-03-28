@@ -1,5 +1,7 @@
 ﻿using Sklad_v1_001.Control.FlexMessageBox;
+using Sklad_v1_001.FormUsers.SupplyDocumentDelivery;
 using Sklad_v1_001.FormUsers.SupplyDocumentDetails;
+using Sklad_v1_001.FormUsers.SupplyDocumentPayment;
 using Sklad_v1_001.GlobalAttributes;
 using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.GlobalVariable;
@@ -32,13 +34,19 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
     {
         SupplyDocumentLogic supplyDocumentLogic;
         SupplyDocumentDetailsLogic supplyDocumentDetailsLogic;
+        SupplyDocumentDeliveryLogic supplyDocumentDeliveryLogic;
+        SupplyDocumentPaymentLogic supplyDocumentPaymentLogic;
 
         SupplyDocument.LocalFilter localFilter;
         LocalRow localRow;
         SupplyDocumentDetails.LocaleFilter filterDetails;
+        SupplyDocumentDelivery.LocaleFilter filterDelivery;
+        //SupplyDocumentPayment
 
         ObservableCollection<LocalRow> datalist;
         ObservableCollection<SupplyDocumentDetails.LocaleRow> datalistDetails;
+        ObservableCollection<SupplyDocumentDelivery.LocaleRow> datalistDelivery;
+        ObservableCollection<SupplyDocumentPayment.LocaleRow> datalistPayment;
 
         RowSummary summary;
 
@@ -486,8 +494,6 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         Attributes attributes;
 
-        public LocaleFilter FilterProduct { get => filterDetails; set => filterDetails = value; }
-
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
@@ -526,6 +532,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             supplyDocumentLogic = new SupplyDocumentLogic();
             supplyDocumentDetailsLogic = new SupplyDocumentDetailsLogic();
+            supplyDocumentDeliveryLogic = new SupplyDocumentDeliveryLogic();
+            supplyDocumentPaymentLogic = new SupplyDocumentPaymentLogic();
 
             localFilter = new LocalFilter();
             filterDetails = new SupplyDocumentDetails.LocaleFilter();
@@ -534,12 +542,16 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             datalist = new ObservableCollection<LocalRow>();
             datalistDetails = new ObservableCollection<SupplyDocumentDetails.LocaleRow>();
+            datalistDelivery = new ObservableCollection<SupplyDocumentDelivery.LocaleRow>();
+            datalistPayment = new ObservableCollection<SupplyDocumentPayment.LocaleRow>();
 
             summary = new RowSummary();
 
             this.SypplyDocument.ItemsSource = datalist;
             //this.SypplyDocumentDetails.Items.Clear();
-            this.SypplyDocumentDetails.ItemsSource = datalistDetails;
+            this.DataProduct.ItemsSource = datalistDetails;
+            this.DataDelivery.ItemsSource = datalistDelivery;
+            this.DataPayment.ItemsSource = datalistPayment;
 
             supplyDocumentLogic.InitFilters();
             InitFilters();
@@ -792,25 +804,28 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             LocalRow currentrow = this.SypplyDocument.SelectedItem as LocalRow;
             if (currentrow != null)
             {
-                //подготовили продукты 
-                FilterProduct.TypeScreen = ScreenType.ScreenTypeName;
-                FilterProduct.DocumentID = currentrow.ID;
-                DataTable suppliDocumentDetailsList = supplyDocumentDetailsLogic.FillGrid(FilterProduct);
-                
                 //чистим все детали
                 datalistDetails.Clear();
-                
-                //заливаем данные на формы
-                if (suppliDocumentDetailsList != null && suppliDocumentDetailsList.Rows.Count > 0)
+                datalistDelivery.Clear();
+                datalistPayment.Clear();
+
+                DataTable dataTableSupplyDocumentDetails = supplyDocumentDetailsLogic.FillGridDocument(currentrow.ID);
+                foreach (DataRow row in dataTableSupplyDocumentDetails.Rows)
                 {
-                    foreach (DataRow row in suppliDocumentDetailsList.Rows)
-                    {                                          
-                        datalistDetails.Add(supplyDocumentDetailsLogic.Convert(row, new SupplyDocumentDetails.LocaleRow()));
-                        //datalistDetailsAll.Add(saleDocumentDetailsLogic.ConvertProduct(curlocalrow, new SaleDocumentDetails.LocaleRow()));
-                        //if (curlocalrow.IsUCSCardNumberActive)
-                        //    isPartiallyPayment = true;
-                    }
+                    datalistDetails.Add(supplyDocumentDetailsLogic.Convert(row, new SupplyDocumentDetails.LocaleRow()));
                 }
+
+                DataTable dataTableSupplyDocumentDelivery = supplyDocumentDeliveryLogic.FillGrid(currentrow.ID);
+                foreach (DataRow row in dataTableSupplyDocumentDelivery.Rows)
+                {
+                    datalistDelivery.Add(supplyDocumentDeliveryLogic.Convert(row, new SupplyDocumentDelivery.LocaleRow()));
+                }
+
+                DataTable dataTableSupplyDocumentPayment = supplyDocumentPaymentLogic.FillGrid(currentrow.ID);
+                foreach (DataRow row in dataTableSupplyDocumentPayment.Rows)
+                {
+                    datalistPayment.Add(supplyDocumentPaymentLogic.Convert(row, new SupplyDocumentPayment.LocaleRow()));
+                }                     
             }
             
         }
@@ -848,6 +863,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         {
             localFilter.PagerowCount = (Int32)(SypplyDocumentList.ActualHeight) / 40;        
             Refresh();         
+        }      
+
+        private void DataDelivery_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void DataProduct_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+        private void DataPayment_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }
