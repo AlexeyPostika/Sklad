@@ -14,6 +14,8 @@ using Aspose;
 using winForms = System.Windows.Forms;
 using Aspose.Pdf;
 using Aspose.Pdf.Facades;
+using System.IO.Packaging;
+using System.Windows.Xps.Packaging;
 
 namespace Sklad_v1_001.GlobalVariable
 {
@@ -201,7 +203,16 @@ namespace Sklad_v1_001.GlobalVariable
             using (MemoryStream InputStream = new MemoryStream(_documentByte))
             {
                 Document document = new Document(InputStream);
-                document.Save(_nameFile, SaveFormat.Xps);              
+                document.Save(_nameFile, SaveFormat.Xps);
+                using (MemoryStream InputStreamOutput = new MemoryStream())
+                {
+                    document.Save(InputStreamOutput, SaveFormat.Xps);
+                    Package package = Package.Open(InputStreamOutput);
+                    string inMemoryStream = string.Format("memorystream://{0}.xps", Guid.NewGuid());
+                    Uri packageUri = new Uri(inMemoryStream);
+                    PackageStore.AddPackage(packageUri, package);
+                    XpsDocument xpsDocument = new XpsDocument(package, CompressionOption.Maximum, inMemoryStream);
+                }
                 return _nameFile;
             }
             return String.Empty;
