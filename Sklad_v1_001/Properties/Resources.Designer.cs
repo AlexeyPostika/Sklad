@@ -340,6 +340,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Очистить.
+        /// </summary>
+        public static string CLEAR {
+            get {
+                return ResourceManager.GetString("CLEAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Доставка.
         /// </summary>
         public static string CompanyDelivery {

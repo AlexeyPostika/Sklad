@@ -905,6 +905,7 @@
     <Resource Include="Report\Store.png" />
     <Resource Include="Icone\IconBasket_X16.png" />
     <Resource Include="Icone\IconBasket_X24.png" />
+    <Resource Include="Icone\IconClearAllFilters_X32.png" />
     <Content Include="SQLCommand\JDB_DataAdapter.sql" />
     <Content Include="SQLCommand\JDB_POS.sql" />
     <Resource Include="Icone\IconOk.png" />

@@ -376,9 +376,8 @@ namespace Sklad_v1_001.Control.SimpleControl
            
             using (Stream stream = new MemoryStream(ByteFaile))
             {
-                FlexDocumentWindows flexDocumentWindows = new FlexDocumentWindows();
-               
-                XpsDocument doc = new XpsDocument(fileWork.ByteToXPS(ByteFaile, NameFile), FileAccess.ReadWrite);
+                FlexDocumentWindows flexDocumentWindows = new FlexDocumentWindows();            
+                XpsDocument doc = fileWork.ByteToXPS(ByteFaile, NameFile);
                 flexDocumentWindows.DocumentXps = doc.GetFixedDocumentSequence();              
                 doc.Close();
                 flexDocumentWindows.ShowDialog();
