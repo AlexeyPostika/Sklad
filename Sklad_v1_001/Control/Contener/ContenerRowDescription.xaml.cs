@@ -76,6 +76,11 @@ namespace Sklad_v1_001.Control.Contener
                         "TextCount1",
                         typeof(String),
                         typeof(ContenerRowDescription), new UIPropertyMetadata(""));
+        // свойство зависимостей
+        public static readonly DependencyProperty TagPriceRUSProperty = DependencyProperty.Register(
+                        "TagPriceRUS",
+                        typeof(Decimal),
+                        typeof(ContenerRowDescription));
         public ImageSource PhotoImage
         {
             get { return (ImageSource)GetValue(PhotoImageProperty); }
@@ -132,7 +137,11 @@ namespace Sklad_v1_001.Control.Contener
             get { return (String)GetValue(TextCount1Property); }
             set { SetValue(TextCount1Property, value); }
         }
-
+        public Decimal TagPriceRUS
+        {
+            get { return (Decimal)GetValue(TagPriceRUSProperty); }
+            set { SetValue(TagPriceRUSProperty, value); }
+        }
         public event Action ButtonAddClick;
 
         public ContenerRowDescription()

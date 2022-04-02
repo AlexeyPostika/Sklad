@@ -118,7 +118,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         //работаем с продуктами
         FlexMessageBox addProductWindow;
         NewAddProductItem newAddProductItem;
-        ObservableCollection<Product.LocaleRow> dataListProduct;
+        ObservableCollection<Product.LocalRow> dataListProduct;
         //******************************
 
         //работаем с категориями      
@@ -144,7 +144,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         SupplyDocumentLogic supplyDocumentLogic;
 
         //Продукт
-        Product.LocaleRow localeRowProduct;
+        Product.LocalRow localeRowProduct;
         //ObservableCollection<Product.LocaleRow> detailsProduct;
 
         //доставка
@@ -321,7 +321,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             newAddProductItem = new NewAddProductItem(attributes);
             addProductWindow = new FlexMessageBox();
             newAddProductItem.StatusDocument = Document.Status == 0;
-            newAddProductItem.ProductLocalRow = currentrow != null ? supplyDocumentDetailsLogic.ConvertSupplyDocumentDetailsToProduct(new Product.LocaleRow(), currentrow) : new Product.LocaleRow();
+            newAddProductItem.ProductLocalRow = currentrow != null ? supplyDocumentDetailsLogic.ConvertSupplyDocumentDetailsToProduct(new Product.LocalRow(), currentrow) : new Product.LocalRow();
             addProductWindow.Content = newAddProductItem;
             addProductWindow.Show(Properties.Resources.Products);
             if (newAddProductItem.IsClickButtonOK == MessageBoxResult.OK)

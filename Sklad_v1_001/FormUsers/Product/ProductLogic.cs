@@ -127,6 +127,9 @@ namespace Sklad_v1_001.FormUsers.Product
         private String tTN;
         private Byte[] tTNDocumentByte;
         private ImageSource imageSourceTTN;
+        
+        private Byte[] photoImageByte;
+        private ImageSource photoImage;
 
         public int ID
         {
@@ -395,10 +398,13 @@ namespace Sklad_v1_001.FormUsers.Product
             set
             {
                 lastModicatedDate = value;
-                if (!String.IsNullOrEmpty(value.Value.ToString()))
+                if (value != null)
                 {
-                    ConvertData convertData = new ConvertData();
-                    convertData.DateTimeConvertShortDateString(value);
+                    if (!String.IsNullOrEmpty(value.Value.ToString()))
+                    {
+                        ConvertData convertData = new ConvertData();
+                        convertData.DateTimeConvertShortDateString(value);
+                    }
                 }
                 OnPropertyChanged("LastModicatedDate");
             }
@@ -521,7 +527,42 @@ namespace Sklad_v1_001.FormUsers.Product
                 OnPropertyChanged("InvoiceDocumentByte");
             }
         }
+        //photoImageByte
 
+        public byte[] PhotoImageByte
+        {
+            get
+            {
+                return photoImageByte;
+            }
+
+            set
+            {
+                photoImageByte = value;
+                //if (value != null)
+                //{
+                //    PhotoImage = ImageHelper.GenerateImage("IconOK16.png");
+                //}
+                //else
+                //{
+                //    PhotoImage = ImageHelper.GenerateImage("IconMinus.png");
+                //}
+                OnPropertyChanged("PhotoImageByte");
+            }
+        }
+        public ImageSource PhotoImage
+        {
+            get
+            {
+                return photoImage;
+            }
+
+            set
+            {
+                photoImage = value;
+                OnPropertyChanged("PhotoImage");
+            }
+        }
 
         public ImageSource ImageSourceInvoice
         {

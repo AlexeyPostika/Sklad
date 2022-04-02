@@ -679,7 +679,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             return _localeRow;
         }
 
-        public LocaleRow ConvertProductToSupplyDocumentDetails(Product.LocaleRow _row, LocaleRow _localeRow)
+        public LocaleRow ConvertProductToSupplyDocumentDetails(Product.LocalRow _row, LocaleRow _localeRow)
         {
             // SaleDocumentDetailsList statusList = new SaleDocumentDetailsList();
             ConvertData convertData = new ConvertData();         
@@ -726,7 +726,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             return _localeRow;
         }
 
-        public Product.LocaleRow ConvertSupplyDocumentDetailsToProduct(Product.LocaleRow _row, LocaleRow _localeRow)
+        public Product.LocalRow ConvertSupplyDocumentDetailsToProduct(Product.LocalRow _row, LocaleRow _localeRow)
         {
             // SaleDocumentDetailsList statusList = new SaleDocumentDetailsList();
             ConvertData convertData = new ConvertData();

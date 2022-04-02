@@ -11,21 +11,36 @@
       mc:Ignorable="d" 
       Title="{x:Static res:Resources.Products}" 
       Style="{DynamicResource UsersPageWidth}"    
-      x:Name="page">
+      x:Name="page"
+      Loaded="page_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="5"/>
             <RowDefinition Height="30*"/>
+            <RowDefinition Height="5"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="20*"/>
+            <RowDefinition Height="5"/>
+            <!--<RowDefinition Height="20*"/>-->
         </Grid.RowDefinitions>
-        <ToolBar:SupplyToolBar ButtonAdd="SupplyToolBar_ButtonAdd"
-                               ButtonEdit="SupplyToolBar_ButtonEdit"/>
-        <Grid Grid.Row="2">
-            <StackPanel Name="Column1"/>
+        <ToolBar:SupplyToolBar/>
+        <Grid Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <StackPanel Name="Column1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="Auto"  ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
         </Grid>
-        
+
+        <ToolBar:ToolBarNextToBack Grid.Row="4" x:Name="ToolbarNextPageData"
+                                   ButtonBack="ToolBarNextToBack_ButtonBack"
+                                   ButtonNext="ToolBarNextToBack_ButtonNext"
+                                   ButtonBackIn="ToolbarNextPageData_ButtonBackIn"
+                                   ButtonNextEnd="ToolbarNextPageData_ButtonNextEnd"
+                                   IsEnableBack="{Binding ElementName=page, Path=IsEnableBack, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   IsEnableNext="{Binding ElementName=page, Path=IsEnableNext, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   IsEnableBackIn="{Binding ElementName=page, Path=IsEnableBackIn, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   IsEnableNextEnd="{Binding ElementName=page, Path=IsEnableNextEnd, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   CurrentPage="{Binding ElementName=page, Path=CurrentPage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   TotalCount="{Binding ElementName=page, Path=TotalCount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   PageCount="{Binding ElementName=page, Path=PageCount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+
     </Grid>
 </Page>

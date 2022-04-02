@@ -87,8 +87,8 @@ namespace Sklad_v1_001.FormUsers.Product
         FlexMessageBox addCategoryDetailsWindow;
         NewCategoryDetailsItem newCategoryDetailsItem;
 
-        LocaleRow productLocalRow;
-        public LocaleRow ProductLocalRow
+        LocalRow productLocalRow;
+        public LocalRow ProductLocalRow
         {
             get
             {
@@ -147,7 +147,7 @@ namespace Sklad_v1_001.FormUsers.Product
             CategoryDetails.ComboBoxElement.SelectedValue = 0;
             //-----------------------------------------------------------------------------
 
-            ProductLocalRow = new LocaleRow();        
+            ProductLocalRow = new LocalRow();        
         }
 
         private void ToolBarButton_ButtonClick()

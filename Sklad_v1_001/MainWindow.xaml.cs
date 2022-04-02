@@ -172,7 +172,7 @@ namespace Sklad_v1_001
             addProductWindow.ShowDialog();
         }
 
-        public void ButtonNewAddProductF(FormUsers.Product.LocaleRow _localeRow)
+        public void ButtonNewAddProductF(FormUsers.Product.LocalRow _localeRow)
         {
             FlexWindows addProductWindow = new FlexWindows(Properties.Resources.ADDPRODUCT);
             newAddProductItem = new NewAddProductItem(attributes);

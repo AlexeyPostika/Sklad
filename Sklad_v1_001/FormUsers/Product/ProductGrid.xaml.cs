@@ -1,6 +1,9 @@
-﻿using Sklad_v1_001.GlobalAttributes;
+﻿using Sklad_v1_001.Control.Contener;
+using Sklad_v1_001.GlobalAttributes;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,9 +24,26 @@ namespace Sklad_v1_001.FormUsers.Product
     /// </summary>
     public partial class ProductGrid : Page
     {
+        Attributes attributes;
+
+        ProductLogic productLogic;
+
+        LocalFilter localFilter;
+
+        ObservableCollection<LocalRow> datalist;
+
         public ProductGrid(Attributes _attributes)
         {
             InitializeComponent();
+
+            this.attributes = _attributes;
+
+            productLogic = new ProductLogic();
+
+            localFilter = new LocalFilter();
+
+            datalist = new ObservableCollection<LocalRow>();           
+
         }
 
         private void AddVisibilityControl(Panel PanelToAdd, Object VisibilityRow, UIElement ElementValue)
@@ -36,8 +56,58 @@ namespace Sklad_v1_001.FormUsers.Product
 
         private void Refresh()
         {
-           
-            
+            DataTable dataTable = productLogic.FillGrid(localFilter);
+            foreach(DataRow row in dataTable.Rows)
+            {
+                LocalRow localRow = new LocalRow();
+                productLogic.Convert(row, localRow);
+
+                ContenerRowDescription contenerRowDescription = new ContenerRowDescription();
+                contenerRowDescription.PhotoImage = localRow.PhotoImage;
+                contenerRowDescription.TextValue1 = localRow.Name;
+                contenerRowDescription.TextValue2 = "Описание: " + localRow.Description;
+
+                contenerRowDescription.TextEdit1 = "Категория товара: " + localRow.CategoryName;
+                contenerRowDescription.TextEdit2 = "Подкатегория товара: " + localRow.CategoryDetailsName;
+                contenerRowDescription.TextEdit3 = "Витрина: " + localRow.ShowcaseIDName;
+                contenerRowDescription.TextEdit4 = "Размер упаковки: " + localRow.SizeProduct;
+                contenerRowDescription.TextEdit5 = "Штрих-код: " + localRow.BarCodeString;
+                contenerRowDescription.Description6.Visibility = Visibility.Collapsed;
+                contenerRowDescription.Description7.Visibility = Visibility.Collapsed;
+
+                contenerRowDescription.TextCount1 = "Количество на складе: "+localRow.Quantity.ToString();
+                contenerRowDescription.TagPriceRUS = localRow.TagPriceRUS;
+                AddVisibilityControl(Column1, true, contenerRowDescription);
+            }
+
         }
+
+        private void page_Loaded(object sender, RoutedEventArgs e)
+        {
+            localFilter.RowCountPage = (Int32)(page.ActualHeight) / 210;
+            Refresh();
+        }
+
+        #region Paginator
+        private void ToolBarNextToBack_ButtonBack()
+        {
+
+        }
+
+        private void ToolBarNextToBack_ButtonNext()
+        {
+
+        }
+
+        private void ToolbarNextPageData_ButtonBackIn()
+        {
+
+        }
+
+        private void ToolbarNextPageData_ButtonNextEnd()
+        {
+
+        }
+        #endregion
     }
 }

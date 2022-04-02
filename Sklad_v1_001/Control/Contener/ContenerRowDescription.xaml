@@ -16,6 +16,7 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         
         <ImageList:FlexImageSelect x:Name="ImageProduct" Grid.Column="1"
@@ -25,20 +26,25 @@
                                    Image="{Binding ElementName=control, Path=PhotoImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         
         <StackPanel x:Name="Product" Grid.Column="3">
-            <Label x:Name="ProductName" Style="{DynamicResource LabelStyle}" Margin="3,0,0,0" Height="30" Content="{Binding ElementName=control, Path=TextValue1, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontWeight="Bold" FontSize="18"/>
-            <Label x:Name="MinDescription" Style="{DynamicResource LabelStyle}" Margin="3,0,0,0" Height="30" Content="{Binding ElementName=control, Path=TextValue2, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-            <Label x:Name="Description1" Style="{DynamicResource LabelStyle}" Height="30" Content="{Binding ElementName=control, Path=TextEdit1, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-            <Label x:Name="Description2" Style="{DynamicResource LabelStyle}" Height="30" Content="{Binding ElementName=control, Path=TextEdit2, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-            <Label x:Name="Description3" Style="{DynamicResource LabelStyle}" Height="30" Content="{Binding ElementName=control, Path=TextEdit3, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-            <Label x:Name="Description4" Style="{DynamicResource LabelStyle}" Height="30" Content="{Binding ElementName=control, Path=TextEdit4, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-            <Label x:Name="Description5" Style="{DynamicResource LabelStyle}" Height="30" Content="{Binding ElementName=control, Path=TextEdit5, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-            <Label x:Name="Description6" Style="{DynamicResource LabelStyle}" Height="30" Content="{Binding ElementName=control, Path=TextEdit6, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-            <Label x:Name="Description7" Style="{DynamicResource LabelStyle}" Height="30" Content="{Binding ElementName=control, Path=TextEdit7, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <Label x:Name="ProductName" Style="{DynamicResource LabelStyle}" Margin="3,0,0,0" Height="auto" Content="{Binding ElementName=control, Path=TextValue1, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontWeight="Bold" FontSize="18"/>
+            <Label x:Name="MinDescription" Style="{DynamicResource LabelStyle}" Margin="3,0,0,0" Height="auto" Content="{Binding ElementName=control, Path=TextValue2, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <Label x:Name="Description1" Style="{DynamicResource LabelStyle}" Height="auto" Content="{Binding ElementName=control, Path=TextEdit1, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <Label x:Name="Description2" Style="{DynamicResource LabelStyle}" Height="auto" Content="{Binding ElementName=control, Path=TextEdit2, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <Label x:Name="Description3" Style="{DynamicResource LabelStyle}" Height="auto" Content="{Binding ElementName=control, Path=TextEdit3, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <Label x:Name="Description4" Style="{DynamicResource LabelStyle}" Height="auto" Content="{Binding ElementName=control, Path=TextEdit4, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <Label x:Name="Description5" Style="{DynamicResource LabelStyle}" Height="auto" Content="{Binding ElementName=control, Path=TextEdit5, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <Label x:Name="Description6" Style="{DynamicResource LabelStyle}" Height="auto" Content="{Binding ElementName=control, Path=TextEdit6, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <Label x:Name="Description7" Style="{DynamicResource LabelStyle}" Height="auto" Content="{Binding ElementName=control, Path=TextEdit7, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         </StackPanel>
 
         <StackPanel Grid.Column="5" HorizontalAlignment="Stretch" VerticalAlignment="Center">
-            <FlexButton:LevelButton x:Name="ButtonAdd" ButtonClick="ButtonAdd_ButtonClick"/>
-            <Label x:Name="CountLabel" Style="{DynamicResource LabelStyle}" Margin="0,5,0,0" Height="30" Content="{Binding ElementName=control, Path=TextCount1, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <Label x:Name="TagPriceLabel" Style="{DynamicResource LabelStyle}" Height="30" Content="{Binding ElementName=control, Path=TagPriceRUS, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                   ContentStringFormat=" {0:N2}" 
+                   FontSize="20" 
+                   FontWeight="Bold"
+                   MaxWidth="300"/>
+            <FlexButton:LevelButton x:Name="ButtonAdd" ButtonClick="ButtonAdd_ButtonClick" Width="300" MaxWidth="300"/>
+            <Label x:Name="CountLabel" Style="{DynamicResource LabelStyle}" Margin="0,5,0,0" Height="Auto" Content="{Binding ElementName=control, Path=TextCount1, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         </StackPanel>
     </Grid>
 </UserControl>
