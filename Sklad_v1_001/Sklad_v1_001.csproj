@@ -104,6 +104,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Control\Contener\ContenerRowDescription.xaml.cs">
+      <DependentUpon>ContenerRowDescription.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\DialogWindows.cs" />
     <Compile Include="Control\FlexButton\LevelButton.xaml.cs">
       <DependentUpon>LevelButton.xaml</DependentUpon>
@@ -307,6 +310,9 @@
     <Compile Include="FormUsers\Delivery\NewDeliveryItem.xaml.cs">
       <DependentUpon>NewDeliveryItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FormUsers\Product\ProductGrid.xaml.cs">
+      <DependentUpon>ProductGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FormUsers\SupplyDocumentDelivery\SupplyDocumentDeliveryItem.xaml.cs">
       <DependentUpon>SupplyDocumentDeliveryItem.xaml</DependentUpon>
     </Compile>
@@ -371,6 +377,10 @@
       <DependentUpon>ShemaStorаge.xsd</DependentUpon>
     </Compile>
     <Compile Include="SQLCommand\SQLCommanSelect.cs" />
+    <Page Include="Control\Contener\ContenerRowDescription.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\FlexButton\LevelButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -612,6 +622,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="FormUsers\Delivery\NewDeliveryItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FormUsers\Product\ProductGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -889,6 +903,8 @@
     <Resource Include="Icone\IconPackage_x16.png" />
     <Resource Include="Icone\IconEdit_x16.png" />
     <Resource Include="Report\Store.png" />
+    <Resource Include="Icone\IconBasket_X16.png" />
+    <Resource Include="Icone\IconBasket_X24.png" />
     <Content Include="SQLCommand\JDB_DataAdapter.sql" />
     <Content Include="SQLCommand\JDB_POS.sql" />
     <Resource Include="Icone\IconOk.png" />

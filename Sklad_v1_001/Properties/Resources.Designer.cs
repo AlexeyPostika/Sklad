@@ -1258,6 +1258,78 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на В магазине.
+        /// </summary>
+        public static string ProductStatus0 {
+            get {
+                return ResourceManager.GetString("ProductStatus0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Резерв(продажа).
+        /// </summary>
+        public static string ProductStatus1 {
+            get {
+                return ResourceManager.GetString("ProductStatus1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Резервх(возврат).
+        /// </summary>
+        public static string ProductStatus2 {
+            get {
+                return ResourceManager.GetString("ProductStatus2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Покупка.
+        /// </summary>
+        public static string ProductStatus3 {
+            get {
+                return ResourceManager.GetString("ProductStatus3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Отправлено.
+        /// </summary>
+        public static string ProductStatus4 {
+            get {
+                return ResourceManager.GetString("ProductStatus4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Перемещение.
+        /// </summary>
+        public static string ProductStatus5 {
+            get {
+                return ResourceManager.GetString("ProductStatus5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Возврат.
+        /// </summary>
+        public static string ProductStatus6 {
+            get {
+                return ResourceManager.GetString("ProductStatus6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Продажа.
+        /// </summary>
+        public static string ProductStatus9 {
+            get {
+                return ResourceManager.GetString("ProductStatus9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Категория.
         /// </summary>
         public static string ProductType {
@@ -1533,6 +1605,15 @@ namespace Sklad_v1_001.Properties {
         public static string TitleFromToDateFilter {
             get {
                 return ResourceManager.GetString("TitleFromToDateFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на В Карзину.
+        /// </summary>
+        public static string TOBASKET {
+            get {
+                return ResourceManager.GetString("TOBASKET", resourceCulture);
             }
         }
         

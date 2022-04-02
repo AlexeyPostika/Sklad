@@ -1,0 +1,31 @@
+﻿<Page x:Class="Sklad_v1_001.FormUsers.Product.ProductGrid"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Sklad_v1_001.FormUsers.Product"
+      xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+      xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
+      xmlns:FlexFilter="clr-namespace:Sklad_v1_001.Control.FlexFilter"
+      xmlns:Contener="clr-namespace:Sklad_v1_001.Control.Contener"
+      mc:Ignorable="d" 
+      Title="{x:Static res:Resources.Products}" 
+      Style="{DynamicResource UsersPageWidth}"    
+      x:Name="page">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+        <ToolBar:SupplyToolBar ButtonAdd="SupplyToolBar_ButtonAdd"
+                               ButtonEdit="SupplyToolBar_ButtonEdit"/>
+        <Grid Grid.Row="2">
+            <StackPanel Name="Column1"/>
+        </Grid>
+        
+    </Grid>
+</Page>

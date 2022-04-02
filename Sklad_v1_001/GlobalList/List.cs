@@ -51,6 +51,13 @@ namespace Sklad_v1_001.GlobalList
         public Int32 ID { get; set; }
         public String Description { get; set; }
     }
+
+    public class ProductStatus
+    {
+        public Int32 ID { get; set; }
+        public String Description { get; set; }
+    }
+
     public class DeliveryType
     {
         public Int32 ID { get; set; }
@@ -209,7 +216,7 @@ namespace Sklad_v1_001.GlobalList
                 new OperationType {ID=0,Description=Properties.Resources.OperationType1 },
                 new OperationType {ID=1,Description=Properties.Resources.OperationType2 },
                 new OperationType {ID=2,Description=Properties.Resources.OperationType3 },
-                new OperationType {ID=2,Description=Properties.Resources.OperationType4 },
+                new OperationType {ID=3,Description=Properties.Resources.OperationType4 },
             };
         }
     }
@@ -223,6 +230,25 @@ namespace Sklad_v1_001.GlobalList
                  new GlobalPaymentTypeItem { ID=0, Description = Properties.Resources.Payment1 },
                  //new GlobalPaymentTypeItem { ID=2, Description=Properties.Resources.Payment10 }, // закрыть кредит
                  new GlobalPaymentTypeItem { ID = 1, Description = Properties.Resources.Payment2 } // банковская карта
+            };
+        }
+    }
+
+    public class ProductStatusList
+    {
+        public ObservableCollection<ProductStatus> innerList { get; set; }
+        public ProductStatusList()
+        {
+            innerList = new ObservableCollection<ProductStatus>()
+            {
+                new ProductStatus {ID=0,Description=Properties.Resources.ProductStatus0 },//в магазине
+                new ProductStatus {ID=1,Description=Properties.Resources.ProductStatus1 },//резерв(продажа)
+                new ProductStatus {ID=2,Description=Properties.Resources.ProductStatus2 },//резервх(возврат)
+                new ProductStatus {ID=3,Description=Properties.Resources.ProductStatus3 },//Покупка
+                new ProductStatus {ID=4,Description=Properties.Resources.ProductStatus4 },//Отправлено
+                new ProductStatus {ID=5,Description=Properties.Resources.ProductStatus5 },//Перемещение
+                new ProductStatus {ID=6,Description=Properties.Resources.ProductStatus6 },//Возврат
+                new ProductStatus {ID=9,Description=Properties.Resources.ProductStatus9 },//Продажа
             };
         }
     }

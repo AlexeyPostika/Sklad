@@ -37,6 +37,9 @@ namespace Sklad_v1_001
         TovarZona tovarZona;
         TovarInZona tovarInZona;
         ZacupcaGrid zacupcaGrid;
+        //продукция
+        ProductGrid productGrid;
+        //поставки товра
         SupplyDocumentGrid supplyDocumentGrid;
         NewSupplyDocumentGrid newSupplyDocumentGrid;
 
@@ -92,8 +95,9 @@ namespace Sklad_v1_001
         #region Product
         public void ButtonProductOpen()
         {
-            tovarZona = new TovarZona();
-            frameWorkArea.Navigate(tovarZona); // открытие страницы
+            productGrid = new ProductGrid(attributes);
+            //tovarZona = new TovarZona();
+            frameWorkArea.Navigate(productGrid); // открытие страницы
         }
 
         public void ButtonProductEditOpen()
