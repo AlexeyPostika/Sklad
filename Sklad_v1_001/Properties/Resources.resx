@@ -711,4 +711,7 @@
   <data name="ProductStatus9" xml:space="preserve">
     <value>Продажа</value>
   </data>
+  <data name="CLEAR" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
 </root>
