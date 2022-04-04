@@ -48,13 +48,13 @@ namespace Sklad_v1_001.Control.FlexImage
         }
       
         private void BorderControll_MouseLeave(object sender, MouseEventArgs e)
-        {
-            this.SelectButton.Visibility = Visibility.Collapsed;
+        {           
+            if (Image!=null)
+                this.SelectButton.Visibility = Visibility.Collapsed;
         }
 
         private void BorderControll_PreviewMouseMove(object sender, MouseEventArgs e)
         {
-
             this.SelectButton.Visibility = Visibility.Visible;
         }
 

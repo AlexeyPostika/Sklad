@@ -539,14 +539,14 @@ namespace Sklad_v1_001.FormUsers.Product
             set
             {
                 photoImageByte = value;
-                //if (value != null)
-                //{
-                //    PhotoImage = ImageHelper.GenerateImage("IconOK16.png");
-                //}
-                //else
-                //{
-                //    PhotoImage = ImageHelper.GenerateImage("IconMinus.png");
-                //}
+                if (value != null)
+                {
+                    //PhotoImage = ImageHelper.GenerateImage("IconNotCamera_X80.png");
+                }
+                else
+                {
+                    PhotoImage = ImageHelper.GenerateImage("IconNotCamera_X80.png");
+                }
                 OnPropertyChanged("PhotoImageByte");
             }
         }
@@ -813,7 +813,7 @@ namespace Sklad_v1_001.FormUsers.Product
             _localeRow.CreatedDateString = convertData.DateTimeConvertShortString(_localeRow.CreatedDate);
             _localeRow.LastModicatedDate = convertData.ConvertDataDateTime("LastModificatedDate");
             _localeRow.LastModificatedDateText = convertData.DateTimeConvertShortString(_localeRow.LastModicatedDate);
-         
+            _localeRow.PhotoImageByte = null;
 
             return _localeRow;
         }
