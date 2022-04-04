@@ -147,7 +147,7 @@ namespace Sklad_v1_001.Control.Contener
         public ContenerRowDescription()
         {
             InitializeComponent();
-            ButtonAdd.Image.Source = ImageHelper.GenerateImage("IconBasket_X24.png");
+            ButtonAdd.Image.Source = ImageHelper.GenerateImage("IconBasketAdd_X30.png");
             ButtonAdd.Text = Properties.Resources.TOBASKET;
         }
 

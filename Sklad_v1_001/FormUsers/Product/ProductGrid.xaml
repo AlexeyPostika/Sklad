@@ -25,8 +25,10 @@
             <!--<RowDefinition Height="20*"/>-->
         </Grid.RowDefinitions>
         <ToolBar:SupplyToolBar/>
-        <Grid Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-            <StackPanel Name="Column1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="Auto"  ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
+        <Grid Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <ScrollViewer x:Name="ScrollAuto" VerticalScrollBarVisibility="Auto">
+                <StackPanel Name="Column1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="Auto" />
+            </ScrollViewer>
         </Grid>
 
         <ToolBar:ToolBarNextToBack Grid.Row="4" x:Name="ToolbarNextPageData"

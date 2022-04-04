@@ -51,7 +51,8 @@ namespace Sklad_v1_001.FormUsers.Product
             Boolean visibility = false;
             Boolean.TryParse(VisibilityRow.ToString(), out visibility);
             if (visibility == true)
-                PanelToAdd.Children.Add(ElementValue);
+                PanelToAdd.Children.Add(ElementValue);           
+            
         }
 
         private void Refresh()
