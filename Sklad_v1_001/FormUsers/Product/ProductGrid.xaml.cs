@@ -83,8 +83,6 @@ namespace Sklad_v1_001.FormUsers.Product
                 contenerRowDescription.TextCount1 = "Количество на складе: "+localRow.Quantity.ToString();
                 contenerRowDescription.TagPriceRUS = localRow.TagPriceRUS;
                 AddVisibilityControl(Column1, true, contenerRowDescription);
-                //ContenerRowDescription_ButtonAddClick(contenerRowDescription, new RoutedEventArgs());
-                //ContenerRowDescription_ButtonEditClick(contenerRowDescription, new RoutedEventArgs());
             }
 
         }

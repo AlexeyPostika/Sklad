@@ -637,6 +637,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Фильтер.
+        /// </summary>
+        public static string FILTER {
+            get {
+                return ResourceManager.GetString("FILTER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Временной фильтр.
         /// </summary>
         public static string FilterTime {

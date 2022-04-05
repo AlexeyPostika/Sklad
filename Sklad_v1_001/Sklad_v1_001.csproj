@@ -258,6 +258,9 @@
     <Compile Include="Control\ToolBar\NewSupplyDocumentDetailsToolBar.xaml.cs">
       <DependentUpon>NewSupplyDocumentDetailsToolBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\ToolBar\ProductToolBar.xaml.cs">
+      <DependentUpon>ProductToolBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\ToolBar\ToolBarSaveCancel.xaml.cs">
       <DependentUpon>ToolBarSaveCancel.xaml</DependentUpon>
     </Compile>
@@ -570,6 +573,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\ToolBar\NewSupplyDocumentDetailsToolBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\ToolBar\ProductToolBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -914,6 +921,9 @@
     <Resource Include="Icone\IconNotCamera_X30.png" />
     <Resource Include="Icone\IconNotCamera_X40.png" />
     <Resource Include="Icone\IconNotCamera_X80.png" />
+    <Resource Include="Icone\IconAddList_X32.png" />
+    <Resource Include="Icone\IconFilter_X32.png" />
+    <Resource Include="Icone\IconFilter_X30.png" />
     <Content Include="SQLCommand\JDB_DataAdapter.sql" />
     <Content Include="SQLCommand\JDB_POS.sql" />
     <Resource Include="Icone\IconOk.png" />

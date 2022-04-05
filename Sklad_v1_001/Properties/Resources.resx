@@ -714,4 +714,7 @@
   <data name="CLEAR" xml:space="preserve">
     <value>Очистить</value>
   </data>
+  <data name="FILTER" xml:space="preserve">
+    <value>Фильтер</value>
+  </data>
 </root>
