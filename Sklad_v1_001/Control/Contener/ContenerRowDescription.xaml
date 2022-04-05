@@ -8,8 +8,8 @@
              xmlns:ImageList="clr-namespace:Sklad_v1_001.Control.FlexImage"
              mc:Ignorable="d"
              x:Name="control">
-    <Border Style="{DynamicResource BorderStyle}" Margin="5">
-        <Grid>
+    <Border Style="{DynamicResource BorderStyleTrigger}" Margin="5">
+        <Grid MouseDown="Grid_MouseDown">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="Auto"/>

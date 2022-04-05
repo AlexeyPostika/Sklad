@@ -27,7 +27,7 @@
     <Color x:Key="ColorBackground">#FFFFFFFF</Color>
     <Color x:Key="ColorForeground">#FF000000</Color>
     <Color x:Key="ColorBorder">#FF333333</Color>
-
+    
     <Color x:Key="ColorToolbarStart">#FFC0C010</Color>   
     <Color x:Key="ColorToolbarEnd">#FFB7DEF9</Color>
 

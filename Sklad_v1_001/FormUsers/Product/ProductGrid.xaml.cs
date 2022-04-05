@@ -61,9 +61,13 @@ namespace Sklad_v1_001.FormUsers.Product
             foreach(DataRow row in dataTable.Rows)
             {
                 LocalRow localRow = new LocalRow();
-                productLogic.Convert(row, localRow);
+                datalist.Add(productLogic.Convert(row, localRow));
 
                 ContenerRowDescription contenerRowDescription = new ContenerRowDescription();
+                contenerRowDescription.KeyRow = localRow.ID.ToString(); //ключ для строки
+                contenerRowDescription.ButtonAddClick += ContenerRowDescription_ButtonAddClick;
+                contenerRowDescription.ButtonEditClick += ContenerRowDescription_ButtonEditClick;
+
                 contenerRowDescription.PhotoImage = localRow.PhotoImage;
                 contenerRowDescription.TextValue1 = localRow.Name;
                 contenerRowDescription.TextValue2 = "Описание: " + localRow.Description;
@@ -79,8 +83,28 @@ namespace Sklad_v1_001.FormUsers.Product
                 contenerRowDescription.TextCount1 = "Количество на складе: "+localRow.Quantity.ToString();
                 contenerRowDescription.TagPriceRUS = localRow.TagPriceRUS;
                 AddVisibilityControl(Column1, true, contenerRowDescription);
+                //ContenerRowDescription_ButtonAddClick(contenerRowDescription, new RoutedEventArgs());
+                //ContenerRowDescription_ButtonEditClick(contenerRowDescription, new RoutedEventArgs());
             }
 
+        }
+
+        private void ContenerRowDescription_ButtonEditClick(object sender, RoutedEventArgs e)
+        {
+            ContenerRowDescription contenerRowDescription = sender as ContenerRowDescription;
+            if (contenerRowDescription != null)
+            {
+                String rowID = datalist.FirstOrDefault(x => x.ID.ToString() == contenerRowDescription.KeyRow) != null ? datalist.FirstOrDefault(x => x.ID.ToString() == contenerRowDescription.KeyRow).ID.ToString() : String.Empty;
+                if (rowID != "")
+                {
+
+                }
+            }
+        }
+
+        private void ContenerRowDescription_ButtonAddClick(object sender, RoutedEventArgs e)
+        {
+            //throw new NotImplementedException();
         }
 
         private void page_Loaded(object sender, RoutedEventArgs e)

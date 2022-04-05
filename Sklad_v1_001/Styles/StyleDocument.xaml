@@ -69,9 +69,22 @@
         <Setter Property="BorderBrush" Value="{DynamicResource ColorBrushBorder}" />
         <Setter Property="CornerRadius" Value="4" />
     </Style>
+
+    <Style x:Key="BorderStyleTrigger" TargetType="{x:Type Border}">
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ColorBrushBorder}" />
+        <Setter Property="CornerRadius" Value="4" />
+        <Style.Triggers>
+            <Trigger Property="Border.IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource ColorBorderSelected}"/> 
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
     <SolidColorBrush x:Key="ColorButtonStaticBorder" Color="#FFCCCCCC"/>
     <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
     <SolidColorBrush x:Key="ColorBrushBorder" Color="#FFCCCCCC"/>
+    <SolidColorBrush x:Key="ColorBorderSelected" Color="#FFC0C010"/>
 
     <!-- Style ToolTip Start -->
     <Style TargetType="ToolTip" BasedOn="{StaticResource {x:Type ToolTip}}">

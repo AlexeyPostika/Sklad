@@ -142,7 +142,12 @@ namespace Sklad_v1_001.Control.Contener
             get { return (Decimal)GetValue(TagPriceRUSProperty); }
             set { SetValue(TagPriceRUSProperty, value); }
         }
-        public event Action ButtonAddClick;
+        public String KeyRow { get; set; }
+
+        public delegate void ButtonAddClickHandler(object sender, RoutedEventArgs e);
+        public delegate void ButtonEditClickHandler(object sender, RoutedEventArgs e);
+        public event ButtonAddClickHandler ButtonAddClick;
+        public event ButtonEditClickHandler ButtonEditClick;
 
         public ContenerRowDescription()
         {
@@ -153,7 +158,12 @@ namespace Sklad_v1_001.Control.Contener
 
         private void ButtonAdd_ButtonClick()
         {
-            ButtonAddClick?.Invoke();
+            ButtonAddClick?.Invoke(this, new RoutedEventArgs()) ;
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ButtonEditClick?.Invoke(this, new RoutedEventArgs());
         }
     }
 }
