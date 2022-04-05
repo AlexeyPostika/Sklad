@@ -337,7 +337,7 @@
     <value>Сохранить</value>
   </data>
   <data name="EDITBUTTON" xml:space="preserve">
-    <value>Детали</value>
+    <value>ДЕТАЛИ</value>
   </data>
   <data name="ProductItemScreenTitle" xml:space="preserve">
     <value>Детали продукта</value>
@@ -355,7 +355,7 @@
     <value>Настройки</value>
   </data>
   <data name="TransferDocument" xml:space="preserve">
-    <value>Перемещение</value>
+    <value>Перемещения</value>
   </data>
   <data name="Exite" xml:space="preserve">
     <value>Выход</value>
@@ -715,6 +715,9 @@
     <value>Очистить</value>
   </data>
   <data name="FILTER" xml:space="preserve">
-    <value>Фильтер</value>
+    <value>ФИЛЬТРЫ</value>
+  </data>
+  <data name="BASKET" xml:space="preserve">
+    <value>КОРЗИНА</value>
   </data>
 </root>

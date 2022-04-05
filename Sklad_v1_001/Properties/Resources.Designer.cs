@@ -232,6 +232,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на КОРЗИНА.
+        /// </summary>
+        public static string BASKET {
+            get {
+                return ResourceManager.GetString("BASKET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Отмена.
         /// </summary>
         public static string CANCEL {
@@ -556,7 +565,7 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Детали.
+        ///   Ищет локализованную строку, похожую на ДЕТАЛИ.
         /// </summary>
         public static string EDITBUTTON {
             get {
@@ -637,7 +646,7 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Фильтер.
+        ///   Ищет локализованную строку, похожую на ФИЛЬТРЫ.
         /// </summary>
         public static string FILTER {
             get {
@@ -1654,7 +1663,7 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Перемещение.
+        ///   Ищет локализованную строку, похожую на Перемещения.
         /// </summary>
         public static string TransferDocument {
             get {

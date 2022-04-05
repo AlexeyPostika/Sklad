@@ -5,23 +5,39 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Sklad_v1_001.Control.ToolBar"
              xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+             xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton"
              mc:Ignorable="d"
-             x:Name="control"
-             d:DesignHeight="450" d:DesignWidth="800">
+             x:Name="control">
     <Grid  Style="{DynamicResource Grid}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="Auto" MaxWidth="80"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="Auto" MaxWidth="80"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="Auto" MaxWidth="80"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="Auto" MaxWidth="80"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="5"/>
         </Grid.ColumnDefinitions>
+        <FlexButton:LevelButton x:Name="EditButton" 
+                                Margin="0,5,0,0"
+                                Grid.Column="1"
+                                Text="{x:Static res:Resources.EDITBUTTON}" 
+                                ButtonClick="EditButton_ButtonClick"/>
 
-        <Button x:Name="ApplyButton" Grid.Column="1"
+        <FlexButton:LevelButton x:Name="FilterButton" 
+                                Margin="0,5,0,0"
+                                Grid.Column="3"
+                                Text="{x:Static res:Resources.FILTER}"
+                                ButtonClick="FilterButton_ButtonClick"/>
+
+        <FlexButton:LevelButton x:Name="BasketButton"
+                                Margin="0,5,0,0"
+                                Grid.Column="7"
+                                Text="{x:Static res:Resources.BASKET}"
+                                ButtonClick="BasketButton_ButtonClick"/>
+        <!--<Button x:Name="ApplyButton" Grid.Column="1"
                 HorizontalAlignment="Left" Width="auto"                
                 Click="ApplyButton_Click"
                 IsEnabled="{Binding ElementName=control, Path=IsEnableAdd, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
@@ -83,6 +99,6 @@
                     <TextBlock Grid.Row="1" Text="{x:Static res:Resources.CLEAR}" Width="Auto" HorizontalAlignment="Center" />
                 </Grid>
             </StackPanel>
-        </Button>
+        </Button>-->
     </Grid>
 </UserControl>

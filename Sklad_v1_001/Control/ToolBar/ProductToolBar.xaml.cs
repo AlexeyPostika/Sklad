@@ -59,26 +59,42 @@ namespace Sklad_v1_001.Control.ToolBar
         public ProductToolBar()
         {
             InitializeComponent();
-            EditImage = ImageHelper.GenerateImage("IconEdit.png");
-            FilterImage = ImageHelper.GenerateImage("IconFilter_X30.png");
-        }
-
-        private void ApplyButton_Click(object sender, RoutedEventArgs e)
-        {
-            ButtonEdit?.Invoke();
-        }
-
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            ButtonFilter?.Invoke();
-        }
-
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+            EditButton.Image.Source = ImageHelper.GenerateImage("IconDetails_X30.png");
+            FilterButton.Image.Source = ImageHelper.GenerateImage("IconFilter_X30.png");
+            BasketButton.Image.Source= ImageHelper.GenerateImage("IconBasket_X30.png");
+        }      
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditValue_ButtonClick()
+        {
+
+        }
+
+        private void FilterValue_ButtonClick()
+        {
+
+        }
+
+        private void BasketValue_ButtonClick()
+        {
+
+        }
+
+        private void BasketButton_ButtonClick()
+        {
+
+        }
+
+        private void FilterButton_ButtonClick()
+        {
+
+        }
+
+        private void EditButton_ButtonClick()
         {
 
         }
