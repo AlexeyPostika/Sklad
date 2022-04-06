@@ -2072,6 +2072,16 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             return (Int32)_sqlRequestSaveTable.SqlAnswer.result;
         }
 
+        public Int32 SaveRowTable(Int32 documentNumber)
+        {
+            //SupplyDocument          
+            _sqlRequestSaveTable.SetParametrValue("@p_ID", documentNumber);
+            
+            _sqlRequestSaveTable.ComplexRequest(get_save_procedure_table, CommandType.StoredProcedure, null);
+            return (Int32)_sqlRequestSaveTable.SqlAnswer.result;
+        }
+
+
         public Int32 SetRow(LocalRow row)
         {
             //SupplyDocument

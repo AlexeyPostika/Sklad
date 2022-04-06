@@ -216,7 +216,7 @@
                                 </DataGridTemplateColumn.HeaderTemplate>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Image Source="{Binding Path=ImageSourcePackage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                        <Image Source="{Binding Path=ImageSourcePackage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="24" Height="24"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -268,7 +268,7 @@
                                 </DataGridTemplateColumn.HeaderTemplate>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Image Source="{Binding Path=ImageSourceInvoice, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                        <Image Source="{Binding Path=ImageSourceInvoice, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="24" Height="24"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -281,7 +281,7 @@
                                 </DataGridTemplateColumn.HeaderTemplate>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Image Source="{Binding Path=ImageSourceTTN, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                        <Image Source="{Binding Path=ImageSourceTTN, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="24" Height="24"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -356,7 +356,7 @@
                                 </DataGridTemplateColumn.HeaderTemplate>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Image Source="{Binding Path=ImageSourceRRN, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                        <Image Source="{Binding Path=ImageSourceRRN, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="24" Height="24"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
