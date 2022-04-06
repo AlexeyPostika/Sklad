@@ -52,6 +52,14 @@
         </Style.Setters>
     </Style>
 
+   
+    <Style  x:Key="GridButton"  TargetType="{x:Type Grid}" >
+        <Style.Setters>
+            <Setter Property="Background" Value="#FFFDFAFA"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+        </Style.Setters>
+    </Style>
+
     <Style  x:Key="MenuControl"  TargetType="{x:Type UserControl}" >
         <Style.Setters>
             <Setter Property="Background" Value="#FF292933"/>

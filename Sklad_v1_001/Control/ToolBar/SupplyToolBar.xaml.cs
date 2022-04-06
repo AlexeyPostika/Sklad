@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sklad_v1_001.GlobalVariable;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,18 @@ namespace Sklad_v1_001.Control.ToolBar
         public static readonly DependencyProperty IsEnableAddProperty = DependencyProperty.Register(
            "IsEnableAdd",
            typeof(Boolean),
-           typeof(SupplyToolBar), new UIPropertyMetadata(true));
+           typeof(SupplyToolBar), new UIPropertyMetadata(false));
+
+        public static readonly DependencyProperty IsEnableEditProperty = DependencyProperty.Register(
+         "IsEnableEdit",
+         typeof(Boolean),
+         typeof(SupplyToolBar), new UIPropertyMetadata(false));
+
+        public static readonly DependencyProperty IsEnableDeletedProperty = DependencyProperty.Register(
+          "IsEnableDeleted",
+          typeof(Boolean),
+          typeof(SupplyToolBar), new UIPropertyMetadata(false));
+
 
         public Boolean IsEnableAdd
         {
@@ -31,31 +43,48 @@ namespace Sklad_v1_001.Control.ToolBar
             set { SetValue(IsEnableAddProperty, value); }
         }
 
-        public event Action ButtonAdd;
-        public event Action ButtonSave;
+        public Boolean IsEnableEdit
+        {
+            get { return (Boolean)GetValue(IsEnableEditProperty); }
+            set { SetValue(IsEnableEditProperty, value); }
+        }
+
+        public Boolean IsEnableDeleted
+        {
+            get { return (Boolean)GetValue(IsEnableDeletedProperty); }
+            set { SetValue(IsEnableDeletedProperty, value); }
+        }
+
+        public event Action ButtonAdd;        
         public event Action ButtonEdit;
+        public event Action ButtonDelete;
         public event Action ButtonClear;
         public SupplyToolBar()
         {
             InitializeComponent();
+            NewButton.Image.Source= ImageHelper.GenerateImage("IconAddList_X32.png");
+            EditButton.Image.Source = ImageHelper.GenerateImage("IconDetails_X30.png");
+            DeletedButton.Image.Source = ImageHelper.GenerateImage("IconDelete_X32.png");
+            ClearButton.Image.Source = ImageHelper.GenerateImage("IconClearAllFilters_X32.png");
         }
 
-        private void ApplyButton_Click(object sender, RoutedEventArgs e)
+
+        private void NewButton_ButtonClick()
         {
             ButtonAdd?.Invoke();
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            ButtonSave?.Invoke();
-        }
-
-        private void EditButton_Click(object sender, RoutedEventArgs e)
+        private void EditButton_ButtonClick()
         {
             ButtonEdit?.Invoke();
         }
 
-        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        private void DeletedButton_ButtonClick()
+        {
+            ButtonDelete?.Invoke();
+        }
+
+        private void ClearButton_ButtonClick()
         {
             ButtonClear?.Invoke();
         }

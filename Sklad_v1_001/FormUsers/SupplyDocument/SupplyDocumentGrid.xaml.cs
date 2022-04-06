@@ -32,6 +32,18 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
     /// </summary>
     public partial class SupplyDocumentGrid : Page, INotifyPropertyChanged
     {
+        public static readonly DependencyProperty IsEnableDeletedProperty = DependencyProperty.Register(
+          "IsEnableDeleted",
+          typeof(Boolean),
+          typeof(SupplyDocumentGrid), new UIPropertyMetadata(false));
+
+        public Boolean IsEnableDeleted
+        {
+            get { return (Boolean)GetValue(IsEnableDeletedProperty); }
+            set { SetValue(IsEnableDeletedProperty, value); }
+        }
+
+
         SupplyDocumentLogic supplyDocumentLogic;
         SupplyDocumentDetailsLogic supplyDocumentDetailsLogic;
         SupplyDocumentDeliveryLogic supplyDocumentDeliveryLogic;
@@ -804,6 +816,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             LocalRow currentrow = this.SypplyDocument.SelectedItem as LocalRow;
             if (currentrow != null)
             {
+                if (currentrow.SupplyDocumentNumber > 0)
+                    IsEnableDeleted = false;
+                else
+                    IsEnableDeleted = true;
                 //чистим все детали
                 datalistDetails.Clear();
                 datalistDelivery.Clear();
@@ -825,7 +841,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 foreach (DataRow row in dataTableSupplyDocumentPayment.Rows)
                 {
                     datalistPayment.Add(supplyDocumentPaymentLogic.Convert(row, new SupplyDocumentPayment.LocaleRow()));
-                }                     
+                }   
+                
             }
             
         }
@@ -846,8 +863,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         }
 
         private void SupplyToolBar_ButtonClear()
-        {
+        {          
             InitFilters();
+            localFilter.Status = "All";
+            localFilter.AmountMin = AmountMin;
+            localFilter.AmountMax = AmountMax;
             Refresh();
         }
 

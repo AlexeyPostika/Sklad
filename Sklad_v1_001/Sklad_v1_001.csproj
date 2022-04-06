@@ -928,6 +928,10 @@
     <Resource Include="Icone\IconDetails_X30.png" />
     <Resource Include="Icone\IconDetails_X32.png" />
     <Resource Include="Icone\IconDetails_X40.png" />
+    <Resource Include="Icone\IconDelete_X16.png" />
+    <Resource Include="Icone\IconDelete_X30.png" />
+    <Resource Include="Icone\IconDelete_X32.png" />
+    <Resource Include="Icone\IconDelete_X40.png" />
     <Content Include="SQLCommand\JDB_DataAdapter.sql" />
     <Content Include="SQLCommand\JDB_POS.sql" />
     <Resource Include="Icone\IconOk.png" />

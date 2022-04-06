@@ -5,83 +5,46 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Sklad_v1_001.Control.ToolBar"
              xmlns:res="clr-namespace:Sklad_v1_001.Properties"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton"
+             mc:Ignorable="d"
+             x:Name="control">
     <Grid  Style="{DynamicResource Grid}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="60" MaxWidth="80"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="60" MaxWidth="80"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="60" MaxWidth="80"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="60" MaxWidth="80"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="5"/>
         </Grid.ColumnDefinitions>
+        <FlexButton:LevelButton x:Name="NewButton" 
+                                Margin="0,5,0,0"
+                                Grid.Column="1"
+                                Text="{x:Static res:Resources.NEWSUPPLYDOCUMENTBUTTON}" 
+                                 IsEnabled="{Binding ElementName=control, Path=IsEnableAdd, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                ButtonClick="NewButton_ButtonClick"/>
 
-        <Button x:Name="ApplyButton" Grid.Column="1"
-                HorizontalAlignment="Left" Width="auto"                
-                Click="ApplyButton_Click"
-                IsEnabled="{Binding ElementName=control, Path=IsEnableAdd, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-            <StackPanel Width="Auto" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="24"/>
-                    </Grid.RowDefinitions>
-                    <Image Source="/Sklad_v1_001;component/Icone/IconAddList_X32.png" StretchDirection="DownOnly" Stretch="UniformToFill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                    <TextBlock Grid.Row="1" Text="{x:Static res:Resources.ADDLIST}" Width="Auto" HorizontalAlignment="Stretch" />
-                </Grid>
-            </StackPanel>
-        </Button>
+        <FlexButton:LevelButton x:Name="EditButton" 
+                                Margin="0,5,0,0"
+                                Grid.Column="3"
+                                Text="{x:Static res:Resources.EDITBUTTON}"
+                                 IsEnabled="{Binding ElementName=control, Path=IsEnableEdit, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                ButtonClick="EditButton_ButtonClick"/>
 
-        <Button x:Name="SaveButton" Grid.Column="3"
-                HorizontalAlignment="Left" Width="auto"                
-                Click="SaveButton_Click"
-                IsEnabled="{Binding ElementName=control, Path=IsEnableAdd, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-            <StackPanel Width="Auto" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="24"/>
-                    </Grid.RowDefinitions>
-                    <Image Source="/Sklad_v1_001;component/Icone/save_32px.png"  HorizontalAlignment="Right" StretchDirection="DownOnly" Stretch="UniformToFill" Margin="0,0,12,0"/>
-                    <TextBlock Grid.Row="1" Text="{x:Static res:Resources.SAVELIST}" Width="Auto" HorizontalAlignment="Center" />
-                </Grid>
-            </StackPanel>
-        </Button>
+        <FlexButton:LevelButton x:Name="DeletedButton"
+                                Margin="0,5,0,0"
+                                Grid.Column="5"
+                                Text="{x:Static res:Resources.DELETE}"
+                                IsEnabled="{Binding ElementName=control, Path=IsEnableDeleted, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                ButtonClick="DeletedButton_ButtonClick"/>
 
-        <Button x:Name="EditButton" Grid.Column="5"
-                HorizontalAlignment="Left" Width="auto"                
-                Click="EditButton_Click"
-                IsEnabled="{Binding ElementName=control, Path=IsEnableAdd, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-            <StackPanel Width="Auto" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="24"/>
-                    </Grid.RowDefinitions>
-                    <Image Source="/Sklad_v1_001;component/Icone/IconEdit.png"  HorizontalAlignment="Right" StretchDirection="DownOnly" Stretch="UniformToFill" Margin="10,0,10,0"/>
-                    <TextBlock Grid.Row="1" Text="{x:Static res:Resources.EDITBUTTON}" Width="Auto" HorizontalAlignment="Center" />
-                </Grid>
-            </StackPanel>
-        </Button>
-
-        <Button x:Name="ClearButton" Grid.Column="7"
-                HorizontalAlignment="Left" Width="auto"                
-                Click="ClearButton_Click"
-                IsEnabled="{Binding ElementName=control, Path=IsEnableAdd, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-            <StackPanel Width="Auto" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="75"/>
-                        <RowDefinition Height="24"/>
-                    </Grid.RowDefinitions>
-                    <Image Source="/Sklad_v1_001;component/Icone/IconClearAllFilters_X32.png"  HorizontalAlignment="Right" StretchDirection="DownOnly" Stretch="UniformToFill" Margin="10,0,10,0"/>
-                    <TextBlock Grid.Row="1" Text="{x:Static res:Resources.CLEAR}" Width="Auto" HorizontalAlignment="Center" />
-                </Grid>
-            </StackPanel>
-        </Button>
+        <FlexButton:LevelButton x:Name="ClearButton"
+                                Margin="0,5,0,0"
+                                Grid.Column="7"
+                                Text="{x:Static res:Resources.CLEAR}"
+                                ButtonClick="ClearButton_ButtonClick"/>
     </Grid>
 </UserControl>

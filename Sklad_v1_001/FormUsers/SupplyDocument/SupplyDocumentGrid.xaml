@@ -20,7 +20,10 @@
         </Grid.RowDefinitions>
         <ToolBar:SupplyToolBar ButtonAdd="SupplyToolBar_ButtonAdd"
                                ButtonEdit="SupplyToolBar_ButtonEdit"
-                               ButtonClear="SupplyToolBar_ButtonClear"/>
+                               ButtonClear="SupplyToolBar_ButtonClear"
+                               IsEnableAdd="True"
+                               IsEnableEdit="True"
+                               IsEnableDeleted="{Binding ElementName=page, Path=IsEnableDeleted, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
         <Grid Grid.Row="1" x:Name="SypplyDocumentList">
             <DataGrid x:Name="SypplyDocument" 

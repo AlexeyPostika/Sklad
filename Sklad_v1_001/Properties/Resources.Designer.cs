@@ -1006,6 +1006,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на НОВЫЙ ДОКУМЕНТ.
+        /// </summary>
+        public static string NEWSUPPLYDOCUMENTBUTTON {
+            get {
+                return ResourceManager.GetString("NEWSUPPLYDOCUMENTBUTTON", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Следующая.
         /// </summary>
         public static string NEXT {

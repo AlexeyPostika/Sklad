@@ -720,4 +720,7 @@
   <data name="BASKET" xml:space="preserve">
     <value>КОРЗИНА</value>
   </data>
+  <data name="NEWSUPPLYDOCUMENTBUTTON" xml:space="preserve">
+    <value>НОВЫЙ ДОКУМЕНТ</value>
+  </data>
 </root>
