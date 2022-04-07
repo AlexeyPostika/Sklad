@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Sklad_v1_001.Control.SimpleControl.EditBoxWithLabelScan"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sklad_v1_001.Control.SimpleControl"
+             mc:Ignorable="d" 
+             Name="control">
+    <Grid Height="30" Name="grid" Margin="0, 10, 10, 0">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+
+            <WrapPanel Name="wrapPanel" Margin="5,0,0,0" Width="{Binding ElementName=control, Path=LabelWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+
+                <Label Style="{DynamicResource LabelStyle}" Name="label"
+                   Height="30" 
+                   Content="{Binding ElementName=control, Path=LabelText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <Label Style="{DynamicResource LabelStyle}" Name="required" Margin="-9,0,0,0" FontSize="18" Height="30" Visibility="{Binding ElementName=control, Path=IsRequired, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="Red" Content="*" HorizontalAlignment="Left"/>
+            </WrapPanel>
+
+            <TextBox Name="ScanTextBox" Grid.Column="1" 
+                     Text="{Binding ElementName=control, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     KeyDown="ScanTextBox_KeyDown" 
+                     PreviewTextInput="ScanTextBox_PreviewTextInput"
+                     IsEnabled="{Binding ElementName=control, Path=IsEnabledTextBox, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     HorizontalContentAlignment="Right" 
+                     MaxLength="{Binding ElementName=control, Path=MaxLength, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+    </Grid>
+</UserControl>

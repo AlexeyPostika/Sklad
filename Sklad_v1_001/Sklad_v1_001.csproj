@@ -246,6 +246,9 @@
     <Compile Include="Control\SimpleControl\EditBoxWithLabelNumericForEdit.xaml.cs">
       <DependentUpon>EditBoxWithLabelNumericForEdit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\SimpleControl\EditBoxWithLabelScan.xaml.cs">
+      <DependentUpon>EditBoxWithLabelScan.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\SimpleControl\EditBoxWithLabelTime.xaml.cs">
       <DependentUpon>EditBoxWithLabelTime.xaml</DependentUpon>
     </Compile>
@@ -559,6 +562,10 @@
     <Page Include="Control\SimpleControl\EditBoxWithLabelNumericForEdit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\SimpleControl\EditBoxWithLabelScan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\SimpleControl\EditBoxWithLabelTime.xaml">
       <Generator>MSBuild:Compile</Generator>

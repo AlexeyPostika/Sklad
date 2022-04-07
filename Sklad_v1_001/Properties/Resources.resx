@@ -723,4 +723,7 @@
   <data name="NEWSUPPLYDOCUMENTBUTTON" xml:space="preserve">
     <value>НОВЫЙ ДОКУМЕНТ</value>
   </data>
+  <data name="Scan" xml:space="preserve">
+    <value>Сканировать</value>
+  </data>
 </root>

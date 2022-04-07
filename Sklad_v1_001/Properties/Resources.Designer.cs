@@ -1474,6 +1474,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Сканировать.
+        /// </summary>
+        public static string Scan {
+            get {
+                return ResourceManager.GetString("Scan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на № штрих-кода.
         /// </summary>
         public static string SchtrxCode {
