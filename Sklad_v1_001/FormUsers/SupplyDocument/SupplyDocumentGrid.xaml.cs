@@ -905,6 +905,17 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         }
 
-        
+        private void SupplyToolBar_ButtonDelete()
+        {
+            LocalRow currentrow = this.SypplyDocument.SelectedItem as LocalRow;
+            if (currentrow != null)
+            {           
+                Int32 temp = supplyDocumentLogic.SaveRowTable(-currentrow.ID);
+                if (temp > 0)
+                {
+                    Refresh();
+                }
+            }
+        }
     }
 }
