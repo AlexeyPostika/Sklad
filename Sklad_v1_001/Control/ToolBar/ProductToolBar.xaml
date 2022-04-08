@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Sklad_v1_001.Control.ToolBar"
              xmlns:res="clr-namespace:Sklad_v1_001.Properties"
              xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton"
+             xmlns:SimpleControl ="clr-namespace:Sklad_v1_001.Control.SimpleControl"
              mc:Ignorable="d"
              x:Name="control">
     <Grid  Style="{DynamicResource Grid}">
@@ -17,6 +18,8 @@
             <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="5"/>
         </Grid.ColumnDefinitions>
@@ -33,9 +36,15 @@
                                 Text="{x:Static res:Resources.FILTER}"
                                 ButtonClick="FilterButton_ButtonClick"/>
 
+        <SimpleControl:EditBoxWithLabelScan x:Name="Scan" 
+                                            Grid.Column="7"
+                                            LabelWidth="95"
+                                            LabelText="{x:Static res:Resources.Scan}"
+                                            ButtonClick="Scan_ButtonClick"/>
+
         <FlexButton:LevelButton x:Name="BasketButton"
                                 Margin="0,5,0,0"
-                                Grid.Column="7"
+                                Grid.Column="9"
                                 Text="{x:Static res:Resources.BASKET}"
                                 ButtonClick="BasketButton_ButtonClick"/>
         <!--<Button x:Name="ApplyButton" Grid.Column="1"

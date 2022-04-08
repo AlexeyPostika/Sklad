@@ -98,5 +98,10 @@ namespace Sklad_v1_001.Control.ToolBar
         {
 
         }
+
+        private void Scan_ButtonClick()
+        {
+
+        }
     }
 }
