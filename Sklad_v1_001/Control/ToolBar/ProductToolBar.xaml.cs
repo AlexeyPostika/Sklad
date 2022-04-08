@@ -55,6 +55,8 @@ namespace Sklad_v1_001.Control.ToolBar
 
         public event Action ButtonEdit;
         public event Action ButtonFilter;
+        public event Action ButtonScan;
+        public event Action ButtonBasket;
 
         public ProductToolBar()
         {
@@ -64,44 +66,24 @@ namespace Sklad_v1_001.Control.ToolBar
             BasketButton.Image.Source= ImageHelper.GenerateImage("IconBasket_X30.png");
         }      
 
-        private void ClearButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void EditValue_ButtonClick()
-        {
-
-        }
-
-        private void FilterValue_ButtonClick()
-        {
-
-        }
-
-        private void BasketValue_ButtonClick()
-        {
-
-        }
-
         private void BasketButton_ButtonClick()
         {
-
+            ButtonBasket?.Invoke();
         }
 
         private void FilterButton_ButtonClick()
         {
-
+            ButtonFilter?.Invoke();
         }
 
         private void EditButton_ButtonClick()
         {
-
+            ButtonEdit?.Invoke();
         }
 
         private void Scan_ButtonClick()
         {
-
+            ButtonScan?.Invoke();
         }
     }
 }

@@ -58,7 +58,9 @@ namespace Sklad_v1_001.Control.ToolBar
         public event Action ButtonAdd;        
         public event Action ButtonEdit;
         public event Action ButtonDelete;
+        public event Action ButtonScan;
         public event Action ButtonClear;
+
         public SupplyToolBar()
         {
             InitializeComponent();
@@ -87,6 +89,11 @@ namespace Sklad_v1_001.Control.ToolBar
         private void ClearButton_ButtonClick()
         {
             ButtonClear?.Invoke();
+        }
+
+        private void Scan_ButtonClick()
+        {
+            ButtonScan?.Invoke();
         }
     }
 }

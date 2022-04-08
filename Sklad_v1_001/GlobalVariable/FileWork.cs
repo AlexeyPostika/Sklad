@@ -196,10 +196,20 @@ namespace Sklad_v1_001.GlobalVariable
 
             //Document document = new Document(PuthString);
             //document.Save("output.xps", Aspose.Pdf.SaveFormat.Xps);
-        }  
-        
-        public XpsDocument ByteToXPS(byte[] _documentByte, String _nameFile)
+        }
+        public String ByteToXPSString(byte[] _documentByte, String _nameFile)
         {
+            using (MemoryStream InputStream = new MemoryStream(_documentByte))
+            {
+                Document document = new Document(InputStream);
+                document.Save(_nameFile, SaveFormat.Xps);
+                return _nameFile;
+            }
+            return String.Empty;
+        }
+
+        public XpsDocument ByteToXPS(byte[] _documentByte, String _nameFile)
+        {            
             try
             {
                 using (MemoryStream InputStream = new MemoryStream(_documentByte))

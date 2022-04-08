@@ -373,14 +373,21 @@ namespace Sklad_v1_001.Control.SimpleControl
 
         private void buttonLoop_ButtonClick()
         {
-           
-            using (Stream stream = new MemoryStream(ByteFaile))
+            try
             {
-                FlexDocumentWindows flexDocumentWindows = new FlexDocumentWindows();            
-                XpsDocument doc = fileWork.ByteToXPS(ByteFaile, NameFile);
-                flexDocumentWindows.DocumentXps = doc.GetFixedDocumentSequence();              
-                doc.Close();
-                flexDocumentWindows.ShowDialog();
+                using (Stream stream = new MemoryStream(ByteFaile))
+                {
+                    FlexDocumentWindows flexDocumentWindows = new FlexDocumentWindows();
+                    XpsDocument doc = new XpsDocument(fileWork.ByteToXPSString(ByteFaile, "Output.txt"), FileAccess.ReadWrite);
+                    //XpsDocument doc = fileWork.ByteToXPSString(ByteFaile, NameFile);
+                    flexDocumentWindows.DocumentXps = doc.GetFixedDocumentSequence();
+                    doc.Close();
+                    flexDocumentWindows.ShowDialog();
+                }
+            }
+            catch(Exception ex)
+            {
+                //throw new Exception(ex.Message);
             }
             //XpsDocument xpsDocument = new XpsDocument(package, CompressionOption.SuperFast);              
         }  

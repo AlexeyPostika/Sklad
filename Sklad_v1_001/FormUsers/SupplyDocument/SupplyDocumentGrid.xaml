@@ -37,8 +37,8 @@
                       SelectionChanged="SypplyDocument_SelectionChanged"
                       MouseDoubleClick="SypplyDocument_MouseDoubleClick">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="Auto"/>
-                    <!--<DataGridTextColumn Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NameProduct}" Width="450"/>-->
+                    <DataGridTextColumn Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="Auto" Visibility="Collapsed"/>
+                    <DataGridTextColumn Binding="{Binding Path=LineDocument, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="Auto"/>
 
                     <!--<DataGridTemplateColumn IsReadOnly="True" CanUserSort="True" Width="Auto">
                         <DataGridTemplateColumn.HeaderTemplate>
@@ -58,7 +58,7 @@
                     
                     <DataGridTextColumn Binding="{Binding Path=LastModificatedDateString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.LastModifiadDateText}" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding Path=Invoice, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.Invoice}" Width="Auto"/>
-                    <DataGridTextColumn Binding="{Binding Path=SupplyDocumentNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NumberDocument}" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding Path=SupplyDocumentNumberString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NumberDocument}" Width="Auto"/>
 
                     <!--<DataGridTemplateColumn x:Name="FilterManagerName" Width="Auto" IsReadOnly="True" SortMemberPath="ShortLDisplayNameUser" CanUserSort="True">
                         <DataGridTemplateColumn.HeaderTemplate>
@@ -354,7 +354,7 @@
                             <DataGridTemplateColumn MaxWidth="300">
                                 <DataGridTemplateColumn.HeaderTemplate>
                                     <DataTemplate>
-                                        <Label Content="{x:Static res:Resources.AddFileRRN}" HorizontalAlignment="Center" Width="24" Height="24"/>
+                                        <Label Content="{x:Static res:Resources.AddFileRRN}" HorizontalAlignment="Center" Width="Auto"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.HeaderTemplate>
                                 <DataGridTemplateColumn.CellTemplate>

@@ -405,6 +405,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         private DateTime reffDate;
         private Int64 supplyDocumentNumber;
+        private String supplyDocumentNumberString;
         private DateTime? createdDate;
         private String createdDateString;
         private Int32 createdUserID;
@@ -1341,6 +1342,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             }
         }
 
+        public String SupplyDocumentNumberString
+        {
+            get
+            {
+                return supplyDocumentNumberString;
+            }
+
+            set
+            {
+                supplyDocumentNumberString = value;
+                OnPropertyChanged("SupplyDocumentNumberString");
+            }
+        }
+
         public ShemaStorаge ShemaStorаgeLocal { get => shemaStorаgeLocal; set => shemaStorаgeLocal = value; }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -2110,7 +2125,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             _localeRow.ID = convertData.ConvertDataInt32("ID");
             _localeRow.SupplyDocumentNumber = convertData.ConvertDataInt64("SupplyDocumentNumber");
-            _localeRow.LineDocument= convertData.ConvertDataInt32("LineDocument");
+            _localeRow.SupplyDocumentNumberString = "";
+            if (_localeRow.SupplyDocumentNumber > 0)
+                _localeRow.SupplyDocumentNumberString = _localeRow.SupplyDocumentNumber.ToString();
+            _localeRow.LineDocument= convertData.ConvertDataInt32("RowNumber");
             _localeRow.Status = convertData.ConvertDataInt32("Status");
             _localeRow.StatusString = supplyTypeList.innerList.FirstOrDefault(x => x.ID == _localeRow.Status) != null ?
                                             supplyTypeList.innerList.FirstOrDefault(x => x.ID == _localeRow.Status).Description : Properties.Resources.UndefindField;
