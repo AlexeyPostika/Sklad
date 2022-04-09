@@ -4,12 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Sklad_v1_001.Control.FlexEditBox"
-             mc:Ignorable="d">
+             mc:Ignorable="d"
+             x:Name="control">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <TextBox Name="TextField" Style="{DynamicResource TextBoxStyle}" Padding="0,0,30,0" TextChanged="textBlock_TextChanged"/>
+        <TextBox Name="TextField" Style="{DynamicResource TextBoxStyle}" 
+                 Text="{Binding ElementName=control, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 Padding="0,0,30,0" TextChanged="textBlock_TextChanged"/>
         <Button  Name="button" Style="{DynamicResource ButtonSmallStyle}" HorizontalAlignment="Right" Click="button_Click" Focusable="False">
             <Image Name="image" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None" />
         </Button>

@@ -36,6 +36,10 @@ namespace Sklad_v1_001.Control.ToolBar
           typeof(Boolean),
           typeof(SupplyToolBar), new UIPropertyMetadata(false));
 
+        public static readonly DependencyProperty SearchProperty = DependencyProperty.Register(
+         "Search",
+         typeof(String),
+         typeof(SupplyToolBar), new UIPropertyMetadata(""));
 
         public Boolean IsEnableAdd
         {
@@ -55,10 +59,19 @@ namespace Sklad_v1_001.Control.ToolBar
             set { SetValue(IsEnableDeletedProperty, value); }
         }
 
+        public String Search
+        {
+            get { return (String)GetValue(SearchProperty); }
+            set { SetValue(SearchProperty, value); }
+        }
+
+        public delegate void ButtonScanHandler(String text);
+
         public event Action ButtonAdd;        
         public event Action ButtonEdit;
         public event Action ButtonDelete;
-        public event Action ButtonScan;
+        public event ButtonScanHandler ButtonScan;
+        public event Action ButtonClean;
         public event Action ButtonClear;
 
         public SupplyToolBar()
@@ -89,11 +102,16 @@ namespace Sklad_v1_001.Control.ToolBar
         private void ClearButton_ButtonClick()
         {
             ButtonClear?.Invoke();
+        }      
+
+        private void Scan_ButtonClearClick()
+        {
+            ButtonClean?.Invoke();
         }
 
-        private void Scan_ButtonClick()
+        private void Scan_ButtonTextChangedClick()
         {
-            ButtonScan?.Invoke();
+            ButtonScan?.Invoke(Search);
         }
     }
 }

@@ -18,10 +18,13 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="20*"/>
         </Grid.RowDefinitions>
-        <ToolBar:SupplyToolBar ButtonAdd="SupplyToolBar_ButtonAdd"
+        <ToolBar:SupplyToolBar x:Name="ToolBarSupply"
+                               ButtonAdd="SupplyToolBar_ButtonAdd"
                                ButtonEdit="SupplyToolBar_ButtonEdit"
                                ButtonDelete="SupplyToolBar_ButtonDelete"
                                ButtonClear="SupplyToolBar_ButtonClear"
+                               ButtonScan="SupplyToolBar_ButtonScan"
+                               ButtonClean="ToolBarSupply_ButtonClean"
                                IsEnableAdd="True"
                                IsEnableEdit="True"
                                IsEnableDeleted="{Binding ElementName=page, Path=IsEnableDeleted, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>

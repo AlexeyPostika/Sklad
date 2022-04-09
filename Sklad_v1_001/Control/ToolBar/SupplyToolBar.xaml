@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Sklad_v1_001.Control.ToolBar"
              xmlns:res="clr-namespace:Sklad_v1_001.Properties"
              xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton"
+             xmlns:FlexEditBox="clr-namespace:Sklad_v1_001.Control.FlexEditBox"
              xmlns:SimpleControl ="clr-namespace:Sklad_v1_001.Control.SimpleControl"
              mc:Ignorable="d"
              x:Name="control">
@@ -44,11 +45,19 @@
                                 IsEnabled="{Binding ElementName=control, Path=IsEnableDeleted, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                 ButtonClick="DeletedButton_ButtonClick"/>
 
-        <SimpleControl:EditBoxWithLabelScan x:Name="Scan" 
+        <FlexEditBox:EditBoxDeleteWithLabel x:Name="Scan" 
                                             Grid.Column="7"
                                             LabelWidth="55"
                                             LabelText="{x:Static res:Resources.Search}"
-                                            ButtonClick="Scan_ButtonClick"/>
+                                            Text="{Binding ElementName=control, Path=Search, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                            ButtonClearClick="Scan_ButtonClearClick"
+                                            ButtonTextChangedClick="Scan_ButtonTextChangedClick"/>
+
+        <!--<SimpleControl:EditBoxWithLabelScan x:Name="Scan" 
+                                            Grid.Column="7"
+                                            LabelWidth="55"
+                                            LabelText="{x:Static res:Resources.Search}"
+                                            ButtonClick="Scan_ButtonClick"/>-->
 
         <FlexButton:LevelButton x:Name="ClearButton"
                                 Margin="0,5,0,0"

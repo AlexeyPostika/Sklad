@@ -740,6 +740,17 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             localFilter.AmountMax = AmountMax;
             Refresh();
         }
+        private void SupplyToolBar_ButtonScan(string text)
+        {          
+            localFilter.Search = text;
+            Refresh();
+        }
+
+        private void ToolBarSupply_ButtonClean()
+        {
+            ToolBarSupply.Scan.Text = String.Empty;
+            Refresh();
+        }
         #endregion
 
         #region Refresh
@@ -917,5 +928,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 }
             }
         }
+
+        
     }
 }

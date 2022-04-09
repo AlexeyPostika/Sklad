@@ -61,16 +61,11 @@ namespace Sklad_v1_001.Control.FlexEditBox
         private void button_Click(object sender, RoutedEventArgs e)
         {
             ButtonClearClick?.Invoke();
-        }
-
-        private void TextField_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            ButtonTextChangedClick?.Invoke();
-        }
+        }       
 
         private void textBlock_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            ButtonTextChangedClick?.Invoke();
         }
     }
 }
