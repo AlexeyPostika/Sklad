@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,11 +16,30 @@ using System.Windows.Media;
 namespace Sklad_v1_001.FormUsers.Product
 {
     public class LocalFilter : INotifyPropertyChanged
-    {
+    {      
         private string screenTypeGrid;
 
-        private Int32 rowCountPage;
-        private Int32 pageCountRow;
+        private string search;
+        private Int32 iD;    
+
+        private String createdUserID;
+        private String lastModifiedUserID;
+        private String status;
+        private String showcase;
+        private String procreator;
+        private String category;
+        private String categoryDetails;
+
+        private Double quantityMin;
+        private Double quantityMax;
+        private Double tagPriceVATRUS_Min;
+        private Double tagPriceVATRUS_Max;
+
+        private Int32 pageNumber;
+        private Int32 pagerowCount;
+
+        private String sortColumn;
+        private Boolean sort;
 
         public string ScreenTypeGrid
         {
@@ -35,31 +55,235 @@ namespace Sklad_v1_001.FormUsers.Product
             }
         }
 
-        public Int32 PageCountRow
+        public string Search
         {
             get
             {
-                return pageCountRow;
+                return search;
             }
 
             set
             {
-                pageCountRow = value;
+                search = value;
+                OnPropertyChanged("Search");
+            }
+        }
+
+        public Int32 ID
+        {
+            get
+            {
+                return iD;
+            }
+
+            set
+            {
+                iD = value;
+                OnPropertyChanged("ID");
+            }
+        }
+        public string CreatedUserID
+        {
+            get
+            {
+                return createdUserID;
+            }
+
+            set
+            {
+                createdUserID = value;
+                OnPropertyChanged("CreatedUserID");
+            }
+        }
+        public string LastModifiedUserID
+        {
+            get
+            {
+                return lastModifiedUserID;
+            }
+
+            set
+            {
+                lastModifiedUserID = value;
+                OnPropertyChanged("LastModifiedUserID");
+            }
+        }
+        public string Status
+        {
+            get
+            {
+                return status;
+            }
+
+            set
+            {
+                status = value;
+                OnPropertyChanged("Status");
+            }
+        }
+        public string Showcase
+        {
+            get
+            {
+                return showcase;
+            }
+
+            set
+            {
+                showcase = value;
+                OnPropertyChanged("Showcase");
+            }
+        }
+        public string Procreator
+        {
+            get
+            {
+                return procreator;
+            }
+
+            set
+            {
+                procreator = value;
+                OnPropertyChanged("Procreator");
+            }
+        }
+        public string Category
+        {
+            get
+            {
+                return category;
+            }
+
+            set
+            {
+                category = value;
+                OnPropertyChanged("Category");
+            }
+        }
+
+        public string CategoryDetails
+        {
+            get
+            {
+                return categoryDetails;
+            }
+
+            set
+            {
+                categoryDetails = value;
+                OnPropertyChanged("CategoryDetails");
+            }
+        }
+
+        public Double QuantityMin
+        {
+            get
+            {
+                return quantityMin;
+            }
+
+            set
+            {
+                quantityMin = value;
+                OnPropertyChanged("QuantityMin");
+            }
+        }
+
+        public Double QuantityMax
+        {
+            get
+            {
+                return quantityMax;
+            }
+
+            set
+            {
+                quantityMax = value;
+                OnPropertyChanged("QuantityMax");
+            }
+        }
+
+        public Double TagPriceVATRUS_Min
+        {
+            get
+            {
+                return tagPriceVATRUS_Min;
+            }
+
+            set
+            {
+                tagPriceVATRUS_Min = value;
+                OnPropertyChanged("TagPriceVATRUS_Min");
+            }
+        }
+
+        public Double TagPriceVATRUS_Max
+        {
+            get
+            {
+                return tagPriceVATRUS_Max;
+            }
+
+            set
+            {
+                tagPriceVATRUS_Max = value;
+                OnPropertyChanged("TagPriceVATRUS_Max");
+            }
+        }
+
+        public Int32 PagerowCount
+        {
+            get
+            {
+                return pagerowCount;
+            }
+
+            set
+            {
+                pagerowCount = value;
+                OnPropertyChanged("PagerowCount");
+            }
+        }
+
+        public Int32 PageNumber
+        {
+            get
+            {
+                return pageNumber;
+            }
+
+            set
+            {
+                pageNumber = value;
                 OnPropertyChanged("PageNumber");
             }
         }
 
-        public Int32 RowCountPage
+        public string SortColumn
         {
             get
             {
-                return rowCountPage;
+                return sortColumn;
             }
 
             set
             {
-                rowCountPage = value;
-                OnPropertyChanged("PagerowCount");
+                sortColumn = value;
+                OnPropertyChanged("SortColumn");
+            }
+        }
+
+        public Boolean Sort
+        {
+            get
+            {
+                return sort;
+            }
+
+            set
+            {
+                sort = value;
+                OnPropertyChanged("Sort");
             }
         }
 
@@ -72,11 +296,17 @@ namespace Sklad_v1_001.FormUsers.Product
         public LocalFilter()
         {
             ScreenTypeGrid = ScreenType.ScreenTypeGrid;
-            PageCountRow = 0;
-            RowCountPage = 16;
+            CreatedUserID = "All";
+            LastModifiedUserID = "All";
+            Status = "All";
+            Showcase = "All";
+            Procreator = "All";
+            Category = "All";
+            CategoryDetails = "All";
         }
 
     }
+    
     public class LocalRow : IAbstractRow, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -733,6 +963,61 @@ namespace Sklad_v1_001.FormUsers.Product
             ImageSourceInvoice = ImageHelper.GenerateImage("IconMinus.png");
         }
     }
+
+    public class RowSummary : INotifyPropertyChanged
+    {
+        Int32 countID;
+        Int32 quantitySumm;
+        decimal summTagPriceRUS;
+       
+        public Int32 SummaryQuantityLine
+        {
+            get
+            {
+                return countID;
+            }
+
+            set
+            {
+                countID = value;
+                OnPropertyChanged("SummaryQuantityLine");
+            }
+        }
+        public Int32 QuantitySumm
+        {
+            get
+            {
+                return quantitySumm;
+            }
+
+            set
+            {
+                quantitySumm = value;
+                OnPropertyChanged("QuantitySumm");
+            }
+        }
+
+        public decimal SummTagPriceRUS
+        {
+            get
+            {
+                return summTagPriceRUS;
+            }
+
+            set
+            {
+                summTagPriceRUS = value;
+                OnPropertyChanged("SummTagPriceRUS");
+            }
+        }       
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+
     public class ProductLogic
     {
         ConvertData convertData;
@@ -740,6 +1025,7 @@ namespace Sklad_v1_001.FormUsers.Product
         string get_store_procedure = "xp_GetProductTable";
 
         SQLCommanSelect _sqlRequestSelect = null;
+        SQLCommanSelect _sqlRequestSelectSummary = null;
 
         //результат запроса
         DataTable _data = null;
@@ -752,20 +1038,110 @@ namespace Sklad_v1_001.FormUsers.Product
             _datarow = new DataTable();
 
             _sqlRequestSelect = new SQLCommanSelect();
+            _sqlRequestSelectSummary = new SQLCommanSelect();
 
-            _sqlRequestSelect.AddParametr("@p_RowCountPage", SqlDbType.Int);
-            _sqlRequestSelect.SetParametrValue("@p_RowCountPage", 0);
+            //----------------------------------------------------------------------------
+            _sqlRequestSelect.AddParametr("@p_TypeScreen", SqlDbType.NVarChar);
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeGrid);
 
-            _sqlRequestSelect.AddParametr("@p_PageCountRow", SqlDbType.Int);
-            _sqlRequestSelect.SetParametrValue("@p_PageCountRow", 0);
+            _sqlRequestSelect.AddParametr("@p_Search", SqlDbType.NVarChar);
+            _sqlRequestSelect.SetParametrValue("@p_Search", "");
+
+            _sqlRequestSelect.AddParametr("@p_ID", SqlDbType.Int);
+            _sqlRequestSelect.SetParametrValue("@p_ID", 0);
+
+            _sqlRequestSelect.AddParametr("@p_CreatedUserID", SqlDbType.NVarChar);
+            _sqlRequestSelect.SetParametrValue("@p_CreatedUserID", "");
+
+            _sqlRequestSelect.AddParametr("@p_LastModifiedUserID", SqlDbType.NVarChar);
+            _sqlRequestSelect.SetParametrValue("@p_LastModifiedUserID", "");
+
+            _sqlRequestSelect.AddParametr("@p_Status", SqlDbType.NVarChar);
+            _sqlRequestSelect.SetParametrValue("@p_Status", "");
+
+            _sqlRequestSelect.AddParametr("@p_Showcase", SqlDbType.NVarChar);
+            _sqlRequestSelect.SetParametrValue("@p_Showcase", "");
+
+            _sqlRequestSelect.AddParametr("@p_Procreator", SqlDbType.NVarChar);
+            _sqlRequestSelect.SetParametrValue("@p_Procreator", "");
+
+            _sqlRequestSelect.AddParametr("@p_Category", SqlDbType.NVarChar);
+            _sqlRequestSelect.SetParametrValue("@p_Category", "");
+
+            _sqlRequestSelect.AddParametr("@p_CategoryDetails", SqlDbType.NVarChar);
+            _sqlRequestSelect.SetParametrValue("@p_CategoryDetails", "");
+
+            _sqlRequestSelect.AddParametr("@p_Quantity_Min", SqlDbType.Int);
+            _sqlRequestSelect.SetParametrValue("@p_Quantity_Min", 0);
+
+            _sqlRequestSelect.AddParametr("@p_Quantity_Max", SqlDbType.Int);
+            _sqlRequestSelect.SetParametrValue("@p_Quantity_Max", SqlInt32.MaxValue);
+
+            _sqlRequestSelect.AddParametr("@p_TagPriceVATRUS_Min", SqlDbType.Decimal);
+            _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Min", SqlDecimal.MaxValue);
+
+            _sqlRequestSelect.AddParametr("@p_TagPriceVATRUS_Max", SqlDbType.Decimal);
+            _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Max", SqlDecimal.MaxValue);
+
+            _sqlRequestSelect.AddParametr("@p_PageNumber", SqlDbType.Int);
+            _sqlRequestSelect.SetParametrValue("@p_PageNumber", 0);
+
+            _sqlRequestSelect.AddParametr("@p_PagerowCount", SqlDbType.Int);
+            _sqlRequestSelect.SetParametrValue("@p_PagerowCount", 0);
+
+            _sqlRequestSelect.AddParametr("@p_SortColumn", SqlDbType.NVarChar, 255);
+            _sqlRequestSelect.SetParametrValue("@p_SortColumn", 0);
+
+            _sqlRequestSelect.AddParametr("@p_Sort", SqlDbType.Bit);
+            _sqlRequestSelect.SetParametrValue("@p_Sort", 0);
+            //----------------------------------------------------------------------------
+
+            _sqlRequestSelectSummary.AddParametr("@p_Search", SqlDbType.NVarChar);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Search", "");
+
+            _sqlRequestSelectSummary.AddParametr("@p_ID", SqlDbType.Int);
+            _sqlRequestSelectSummary.SetParametrValue("@p_ID", 0);
+
+            _sqlRequestSelectSummary.AddParametr("@p_CreatedUserID", SqlDbType.NVarChar);
+            _sqlRequestSelectSummary.SetParametrValue("@p_CreatedUserID", "");
+
+            _sqlRequestSelectSummary.AddParametr("@p_LastModifiedUserID", SqlDbType.NVarChar);
+            _sqlRequestSelectSummary.SetParametrValue("@p_LastModifiedUserID", "");
+
+            _sqlRequestSelectSummary.AddParametr("@p_Status", SqlDbType.NVarChar);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Status", "");
+
+            _sqlRequestSelectSummary.AddParametr("@p_Showcase", SqlDbType.NVarChar);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Showcase", "");
+
+            _sqlRequestSelectSummary.AddParametr("@p_Procreator", SqlDbType.NVarChar);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Procreator", "");
+
+            _sqlRequestSelectSummary.AddParametr("@p_Category", SqlDbType.NVarChar);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Category", "");
+
+            _sqlRequestSelectSummary.AddParametr("@p_CategoryDetails", SqlDbType.NVarChar);
+            _sqlRequestSelectSummary.SetParametrValue("@p_CategoryDetails", "");
+
+            _sqlRequestSelectSummary.AddParametr("@p_Quantity_Min", SqlDbType.Int);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Quantity_Min", 0);
+
+            _sqlRequestSelectSummary.AddParametr("@p_Quantity_Max", SqlDbType.Int);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Quantity_Max", 0);
+
+            _sqlRequestSelectSummary.AddParametr("@p_TagPriceVATRUS_Min", SqlDbType.Money);
+            _sqlRequestSelectSummary.SetParametrValue("@p_TagPriceVATRUS_Min", System.Data.SqlTypes.SqlMoney.MaxValue);
+
+            _sqlRequestSelectSummary.AddParametr("@p_TagPriceVATRUS_Max", SqlDbType.Money);
+            _sqlRequestSelectSummary.SetParametrValue("@p_TagPriceVATRUS_Max", System.Data.SqlTypes.SqlMoney.MaxValue);
 
         }
         public DataTable FillGrid(LocalFilter localFilter)
         {
             _sqlRequestSelect.SqlAnswer.datatable.Clear();
             _data.Clear();
-            _sqlRequestSelect.SetParametrValue("@p_RowCountPage", localFilter.RowCountPage);
-            _sqlRequestSelect.SetParametrValue("@p_PageCountRow", localFilter.PageCountRow);
+            _sqlRequestSelect.SetParametrValue("@p_RowCountPage", localFilter.PageNumber);
+            _sqlRequestSelect.SetParametrValue("@p_PageCountRow", localFilter.PagerowCount);
 
             _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
             _data = _sqlRequestSelect.SqlAnswer.datatable;

@@ -107,7 +107,7 @@ namespace Sklad_v1_001.FormUsers.Product
 
         private void page_Loaded(object sender, RoutedEventArgs e)
         {
-            localFilter.RowCountPage = (Int32)(page.ActualHeight) / 210;
+            localFilter.PageNumber = (Int32)(page.ActualHeight) / 210;
             Refresh();
         }
 
