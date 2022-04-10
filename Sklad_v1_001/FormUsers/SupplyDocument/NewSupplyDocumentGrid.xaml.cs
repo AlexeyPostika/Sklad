@@ -418,9 +418,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             SupplyDocumentDelivery.LocaleRow localeRowDelivery = new SupplyDocumentDelivery.LocaleRow();
             supplyDocumentDeliveryItem = new SupplyDocumentDeliveryItem(attributes);
             addDeliveryWindow = new FlexMessageBox();
-            supplyDocumentDeliveryItem.DeliveryRow= currentrow != null ? currentrow : new SupplyDocumentDelivery.LocaleRow();
 
-            supplyDocumentDeliveryItem.StatusDocument = Document.Status==0;
+            supplyDocumentDeliveryItem.StatusDocument = Document.Status == 0;        
+            supplyDocumentDeliveryItem.DeliveryRow= currentrow != null ? currentrow : new SupplyDocumentDelivery.LocaleRow();
+           
             addDeliveryWindow.Content = supplyDocumentDeliveryItem;
             addDeliveryWindow.Show(Properties.Resources.Deliveries);
             //тут проблема посмотреть, не правильно добавляется ID

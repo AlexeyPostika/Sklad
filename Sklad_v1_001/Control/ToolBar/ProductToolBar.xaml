@@ -7,6 +7,7 @@
              xmlns:res="clr-namespace:Sklad_v1_001.Properties"
              xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton"
              xmlns:SimpleControl ="clr-namespace:Sklad_v1_001.Control.SimpleControl"
+             xmlns:FlexEditBox="clr-namespace:Sklad_v1_001.Control.FlexEditBox"
              mc:Ignorable="d"
              x:Name="control">
     <Grid  Style="{DynamicResource Grid}">
@@ -36,11 +37,20 @@
                                 Text="{x:Static res:Resources.FILTER}"
                                 ButtonClick="FilterButton_ButtonClick"/>
 
-        <SimpleControl:EditBoxWithLabelScan x:Name="Scan" 
+        <FlexEditBox:EditBoxDeleteWithLabel x:Name="Scan" 
+                                            Margin="0,0,0,5"
+                                            Grid.Column="7"
+                                            LabelWidth="55"
+                                            LabelText="{x:Static res:Resources.Search}"
+                                            Text="{Binding ElementName=control, Path=Search, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                            ButtonClearClick="Scan_ButtonClearClick"
+                                            ButtonTextChangedClick="Scan_ButtonTextChangedClick"/>
+
+        <!--<SimpleControl:EditBoxWithLabelScan x:Name="Scan" 
                                             Grid.Column="7"
                                             LabelWidth="95"
                                             LabelText="{x:Static res:Resources.Scan}"
-                                            ButtonClick="Scan_ButtonClick"/>
+                                            ButtonClick="Scan_ButtonClick"/>-->
 
         <FlexButton:LevelButton x:Name="BasketButton"
                                 Margin="0,5,0,0"

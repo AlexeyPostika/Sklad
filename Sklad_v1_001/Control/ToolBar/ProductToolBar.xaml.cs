@@ -35,6 +35,12 @@ namespace Sklad_v1_001.Control.ToolBar
                      "EditImage",
                      typeof(ImageSource),
                     typeof(ProductToolBar));
+
+        public static readonly DependencyProperty SearchProperty = DependencyProperty.Register(
+         "Search",
+         typeof(String),
+         typeof(ProductToolBar), new UIPropertyMetadata(""));
+
         public Boolean IsEnableAdd
         {
             get { return (Boolean)GetValue(IsEnableAddProperty); }
@@ -53,10 +59,19 @@ namespace Sklad_v1_001.Control.ToolBar
             set { SetValue(EditImageProperty, value); }
         }
 
+        public String Search
+        {
+            get { return (String)GetValue(SearchProperty); }
+            set { SetValue(SearchProperty, value); }
+        }
+
+        public delegate void ButtonScanHandler(String text);
+        public event ButtonScanHandler ButtonScan;
+        
         public event Action ButtonEdit;
-        public event Action ButtonFilter;
-        public event Action ButtonScan;
+        public event Action ButtonFilter;  
         public event Action ButtonBasket;
+        public event Action ButtonClean;
 
         public ProductToolBar()
         {
@@ -81,9 +96,14 @@ namespace Sklad_v1_001.Control.ToolBar
             ButtonEdit?.Invoke();
         }
 
-        private void Scan_ButtonClick()
+        private void Scan_ButtonClearClick()
         {
-            ButtonScan?.Invoke();
+            ButtonClean?.Invoke();
+        }
+
+        private void Scan_ButtonTextChangedClick()
+        {
+            ButtonScan?.Invoke(Search);
         }
     }
 }

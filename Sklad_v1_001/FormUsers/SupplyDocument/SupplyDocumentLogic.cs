@@ -2100,7 +2100,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         public Int32 SetRow(LocalRow row)
         {
             //SupplyDocument
-            _sqlRequestSet.SetParametrValue("@p_AddUserID", row.UserID);
+            _sqlRequestSet.SetParametrValue("@p_AddUserID", row.LastModificatedUserID);
             _sqlRequestSet.SetParametrValue("@p_DocumentID", row.ID);
             _sqlRequestSet.SetParametrValue("@p_DocumentNumber", row.SupplyDocumentNumber);
 
