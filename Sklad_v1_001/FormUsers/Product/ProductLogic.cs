@@ -1023,6 +1023,7 @@ namespace Sklad_v1_001.FormUsers.Product
         ConvertData convertData;
 
         string get_store_procedure = "xp_GetProductTable";
+        string get_summary_procedure = "xp_GetProductSummary";
 
         SQLCommanSelect _sqlRequestSelect = null;
         SQLCommanSelect _sqlRequestSelectSummary = null;
@@ -1140,11 +1141,56 @@ namespace Sklad_v1_001.FormUsers.Product
         {
             _sqlRequestSelect.SqlAnswer.datatable.Clear();
             _data.Clear();
-            _sqlRequestSelect.SetParametrValue("@p_RowCountPage", localFilter.PageNumber);
-            _sqlRequestSelect.SetParametrValue("@p_PageCountRow", localFilter.PagerowCount);
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeGrid);
+            _sqlRequestSelect.SetParametrValue("@p_Search", localFilter.Search);
+            _sqlRequestSelect.SetParametrValue("@p_ID", localFilter.ID);
+
+            _sqlRequestSelect.SetParametrValue("@p_CreatedUserID", localFilter.CreatedUserID);
+            _sqlRequestSelect.SetParametrValue("@p_LastModifiedUserID", localFilter.LastModifiedUserID);
+            _sqlRequestSelect.SetParametrValue("@p_Status", localFilter.Status);
+            _sqlRequestSelect.SetParametrValue("@p_Showcase", localFilter.Showcase);
+            _sqlRequestSelect.SetParametrValue("@p_Procreator", localFilter.Procreator);
+            _sqlRequestSelect.SetParametrValue("@p_Category", localFilter.Category);
+            _sqlRequestSelect.SetParametrValue("@p_CategoryDetails", localFilter.CategoryDetails);
+
+            _sqlRequestSelect.SetParametrValue("@p_Quantity_Min", localFilter.QuantityMin);
+            _sqlRequestSelect.SetParametrValue("@p_Quantity_Max", localFilter.QuantityMax);
+            _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Min", localFilter.TagPriceVATRUS_Min);
+            _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Max", localFilter.TagPriceVATRUS_Max);      
+            
+            _sqlRequestSelect.SetParametrValue("@p_PageNumber", localFilter.PageNumber);
+            _sqlRequestSelect.SetParametrValue("@p_PagerowCount", localFilter.PagerowCount);
+            _sqlRequestSelect.SetParametrValue("@p_SortColumn", localFilter.SortColumn);
+            _sqlRequestSelect.SetParametrValue("@p_Sort", localFilter.Sort); //тест github
 
             _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
             _data = _sqlRequestSelect.SqlAnswer.datatable;
+            return _data;
+        }
+
+        public DataTable FillSummary(LocalFilter localFilter)
+        {
+            _sqlRequestSelectSummary.SqlAnswer.datatable.Clear();
+            _data.Clear();
+
+            _sqlRequestSelect.SetParametrValue("@p_Search", localFilter.Search);
+            _sqlRequestSelect.SetParametrValue("@p_ID", localFilter.ID);
+
+            _sqlRequestSelect.SetParametrValue("@p_CreatedUserID", localFilter.CreatedUserID);
+            _sqlRequestSelect.SetParametrValue("@p_LastModifiedUserID", localFilter.LastModifiedUserID);
+            _sqlRequestSelect.SetParametrValue("@p_Status", localFilter.Status);
+            _sqlRequestSelect.SetParametrValue("@p_Showcase", localFilter.Showcase);
+            _sqlRequestSelect.SetParametrValue("@p_Procreator", localFilter.Procreator);
+            _sqlRequestSelect.SetParametrValue("@p_Category", localFilter.Category);
+            _sqlRequestSelect.SetParametrValue("@p_CategoryDetails", localFilter.CategoryDetails);
+
+            _sqlRequestSelect.SetParametrValue("@p_Quantity_Min", localFilter.QuantityMin);
+            _sqlRequestSelect.SetParametrValue("@p_Quantity_Max", localFilter.QuantityMax);
+            _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Min", localFilter.TagPriceVATRUS_Min);
+            _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Max", localFilter.TagPriceVATRUS_Max);
+
+            _sqlRequestSelectSummary.ComplexRequest(get_summary_procedure, CommandType.StoredProcedure, null);
+            _data = _sqlRequestSelectSummary.SqlAnswer.datatable;
             return _data;
         }
 
