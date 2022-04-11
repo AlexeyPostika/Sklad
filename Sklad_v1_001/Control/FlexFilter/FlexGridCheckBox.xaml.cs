@@ -59,6 +59,64 @@ namespace Sklad_v1_001.Control.FlexFilter
                        typeof(Boolean),
                        typeof(FlexGridCheckBox), new UIPropertyMetadata(false));
 
+        public static readonly DependencyProperty IsRequiredroperty = DependencyProperty.Register(
+                      "IsRequired",
+                       typeof(Visibility),
+                       typeof(FlexGridCheckBox), new UIPropertyMetadata(Visibility.Collapsed));
+
+        public static readonly DependencyProperty ImageSourceProperty = DependencyProperty.Register(
+                       "ImageSource",
+                       typeof(ImageSource),
+                       typeof(FlexGridCheckBox));
+        
+        public static readonly DependencyProperty IsHaveImageProperty = DependencyProperty.Register(
+                      "IsHaveImage",
+                      typeof(Boolean),
+                      typeof(FlexGridCheckBox), new UIPropertyMetadata(false));
+
+        public static readonly DependencyProperty FilterStatusProperty = DependencyProperty.Register(
+                      "FilterStatus",
+                      typeof(Boolean),
+                      typeof(FlexGridCheckBox), new UIPropertyMetadata(false));
+
+        public static readonly DependencyProperty CheckAllProperty = DependencyProperty.Register(
+                       "CheckAll",
+                       typeof(Boolean),
+                       typeof(FlexGridCheckBox), new UIPropertyMetadata(false));
+
+        public static readonly DependencyProperty LabelTextProperty = DependencyProperty.Register(
+                       "LabelText",
+                       typeof(String),
+                       typeof(FlexGridCheckBox), new UIPropertyMetadata(""));
+
+        public static readonly DependencyProperty TableWidthProperty = DependencyProperty.Register(
+                       "TableWidth",
+                       typeof(Int32),
+                       typeof(FlexGridCheckBox), new UIPropertyMetadata(0));
+
+        public static readonly DependencyProperty DataTableDataProperty = DependencyProperty.Register(
+                       "DataTableData",
+                       typeof(DataTable),
+                       typeof(FlexGridCheckBox), new UIPropertyMetadata(new DataTable()));
+
+        public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(
+                       "Value",
+                       typeof(String),
+                       typeof(FlexGridCheckBox), new UIPropertyMetadata(String.Empty));
+
+        public Visibility IsRequired
+        {
+            get
+            {
+                return (Visibility)GetValue(IsRequiredroperty);
+            }
+            set
+            {
+                SetValue(IsRequiredroperty, value);
+                OnPropertyChanged("IsRequired");
+            }
+        }
+
         // Обычное свойство .NET  - обертка над свойством зависимостей
         public Boolean IsMultiSelect
         {
@@ -71,12 +129,7 @@ namespace Sklad_v1_001.Control.FlexFilter
                 SetValue(IsMultiSelectProperty, value);
                 OnPropertyChanged("IsMultiSelect");
             }
-        }
-
-        public static readonly DependencyProperty IsHaveImageProperty = DependencyProperty.Register(
-                       "IsHaveImage",
-                       typeof(Boolean),
-                       typeof(FlexGridCheckBox), new UIPropertyMetadata(false));
+        }      
 
         // Обычное свойство .NET  - обертка над свойством зависимостей
         public Boolean IsHaveImage
@@ -90,12 +143,7 @@ namespace Sklad_v1_001.Control.FlexFilter
                 SetValue(IsHaveImageProperty, value);
                 OnPropertyChanged("IsHaveImage");
             }
-        }
-
-        public static readonly DependencyProperty ImageSourceProperty = DependencyProperty.Register(
-                        "ImageSource",
-                        typeof(ImageSource),
-                        typeof(FlexGridCheckBox));
+        }      
 
         // Обычное свойство .NET  - обертка над свойством зависимостей
         public ImageSource ImageSource
@@ -109,12 +157,7 @@ namespace Sklad_v1_001.Control.FlexFilter
                 SetValue(ImageSourceProperty, value);
                 OnPropertyChanged("ImageSource");
             }
-        }
-
-        public static readonly DependencyProperty FilterStatusProperty = DependencyProperty.Register(
-                        "FilterStatus",
-                        typeof(Boolean),
-                        typeof(FlexGridCheckBox), new UIPropertyMetadata(false));
+        }    
 
         // Обычное свойство .NET  - обертка над свойством зависимостей
         public Boolean FilterStatus
@@ -129,12 +172,7 @@ namespace Sklad_v1_001.Control.FlexFilter
                 OnPropertyChanged("FilterStatus");
             }
         }
-
-        public static readonly DependencyProperty CheckAllProperty = DependencyProperty.Register(
-                        "CheckAll",
-                        typeof(Boolean),
-                        typeof(FlexGridCheckBox), new UIPropertyMetadata(false));
-
+       
         // Обычное свойство .NET  - обертка над свойством зависимостей
         public Boolean CheckAll
         {
@@ -148,12 +186,7 @@ namespace Sklad_v1_001.Control.FlexFilter
                 OnPropertyChanged("CheckAll");
             }
         }
-
-        public static readonly DependencyProperty LabelTextProperty = DependencyProperty.Register(
-                        "LabelText",
-                        typeof(String),
-                        typeof(FlexGridCheckBox), new UIPropertyMetadata(""));
-
+     
         // Обычное свойство .NET  - обертка над свойством зависимостей
         public String LabelText
         {
@@ -166,12 +199,7 @@ namespace Sklad_v1_001.Control.FlexFilter
                 SetValue(LabelTextProperty, value);
                 OnPropertyChanged("LabelText");
             }
-        }
-
-        public static readonly DependencyProperty TableWidthProperty = DependencyProperty.Register(
-                        "TableWidth",
-                        typeof(Int32),
-                        typeof(FlexGridCheckBox), new UIPropertyMetadata(0));
+        }      
 
         // Обычное свойство .NET  - обертка над свойством зависимостей
         public Int32 TableWidth
@@ -185,15 +213,7 @@ namespace Sklad_v1_001.Control.FlexFilter
                 SetValue(TableWidthProperty, value);
                 OnPropertyChanged("TableWidth");
             }
-        }
-
-
-        public static readonly DependencyProperty DataTableDataProperty = DependencyProperty.Register(
-                        "DataTableData",
-                        typeof(DataTable),
-                        typeof(FlexGridCheckBox), new UIPropertyMetadata(new DataTable()));
-
-
+        }      
 
         // Обычное свойство .NET  - обертка над свойством зависимостей
         public DataTable DataTableData
@@ -253,6 +273,32 @@ namespace Sklad_v1_001.Control.FlexFilter
             set
             {
                 throw new NotImplementedException();
+            }
+        }
+
+        public double LabelWidth
+        {
+            get
+            {
+                return wrapPanel.Width;
+            }
+
+            set
+            {
+                wrapPanel.Width = value;
+            }
+        }
+
+        public String Value
+        {
+            get
+            {
+                return (String)GetValue(ValueProperty);
+            }
+            set
+            {
+                SetValue(ValueProperty, value);
+                OnPropertyChanged("Value");
             }
         }
 
@@ -361,6 +407,7 @@ namespace Sklad_v1_001.Control.FlexFilter
                 {
                     ButtonFilter.Image.Source = ImageHelper.GenerateImage("IconFilter.png");
                     data = "All";
+                    Value = data;
                     ButtonApplyClick?.Invoke(data);
                     return;
                 }
@@ -369,6 +416,7 @@ namespace Sklad_v1_001.Control.FlexFilter
                 {
                     ButtonFilter.Image.Source = ImageHelper.GenerateImage("IconFilter.png");
                     data = "";
+                    Value = data;
                     ButtonApplyClick?.Invoke(data);
                     return;
                 }
@@ -390,6 +438,7 @@ namespace Sklad_v1_001.Control.FlexFilter
                 {
                     ButtonFilter.Image.Source = ImageHelper.GenerateImage("IconFilter.png");
                     data = "All";
+                    Value = data;
                     ButtonApplyClick?.Invoke(data);
                     return;
                 }
@@ -398,6 +447,7 @@ namespace Sklad_v1_001.Control.FlexFilter
                 {
                     ButtonFilter.Image.Source = ImageHelper.GenerateImage("IconFilter.png");
                     data = "";
+                    Value = data;
                     ButtonApplyClick?.Invoke(data);
                     return;
                 }
@@ -416,6 +466,7 @@ namespace Sklad_v1_001.Control.FlexFilter
             {
                 data = data.TrimEnd('|');
             }
+            Value = data;
             ButtonApplyClick?.Invoke(data);
         }
     }

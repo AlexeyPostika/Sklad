@@ -726,4 +726,16 @@
   <data name="Scan" xml:space="preserve">
     <value>Сканировать</value>
   </data>
+  <data name="StatusProducts" xml:space="preserve">
+    <value>Статус продукта</value>
+  </data>
+  <data name="LastModifiadUser" xml:space="preserve">
+    <value>Сотрудник</value>
+  </data>
+  <data name="Procreator" xml:space="preserve">
+    <value>Производитель</value>
+  </data>
+  <data name="Showcase" xml:space="preserve">
+    <value>Витрина</value>
+  </data>
 </root>

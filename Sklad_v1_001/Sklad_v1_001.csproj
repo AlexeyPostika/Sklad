@@ -159,6 +159,9 @@
     <Compile Include="Control\FlexEditBox\EditBoxUserWithLabel.xaml.cs">
       <DependentUpon>EditBoxUserWithLabel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexFilter\FlexFilterContenerProduct.xaml.cs">
+      <DependentUpon>FlexFilterContenerProduct.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexFilter\FlexGridCheckBox.xaml.cs">
       <DependentUpon>FlexGridCheckBox.xaml</DependentUpon>
     </Compile>
@@ -448,6 +451,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\FlexEditBox\EditBoxUserWithLabel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\FlexFilter\FlexFilterContenerProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

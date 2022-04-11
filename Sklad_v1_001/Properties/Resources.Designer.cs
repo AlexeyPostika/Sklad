@@ -754,6 +754,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Сотрудник.
+        /// </summary>
+        public static string LastModifiadUser {
+            get {
+                return ResourceManager.GetString("LastModifiadUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Имя.
         /// </summary>
         public static string LastName {
@@ -1267,6 +1276,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Производитель.
+        /// </summary>
+        public static string Procreator {
+            get {
+                return ResourceManager.GetString("Procreator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Детали продукта.
         /// </summary>
         public static string ProductItemScreenTitle {
@@ -1510,6 +1528,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Витрина.
+        /// </summary>
+        public static string Showcase {
+            get {
+                return ResourceManager.GetString("Showcase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Штрих-код.
         /// </summary>
         public static string ShtrixCode {
@@ -1533,6 +1560,15 @@ namespace Sklad_v1_001.Properties {
         public static string Status {
             get {
                 return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Статус продукта.
+        /// </summary>
+        public static string StatusProducts {
+            get {
+                return ResourceManager.GetString("StatusProducts", resourceCulture);
             }
         }
         
