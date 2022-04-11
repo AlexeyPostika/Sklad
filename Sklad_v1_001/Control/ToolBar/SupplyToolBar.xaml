@@ -48,6 +48,7 @@
         <FlexEditBox:EditBoxDeleteWithLabel x:Name="Scan" 
                                             Grid.Column="7"
                                             LabelWidth="55"
+                                            Margin="0,0,0,5"
                                             LabelText="{x:Static res:Resources.Search}"
                                             Text="{Binding ElementName=control, Path=Search, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                             ButtonClearClick="Scan_ButtonClearClick"
