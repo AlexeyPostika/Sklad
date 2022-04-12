@@ -19,19 +19,23 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="5*" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <WrapPanel Name="wrapPanel" Width="100" Margin="5,0,0,0">
             <Label x:Name="label" Style="{DynamicResource LabelStyle}" Content="{Binding ElementName=control, Path=LabelText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <Label Style="{DynamicResource LabelStyle}" Name="required" Margin="-9,0,0,0" FontSize="18" Foreground="Red" Content="*" HorizontalAlignment="Left"
                    Visibility="{Binding ElementName=control, Path=IsRequired, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </WrapPanel>
-        <TextBlock Name="textBox" Style="{DynamicResource TextBlockStyle}"
-                   Grid.Column="1"                  
-                   Text="{Binding ElementName=control, Path=FilterValue, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <TextBox Name="textBox" Style="{DynamicResource TextBoxStyle}"
+                 Grid.Column="1"  
+                 Visibility="{Binding ElementName=control, Path=IsVisibility, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                 IsEnabled="{Binding ElementName=control, Path=IsEnabledTextBox, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                 Text="{Binding ElementName=control, Path=FilterValue, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         <FlexButton:SmallButtonFilter x:Name="ButtonFilter" 
                                       ImageSource="{Binding ElementName=control, Path=ImageSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                     
                                       Grid.Column="2" 
+                                      Width="32"
+                                      Height="32"
                                       ButtonClick="ButtonFilter_ButtonClick"/>
     </Grid>
 </UserControl>

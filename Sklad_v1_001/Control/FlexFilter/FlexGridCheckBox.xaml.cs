@@ -49,7 +49,7 @@ namespace Sklad_v1_001.Control.FlexFilter
     /// Логика взаимодействия для FlexGridCheckBox.xaml
     /// </summary>
     ///
-    public partial class FlexGridCheckBox : UserControl, INotifyPropertyChanged, IAbstractGridFilter
+    public partial class FlexGridCheckBox : UserControl, INotifyPropertyChanged
     {
         FlexGridCheckBoxWindow flexGridCheckBoxWindow;
         FlexGridCheckBoxWithImageWindow flexGridCheckBoxWithImageWindow;
@@ -103,6 +103,17 @@ namespace Sklad_v1_001.Control.FlexFilter
                        "Value",
                        typeof(String),
                        typeof(FlexGridCheckBox), new UIPropertyMetadata(String.Empty));
+        //
+
+        public static readonly DependencyProperty IsEnabledTextBoxProperty = DependencyProperty.Register(
+                      "IsEnabledTextBox",
+                      typeof(Boolean),
+                      typeof(FlexGridCheckBox), new UIPropertyMetadata(true));
+       
+        public static readonly DependencyProperty IsVisibilityProperty = DependencyProperty.Register(
+                     "IsVisibility",
+                     typeof(Visibility),
+                     typeof(FlexGridCheckBox), new UIPropertyMetadata(Visibility.Visible));
 
         public Visibility IsRequired
         {
@@ -237,31 +248,7 @@ namespace Sklad_v1_001.Control.FlexFilter
             {
                 throw new NotImplementedException();
             }
-        }
-
-        public string FilterValue
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public string FilterDescription
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        }      
 
         public Boolean IsChecked
         {
@@ -299,6 +286,32 @@ namespace Sklad_v1_001.Control.FlexFilter
             {
                 SetValue(ValueProperty, value);
                 OnPropertyChanged("Value");
+            }
+        }
+
+        public Boolean IsEnabledTextBox
+        {
+            get
+            {
+                return (Boolean)GetValue(IsEnabledTextBoxProperty);
+            }
+            set
+            {
+                SetValue(IsEnabledTextBoxProperty, value);
+                OnPropertyChanged("IsEnabledTextBox");
+            }
+        }
+
+        public Visibility IsVisibility
+        {
+            get
+            {
+                return (Visibility)GetValue(IsVisibilityProperty);
+            }
+            set
+            {
+                SetValue(IsVisibilityProperty, value);
+                OnPropertyChanged("IsVisibility");
             }
         }
 
@@ -421,7 +434,7 @@ namespace Sklad_v1_001.Control.FlexFilter
                     return;
                 }
 
-                ButtonFilter.Image.Source = ImageHelper.GenerateImage("IconClearFilter.png");
+                ButtonFilter.Image.Source = ImageHelper.GenerateImage("IconClearAllFilters.png");
                 foreach (DataRow row in DataTableData.Rows)
                 {
                     if (convertdata.FlexDataConvertToBoolean(row["IsChecked"].ToString()))
@@ -452,7 +465,7 @@ namespace Sklad_v1_001.Control.FlexFilter
                     return;
                 }
 
-                ButtonFilter.Image.Source = ImageHelper.GenerateImage("IconClearFilter.png");
+                ButtonFilter.Image.Source = ImageHelper.GenerateImage("IconClearAllFilters.png");
                 foreach (DataRow row in DataTableData.Rows)
                 {
                     if (convertdata.FlexDataConvertToBoolean(row["IsChecked"].ToString()))

@@ -1,4 +1,5 @@
 ﻿using Sklad_v1_001.Control.Contener;
+using Sklad_v1_001.Control.FlexFilter;
 using Sklad_v1_001.GlobalAttributes;
 using System;
 using System.Collections.Generic;
@@ -132,5 +133,16 @@ namespace Sklad_v1_001.FormUsers.Product
 
         }
         #endregion
+
+        private void toolBarProduct_ButtonFilter()
+        {
+            FlexFilterContenerProductWindows flexFilterContenerProductWindows = new FlexFilterContenerProductWindows();
+            var location = PointToScreen(new Point(0, 0));
+            flexFilterContenerProductWindows.WindowStartupLocation = WindowStartupLocation.Manual;
+            flexFilterContenerProductWindows.Left = toolBarProduct.FilterButton.PointToScreen(new Point(0, 0)).X + toolBarProduct.FilterButton.ActualWidth + 10;
+            flexFilterContenerProductWindows.Top = location.Y = 70;
+            flexFilterContenerProductWindows.AllowDrop = false;
+            flexFilterContenerProductWindows.Show();
+        }
     }
 }

@@ -24,7 +24,8 @@
             <RowDefinition Height="5"/>
             <!--<RowDefinition Height="20*"/>-->
         </Grid.RowDefinitions>
-        <ToolBar:ProductToolBar/>
+        <ToolBar:ProductToolBar x:Name="toolBarProduct"
+                                ButtonFilter="toolBarProduct_ButtonFilter"/>
         <Grid Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Visible">
             <ScrollViewer x:Name="ScrollAuto" VerticalScrollBarVisibility="Auto">
                 <StackPanel Name="Column1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="Auto" />

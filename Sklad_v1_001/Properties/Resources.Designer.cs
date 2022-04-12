@@ -655,6 +655,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на ФИЛЬТРЫ.
+        /// </summary>
+        public static string Filters {
+            get {
+                return ResourceManager.GetString("Filters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Временной фильтр.
         /// </summary>
         public static string FilterTime {
@@ -664,7 +673,7 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Фильтер.
+        ///   Ищет локализованную строку, похожую на Фильтр.
         /// </summary>
         public static string FilterTitle {
             get {
@@ -1402,6 +1411,24 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Max..
+        /// </summary>
+        public static string QuantityMax {
+            get {
+                return ResourceManager.GetString("QuantityMax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Min..
+        /// </summary>
+        public static string QuantityMin {
+            get {
+                return ResourceManager.GetString("QuantityMin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Вы действительно хотите удалить данную запись?.
         /// </summary>
         public static string QuestionDelete {
@@ -1650,6 +1677,15 @@ namespace Sklad_v1_001.Properties {
         public static string SupplyTitly {
             get {
                 return ResourceManager.GetString("SupplyTitly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Цена.
+        /// </summary>
+        public static string TagPrice {
+            get {
+                return ResourceManager.GetString("TagPrice", resourceCulture);
             }
         }
         

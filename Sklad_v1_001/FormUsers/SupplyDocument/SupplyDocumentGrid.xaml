@@ -103,11 +103,12 @@
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>
                                 <FlexFilter:FlexGridCheckBox x:Name="FilterStatusID"
-                                                         ButtonApplyClick="FilterStatusID_ButtonApplyClick"
-                                                         DataTableData="{Binding ElementName=page, Path=FilterIDStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                         ImageSource="{Binding ElementName=page, Path=ClearfilterStatusID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                         CheckAll="True"
-                                                         LabelText="{x:Static res:Resources.Status}"/>
+                                                             IsVisibility="Collapsed"
+                                                             ButtonApplyClick="FilterStatusID_ButtonApplyClick"
+                                                             DataTableData="{Binding ElementName=page, Path=FilterIDStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                             ImageSource="{Binding ElementName=page, Path=ClearfilterStatusID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                             CheckAll="True"
+                                                             LabelText="{x:Static res:Resources.Status}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.HeaderTemplate>
                         <DataGridTemplateColumn.CellTemplate>

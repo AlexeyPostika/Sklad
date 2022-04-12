@@ -162,6 +162,9 @@
     <Compile Include="Control\FlexFilter\FlexFilterContenerProduct.xaml.cs">
       <DependentUpon>FlexFilterContenerProduct.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexFilter\FlexFilterContenerProductWindows.xaml.cs">
+      <DependentUpon>FlexFilterContenerProductWindows.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexFilter\FlexGridCheckBox.xaml.cs">
       <DependentUpon>FlexGridCheckBox.xaml</DependentUpon>
     </Compile>
@@ -455,6 +458,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\FlexFilter\FlexFilterContenerProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\FlexFilter\FlexFilterContenerProductWindows.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -400,7 +400,7 @@
     <value>Сбросить фильтер</value>
   </data>
   <data name="FilterTitle" xml:space="preserve">
-    <value>Фильтер</value>
+    <value>Фильтр</value>
   </data>
   <data name="Role" xml:space="preserve">
     <value>Роль</value>
@@ -737,5 +737,17 @@
   </data>
   <data name="Showcase" xml:space="preserve">
     <value>Витрина</value>
+  </data>
+  <data name="QuantityMax" xml:space="preserve">
+    <value>Max.</value>
+  </data>
+  <data name="QuantityMin" xml:space="preserve">
+    <value>Min.</value>
+  </data>
+  <data name="TagPrice" xml:space="preserve">
+    <value>Цена</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>ФИЛЬТРЫ</value>
   </data>
 </root>
