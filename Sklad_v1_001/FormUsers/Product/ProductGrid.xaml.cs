@@ -33,11 +33,15 @@ namespace Sklad_v1_001.FormUsers.Product
 
         ObservableCollection<LocalRow> datalist;
 
+        FlexFilterContenerProductWindows flexFilterContenerProductWindows;
+
         public ProductGrid(Attributes _attributes)
         {
             InitializeComponent();
 
             this.attributes = _attributes;
+
+            flexFilterContenerProductWindows = new FlexFilterContenerProductWindows();
 
             productLogic = new ProductLogic();
 
@@ -136,7 +140,6 @@ namespace Sklad_v1_001.FormUsers.Product
 
         private void toolBarProduct_ButtonFilter()
         {
-            FlexFilterContenerProductWindows flexFilterContenerProductWindows = new FlexFilterContenerProductWindows();
             var location = PointToScreen(new Point(0, 0));
             flexFilterContenerProductWindows.WindowStartupLocation = WindowStartupLocation.Manual;
             flexFilterContenerProductWindows.Left = toolBarProduct.FilterButton.PointToScreen(new Point(0, 0)).X + toolBarProduct.FilterButton.ActualWidth + 10;

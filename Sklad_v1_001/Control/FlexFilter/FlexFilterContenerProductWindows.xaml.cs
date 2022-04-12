@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -75,6 +76,41 @@ namespace Sklad_v1_001.Control.FlexFilter
                     typeof(Decimal),
                     typeof(FlexFilterContenerProductWindows));
 
+        public static readonly DependencyProperty DataTableFilter1Property = DependencyProperty.Register(
+                  "DataTableFilter1",
+                   typeof(DataTable),
+                   typeof(FlexFilterContenerProductWindows), new UIPropertyMetadata(new DataTable()));
+
+        public static readonly DependencyProperty DataTableFilter2Property = DependencyProperty.Register(
+                  "DataTableFilter2",
+                   typeof(DataTable),
+                   typeof(FlexFilterContenerProductWindows), new UIPropertyMetadata(new DataTable()));
+
+        public static readonly DependencyProperty DataTableFilter3Property = DependencyProperty.Register(
+                  "DataTableFilter3",
+                   typeof(DataTable),
+                   typeof(FlexFilterContenerProductWindows), new UIPropertyMetadata(new DataTable()));
+
+        public static readonly DependencyProperty DataTableFilter4Property = DependencyProperty.Register(
+                  "DataTableFilter4",
+                   typeof(DataTable),
+                   typeof(FlexFilterContenerProductWindows), new UIPropertyMetadata(new DataTable()));
+
+        public static readonly DependencyProperty DataTableFilter5Property = DependencyProperty.Register(
+                  "DataTableFilter5",
+                   typeof(DataTable),
+                   typeof(FlexFilterContenerProductWindows), new UIPropertyMetadata(new DataTable()));
+
+        public static readonly DependencyProperty DataTableFilter6Property = DependencyProperty.Register(
+                  "DataTableFilter6",
+                   typeof(DataTable),
+                   typeof(FlexFilterContenerProductWindows), new UIPropertyMetadata(new DataTable()));
+        
+        public static readonly DependencyProperty DataTableFilter7Property = DependencyProperty.Register(
+                  "DataTableFilter7",
+                   typeof(DataTable),
+                   typeof(FlexFilterContenerProductWindows), new UIPropertyMetadata(new DataTable()));
+
         public String Value1
         {
             get { return (String)GetValue(Value1Property); }
@@ -134,6 +170,48 @@ namespace Sklad_v1_001.Control.FlexFilter
         {            
             get { return (Decimal)GetValue(TagPrice_MaxProperty); }
             set { SetValue(TagPrice_MaxProperty, value); }
+        }
+
+        public DataTable DataTableFilter1
+        {
+            get { return (DataTable)GetValue(DataTableFilter1Property); }
+            set { SetValue(DataTableFilter1Property, value); }
+        }
+
+        public DataTable DataTableFilter2
+        {
+            get { return (DataTable)GetValue(DataTableFilter2Property); }
+            set { SetValue(DataTableFilter2Property, value); }
+        }
+
+        public DataTable DataTableFilter3
+        {
+            get { return (DataTable)GetValue(DataTableFilter3Property); }
+            set { SetValue(DataTableFilter3Property, value); }
+        }
+
+        public DataTable DataTableFilter4
+        {
+            get { return (DataTable)GetValue(DataTableFilter4Property); }
+            set { SetValue(DataTableFilter4Property, value); }
+        }
+
+        public DataTable DataTableFilter5
+        {
+            get { return (DataTable)GetValue(DataTableFilter5Property); }
+            set { SetValue(DataTableFilter5Property, value); }
+        }
+
+        public DataTable DataTableFilter6
+        {
+            get { return (DataTable)GetValue(DataTableFilter6Property); }
+            set { SetValue(DataTableFilter6Property, value); }
+        }
+
+        public DataTable DataTableFilter7
+        {
+            get { return (DataTable)GetValue(DataTableFilter7Property); }
+            set { SetValue(DataTableFilter7Property, value); }
         }
 
         Boolean needResize;
