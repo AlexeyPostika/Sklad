@@ -303,6 +303,11 @@ namespace Sklad_v1_001.FormUsers.Product
             Procreator = "All";
             Category = "All";
             CategoryDetails = "All";
+
+            PageNumber = 0;
+            PagerowCount = 16;
+            Sort = true;
+            SortColumn = "ID";
         }
 
     }
@@ -970,7 +975,7 @@ namespace Sklad_v1_001.FormUsers.Product
         Int32 quantitySumm;
         decimal summTagPriceRUS;
        
-        public Int32 SummaryQuantityLine
+        public Int32 CountID
         {
             get
             {
@@ -980,7 +985,7 @@ namespace Sklad_v1_001.FormUsers.Product
             set
             {
                 countID = value;
-                OnPropertyChanged("SummaryQuantityLine");
+                OnPropertyChanged("CountID");
             }
         }
         public Int32 QuantitySumm
@@ -1018,15 +1023,102 @@ namespace Sklad_v1_001.FormUsers.Product
         }
     }
 
+    public class RowsFilters : INotifyPropertyChanged
+    {
+        private Double filtersQuantityMin;
+        private Double filtersQuantityMax;
+        private Double filtersTagPriceWithVATMin;
+        private Double filtersTagPriceWithVATMax;
+
+        public Double FiltersQuantityMin
+        {
+            get
+            {
+                return filtersQuantityMin;
+            }
+
+            set
+            {
+                filtersQuantityMin = value;
+                OnPropertyChanged("FiltersQuantityMin");
+            }
+        }
+        public Double FiltersQuantityMax
+        {
+            get
+            {
+                return filtersQuantityMax;
+            }
+
+            set
+            {
+                filtersQuantityMax = value;
+                OnPropertyChanged("FiltersQuantityMax");
+            }
+        }
+        public Double FiltersTagPriceWithVATMin
+        {
+            get
+            {
+                return filtersTagPriceWithVATMin;
+            }
+
+            set
+            {
+                filtersTagPriceWithVATMin = value;
+                OnPropertyChanged("FiltersTagPriceWithVATMin");
+            }
+        }
+        public Double FiltersTagPriceWithVATMax
+        {
+            get
+            {
+                return filtersTagPriceWithVATMax;
+            }
+
+            set
+            {
+                filtersTagPriceWithVATMax = value;
+                OnPropertyChanged("FiltersTagPriceWithVATMax");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+
     public class ProductLogic
     {
         ConvertData convertData;
 
+
+        public DataTable innerList1;
+        public DataTable innerList2;
+        public DataTable innerList3;
+        public DataTable innerList4;
+        public DataTable innerList5;
+        public DataTable innerList6;
+        public DataTable innerList7;
+
+        public class Range
+        {
+            public double min;
+            public double max;
+        }
+
+        Dictionary<String, DataTable> filters;
+        Dictionary<String, Range> filtersFromTo;
+
         string get_store_procedure = "xp_GetProductTable";
         string get_summary_procedure = "xp_GetProductSummary";
+        string get_filters_procedure = "xp_GetProductFilter";
 
         SQLCommanSelect _sqlRequestSelect = null;
         SQLCommanSelect _sqlRequestSelectSummary = null;
+        SQLCommanSelect _sqlRequestSelectFilters = null;
 
         //результат запроса
         DataTable _data = null;
@@ -1038,8 +1130,61 @@ namespace Sklad_v1_001.FormUsers.Product
             _data = new DataTable();
             _datarow = new DataTable();
 
+            filters = new Dictionary<string, DataTable>();
+            filtersFromTo = new Dictionary<string, Range>();
+
+            innerList1 = new DataTable();
+            innerList2 = new DataTable();
+            innerList3 = new DataTable();
+            innerList4 = new DataTable();
+            innerList5 = new DataTable();
+            innerList6 = new DataTable();
+            innerList7 = new DataTable();
+
+            innerList1.Columns.Add("ID");
+            innerList1.Columns.Add("IsChecked");
+            innerList1.Columns.Add("Description");
+
+            innerList2.Columns.Add("ID");
+            innerList2.Columns.Add("IsChecked");
+            innerList2.Columns.Add("Description");
+
+            innerList3.Columns.Add("ID");
+            innerList3.Columns.Add("IsChecked");
+            innerList3.Columns.Add("Description");
+
+            innerList4.Columns.Add("ID");
+            innerList4.Columns.Add("IsChecked");
+            innerList4.Columns.Add("Description");
+
+            innerList5.Columns.Add("ID");
+            innerList5.Columns.Add("IsChecked");
+            innerList5.Columns.Add("Description");
+
+            innerList6.Columns.Add("ID");
+            innerList6.Columns.Add("IsChecked");
+            innerList6.Columns.Add("Description");
+
+            innerList7.Columns.Add("ID");
+            innerList7.Columns.Add("IsChecked");
+            innerList7.Columns.Add("Description");
+
+            filters.Add("CreatedByUserID", innerList1);
+            filters.Add("LastModifiedByUserID", innerList2);
+            filters.Add("Status", innerList3);
+            filters.Add("Showcase", innerList4);
+            filters.Add("Procreator", innerList5);
+            filters.Add("Category", innerList6);
+            filters.Add("CategoryDetails", innerList7);
+
+            Range QuantityRange = new Range();
+            Range AmountRange = new Range();
+            filtersFromTo.Add("Quantity", QuantityRange);
+            filtersFromTo.Add("TagPriceWithVAT", AmountRange);
+
             _sqlRequestSelect = new SQLCommanSelect();
             _sqlRequestSelectSummary = new SQLCommanSelect();
+            _sqlRequestSelectFilters = new SQLCommanSelect();
 
             //----------------------------------------------------------------------------
             _sqlRequestSelect.AddParametr("@p_TypeScreen", SqlDbType.NVarChar);
@@ -1137,6 +1282,16 @@ namespace Sklad_v1_001.FormUsers.Product
             _sqlRequestSelectSummary.SetParametrValue("@p_TagPriceVATRUS_Max", System.Data.SqlTypes.SqlMoney.MaxValue);
 
         }
+        public DataTable FillGridAllFilter()
+        {
+            _sqlRequestSelectFilters.SqlAnswer.datatable.Clear();
+            _data.Clear();
+
+            _sqlRequestSelectFilters.ComplexRequest(get_filters_procedure, CommandType.StoredProcedure, null);
+            _data = _sqlRequestSelectFilters.SqlAnswer.datatable;
+            return _data;
+        }
+
         public DataTable FillGrid(LocalFilter localFilter)
         {
             _sqlRequestSelect.SqlAnswer.datatable.Clear();
@@ -1173,21 +1328,21 @@ namespace Sklad_v1_001.FormUsers.Product
             _sqlRequestSelectSummary.SqlAnswer.datatable.Clear();
             _data.Clear();
 
-            _sqlRequestSelect.SetParametrValue("@p_Search", localFilter.Search);
-            _sqlRequestSelect.SetParametrValue("@p_ID", localFilter.ID);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Search", localFilter.Search);
+            _sqlRequestSelectSummary.SetParametrValue("@p_ID", localFilter.ID);
 
-            _sqlRequestSelect.SetParametrValue("@p_CreatedUserID", localFilter.CreatedUserID);
-            _sqlRequestSelect.SetParametrValue("@p_LastModifiedUserID", localFilter.LastModifiedUserID);
-            _sqlRequestSelect.SetParametrValue("@p_Status", localFilter.Status);
-            _sqlRequestSelect.SetParametrValue("@p_Showcase", localFilter.Showcase);
-            _sqlRequestSelect.SetParametrValue("@p_Procreator", localFilter.Procreator);
-            _sqlRequestSelect.SetParametrValue("@p_Category", localFilter.Category);
-            _sqlRequestSelect.SetParametrValue("@p_CategoryDetails", localFilter.CategoryDetails);
+            _sqlRequestSelectSummary.SetParametrValue("@p_CreatedUserID", localFilter.CreatedUserID);
+            _sqlRequestSelectSummary.SetParametrValue("@p_LastModifiedUserID", localFilter.LastModifiedUserID);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Status", localFilter.Status);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Showcase", localFilter.Showcase);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Procreator", localFilter.Procreator);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Category", localFilter.Category);
+            _sqlRequestSelectSummary.SetParametrValue("@p_CategoryDetails", localFilter.CategoryDetails);
 
-            _sqlRequestSelect.SetParametrValue("@p_Quantity_Min", localFilter.QuantityMin);
-            _sqlRequestSelect.SetParametrValue("@p_Quantity_Max", localFilter.QuantityMax);
-            _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Min", localFilter.TagPriceVATRUS_Min);
-            _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Max", localFilter.TagPriceVATRUS_Max);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Quantity_Min", localFilter.QuantityMin);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Quantity_Max", localFilter.QuantityMax);
+            _sqlRequestSelectSummary.SetParametrValue("@p_TagPriceVATRUS_Min", localFilter.TagPriceVATRUS_Min);
+            _sqlRequestSelectSummary.SetParametrValue("@p_TagPriceVATRUS_Max", localFilter.TagPriceVATRUS_Max);
 
             _sqlRequestSelectSummary.ComplexRequest(get_summary_procedure, CommandType.StoredProcedure, null);
             _data = _sqlRequestSelectSummary.SqlAnswer.datatable;
@@ -1238,6 +1393,82 @@ namespace Sklad_v1_001.FormUsers.Product
             _localeRow.PhotoImageByte = null;
 
             return _localeRow;
+        }
+
+        public RowsFilters ConvertFilter(DataRow _dataRow, RowsFilters _localeRow)
+        {
+            ConvertData convertData = new ConvertData(_dataRow, _localeRow);
+            _localeRow.FiltersQuantityMin = convertData.ConvertDataDouble("QuantityMin");
+            _localeRow.FiltersQuantityMax = convertData.ConvertDataDouble("QuantityMax");
+            _localeRow.FiltersTagPriceWithVATMin = convertData.ConvertDataDouble("TagPriceWithVATMin");
+            _localeRow.FiltersTagPriceWithVATMax = convertData.ConvertDataDouble("TagPriceWithVATMax");
+            return _localeRow;
+        }
+
+        //данные для суммы
+        public void ConvertSummary(DataRow _dataRow, RowSummary _localeRow)
+        {
+            ConvertData convertData = new ConvertData(_dataRow, _localeRow);
+            _localeRow.CountID = convertData.ConvertDataInt32("CountID");
+            _localeRow.QuantitySumm = convertData.ConvertDataInt32("QuantitySumm");
+            _localeRow.SummTagPriceRUS = convertData.ConvertDataDecimal("SummTagPriceRUS");           
+        }
+
+        public DataTable GetFilter(String filterName)
+        {
+            return filters.FirstOrDefault(x => x.Key == filterName).Value;
+        }
+
+        public Range GetFromToFilter(String filterName)
+        {
+            return filtersFromTo.FirstOrDefault(x => x.Key == filterName).Value;
+        }
+
+        public void InitFilters()
+        {
+            DataTable table = FillGridAllFilter();
+            FillFilter("CreatedByUserID", table);
+            FillFilter("LastModifiedByUserID", table);
+            FillFilter("Status", table);
+            FillFilter("Showcase", table);
+            FillFilter("Procreator", table);
+            FillFilter("Category", table);
+            FillFilter("CategoryDetails", table);
+
+            RowsFilters rowsFilters;
+            foreach (DataRow row in table.Rows)
+            {
+                rowsFilters = new RowsFilters();
+                ConvertFilter(row, rowsFilters);
+                filtersFromTo["Quantity"].min = rowsFilters.FiltersQuantityMin;
+                filtersFromTo["Quantity"].max = rowsFilters.FiltersQuantityMax;
+                filtersFromTo["TagPriceWithVAT"].min = rowsFilters.FiltersTagPriceWithVATMin;
+                filtersFromTo["TagPriceWithVAT"].max = rowsFilters.FiltersTagPriceWithVATMax;
+            }
+        }
+
+        public void FillFilter(String filterName, DataTable table)
+        {
+            DataTable current1 = filters.FirstOrDefault(x => x.Key == filterName).Value;
+            current1.Clear();
+            foreach (DataRow row in table.Rows)
+            {
+                ConvertData convert = new ConvertData(row, new LocalRow());
+                if (!String.IsNullOrEmpty(row[filterName].ToString()))
+                {
+                    String data = convert.ConvertDataString(filterName);
+                    String[] dataarray = data.Split('|');
+                    foreach (string curstr in dataarray.ToList())
+                    {
+                        String[] pair = curstr.Split(':');
+                        DataRow newrow = current1.NewRow();
+                        newrow["ID"] = pair[0];
+                        newrow["IsChecked"] = false;
+                        newrow["Description"] = pair[1];
+                        current1.Rows.Add(newrow);
+                    }
+                }
+            }
         }
     }
 }
