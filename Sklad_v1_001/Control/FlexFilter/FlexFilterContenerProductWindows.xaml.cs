@@ -236,6 +236,10 @@ namespace Sklad_v1_001.Control.FlexFilter
         public delegate void ButtonFilter5ClickHandler(String text);
         public delegate void ButtonFilter6ClickHandler(String text);
         public delegate void ButtonFilter7ClickHandler(String text);
+        public delegate void ButtonQuantityMinClickHandler(Double text);
+        public delegate void ButtonQuantityMaxClickHandler(Double text);
+        public delegate void ButtonTagPriceMinClickHandler(Double text);
+        public delegate void ButtonTagPriceMaxClickHandler(Double text);
         public event ButtonFilter1ClickHandler ButtonFilter1Click;
         public event ButtonFilter2ClickHandler ButtonFilter2Click;
         public event ButtonFilter3ClickHandler ButtonFilter3Click;
@@ -243,6 +247,10 @@ namespace Sklad_v1_001.Control.FlexFilter
         public event ButtonFilter5ClickHandler ButtonFilter5Click;
         public event ButtonFilter6ClickHandler ButtonFilter6Click;
         public event ButtonFilter7ClickHandler ButtonFilter7Click;
+        public event ButtonQuantityMinClickHandler ButtonQuantityMinClick;
+        public event ButtonQuantityMaxClickHandler ButtonQuantityMaxClick;
+        public event ButtonTagPriceMinClickHandler ButtonTagPriceMinClick;
+        public event ButtonTagPriceMaxClickHandler ButtonTagPriceMaxClick;
 
         public FlexFilterContenerProductWindows()
         {
@@ -322,6 +330,25 @@ namespace Sklad_v1_001.Control.FlexFilter
             }
             this.Activated -= ContentActivated;
         }
-    
+
+        private void quantityMin_TextChanged()
+        {
+            ButtonQuantityMinClick?.Invoke(Quantity_Min);
+        }
+
+        private void quantityMax_TextChanged()
+        {
+            ButtonQuantityMaxClick?.Invoke(Quantity_Max);
+        }
+
+        private void tagPriceRusMin_TextChanged()
+        {
+            ButtonTagPriceMinClick?.Invoke(TagPrice_Min);
+        }
+
+        private void tagPriceRusMax_TextChanged()
+        {
+            ButtonTagPriceMaxClick?.Invoke(TagPrice_Max);
+        }
     }
 }

@@ -627,14 +627,6 @@ namespace Sklad_v1_001.FormUsers.Product
             flexFilterContenerProductWindows.Top = location.Y = 70;
             flexFilterContenerProductWindows.AllowDrop = false;
 
-            flexFilterContenerProductWindows.Value1 = localFilter.Status;
-            flexFilterContenerProductWindows.Value2 = localFilter.Procreator;
-            flexFilterContenerProductWindows.Value3 = localFilter.Showcase;
-            flexFilterContenerProductWindows.Value4 = localFilter.Category;
-            flexFilterContenerProductWindows.Value5 = localFilter.CategoryDetails;
-            flexFilterContenerProductWindows.Value6 = localFilter.CreatedUserID;
-            flexFilterContenerProductWindows.Value7 = localFilter.LastModifiedUserID;
-
             flexFilterContenerProductWindows.DataTableFilter1 = FilterStatus;
             flexFilterContenerProductWindows.DataTableFilter2 = FilterProcreator;
             flexFilterContenerProductWindows.DataTableFilter3 = FilterShowcase;
@@ -642,10 +634,22 @@ namespace Sklad_v1_001.FormUsers.Product
             flexFilterContenerProductWindows.DataTableFilter5 = FilterCategoryDetails;
             flexFilterContenerProductWindows.DataTableFilter6 = FilterCreatedByUserID;
             flexFilterContenerProductWindows.DataTableFilter7 = FilterLastModifiedByUserID;
-            flexFilterContenerProductWindows.TagPrice_Min = DefaultTagPriceWithVATMin;
-            flexFilterContenerProductWindows.TagPrice_Max = DefaultTagPriceWithVATMax;
-            flexFilterContenerProductWindows.Quantity_Min = DefaultquantityMin;
-            flexFilterContenerProductWindows.Quantity_Max = DefaultquantityMax;
+            flexFilterContenerProductWindows.TagPrice_Min = localFilter.TagPriceVATRUS_Min;
+            flexFilterContenerProductWindows.TagPrice_Max = localFilter.TagPriceVATRUS_Max;
+            flexFilterContenerProductWindows.Quantity_Min = localFilter.QuantityMin;
+            flexFilterContenerProductWindows.Quantity_Max = localFilter.QuantityMax;
+
+            flexFilterContenerProductWindows.Value1 = localFilter.Status;
+            flexFilterContenerProductWindows.Value2 = localFilter.Procreator;
+            flexFilterContenerProductWindows.Value3 = localFilter.Showcase;
+            flexFilterContenerProductWindows.Value4 = localFilter.Category;
+            flexFilterContenerProductWindows.Value5 = localFilter.CategoryDetails;
+            flexFilterContenerProductWindows.Value6 = localFilter.CreatedUserID;
+            flexFilterContenerProductWindows.Value7 = localFilter.LastModifiedUserID;
+            flexFilterContenerProductWindows.Quantity_Min = localFilter.QuantityMin;
+            flexFilterContenerProductWindows.Quantity_Max = localFilter.QuantityMax;
+            flexFilterContenerProductWindows.TagPrice_Min = localFilter.TagPriceVATRUS_Min;
+            flexFilterContenerProductWindows.TagPrice_Max = localFilter.TagPriceVATRUS_Max;
 
             flexFilterContenerProductWindows.ButtonFilter1Click += FlexFilterContenerProductWindows_ButtonFilter1Click;
             flexFilterContenerProductWindows.ButtonFilter2Click += FlexFilterContenerProductWindows_ButtonFilter2Click;
@@ -654,9 +658,35 @@ namespace Sklad_v1_001.FormUsers.Product
             flexFilterContenerProductWindows.ButtonFilter5Click += FlexFilterContenerProductWindows_ButtonFilter5Click;
             flexFilterContenerProductWindows.ButtonFilter6Click += FlexFilterContenerProductWindows_ButtonFilter6Click;
             flexFilterContenerProductWindows.ButtonFilter7Click += FlexFilterContenerProductWindows_ButtonFilter7Click;
+            flexFilterContenerProductWindows.ButtonQuantityMinClick += FlexFilterContenerProductWindows_ButtonQuantityMinClick;
+            flexFilterContenerProductWindows.ButtonQuantityMaxClick += FlexFilterContenerProductWindows_ButtonQuantityMaxClick;
+            flexFilterContenerProductWindows.ButtonTagPriceMinClick += FlexFilterContenerProductWindows_ButtonTagPriceMinClick;
+            flexFilterContenerProductWindows.ButtonTagPriceMaxClick += FlexFilterContenerProductWindows_ButtonTagPriceMaxClick;
 
             flexFilterContenerProductWindows.Show();
+        }    
+       
+        private void FlexFilterContenerProductWindows_ButtonQuantityMinClick(double text)
+        {
+            localFilter.QuantityMin = text;
+            Refresh();
         }
+        private void FlexFilterContenerProductWindows_ButtonQuantityMaxClick(double text)
+        {
+            localFilter.QuantityMax= text;
+            Refresh();
+        }
+        private void FlexFilterContenerProductWindows_ButtonTagPriceMinClick(double text)
+        {
+            localFilter.TagPriceVATRUS_Min = text;
+            Refresh();
+        }
+        private void FlexFilterContenerProductWindows_ButtonTagPriceMaxClick(double text)
+        {
+            localFilter.TagPriceVATRUS_Max = text;
+            Refresh();
+        }
+
 
         private void FlexFilterContenerProductWindows_ButtonFilter1Click(string text)
         {

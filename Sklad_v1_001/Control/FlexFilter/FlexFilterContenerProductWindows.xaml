@@ -103,14 +103,14 @@
                                                                     LabelWidth="40"
                                                                     LabelText="{x:Static res:Resources.QuantityMin}"
                                                                     Value="{Binding ElementName=control, Path=Quantity_Min, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=\{0:N0\}}"
-                                                                    />
+                                                                    TextChanged="quantityMin_TextChanged"/>
 
                             <SimpleControl:EditBoxWithLabelFloatForEdit x:Name="quantityMax"
                                                                     LabelWidth="40"
                                                                     Width="170"
                                                                     LabelText="{x:Static res:Resources.QuantityMax}"
                                                                     Value="{Binding ElementName=control, Path=Quantity_Max, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=\{0:N0\}}"
-                                                                    />
+                                                                    TextChanged="quantityMax_TextChanged"/>
                         </WrapPanel>
                     </Border>
 
@@ -118,16 +118,18 @@
                     <Border Style="{DynamicResource BorderStyle}" Margin="5,0,5,5" HorizontalAlignment="Stretch" >
                         <WrapPanel HorizontalAlignment="Center" Margin="0,0,0,5">
                             <SimpleControl:EditBoxWithLabelFloatForEdit x:Name="tagPriceRusMin"
-                                                                    Width="170"
-                                                                    LabelWidth="40"
-                                                                    LabelText="{x:Static res:Resources.QuantityMin}"
-                                                                    Value="{Binding ElementName=control, Path=TagPrice_Min, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=\{0:N0\}}"/>
+                                                                        Width="170"
+                                                                        LabelWidth="40"
+                                                                        LabelText="{x:Static res:Resources.QuantityMin}"
+                                                                        Value="{Binding ElementName=control, Path=TagPrice_Min, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=\{0:N0\}}"
+                                                                        TextChanged="tagPriceRusMin_TextChanged"/>
 
                             <SimpleControl:EditBoxWithLabelFloatForEdit x:Name="tagPriceRusMax"
-                                                                    LabelWidth="40"
-                                                                    Width="170"
-                                                                    LabelText="{x:Static res:Resources.QuantityMax}"
-                                                                    Value="{Binding ElementName=control, Path=TagPrice_Max, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=\{0:N0\}}"/>
+                                                                        LabelWidth="40"
+                                                                        Width="170"
+                                                                        LabelText="{x:Static res:Resources.QuantityMax}"
+                                                                        Value="{Binding ElementName=control, Path=TagPrice_Max, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=\{0:N0\}}"
+                                                                        TextChanged="tagPriceRusMax_TextChanged"/>
                         </WrapPanel>
                     </Border>
                 </StackPanel>
