@@ -626,7 +626,15 @@ namespace Sklad_v1_001.FormUsers.Product
             flexFilterContenerProductWindows.Left = toolBarProduct.FilterButton.PointToScreen(new Point(0, 0)).X + toolBarProduct.FilterButton.ActualWidth + 10;
             flexFilterContenerProductWindows.Top = location.Y = 70;
             flexFilterContenerProductWindows.AllowDrop = false;
-            
+
+            flexFilterContenerProductWindows.Value1 = "All";
+            flexFilterContenerProductWindows.Value2 = "All";
+            flexFilterContenerProductWindows.Value3 = "All";
+            flexFilterContenerProductWindows.Value4 = "All";
+            flexFilterContenerProductWindows.Value5 = "All";
+            flexFilterContenerProductWindows.Value6 = "All";
+            flexFilterContenerProductWindows.Value7 = "All";
+
             flexFilterContenerProductWindows.DataTableFilter1 = FilterStatus;
             flexFilterContenerProductWindows.DataTableFilter2 = FilterProcreator;
             flexFilterContenerProductWindows.DataTableFilter3 = FilterShowcase;
@@ -634,8 +642,61 @@ namespace Sklad_v1_001.FormUsers.Product
             flexFilterContenerProductWindows.DataTableFilter5 = FilterCategoryDetails;
             flexFilterContenerProductWindows.DataTableFilter6 = FilterCreatedByUserID;
             flexFilterContenerProductWindows.DataTableFilter7 = FilterLastModifiedByUserID;
+            flexFilterContenerProductWindows.TagPrice_Min = DefaultTagPriceWithVATMin;
+            flexFilterContenerProductWindows.TagPrice_Max = DefaultTagPriceWithVATMax;
+            flexFilterContenerProductWindows.Quantity_Min = DefaultquantityMin;
+            flexFilterContenerProductWindows.Quantity_Max = DefaultquantityMax;
+
+            flexFilterContenerProductWindows.ButtonFilter1Click += FlexFilterContenerProductWindows_ButtonFilter1Click;
+            flexFilterContenerProductWindows.ButtonFilter2Click += FlexFilterContenerProductWindows_ButtonFilter2Click;
+            flexFilterContenerProductWindows.ButtonFilter3Click += FlexFilterContenerProductWindows_ButtonFilter3Click;
+            flexFilterContenerProductWindows.ButtonFilter4Click += FlexFilterContenerProductWindows_ButtonFilter4Click;
+            flexFilterContenerProductWindows.ButtonFilter5Click += FlexFilterContenerProductWindows_ButtonFilter5Click;
+            flexFilterContenerProductWindows.ButtonFilter6Click += FlexFilterContenerProductWindows_ButtonFilter6Click;
+            flexFilterContenerProductWindows.ButtonFilter7Click += FlexFilterContenerProductWindows_ButtonFilter7Click;
 
             flexFilterContenerProductWindows.Show();
+        }
+
+        private void FlexFilterContenerProductWindows_ButtonFilter1Click(string text)
+        {
+            localFilter.Status = text;
+            Refresh();
+        }
+
+        private void FlexFilterContenerProductWindows_ButtonFilter2Click(string text)
+        {
+            localFilter.Procreator = text;
+            Refresh();
+        }
+        private void FlexFilterContenerProductWindows_ButtonFilter3Click(string text)
+        {
+            localFilter.Showcase = text;
+            Refresh();
+        }
+
+        private void FlexFilterContenerProductWindows_ButtonFilter4Click(string text)
+        {
+            localFilter.Category = text;
+            Refresh();
+        }
+
+        private void FlexFilterContenerProductWindows_ButtonFilter5Click(string text)
+        {
+            localFilter.CategoryDetails = text;
+            Refresh();
+        }
+
+        private void FlexFilterContenerProductWindows_ButtonFilter6Click(string text)
+        {
+            localFilter.CreatedUserID = text;
+            Refresh();
+        }
+
+        private void FlexFilterContenerProductWindows_ButtonFilter7Click(string text)
+        {
+            localFilter.LastModifiedUserID = text;
+            Refresh();
         }
 
         #endregion

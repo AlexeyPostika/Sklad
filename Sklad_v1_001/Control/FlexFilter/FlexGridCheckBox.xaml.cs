@@ -328,6 +328,7 @@ namespace Sklad_v1_001.Control.FlexFilter
         //public event ButtonStoneClickHandler ButtonStonesApplyClick;
         public delegate void ButtonClickHandler(String text = "");
         public event ButtonClickHandler ButtonApplyClick;
+
        
         ConvertData convertdata;
 
@@ -481,6 +482,11 @@ namespace Sklad_v1_001.Control.FlexFilter
             }
             Value = data;
             ButtonApplyClick?.Invoke(data);
+        }
+
+        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

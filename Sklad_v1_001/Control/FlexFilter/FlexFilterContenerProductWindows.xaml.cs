@@ -58,22 +58,22 @@ namespace Sklad_v1_001.Control.FlexFilter
 
         public static readonly DependencyProperty Quantity_MinProperty = DependencyProperty.Register(
                     "Quantity_Min",
-                     typeof(Decimal),
+                     typeof(Double),
                      typeof(FlexFilterContenerProductWindows));
 
         public static readonly DependencyProperty Quantity_MaxProperty = DependencyProperty.Register(
                     "Quantity_Max",
-                     typeof(Decimal),
+                     typeof(Double),
                      typeof(FlexFilterContenerProductWindows));
 
         public static readonly DependencyProperty TagPrice_MinProperty = DependencyProperty.Register(
                    "TagPrice_Min",
-                    typeof(Decimal),
+                    typeof(Double),
                     typeof(FlexFilterContenerProductWindows));
 
         public static readonly DependencyProperty TagPrice_MaxProperty = DependencyProperty.Register(
                    "TagPrice_Max",
-                    typeof(Decimal),
+                    typeof(Double),
                     typeof(FlexFilterContenerProductWindows));
 
         public static readonly DependencyProperty DataTableFilter1Property = DependencyProperty.Register(
@@ -148,27 +148,27 @@ namespace Sklad_v1_001.Control.FlexFilter
             set { SetValue(Value7Property, value); }
         }
 
-        public Decimal Quantity_Min
+        public Double Quantity_Min
         {           
-            get { return (Decimal)GetValue(Quantity_MinProperty); }
+            get { return (Double)GetValue(Quantity_MinProperty); }
             set { SetValue(Quantity_MinProperty, value); }
         }
 
-        public Decimal Quantity_Max
+        public Double Quantity_Max
         {          
-            get { return (Decimal)GetValue(Quantity_MaxProperty); }
+            get { return (Double)GetValue(Quantity_MaxProperty); }
             set { SetValue(Quantity_MaxProperty, value); }
         }
 
-        public Decimal TagPrice_Min
+        public Double TagPrice_Min
         {          
-            get { return (Decimal)GetValue(TagPrice_MinProperty); }
+            get { return (Double)GetValue(TagPrice_MinProperty); }
             set { SetValue(TagPrice_MinProperty, value); }
         }
 
-        public Decimal TagPrice_Max
+        public Double TagPrice_Max
         {            
-            get { return (Decimal)GetValue(TagPrice_MaxProperty); }
+            get { return (Double)GetValue(TagPrice_MaxProperty); }
             set { SetValue(TagPrice_MaxProperty, value); }
         }
 
@@ -228,6 +228,20 @@ namespace Sklad_v1_001.Control.FlexFilter
                 needResize = value;
             }
         }
+        public delegate void ButtonFilter1ClickHandler(String text);
+        public delegate void ButtonFilter2ClickHandler(String text);
+        public delegate void ButtonFilter3ClickHandler(String text);
+        public delegate void ButtonFilter4ClickHandler(String text);
+        public delegate void ButtonFilter5ClickHandler(String text);
+        public delegate void ButtonFilter6ClickHandler(String text);
+        public delegate void ButtonFilter7ClickHandler(String text);
+        public event ButtonFilter1ClickHandler ButtonFilter1Click;
+        public event ButtonFilter2ClickHandler ButtonFilter2Click;
+        public event ButtonFilter3ClickHandler ButtonFilter3Click;
+        public event ButtonFilter4ClickHandler ButtonFilter4Click;
+        public event ButtonFilter5ClickHandler ButtonFilter5Click;
+        public event ButtonFilter6ClickHandler ButtonFilter6Click;
+        public event ButtonFilter7ClickHandler ButtonFilter7Click;
 
         public FlexFilterContenerProductWindows()
         {
@@ -239,36 +253,43 @@ namespace Sklad_v1_001.Control.FlexFilter
         private void Filter1_ButtonApplyClick(string text)
         {
             Value1 = text;
+            ButtonFilter1Click?.Invoke(Value1);
         }
 
         private void Filter2_ButtonApplyClick(string text)
         {
             Value2 = text;
+            ButtonFilter2Click?.Invoke(Value2);
         }
 
         private void Filter3_ButtonApplyClick(string text)
         {
             Value3 = text;
+            ButtonFilter3Click?.Invoke(Value3);
         }
 
         private void Filter4_ButtonApplyClick(string text)
         {
             Value4 = text;
+            ButtonFilter4Click?.Invoke(Value4);
         }
 
         private void Filter5_ButtonApplyClick(string text)
         {
             Value5 = text;
+            ButtonFilter5Click?.Invoke(Value5);
         }
 
         private void Filter6_ButtonApplyClick(string text)
         {
             Value6 = text;
+            ButtonFilter6Click?.Invoke(Value6);
         }
 
         private void Filter7_ButtonApplyClick(string text)
         {
             Value7 = text;
+            ButtonFilter7Click?.Invoke(Value7);
         }
 
         private void Close_ButtonCloseClick()
