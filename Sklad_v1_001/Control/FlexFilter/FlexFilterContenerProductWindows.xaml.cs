@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sklad_v1_001.GlobalVariable;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -248,6 +249,13 @@ namespace Sklad_v1_001.Control.FlexFilter
             InitializeComponent();
             
             this.Activated += ContentActivated;
+            Filter1.ImageSource = ImageHelper.GenerateImage("IconFilter.png");
+            Filter2.ImageSource = ImageHelper.GenerateImage("IconFilter.png");
+            Filter3.ImageSource = ImageHelper.GenerateImage("IconFilter.png");
+            Filter4.ImageSource = ImageHelper.GenerateImage("IconFilter.png");
+            Filter5.ImageSource = ImageHelper.GenerateImage("IconFilter.png");
+            Filter6.ImageSource = ImageHelper.GenerateImage("IconFilter.png");
+            Filter7.ImageSource = ImageHelper.GenerateImage("IconFilter.png");
         }
 
         private void Filter1_ButtonApplyClick(string text)

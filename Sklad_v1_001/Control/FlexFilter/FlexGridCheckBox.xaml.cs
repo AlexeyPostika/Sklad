@@ -335,7 +335,7 @@ namespace Sklad_v1_001.Control.FlexFilter
         public FlexGridCheckBox()
         {
             InitializeComponent();
-            convertdata = new ConvertData();
+            convertdata = new ConvertData();          
             this.DataContext = this;
         }
 
@@ -435,7 +435,7 @@ namespace Sklad_v1_001.Control.FlexFilter
                     return;
                 }
 
-                ButtonFilter.Image.Source = ImageHelper.GenerateImage("IconClearAllFilters.png");
+                ButtonFilter.Image.Source = ImageHelper.GenerateImage("IconClearFilter.png");
                 foreach (DataRow row in DataTableData.Rows)
                 {
                     if (convertdata.FlexDataConvertToBoolean(row["IsChecked"].ToString()))
@@ -466,7 +466,7 @@ namespace Sklad_v1_001.Control.FlexFilter
                     return;
                 }
 
-                ButtonFilter.Image.Source = ImageHelper.GenerateImage("IconClearAllFilters.png");
+                ButtonFilter.Image.Source = ImageHelper.GenerateImage("IconClearFilter.png");
                 foreach (DataRow row in DataTableData.Rows)
                 {
                     if (convertdata.FlexDataConvertToBoolean(row["IsChecked"].ToString()))

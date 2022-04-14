@@ -879,6 +879,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             localFilter.Status = "All";
             localFilter.AmountMin = AmountMin;
             localFilter.AmountMax = AmountMax;
+            ClearfilterStatusID = ImageHelper.GenerateImage("IconFilter.png");
             Refresh();
         }
 

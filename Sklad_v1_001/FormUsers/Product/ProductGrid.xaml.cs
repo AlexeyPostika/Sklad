@@ -627,13 +627,13 @@ namespace Sklad_v1_001.FormUsers.Product
             flexFilterContenerProductWindows.Top = location.Y = 70;
             flexFilterContenerProductWindows.AllowDrop = false;
 
-            flexFilterContenerProductWindows.Value1 = "All";
-            flexFilterContenerProductWindows.Value2 = "All";
-            flexFilterContenerProductWindows.Value3 = "All";
-            flexFilterContenerProductWindows.Value4 = "All";
-            flexFilterContenerProductWindows.Value5 = "All";
-            flexFilterContenerProductWindows.Value6 = "All";
-            flexFilterContenerProductWindows.Value7 = "All";
+            flexFilterContenerProductWindows.Value1 = localFilter.Status;
+            flexFilterContenerProductWindows.Value2 = localFilter.Procreator;
+            flexFilterContenerProductWindows.Value3 = localFilter.Showcase;
+            flexFilterContenerProductWindows.Value4 = localFilter.Category;
+            flexFilterContenerProductWindows.Value5 = localFilter.CategoryDetails;
+            flexFilterContenerProductWindows.Value6 = localFilter.CreatedUserID;
+            flexFilterContenerProductWindows.Value7 = localFilter.LastModifiedUserID;
 
             flexFilterContenerProductWindows.DataTableFilter1 = FilterStatus;
             flexFilterContenerProductWindows.DataTableFilter2 = FilterProcreator;
