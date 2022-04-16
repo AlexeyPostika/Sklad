@@ -13,12 +13,12 @@
 
     <Grid>
         <FlexImage:ImageList x:Name="Edit"
-                             BareCode="{Binding Path=BareCode, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                             BareCode="{Binding Path=BarCodeString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                              NameString="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"                 
-                             Category="{Binding Path=CategoryString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                             CategoryDetails="{Binding Path=CategoryDetailsString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                             Status="{Binding Path=Status, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                             TagPrice="{Binding Path=TagPriceRUS, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                             Category="{Binding Path=CategoryName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                             CategoryDetails="{Binding Path=CategoryDetailsName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                             Status="{Binding Path=StatusString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                             TagPrice="{Binding Path=TagPriceRUS, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}"
                              Showcase="{Binding Path=Showcase, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                              Description="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
     </Grid>

@@ -8,7 +8,7 @@
              xmlns:res="clr-namespace:Sklad_v1_001.Properties"
              mc:Ignorable="d"            
              Style="{DynamicResource UsersControlColor}"
-             Name="control">
+             x:Name="control">
     <Grid x:Name="Form">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -198,7 +198,7 @@
               
             </StackPanel>
             <StackPanel >
-                <FlexText:FlexLabelTextBlock x:Name="Description" 
+                <FlexText:FlexLabelTextBlock x:Name="DescriptionName" 
                                          Margin="0,0,10,10"
                                          LabelText="{x:Static res:Resources.Discription}"
                                          Description="{Binding ElementName=control, Path=Description, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"

@@ -1,5 +1,6 @@
 ﻿using Sklad_v1_001.Control.Contener;
 using Sklad_v1_001.Control.FlexFilter;
+using Sklad_v1_001.Control.FlexMessageBox;
 using Sklad_v1_001.GlobalAttributes;
 using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.HelperGlobal;
@@ -463,7 +464,11 @@ namespace Sklad_v1_001.FormUsers.Product
                 String rowID = datalist.FirstOrDefault(x => x.ID.ToString() == contenerRowDescription.KeyRow) != null ? datalist.FirstOrDefault(x => x.ID.ToString() == contenerRowDescription.KeyRow).ID.ToString() : String.Empty;
                 if (rowID != "")
                 {
-
+                    FlexMessageBox flexMessageBox = new FlexMessageBox();
+                    ProductItemGrid productItemGrid = new ProductItemGrid(attributes);
+                    productItemGrid.LocalRowDetails = datalist.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(rowID));
+                    flexMessageBox.Content = productItemGrid;
+                    flexMessageBox.Show();
                 }
             }
         }

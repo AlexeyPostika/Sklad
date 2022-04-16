@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Sklad_v1_001.GlobalAttributes;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +22,38 @@ namespace Sklad_v1_001.FormUsers.Product
     /// </summary>
     public partial class ProductItemGrid : Page
     {
-        public ProductItemGrid()
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        Attributes attribute;
+
+        LocalRow localRowDetails;
+
+        public LocalRow LocalRowDetails
+        {
+            get
+            {
+                return localRowDetails;
+            }
+
+            set
+            {
+                localRowDetails = value;
+                this.Edit.DataContext = LocalRowDetails;
+                OnPropertyChanged("LocalRowDetails");
+            }
+        }
+
+        public ProductItemGrid(Attributes _attributes)
         {
             InitializeComponent();
+
+            this.attribute = _attributes;
+
+            this.Edit.DataContext = LocalRowDetails;
         }
     }
 }
