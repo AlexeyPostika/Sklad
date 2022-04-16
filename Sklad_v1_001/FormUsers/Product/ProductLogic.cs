@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Sklad_v1_001.FormUsers.Product
 {
@@ -39,7 +40,7 @@ namespace Sklad_v1_001.FormUsers.Product
         private Int32 pagerowCount;
 
         private String sortColumn;
-        private Boolean sort;
+        private Boolean sort;      
 
         public string ScreenTypeGrid
         {
@@ -285,7 +286,7 @@ namespace Sklad_v1_001.FormUsers.Product
                 sort = value;
                 OnPropertyChanged("Sort");
             }
-        }
+        }       
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
@@ -762,8 +763,7 @@ namespace Sklad_v1_001.FormUsers.Product
                 OnPropertyChanged("InvoiceDocumentByte");
             }
         }
-        //photoImageByte
-
+        
         public byte[] PhotoImageByte
         {
             get
@@ -773,15 +773,7 @@ namespace Sklad_v1_001.FormUsers.Product
 
             set
             {
-                photoImageByte = value;
-                if (value != null)
-                {
-                    //PhotoImage = ImageHelper.GenerateImage("IconNotCamera_X80.png");
-                }
-                else
-                {
-                    PhotoImage = ImageHelper.GenerateImage("IconNotCamera_X80.png");
-                }
+                photoImageByte = value;               
                 OnPropertyChanged("PhotoImageByte");
             }
         }
@@ -1351,6 +1343,7 @@ namespace Sklad_v1_001.FormUsers.Product
 
         public LocalRow Convert(DataRow _dataRow, LocalRow _localeRow)
         {
+            ImageSql imageSql = new ImageSql();
             ProductStatusList statusList = new ProductStatusList();
             ConvertData convertData = new ConvertData(_dataRow, _localeRow);
 
@@ -1391,6 +1384,11 @@ namespace Sklad_v1_001.FormUsers.Product
             _localeRow.LastModicatedDate = convertData.ConvertDataDateTime("LastModificatedDate");
             _localeRow.LastModificatedDateText = convertData.DateTimeConvertShortString(_localeRow.LastModicatedDate);
             _localeRow.PhotoImageByte = null;
+
+            if (_dataRow["ImageProduct"] as byte[] != null)
+                _localeRow.PhotoImage = imageSql.BytesToImageSource(_dataRow["ImageProduct"] as byte[]);
+            else
+                _localeRow.PhotoImage = ImageHelper.GenerateImage("IconNotCamera_X80.png");
 
             return _localeRow;
         }
