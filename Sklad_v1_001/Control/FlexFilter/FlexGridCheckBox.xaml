@@ -30,7 +30,7 @@
                  Grid.Column="1"  
                  Visibility="{Binding ElementName=control, Path=IsVisibility, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                  IsEnabled="{Binding ElementName=control, Path=IsEnabledTextBox, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                 Text="{Binding ElementName=control, Path=Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                 Text="{Binding ElementName=control, Path=ValueString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                  TextChanged="textBox_TextChanged"/>
         <FlexButton:SmallButtonFilter x:Name="ButtonFilter" 
                                       ImageSource="{Binding ElementName=control, Path=ImageSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                     

@@ -729,6 +729,18 @@ namespace Sklad_v1_001.FormUsers.Product
             Refresh();
         }
 
+        private void toolBarProduct_ButtonScan(string text)
+        {
+            localFilter.Search = text;
+            Refresh();
+        }
+
+        private void toolBarProduct_ButtonClean()
+        {
+            localFilter.Search = String.Empty;
+            Refresh();
+        }
+
         #endregion
 
         #region CalculateSummary
@@ -742,5 +754,6 @@ namespace Sklad_v1_001.FormUsers.Product
 
         }
         #endregion
+      
     }
 }

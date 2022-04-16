@@ -103,7 +103,11 @@ namespace Sklad_v1_001.Control.FlexFilter
                        "Value",
                        typeof(String),
                        typeof(FlexGridCheckBox), new UIPropertyMetadata(String.Empty));
-        //
+     
+        public static readonly DependencyProperty ValueStringProperty = DependencyProperty.Register(
+                      "ValueString",
+                      typeof(String),
+                      typeof(FlexGridCheckBox), new UIPropertyMetadata("All"));
 
         public static readonly DependencyProperty IsEnabledTextBoxProperty = DependencyProperty.Register(
                       "IsEnabledTextBox",
@@ -289,6 +293,19 @@ namespace Sklad_v1_001.Control.FlexFilter
             }
         }
 
+        public String ValueString
+        {
+            get
+            {
+                return (String)GetValue(ValueStringProperty);
+            }
+            set
+            {
+                SetValue(ValueStringProperty, value);
+                OnPropertyChanged("ValueString");
+            }
+        }
+
         public Boolean IsEnabledTextBox
         {
             get
@@ -413,6 +430,7 @@ namespace Sklad_v1_001.Control.FlexFilter
         private void ButtonApplyClickWindow()
         {
             String data = "";
+            ValueString = "";
             if (IsHaveImage)
             {
                 this.DataTableData = flexGridCheckBoxWithImageWindow.DataTableData;
@@ -422,6 +440,7 @@ namespace Sklad_v1_001.Control.FlexFilter
                     ButtonFilter.Image.Source = ImageHelper.GenerateImage("IconFilter.png");
                     data = "All";
                     Value = data;
+                    ValueString = "All";
                     ButtonApplyClick?.Invoke(data);
                     return;
                 }
@@ -431,6 +450,7 @@ namespace Sklad_v1_001.Control.FlexFilter
                     ButtonFilter.Image.Source = ImageHelper.GenerateImage("IconFilter.png");
                     data = "";
                     Value = data;
+                    ValueString = String.Empty;
                     ButtonApplyClick?.Invoke(data);
                     return;
                 }
@@ -453,6 +473,7 @@ namespace Sklad_v1_001.Control.FlexFilter
                     ButtonFilter.Image.Source = ImageHelper.GenerateImage("IconFilter.png");
                     data = "All";
                     Value = data;
+                    ValueString = "All";
                     ButtonApplyClick?.Invoke(data);
                     return;
                 }
@@ -462,6 +483,7 @@ namespace Sklad_v1_001.Control.FlexFilter
                     ButtonFilter.Image.Source = ImageHelper.GenerateImage("IconFilter.png");
                     data = "";
                     Value = data;
+                    ValueString = String.Empty;
                     ButtonApplyClick?.Invoke(data);
                     return;
                 }
@@ -472,6 +494,10 @@ namespace Sklad_v1_001.Control.FlexFilter
                     if (convertdata.FlexDataConvertToBoolean(row["IsChecked"].ToString()))
                     {
                         data = data + '\'' + row["ID"].ToString() + "'|";
+                        if (ValueString==String.Empty)
+                            ValueString = row["Description"].ToString() + " ";
+                        else
+                            ValueString = ValueString+ "; " + row["Description"].ToString() + " ";
                     }
                 }
             }
