@@ -27,104 +27,155 @@ namespace Sklad_v1_001.Control.FlexImage
     public partial class ImageList : UserControl, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+       
+        public static readonly DependencyProperty ImageNextProperty = DependencyProperty.Register(
+         "ImageNext",
+         typeof(BitmapImage),
+         typeof(ImageList), new UIPropertyMetadata(ImageHelper.GenerateImage("chevron_right_30px.png")));
+       
+        public static readonly DependencyProperty ImageBrakeProperty = DependencyProperty.Register(
+        "ImageBrake",
+        typeof(BitmapImage),
+        typeof(ImageList), new UIPropertyMetadata(ImageHelper.GenerateImage("chevron_left_30px.png")));
+       
+        public static readonly DependencyProperty ImageDowloadProperty = DependencyProperty.Register(
+        "ImageDowload",
+        typeof(BitmapImage),
+        typeof(ImageList), new UIPropertyMetadata(ImageHelper.GenerateImage("IconDownload.png")));      
+
+        public static readonly DependencyProperty ImageClearProperty = DependencyProperty.Register(
+        "ImageClear",
+        typeof(BitmapImage),
+        typeof(ImageList), new UIPropertyMetadata(ImageHelper.GenerateImage("IconErase.png")));
+        
+        public static readonly DependencyProperty ImageSaveProperty = DependencyProperty.Register(
+        "ImageSave",
+        typeof(BitmapImage),
+        typeof(ImageList), new UIPropertyMetadata(ImageHelper.GenerateImage("IconSaveAs.png")));
+       
+        public static readonly DependencyProperty BareCodeProperty = DependencyProperty.Register(
+        "BareCode",
+        typeof(String),
+        typeof(ImageList), new UIPropertyMetadata(String.Empty));       
+
+        public static readonly DependencyProperty NameStringProperty = DependencyProperty.Register(
+        "NameString",
+        typeof(String),
+        typeof(ImageList), new UIPropertyMetadata(String.Empty));
+       
+        public static readonly DependencyProperty CategoryProperty = DependencyProperty.Register(
+        "Category",
+        typeof(String),
+        typeof(ImageList), new UIPropertyMetadata(String.Empty));
+        
+        public static readonly DependencyProperty CategoryDetailsProperty = DependencyProperty.Register(
+        "CategoryDetails",
+        typeof(String),
+        typeof(ImageList), new UIPropertyMetadata(String.Empty));
+
+        public static readonly DependencyProperty StatusProperty = DependencyProperty.Register(
+        "Status",
+        typeof(String),
+        typeof(ImageList), new UIPropertyMetadata(String.Empty));
+        
+        public static readonly DependencyProperty TagPriceProperty = DependencyProperty.Register(
+        "TagPrice",
+        typeof(Decimal),
+        typeof(ImageList));
+
+        public static readonly DependencyProperty ShowcaseProperty = DependencyProperty.Register(
+        "Showcase",
+        typeof(String),
+        typeof(ImageList), new UIPropertyMetadata(String.Empty));
+
+        public static readonly DependencyProperty DescriptionProperty = DependencyProperty.Register(
+        "Description",
+        typeof(String),
+        typeof(ImageList), new UIPropertyMetadata(String.Empty));
+
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
 
-        public static readonly DependencyProperty ImageNextProperty = DependencyProperty.Register(
-         "ImageNext",
-         typeof(BitmapImage),
-         typeof(ImageList), new UIPropertyMetadata(ImageHelper.GenerateImage("chevron_right_30px.png")));
         public BitmapImage ImageNext
         {
             get { return (BitmapImage)GetValue(ImageNextProperty); }
             set { SetValue(ImageNextProperty, value); }
         }
 
-        public static readonly DependencyProperty ImageBrakeProperty = DependencyProperty.Register(
-        "ImageBrake",
-        typeof(BitmapImage),
-        typeof(ImageList), new UIPropertyMetadata(ImageHelper.GenerateImage("chevron_left_30px.png")));
         public BitmapImage ImageBrake
         {
             get { return (BitmapImage)GetValue(ImageBrakeProperty); }
             set { SetValue(ImageBrakeProperty, value); }
         }
 
-        public static readonly DependencyProperty ImageDowloadProperty = DependencyProperty.Register(
-        "ImageDowload",
-        typeof(BitmapImage),
-        typeof(ImageList), new UIPropertyMetadata(ImageHelper.GenerateImage("IconDownload.png")));
         public BitmapImage ImageDowload
         {
             get { return (BitmapImage)GetValue(ImageDowloadProperty); }
             set { SetValue(ImageDowloadProperty, value); }
         }
 
-
-        public static readonly DependencyProperty ImageClearProperty = DependencyProperty.Register(
-        "ImageClear",
-        typeof(BitmapImage),
-        typeof(ImageList), new UIPropertyMetadata(ImageHelper.GenerateImage("IconErase.png")));
         public BitmapImage ImageClear
         {
             get { return (BitmapImage)GetValue(ImageClearProperty); }
             set { SetValue(ImageClearProperty, value); }
         }
 
-        public static readonly DependencyProperty ImageSaveProperty = DependencyProperty.Register(
-        "ImageSave",
-        typeof(BitmapImage),
-        typeof(ImageList), new UIPropertyMetadata(ImageHelper.GenerateImage("IconSaveAs.png")));
         public BitmapImage ImageSave
         {
             get { return (BitmapImage)GetValue(ImageSaveProperty); }
             set { SetValue(ImageSaveProperty, value); }
         }
 
-        public static readonly DependencyProperty ShtrixCodeTextProperty = DependencyProperty.Register(
-        "ShtrixCodeText",
-        typeof(String),
-        typeof(ImageList), new UIPropertyMetadata(String.Empty));
-        public String ShtrixCodeText
+        public String BareCode
         {
-            get { return (String)GetValue(ShtrixCodeTextProperty); }
-            set { SetValue(ShtrixCodeTextProperty, value); }
+            get { return (String)GetValue(BareCodeProperty); }
+            set { SetValue(BareCodeProperty, value); }
         }
 
-        public static readonly DependencyProperty NameProductTextProperty = DependencyProperty.Register(
-        "NameProductText",
-        typeof(String),
-        typeof(ImageList), new UIPropertyMetadata(String.Empty));
-        public String NameProductText
+        public String NameString
         {
-            get { return (String)GetValue(NameProductTextProperty); }
-            set { SetValue(NameProductTextProperty, value); }
+            get { return (String)GetValue(NameStringProperty); }
+            set { SetValue(NameStringProperty, value); }
         }
 
-        public static readonly DependencyProperty TypeProductTextProperty = DependencyProperty.Register(
-        "TypeProductText",
-        typeof(String),
-        typeof(ImageList), new UIPropertyMetadata(String.Empty));
-        public String TypeProductText
+        public String Category
         {
-            get { return (String)GetValue(TypeProductTextProperty); }
-            set { SetValue(TypeProductTextProperty, value); }
+            get { return (String)GetValue(CategoryProperty); }
+            set { SetValue(CategoryProperty, value); }
         }
 
-        public static readonly DependencyProperty StatusTextProperty = DependencyProperty.Register(
-      "StatusText",
-      typeof(String),
-      typeof(ImageList), new UIPropertyMetadata(String.Empty));
-        public String StatusText
+        public String CategoryDetails
         {
-            get { return (String)GetValue(StatusTextProperty); }
-            set { SetValue(StatusTextProperty, value); }
+            get { return (String)GetValue(CategoryDetailsProperty); }
+            set { SetValue(CategoryDetailsProperty, value); }
         }
 
-        LocalRow localDocument;
+        public String Status
+        {
+            get { return (String)GetValue(StatusProperty); }
+            set { SetValue(StatusProperty, value); }
+        }
+
+        public Decimal TagPrice
+        {
+            get { return (Decimal)GetValue(TagPriceProperty); }
+            set { SetValue(TagPriceProperty, value); }
+        }
+
+        public String Showcase
+        {
+            get { return (String)GetValue(ShowcaseProperty); }
+            set { SetValue(ShowcaseProperty, value); }
+        }
+
+        public String Description
+        {
+            get { return (String)GetValue(DescriptionProperty); }
+            set { SetValue(DescriptionProperty, value); }
+        }
 
         List<BitmapImage> listImageControl;
         Int32 tempClick;
@@ -159,33 +210,13 @@ namespace Sklad_v1_001.Control.FlexImage
                 }
                 
             }
-        }
-        public LocalRow LocalDocument
-        {
-            get
-            {
-                return localDocument;
-            }
-
-            set
-            {
-                localDocument = value;
-                if (LocalDocument.ListImage.Count > 0)
-                {
-                    ListImageControl = LocalDocument.ListImage;
-                    this.DescriptionInform.DataContext = LocalDocument;
-                }
-                OnPropertyChanged("LocalDocument");
-            }
-        }
+        }     
 
         public ImageList()
         {
             InitializeComponent();
             ListImageControl = new List<BitmapImage>();
-            LocalDocument = new LocalRow();
            
-
             TempClick = 0;
             //buttonNext.IsEnabled = false;
             //buttonBrak.IsEnabled = false;

@@ -30,7 +30,7 @@ namespace Sklad_v1_001.FormUsers.Tovar
             set
             {
                 localRow = value;
-                this.Edit.LocalDocument = LocalRow;
+               // this.Edit.LocalDocument = LocalRow;
             }
         }
         public TovarInZona()

@@ -8,7 +8,7 @@
              mc:Ignorable="d" x:Name="control">
     <Grid>
         <StackPanel Margin="3,0">
-            <Label Name="LabelName" Style="{DynamicResource GridLabelStyle}"  Content="{Binding ElementName=control, Path=LabelText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <Label Name="LabelName" Style="{DynamicResource LabelStyle}"  Content="{Binding ElementName=control, Path=LabelText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
             <TextBox Name="DescriptionInfo" Style="{DynamicResource TextBoxStyle}" Text="{Binding ElementName=control, Path=Description, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                        IsEnabled="{Binding ElementName=control, Path=EnableTextBox, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
                        Height="{Binding ElementName=control, Path=HeightTextBlock, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"

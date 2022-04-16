@@ -6,8 +6,7 @@
              xmlns:local="clr-namespace:Sklad_v1_001.Control.FlexImage"
              xmlns:FlexText="clr-namespace:Sklad_v1_001.Control.FlexTextBox"
              xmlns:res="clr-namespace:Sklad_v1_001.Properties"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="1130"
+             mc:Ignorable="d"            
              Style="{DynamicResource UsersControlColor}"
              Name="control">
     <Grid x:Name="Form">
@@ -158,41 +157,58 @@
                 </Button>
             </Grid>
         </StackPanel>
-        <StackPanel Grid.Column="1" x:Name="DescriptionInform" HorizontalAlignment="Left" VerticalAlignment="Stretch">
-            <FlexText:FlexLabelTextBox x:Name="Shtrix" LabelText="{x:Static res:Resources.ShtrixCode}"
-                                       Description="{Binding Path=ExtrRefShtrixCode, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+        <WrapPanel x:Name="wrapPanel" Grid.Column="1">
+            <StackPanel>
+                <FlexText:FlexLabelTextBox x:Name="Shtrix" LabelText="{x:Static res:Resources.ShtrixCode}"
+                                       Description="{Binding ElementName=control, Path=BareCode, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                        EnableTextBox="False"
                                        Width="200"/>
-            <FlexText:FlexLabelTextBlock x:Name="Product" LabelText="{x:Static res:Resources.NameProduct}"
-                                       Description="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+              
+                <FlexText:FlexLabelTextBox x:Name="Type" LabelText="{x:Static res:Resources.TypeProduct}"
+                                       Description="{Binding  ElementName=control, Path=Category, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                       EnableTextBox="False"
+                                       Width="200"/>
+
+                <FlexText:FlexLabelTextBox x:Name="statusEdit" LabelText="{x:Static res:Resources.Status}"
+                                       Description="{Binding ElementName=control, Path=Status, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                       EnableTextBox="False"
+                                       Width="200"/>
+
+                <FlexText:FlexLabelTextBox x:Name="Cena" LabelText="{x:Static res:Resources.CenaProduct}"
+                                       Description="{Binding ElementName=control, Path=TagPrice, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                       EnableTextBox="False"
+                                       Width="200"/>
+
+            </StackPanel>
+            <StackPanel>
+                <FlexText:FlexLabelTextBlock x:Name="Product" LabelText="{x:Static res:Resources.NameProduct}"
+                                       Description="{Binding ElementName=control, Path=NameString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                        EnableTextBox="False"
                                        Width="200"
-                                       HeightTextBlock="50"/>
-            <FlexText:FlexLabelTextBox x:Name="Type" LabelText="{x:Static res:Resources.TypeProduct}"
-                                       Description="{Binding  Path=TypeProduct, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                       EnableTextBox="False"
-                                       Width="200"/>
-            <FlexText:FlexLabelTextBox x:Name="Status" LabelText="{x:Static res:Resources.Status}"
-                                       Description="{Binding Path=Status, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                       EnableTextBox="False"
-                                       Width="200"/>
-            <FlexText:FlexLabelTextBox x:Name="Cena" LabelText="{x:Static res:Resources.CenaProduct}"
-                                       Description="{Binding Path=Cena, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                       EnableTextBox="False"
-                                       Width="200"/>
-            
-            <FlexText:FlexLabelTextBox x:Name="Vitrina" LabelText="{x:Static res:Resources.Vitrina}"
-                                       Description="{Binding Path=VetrinaString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                       HeightTextBlock="86"/>
+
+                <FlexText:FlexLabelTextBox x:Name="Vitrina" LabelText="{x:Static res:Resources.Vitrina}"
+                                       Description="{Binding ElementName=control, Path=Showcase, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                        EnableTextBox="False"
                                        Width="200"/>
 
-            <FlexText:FlexLabelTextBlock x:Name="Description" LabelText="{x:Static res:Resources.Discription}"
-                                       Description="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                       EnableTextBox="True"
-                                       Width="200"
-                                       HeightTextBlock="100"/>
+               
+               
+
+              
+            </StackPanel>
+            <StackPanel >
+                <FlexText:FlexLabelTextBlock x:Name="Description" 
+                                         Margin="0,0,10,10"
+                                         LabelText="{x:Static res:Resources.Discription}"
+                                         Description="{Binding ElementName=control, Path=Description, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                         EnableTextBox="True"
+                                         Width="200"
+                                         HeightTextBlock="142"/>
 
 
-        </StackPanel>
+            </StackPanel>
+        </WrapPanel>
+       
     </Grid>
 </UserControl>
