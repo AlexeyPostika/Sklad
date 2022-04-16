@@ -93,6 +93,11 @@ namespace Sklad_v1_001.Control.FlexImage
         typeof(String),
         typeof(ImageList), new UIPropertyMetadata(String.Empty));
 
+        public static readonly DependencyProperty SizeStringProperty = DependencyProperty.Register(
+        "SizeString",
+        typeof(String),
+        typeof(ImageList), new UIPropertyMetadata(String.Empty));
+
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
             if (PropertyChanged != null)
@@ -177,6 +182,11 @@ namespace Sklad_v1_001.Control.FlexImage
             set { SetValue(DescriptionProperty, value); }
         }
 
+        public String SizeString
+        {
+            get { return (String)GetValue(SizeStringProperty); }
+            set { SetValue(SizeStringProperty, value); }
+        }
         List<BitmapImage> listImageControl;
         Int32 tempClick;
 

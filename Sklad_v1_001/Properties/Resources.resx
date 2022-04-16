@@ -694,7 +694,7 @@
     <value>Резерв(продажа)</value>
   </data>
   <data name="ProductStatus2" xml:space="preserve">
-    <value>Резервх(возврат)</value>
+    <value>Резерв(возврат)</value>
   </data>
   <data name="ProductStatus3" xml:space="preserve">
     <value>Покупка</value>

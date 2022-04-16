@@ -169,6 +169,12 @@
                                        EnableTextBox="False"
                                        Width="200"/>
 
+                <FlexText:FlexLabelTextBox x:Name="categorydetails" LabelText="{x:Static res:Resources.CATEGORYDETAILS}"
+                                       Description="{Binding  ElementName=control, Path=CategoryDetails, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                       EnableTextBox="False"
+                                       Width="200"/>
+
+
                 <FlexText:FlexLabelTextBox x:Name="statusEdit" LabelText="{x:Static res:Resources.Status}"
                                        Description="{Binding ElementName=control, Path=Status, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                        EnableTextBox="False"
@@ -192,7 +198,10 @@
                                        EnableTextBox="False"
                                        Width="200"/>
 
-               
+                <FlexText:FlexLabelTextBox x:Name="sizeText" LabelText="{x:Static res:Resources.SizeProduct}"
+                                       Description="{Binding ElementName=control, Path=SizeString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                       EnableTextBox="False"
+                                       Width="200"/>
                
 
               

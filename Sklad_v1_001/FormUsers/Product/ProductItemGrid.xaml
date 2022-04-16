@@ -12,14 +12,16 @@
       Title="ProductItemGrid">
 
     <Grid>
-        <FlexImage:ImageList x:Name="Edit"
+        <FlexImage:ImageList x:Name="Edit" 
+                             Margin="0,0,0,10"
                              BareCode="{Binding Path=BarCodeString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                              NameString="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"                 
-                             Category="{Binding Path=CategoryName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                             Category="{Binding Path=CategoryName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"                           
                              CategoryDetails="{Binding Path=CategoryDetailsName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                              Status="{Binding Path=StatusString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                              TagPrice="{Binding Path=TagPriceRUS, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}"
                              Showcase="{Binding Path=Showcase, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                             Description="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                             Description="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                             SizeString="{Binding Path=SizeProduct, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
     </Grid>
 </Page>

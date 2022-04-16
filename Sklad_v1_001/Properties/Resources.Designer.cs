@@ -1339,7 +1339,7 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Резервх(возврат).
+        ///   Ищет локализованную строку, похожую на Резерв(возврат).
         /// </summary>
         public static string ProductStatus2 {
             get {
