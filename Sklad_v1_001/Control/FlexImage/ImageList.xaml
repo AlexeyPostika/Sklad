@@ -57,7 +57,8 @@
                            Grid.Row="3"
                            HorizontalAlignment="Left" 
                            VerticalAlignment="Stretch"
-                           Height="Auto"    
+                           Height="Auto" 
+                           Source="{Binding ElementName=control, Path=ListImageControl[0], UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                            Width="Auto"/>
                 <Image x:Name="image2"
                            Grid.Column="4" 
@@ -65,20 +66,23 @@
                            HorizontalAlignment="Left" 
                            VerticalAlignment="Stretch"
                            Height="Auto"    
+                           Source="{Binding ElementName=control, Path=ListImageControl[1], UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                            Width="Auto"/>
                 <Image x:Name="image3"
                            Grid.Column="6" 
                            Grid.Row="3"
                            HorizontalAlignment="Left" 
                            VerticalAlignment="Stretch"
-                           Height="Auto"    
+                           Height="Auto" 
+                           Source="{Binding ElementName=control, Path=ListImageControl[2], UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                            Width="Auto"/>
                 <Image x:Name="image4"
                            Grid.Column="8" 
                            Grid.Row="3"
                            HorizontalAlignment="Left" 
                            VerticalAlignment="Stretch"
-                           Height="Auto"    
+                           Height="Auto"   
+                           Source="{Binding ElementName=control, Path=ListImageControl[3], UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                            Width="Auto"/>
                 <Grid Grid.Column="9"
                           Grid.Row="3">

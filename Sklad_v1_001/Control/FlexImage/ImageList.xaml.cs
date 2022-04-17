@@ -209,41 +209,10 @@ namespace Sklad_v1_001.Control.FlexImage
             get { return (List<BitmapImage>)GetValue(ListImageControlProperty); }
             set { SetValue(ListImageControlProperty, value);}
         }
-        //List<BitmapImage> listImageControl;
+       
         Int32 tempClick;
-
         public int TempClick { get => tempClick; set => tempClick = value; }
-        //public List<BitmapImage> ListImageControl
-        //{
-        //    get
-        //    {
-        //        return listImageControl;
-        //    }
-        //    set
-        //    {
-        //        listImageControl = value;
-        //        if (ListImageControl.Count > 0)
-        //        {
-        //            TempClick++;
-        //            if (Math.Abs(TempClick) < ListImageControl.Count - 1)
-        //            {
-        //                image4.Source = image3.Source;
-        //                image3.Source = image2.Source;
-        //                image2.Source = image1.Source;
-        //                image1.Source = image.Source;
-        //                image.Source = ListImageControl[Math.Abs(TempClick)];
-        //                buttonNext.IsEnabled = true;
-        //            }
-        //            else
-        //            {
-        //                buttonNext.IsEnabled = true;
-        //                buttonBrak.IsEnabled = false;
-        //            }
-        //        }
-                
-        //    }
-        //}     
-
+       
         public ImageList()
         {
             InitializeComponent();           
@@ -257,9 +226,7 @@ namespace Sklad_v1_001.Control.FlexImage
             ImageDowload = ImageHelper.GenerateImage("IconDownload.png");
             ImageClear = ImageHelper.GenerateImage("IconErase.png");
             ImageSave = ImageHelper.GenerateImage("IconSaveAs.png");
-
-            FillImage();
-
+         
         }
 
         private void ButtonBrak_Click(object sender, RoutedEventArgs e)
@@ -421,35 +388,6 @@ namespace Sklad_v1_001.Control.FlexImage
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog();
-        }
-        private void FillImage()
-        {
-            if (ListImageControl != null && ListImageControl.Count() > 0)
-            {
-                switch (ListImageControl.Count())
-                {
-                    case 1:
-                        image1.Source = ListImageControl[0];
-                        break;
-                    case 2:
-                        image1.Source = ListImageControl[0];
-                        image2.Source = ListImageControl[1];
-                        break;
-                    case 3:
-                        image1.Source = ListImageControl[0];
-                        image2.Source = ListImageControl[1];
-                        image3.Source = ListImageControl[2];
-                        break;
-                    case 4:
-                        image1.Source = ListImageControl[0];
-                        image2.Source = ListImageControl[1];
-                        image3.Source = ListImageControl[2];
-                        image4.Source = ListImageControl[3];
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
+        }      
     }
 }
