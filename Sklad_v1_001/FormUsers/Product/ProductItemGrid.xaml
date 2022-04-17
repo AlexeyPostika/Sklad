@@ -22,6 +22,8 @@
                              TagPrice="{Binding Path=TagPriceRUS, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}"
                              Showcase="{Binding Path=Showcase, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                              Description="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                             SizeString="{Binding Path=SizeProduct, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                             SizeString="{Binding Path=SizeProduct, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                             PhotoImage="{Binding Path=PhotoImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                             ListImageControl="{Binding Path=ListImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
     </Grid>
 </Page>

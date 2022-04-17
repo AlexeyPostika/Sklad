@@ -27,7 +27,18 @@ namespace Sklad_v1_001.Control.FlexImage
     public partial class ImageList : UserControl, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-       
+
+        public void OnPropertyChanged([CallerMemberName]string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
+
+        public static readonly DependencyProperty PhotoImageProperty = DependencyProperty.Register(
+        "PhotoImage",
+        typeof(ImageSource),
+        typeof(ImageList), new UIPropertyMetadata(ImageHelper.GenerateImage("IconNotCamera_X80.png")));
+
         public static readonly DependencyProperty ImageNextProperty = DependencyProperty.Register(
          "ImageNext",
          typeof(BitmapImage),
@@ -97,11 +108,16 @@ namespace Sklad_v1_001.Control.FlexImage
         "SizeString",
         typeof(String),
         typeof(ImageList), new UIPropertyMetadata(String.Empty));
+       
+        public static readonly DependencyProperty ListImageControlProperty = DependencyProperty.Register(
+        "ListImageControl",
+        typeof(List<BitmapImage>),
+        typeof(ImageList), new UIPropertyMetadata());
 
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
+        public ImageSource PhotoImage
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            get { return (BitmapImage)GetValue(PhotoImageProperty); }
+            set { SetValue(PhotoImageProperty, value); }
         }
 
         public BitmapImage ImageNext
@@ -187,45 +203,50 @@ namespace Sklad_v1_001.Control.FlexImage
             get { return (String)GetValue(SizeStringProperty); }
             set { SetValue(SizeStringProperty, value); }
         }
-        List<BitmapImage> listImageControl;
+        ////List<BitmapImage> ListImageControl
+        public List<BitmapImage> ListImageControl
+        {
+            get { return (List<BitmapImage>)GetValue(ListImageControlProperty); }
+            set { SetValue(ListImageControlProperty, value);}
+        }
+        //List<BitmapImage> listImageControl;
         Int32 tempClick;
 
         public int TempClick { get => tempClick; set => tempClick = value; }
-        public List<BitmapImage> ListImageControl
-        {
-            get
-            {
-                return listImageControl;
-            }
-            set
-            {
-                listImageControl = value;
-                if (ListImageControl.Count > 0)
-                {
-                    TempClick++;
-                    if (Math.Abs(TempClick) < ListImageControl.Count - 1)
-                    {
-                        image4.Source = image3.Source;
-                        image3.Source = image2.Source;
-                        image2.Source = image1.Source;
-                        image1.Source = image.Source;
-                        image.Source = ListImageControl[Math.Abs(TempClick)];
-                        buttonNext.IsEnabled = true;
-                    }
-                    else
-                    {
-                        buttonNext.IsEnabled = true;
-                        buttonBrak.IsEnabled = false;
-                    }
-                }
+        //public List<BitmapImage> ListImageControl
+        //{
+        //    get
+        //    {
+        //        return listImageControl;
+        //    }
+        //    set
+        //    {
+        //        listImageControl = value;
+        //        if (ListImageControl.Count > 0)
+        //        {
+        //            TempClick++;
+        //            if (Math.Abs(TempClick) < ListImageControl.Count - 1)
+        //            {
+        //                image4.Source = image3.Source;
+        //                image3.Source = image2.Source;
+        //                image2.Source = image1.Source;
+        //                image1.Source = image.Source;
+        //                image.Source = ListImageControl[Math.Abs(TempClick)];
+        //                buttonNext.IsEnabled = true;
+        //            }
+        //            else
+        //            {
+        //                buttonNext.IsEnabled = true;
+        //                buttonBrak.IsEnabled = false;
+        //            }
+        //        }
                 
-            }
-        }     
+        //    }
+        //}     
 
         public ImageList()
         {
-            InitializeComponent();
-            ListImageControl = new List<BitmapImage>();
+            InitializeComponent();           
            
             TempClick = 0;
             //buttonNext.IsEnabled = false;
@@ -236,7 +257,9 @@ namespace Sklad_v1_001.Control.FlexImage
             ImageDowload = ImageHelper.GenerateImage("IconDownload.png");
             ImageClear = ImageHelper.GenerateImage("IconErase.png");
             ImageSave = ImageHelper.GenerateImage("IconSaveAs.png");
-          
+
+            FillImage();
+
         }
 
         private void ButtonBrak_Click(object sender, RoutedEventArgs e)
@@ -398,6 +421,35 @@ namespace Sklad_v1_001.Control.FlexImage
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog();
+        }
+        private void FillImage()
+        {
+            if (ListImageControl != null && ListImageControl.Count() > 0)
+            {
+                switch (ListImageControl.Count())
+                {
+                    case 1:
+                        image1.Source = ListImageControl[0];
+                        break;
+                    case 2:
+                        image1.Source = ListImageControl[0];
+                        image2.Source = ListImageControl[1];
+                        break;
+                    case 3:
+                        image1.Source = ListImageControl[0];
+                        image2.Source = ListImageControl[1];
+                        image3.Source = ListImageControl[2];
+                        break;
+                    case 4:
+                        image1.Source = ListImageControl[0];
+                        image2.Source = ListImageControl[1];
+                        image3.Source = ListImageControl[2];
+                        image4.Source = ListImageControl[3];
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 }

@@ -50,6 +50,7 @@
                            VerticalAlignment="Stretch"
                            Height="Auto"    
                            Width="Auto"
+                           Source="{Binding ElementName=control, Path=PhotoImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                            Grid.ColumnSpan="9"/>
                 <Image x:Name="image1"
                            Grid.Column="2" 

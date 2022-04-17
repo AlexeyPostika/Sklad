@@ -366,6 +366,7 @@ namespace Sklad_v1_001.FormUsers.Product
         
         private Byte[] photoImageByte;
         private ImageSource photoImage;
+        private List<BitmapImage> listImage;
 
         public int ID
         {
@@ -790,6 +791,20 @@ namespace Sklad_v1_001.FormUsers.Product
                 OnPropertyChanged("PhotoImage");
             }
         }
+        
+        public List<BitmapImage> ListImage
+        {
+            get
+            {
+                return listImage;
+            }
+
+            set
+            {
+                listImage = value;
+                OnPropertyChanged("ListImage");
+            }
+        }
 
         public ImageSource ImageSourceInvoice
         {
@@ -958,6 +973,7 @@ namespace Sklad_v1_001.FormUsers.Product
         {
             ImageSourceTTN = ImageHelper.GenerateImage("IconMinus.png");
             ImageSourceInvoice = ImageHelper.GenerateImage("IconMinus.png");
+            ListImage = new List<BitmapImage>();
         }
     }
 
@@ -1105,12 +1121,16 @@ namespace Sklad_v1_001.FormUsers.Product
         Dictionary<String, Range> filtersFromTo;
 
         string get_store_procedure = "xp_GetProductTable";
+        string get_store_procedure_ProductImage = "xp_GetProductImageTable";
         string get_summary_procedure = "xp_GetProductSummary";
         string get_filters_procedure = "xp_GetProductFilter";
+        string _getSaveProductImage = "xp_SaveProductImage";      //хранимка
 
         SQLCommanSelect _sqlRequestSelect = null;
+        SQLCommanSelect _sqlRequestSelectImage = null;
         SQLCommanSelect _sqlRequestSelectSummary = null;
         SQLCommanSelect _sqlRequestSelectFilters = null;
+        SQLCommanSelect _sqlRequestSave = null;
 
         //результат запроса
         DataTable _data = null;
@@ -1175,8 +1195,10 @@ namespace Sklad_v1_001.FormUsers.Product
             filtersFromTo.Add("TagPriceWithVAT", AmountRange);
 
             _sqlRequestSelect = new SQLCommanSelect();
+            _sqlRequestSelectImage = new SQLCommanSelect();
             _sqlRequestSelectSummary = new SQLCommanSelect();
             _sqlRequestSelectFilters = new SQLCommanSelect();
+            _sqlRequestSave = new SQLCommanSelect();
 
             //----------------------------------------------------------------------------
             _sqlRequestSelect.AddParametr("@p_TypeScreen", SqlDbType.NVarChar);
@@ -1234,6 +1256,11 @@ namespace Sklad_v1_001.FormUsers.Product
             _sqlRequestSelect.SetParametrValue("@p_Sort", 0);
             //----------------------------------------------------------------------------
 
+            _sqlRequestSelectImage.AddParametr("@p_ID", SqlDbType.Int);
+            _sqlRequestSelectImage.SetParametrValue("@p_ID", 0);
+
+            //----------------------------------------------------------------------------
+
             _sqlRequestSelectSummary.AddParametr("@p_Search", SqlDbType.NVarChar);
             _sqlRequestSelectSummary.SetParametrValue("@p_Search", "");
 
@@ -1272,6 +1299,16 @@ namespace Sklad_v1_001.FormUsers.Product
 
             _sqlRequestSelectSummary.AddParametr("@p_TagPriceVATRUS_Max", SqlDbType.Money);
             _sqlRequestSelectSummary.SetParametrValue("@p_TagPriceVATRUS_Max", System.Data.SqlTypes.SqlMoney.MaxValue);
+            //----------------------------------------------------------------------------
+
+            _sqlRequestSave.AddParametr("@p_ID", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_ID", 0);
+
+            _sqlRequestSave.AddParametr("@p_DocumentID", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_DocumentID", 0);
+
+            _sqlRequestSave.AddParametr("@p_Image", SqlDbType.VarBinary);
+            _sqlRequestSave.SetParametrValue("@p_Image", 0);
 
         }
         public DataTable FillGridAllFilter()
@@ -1315,6 +1352,20 @@ namespace Sklad_v1_001.FormUsers.Product
             return _data;
         }
 
+
+        public DataTable FillGridImage(Int32 _documentID)
+        {
+            _sqlRequestSelectImage.SqlAnswer.datatable.Clear();
+            DataTable tempImage = new DataTable();
+
+            _sqlRequestSelectImage.SetParametrValue("@p_ID", _documentID);
+
+            _sqlRequestSelectImage.ComplexRequest(get_store_procedure_ProductImage, CommandType.StoredProcedure, null);
+            tempImage = _sqlRequestSelectImage.SqlAnswer.datatable;
+
+            return tempImage;
+        }
+
         public DataTable FillSummary(LocalFilter localFilter)
         {
             _sqlRequestSelectSummary.SqlAnswer.datatable.Clear();
@@ -1338,6 +1389,22 @@ namespace Sklad_v1_001.FormUsers.Product
 
             _sqlRequestSelectSummary.ComplexRequest(get_summary_procedure, CommandType.StoredProcedure, null);
             _data = _sqlRequestSelectSummary.SqlAnswer.datatable;
+            return _data;
+        }
+
+        //SAVE
+        public DataTable Save(LocalRow _localRow)
+        {
+            _sqlRequestSave.SqlAnswer.datatable.Clear();
+            _data.Clear();
+
+            _sqlRequestSave.SetParametrValue("@p_ID", _localRow.ID);
+            _sqlRequestSave.SetParametrValue("@p_DocumentID", _localRow.ID);
+            _sqlRequestSave.SetParametrValue("@p_Image", _localRow.PhotoImage);
+
+            _sqlRequestSave.ComplexRequest(_getSaveProductImage, CommandType.StoredProcedure, null);
+            _data = _sqlRequestSave.SqlAnswer.datatable;
+
             return _data;
         }
 
@@ -1389,6 +1456,17 @@ namespace Sklad_v1_001.FormUsers.Product
                 _localeRow.PhotoImage = imageSql.BytesToImageSource(_dataRow["ImageProduct"] as byte[]);
             else
                 _localeRow.PhotoImage = ImageHelper.GenerateImage("IconNotCamera_X80.png");
+
+            DataTable tempImage = FillGridImage(_localeRow.ID);
+            if (tempImage != null && tempImage.Rows.Count > 0)
+            {               
+                foreach (DataRow row in tempImage.Rows)
+                {
+                    if (row["Images"] as byte[] != null)
+                        _localeRow.ListImage.Add(imageSql.BytesToImageSource(row["Images"] as byte[]));
+                }
+               
+            }
 
             return _localeRow;
         }
