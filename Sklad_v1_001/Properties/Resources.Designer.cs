@@ -70,7 +70,7 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Поставщик.
+        ///   Ищет локализованную строку, похожую на Rfh.
         /// </summary>
         public static string ADDDELIVERY {
             get {
@@ -1726,7 +1726,7 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на В Карзину.
+        ///   Ищет локализованную строку, похожую на В Корзину.
         /// </summary>
         public static string TOBASKET {
             get {

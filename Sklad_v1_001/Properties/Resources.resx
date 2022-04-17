@@ -577,7 +577,7 @@
     <value>Менеджер компании</value>
   </data>
   <data name="ADDDELIVERY" xml:space="preserve">
-    <value>Поставщик</value>
+    <value>Rfh</value>
   </data>
   <data name="ADDPRODUCT" xml:space="preserve">
     <value>Новый продукт</value>
@@ -685,7 +685,7 @@
     <value>Новая поставка</value>
   </data>
   <data name="TOBASKET" xml:space="preserve">
-    <value>В Карзину</value>
+    <value>В Корзину</value>
   </data>
   <data name="ProductStatus0" xml:space="preserve">
     <value>В магазине</value>
