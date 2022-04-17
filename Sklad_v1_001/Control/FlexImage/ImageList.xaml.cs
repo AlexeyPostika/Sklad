@@ -211,8 +211,9 @@ namespace Sklad_v1_001.Control.FlexImage
         }
        
         Int32 tempClick;
+
         public int TempClick { get => tempClick; set => tempClick = value; }
-       
+        
         public ImageList()
         {
             InitializeComponent();           
@@ -225,8 +226,7 @@ namespace Sklad_v1_001.Control.FlexImage
             ImageBrake = ImageHelper.GenerateImage("chevron_left_30px.png");
             ImageDowload = ImageHelper.GenerateImage("IconDownload.png");
             ImageClear = ImageHelper.GenerateImage("IconErase.png");
-            ImageSave = ImageHelper.GenerateImage("IconSaveAs.png");
-         
+            ImageSave = ImageHelper.GenerateImage("IconSaveAs.png");          
         }
 
         private void ButtonBrak_Click(object sender, RoutedEventArgs e)
@@ -234,43 +234,14 @@ namespace Sklad_v1_001.Control.FlexImage
             if (ListImageControl.Count > 0)
             {
                 TempClick++;
-                if (Math.Abs(TempClick) < ListImageControl.Count - 1)
-                {
-                    image4.Source = image3.Source;
-                    image3.Source = image2.Source;
-                    image2.Source = image1.Source;
-                    image1.Source = image.Source;
-                    image.Source = ListImageControl[Math.Abs(TempClick)];
-                    buttonNext.IsEnabled = true;
-                }
-                else
-                {
-                    buttonNext.IsEnabled = true;
-                    buttonBrak.IsEnabled = false;
-                }
+                FillImage(TempClick);
             }
         }
 
         private void ButtonNext_Click(object sender, RoutedEventArgs e)
         {
-            if (ListImageControl.Count > 0)
-            {
-                TempClick--;
-                if (TempClick > 0 && Math.Abs(TempClick) < ListImageControl.Count - 1)
-                {
-                    image.Source = image1.Source;
-                    image1.Source = image2.Source;
-                    image2.Source = image3.Source;
-                    image3.Source = image4.Source;
-                    image4.Source = ListImageControl[Math.Abs(TempClick)];
-                    buttonBrak.IsEnabled = true;
-                }
-                else
-                {
-                    buttonNext.IsEnabled = false;
-                    buttonBrak.IsEnabled = true;
-                }
-            }
+            TempClick--;
+            FillImage(TempClick);
         }
 
         #region FileDocument
@@ -388,6 +359,89 @@ namespace Sklad_v1_001.Control.FlexImage
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog();
-        }      
+        }
+        private void FillImage(int _clivk)
+        {
+            if (ListImageControl != null && ListImageControl.Count() > 0)
+            {
+                switch (ListImageControl.Count())
+                {
+                    case 1:                      
+                        break;
+                    case 2:
+                        if (_clivk > 0)
+                        {
+                            ImageSource imageSource = image1.Source;                           
+                            image1.Source = image.Source;
+                            image.Source = imageSource;
+                        }
+                        else
+                        {
+                            ImageSource imageSource = image.Source;
+                            image.Source = image1.Source;
+                            image1.Source = imageSource;
+                            
+                        }
+                        break;
+                    case 3:
+                        if (_clivk > 0)
+                        {
+                            ImageSource imageSource = PhotoImage;
+                            PhotoImage = image1.Source;
+                            image1.Source = image2.Source;
+                            image2.Source = imageSource;
+                        }
+                        else
+                        {
+                            ImageSource imageSource = image2.Source;
+                            image2.Source = image1.Source;
+                            image1.Source = PhotoImage;
+                            PhotoImage = imageSource;
+                        }                        
+                        break;
+                    case 4:                   
+                        if (_clivk > 0)
+                        {
+                            ImageSource imageSource = PhotoImage;
+                            PhotoImage = image1.Source;
+                            image1.Source = image2.Source;
+                            image2.Source = image3.Source;
+                            image3.Source = imageSource;
+                        }
+                        else
+                        {
+                            ImageSource imageSource = image3.Source;
+                            image3.Source = image2.Source;
+                            image2.Source = image1.Source;
+                            image1.Source = PhotoImage;
+                            PhotoImage = imageSource;
+                        }                     
+                        break;
+                    case 5:
+                        if (_clivk > 0)
+                        {
+                            ImageSource imageSource = PhotoImage;
+                            PhotoImage = image1.Source;
+                            image1.Source = image2.Source;
+                            image2.Source = image3.Source;
+                            image3.Source = image4.Source;
+                            image4.Source = imageSource;
+                        }
+                        else
+                        {
+                            ImageSource imageSource = image4.Source;
+                            image4.Source = image3.Source;
+                            image3.Source = image2.Source;
+                            image2.Source = image1.Source;
+                            image1.Source = PhotoImage;
+                            PhotoImage = imageSource;
+                        }
+                        break;
+                    default:
+                       break;
+                }
+                TempClick = 0;
+            }
+        }
     }
 }
