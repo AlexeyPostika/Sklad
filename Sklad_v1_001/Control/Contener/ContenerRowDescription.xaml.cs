@@ -25,7 +25,7 @@ namespace Sklad_v1_001.Control.Contener
         public static readonly DependencyProperty PhotoImageProperty = DependencyProperty.Register(
                         "PhotoImage",
                         typeof(ImageSource),
-                       typeof(ContenerRowDescription));
+                        typeof(ContenerRowDescription));
         // свойство зависимостей
         public static readonly DependencyProperty TextValue1Property = DependencyProperty.Register(
                         "TextValue1",

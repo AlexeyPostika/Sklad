@@ -18,6 +18,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static Sklad_v1_001.HelperGlobal.MessageBoxTitleHelper;
+using Sklad_v1_001.Control.FlexMessageBox;
 
 namespace Sklad_v1_001.Control.FlexImage
 {
@@ -111,12 +113,12 @@ namespace Sklad_v1_001.Control.FlexImage
        
         public static readonly DependencyProperty ListImageControlProperty = DependencyProperty.Register(
         "ListImageControl",
-        typeof(List<BitmapImage>),
+        typeof(List<ImageSource>),
         typeof(ImageList), new UIPropertyMetadata());
 
         public ImageSource PhotoImage
         {
-            get { return (BitmapImage)GetValue(PhotoImageProperty); }
+            get { return (ImageSource)GetValue(PhotoImageProperty); }
             set { SetValue(PhotoImageProperty, value); }
         }
 
@@ -204,9 +206,9 @@ namespace Sklad_v1_001.Control.FlexImage
             set { SetValue(SizeStringProperty, value); }
         }
         ////List<BitmapImage> ListImageControl
-        public List<BitmapImage> ListImageControl
+        public List<ImageSource> ListImageControl
         {
-            get { return (List<BitmapImage>)GetValue(ListImageControlProperty); }
+            get { return (List<ImageSource>)GetValue(ListImageControlProperty); }
             set { SetValue(ListImageControlProperty, value);}
         }
        
@@ -245,7 +247,7 @@ namespace Sklad_v1_001.Control.FlexImage
         }
 
         #region FileDocument
-        public void OpenFile()
+        public void OpenFile(Int32? _count=null)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Multiselect = true;
@@ -253,25 +255,48 @@ namespace Sklad_v1_001.Control.FlexImage
             // Открываем окно диалога с пользователем.
             if (openFileDialog.ShowDialog() == true)
             {
-
                 // Получаем расширение файла, выбранного пользователем.
                 var extension = openFileDialog.FileName;
-
-                foreach (String file in openFileDialog.FileNames)
+                if (_count != null)
                 {
-                    // Create a PictureBox.
-                    try
+                    int i = 0;
+                    while (i < _count)
                     {
-                        BitmapImage loadedImage = new BitmapImage(new Uri(file));
-                        ListImageControl.Add(loadedImage);
+                        // Create a PictureBox.
+                        try
+                        {
+                            BitmapImage loadedImage = new BitmapImage(new Uri(openFileDialog.FileNames[i].ToString()));
+                            ListImageControl.Add(loadedImage);
+                        }
+                        catch (Exception ex)
+                        {
+                            // The user lacks appropriate permissions to read files, discover paths, etc.
+                            MessageBox.Show("Security error. Please contact your administrator for details.\n\n" +
+                                "Error message: " + ex.Message + "\n\n" +
+                                "Details (send to Support):\n\n" + ex.StackTrace
+                            );
+                        }
+                        i++;
                     }
-                    catch (Exception ex)
+                }
+                else
+                {
+                    foreach (String file in openFileDialog.FileNames)
                     {
-                        // The user lacks appropriate permissions to read files, discover paths, etc.
-                        MessageBox.Show("Security error. Please contact your administrator for details.\n\n" +
-                            "Error message: " + ex.Message + "\n\n" +
-                            "Details (send to Support):\n\n" + ex.StackTrace
-                        );
+                        // Create a PictureBox.
+                        try
+                        {
+                            BitmapImage loadedImage = new BitmapImage(new Uri(file));
+                            ListImageControl.Add(loadedImage);
+                        }
+                        catch (Exception ex)
+                        {
+                            // The user lacks appropriate permissions to read files, discover paths, etc.
+                            MessageBox.Show("Security error. Please contact your administrator for details.\n\n" +
+                                "Error message: " + ex.Message + "\n\n" +
+                                "Details (send to Support):\n\n" + ex.StackTrace
+                            );
+                        }
                     }
                 }
                 // Проверяем есть ли в ОС программа, которая может открыть
@@ -312,7 +337,7 @@ namespace Sklad_v1_001.Control.FlexImage
             MessageBox.Show(message);
         }
 
-        public void Save(string filePuth, List<BitmapImage> _ist)
+        public void Save(string filePuth, List<ImageSource> _ist)
         {
             string filename = "";
             Int32 temp = 0;
@@ -340,20 +365,51 @@ namespace Sklad_v1_001.Control.FlexImage
 
         private void ButtonDowload_Click(object sender, RoutedEventArgs e)
         {
-            OpenFile();
-            image.Source = ListImageControl.First();
-            image1.Source = ListImageControl[1];
-            image2.Source = ListImageControl[2];
-            image3.Source = ListImageControl[3];
-            image4.Source = ListImageControl[4];
-            TempClick = ListImageControl.Count - 1;
-            buttonNext.IsEnabled = true;
-            buttonBrak.IsEnabled = false;
+            int temp = 5 - ListImageControl.Count();
+            if (temp > 0)
+            {
+                OpenFile(temp);
+                image.Source = ListImageControl.First();
+                image1.Source = ListImageControl[1];
+                image2.Source = ListImageControl[2];
+                image3.Source = ListImageControl[3];
+                image4.Source = ListImageControl[4];
+            }
+            else
+            {
+                FlexMessageBox.FlexMessageBox flexMessageBox = new FlexMessageBox.FlexMessageBox();
+                List<BitmapImage> ButtonImages = new List<BitmapImage>();
+                ButtonImages.Add(ImageHelper.GenerateImage("IconAdd.png"));
+                ButtonImages.Add(ImageHelper.GenerateImage("IconContinueWork.png"));
+                List<string> ButtonText = new List<string>();
+                ButtonText.Add(Properties.Resources.AddSmall);
+                ButtonText.Add(Properties.Resources.MessageIgnore);
+                
+                flexMessageBox.Show(Properties.Resources.NotPhotoCount, GenerateTitle(TitleType.Error, Properties.Resources.ErrorTitleOpenImage), MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
-            ListImageControl.Clear();
+            ListImageControl.Remove(image.Source);
+            switch (ListImageControl.Count())
+            {
+                case 0:
+                    image.Source = ImageHelper.GenerateImage("IconNotCamera_X80.png");
+                    image1.Source = null;
+                    image2.Source = null;
+                    image3.Source = null;
+                    image4.Source = null;
+                    break;
+                default:
+                    ImageSource imageSource = null;
+                    PhotoImage = image1.Source;
+                    image1.Source = image2.Source;
+                    image2.Source = image3.Source;
+                    image3.Source = image4.Source;
+                    image4.Source = imageSource;
+                    break;
+            }       
         }
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)

@@ -366,7 +366,7 @@ namespace Sklad_v1_001.FormUsers.Product
         
         private Byte[] photoImageByte;
         private ImageSource photoImage;
-        private List<BitmapImage> listImage;
+        private List<ImageSource> listImage;
 
         public int ID
         {
@@ -792,7 +792,7 @@ namespace Sklad_v1_001.FormUsers.Product
             }
         }
         
-        public List<BitmapImage> ListImage
+        public List<ImageSource> ListImage
         {
             get
             {
@@ -973,7 +973,7 @@ namespace Sklad_v1_001.FormUsers.Product
         {
             ImageSourceTTN = ImageHelper.GenerateImage("IconMinus.png");
             ImageSourceInvoice = ImageHelper.GenerateImage("IconMinus.png");
-            ListImage = new List<BitmapImage>();
+            ListImage = new List<ImageSource>();
         }
     }
 

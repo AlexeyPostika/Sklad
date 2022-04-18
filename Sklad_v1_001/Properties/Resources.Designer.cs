@@ -124,6 +124,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Добавить.
+        /// </summary>
+        public static string AddSmall {
+            get {
+                return ResourceManager.GetString("AddSmall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Адресс доставки.
         /// </summary>
         public static string Adress {
@@ -628,6 +637,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Загрузка фото.
+        /// </summary>
+        public static string ErrorTitleOpenImage {
+            get {
+                return ResourceManager.GetString("ErrorTitleOpenImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Внимание.
         /// </summary>
         public static string ExclamationTitle {
@@ -1056,6 +1074,15 @@ namespace Sklad_v1_001.Properties {
         public static string NmaeManager {
             get {
                 return ResourceManager.GetString("NmaeManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Превышено разрешимое количество фото.
+        /// </summary>
+        public static string NotPhotoCount {
+            get {
+                return ResourceManager.GetString("NotPhotoCount", resourceCulture);
             }
         }
         

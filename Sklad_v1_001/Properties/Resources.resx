@@ -750,4 +750,13 @@
   <data name="Filters" xml:space="preserve">
     <value>ФИЛЬТРЫ</value>
   </data>
+  <data name="AddSmall" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="ErrorTitleOpenImage" xml:space="preserve">
+    <value>Загрузка фото</value>
+  </data>
+  <data name="NotPhotoCount" xml:space="preserve">
+    <value>Превышено разрешимое количество фото</value>
+  </data>
 </root>
