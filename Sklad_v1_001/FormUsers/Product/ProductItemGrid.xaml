@@ -20,10 +20,12 @@
                              CategoryDetails="{Binding Path=CategoryDetailsName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                              Status="{Binding Path=StatusString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                              TagPrice="{Binding Path=TagPriceRUS, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}"
-                             Showcase="{Binding Path=Showcase, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                             Showcase="{Binding Path=ShowcaseIDName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                             ShowcaseID="{Binding Path=ShowcaseID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                              Description="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                              SizeString="{Binding Path=SizeProduct, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                              PhotoImage="{Binding Path=PhotoImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                             ProcreatorName="{Binding Path=ProcreatorIDName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                              ListImageControl="{Binding Path=ListImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
     </Grid>
 </Page>

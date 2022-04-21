@@ -54,6 +54,7 @@ namespace Sklad_v1_001.FormUsers.Product
             this.attribute = _attributes;
 
             this.Edit.DataContext = LocalRowDetails;
+            this.Edit.DataListCollectionShowCase = attribute.datalistShowCase;           
         }
     }
 }

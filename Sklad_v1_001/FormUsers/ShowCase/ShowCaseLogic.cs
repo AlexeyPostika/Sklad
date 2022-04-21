@@ -120,6 +120,8 @@ namespace Sklad_v1_001.FormUsers.ShowCase
         private String name;
         private String description;
         private Boolean isActive;
+
+        private Int32 showcaseID;
        
         public Int32 ID
         {
@@ -132,6 +134,20 @@ namespace Sklad_v1_001.FormUsers.ShowCase
             {
                 iD = value;
                 OnPropertyChanged("ID");
+            }
+        }
+
+        public Int32 ShowcaseID
+        {
+            get
+            {
+                return showcaseID;
+            }
+
+            set
+            {
+                showcaseID = value;
+                OnPropertyChanged("ShowcaseID");
             }
         }
         public String Name
@@ -236,7 +252,7 @@ namespace Sklad_v1_001.FormUsers.ShowCase
         {
             convertData = new ConvertData(_dataRow, _localeRow);
 
-            _localeRow.ID = convertData.ConvertDataInt32("ID");
+            _localeRow.ShowcaseID = convertData.ConvertDataInt32("ID");
             _localeRow.Name = convertData.ConvertDataString("Name");
             _localeRow.Description = convertData.ConvertDataString("Description");
             _localeRow.IsActive = convertData.ConvertDataBoolean("IsActive");          

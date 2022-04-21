@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Sklad_v1_001.Control.FlexImage"
              xmlns:FlexText="clr-namespace:Sklad_v1_001.Control.FlexTextBox"
+             xmlns:FlexComboBox="clr-namespace:Sklad_v1_001.Control.FlexComboBox"
              xmlns:res="clr-namespace:Sklad_v1_001.Properties"
              mc:Ignorable="d"            
              Style="{DynamicResource UsersControlColor}"
@@ -164,51 +165,61 @@
                 </Button>
             </Grid>
         </StackPanel>
+        
         <WrapPanel x:Name="wrapPanel" Grid.Column="1">
             <StackPanel>
                 <FlexText:FlexLabelTextBox x:Name="Shtrix" LabelText="{x:Static res:Resources.ShtrixCode}"
                                        Description="{Binding ElementName=control, Path=BareCode, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                        EnableTextBox="False"
-                                       Width="200"/>
+                                       Width="250"/>
               
                 <FlexText:FlexLabelTextBox x:Name="Type" LabelText="{x:Static res:Resources.TypeProduct}"
                                        Description="{Binding  ElementName=control, Path=Category, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                        EnableTextBox="False"
-                                       Width="200"/>
+                                       Width="250"/>
 
                 <FlexText:FlexLabelTextBox x:Name="categorydetails" LabelText="{x:Static res:Resources.CATEGORYDETAILS}"
                                        Description="{Binding  ElementName=control, Path=CategoryDetails, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                        EnableTextBox="False"
-                                       Width="200"/>
+                                       Width="250"/>
 
-
-                <FlexText:FlexLabelTextBox x:Name="statusEdit" LabelText="{x:Static res:Resources.Status}"
-                                       Description="{Binding ElementName=control, Path=Status, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                <FlexText:FlexLabelTextBox x:Name="Vitrina" LabelText="{x:Static res:Resources.Procreator}"
+                                       Description="{Binding ElementName=control, Path=ProcreatorName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                        EnableTextBox="False"
-                                       Width="200"/>
+                                       Width="250"/>
 
                 <FlexText:FlexLabelTextBox x:Name="Cena" LabelText="{x:Static res:Resources.CenaProduct}"
                                        Description="{Binding ElementName=control, Path=TagPrice, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                        EnableTextBox="False"
-                                       Width="200"/>
+                                       Width="250"/>
 
             </StackPanel>
             <StackPanel>
                 <FlexText:FlexLabelTextBlock x:Name="Product" LabelText="{x:Static res:Resources.NameProduct}"
                                        Description="{Binding ElementName=control, Path=NameString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                        EnableTextBox="False"
-                                       Width="200"
+                                       Width="250"
                                        HeightTextBlock="86"/>
 
-                <FlexText:FlexLabelTextBox x:Name="Vitrina" LabelText="{x:Static res:Resources.Vitrina}"
-                                       Description="{Binding ElementName=control, Path=Showcase, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                <FlexComboBox:ComboBoxWithlabelToAddEdit x:Name="showCase"                                                              
+                                                         LabelText="{x:Static res:Resources.Vitrina}" 
+                                                         LabelWidth="80"
+                                                         IsRequired="Collapsed"  
+                                                         IsEnableEdit="False"
+                                                         IsEnableAdd="False"
+                                                         Value="{Binding Path=ShowcaseID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                         Visibility="Visible"
+                                                         Width="250"/>
+               
+                <FlexText:FlexLabelTextBox x:Name="statusEdit" LabelText="{x:Static res:Resources.Status}"
+                                       Description="{Binding ElementName=control, Path=Status, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                        EnableTextBox="False"
-                                       Width="200"/>
+                                       Width="250"/>
 
                 <FlexText:FlexLabelTextBox x:Name="sizeText" LabelText="{x:Static res:Resources.SizeProduct}"
                                        Description="{Binding ElementName=control, Path=SizeString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                        EnableTextBox="False"
-                                       Width="200"/>
+                                       Width="250"/>
                
 
               
@@ -219,7 +230,7 @@
                                          LabelText="{x:Static res:Resources.Discription}"
                                          Description="{Binding ElementName=control, Path=Description, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                          EnableTextBox="True"
-                                         Width="200"
+                                         Width="250"
                                          HeightTextBlock="142"/>
 
 

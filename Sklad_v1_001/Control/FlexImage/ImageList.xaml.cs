@@ -20,6 +20,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static Sklad_v1_001.HelperGlobal.MessageBoxTitleHelper;
 using Sklad_v1_001.Control.FlexMessageBox;
+using System.Collections.ObjectModel;
 
 namespace Sklad_v1_001.Control.FlexImage
 {
@@ -101,6 +102,11 @@ namespace Sklad_v1_001.Control.FlexImage
         typeof(String),
         typeof(ImageList), new UIPropertyMetadata(String.Empty));
 
+        public static readonly DependencyProperty ShowcaseIDProperty = DependencyProperty.Register(
+        "ShowcaseID",
+        typeof(Int32),
+        typeof(ImageList), new UIPropertyMetadata(0));
+
         public static readonly DependencyProperty DescriptionProperty = DependencyProperty.Register(
         "Description",
         typeof(String),
@@ -115,6 +121,16 @@ namespace Sklad_v1_001.Control.FlexImage
         "ListImageControl",
         typeof(List<ImageSource>),
         typeof(ImageList), new UIPropertyMetadata());
+
+        public static readonly DependencyProperty DataListCollectionShowCaseProperty = DependencyProperty.Register(
+        "DataListCollectionShowCase",
+        typeof(ObservableCollection<FormUsers.ShowCase.LocaleRow>),
+        typeof(ImageList), new UIPropertyMetadata());
+      
+        public static readonly DependencyProperty ProcreatorNameProperty = DependencyProperty.Register(
+        "ProcreatorName",
+        typeof(String),
+        typeof(ImageList), new UIPropertyMetadata(String.Empty));
 
         public ImageSource PhotoImage
         {
@@ -188,6 +204,12 @@ namespace Sklad_v1_001.Control.FlexImage
             set { SetValue(TagPriceProperty, value); }
         }
 
+        public Int32 ShowcaseID
+        {
+            get { return (Int32)GetValue(ShowcaseIDProperty); }
+            set { SetValue(ShowcaseIDProperty, value); }
+        }
+
         public String Showcase
         {
             get { return (String)GetValue(ShowcaseProperty); }
@@ -205,13 +227,29 @@ namespace Sklad_v1_001.Control.FlexImage
             get { return (String)GetValue(SizeStringProperty); }
             set { SetValue(SizeStringProperty, value); }
         }
-        ////List<BitmapImage> ListImageControl
+
         public List<ImageSource> ListImageControl
         {
             get { return (List<ImageSource>)GetValue(ListImageControlProperty); }
             set { SetValue(ListImageControlProperty, value);}
         }
-       
+        
+        public ObservableCollection<FormUsers.ShowCase.LocaleRow> DataListCollectionShowCase
+        {
+            get { return (ObservableCollection<FormUsers.ShowCase.LocaleRow>)GetValue(DataListCollectionShowCaseProperty); }
+            set 
+            { 
+                SetValue(DataListCollectionShowCaseProperty, value); 
+                showCase.ComboBoxElement.ItemsSource = DataListCollectionShowCase; 
+            }
+        }
+
+        public String ProcreatorName
+        {
+            get { return (String)GetValue(ProcreatorNameProperty); }
+            set { SetValue(ProcreatorNameProperty, value); }
+        }
+
         Int32 tempClick;
 
         public int TempClick { get => tempClick; set => tempClick = value; }
@@ -221,14 +259,14 @@ namespace Sklad_v1_001.Control.FlexImage
             InitializeComponent();           
            
             TempClick = 0;
-            //buttonNext.IsEnabled = false;
-            //buttonBrak.IsEnabled = false;
-
+            
             ImageNext = ImageHelper.GenerateImage("chevron_right_30px.png");
             ImageBrake = ImageHelper.GenerateImage("chevron_left_30px.png");
             ImageDowload = ImageHelper.GenerateImage("IconDownload.png");
             ImageClear = ImageHelper.GenerateImage("IconErase.png");
-            ImageSave = ImageHelper.GenerateImage("IconSaveAs.png");          
+            ImageSave = ImageHelper.GenerateImage("IconSaveAs.png");
+
+            showCase.ComboBoxElement.ItemsSource = DataListCollectionShowCase;
         }
 
         private void ButtonBrak_Click(object sender, RoutedEventArgs e)
