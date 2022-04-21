@@ -93,8 +93,7 @@ namespace Sklad_v1_001.GlobalList
         public String Phones { get; set; }
         public String Description { get; set; } // ManagerName
     }
-
- 
+    
     public class DateTimeListFilter
     {
         public ObservableCollection<DateTimeItem> innerList { get; set; }

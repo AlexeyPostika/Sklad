@@ -2,6 +2,7 @@
 using Sklad_v1_001.FormUsers.CategoryDetails;
 using Sklad_v1_001.FormUsers.Delivery;
 using Sklad_v1_001.FormUsers.DeliveryDetails;
+using Sklad_v1_001.FormUsers.ShowCase;
 using Sklad_v1_001.FormUsers.Userss;
 using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.HelperGlobal;
@@ -48,6 +49,10 @@ namespace Sklad_v1_001.GlobalAttributes
         public ObservableCollection<Category> datalistCategory;
         public ObservableCollection<CategoryDetails> datalistCategoryDetails;
 
+        //Объекты
+        //Витрины
+        ShowCaseLogic showcaseLogic;
+        public ObservableCollection<FormUsers.ShowCase.LocaleRow> datalistShowCase;
 
         //Delivery and DeliveryDetails
         DeliveryLogic deliverLogic;
@@ -76,7 +81,11 @@ namespace Sklad_v1_001.GlobalAttributes
             datalistDeliveryDetailsCompany = new ObservableCollection<DeliveryCompanyDetails>();
             FillDeliverycompany();
             FillDeliveryCompanyDetails();
-            
+
+            //загрузка витрин          
+            datalistShowCase = new ObservableCollection<FormUsers.ShowCase.LocaleRow>();
+            FillShowCase();
+
             //загружаем пользователей
             datalistUsers = new ObservableCollection<users>();
             FillUsers();
@@ -123,6 +132,17 @@ namespace Sklad_v1_001.GlobalAttributes
             foreach (DataRow row in shemaStorage.GetDeliveryCompanyTable)
             {
                 datalistDeliveryDetailsCompany.Add(deliveryDetailsLogic.ConvertDeliveryDetails(row, new DeliveryCompanyDetails()));
+            }
+        }
+        public void FillShowCase()
+        {
+            showcaseLogic = new ShowCaseLogic();
+            FormUsers.ShowCase.LocalFilter localFilter = new FormUsers.ShowCase.LocalFilter();
+            localFilter.IsActive = "1"; // только активные витрины
+            DataTable dataTable = showcaseLogic.FillGrid(localFilter);
+            foreach (DataRow row in dataTable.Rows)
+            {
+                datalistShowCase.Add(showcaseLogic.ConvertComboBox(row, new FormUsers.ShowCase.LocaleRow()));
             }
         }
 
