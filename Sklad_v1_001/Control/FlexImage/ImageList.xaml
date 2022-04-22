@@ -183,10 +183,20 @@
                                        EnableTextBox="False"
                                        Width="250"/>
 
-                <FlexText:FlexLabelTextBox x:Name="Vitrina" LabelText="{x:Static res:Resources.Procreator}"
+                <FlexComboBox:ComboBoxWithlabelToAddEdit x:Name="procreator"                                                              
+                                                         LabelText="{x:Static res:Resources.Procreator}" 
+                                                         LabelWidth="120"
+                                                         IsRequired="Collapsed"  
+                                                         IsEnableEdit="False"
+                                                         IsEnableAdd="False"
+                                                         Value="{Binding Path=ManufacturerID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                         Visibility="Visible"
+                                                         Width="250"/>
+                
+                <!--<FlexText:FlexLabelTextBox x:Name="Vitrina" LabelText="{x:Static res:Resources.Procreator}"
                                        Description="{Binding ElementName=control, Path=ProcreatorName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                        EnableTextBox="False"
-                                       Width="250"/>
+                                       Width="250"/>-->
 
                 <FlexText:FlexLabelTextBox x:Name="Cena" LabelText="{x:Static res:Resources.CenaProduct}"
                                        Description="{Binding ElementName=control, Path=TagPrice, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"

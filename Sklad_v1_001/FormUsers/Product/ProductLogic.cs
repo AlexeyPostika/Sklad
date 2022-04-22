@@ -328,8 +328,8 @@ namespace Sklad_v1_001.FormUsers.Product
         private Int32 categoryDetailsID;
         private String categoryDetailsName;
         private String categoryDetailsDescription;
-        private Int32 procreatorID; //производитель
-        private String procreatorIDName;
+        private Int32 manufacturerID; //производитель
+        private String manufacturerIDName;
         private Int32 showcaseID;
         private String showcaseIDName;
         private String description;
@@ -900,31 +900,31 @@ namespace Sklad_v1_001.FormUsers.Product
             }
         }
      
-        public Int32 ProcreatorID
+        public Int32 ManufacturerID
         {
             get
             {
-                return procreatorID;
+                return manufacturerID;
             }
 
             set
             {
-                procreatorID = value;
-                OnPropertyChanged("ProcreatorID");
+                manufacturerID = value;
+                OnPropertyChanged("ManufacturerID");
             }
         }
 
-        public String ProcreatorIDName
+        public String ManufacturerIDName
         {
             get
             {
-                return procreatorIDName;
+                return manufacturerIDName;
             }
 
             set
             {
-                procreatorIDName = value;
-                OnPropertyChanged("ProcreatorIDName");
+                manufacturerIDName = value;
+                OnPropertyChanged("ManufacturerIDName");
             }
         }
         public String Description
@@ -1426,8 +1426,8 @@ namespace Sklad_v1_001.FormUsers.Product
             _localeRow.CategoryDetailsName = convertData.ConvertDataString("CategoryDetailsName");
 
             _localeRow.BarCodeString = convertData.ConvertDataString("BarCodeString");
-            _localeRow.ProcreatorID = convertData.ConvertDataInt32("ProcreatorID");
-            _localeRow.ProcreatorIDName= convertData.ConvertDataString("ProcreatorIDName");
+            _localeRow.ManufacturerID = convertData.ConvertDataInt32("ProcreatorID");
+            _localeRow.ManufacturerIDName= convertData.ConvertDataString("ProcreatorIDName");
 
             _localeRow.Model = convertData.ConvertDataString("Model");
             _localeRow.TagPriceUSA = convertData.ConvertDataDecimal("TagPriceUSA");

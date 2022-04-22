@@ -325,6 +325,7 @@
     <Compile Include="FormUsers\Delivery\NewDeliveryItem.xaml.cs">
       <DependentUpon>NewDeliveryItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FormUsers\Manufacturer\ManufacturerLogic.cs" />
     <Compile Include="FormUsers\Product\ProductGrid.xaml.cs">
       <DependentUpon>ProductGrid.xaml</DependentUpon>
     </Compile>

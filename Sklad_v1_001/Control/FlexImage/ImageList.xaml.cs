@@ -126,11 +126,21 @@ namespace Sklad_v1_001.Control.FlexImage
         "DataListCollectionShowCase",
         typeof(ObservableCollection<FormUsers.ShowCase.LocaleRow>),
         typeof(ImageList), new UIPropertyMetadata());
-      
+       
+        public static readonly DependencyProperty ManufacturerIDProperty = DependencyProperty.Register(
+        "ManufacturerID",
+        typeof(Int32),
+        typeof(ImageList), new UIPropertyMetadata(0));
+
         public static readonly DependencyProperty ProcreatorNameProperty = DependencyProperty.Register(
         "ProcreatorName",
         typeof(String),
         typeof(ImageList), new UIPropertyMetadata(String.Empty));
+        
+        public static readonly DependencyProperty DataListCollectionManufacturerProperty = DependencyProperty.Register(
+        "DataListCollectionManufacturer",
+        typeof(ObservableCollection<FormUsers.Manufacturer.LocaleRow>),
+        typeof(ImageList), new UIPropertyMetadata());
 
         public ImageSource PhotoImage
         {
@@ -242,6 +252,22 @@ namespace Sklad_v1_001.Control.FlexImage
                 SetValue(DataListCollectionShowCaseProperty, value); 
                 showCase.ComboBoxElement.ItemsSource = DataListCollectionShowCase; 
             }
+        }
+
+        public ObservableCollection<FormUsers.Manufacturer.LocaleRow> DataListCollectionManufacturer
+        {
+            get { return (ObservableCollection<FormUsers.Manufacturer.LocaleRow>)GetValue(DataListCollectionManufacturerProperty); }
+            set
+            {
+                SetValue(DataListCollectionManufacturerProperty, value);
+                procreator.ComboBoxElement.ItemsSource = DataListCollectionManufacturer;
+            }
+        }
+
+        public Int32 ManufacturerID
+        {
+            get { return (Int32)GetValue(ManufacturerIDProperty); }
+            set { SetValue(ManufacturerIDProperty, value); }
         }
 
         public String ProcreatorName

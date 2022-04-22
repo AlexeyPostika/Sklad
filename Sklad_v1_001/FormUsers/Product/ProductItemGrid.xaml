@@ -25,7 +25,8 @@
                              Description="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                              SizeString="{Binding Path=SizeProduct, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                              PhotoImage="{Binding Path=PhotoImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                             ProcreatorName="{Binding Path=ProcreatorIDName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                             ManufacturerID="{Binding Path=ManufacturerID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                             ProcreatorName="{Binding Path=ManufacturerIDName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                              ListImageControl="{Binding Path=ListImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
     </Grid>
 </Page>

@@ -2,6 +2,7 @@
 using Sklad_v1_001.FormUsers.CategoryDetails;
 using Sklad_v1_001.FormUsers.Delivery;
 using Sklad_v1_001.FormUsers.DeliveryDetails;
+using Sklad_v1_001.FormUsers.Manufacturer;
 using Sklad_v1_001.FormUsers.ShowCase;
 using Sklad_v1_001.FormUsers.Userss;
 using Sklad_v1_001.GlobalList;
@@ -54,6 +55,11 @@ namespace Sklad_v1_001.GlobalAttributes
         ShowCaseLogic showcaseLogic;
         public ObservableCollection<FormUsers.ShowCase.LocaleRow> datalistShowCase;
 
+        //Объекты
+        //Производитель
+        ManufacturerLogic manufacturerLogic;
+        public ObservableCollection<FormUsers.Manufacturer.LocaleRow> datalistManufacturer;
+
         //Delivery and DeliveryDetails
         DeliveryLogic deliverLogic;
         DeliveryDetailsLogic deliveryDetailsLogic;
@@ -85,6 +91,10 @@ namespace Sklad_v1_001.GlobalAttributes
             //загрузка витрин          
             datalistShowCase = new ObservableCollection<FormUsers.ShowCase.LocaleRow>();
             FillShowCase();
+
+            //загрузка производителей
+            datalistManufacturer = new ObservableCollection<FormUsers.Manufacturer.LocaleRow>();
+            FillManufacturer();
 
             //загружаем пользователей
             datalistUsers = new ObservableCollection<users>();
@@ -143,6 +153,18 @@ namespace Sklad_v1_001.GlobalAttributes
             foreach (DataRow row in dataTable.Rows)
             {
                 datalistShowCase.Add(showcaseLogic.ConvertComboBox(row, new FormUsers.ShowCase.LocaleRow()));
+            }
+        }
+
+        public void FillManufacturer()
+        {
+            manufacturerLogic = new ManufacturerLogic();
+            FormUsers.Manufacturer.LocalFilter localFilter = new FormUsers.Manufacturer.LocalFilter();
+            localFilter.IsActive = "1"; // только активные витрины
+            DataTable dataTable = manufacturerLogic.FillGrid(localFilter);
+            foreach (DataRow row in dataTable.Rows)
+            {
+                datalistManufacturer.Add(manufacturerLogic.ConvertComboBox(row, new FormUsers.Manufacturer.LocaleRow()));
             }
         }
 

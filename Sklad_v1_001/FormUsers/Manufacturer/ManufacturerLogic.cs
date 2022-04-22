@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sklad_v1_001.FormUsers.ShowCase
+namespace Sklad_v1_001.FormUsers.Manufacturer
 {
     public class LocalFilter : INotifyPropertyChanged
     {
@@ -95,11 +95,11 @@ namespace Sklad_v1_001.FormUsers.ShowCase
                 OnPropertyChanged("Sort");
             }
         }
-        
+
         public LocalFilter()
         {
             ScreenTypeGrid = ScreenType.ScreenTypeGrid;
-            
+
             Search = String.Empty;
             IsActive = "All";
 
@@ -108,7 +108,7 @@ namespace Sklad_v1_001.FormUsers.ShowCase
         }
 
     }
-    public class LocaleRow: INotifyPropertyChanged
+    public class LocaleRow : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
@@ -121,8 +121,8 @@ namespace Sklad_v1_001.FormUsers.ShowCase
         private String description;
         private Boolean isActive;
 
-        private Int32 showcaseID;
-       
+        private Int32 manufacturerID;
+
         public Int32 ID
         {
             get
@@ -137,17 +137,17 @@ namespace Sklad_v1_001.FormUsers.ShowCase
             }
         }
 
-        public Int32 ShowcaseID
+        public Int32 ManufacturerID
         {
             get
             {
-                return showcaseID;
+                return manufacturerID;
             }
 
             set
             {
-                showcaseID = value;
-                OnPropertyChanged("ShowcaseID");
+                manufacturerID = value;
+                OnPropertyChanged("ManufacturerID");
             }
         }
         public String Name
@@ -190,13 +190,12 @@ namespace Sklad_v1_001.FormUsers.ShowCase
             }
         }
     }
-
-    public class ShowCaseLogic
+    public class ManufacturerLogic
     {
         ConvertData convertData;
 
-        string get_store_procedure = "xp_GetShowcaseTable";
-        string save_store_procedure = "xp_SaveShowcase";
+        string get_store_procedure = "xp_GetManufacturerTable";
+        string save_store_procedure = "xp_SaveManufacturer";
 
         SQLCommanSelect _sqlRequestSelect = null;
         SQLCommanSelect _sqlRequestSave = null;
@@ -205,7 +204,7 @@ namespace Sklad_v1_001.FormUsers.ShowCase
         DataTable _data = null;
         DataTable _datarow = null;
 
-        public ShowCaseLogic()
+        public ManufacturerLogic()
         {
             convertData = new ConvertData();
             _data = new DataTable();
@@ -229,14 +228,13 @@ namespace Sklad_v1_001.FormUsers.ShowCase
 
             _sqlRequestSelect.AddParametr("@p_Sort", SqlDbType.Bit);
             _sqlRequestSelect.SetParametrValue("@p_Sort", 0);
-
         }
 
         public DataTable FillGrid(LocalFilter localFilter)
         {
             _sqlRequestSelect.SqlAnswer.datatable.Clear();
             _data.Clear();
-            
+
             _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeGrid);
             _sqlRequestSelect.SetParametrValue("@p_Search", localFilter.Search);
             _sqlRequestSelect.SetParametrValue("@p_IsActive", localFilter.IsActive);
@@ -252,10 +250,10 @@ namespace Sklad_v1_001.FormUsers.ShowCase
         {
             convertData = new ConvertData(_dataRow, _localeRow);
 
-            _localeRow.ShowcaseID = convertData.ConvertDataInt32("ID");
+            _localeRow.ManufacturerID = convertData.ConvertDataInt32("ID");
             _localeRow.Name = convertData.ConvertDataString("Name");
             _localeRow.Description = convertData.ConvertDataString("Description");
-            _localeRow.IsActive = convertData.ConvertDataBoolean("IsActive");          
+            _localeRow.IsActive = convertData.ConvertDataBoolean("IsActive");
 
             return _localeRow;
         }
