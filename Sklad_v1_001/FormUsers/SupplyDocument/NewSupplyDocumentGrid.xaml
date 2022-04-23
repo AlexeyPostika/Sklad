@@ -21,7 +21,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <ToolBar:NewSupplyDocumentDetailsToolBar x:Name="SupplyDocumentDetailsToolBar" Margin="10,10,0,0"
+        <ToolBar:NewSupplyDocumentDetailsToolBar x:Name="SupplyDocumentDetailsToolBar" Margin="5,10,0,0"
                                                  ButtonSave="SupplyDocumentDetailsToolBar_ButtonSave"
                                                  ButtonSaveclose="SupplyDocumentDetailsToolBar_ButtonSaveclose"
                                                  ButtonListCancel="SupplyDocumentDetailsToolBar_ButtonListCancel"

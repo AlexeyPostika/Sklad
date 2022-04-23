@@ -267,6 +267,9 @@
     <Compile Include="Control\ToolBar\DataViewToolNewSupplyDocument.xaml.cs">
       <DependentUpon>DataViewToolNewSupplyDocument.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\ToolBar\ProductItemGridToolBar.xaml.cs">
+      <DependentUpon>ProductItemGridToolBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\ToolBar\NewSupplyDocumentDetailsToolBar.xaml.cs">
       <DependentUpon>NewSupplyDocumentDetailsToolBar.xaml</DependentUpon>
     </Compile>
@@ -374,6 +377,7 @@
     </Compile>
     <Compile Include="FormUsers\Zacupca\ZacupcaGridLogic.cs" />
     <Compile Include="GlobalAttributes\Attributes.cs" />
+    <Compile Include="GlobalList\EnumList.cs" />
     <Compile Include="GlobalList\List.cs" />
     <Compile Include="GlobalVariable\DataBaseData.cs" />
     <Compile Include="GlobalVariable\FileWork.cs" />
@@ -604,6 +608,10 @@
     <Page Include="Control\ToolBar\DataViewToolNewSupplyDocument.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\ToolBar\ProductItemGridToolBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Control\ToolBar\NewSupplyDocumentDetailsToolBar.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -969,6 +977,10 @@
     <Resource Include="Icone\IconDelete_X30.png" />
     <Resource Include="Icone\IconDelete_X32.png" />
     <Resource Include="Icone\IconDelete_X40.png" />
+    <Resource Include="Icone\IconClose_X16.png" />
+    <Resource Include="Icone\IconClose_X30.png" />
+    <Resource Include="Icone\IconClose_X32.png" />
+    <Resource Include="Icone\IconClose_X24.png" />
     <Content Include="SQLCommand\JDB_DataAdapter.sql" />
     <Content Include="SQLCommand\JDB_POS.sql" />
     <Resource Include="Icone\IconOk.png" />

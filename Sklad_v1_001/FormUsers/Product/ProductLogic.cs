@@ -2,6 +2,7 @@
 using Sklad_v1_001.GlobalVariable;
 using Sklad_v1_001.HelperGlobal;
 using Sklad_v1_001.SQL;
+using Sklad_v1_001.SQLCommand;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -1101,7 +1102,7 @@ namespace Sklad_v1_001.FormUsers.Product
     public class ProductLogic
     {
         ConvertData convertData;
-
+        //схема структуры
 
         public DataTable innerList1;
         public DataTable innerList2;
@@ -1124,20 +1125,24 @@ namespace Sklad_v1_001.FormUsers.Product
         string get_store_procedure_ProductImage = "xp_GetProductImageTable";
         string get_summary_procedure = "xp_GetProductSummary";
         string get_filters_procedure = "xp_GetProductFilter";
-        string _getSaveProductImage = "xp_SaveProductImage";      //хранимка
+
+        string _get_save_procedure_product = "xp_SaveProduct";
+        string _get_save_procedure_productImage = "xp_SaveProductImageTable";      //хранимка
 
         SQLCommanSelect _sqlRequestSelect = null;
         SQLCommanSelect _sqlRequestSelectImage = null;
         SQLCommanSelect _sqlRequestSelectSummary = null;
         SQLCommanSelect _sqlRequestSelectFilters = null;
-        SQLCommanSelect _sqlRequestSave = null;
+
+        SQLCommanSelect _sqlRequestSaveProduct = null;
+        SQLCommanSelect _sqlRequestSaveProductImage = null;
 
         //результат запроса
         DataTable _data = null;
         DataTable _datarow = null;
         public ProductLogic()
         {
-            convertData = new ConvertData();
+            convertData = new ConvertData();           
 
             _data = new DataTable();
             _datarow = new DataTable();
@@ -1198,7 +1203,9 @@ namespace Sklad_v1_001.FormUsers.Product
             _sqlRequestSelectImage = new SQLCommanSelect();
             _sqlRequestSelectSummary = new SQLCommanSelect();
             _sqlRequestSelectFilters = new SQLCommanSelect();
-            _sqlRequestSave = new SQLCommanSelect();
+
+            _sqlRequestSaveProduct = new SQLCommanSelect();
+            _sqlRequestSaveProductImage = new SQLCommanSelect();
 
             //----------------------------------------------------------------------------
             _sqlRequestSelect.AddParametr("@p_TypeScreen", SqlDbType.NVarChar);
@@ -1299,16 +1306,17 @@ namespace Sklad_v1_001.FormUsers.Product
 
             _sqlRequestSelectSummary.AddParametr("@p_TagPriceVATRUS_Max", SqlDbType.Money);
             _sqlRequestSelectSummary.SetParametrValue("@p_TagPriceVATRUS_Max", System.Data.SqlTypes.SqlMoney.MaxValue);
+            //----------------------------------------------------------------------------        
+
+            _sqlRequestSaveProduct.AddParametr("@p_ID", SqlDbType.Int);
+            _sqlRequestSaveProduct.SetParametrValue("@p_ID", 0);
+
+            _sqlRequestSaveProduct.AddParametr("@p_table", SqlDbType.Structured);
+            _sqlRequestSaveProduct.SetParametrValue("@p_table", new DataTable());
             //----------------------------------------------------------------------------
 
-            _sqlRequestSave.AddParametr("@p_ID", SqlDbType.Int);
-            _sqlRequestSave.SetParametrValue("@p_ID", 0);
-
-            _sqlRequestSave.AddParametr("@p_DocumentID", SqlDbType.Int);
-            _sqlRequestSave.SetParametrValue("@p_DocumentID", 0);
-
-            _sqlRequestSave.AddParametr("@p_Image", SqlDbType.VarBinary);
-            _sqlRequestSave.SetParametrValue("@p_Image", 0);
+            _sqlRequestSaveProductImage.AddParametr("@p_table", SqlDbType.Structured);
+            _sqlRequestSaveProductImage.SetParametrValue("@p_table", new DataTable());           
 
         }
         public DataTable FillGridAllFilter()
@@ -1393,19 +1401,28 @@ namespace Sklad_v1_001.FormUsers.Product
         }
 
         //SAVE
-        public DataTable Save(LocalRow _localRow)
+        public Int32 SaveProduct(LocalRow _localRow, ShemaStorаge _shemaStorаge)
         {
-            _sqlRequestSave.SqlAnswer.datatable.Clear();
+            _sqlRequestSaveProduct.SqlAnswer.datatable.Clear();
             _data.Clear();
 
-            _sqlRequestSave.SetParametrValue("@p_ID", _localRow.ID);
-            _sqlRequestSave.SetParametrValue("@p_DocumentID", _localRow.ID);
-            _sqlRequestSave.SetParametrValue("@p_Image", _localRow.PhotoImage);
+            _sqlRequestSaveProduct.SetParametrValue("@p_ID", _localRow.ID);
+            _sqlRequestSaveProduct.SetParametrValue("@p_table", _shemaStorаge.Product);
 
-            _sqlRequestSave.ComplexRequest(_getSaveProductImage, CommandType.StoredProcedure, null);
-            _data = _sqlRequestSave.SqlAnswer.datatable;
+            _sqlRequestSaveProduct.ComplexRequest(_get_save_procedure_product, CommandType.StoredProcedure, null);
+           
+            return (Int32)_sqlRequestSaveProduct.SqlAnswer.result;
+        }
 
-            return _data;
+        public Int32 SaveProductImage(ShemaStorаge _shemaStorаge)
+        {
+            _sqlRequestSaveProductImage.SqlAnswer.datatable.Clear();
+            _data.Clear();
+           
+            _sqlRequestSaveProductImage.SetParametrValue("@p_table", _shemaStorаge.ProductImage);
+
+            _sqlRequestSaveProductImage.ComplexRequest(_get_save_procedure_productImage, CommandType.StoredProcedure, null);
+            return (Int32)_sqlRequestSaveProductImage.SqlAnswer.result; 
         }
 
         public LocalRow Convert(DataRow _dataRow, LocalRow _localeRow)

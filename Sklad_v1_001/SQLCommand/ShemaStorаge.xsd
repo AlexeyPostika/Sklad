@@ -449,6 +449,40 @@ SELECT ID, CategoryID, Name, Description, CreateDate, CreateUsers, DataLastModif
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="ProductImage" msprop:Generator_TableClassName="ProductImageDataTable" msprop:Generator_TableVarName="tableProductImage" msprop:Generator_RowChangedName="ProductImageRowChanged" msprop:Generator_TablePropName="ProductImage" msprop:Generator_RowDeletingName="ProductImageRowDeleting" msprop:Generator_RowChangingName="ProductImageRowChanging" msprop:Generator_RowEvHandlerName="ProductImageRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductImageRowDeleted" msprop:Generator_RowClassName="ProductImageRow" msprop:Generator_UserTableName="ProductImage" msprop:Generator_RowEvArgName="ProductImageRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DocumentID" msprop:Generator_ColumnVarNameInTable="columnDocumentID" msprop:Generator_ColumnPropNameInRow="DocumentID" msprop:Generator_ColumnPropNameInTable="DocumentIDColumn" msprop:Generator_UserColumnName="DocumentID" type="xs:int" />
+              <xs:element name="Images" msprop:Generator_ColumnVarNameInTable="columnImages" msprop:Generator_ColumnPropNameInRow="Images" msprop:Generator_ColumnPropNameInTable="ImagesColumn" msprop:Generator_UserColumnName="Images" type="xs:base64Binary" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Product" msprop:Generator_TableClassName="ProductDataTable" msprop:Generator_TableVarName="tableProduct" msprop:Generator_RowChangedName="ProductRowChanged" msprop:Generator_TablePropName="Product" msprop:Generator_RowDeletingName="ProductRowDeleting" msprop:Generator_RowChangingName="ProductRowChanging" msprop:Generator_RowEvHandlerName="ProductRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductRowDeleted" msprop:Generator_RowClassName="ProductRow" msprop:Generator_UserTableName="Product" msprop:Generator_RowEvArgName="ProductRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
+              <xs:element name="CategoryID" msprop:Generator_ColumnVarNameInTable="columnCategoryID" msprop:Generator_ColumnPropNameInRow="CategoryID" msprop:Generator_ColumnPropNameInTable="CategoryIDColumn" msprop:Generator_UserColumnName="CategoryID" type="xs:int" minOccurs="0" />
+              <xs:element name="CategoryDetailsID" msprop:Generator_ColumnVarNameInTable="columnCategoryDetailsID" msprop:Generator_ColumnPropNameInRow="CategoryDetailsID" msprop:Generator_ColumnPropNameInTable="CategoryDetailsIDColumn" msprop:Generator_UserColumnName="CategoryDetailsID" type="xs:int" minOccurs="0" />
+              <xs:element name="Barecode" msprop:Generator_ColumnVarNameInTable="columnBarecode" msprop:Generator_ColumnPropNameInRow="Barecode" msprop:Generator_ColumnPropNameInTable="BarecodeColumn" msprop:Generator_UserColumnName="Barecode" type="xs:string" minOccurs="0" />
+              <xs:element name="ProcreatorID" msprop:Generator_ColumnVarNameInTable="columnProcreatorID" msprop:Generator_ColumnPropNameInRow="ProcreatorID" msprop:Generator_ColumnPropNameInTable="ProcreatorIDColumn" msprop:Generator_UserColumnName="ProcreatorID" type="xs:int" minOccurs="0" />
+              <xs:element name="Model" msprop:Generator_ColumnVarNameInTable="columnModel" msprop:Generator_ColumnPropNameInRow="Model" msprop:Generator_ColumnPropNameInTable="ModelColumn" msprop:Generator_UserColumnName="Model" type="xs:string" minOccurs="0" />
+              <xs:element name="TagPriceUSA" msprop:Generator_ColumnVarNameInTable="columnTagPriceUSA" msprop:Generator_ColumnPropNameInRow="TagPriceUSA" msprop:Generator_ColumnPropNameInTable="TagPriceUSAColumn" msprop:Generator_UserColumnName="TagPriceUSA" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TagPriceRUS" msprop:Generator_ColumnVarNameInTable="columnTagPriceRUS" msprop:Generator_ColumnPropNameInRow="TagPriceRUS" msprop:Generator_ColumnPropNameInTable="TagPriceRUSColumn" msprop:Generator_UserColumnName="TagPriceRUS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SupplyDocumentID" msprop:Generator_ColumnVarNameInTable="columnSupplyDocumentID" msprop:Generator_ColumnPropNameInRow="SupplyDocumentID" msprop:Generator_ColumnPropNameInTable="SupplyDocumentIDColumn" msprop:Generator_UserColumnName="SupplyDocumentID" type="xs:int" minOccurs="0" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
+              <xs:element name="Quantity" msprop:Generator_ColumnVarNameInTable="columnQuantity" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_UserColumnName="Quantity" type="xs:int" minOccurs="0" />
+              <xs:element name="ShowcaseID" msprop:Generator_ColumnVarNameInTable="columnShowcaseID" msprop:Generator_ColumnPropNameInRow="ShowcaseID" msprop:Generator_ColumnPropNameInTable="ShowcaseIDColumn" msprop:Generator_UserColumnName="ShowcaseID" type="xs:int" minOccurs="0" />
+              <xs:element name="SizeProduct" msprop:Generator_ColumnVarNameInTable="columnSizeProduct" msprop:Generator_ColumnPropNameInRow="SizeProduct" msprop:Generator_ColumnPropNameInTable="SizeProductColumn" msprop:Generator_UserColumnName="SizeProduct" type="xs:string" minOccurs="0" />
+              <xs:element name="CreatedDate" msprop:Generator_ColumnVarNameInTable="columnCreatedDate" msprop:Generator_ColumnPropNameInRow="CreatedDate" msprop:Generator_ColumnPropNameInTable="CreatedDateColumn" msprop:Generator_UserColumnName="CreatedDate" type="xs:string" minOccurs="0" />
+              <xs:element name="CreatedUserID" msprop:Generator_ColumnVarNameInTable="columnCreatedUserID" msprop:Generator_ColumnPropNameInRow="CreatedUserID" msprop:Generator_ColumnPropNameInTable="CreatedUserIDColumn" msprop:Generator_UserColumnName="CreatedUserID" type="xs:int" minOccurs="0" />
+              <xs:element name="LastModificatedDate" msprop:Generator_ColumnVarNameInTable="columnLastModificatedDate" msprop:Generator_ColumnPropNameInRow="LastModificatedDate" msprop:Generator_ColumnPropNameInTable="LastModificatedDateColumn" msprop:Generator_UserColumnName="LastModificatedDate" type="xs:string" minOccurs="0" />
+              <xs:element name="LastModificatedUserID" msprop:Generator_ColumnVarNameInTable="columnLastModificatedUserID" msprop:Generator_ColumnPropNameInRow="LastModificatedUserID" msprop:Generator_ColumnPropNameInTable="LastModificatedUserIDColumn" msprop:Generator_UserColumnName="LastModificatedUserID" type="xs:int" minOccurs="0" />
+              <xs:element name="SupplyDocumentDetailsID" msprop:Generator_ColumnVarNameInTable="columnSupplyDocumentDetailsID" msprop:Generator_ColumnPropNameInRow="SupplyDocumentDetailsID" msprop:Generator_ColumnPropNameInTable="SupplyDocumentDetailsIDColumn" msprop:Generator_UserColumnName="SupplyDocumentDetailsID" type="xs:int" minOccurs="0" />
+              <xs:element name="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_UserColumnName="Status" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -474,10 +508,16 @@ SELECT ID, CategoryID, Name, Description, CreateDate, CreateUsers, DataLastModif
       <xs:selector xpath=".//mstns:ShowCase" />
       <xs:field xpath="mstns:ID" />
     </xs:unique>
+    <xs:unique name="ProductKey1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Product" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
       <msdata:Relationship name="FK_CategoryDetails_Category" msdata:parent="Category" msdata:child="CategoryDetails" msdata:parentkey="ID" msdata:childkey="CategoryID" msprop:Generator_UserChildTable="CategoryDetails" msprop:Generator_ChildPropName="GetCategoryDetailsRows" msprop:Generator_UserRelationName="FK_CategoryDetails_Category" msprop:Generator_RelationVarName="relationFK_CategoryDetails_Category" msprop:Generator_UserParentTable="Category" msprop:Generator_ParentPropName="CategoryRow" />
+      <msdata:Relationship name="Product_ProductImage" msdata:parent="Product" msdata:child="ProductImage" msdata:parentkey="ID" msdata:childkey="DocumentID" msprop:Generator_UserChildTable="ProductImage" msprop:Generator_ChildPropName="GetProductImageRows" msprop:Generator_UserRelationName="Product_ProductImage" msprop:Generator_ParentPropName="ProductRow" msprop:Generator_RelationVarName="relationProduct_ProductImage" msprop:Generator_UserParentTable="Product" />
+      <msdata:Relationship name="ShowCase_Product" msdata:parent="ShowCase" msdata:child="Product" msdata:parentkey="ID" msdata:childkey="ShowcaseID" msprop:Generator_UserChildTable="Product" msprop:Generator_ChildPropName="GetProductRows" msprop:Generator_UserRelationName="ShowCase_Product" msprop:Generator_RelationVarName="relationShowCase_Product" msprop:Generator_UserParentTable="ShowCase" msprop:Generator_ParentPropName="ShowCaseRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

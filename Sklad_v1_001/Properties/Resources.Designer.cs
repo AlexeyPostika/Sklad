@@ -367,6 +367,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Выйти.
+        /// </summary>
+        public static string CLOSE {
+            get {
+                return ResourceManager.GetString("CLOSE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Доставка.
         /// </summary>
         public static string CompanyDelivery {
@@ -610,6 +619,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка при загрузки фото продукта.
+        /// </summary>
+        public static string ErrorDowloadImage {
+            get {
+                return ResourceManager.GetString("ErrorDowloadImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Заполните обязательное поле.
         /// </summary>
         public static string ErrorEmptyField {
@@ -624,6 +642,15 @@ namespace Sklad_v1_001.Properties {
         public static string ErrorFilterToSmallerFrom {
             get {
                 return ResourceManager.GetString("ErrorFilterToSmallerFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка при сохранении данных продукта.
+        /// </summary>
+        public static string ErrorSaveProduct {
+            get {
+                return ResourceManager.GetString("ErrorSaveProduct", resourceCulture);
             }
         }
         
@@ -822,6 +849,15 @@ namespace Sklad_v1_001.Properties {
         public static string ListPayment {
             get {
                 return ResourceManager.GetString("ListPayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на К списку продуктов.
+        /// </summary>
+        public static string LISTPRODUCT {
+            get {
+                return ResourceManager.GetString("LISTPRODUCT", resourceCulture);
             }
         }
         

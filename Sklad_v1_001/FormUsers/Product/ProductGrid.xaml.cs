@@ -468,7 +468,13 @@ namespace Sklad_v1_001.FormUsers.Product
                     ProductItemGrid productItemGrid = new ProductItemGrid(attributes);
                     productItemGrid.LocalRowDetails = datalist.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(rowID));
                     flexMessageBox.Content = productItemGrid;
-                    flexMessageBox.Show();
+                    flexMessageBox.Show(Properties.Resources.ProductsEdit);
+                    
+                    if (productItemGrid.statusWindows == StatusWindows.Refresh)
+                    {
+                        Refresh();
+                    }
+                
                 }
             }
         }

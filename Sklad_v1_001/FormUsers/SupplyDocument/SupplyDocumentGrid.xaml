@@ -19,6 +19,7 @@
             <RowDefinition Height="20*"/>
         </Grid.RowDefinitions>
         <ToolBar:SupplyToolBar x:Name="ToolBarSupply"
+                               Margin="5,5,5,0"
                                ButtonAdd="SupplyToolBar_ButtonAdd"
                                ButtonEdit="SupplyToolBar_ButtonEdit"
                                ButtonDelete="SupplyToolBar_ButtonDelete"

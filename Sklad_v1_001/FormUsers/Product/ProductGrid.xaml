@@ -25,6 +25,7 @@
             <!--<RowDefinition Height="20*"/>-->
         </Grid.RowDefinitions>
         <ToolBar:ProductToolBar x:Name="toolBarProduct"
+                                Margin="-5,5,0,0"
                                 ButtonFilter="toolBarProduct_ButtonFilter"
                                 ButtonScan="toolBarProduct_ButtonScan"
                                 ButtonClean="toolBarProduct_ButtonClean"/>

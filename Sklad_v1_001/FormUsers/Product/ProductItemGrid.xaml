@@ -5,14 +5,27 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Sklad_v1_001.FormUsers.Product"
       xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+      xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
       xmlns:FlexImage="clr-namespace:Sklad_v1_001.Control.FlexImage"
       mc:Ignorable="d"      
       Style="{DynamicResource UsersPageWidth}"    
       x:Name="page"
-      Title="ProductItemGrid">
+      Title="ProductItemGrid"
+     >
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <ToolBar:ProductItemGridToolBar x:Name="toolbar" Margin="5,10,0,0"
+                                        ButtonSave="toolbar_ButtonSave"
+                                        ButtonSaveclose="toolbar_ButtonSaveclose"
+                                        ButtonListCancel="toolbar_ButtonListCancel"/>
+        
         <FlexImage:ImageList x:Name="Edit" 
+                             Grid.Row="1"
                              Margin="0,0,0,10"
                              BareCode="{Binding Path=BarCodeString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                              NameString="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"                 

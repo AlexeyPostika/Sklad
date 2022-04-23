@@ -759,4 +759,16 @@
   <data name="NotPhotoCount" xml:space="preserve">
     <value>Превышено разрешимое количество фото</value>
   </data>
+  <data name="CLOSE" xml:space="preserve">
+    <value>Выйти</value>
+  </data>
+  <data name="LISTPRODUCT" xml:space="preserve">
+    <value>К списку продуктов</value>
+  </data>
+  <data name="ErrorDowloadImage" xml:space="preserve">
+    <value>Ошибка при загрузки фото продукта</value>
+  </data>
+  <data name="ErrorSaveProduct" xml:space="preserve">
+    <value>Ошибка при сохранении данных продукта</value>
+  </data>
 </root>

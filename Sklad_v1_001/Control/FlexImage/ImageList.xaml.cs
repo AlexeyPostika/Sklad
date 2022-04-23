@@ -324,7 +324,7 @@ namespace Sklad_v1_001.Control.FlexImage
                 if (_count != null)
                 {
                     int i = 0;
-                    while (i < _count)
+                    while (i < openFileDialog.FileNames.Length && i < _count)
                     {
                         // Create a PictureBox.
                         try
@@ -432,12 +432,34 @@ namespace Sklad_v1_001.Control.FlexImage
             int temp = 5 - ListImageControl.Count();
             if (temp > 0)
             {
-                OpenFile(temp);
-                image.Source = ListImageControl.First();
-                image1.Source = ListImageControl[1];
-                image2.Source = ListImageControl[2];
-                image3.Source = ListImageControl[3];
-                image4.Source = ListImageControl[4];
+                try
+                {
+                    OpenFile(temp);                   
+                }
+                catch
+                {
+                    FlexMessageBox.FlexMessageBox flexMessageBox = new FlexMessageBox.FlexMessageBox();
+                    List<BitmapImage> ButtonImages = new List<BitmapImage>();
+                    ButtonImages.Add(ImageHelper.GenerateImage("IconAdd.png"));
+                    ButtonImages.Add(ImageHelper.GenerateImage("IconContinueWork.png"));
+                    List<string> ButtonText = new List<string>();
+                    ButtonText.Add(Properties.Resources.AddSmall);
+                    ButtonText.Add(Properties.Resources.MessageIgnore);
+
+                    flexMessageBox.Show(Properties.Resources.ErrorDowloadImage, GenerateTitle(TitleType.Error, Properties.Resources.ErrorTitleOpenImage), MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                try
+                {
+                    image.Source = ListImageControl.First();
+                    image1.Source = ListImageControl[1];
+                    image2.Source = ListImageControl[2];
+                    image3.Source = ListImageControl[3];
+                    image4.Source = ListImageControl[4];
+                }
+                catch (Exception)
+                {
+
+                }
             }
             else
             {
