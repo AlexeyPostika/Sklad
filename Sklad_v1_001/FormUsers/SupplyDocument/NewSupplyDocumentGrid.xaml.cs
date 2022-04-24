@@ -338,7 +338,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     }
                     else
                     {
-                        int tempID = supplyDocumentDetails.FirstOrDefault(x => x.LineDocument == localeRowProduct.ID).LineDocument;
+                        int tempID = supplyDocumentDetails.FirstOrDefault(x => x.LineDocument == localeRowProduct.ID) != null ? supplyDocumentDetails.FirstOrDefault(x => x.LineDocument == localeRowProduct.ID).LineDocument : 0;
                         
                         locale = supplyDocumentDetails.FirstOrDefault(x => x.LineDocument == localeRowProduct.ID);
                         supplyDocumentDetails.Remove(locale);
@@ -435,19 +435,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 {
                     localeRowDelivery = supplyDocumentDeliveryItem.DeliveryRow;
                     SupplyDocumentDelivery.LocaleRow locale = new SupplyDocumentDelivery.LocaleRow();
-                    if (localeRowDelivery.ID == 0)
+                    if (localeRowDelivery.LineDocument == 0)
                     {               
                         localeRowDelivery.TempID = supplyDocumentDelivery.Count() + 1;
-                        locale.LineDocument = supplyDocumentDetails.Count() + 1;
+                        localeRowDelivery.LineDocument = supplyDocumentDelivery.Count() + 1;
                         supplyDocumentDelivery.Add(localeRowDelivery);
                     }
                     else
                     {
-                        locale = supplyDocumentDelivery.FirstOrDefault(x => x.TempID == localeRowDelivery.ID);
+                        int tempID = supplyDocumentDelivery.FirstOrDefault(x => x.LineDocument == localeRowDelivery.LineDocument) != null ? supplyDocumentDelivery.FirstOrDefault(x => x.LineDocument == localeRowDelivery.LineDocument).LineDocument : 0;
+                        locale = supplyDocumentDelivery.FirstOrDefault(x => x.LineDocument == localeRowDelivery.LineDocument);
                         supplyDocumentDelivery.Remove(locale);
                         locale = localeRowDelivery;
-                        locale.TempID = supplyDocumentDelivery.Count() + 1;
-                        locale.LineDocument = supplyDocumentDetails.Count() + 1;
+                        locale.TempID = tempID;
+                        locale.LineDocument = tempID;
                         supplyDocumentDelivery.Add(locale);
                     }
                 }
@@ -516,18 +517,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 {
                     SupplyDocumentPayment.LocaleRow paymentLocalRow = newSupplyDocumentPaymentItem.PaymentLocalRow;
                     SupplyDocumentPayment.LocaleRow locale = new SupplyDocumentPayment.LocaleRow();
-                    if (paymentLocalRow.ID == 0)
+                    if (paymentLocalRow.LineDocument == 0)
                     {
                         paymentLocalRow.TempID = supplyDocumentPayment.Count() + 1;
-                        locale.LineDocument = supplyDocumentDetails.Count() + 1;
+                        paymentLocalRow.LineDocument = supplyDocumentPayment.Count() + 1;
                         supplyDocumentPayment.Add(paymentLocalRow);
                     }
                     else
                     {
-                        locale = supplyDocumentPayment.FirstOrDefault(x => x.ID == paymentLocalRow.ID);
+                        int tempID = supplyDocumentPayment.FirstOrDefault(x => x.LineDocument == paymentLocalRow.ID) != null ? supplyDocumentPayment.FirstOrDefault(x => x.LineDocument == paymentLocalRow.ID).LineDocument : 0;
+                        
+                        locale = supplyDocumentPayment.FirstOrDefault(x => x.LineDocument == paymentLocalRow.LineDocument);
                         supplyDocumentPayment.Remove(locale);                      
                         locale = paymentLocalRow;
-                        locale.LineDocument = supplyDocumentDetails.Count() + 1;
+                        locale.LineDocument = tempID;
                         supplyDocumentPayment.Add(locale);
                     }
                 }
