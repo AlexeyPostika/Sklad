@@ -338,13 +338,17 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     }
                     else
                     {
-                        locale = supplyDocumentDetails.FirstOrDefault(x => x.ID == localeRowProduct.ID);
+                        int tempID = supplyDocumentDetails.FirstOrDefault(x => x.LineDocument == localeRowProduct.ID).LineDocument;
+                        
+                        locale = supplyDocumentDetails.FirstOrDefault(x => x.LineDocument == localeRowProduct.ID);
                         supplyDocumentDetails.Remove(locale);
+                        
                         if (locale == null)
                             locale = new SupplyDocumentDetails.LocaleRow();
+
                         supplyDocumentDetailsLogic.ConvertProductToSupplyDocumentDetails(localeRowProduct, locale);                      
-                        locale.TempID = supplyDocumentDetails.Count() + 1;
-                        locale.LineDocument = supplyDocumentDetails.Count() + 1;
+                        locale.TempID = tempID;
+                        locale.LineDocument = tempID;
                         supplyDocumentDetails.Add(locale);
                     }
                 }

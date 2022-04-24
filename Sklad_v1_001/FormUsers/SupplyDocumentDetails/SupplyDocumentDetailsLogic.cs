@@ -730,7 +730,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
         {
             // SaleDocumentDetailsList statusList = new SaleDocumentDetailsList();
             ConvertData convertData = new ConvertData();
-            _row.ID = _localeRow.ID;
+            _row.ID = _localeRow.LineDocument;
             //категории
             _row.CategoryID = _localeRow.CategoryID;
             _row.CategoryName = _localeRow.CategoryName;
