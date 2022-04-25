@@ -88,7 +88,8 @@
                 <Grid Grid.Column="9"
                           Grid.Row="3">
                     <Button x:Name="buttonNext" 
-                             Margin="5,0,0,0"
+                            Margin="5,0,0,0"
+                            Style="{DynamicResource RoundBorderButtonStyle}"
                                 Grid.Row="1"                             
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"                        
@@ -104,6 +105,7 @@
                           Grid.Row="3">
                     <Button x:Name="buttonBrak"   
                             Margin="0,0,5,0"
+                            Style="{DynamicResource RoundBorderButtonStyle}"
                                 Grid.Row="1"               
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"                        
@@ -130,7 +132,8 @@
                     <ColumnDefinition Width="40"/>
                     <ColumnDefinition Width="5"/>-->
                 </Grid.ColumnDefinitions>
-                <Button x:Name="buttonDowload"   
+                <Button x:Name="buttonDowload"  
+                        Style="{DynamicResource RoundBorderButtonStyle}"
                                 Grid.Column="2"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"                        
@@ -141,7 +144,8 @@
                                VerticalAlignment="Stretch" 
                                Source="{Binding ElementName=control, Path=ImageDowload, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                 </Button>
-                <Button x:Name="buttonClear"   
+                <Button x:Name="buttonClear" 
+                        Style="{DynamicResource RoundBorderButtonStyle}"
                                 Grid.Column="4"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"                        
@@ -153,6 +157,7 @@
                                Source="{Binding ElementName=control, Path=ImageClear, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                 </Button>
                 <Button x:Name="buttonSave"   
+                        Style="{DynamicResource RoundBorderButtonStyle}"
                                 Grid.Column="6"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"                        
