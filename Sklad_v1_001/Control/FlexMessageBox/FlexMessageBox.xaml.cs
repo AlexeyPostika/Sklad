@@ -233,6 +233,11 @@ namespace Sklad_v1_001.Control.FlexMessageBox
         {
             InitializeComponent();
             // this.Width = 300;
+            if (this.Owner != null)
+            {
+                this.Owner = MainWindow.AppWindow;
+            }
+            this.ShowInTaskbar = false;
             fieldNameForHistory = "";
             this.Topmost = true;
         }
