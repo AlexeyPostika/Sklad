@@ -771,4 +771,10 @@
   <data name="ErrorSaveProduct" xml:space="preserve">
     <value>Ошибка при сохранении данных продукта</value>
   </data>
+  <data name="LoginLabel" xml:space="preserve">
+    <value>Логин</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
 </root>

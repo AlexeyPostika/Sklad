@@ -389,6 +389,9 @@
     </Compile>
     <Compile Include="HelperGlobal\ImageSql.cs" />
     <Compile Include="HelperGlobal\MessageBoxTitleHelper.cs" />
+    <Compile Include="LoginScreen.xaml.cs">
+      <DependentUpon>LoginScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Report\FlexDocumentWindows.xaml.cs">
       <DependentUpon>FlexDocumentWindows.xaml</DependentUpon>
     </Compile>
@@ -768,6 +771,10 @@
     <Page Include="HelperGlobal\FromToTimeFilter.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LoginScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

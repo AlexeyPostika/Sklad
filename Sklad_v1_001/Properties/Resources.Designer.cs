@@ -898,6 +898,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Логин.
+        /// </summary>
+        public static string LoginLabel {
+            get {
+                return ResourceManager.GetString("LoginLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Менеджер по продажам.
         /// </summary>
         public static string ManagerCompany {
@@ -1263,6 +1272,15 @@ namespace Sklad_v1_001.Properties {
         public static string PageIn {
             get {
                 return ResourceManager.GetString("PageIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Пароль.
+        /// </summary>
+        public static string PasswordLabel {
+            get {
+                return ResourceManager.GetString("PasswordLabel", resourceCulture);
             }
         }
         

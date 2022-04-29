@@ -16,7 +16,10 @@
                 <Label Grid.Column="0" Name="label" Margin="3,0,0,0" Height="30"/>
                 <Label Name="required" Margin="-9,0,0,0" FontSize="18" Height="30" Visibility="{Binding ElementName=control, Path=IsRequired, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="Red" Content="*" HorizontalAlignment="Left"/>
             </WrapPanel>
-            <local:EditBoxUser x:Name="EditBoxUser" Style="{DynamicResource LabelStyle}" Grid.Column="1" ButtonClearClick="EditBoxUser_ButtonClearClick" ButtonTextChangedClick="EditBoxUser_ButtonTextChangedClick" 
+            <local:EditBoxUser x:Name="EditBoxUser"                                
+                               Grid.Column="1" 
+                               ButtonClearClick="EditBoxUser_ButtonClearClick"
+                               ButtonTextChangedClick="EditBoxUser_ButtonTextChangedClick" 
                                Text="{Binding ElementName=control, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                VisibilityImage="{Binding ElementName=control, Path=VisisbilityImageSim, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Grid>

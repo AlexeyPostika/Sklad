@@ -1,0 +1,43 @@
+﻿<Window x:Class="Sklad_v1_001.LoginScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sklad_v1_001"
+        xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+        xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
+        xmlns:FlexFilter="clr-namespace:Sklad_v1_001.Control.FlexFilter"
+        xmlns:FlexComboBox="clr-namespace:Sklad_v1_001.Control.FlexComboBox"
+        xmlns:FlexEditBox="clr-namespace:Sklad_v1_001.Control.FlexEditBox"
+        xmlns:EditBox="clr-namespace:Sklad_v1_001.Control.SimpleControl"
+        Style="{DynamicResource WindowStyle}" 
+        mc:Ignorable="d"
+        Title="LoginScreen" 
+        WindowStartupLocation="CenterScreen"
+        SizeToContent="WidthAndHeight"
+        ResizeMode="NoResize"
+        Loaded="Window_Loaded"
+        Closed="Window_Closed"
+        Height="170" 
+        Width="350">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <FlexComboBox:ComboBoxWithLabel LabelText="{x:Static res:Resources.LoginLabel}"
+                                            LabelWidth="100"
+                                            Height="50"
+                                            Margin="10,0,10,0"
+                                            x:Name="UserLogin"
+                                            DropDownClosed="UserLogin_DropDownClosed"
+                                            Value="{Binding Path=UserID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            Visibility="Collapsed"/>
+            <FlexEditBox:EditBoxUserWithLabel x:Name="EditLogin"
+                                              LabelText="{x:Static res:Resources.LoginLabel}"
+                                              ButtonClearClick="EditLogin_ButtonClearClick"
+                                              LabelWidth="100"
+                                              Height="50"
+                                              Margin="10,0,10,0"/>
+           
+            
+        </StackPanel>
+    </Grid>
+</Window>
