@@ -243,6 +243,9 @@
     <Compile Include="Control\FlexTextBox\FlexLabelTextBox.xaml.cs">
       <DependentUpon>FlexLabelTextBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\SimpleControl\EditBoxPasswordWithLabel.xaml.xaml.cs">
+      <DependentUpon>EditBoxPasswordWithLabel.xaml.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\SimpleControl\EditBoxWithLabel.xaml.cs">
       <DependentUpon>EditBoxWithLabel.xaml</DependentUpon>
     </Compile>
@@ -577,6 +580,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Control\FlexTextBox\FlexLabelTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\SimpleControl\EditBoxPasswordWithLabel.xaml.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -988,6 +995,9 @@
     <Resource Include="Icone\IconClose_X30.png" />
     <Resource Include="Icone\IconClose_X32.png" />
     <Resource Include="Icone\IconClose_X24.png" />
+    <Resource Include="Icone\IconLoopPassword_X16.png" />
+    <Resource Include="Icone\IconPassword_X16.png" />
+    <Resource Include="Icone\IconUsers_X24.png" />
     <Content Include="SQLCommand\JDB_DataAdapter.sql" />
     <Content Include="SQLCommand\JDB_POS.sql" />
     <Resource Include="Icone\IconOk.png" />

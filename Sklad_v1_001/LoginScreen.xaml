@@ -10,6 +10,7 @@
         xmlns:FlexComboBox="clr-namespace:Sklad_v1_001.Control.FlexComboBox"
         xmlns:FlexEditBox="clr-namespace:Sklad_v1_001.Control.FlexEditBox"
         xmlns:EditBox="clr-namespace:Sklad_v1_001.Control.SimpleControl"
+        xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton"
         Style="{DynamicResource WindowStyle}" 
         mc:Ignorable="d"
         Title="LoginScreen" 
@@ -17,10 +18,8 @@
         SizeToContent="WidthAndHeight"
         ResizeMode="NoResize"
         Loaded="Window_Loaded"
-        Closed="Window_Closed"
-        Height="170" 
-        Width="350">
-    <Grid>
+        Closed="Window_Closed">
+    <Grid Height="170" Width="350">
         <StackPanel Orientation="Vertical">
             <FlexComboBox:ComboBoxWithLabel LabelText="{x:Static res:Resources.LoginLabel}"
                                             LabelWidth="100"
@@ -36,8 +35,29 @@
                                               LabelWidth="100"
                                               Height="50"
                                               Margin="10,0,10,0"/>
-           
-            
+            <EditBox:EditBoxPasswordWithLabel x:Name="Password" 
+                                              LabelText="{x:Static res:Resources.PasswordLabel}"
+                                              LabelWidth="100"
+                                              Height="50"
+                                              Margin="10,0,10,0"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="50*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <FlexButton:ToolBarButton x:Name="Login" Grid.Row="1" Text="{x:Static res:Resources.LoginButton}"
+                                      ButtonClick="Login_ButtonClick" Width="140" HorizontalAlignment="Right"/>
+
+                <FlexButton:ToolBarButton x:Name="Exit" Grid.Row="1" Grid.Column="2" Text="{x:Static res:Resources.ExitButton}"
+                                      ButtonClick="Exit_ButtonClick" Width="140" HorizontalAlignment="Left"/>
+            </Grid>
         </StackPanel>
+        
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sklad_v1_001.GlobalVariable;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,10 @@ namespace Sklad_v1_001
         public LoginScreen()
         {
             InitializeComponent();
+
+            EditLogin.EditBoxUser.image.Source = ImageHelper.GenerateImage("IconUsers_X24.png");
+            Login.Image.Source = ImageHelper.GenerateImage("IconOK_x24.png");
+            Exit.Image.Source = ImageHelper.GenerateImage("IconClose_X24.png");
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -40,6 +45,16 @@ namespace Sklad_v1_001
         }
 
         private void EditLogin_ButtonClearClick()
+        {
+
+        }
+
+        private void Login_ButtonClick()
+        {
+
+        }
+
+        private void Exit_ButtonClick()
         {
 
         }
