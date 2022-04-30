@@ -259,10 +259,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             shemaStorаge = new ShemaStorаge();
 
-            supplyDocumentLogic = new SupplyDocumentLogic();
-            supplyDocumentDetailsLogic = new SupplyDocumentDetailsLogic();
-            supplyDocumentDeliveryLogic = new SupplyDocumentDeliveryLogic();
-            supplyDocumentPaymentLogic = new SupplyDocumentPaymentLogic();
+            supplyDocumentLogic = new SupplyDocumentLogic(attributes);
+            supplyDocumentDetailsLogic = new SupplyDocumentDetailsLogic(attributes);
+            supplyDocumentDeliveryLogic = new SupplyDocumentDeliveryLogic(attributes);
+            supplyDocumentPaymentLogic = new SupplyDocumentPaymentLogic(attributes);
 
             supplyDocumentDetails = new ObservableCollection<SupplyDocumentDetails.LocaleRow>();
             supplyDocumentDelivery = new ObservableCollection<SupplyDocumentDelivery.LocaleRow>();

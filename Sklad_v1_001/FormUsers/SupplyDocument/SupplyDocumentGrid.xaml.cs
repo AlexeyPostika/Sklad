@@ -542,10 +542,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             convertData = new ConvertData();
 
-            supplyDocumentLogic = new SupplyDocumentLogic();
-            supplyDocumentDetailsLogic = new SupplyDocumentDetailsLogic();
-            supplyDocumentDeliveryLogic = new SupplyDocumentDeliveryLogic();
-            supplyDocumentPaymentLogic = new SupplyDocumentPaymentLogic();
+            supplyDocumentLogic = new SupplyDocumentLogic(attributes);
+            supplyDocumentDetailsLogic = new SupplyDocumentDetailsLogic(attributes);
+            supplyDocumentDeliveryLogic = new SupplyDocumentDeliveryLogic(attributes);
+            supplyDocumentPaymentLogic = new SupplyDocumentPaymentLogic(attributes);
 
             localFilter = new LocalFilter();
             filterDetails = new SupplyDocumentDetails.LocaleFilter();

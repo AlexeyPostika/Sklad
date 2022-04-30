@@ -1,5 +1,7 @@
-﻿using Sklad_v1_001.GlobalAttributes;
+﻿using Sklad_v1_001.Crypto;
+using Sklad_v1_001.GlobalAttributes;
 using Sklad_v1_001.GlobalList;
+using Sklad_v1_001.GlobalVariable;
 using Sklad_v1_001.HelperGlobal;
 using Sklad_v1_001.SQL;
 using System;
@@ -15,52 +17,48 @@ using System.Windows.Media.Imaging;
 
 namespace Sklad_v1_001.FormUsers.Users
 {
-    public class LocalRow : INotifyPropertyChanged
+    public class LocaleFilter : INotifyPropertyChanged
     {
-        /*
-         * 
-      ,[]
-      ,[]
-      ,[]
-      ,[]
-      ,[]
-      ,[]
-      ,[]
-      ,[]
-      ,[]
-      ,[]
-      ,[]
-      ,[]
-      ,[]
-      ,[]
-      ,[PhotoUser]
-         */
-
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName]string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
+        string typeScreen;
+        private string search;
         private Int32 iD;
-        private Int32 number;
-        private String firstName;
-        private String lastName;       
-        private String secondName;
-        private String iNN;
-        private Int32 roleID;
-        private String phone;
-        private String email;
-        private Boolean active;
+        private String massRoleID;
         private String login;
-        private String password;
-        
-        private DateTime? createdDate;
-        private String createdDateString;
-        private DateTime? lastModifiedDate;
-        private String lastModifiedDateString;
-        private Int32 createdByUserID;
-        private Int32 lastModifiedByUserID;
-        private DateTime? birthday;
-        private Int32 genderID;
+        private String massIsActive;
+        private String sort;
 
-        private Byte[] photoUserByte;
-        private ImageSource photoUserImage;
-    
+        public String TypeScreen
+        {
+            get
+            {
+                return typeScreen;
+            }
+
+            set
+            {
+                typeScreen = value;
+                OnPropertyChanged("TypeScreen");
+            }
+        }
+        public String Search
+        {
+            get
+            {
+                return search;
+            }
+
+            set
+            {
+                search = value;
+                OnPropertyChanged("Search");
+            }
+        }
         public int ID
         {
             get
@@ -72,6 +70,126 @@ namespace Sklad_v1_001.FormUsers.Users
             {
                 iD = value;
                 OnPropertyChanged("ID");
+            }
+        }
+        public String MassRoleID
+        {
+            get
+            {
+                return massRoleID;
+            }
+
+            set
+            {
+                massRoleID = value;
+                OnPropertyChanged("MassRoleID");
+            }
+        }
+        public String Login
+        {
+            get
+            {
+                return login;
+            }
+
+            set
+            {
+                login = value;
+                OnPropertyChanged("Login");
+            }
+        }
+        public String MassIsActive
+        {
+            get
+            {
+                return massIsActive;
+            }
+
+            set
+            {
+                massIsActive = value;
+                OnPropertyChanged("MassIsActive");
+            }
+        }
+
+        public String Sort
+        {
+            get
+            {
+                return sort;
+            }
+
+            set
+            {
+                sort = value;
+                OnPropertyChanged("sort");
+            }
+        }
+        public LocaleFilter()
+        {
+            TypeScreen = ScreenType.ScreenTypeGrid;
+            MassIsActive = "All";
+            MassRoleID = "All";
+            Sort = "ID";
+        }
+    }
+
+    public class LocalRow : INotifyPropertyChanged
+    {        
+        private Int32 iD;
+        private Int32 userID;
+        private Int32 number;
+        private String firstName;
+        private String lastName;       
+        private String secondName;
+        private String iNN;
+        private Int32 roleID;
+        private String phone;
+        private String email;
+        private Boolean active;
+        private String login;
+        private String password;
+        private String description;
+        private DateTime? createdDate;
+        private String createdDateString;
+        private DateTime? lastModifiedDate;
+        private String lastModifiedDateString;
+        private Int32 createdByUserID;
+        private Int32 lastModifiedByUserID;
+        private DateTime? birthday;
+        private Int32 genderID;
+
+        private Byte[] photoUserByte;
+        private ImageSource photoUserImage;
+
+        private DateTime? syncDate;
+        private Int32 syncStatus;
+
+        public int ID
+        {
+            get
+            {
+                return iD;
+            }
+
+            set
+            {
+                iD = value;
+                OnPropertyChanged("ID");
+            }
+        }
+        
+        public int UserID
+        {
+            get
+            {
+                return userID;
+            }
+
+            set
+            {
+                userID = value;
+                OnPropertyChanged("UserID");
             }
         }
 
@@ -229,6 +347,20 @@ namespace Sklad_v1_001.FormUsers.Users
             }
         }
 
+        public String Description
+        {
+            get
+            {
+                return description;
+            }
+
+            set
+            {
+                description = value;
+                OnPropertyChanged("Description");
+            }
+        }
+
         public DateTime? CreatedDate
         {
             get
@@ -367,22 +499,35 @@ namespace Sklad_v1_001.FormUsers.Users
                 OnPropertyChanged("PhotoUserImage");
             }
         }
-        /*
-         *  private String ;
-        private String ;
-        
-        private DateTime? ;
-        private String ;
-        private DateTime? ;
-        private String ;
-        private Int32 ;
-        private Int32 ;
-        private DateTime? ;
-        private Int32 genderID;
 
-        private Byte[] ;
-        private ImageSource ;
-         */
+        public DateTime? SyncDate
+        {
+            get
+            {
+                return syncDate;
+            }
+
+            set
+            {
+                syncDate = value;
+                OnPropertyChanged("SyncDate");
+            }
+        }
+
+        public Int32 SyncStatus
+        {
+            get
+            {
+                return syncStatus;
+            }
+
+            set
+            {
+                syncStatus = value;
+                OnPropertyChanged("SyncStatus");
+            }
+        }
+        
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
@@ -392,53 +537,110 @@ namespace Sklad_v1_001.FormUsers.Users
     }
     public class UserLogic
     {
-        SQLCommanSelect _sqlSting;
+        CryptDecrypt cryptoLogic;
+        string get_store_procedure = "xp_GetUser";
 
-        LocalRow localrow;
-
-        String _getSelectProductTable = "xp_GetSelectUsersTable";      //хранимка
-
-        DataTable _table;
-
-        ConvertData convertData;
-
+        SQLCommanSelect _sqlRequestSelect = null;
+       
+        //результат запроса
+        DataTable _data = null;
+        DataTable _datarow = null;
+       
         public UserLogic()
         {
-            
+            cryptoLogic = new CryptDecrypt();
             //объявили подключение
-            _sqlSting = new SQLCommanSelect();
-            //объявили localRow
-            localrow = new LocalRow();
-            //объявили таблицу куда будем записывать все
-            _table = new DataTable();
-            //за правильную конвертацию данных
-            convertData = new ConvertData();
+            _sqlRequestSelect = new SQLCommanSelect();
+
+            _data = new DataTable();
+            _datarow = new DataTable();
+
+            //----------------------------------------------------------------------------
+            _sqlRequestSelect.AddParametr("@p_TypeScreen", SqlDbType.NVarChar);
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeGrid);
+
+            _sqlRequestSelect.AddParametr("@p_search", SqlDbType.NVarChar);
+            _sqlRequestSelect.SetParametrValue("@p_search", "");
+
+            _sqlRequestSelect.AddParametr("@p_ID", SqlDbType.Int);
+            _sqlRequestSelect.SetParametrValue("@p_ID", 0);
+
+            _sqlRequestSelect.AddParametr("@p_MassRoleID", SqlDbType.NVarChar);
+            _sqlRequestSelect.SetParametrValue("@p_MassRoleID", "");
+
+            _sqlRequestSelect.AddParametr("@p_Login", SqlDbType.NVarChar);
+            _sqlRequestSelect.SetParametrValue("@p_Login", "");
+
+            _sqlRequestSelect.AddParametr("@p_MassIsActive", SqlDbType.NVarChar);
+            _sqlRequestSelect.SetParametrValue("@p_MassIsActive", "");
+
+            _sqlRequestSelect.AddParametr("@p_sort", SqlDbType.NVarChar);
+            _sqlRequestSelect.SetParametrValue("@p_sort", "");
         }
 
-        public DataTable FillGrid()
+        public DataTable FillGrid(LocaleFilter localeFilter)
         {
-            _sqlSting.SqlAnswer.datatable.Clear();
-            _table.Clear();      
+            _sqlRequestSelect.SqlAnswer.datatable.Clear();
+            _data.Clear();
 
-            _sqlSting.ComplexRequest(_getSelectProductTable, CommandType.StoredProcedure, null);
-            _table = _sqlSting.SqlAnswer.datatable;
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeGrid);
+            _sqlRequestSelect.SetParametrValue("@p_search", localeFilter.Search);
+            _sqlRequestSelect.SetParametrValue("@p_ID", localeFilter.ID);
+            _sqlRequestSelect.SetParametrValue("@p_MassRoleID", localeFilter.MassRoleID);
+            _sqlRequestSelect.SetParametrValue("@p_Login", localeFilter.Login);
+            _sqlRequestSelect.SetParametrValue("@p_MassIsActive", localeFilter.MassIsActive);
+            _sqlRequestSelect.SetParametrValue("@p_sort", localeFilter.Sort);
 
-            return _table;
+            _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
+            _data = _sqlRequestSelect.SqlAnswer.datatable;
+
+            return _data;
+        }
+
+        public DataTable FillGrid(string login)
+        {
+            _sqlRequestSelect.SqlAnswer.datatablerow.Clear();
+            _datarow.Clear();
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeName);
+            _sqlRequestSelect.SetParametrValue("@p_Login", login);
+
+            _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
+            _datarow = _sqlRequestSelect.SqlAnswer.datatable;
+            return _datarow;
         }
 
         public LocalRow Convert(DataRow _row, LocalRow localrow)
         {
             VetrinaList listVetrina = new VetrinaList();
-            convertData = new ConvertData(_row, localrow);
+            ImageSql imageSql = new ImageSql();
+            ConvertData convertData = new ConvertData(_row, localrow);          
+
             localrow.ID = convertData.ConvertDataInt32("ID");
+            localrow.UserID= convertData.ConvertDataInt32("ID"); ;
+            localrow.Number = convertData.ConvertDataInt32("Number");
             localrow.FirstName = convertData.ConvertDataString("FirstName");
             localrow.LastName = convertData.ConvertDataString("LastName");
-            localrow.SecondName = convertData.ConvertDataString("Otchestvo");
-           
-            localrow.Phone = convertData.ConvertDataString("NumberPhone");
-            localrow.Number = convertData.ConvertDataInt32("NumberSotrudnika");
-          
-          
+            localrow.SecondName = convertData.ConvertDataString("SecondName");
+            localrow.INN = convertData.ConvertDataString("INN");
+            localrow.Phone = convertData.ConvertDataString("Phone");
+            localrow.Email = convertData.ConvertDataString("Email");
+            localrow.Active = convertData.ConvertDataBoolean("Active");
+            localrow.Login = convertData.ConvertDataString("Login");
+            localrow.Description = convertData.ConvertDataString("Login");
+            localrow.Password = cryptoLogic.Decrypt(convertData.ConvertDataString("Password"));
+            localrow.CreatedDate = convertData.ConvertDataDateTime("CreatedDate");
+            localrow.LastModifiedDate = convertData.ConvertDataDateTime("LastModifiedDate");
+            localrow.CreatedDateString = convertData.DateTimeConvertShortString(localrow.CreatedDate);
+            localrow.LastModifiedDateString = convertData.DateTimeConvertShortString(localrow.LastModifiedDate);
+            localrow.CreatedByUserID = convertData.ConvertDataInt32("CreatedByUserID");
+            localrow.LastModifiedByUserID = convertData.ConvertDataInt32("LastModifiedByUserID");
+            localrow.Birthday = convertData.ConvertDataDateTime("Birthday");
+            localrow.GenderID = convertData.ConvertDataInt32("ID");
+            if (_row["PhotoUser"] as byte[] != null)
+                localrow.PhotoUserImage = imageSql.BytesToImageSource(_row["PhotoUser"] as byte[]);          
+            localrow.SyncDate = convertData.ConvertDataDateTime("SyncDate");
+            localrow.SyncStatus = convertData.ConvertDataInt32("SyncStatus");
+            
             return localrow;
         }
         ////users

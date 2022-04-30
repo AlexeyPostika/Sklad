@@ -393,7 +393,7 @@ namespace Sklad_v1_001.FormUsers.Product
 
             flexFilterContenerProductWindows = new FlexFilterContenerProductWindows();
 
-            productLogic = new ProductLogic();
+            productLogic = new ProductLogic(attributes);
 
             localFilter = new LocalFilter();
 

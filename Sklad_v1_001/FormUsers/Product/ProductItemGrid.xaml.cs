@@ -70,7 +70,7 @@ namespace Sklad_v1_001.FormUsers.Product
             imageSql = new ImageSql();
             shemaStorаge = new ShemaStorаge();
 
-            productLogic = new ProductLogic();
+            productLogic = new ProductLogic(attribute);
 
             this.Edit.DataContext = LocalRowDetails;
             this.Edit.DataListCollectionShowCase = attribute.datalistShowCase;

@@ -134,7 +134,7 @@ namespace Sklad_v1_001.FormUsers.Product
             convertData = new ConvertData();
 
             //загружаем категории
-            categoryLogic = new CategoryLogic();
+            categoryLogic = new CategoryLogic(attributes);
             dataCategory = new ObservableCollection<GlobalList.Category>();
             dataCategoryDetails = new ObservableCollection<GlobalList.CategoryDetails>();
             dataCategory = attributes.datalistCategory;

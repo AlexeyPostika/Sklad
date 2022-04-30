@@ -1,4 +1,5 @@
-﻿using Sklad_v1_001.GlobalList;
+﻿using Sklad_v1_001.GlobalAttributes;
+using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.GlobalVariable;
 using Sklad_v1_001.HelperGlobal;
 using Sklad_v1_001.SQL;
@@ -1101,6 +1102,7 @@ namespace Sklad_v1_001.FormUsers.Product
 
     public class ProductLogic
     {
+        Attributes attributes;
         ConvertData convertData;
         //схема структуры
 
@@ -1140,8 +1142,9 @@ namespace Sklad_v1_001.FormUsers.Product
         //результат запроса
         DataTable _data = null;
         DataTable _datarow = null;
-        public ProductLogic()
+        public ProductLogic(Attributes _attributes)
         {
+            this.attributes = _attributes;
             convertData = new ConvertData();           
 
             _data = new DataTable();

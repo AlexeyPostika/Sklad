@@ -1,4 +1,5 @@
-﻿using Sklad_v1_001.HelperGlobal;
+﻿using Sklad_v1_001.GlobalAttributes;
+using Sklad_v1_001.HelperGlobal;
 using Sklad_v1_001.SQL;
 using System;
 using System.Collections.Generic;
@@ -203,6 +204,7 @@ namespace Sklad_v1_001.FormUsers.CategoryDetails
 
     public class CategoryDetailsLigic
     {
+        Attributes attributes;
         ConvertData convertData;
 
         string save_store_procedure = "xp_SaveCategoryDetails";
@@ -212,8 +214,10 @@ namespace Sklad_v1_001.FormUsers.CategoryDetails
         DataTable _data = null;
         DataTable _datarow = null;
 
-        public CategoryDetailsLigic()
+        public CategoryDetailsLigic(Attributes _attributes)
         {
+            this.attributes = _attributes;
+
             _data = new DataTable();
             _datarow = new DataTable();
 
@@ -222,7 +226,7 @@ namespace Sklad_v1_001.FormUsers.CategoryDetails
             //----------------------------------------------------------------------------
 
             _sqlRequestSave.AddParametr("@p_AddUserID", SqlDbType.Int);
-            _sqlRequestSave.SetParametrValue("@p_AddUserID", 1);
+            _sqlRequestSave.SetParametrValue("@p_AddUserID", attributes.numeric.userEdit.AddUserID);
 
             _sqlRequestSave.AddParametr("@p_ID", SqlDbType.Int);
             _sqlRequestSave.SetParametrValue("@p_ID", 0);

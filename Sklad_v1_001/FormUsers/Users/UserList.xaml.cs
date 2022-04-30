@@ -70,7 +70,7 @@ namespace Sklad_v1_001.FormUsers.Users
             dataUser.Clear();
 
             //получили данные
-            DataTable table = userListLogic.FillGrid();
+            DataTable table = userListLogic.FillGrid(new LocaleFilter());
 
             //заполнили данные
             foreach (DataRow row in table.Rows)

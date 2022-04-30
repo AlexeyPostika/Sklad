@@ -65,10 +65,10 @@ namespace Sklad_v1_001.FormUsers.Category
         {
             InitializeComponent();
 
-            CategoryRow = new GlobalList.Category();
-            categoryLogic = new CategoryLogic();
-
             this.attributes = _attributes;
+
+            CategoryRow = new GlobalList.Category();
+            categoryLogic = new CategoryLogic(attributes);
 
             this.control.DataContext = CategoryRow;
         }

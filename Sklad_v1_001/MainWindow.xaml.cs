@@ -63,12 +63,11 @@ namespace Sklad_v1_001
                 _pageframeMenuLevel1 = value;
             }
         }
-        public MainWindow()
+        public MainWindow(Attributes _attributes)
         {
             InitializeComponent();
-
-            attributes = new Attributes();
-
+            
+            this.attributes = _attributes;
             AppWindow = this;
 
             PageframeMenuLevel = new frameMenu();

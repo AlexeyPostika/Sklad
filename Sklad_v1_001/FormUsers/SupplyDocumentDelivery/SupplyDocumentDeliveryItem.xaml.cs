@@ -219,7 +219,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
 
             convertData = new ConvertData();
 
-            deliveryLogic = new DeliveryLogic();
+            deliveryLogic = new DeliveryLogic(attributes);
             dataDeliveryCompany = new ObservableCollection<DeliveryCompany>();
             dataDeliveryCompanyDetails = new ObservableCollection<DeliveryCompanyDetails>();
             dataDeliveryCompany = attributes.datalistDeliveryCompany;

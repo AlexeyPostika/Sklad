@@ -9,6 +9,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sklad_v1_001.GlobalAttributes;
 
 namespace Sklad_v1_001.FormUsers.Category
 {
@@ -313,6 +314,7 @@ namespace Sklad_v1_001.FormUsers.Category
 
     public class CategoryLogic
     {
+        Attributes attributes;
         ConvertData convertData;
 
         string get_store_procedure = "xp_GetCategoryTable";
@@ -325,9 +327,11 @@ namespace Sklad_v1_001.FormUsers.Category
         DataTable _data = null;
         DataTable _datarow = null;
 
-        public CategoryLogic()
+        public CategoryLogic(Attributes _attributes)
         {
+            this.attributes = _attributes;
             convertData = new ConvertData();
+
             _data = new DataTable();
             _datarow = new DataTable();
 
@@ -343,7 +347,7 @@ namespace Sklad_v1_001.FormUsers.Category
             //----------------------------------------------------------------------------
 
             _sqlRequestSave.AddParametr("@p_AddUserID", SqlDbType.Int);
-            _sqlRequestSave.SetParametrValue("@p_AddUserID", 1);
+            _sqlRequestSave.SetParametrValue("@p_AddUserID", attributes.numeric.userEdit.AddUserID);
 
             _sqlRequestSave.AddParametr("@p_ID", SqlDbType.Int);
             _sqlRequestSave.SetParametrValue("@p_ID", 0);

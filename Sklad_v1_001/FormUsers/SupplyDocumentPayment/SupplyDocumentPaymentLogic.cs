@@ -1,4 +1,5 @@
-﻿using Sklad_v1_001.GlobalList;
+﻿using Sklad_v1_001.GlobalAttributes;
+using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.GlobalVariable;
 using Sklad_v1_001.HelperGlobal;
 using Sklad_v1_001.SQL;
@@ -313,6 +314,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
     }
     public class SupplyDocumentPaymentLogic
     {
+        Attributes attributes;
+
         string get_store_procedure = "xp_GetSupplyDocumentPaymentTable";
 
         // запрос
@@ -322,8 +325,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
         DataTable _data = null;
         DataTable _datarow = null;
         
-        public SupplyDocumentPaymentLogic()
+        public SupplyDocumentPaymentLogic(Attributes _attributes)
         {
+            this.attributes = _attributes;
             _sqlRequestSelect = new SQLCommanSelect();
 
 

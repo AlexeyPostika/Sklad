@@ -315,6 +315,7 @@
     <Compile Include="Control\Zona\Yellow\SelectCategoryYellowTable.xaml.cs">
       <DependentUpon>SelectCategoryYellowTable.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Crypto\CryptDecrypt.cs" />
     <Compile Include="FormUsers\CategoryDetails\CategoryDetailsLigic.cs" />
     <Compile Include="FormUsers\CategoryDetails\NewCategoryDetailsItem.xaml.cs">
       <DependentUpon>NewCategoryDetailsItem.xaml</DependentUpon>
@@ -342,7 +343,6 @@
     <Compile Include="FormUsers\SupplyDocumentDelivery\SupplyDocumentDeliveryItem.xaml.cs">
       <DependentUpon>SupplyDocumentDeliveryItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FormUsers\Kategor\KategoriiLogic.cs" />
     <Compile Include="FormUsers\Prixod\RegistraciyTovaraLogic.cs" />
     <Compile Include="FormUsers\Product\ProductLogic.cs" />
     <Compile Include="FormUsers\Product\NewAddProductItem.xaml.cs">
@@ -380,6 +380,7 @@
     </Compile>
     <Compile Include="FormUsers\Zacupca\ZacupcaGridLogic.cs" />
     <Compile Include="GlobalAttributes\Attributes.cs" />
+    <Compile Include="GlobalAttributes\Numeric.cs" />
     <Compile Include="GlobalList\EnumList.cs" />
     <Compile Include="GlobalList\List.cs" />
     <Compile Include="GlobalVariable\DataBaseData.cs" />
@@ -747,10 +748,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FormUsers\Kategor\Kategorii.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="FormUsers\Page1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -793,9 +790,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="FormUsers\Kategor\Kategorii.xaml.cs">
-      <DependentUpon>Kategorii.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>

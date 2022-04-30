@@ -64,11 +64,10 @@ namespace Sklad_v1_001.FormUsers.CategoryDetails
         public NewCategoryDetailsItem(Attributes _attributes)
         {
             InitializeComponent();
+            this.attributes = _attributes;
 
             CategoryDetailsRow = new GlobalList.CategoryDetails();
-            categoryDetailsLogic = new CategoryDetailsLigic();
-
-            this.attributes = _attributes;
+            categoryDetailsLogic = new CategoryDetailsLigic(attributes);
 
             this.control.DataContext = CategoryDetailsRow;
         }

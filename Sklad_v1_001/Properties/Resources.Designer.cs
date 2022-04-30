@@ -214,6 +214,24 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на неверные данные.
+        /// </summary>
+        public static string BadData {
+            get {
+                return ResourceManager.GetString("BadData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на неправильный пароль.
+        /// </summary>
+        public static string BadPassword {
+            get {
+                return ResourceManager.GetString("BadPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на неверный дифпазон.
         /// </summary>
         public static string BadRange {
@@ -619,6 +637,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Неправильный зашифрованный пароль.
+        /// </summary>
+        public static string ErrorCryptPassword {
+            get {
+                return ResourceManager.GetString("ErrorCryptPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Ошибка при загрузки фото продукта.
         /// </summary>
         public static string ErrorDowloadImage {
@@ -696,6 +723,15 @@ namespace Sklad_v1_001.Properties {
         public static string Exite {
             get {
                 return ResourceManager.GetString("Exite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Вы действительно хотите выйти из системы?.
+        /// </summary>
+        public static string ExitMessage {
+            get {
+                return ResourceManager.GetString("ExitMessage", resourceCulture);
             }
         }
         
@@ -916,11 +952,38 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Проверьте правильность введенных данных.
+        /// </summary>
+        public static string LoginErrorMessage {
+            get {
+                return ResourceManager.GetString("LoginErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Логин.
         /// </summary>
         public static string LoginLabel {
             get {
                 return ResourceManager.GetString("LoginLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Авторизация прошла успешно.
+        /// </summary>
+        public static string LoginSuccessfulMessage {
+            get {
+                return ResourceManager.GetString("LoginSuccessfulMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Добро пожаловать в систему.
+        /// </summary>
+        public static string LoginSuccessfulTitle {
+            get {
+                return ResourceManager.GetString("LoginSuccessfulTitle", resourceCulture);
             }
         }
         
@@ -1776,6 +1839,15 @@ namespace Sklad_v1_001.Properties {
         public static string SupplyTitly {
             get {
                 return ResourceManager.GetString("SupplyTitly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на выход из системы.
+        /// </summary>
+        public static string SystemExit {
+            get {
+                return ResourceManager.GetString("SystemExit", resourceCulture);
             }
         }
         

@@ -783,4 +783,28 @@
   <data name="PasswordLabel" xml:space="preserve">
     <value>Пароль</value>
   </data>
+  <data name="BadPassword" xml:space="preserve">
+    <value>неправильный пароль</value>
+  </data>
+  <data name="ErrorCryptPassword" xml:space="preserve">
+    <value>Неправильный зашифрованный пароль</value>
+  </data>
+  <data name="BadData" xml:space="preserve">
+    <value>неверные данные</value>
+  </data>
+  <data name="ExitMessage" xml:space="preserve">
+    <value>Вы действительно хотите выйти из системы?</value>
+  </data>
+  <data name="LoginErrorMessage" xml:space="preserve">
+    <value>Проверьте правильность введенных данных</value>
+  </data>
+  <data name="LoginSuccessfulMessage" xml:space="preserve">
+    <value>Авторизация прошла успешно</value>
+  </data>
+  <data name="LoginSuccessfulTitle" xml:space="preserve">
+    <value>Добро пожаловать в систему</value>
+  </data>
+  <data name="SystemExit" xml:space="preserve">
+    <value>выход из системы</value>
+  </data>
 </root>

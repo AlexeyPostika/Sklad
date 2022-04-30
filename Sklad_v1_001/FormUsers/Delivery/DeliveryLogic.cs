@@ -1,4 +1,5 @@
-﻿using Sklad_v1_001.GlobalList;
+﻿using Sklad_v1_001.GlobalAttributes;
+using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.GlobalVariable;
 using Sklad_v1_001.HelperGlobal;
 using Sklad_v1_001.SQL;
@@ -363,6 +364,7 @@ namespace Sklad_v1_001.FormUsers.Delivery
     }
     public class DeliveryLogic
     {
+        Attributes attributes;
         ConvertData convertData;
 
         string get_store_procedure = "xp_GetDeliveryCompanyTable";
@@ -376,8 +378,10 @@ namespace Sklad_v1_001.FormUsers.Delivery
         DataTable _data = null;
         DataTable _datarow = null;    
 
-        public DeliveryLogic()
+        public DeliveryLogic(Attributes _attributes)
         {
+            this.attributes = _attributes;
+
             _sqlRequestSelect = new SQLCommanSelect();
             _sqlRequestSave = new SQLCommanSelect();
 
@@ -392,7 +396,7 @@ namespace Sklad_v1_001.FormUsers.Delivery
             //----------------------------------------------------------------------------
 
             _sqlRequestSave.AddParametr("@p_AddUserID", SqlDbType.Int);
-            _sqlRequestSave.SetParametrValue("@p_AddUserID", 1);
+            _sqlRequestSave.SetParametrValue("@p_AddUserID", attributes.numeric.userEdit.AddUserID);
 
             _sqlRequestSave.AddParametr("@p_ID", SqlDbType.Int);
             _sqlRequestSave.SetParametrValue("@p_ID", 0);

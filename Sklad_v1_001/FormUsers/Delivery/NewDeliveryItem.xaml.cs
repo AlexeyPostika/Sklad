@@ -65,10 +65,10 @@ namespace Sklad_v1_001.FormUsers.Delivery
         {
             InitializeComponent();
 
-            DeliveryCompanyRow = new GlobalList.DeliveryCompany();
-            deliveryLogic = new DeliveryLogic();
-
             this.attributes = _attributes;
+
+            DeliveryCompanyRow = new GlobalList.DeliveryCompany();
+            deliveryLogic = new DeliveryLogic(attributes);
 
             this.control.DataContext = DeliveryCompanyRow;
         }

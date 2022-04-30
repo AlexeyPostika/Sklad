@@ -1,4 +1,5 @@
-﻿using Sklad_v1_001.GlobalList;
+﻿using Sklad_v1_001.GlobalAttributes;
+using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.GlobalVariable;
 using Sklad_v1_001.HelperGlobal;
 using Sklad_v1_001.SQL;
@@ -517,6 +518,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
 
     public class SupplyDocumentDeliveryLogic
     {
+        Attributes attributes;
+
         string get_store_procedure = "xp_GetSupplyDocumentDeliveryTable";
 
         // запрос
@@ -526,10 +529,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
         DataTable _data = null;
         DataTable _datarow = null;
 
-        public SupplyDocumentDeliveryLogic()
+        public SupplyDocumentDeliveryLogic(Attributes _attributes)
         {
-            _sqlRequestSelect = new SQLCommanSelect();
+            this.attributes = _attributes;
 
+            _sqlRequestSelect = new SQLCommanSelect();
 
             _data = new DataTable();
             _datarow = new DataTable();

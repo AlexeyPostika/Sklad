@@ -21,6 +21,8 @@ namespace Sklad_v1_001.GlobalAttributes
 {    
     public class Attributes
     {
+        public Numeric numeric { get; set; }
+
         ConvertData convertData;
         //работа с схемой БД 
         ShemaStorаge shemaStorage;
@@ -52,9 +54,11 @@ namespace Sklad_v1_001.GlobalAttributes
 
         //работаем с пользователями
         UserLogic userLogic;
+        FormUsers.Users.LocaleFilter localeFilterUsers;
         public ObservableCollection<FormUsers.Users.LocalRow> datalistUsers;
         public Attributes()
         {
+            numeric = new Numeric();
             shemaStorage = new ShemaStorаge();
             getCategoryTableTableAdapter = new GetCategoryTableTableAdapter();
             getDeliveryCompanyTableAdapter = new GetDeliveryCompanyTableAdapter();          
@@ -157,7 +161,9 @@ namespace Sklad_v1_001.GlobalAttributes
         public void FillUsers()
         {
             UserLogic userListLogic = new UserLogic();
-            DataTable dataTable = userListLogic.FillGrid();
+            localeFilterUsers = new LocaleFilter();
+            localeFilterUsers.MassIsActive = "1";
+            DataTable dataTable = userListLogic.FillGrid(localeFilterUsers);
             foreach (DataRow row in dataTable.Rows)
             {
                 datalistUsers.Add(userListLogic.Convert(row, new FormUsers.Users.LocalRow()));

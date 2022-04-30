@@ -1,4 +1,5 @@
-﻿using Sklad_v1_001.GlobalList;
+﻿using Sklad_v1_001.GlobalAttributes;
+using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.GlobalVariable;
 using Sklad_v1_001.HelperGlobal;
 using Sklad_v1_001.SQL;
@@ -1579,6 +1580,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
     }
     public class SupplyDocumentLogic
     {
+        Attributes attributes;
         ConvertData convertData;
 
         public DataTable innerList1;
@@ -1619,8 +1621,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         //структура таблиц
         ShemaStorаge shemaStorаge;
 
-        public SupplyDocumentLogic()
+        public SupplyDocumentLogic(Attributes _attributes)
         {
+            this.attributes = _attributes;
             convertData = new ConvertData();
 
             _data = new DataTable();
@@ -1777,7 +1780,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             //----------------------------------------------------------------------------
 
             _sqlRequestSave.AddParametr("@p_AddUserID", SqlDbType.Int);
-            _sqlRequestSave.SetParametrValue("@p_AddUserID", 1);
+            _sqlRequestSave.SetParametrValue("@p_AddUserID", attributes.numeric.userEdit.AddUserID);
 
             _sqlRequestSave.AddParametr("@p_UserID", SqlDbType.Int);
             _sqlRequestSave.SetParametrValue("@p_UserID", 0);

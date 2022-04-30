@@ -1,4 +1,5 @@
-﻿using Sklad_v1_001.GlobalVariable;
+﻿using Sklad_v1_001.GlobalAttributes;
+using Sklad_v1_001.GlobalVariable;
 using Sklad_v1_001.HelperGlobal;
 using Sklad_v1_001.SQL;
 using System;
@@ -192,6 +193,7 @@ namespace Sklad_v1_001.FormUsers.Manufacturer
     }
     public class ManufacturerLogic
     {
+        Attributes attributes;
         ConvertData convertData;
 
         string get_store_procedure = "xp_GetManufacturerTable";
@@ -204,8 +206,9 @@ namespace Sklad_v1_001.FormUsers.Manufacturer
         DataTable _data = null;
         DataTable _datarow = null;
 
-        public ManufacturerLogic()
+        public ManufacturerLogic(Attributes _attributes)
         {
+            this.attributes = _attributes;
             convertData = new ConvertData();
             _data = new DataTable();
             _datarow = new DataTable();
