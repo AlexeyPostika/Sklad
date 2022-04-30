@@ -4,7 +4,7 @@ using Sklad_v1_001.FormUsers.Delivery;
 using Sklad_v1_001.FormUsers.DeliveryDetails;
 using Sklad_v1_001.FormUsers.Manufacturer;
 using Sklad_v1_001.FormUsers.ShowCase;
-using Sklad_v1_001.FormUsers.Userss;
+using Sklad_v1_001.FormUsers.Users;
 using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.HelperGlobal;
 using Sklad_v1_001.SQLCommand;
@@ -18,23 +18,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Sklad_v1_001.GlobalAttributes
-{
-    public class users
-    {
-        public Int32 ID { get; set; }
-        public String Login { get; set; }
-        public String Password { get; set; }
-        public Int32 RoleID { get; set; }
-        public String FirstName { get; set; }
-        public String LastName { get; set; }
-        public String SecondName { get; set; }
-        public String Email { get; set; }
-        public String Phone { get; set; }
-        public Boolean Active { get; set; }
-        public String ShortName { get; set; }
-        public String Name { get; set; }
-        public String Description { get; set; }
-    }
+{    
     public class Attributes
     {
         ConvertData convertData;
@@ -67,7 +51,8 @@ namespace Sklad_v1_001.GlobalAttributes
         public ObservableCollection<DeliveryCompanyDetails> datalistDeliveryDetailsCompany;
 
         //работаем с пользователями
-        public ObservableCollection<users> datalistUsers;
+        UserLogic userLogic;
+        public ObservableCollection<FormUsers.Users.LocalRow> datalistUsers;
         public Attributes()
         {
             shemaStorage = new ShemaStorаge();
@@ -97,7 +82,8 @@ namespace Sklad_v1_001.GlobalAttributes
             FillManufacturer();
 
             //загружаем пользователей
-            datalistUsers = new ObservableCollection<users>();
+            userLogic = new UserLogic();
+            datalistUsers = new ObservableCollection<FormUsers.Users.LocalRow > ();
             FillUsers();
 
         }
@@ -170,11 +156,11 @@ namespace Sklad_v1_001.GlobalAttributes
 
         public void FillUsers()
         {
-            UserListLogic userListLogic = new UserListLogic();
+            UserLogic userListLogic = new UserLogic();
             DataTable dataTable = userListLogic.FillGrid();
             foreach (DataRow row in dataTable.Rows)
             {
-                datalistUsers.Add(userListLogic.ConvertToUsers(row, new users()));
+                datalistUsers.Add(userListLogic.Convert(row, new FormUsers.Users.LocalRow()));
             }
         }
     }

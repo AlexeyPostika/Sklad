@@ -17,14 +17,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Sklad_v1_001.FormUsers.Userss
+namespace Sklad_v1_001.FormUsers.Users
 {
     /// <summary>
     /// Interaction logic for UserList.xaml
     /// </summary>
     public partial class UserList : Page, INotifyPropertyChanged
     {
-        UserListLogic userListLogic;
+        UserLogic userListLogic;
 
         ObservableCollection<LocalRow> dataUser;
 
@@ -39,7 +39,7 @@ namespace Sklad_v1_001.FormUsers.Userss
             InitializeComponent();
             dataUser = new ObservableCollection<LocalRow>();
 
-            userListLogic = new UserListLogic(); ;
+            userListLogic = new UserLogic(); ;
 
             //filterLocal = new LocalFilter();
             //filterLocal.Page = 0;

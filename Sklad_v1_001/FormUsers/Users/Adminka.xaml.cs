@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Sklad_v1_001.FormUsers.Userss
+namespace Sklad_v1_001.FormUsers.Users
 {
     /// <summary>
-    /// Interaction logic for RegistersUsers.xaml
+    /// Interaction logic for Adminka.xaml
     /// </summary>
-    public partial class RegistersUsers : Page
+    public partial class Adminka : Page
     {
-        public RegistersUsers()
+        public Adminka()
         {
             InitializeComponent();
         }

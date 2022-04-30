@@ -3,9 +3,9 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Sklad_v1_001.FormUsers.Userss"
+      xmlns:local="clr-namespace:Sklad_v1_001.FormUsers.Users"
       xmlns:Prixod="clr-namespace:Sklad_v1_001.FormUsers.Prixod" 
-      x:Class="Sklad_v1_001.FormUsers.Userss.RegistersUsers"
+      x:Class="Sklad_v1_001.FormUsers.Users.RegistersUsers"
       mc:Ignorable="d" 
      d:DesignHeight="818" Width="979" 
       Title="RegistersUsers" Background="#FFFDFBFB">

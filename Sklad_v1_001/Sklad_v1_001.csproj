@@ -371,10 +371,10 @@
       <DependentUpon>TovarItemZona.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\Tovar\TovarZonaLogic.cs" />
-    <Compile Include="FormUsers\Userss\UserList.xaml.cs">
+    <Compile Include="FormUsers\Users\UserList.xaml.cs">
       <DependentUpon>UserList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FormUsers\Userss\UserListLogic.cs" />
+    <Compile Include="FormUsers\Users\UserLogic.cs" />
     <Compile Include="FormUsers\Zacupca\ZacupcaGrid.xaml.cs">
       <DependentUpon>ZacupcaGrid.xaml</DependentUpon>
     </Compile>
@@ -723,7 +723,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="FormUsers\Userss\RegistersUsers.xaml">
+    <Page Include="FormUsers\Users\RegistersUsers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -763,11 +763,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FormUsers\Userss\Adminka.xaml">
+    <Page Include="FormUsers\Users\Adminka.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FormUsers\Userss\UserList.xaml">
+    <Page Include="FormUsers\Users\UserList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -787,7 +787,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="FormUsers\Userss\RegistersUsers.xaml.cs">
+    <Compile Include="FormUsers\Users\RegistersUsers.xaml.cs">
       <DependentUpon>RegistersUsers.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
@@ -806,7 +806,7 @@
     <Compile Include="FormUsers\Tovar\TovarZona.xaml.cs">
       <DependentUpon>TovarZona.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FormUsers\Userss\Adminka.xaml.cs">
+    <Compile Include="FormUsers\Users\Adminka.xaml.cs">
       <DependentUpon>Adminka.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
