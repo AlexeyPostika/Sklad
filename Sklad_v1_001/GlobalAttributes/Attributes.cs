@@ -63,15 +63,15 @@ namespace Sklad_v1_001.GlobalAttributes
             getCategoryTableTableAdapter = new GetCategoryTableTableAdapter();
             getDeliveryCompanyTableAdapter = new GetDeliveryCompanyTableAdapter();          
 
-            categoryLogic = new CategoryLogic();
-            categoryDetails = new CategoryDetailsLigic();
+            categoryLogic = new CategoryLogic(this);
+            categoryDetails = new CategoryDetailsLigic(this);
             datalistCategory = new ObservableCollection<Category>();
             datalistCategoryDetails = new ObservableCollection<CategoryDetails>();
             FillCategory();
             FillCategoryDetails();
 
-            deliverLogic = new DeliveryLogic();
-            deliveryDetailsLogic = new DeliveryDetailsLogic();
+            deliverLogic = new DeliveryLogic(this);
+            deliveryDetailsLogic = new DeliveryDetailsLogic(this);
             datalistDeliveryCompany = new ObservableCollection<DeliveryCompany>();
             datalistDeliveryDetailsCompany = new ObservableCollection<DeliveryCompanyDetails>();
             FillDeliverycompany();
@@ -136,7 +136,7 @@ namespace Sklad_v1_001.GlobalAttributes
         }
         public void FillShowCase()
         {
-            showcaseLogic = new ShowCaseLogic();
+            showcaseLogic = new ShowCaseLogic(this);
             FormUsers.ShowCase.LocalFilter localFilter = new FormUsers.ShowCase.LocalFilter();
             localFilter.IsActive = "1"; // только активные витрины
             DataTable dataTable = showcaseLogic.FillGrid(localFilter);
@@ -148,7 +148,7 @@ namespace Sklad_v1_001.GlobalAttributes
 
         public void FillManufacturer()
         {
-            manufacturerLogic = new ManufacturerLogic();
+            manufacturerLogic = new ManufacturerLogic(this);
             FormUsers.Manufacturer.LocalFilter localFilter = new FormUsers.Manufacturer.LocalFilter();
             localFilter.IsActive = "1"; // только активные витрины
             DataTable dataTable = manufacturerLogic.FillGrid(localFilter);
