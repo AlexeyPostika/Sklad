@@ -18,7 +18,8 @@
         SizeToContent="WidthAndHeight"
         ResizeMode="NoResize"
         Loaded="Window_Loaded"
-        Closed="Window_Closed">
+        Closed="Window_Closed" 
+        Icon="Icone/Store.png">
     <Grid Height="170" Width="350">
         <StackPanel Orientation="Vertical">
             <FlexComboBox:ComboBoxWithLabel LabelText="{x:Static res:Resources.LoginLabel}"
