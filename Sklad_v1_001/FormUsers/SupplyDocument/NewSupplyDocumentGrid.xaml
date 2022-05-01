@@ -42,7 +42,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                 </Grid>
-                <SimpleControl:EditBoxWithLabel x:Name="NumberDocument" Margin="0,10,0,0"
+                <SimpleControl:EditBoxWithLabel x:Name="NumberDocument"
                                             Text="{Binding Path=SupplyDocumentNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                             LabelText="{x:Static res:Resources.NumberDocument}"
                                             IsEnabled="False"
