@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
         
         <Grid Name="UserDescription">
-            <FlexUser:FlexUserNameImage/>
+            <FlexUser:FlexUserNameImage x:Name="userInfo"/>
         </Grid>
 
         <Grid Name="MenuButton" Grid.Row="1">

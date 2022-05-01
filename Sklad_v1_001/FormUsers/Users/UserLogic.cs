@@ -637,7 +637,9 @@ namespace Sklad_v1_001.FormUsers.Users
             localrow.Birthday = convertData.ConvertDataDateTime("Birthday");
             localrow.GenderID = convertData.ConvertDataInt32("ID");
             if (_row["PhotoUser"] as byte[] != null)
-                localrow.PhotoUserImage = imageSql.BytesToImageSource(_row["PhotoUser"] as byte[]);          
+                localrow.PhotoUserImage = imageSql.BytesToImageSource(_row["PhotoUser"] as byte[]);
+            else
+                localrow.PhotoUserImage = ImageHelper.GenerateImage("admin1.png");
             localrow.SyncDate = convertData.ConvertDataDateTime("SyncDate");
             localrow.SyncStatus = convertData.ConvertDataInt32("SyncStatus");
             

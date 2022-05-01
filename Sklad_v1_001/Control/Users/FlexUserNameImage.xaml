@@ -7,8 +7,8 @@
              xmlns:res="clr-namespace:Sklad_v1_001.Properties"
              Style="{DynamicResource MenuButton}"
              mc:Ignorable="d" x:Name="control">
-    <Grid Margin="0,5,0,5">
-        <Button Name="ButtonSelect" Height="100" HorizontalContentAlignment="Left">
+    <Grid Margin="0,5,0,5" >
+        <Button Name="ButtonSelect" Height="Auto" HorizontalContentAlignment="Left"  Style="{DynamicResource RoundBorderButtonStyle}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="80"/>
@@ -16,10 +16,10 @@
                 </Grid.ColumnDefinitions>
                 <Image Name="Photo" Source="{Binding ElementName=control, Path=ImageControl, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" HorizontalAlignment="Stretch"/>
                 <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="1">
-                    <Label HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Content="{x:Static res:Resources.NameLast}"/>
-                    <Label HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Content="{Binding ElementName=control, Path=LastNmae, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-                    <Label HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Content="{x:Static res:Resources.Position}"/>
-                    <Label HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Content="{Binding ElementName=control, Path=Post, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                    <Label Style="{DynamicResource LabelStyle}" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Content="{x:Static res:Resources.NameLast}"/>
+                    <Label Style="{DynamicResource LabelStyle}" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Content="{Binding ElementName=control, Path=LastNmae, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                    <Label Style="{DynamicResource LabelStyle}" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Content="{x:Static res:Resources.Position}"/>
+                    <Label Style="{DynamicResource LabelStyle}" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Content="{Binding ElementName=control, Path=RoleID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                 </StackPanel>
             </Grid>
         </Button>

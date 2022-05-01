@@ -1,4 +1,5 @@
-﻿using Sklad_v1_001.GlobalVariable;
+﻿using Sklad_v1_001.GlobalAttributes;
+using Sklad_v1_001.GlobalVariable;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,15 +22,15 @@ namespace Sklad_v1_001.Control.Users
     /// </summary>
     public partial class FlexUserNameImage : UserControl
     {
-        public static readonly DependencyProperty PostProperty = DependencyProperty.Register(
-         "Post",
+        public static readonly DependencyProperty RoleIDProperty = DependencyProperty.Register(
+         "RoleID",
          typeof(String),
          typeof(FlexUserNameImage), new UIPropertyMetadata(String.Empty));
 
-        public String Post
+        public String RoleID
         {
-            get { return (String)GetValue(PostProperty); }
-            set { SetValue(PostProperty, value); }
+            get { return (String)GetValue(RoleIDProperty); }
+            set { SetValue(RoleIDProperty, value); }
         }
 
         public static readonly DependencyProperty LastNmaeProperty = DependencyProperty.Register(
@@ -44,19 +45,19 @@ namespace Sklad_v1_001.Control.Users
         }
         public static readonly DependencyProperty ImageControlProperty = DependencyProperty.Register(
         "ImageControl",
-        typeof(BitmapImage),
+        typeof(ImageSource),
         typeof(FlexUserNameImage), new UIPropertyMetadata(ImageHelper.GenerateImage("admin1.png")));
-        public BitmapImage ImageControl
+        public ImageSource ImageControl
         {
-            get { return (BitmapImage)GetValue(ImageControlProperty); }
+            get { return (ImageSource)GetValue(ImageControlProperty); }
             set { SetValue(ImageControlProperty, value); }
         }
-
-
+       
         public FlexUserNameImage()
         {
             InitializeComponent();
-            ImageControl = ImageHelper.GenerateImage("admin1.png");
+            
+            ImageControl = ImageHelper.GenerateImage("admin1.png");           
         }
     }
 }

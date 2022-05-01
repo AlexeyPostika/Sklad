@@ -70,7 +70,7 @@ namespace Sklad_v1_001
             this.attributes = _attributes;
             AppWindow = this;
 
-            PageframeMenuLevel = new frameMenu();
+            PageframeMenuLevel = new frameMenu(attributes);
             this.frameMenuLevel1.Navigate(PageframeMenuLevel);
 
             //продукты

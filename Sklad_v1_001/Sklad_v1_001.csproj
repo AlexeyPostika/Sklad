@@ -120,6 +120,9 @@
     <Compile Include="Control\FlexButton\ToolBarButton.xaml.cs">
       <DependentUpon>ToolBarButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexButton\UserInfo.xaml.cs">
+      <DependentUpon>UserInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexComboBox\ComboBoxWithlabelToAddEdit.xaml.cs">
       <DependentUpon>ComboBoxWithlabelToAddEdit.xaml</DependentUpon>
     </Compile>
@@ -427,6 +430,10 @@
     <Page Include="Control\FlexButton\ToolBarButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\FlexButton\UserInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\FlexComboBox\ComboBoxWithlabelToAddEdit.xaml">
       <Generator>MSBuild:Compile</Generator>

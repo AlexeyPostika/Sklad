@@ -1,4 +1,5 @@
-﻿using Sklad_v1_001.GlobalVariable;
+﻿using Sklad_v1_001.GlobalAttributes;
+using Sklad_v1_001.GlobalVariable;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,6 +59,7 @@ namespace Sklad_v1_001.Control.FlexMenu
             }
         }
 
+        Attributes attributes;
 
         public event Action ButtonProductOpen;
         public event Action ButtonProductEditOpen;
@@ -71,9 +73,19 @@ namespace Sklad_v1_001.Control.FlexMenu
         public event Action ButtonTransferDocumentOpen;
         public event Action ButtonSettingsOpen;
         public event Action ButtonExiteOpen;
-        public frameMenu()
+        public frameMenu(Attributes _attributes)
         {
             InitializeComponent();
+            this.attributes = _attributes;
+
+            var temp = attributes.datalistUsers.FirstOrDefault(x => x.ID == attributes.numeric.userEdit.AddUserID) != null ? attributes.datalistUsers.FirstOrDefault(x => x.ID == attributes.numeric.userEdit.AddUserID) : null;
+            if (temp != null)
+            {
+                this.userInfo.LastNmae = temp.LastName + " " + temp.FirstName[0] + ". " + temp.SecondName[0] + ".";
+                this.userInfo.RoleID = temp.RoleID.ToString();
+                this.userInfo.ImageControl = temp.PhotoUserImage;
+            }
+           
         }
 
         private void Menu_Loaded(object sender, RoutedEventArgs e)
