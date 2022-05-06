@@ -28,7 +28,8 @@
                                 Margin="-5,5,0,0"
                                 ButtonFilter="toolBarProduct_ButtonFilter"
                                 ButtonScan="toolBarProduct_ButtonScan"
-                                ButtonClean="toolBarProduct_ButtonClean"/>
+                                ButtonClean="toolBarProduct_ButtonClean"
+                                ButtonBasket="toolBarProduct_ButtonBasket"/>
         <Grid Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Visible">
             <ScrollViewer x:Name="ScrollAuto" VerticalScrollBarVisibility="Auto">
                 <StackPanel Name="Column1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="Auto" />

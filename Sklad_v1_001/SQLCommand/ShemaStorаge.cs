@@ -1,9 +1,10 @@
 ﻿namespace Sklad_v1_001.SQLCommand
 {
-
-
     partial class ShemaStorаge
     {
+        partial class BasketShopDataTable
+        {
+        }
     }
 }
 

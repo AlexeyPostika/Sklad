@@ -319,6 +319,7 @@
       <DependentUpon>SelectCategoryYellowTable.xaml</DependentUpon>
     </Compile>
     <Compile Include="Crypto\CryptDecrypt.cs" />
+    <Compile Include="FormUsers\BasketShop\BasketShopLogic.cs" />
     <Compile Include="FormUsers\CategoryDetails\CategoryDetailsLigic.cs" />
     <Compile Include="FormUsers\CategoryDetails\NewCategoryDetailsItem.xaml.cs">
       <DependentUpon>NewCategoryDetailsItem.xaml</DependentUpon>

@@ -1,9 +1,11 @@
 ﻿using Sklad_v1_001.Control.Contener;
 using Sklad_v1_001.Control.FlexFilter;
 using Sklad_v1_001.Control.FlexMessageBox;
+using Sklad_v1_001.FormUsers.BasketShop;
 using Sklad_v1_001.GlobalAttributes;
 using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.HelperGlobal;
+using Sklad_v1_001.SQLCommand;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -34,17 +36,21 @@ namespace Sklad_v1_001.FormUsers.Product
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        //схема структуры SupplyDocument
+        ShemaStorаge shemaStorаge;
 
         Attributes attributes;
         ConvertData convertData;
 
         ProductLogic productLogic;
+        BasketShopLogic basketShopLogic;
 
         LocalFilter localFilter;
 
         RowSummary summary;
 
         ObservableCollection<LocalRow> datalist;
+        ObservableCollection<BasketShop.LocalRow> datalistBasketShop;
 
         FlexFilterContenerProductWindows flexFilterContenerProductWindows;
 
@@ -73,6 +79,7 @@ namespace Sklad_v1_001.FormUsers.Product
         Int32 totalCount;
         Int32 pageCount;
 
+        Boolean newDocumentBasketShop;
 
         public DataTable FilterCreatedByUserID
         {
@@ -347,12 +354,16 @@ namespace Sklad_v1_001.FormUsers.Product
             }
         }
 
+        public bool NewDocumentBasketShop { get => newDocumentBasketShop; set => newDocumentBasketShop = value; }
+
         public ProductGrid(Attributes _attributes)
         {
             InitializeComponent();
 
             this.attributes = _attributes;
-            
+
+            shemaStorаge = new ShemaStorаge();
+
             FilterCreatedByUserID = new DataTable();
             filterLastModifiedByUserID = new DataTable();
             FilterStatus = new DataTable();
@@ -394,10 +405,12 @@ namespace Sklad_v1_001.FormUsers.Product
             flexFilterContenerProductWindows = new FlexFilterContenerProductWindows();
 
             productLogic = new ProductLogic(attributes);
+            basketShopLogic = new BasketShopLogic(attributes);
 
             localFilter = new LocalFilter();
 
             datalist = new ObservableCollection<LocalRow>();
+            datalistBasketShop = new ObservableCollection<BasketShop.LocalRow>();
 
             summary = new RowSummary();
 
@@ -405,6 +418,8 @@ namespace Sklad_v1_001.FormUsers.Product
             InitFilters();
             //Refresh();
             IsAllowFilter = true;
+
+            NewDocumentBasketShop = true;
         }
 
         private void AddVisibilityControl(Panel PanelToAdd, Object VisibilityRow, UIElement ElementValue)
@@ -456,6 +471,11 @@ namespace Sklad_v1_001.FormUsers.Product
 
         }
 
+        private void RefreshBasket()
+        {
+
+        }
+
         private void ContenerRowDescription_ButtonEditClick(object sender, RoutedEventArgs e)
         {
             ContenerRowDescription contenerRowDescription = sender as ContenerRowDescription;
@@ -481,7 +501,43 @@ namespace Sklad_v1_001.FormUsers.Product
 
         private void ContenerRowDescription_ButtonAddClick(object sender, RoutedEventArgs e)
         {
-            //throw new NotImplementedException();
+            ContenerRowDescription contenerRowDescription = sender as ContenerRowDescription;
+            if (contenerRowDescription != null)
+            {
+                var row = datalist.FirstOrDefault(x => x.ID.ToString() == contenerRowDescription.KeyRow) != null ? datalist.FirstOrDefault(x => x.ID.ToString() == contenerRowDescription.KeyRow) : null;
+                if (row != null)
+                {
+                    var tempID = datalistBasketShop.FirstOrDefault(x => x.ProductID == row.ID) != null ? datalistBasketShop.FirstOrDefault(x => x.ProductID == row.ID) : null;
+                    if (tempID == null)
+                    {
+                        BasketShop.LocalRow rowBasket = new BasketShop.LocalRow();
+                        rowBasket.ProductID = row.ID;
+                        rowBasket.UserID = attributes.numeric.userEdit.AddUserID;
+                        rowBasket.Quantity = 1;
+                        datalistBasketShop.Add(rowBasket);
+                    }
+                   else
+                    {
+                        tempID.Quantity += 1;
+                    }
+                }
+
+                shemaStorаge.BasketShop.Clear();
+                foreach (BasketShop.LocalRow local in datalistBasketShop)
+                {
+                    DataRow rowTabel = shemaStorаge.BasketShop.NewRow();
+                    rowTabel["UserID"] = local.UserID;
+                    rowTabel["ProductID"] = local.ProductID;
+                    rowTabel["Quantity"] = local.Quantity;
+                    shemaStorаge.BasketShop.Rows.Add(rowTabel);
+                }
+                if (!NewDocumentBasketShop)
+                    basketShopLogic.SaveRow(shemaStorаge, 1);
+                else
+                    basketShopLogic.SaveRow(shemaStorаge);
+
+                RefreshBasket();
+            }
         }
 
         private void page_Loaded(object sender, RoutedEventArgs e)
@@ -752,6 +808,26 @@ namespace Sklad_v1_001.FormUsers.Product
             Refresh();
         }
 
+        private void toolBarProduct_ButtonBasket()
+        {
+            if (datalistBasketShop.Count > 0)
+            {
+                shemaStorаge.BasketShop.Clear();
+                foreach (BasketShop.LocalRow local in datalistBasketShop)
+                {
+                    DataRow row = shemaStorаge.BasketShop.NewRow();
+                    row["UserID"] = local.UserID;
+                    row["ProductID"] = local.ProductID;
+                    row["Quantity"] = local.Quantity;
+                    shemaStorаge.BasketShop.Rows.Add(row);
+                }
+                if (!NewDocumentBasketShop)
+                    basketShopLogic.SaveRow(shemaStorаge, 1);
+                else
+                    basketShopLogic.SaveRow(shemaStorаge);
+            }          
+        }
+
         #endregion
 
         #region CalculateSummary
@@ -765,6 +841,7 @@ namespace Sklad_v1_001.FormUsers.Product
 
         }
         #endregion
-      
+
+       
     }
 }
