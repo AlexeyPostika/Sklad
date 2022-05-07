@@ -30,6 +30,7 @@
                                 ButtonScan="toolBarProduct_ButtonScan"
                                 ButtonClean="toolBarProduct_ButtonClean"
                                 QuantityBasket="{Binding ElementName=page, Path=QuantityBasket, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                VisibilityEllips="{Binding ElementName=page, Path=VisibilityEllips, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                 ButtonBasket="toolBarProduct_ButtonBasket"/>
         <Grid Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Visible">
             <ScrollViewer x:Name="ScrollAuto" VerticalScrollBarVisibility="Auto">

@@ -23,6 +23,8 @@ namespace Sklad_v1_001.FormUsers.BasketShop
 
         private Int32 userID;
         private string screenTypeGrid;
+        private String sortColumn;
+        private Boolean sort;
         public Int32 UserID
         {
             get
@@ -49,9 +51,38 @@ namespace Sklad_v1_001.FormUsers.BasketShop
                 OnPropertyChanged("ScreenTypeGrid");
             }
         }
+        public string SortColumn
+        {
+            get
+            {
+                return sortColumn;
+            }
+
+            set
+            {
+                sortColumn = value;
+                OnPropertyChanged("SortColumn");
+            }
+        }
+
+        public Boolean Sort
+        {
+            get
+            {
+                return sort;
+            }
+
+            set
+            {
+                sort = value;
+                OnPropertyChanged("Sort");
+            }
+        }
         public LocalFilter()
         {
             ScreenTypeGrid = ScreenType.ScreenTypeGrid;
+            Sort = true;
+            SortColumn = "ID";
         }
     }
 
@@ -256,7 +287,7 @@ namespace Sklad_v1_001.FormUsers.BasketShop
         Attributes attributes;
         ConvertData convertData;
 
-        string get_store_procedure = "";
+        string get_store_procedure = "xp_GetBasketShopTable";
         string save_store_procedure = "xp_SaveBasketShopTable";
 
         SQLCommanSelect _sqlRequestSelect = null;
@@ -277,6 +308,18 @@ namespace Sklad_v1_001.FormUsers.BasketShop
             _sqlRequestSelect = new SQLCommanSelect();
             _sqlRequestSave = new SQLCommanSelect();
 
+            _sqlRequestSelect.AddParametr("@p_TypeScreen", SqlDbType.NVarChar);
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeGrid);
+
+            _sqlRequestSelect.AddParametr("@p_UserID", SqlDbType.NVarChar);
+            _sqlRequestSelect.SetParametrValue("@p_UserID", attributes.numeric.userEdit.AddUserID.ToString());
+
+            _sqlRequestSelect.AddParametr("@p_SortColumn", SqlDbType.NVarChar, 255);
+            _sqlRequestSelect.SetParametrValue("@p_SortColumn", 0);
+
+            _sqlRequestSelect.AddParametr("@p_Sort", SqlDbType.Bit);
+            _sqlRequestSelect.SetParametrValue("@p_Sort", 0);
+
             //----------------------------------------------------------------------------
             _sqlRequestSave.AddParametr("@p_AddUserID", SqlDbType.Int);
             _sqlRequestSave.SetParametrValue("@p_AddUserID", attributes.numeric.userEdit.AddUserID);
@@ -289,6 +332,16 @@ namespace Sklad_v1_001.FormUsers.BasketShop
 
         }
 
+        public DataTable FillGrid()
+        {
+            _sqlRequestSelect.SqlAnswer.datatable.Clear();
+            _data.Clear();
+         
+            _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
+            _data = _sqlRequestSelect.SqlAnswer.datatable;
+            return _data;
+        }
+
         public Int32 SaveRow(ShemaStorаge _shemaStorаge, Int32 _id = 0)
         {           
             _sqlRequestSave.SetParametrValue("@p_ID", _id);
@@ -296,6 +349,26 @@ namespace Sklad_v1_001.FormUsers.BasketShop
 
             _sqlRequestSave.ComplexRequest(save_store_procedure, CommandType.StoredProcedure, null);
             return (Int32)_sqlRequestSave.SqlAnswer.result;
+        }
+
+        public LocalRow Convert(DataRow _dataRow, LocalRow _localeRow)
+        {          
+            ConvertData convertData = new ConvertData(_dataRow, _localeRow);
+
+            _localeRow.ID = convertData.ConvertDataInt32("ID");
+                    
+            _localeRow.UserID = convertData.ConvertDataInt32("UserID");
+            _localeRow.ProductID = convertData.ConvertDataInt32("ProductID");
+            _localeRow.Quantity = convertData.ConvertDataInt32("Quantity");
+           
+            _localeRow.CreatedDate = convertData.ConvertDataDateTime("CreatedDate");
+            _localeRow.CreatedDateString = convertData.DateTimeConvertShortString(_localeRow.CreatedDate);
+            _localeRow.LastModificatedDate = convertData.ConvertDataDateTime("LastModificatedDate");
+            _localeRow.LastModificatedDateString = convertData.DateTimeConvertShortString(_localeRow.LastModificatedDate);
+            _localeRow.CreatedUserID = convertData.ConvertDataInt32("CreatedUserID");
+            _localeRow.LastModificatedUserID = convertData.ConvertDataInt32("LastModificatedUserID");
+
+            return _localeRow;
         }
     }
 }

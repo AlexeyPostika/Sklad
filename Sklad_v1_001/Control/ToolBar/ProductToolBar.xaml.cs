@@ -84,7 +84,7 @@ namespace Sklad_v1_001.Control.ToolBar
         public Int32 QuantityBasket
         {
             get { return (Int32)GetValue(QuantityBasketProperty); }
-            set { SetValue(QuantityBasketProperty, value); if (value > 0) { VisibilityEllips = Visibility.Visible; } else { VisibilityEllips = Visibility.Collapsed; } }
+            set { SetValue(QuantityBasketProperty, value); }
         }
 
         public delegate void ButtonScanHandler(String text);

@@ -80,6 +80,7 @@ namespace Sklad_v1_001.FormUsers.Product
         Int32 pageCount;
 
         Int32 quantityBasket;
+        Visibility visibilityEllips;
 
         Boolean newDocumentBasketShop;
 
@@ -370,6 +371,20 @@ namespace Sklad_v1_001.FormUsers.Product
             }
         }
 
+        public Visibility VisibilityEllips
+        {
+            get
+            {
+                return visibilityEllips;
+            }
+
+            set
+            {
+                visibilityEllips = value;
+                OnPropertyChanged("VisibilityEllips");
+            }
+        }
+
         public bool NewDocumentBasketShop { get => newDocumentBasketShop; set => newDocumentBasketShop = value; }
 
         public ProductGrid(Attributes _attributes)
@@ -433,6 +448,11 @@ namespace Sklad_v1_001.FormUsers.Product
             productLogic.InitFilters();
             InitFilters();
             //Refresh();
+
+            VisibilityEllips = Visibility.Collapsed;
+            QuantityBasket = 0;
+
+            RefreshBasket();
             IsAllowFilter = true;
 
             NewDocumentBasketShop = true;
@@ -489,6 +509,21 @@ namespace Sklad_v1_001.FormUsers.Product
 
         private void RefreshBasket()
         {
+            DataTable dataTable = basketShopLogic.FillGrid();
+            QuantityBasket = 0;
+            foreach (DataRow row in dataTable.Rows)
+            {
+                datalistBasketShop.Add(basketShopLogic.Convert(row, new BasketShop.LocalRow()));
+                QuantityBasket++;
+            }
+            if (QuantityBasket > 0) 
+            { 
+                VisibilityEllips = Visibility.Visible; 
+            } 
+            else 
+            { 
+                VisibilityEllips = Visibility.Collapsed; 
+            }
 
         }
 

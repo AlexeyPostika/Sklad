@@ -16,11 +16,14 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Image x:Name="Image" Stretch="Fill" Margin="5,3,0,3" HorizontalAlignment="Left" RenderOptions.BitmapScalingMode="NearestNeighbor" MaxHeight="30" MaxWidth="30"/>
-                <Ellipse x:Name="ellips" HorizontalAlignment="Right" VerticalAlignment="Top"  Height="5" Width="5" Fill="#FFF74A4A"
+                <Ellipse x:Name="ellips" HorizontalAlignment="Right" VerticalAlignment="Top" Width="18" Height="18" Fill="#FFF74A4A" Margin="33,0,0,0"
                          Visibility="{Binding ElementName=control, Path=VisibilityEllips, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-                <Label x:Name="quantity" Content="{Binding ElementName=control, Path=QuantityBasket, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                       HorizontalAlignment="Right" VerticalAlignment="Top" Width="5" Height="5" 
-                        Visibility="{Binding ElementName=control, Path=VisibilityEllips, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                <Label x:Name="quantity" Content="{Binding ElementName=control, Path=QuantityBasket, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Style="{DynamicResource LabelStyle}"
+                       HorizontalAlignment="Right" VerticalAlignment="Top" Width="20" Height="20" Margin="33,0,0,0"
+                       FontSize="9"
+                       HorizontalContentAlignment="Center"
+                       VerticalContentAlignment="Center"
+                       Visibility="{Binding ElementName=control, Path=VisibilityEllips, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                 <Image x:Name="ImageWarning" Stretch="None" Margin="0,3,-10,0" HorizontalAlignment="Right" VerticalAlignment="Top" RenderOptions.BitmapScalingMode="NearestNeighbor" Visibility="Collapsed"/>
                 <Label x:Name="TextField" Style="{DynamicResource LabelStyle}" Grid.Column="1" HorizontalAlignment="Stretch" Margin="15,0,0,0"/>
                 <Image x:Name="ImageDown" Stretch="None" Margin="0,5,0,5" HorizontalAlignment="Left"  Grid.Column="2"/>
