@@ -367,6 +367,7 @@ namespace Sklad_v1_001.FormUsers.BasketShop
             _localeRow.LastModificatedDateString = convertData.DateTimeConvertShortString(_localeRow.LastModificatedDate);
             _localeRow.CreatedUserID = convertData.ConvertDataInt32("CreatedUserID");
             _localeRow.LastModificatedUserID = convertData.ConvertDataInt32("LastModificatedUserID");
+            _localeRow.NewDocumentBasketShop = false;
 
             return _localeRow;
         }

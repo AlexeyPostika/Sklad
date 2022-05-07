@@ -4828,10 +4828,13 @@ namespace Sklad_v1_001.SQLCommand {
                 base.Columns.Add(this.columnSaleDocumentID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("BasketShopKey1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("ProductIDKey", new global::System.Data.DataColumn[] {
+                                this.columnProductID}, false));
                 this.columnID.AutoIncrement = true;
                 this.columnID.AutoIncrementSeed = 1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
+                this.columnProductID.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

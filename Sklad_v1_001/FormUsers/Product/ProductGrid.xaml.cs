@@ -509,6 +509,8 @@ namespace Sklad_v1_001.FormUsers.Product
 
         private void RefreshBasket()
         {
+            datalistBasketShop.Clear();
+
             DataTable dataTable = basketShopLogic.FillGrid();
             QuantityBasket = 0;
             foreach (DataRow row in dataTable.Rows)
@@ -565,10 +567,12 @@ namespace Sklad_v1_001.FormUsers.Product
                         rowBasket.ProductID = row.ID;
                         rowBasket.UserID = attributes.numeric.userEdit.AddUserID;
                         rowBasket.Quantity = 1;
+                        rowBasket.NewDocumentBasketShop = true;
                         datalistBasketShop.Add(rowBasket);
                     }
-                   else
+                    else
                     {
+                        tempID.NewDocumentBasketShop = true;
                         tempID.Quantity += 1;
                     }
                 }
@@ -576,11 +580,16 @@ namespace Sklad_v1_001.FormUsers.Product
                 shemaStorаge.BasketShop.Clear();
                 foreach (BasketShop.LocalRow local in datalistBasketShop)
                 {
-                    DataRow rowTabel = shemaStorаge.BasketShop.NewRow();
-                    rowTabel["UserID"] = local.UserID;
-                    rowTabel["ProductID"] = local.ProductID;
-                    rowTabel["Quantity"] = local.Quantity;
-                    shemaStorаge.BasketShop.Rows.Add(rowTabel);
+                    try
+                    {
+                        DataRow rowTabel = shemaStorаge.BasketShop.NewRow();
+                        rowTabel["UserID"] = local.UserID;
+                        rowTabel["ProductID"] = local.ProductID;
+                        rowTabel["Quantity"] = local.Quantity;
+                        shemaStorаge.BasketShop.Rows.Add(rowTabel);
+                    }
+                    catch(Exception ex){}
+                   
                 }
                 if (!NewDocumentBasketShop)
                     basketShopLogic.SaveRow(shemaStorаge, 1);
