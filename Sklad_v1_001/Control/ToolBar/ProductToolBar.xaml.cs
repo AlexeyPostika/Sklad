@@ -21,25 +21,35 @@ namespace Sklad_v1_001.Control.ToolBar
     /// </summary>
     public partial class ProductToolBar : UserControl
     {
-        public static readonly DependencyProperty IsEnableAddProperty = DependencyProperty.Register(
-           "IsEnableAdd",
-           typeof(Boolean),
-           typeof(ProductToolBar), new UIPropertyMetadata(true));
-        
-        public static readonly DependencyProperty FilterImageProperty = DependencyProperty.Register(
-                      "FilterImage",
-                      typeof(ImageSource),
-                     typeof(ProductToolBar));
+      public static readonly DependencyProperty IsEnableAddProperty = DependencyProperty.Register(
+         "IsEnableAdd",
+         typeof(Boolean),
+         typeof(ProductToolBar), new UIPropertyMetadata(true));
 
-        public static readonly DependencyProperty EditImageProperty = DependencyProperty.Register(
-                     "EditImage",
-                     typeof(ImageSource),
-                    typeof(ProductToolBar));
+      public static readonly DependencyProperty FilterImageProperty = DependencyProperty.Register(
+                    "FilterImage",
+                    typeof(ImageSource),
+                   typeof(ProductToolBar));
 
-        public static readonly DependencyProperty SearchProperty = DependencyProperty.Register(
-         "Search",
-         typeof(String),
-         typeof(ProductToolBar), new UIPropertyMetadata(""));
+      public static readonly DependencyProperty EditImageProperty = DependencyProperty.Register(
+                   "EditImage",
+                   typeof(ImageSource),
+                  typeof(ProductToolBar));
+
+      public static readonly DependencyProperty SearchProperty = DependencyProperty.Register(
+       "Search",
+       typeof(String),
+       typeof(ProductToolBar), new UIPropertyMetadata(""));
+
+      public static readonly DependencyProperty VisibilityEllipsProperty = DependencyProperty.Register(
+      "VisibilityEllips",
+      typeof(Visibility),
+      typeof(ProductToolBar), new UIPropertyMetadata(Visibility.Collapsed));
+
+      public static readonly DependencyProperty QuantityBasketProperty = DependencyProperty.Register(
+      "QuantityBasket",
+      typeof(Int32),
+      typeof(ProductToolBar), new UIPropertyMetadata(0));
 
         public Boolean IsEnableAdd
         {
@@ -65,11 +75,23 @@ namespace Sklad_v1_001.Control.ToolBar
             set { SetValue(SearchProperty, value); }
         }
 
+        public Visibility VisibilityEllips
+        {
+            get { return (Visibility)GetValue(VisibilityEllipsProperty); }
+            set { SetValue(VisibilityEllipsProperty, value); }
+        }
+
+        public Int32 QuantityBasket
+        {
+            get { return (Int32)GetValue(QuantityBasketProperty); }
+            set { SetValue(QuantityBasketProperty, value); if (value > 0) { VisibilityEllips = Visibility.Visible; } else { VisibilityEllips = Visibility.Collapsed; } }
+        }
+
         public delegate void ButtonScanHandler(String text);
         public event ButtonScanHandler ButtonScan;
-        
+
         public event Action ButtonEdit;
-        public event Action ButtonFilter;  
+        public event Action ButtonFilter;
         public event Action ButtonBasket;
         public event Action ButtonClean;
 
@@ -78,8 +100,8 @@ namespace Sklad_v1_001.Control.ToolBar
             InitializeComponent();
             EditButton.Image.Source = ImageHelper.GenerateImage("IconDetails_X30.png");
             FilterButton.Image.Source = ImageHelper.GenerateImage("IconFilter_X30.png");
-            BasketButton.Image.Source= ImageHelper.GenerateImage("IconBasket_X30.png");
-        }      
+            BasketButton.Image.Source = ImageHelper.GenerateImage("IconBasket_X30.png");
+        }
 
         private void BasketButton_ButtonClick()
         {

@@ -52,11 +52,13 @@
                                             LabelText="{x:Static res:Resources.Scan}"
                                             ButtonClick="Scan_ButtonClick"/>-->
 
-        <FlexButton:LevelButton x:Name="BasketButton"
-                                Margin="0,5,0,0"
-                                Grid.Column="9"
-                                Text="{x:Static res:Resources.BASKET}"
-                                ButtonClick="BasketButton_ButtonClick"/>
+        <FlexButton:LevelButtonBasket x:Name="BasketButton"
+                                      Margin="0,5,0,0"
+                                      Grid.Column="9"
+                                      Text="{x:Static res:Resources.BASKET}"
+                                      VisibilityEllips="{Binding ElementName=control, Path=VisibilityEllips, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                      QuantityBasket="{Binding ElementName=control, Path=QuantityBasket, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                      ButtonClick="BasketButton_ButtonClick"/>
         <!--<Button x:Name="ApplyButton" Grid.Column="1"
                 HorizontalAlignment="Left" Width="auto"                
                 Click="ApplyButton_Click"

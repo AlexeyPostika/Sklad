@@ -79,6 +79,8 @@ namespace Sklad_v1_001.FormUsers.Product
         Int32 totalCount;
         Int32 pageCount;
 
+        Int32 quantityBasket;
+
         Boolean newDocumentBasketShop;
 
         public DataTable FilterCreatedByUserID
@@ -351,6 +353,20 @@ namespace Sklad_v1_001.FormUsers.Product
             {
                 pageCount = value;
                 OnPropertyChanged("PageCount");
+            }
+        }
+
+        public Int32 QuantityBasket
+        {
+            get
+            {
+                return quantityBasket;
+            }
+
+            set
+            {
+                quantityBasket = value;
+                OnPropertyChanged("QuantityBasket");
             }
         }
 

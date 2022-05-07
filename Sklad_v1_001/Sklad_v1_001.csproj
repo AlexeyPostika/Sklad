@@ -111,6 +111,9 @@
     <Compile Include="Control\FlexButton\LevelButton.xaml.cs">
       <DependentUpon>LevelButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexButton\LevelButtonBasket.xaml.cs">
+      <DependentUpon>LevelButtonBasket.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexButton\SmallButtonFilter.xaml.cs">
       <DependentUpon>SmallButtonFilter.xaml</DependentUpon>
     </Compile>
@@ -417,6 +420,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\FlexButton\LevelButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\FlexButton\LevelButtonBasket.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
