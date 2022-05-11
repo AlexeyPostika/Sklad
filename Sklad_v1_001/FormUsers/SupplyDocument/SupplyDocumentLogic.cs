@@ -2069,7 +2069,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         public Int32 SaveRowTable(LocalRow row)
         {
             //SupplyDocument
-            _sqlRequestSaveTable.SetParametrValue("@p_UserID", row.UserID);
+            _sqlRequestSaveTable.SetParametrValue("@p_UserID", row.LastModificatedUserID);
             _sqlRequestSaveTable.SetParametrValue("@p_ID", row.ID);
             _sqlRequestSaveTable.SetParametrValue("@p_Status", row.Status);
             _sqlRequestSaveTable.SetParametrValue("@p_Count", row.Count);

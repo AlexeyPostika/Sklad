@@ -204,6 +204,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             
                 this.DataContext = Document;
                 NewDocument = Document.ID == 0;
+                if (NewDocument)
+                {
+                    Document.LastModificatedUserID = attributes.numeric.userEdit.AddUserID;
+                }
 
                 switch (Document.Status)
                 {

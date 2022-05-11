@@ -346,8 +346,8 @@
     <Compile Include="FormUsers\Product\ProductItemGrid.xaml.cs">
       <DependentUpon>ProductItemGrid.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FormUsers\SaleDocument\NewSaleDocument.xaml.cs">
-      <DependentUpon>NewSaleDocument.xaml</DependentUpon>
+    <Compile Include="FormUsers\SaleDocument\NewSaleDocumentGrid.xaml.cs">
+      <DependentUpon>NewSaleDocumentGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\ShowCase\ShowCaseLogic.cs" />
     <Compile Include="FormUsers\SupplyDocumentDelivery\SupplyDocumentDeliveryItem.xaml.cs">
@@ -707,7 +707,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FormUsers\SaleDocument\NewSaleDocument.xaml">
+    <Page Include="FormUsers\SaleDocument\NewSaleDocumentGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

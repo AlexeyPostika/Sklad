@@ -42,7 +42,7 @@ namespace Sklad_v1_001
         //продукция
         ProductGrid productGrid;
         // Продажи
-        NewSaleDocument newSaleDocument;
+        NewSaleDocumentGrid newSaleDocument;
         //поставки товра
         SupplyDocumentGrid supplyDocumentGrid;
         NewSupplyDocumentGrid newSupplyDocumentGrid;
@@ -133,7 +133,7 @@ namespace Sklad_v1_001
         {
             GC.Collect();   //Вызов сборщика мусора
             GC.WaitForPendingFinalizers();  //ждем освобождение памяти
-            newSaleDocument = new NewSaleDocument(attributes);
+            newSaleDocument = new NewSaleDocumentGrid(attributes);
             frameWorkArea.Navigate(newSaleDocument);
         }
 
@@ -143,7 +143,7 @@ namespace Sklad_v1_001
             GC.WaitForPendingFinalizers();  //ждем освобождение памяти
             if (_datalistBasketShop!=null && _datalistBasketShop.Count > 0)
             {
-                newSaleDocument = new NewSaleDocument(attributes);
+                newSaleDocument = new NewSaleDocumentGrid(attributes);
                 frameWorkArea.Navigate(newSaleDocument);
             }        
         }

@@ -20,13 +20,13 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
     /// <summary>
     /// Логика взаимодействия для NewSaleDocument.xaml
     /// </summary>
-    public partial class NewSaleDocument : Page
+    public partial class NewSaleDocumentGrid : Page
     {
 
         public static readonly DependencyProperty IsPaymentAddButtonProperty = DependencyProperty.Register(
                   "IsPaymentAddButton",
                   typeof(Boolean),
-                 typeof(NewSaleDocument), new PropertyMetadata(true));
+                 typeof(NewSaleDocumentGrid), new PropertyMetadata(true));
 
         public Boolean IsPaymentAddButton
         {
@@ -36,6 +36,8 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
         Attributes attributes;
 
         ObservableCollection<BasketShop.LocalRow> datalistBasketShop;
+
+
 
         public ObservableCollection<BasketShop.LocalRow> DatalistBasketShop
         {
@@ -49,15 +51,22 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
                 if (value.Count > 0)
                 {
                     datalistBasketShop = value;
+                    foreach(BasketShop.LocalRow basket in datalistBasketShop)
+                    {
+
+                    }
                 }
             }
         }
 
-        public NewSaleDocument(Attributes _attributes)
+        public NewSaleDocumentGrid(Attributes _attributes)
         {
             InitializeComponent();
 
             this.attributes = _attributes;
+
+            UserIDDocument.ComboBoxElement.ItemsSource = attributes.datalistUsers;
+            
         }
 
         #region AddProduct
