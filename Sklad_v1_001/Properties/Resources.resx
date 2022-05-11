@@ -807,4 +807,7 @@
   <data name="SystemExit" xml:space="preserve">
     <value>выход из системы</value>
   </data>
+  <data name="SaleDocumentGroupBox" xml:space="preserve">
+    <value>Документ продажи</value>
+  </data>
 </root>

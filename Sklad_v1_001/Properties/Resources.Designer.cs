@@ -1654,6 +1654,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Документ продажи.
+        /// </summary>
+        public static string SaleDocumentGroupBox {
+            get {
+                return ResourceManager.GetString("SaleDocumentGroupBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Сохранить.
         /// </summary>
         public static string SAVE {

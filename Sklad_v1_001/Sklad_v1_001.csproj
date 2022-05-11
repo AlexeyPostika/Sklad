@@ -346,6 +346,9 @@
     <Compile Include="FormUsers\Product\ProductItemGrid.xaml.cs">
       <DependentUpon>ProductItemGrid.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FormUsers\SaleDocument\NewSaleDocument.xaml.cs">
+      <DependentUpon>NewSaleDocument.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FormUsers\ShowCase\ShowCaseLogic.cs" />
     <Compile Include="FormUsers\SupplyDocumentDelivery\SupplyDocumentDeliveryItem.xaml.cs">
       <DependentUpon>SupplyDocumentDeliveryItem.xaml</DependentUpon>
@@ -354,9 +357,6 @@
     <Compile Include="FormUsers\Product\ProductLogic.cs" />
     <Compile Include="FormUsers\Product\NewAddProductItem.xaml.cs">
       <DependentUpon>NewAddProductItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="FormUsers\SaleDocument\NewSaleDocument.xaml.cs">
-      <DependentUpon>NewSaleDocument.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\SupplyDocumentDelivery\SupplyDocumentDeliveryLogic.cs" />
     <Compile Include="FormUsers\SupplyDocumentDetails\SupplyDocumentDetailsLogic.cs" />
@@ -707,6 +707,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FormUsers\SaleDocument\NewSaleDocument.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FormUsers\SupplyDocumentDelivery\SupplyDocumentDeliveryItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -714,10 +718,6 @@
     <Page Include="FormUsers\Product\NewAddProductItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="FormUsers\SaleDocument\NewSaleDocument.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="FormUsers\SupplyDocumentPayment\NewSupplyDocumentPaymentItem.xaml">
       <Generator>MSBuild:Compile</Generator>
