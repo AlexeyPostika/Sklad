@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Sklad_v1_001.GlobalAttributes;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +22,7 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
     /// </summary>
     public partial class NewSaleDocument : Page
     {
+
         public static readonly DependencyProperty IsPaymentAddButtonProperty = DependencyProperty.Register(
                   "IsPaymentAddButton",
                   typeof(Boolean),
@@ -30,10 +33,31 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
             get { return (Boolean)GetValue(IsPaymentAddButtonProperty); }
             set { SetValue(IsPaymentAddButtonProperty, value); }
         }
+        Attributes attributes;
 
-        public NewSaleDocument()
+        ObservableCollection<BasketShop.LocalRow> datalistBasketShop;
+
+        public ObservableCollection<BasketShop.LocalRow> DatalistBasketShop
+        {
+            get
+            {
+                return datalistBasketShop;
+            }
+
+            set
+            {         
+                if (value.Count > 0)
+                {
+                    datalistBasketShop = value;
+                }
+            }
+        }
+
+        public NewSaleDocument(Attributes _attributes)
         {
             InitializeComponent();
+
+            this.attributes = _attributes;
         }
 
         #region AddProduct
@@ -65,6 +89,28 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
         }
 
         private void DataPayment_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region ToolBar
+        private void SupplyDocumentDetailsToolBar_ButtonSave()
+        {
+
+        }
+
+        private void SupplyDocumentDetailsToolBar_ButtonSaveclose()
+        {
+
+        }
+
+        private void SupplyDocumentDetailsToolBar_ButtonListCancel()
+        {
+
+        }
+
+        private void SupplyDocumentDetailsToolBar_ButtonApply()
         {
 
         }

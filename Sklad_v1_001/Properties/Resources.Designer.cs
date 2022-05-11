@@ -376,6 +376,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Чек.
+        /// </summary>
+        public static string CheckProduct {
+            get {
+                return ResourceManager.GetString("CheckProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Очистить.
         /// </summary>
         public static string CLEAR {
@@ -1389,6 +1398,15 @@ namespace Sklad_v1_001.Properties {
         public static string Payment3 {
             get {
                 return ResourceManager.GetString("Payment3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Оплата.
+        /// </summary>
+        public static string PaymentPay {
+            get {
+                return ResourceManager.GetString("PaymentPay", resourceCulture);
             }
         }
         

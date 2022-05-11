@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,7 @@ using Sklad_v1_001.Control.FlexMessageBox;
 using Sklad_v1_001.FormUsers;
 using Sklad_v1_001.FormUsers.Delivery;
 using Sklad_v1_001.FormUsers.Product;
+using Sklad_v1_001.FormUsers.SaleDocument;
 using Sklad_v1_001.FormUsers.SupplyDocument;
 using Sklad_v1_001.FormUsers.SupplyDocumentDelivery;
 using Sklad_v1_001.FormUsers.Tovar;
@@ -39,6 +41,8 @@ namespace Sklad_v1_001
         ZacupcaGrid zacupcaGrid;
         //продукция
         ProductGrid productGrid;
+        // Продажи
+        NewSaleDocument newSaleDocument;
         //поставки товра
         SupplyDocumentGrid supplyDocumentGrid;
         NewSupplyDocumentGrid newSupplyDocumentGrid;
@@ -129,6 +133,19 @@ namespace Sklad_v1_001
         {
             GC.Collect();   //Вызов сборщика мусора
             GC.WaitForPendingFinalizers();  //ждем освобождение памяти
+            newSaleDocument = new NewSaleDocument(attributes);
+            frameWorkArea.Navigate(newSaleDocument);
+        }
+
+        public void ButtonNewSaleDocumentOpenBasket(ObservableCollection<FormUsers.BasketShop.LocalRow> _datalistBasketShop)
+        {
+            GC.Collect();   //Вызов сборщика мусора
+            GC.WaitForPendingFinalizers();  //ждем освобождение памяти
+            if (_datalistBasketShop!=null && _datalistBasketShop.Count > 0)
+            {
+                newSaleDocument = new NewSaleDocument(attributes);
+                frameWorkArea.Navigate(newSaleDocument);
+            }        
         }
         private void ButtonListSaleDocumentOpen()
         {

@@ -52,11 +52,6 @@
                                                  LabelText="{x:Static res:Resources.CreatedDate}"
                                                  IsEnabled="False"
                                                  IsReadOnly="True" LabelWidth="50" Width="230"/>
-                <SimpleControl:EditBoxWithLabel x:Name="LastDateDocument"  Grid.Row="2"                                            
-                                                Text="{Binding Path=LastModificatedDateString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"                                           
-                                                LabelText="{x:Static res:Resources.LastModifiadDateText}"
-                                                IsEnabled="False"
-                                                IsReadOnly="True" LabelWidth="100" Width="275"/>
                 <FlexComboBox:ComboBoxWithLabel x:Name="UserIDDocument" Grid.Row="1" Grid.Column="1"
                                                 Value="{Binding Path=LastModificatedUserID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                                 LabelText="{x:Static res:Resources.UserName}"
@@ -148,7 +143,7 @@
         </GroupBox>
 
         <TabControl x:Name="tabControl" Grid.Row="3" Style="{DynamicResource TabControlStyle}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-            <TabItem Header="{x:Static res:Resources.ListProducts}" Style="{DynamicResource TabItemStyle}" x:Name="ProductData">
+            <TabItem Header="{x:Static res:Resources.CheckProduct}" Style="{DynamicResource TabItemStyle}" x:Name="ProductData">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="6*"/>
@@ -180,16 +175,9 @@
                             <DataGridTextColumn Header="{x:Static res:Resources.ID}" SortMemberPath="ID" CanUserSort="True" Binding="{Binding Path=LineDocument, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                             <DataGridTextColumn Header="{x:Static res:Resources.Name}" SortMemberPath="Name" CanUserSort="True" Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  MaxWidth="500"/>
                             <DataGridTextColumn Header="{x:Static res:Resources.Model}" SortMemberPath="Model" CanUserSort="True" Binding="{Binding Path=Model, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                            <DataGridTextColumn Header="{x:Static res:Resources.CATEGORY}" 
-                                    SortMemberPath="ShowcaseID" 
-                                    CanUserSort="True" 
-                                    Binding="{Binding Path=CategoryDetailsName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  
-                                    Visibility="{Binding Source={StaticResource dcSpy3}, Path=DataContext}"/>
                             <DataGridTextColumn Header="{x:Static res:Resources.Quantity}" SortMemberPath="KtIDDescription" CanUserSort="True" Binding="{Binding Path=Quantity , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                            <DataGridTextColumn Header="{x:Static res:Resources.TagPriceUSA}" SortMemberPath="Size" CanUserSort="True" Binding="{Binding Path=TagPriceUSA , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
                             <DataGridTextColumn Header="{x:Static res:Resources.TagPriceRus}" SortMemberPath="Color" CanUserSort="True" Binding="{Binding Path=TagPriceRUS , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
                             <DataGridTextColumn Header="{x:Static res:Resources.SizeProduct}" SortMemberPath="SizeProduct" CanUserSort="True" Binding="{Binding Path=SizeProduct , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
-                            <DataGridTextColumn Header="{x:Static res:Resources.Package}" SortMemberPath="Gender" CanUserSort="True" Binding="{Binding Path=Package, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                             <DataGridTemplateColumn MaxWidth="100">
                                 <DataGridTemplateColumn.HeaderTemplate>
                                     <DataTemplate>
@@ -207,7 +195,7 @@
                 </Grid>
             </TabItem>
            
-            <TabItem Header="{x:Static res:Resources.ListPayment}" Style="{DynamicResource TabItemStyle}" x:Name="ListPaymentDocument" >
+            <TabItem Header="{x:Static res:Resources.PaymentPay}" Style="{DynamicResource TabItemStyle}" x:Name="ListPaymentDocument" >
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="6*"/>

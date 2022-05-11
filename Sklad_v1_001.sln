@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.28803.352
+VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sklad_v1_001", "Sklad_v1_001\Sklad_v1_001.csproj", "{E5596643-F9BB-44B2-92D1-5A09384327A3}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebHTMLConvertObject", "WebHTMLConvertObject\WebHTMLConvertObject\WebHTMLConvertObject.csproj", "{191CFCE4-D82F-400E-B08D-70EFEB220252}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BareCode", "BareCode\BareCode\BareCode\BareCode.csproj", "{C4B6E257-F122-421C-A85D-07EF4AC8E4E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tinkoff_POS_S920", "Tinkoff_POS_S920\Tinkoff_POS_S920\Tinkoff_POS_S920.csproj", "{0CF5C2AF-D4D3-4B25-8827-DDDECC36C2E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,11 +53,15 @@ Global
 		{C4B6E257-F122-421C-A85D-07EF4AC8E4E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4B6E257-F122-421C-A85D-07EF4AC8E4E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4B6E257-F122-421C-A85D-07EF4AC8E4E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CF5C2AF-D4D3-4B25-8827-DDDECC36C2E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CF5C2AF-D4D3-4B25-8827-DDDECC36C2E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CF5C2AF-D4D3-4B25-8827-DDDECC36C2E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CF5C2AF-D4D3-4B25-8827-DDDECC36C2E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {B494987C-F7E2-4751-B3A4-570E273909C9}
+		SolutionGuid = {56E175B9-075E-4BCE-A6DD-284F963736D3}
 	EndGlobalSection
 EndGlobal

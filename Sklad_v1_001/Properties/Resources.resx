@@ -810,4 +810,10 @@
   <data name="SaleDocumentGroupBox" xml:space="preserve">
     <value>Документ продажи</value>
   </data>
+  <data name="CheckProduct" xml:space="preserve">
+    <value>Чек</value>
+  </data>
+  <data name="PaymentPay" xml:space="preserve">
+    <value>Оплата</value>
+  </data>
 </root>

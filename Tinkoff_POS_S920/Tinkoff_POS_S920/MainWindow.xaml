@@ -1,0 +1,50 @@
+﻿<Window x:Class="Tinkoff_POS_S920.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tinkoff_POS_S920"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="Команды">
+            <StackPanel x:Name="command" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Button x:Name="sendTerminal" Content="Гудок" Click="sendTerminal_Click" Margin="5,5"/>
+                <GroupBox Header="Продажа">
+                    <Grid>
+                        <StackPanel>
+                            <Label Content="Сумма"/>
+                            <TextBox x:Name="tagprice" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,5"/>
+                            <Button x:Name="saleButton" Content="Продажа" Click="saleButton_Click"/>
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="Возврат">
+                    <StackPanel>
+                        <Label Content="Сумма"/>
+                        <TextBox x:Name="returnTagPrice" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,5"/>
+                        <Label Content="Номер ссылки"/>
+                        <TextBox x:Name="returnRRN" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,5"/>
+                        <Button Name="returnButton" Content="Возврат" Click="returnButton_Click"/>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Отчеты">
+                    <StackPanel>
+                        <Button x:Name="shortReportTerminal" Content="Краткий отчет" Click="shortReportTerminal_Click" Margin="0,0,0,5" />
+                        <Button x:Name="longReportTerminal" Content="Полный отчет" Click="longReportTerminal_Click" Margin="0,0,0,5"/>
+                        <Button x:Name="totalReportTerminal" Content="Сверка итогов" Click="totalReportTerminal_Click" Margin="0,0,0,5"/>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Ответ" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <TextBox x:Name="description" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Height="Auto" Width="480" Background="#FFD4CDCD"
+                       ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"/>
+        </GroupBox>
+        
+    </Grid>
+</Window>
