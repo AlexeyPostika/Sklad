@@ -94,6 +94,9 @@ namespace Sklad_v1_001
         #region Product
         public void ButtonProductOpen()
         {
+            GC.Collect();   //Вызов сборщика мусора
+            GC.WaitForPendingFinalizers();  //ждем освобождение памяти
+
             productGrid = new ProductGrid(attributes);
             //tovarZona = new TovarZona();
             frameWorkArea.Navigate(productGrid); // открытие страницы
@@ -101,13 +104,21 @@ namespace Sklad_v1_001
 
         public void ButtonProductEditOpen()
         {
-            tovarInZona = new TovarInZona();
+            GC.Collect();   //Вызов сборщика мусора
+            GC.WaitForPendingFinalizers();  //ждем освобождение памяти
+
+            if (tovarInZona==null)
+                tovarInZona = new TovarInZona();
             this.frameWorkArea.Navigate(tovarInZona);
         }
 
         public void ButtonProductEditOpenF(FormUsers.Tovar.LocalRow _localRow)
         {
-            tovarInZona = new TovarInZona();
+            GC.Collect();   //Вызов сборщика мусора
+            GC.WaitForPendingFinalizers();  //ждем освобождение памяти
+
+            if (tovarInZona == null)
+                tovarInZona = new TovarInZona();
             tovarInZona.LocalRow = _localRow;
             this.frameWorkArea.Navigate(tovarInZona);
         }
@@ -116,11 +127,13 @@ namespace Sklad_v1_001
         #region Продажи
         public void ButtonNewSaleDocumentOpen()
         {
-            
+            GC.Collect();   //Вызов сборщика мусора
+            GC.WaitForPendingFinalizers();  //ждем освобождение памяти
         }
         private void ButtonListSaleDocumentOpen()
         {
-            
+            GC.Collect();   //Вызов сборщика мусора
+            GC.WaitForPendingFinalizers();  //ждем освобождение памяти
         }
 
         #endregion
@@ -128,19 +141,27 @@ namespace Sklad_v1_001
         #region перемещение
         public void ButtonTransferDocumentOpen()
         {
-
+            GC.Collect();   //Вызов сборщика мусора
+            GC.WaitForPendingFinalizers();  //ждем освобождение памяти
         }
         #endregion
 
         #region поставки
         private void ButtonSupplyDocument()
         {
-           // zacupcaGrid = new ZacupcaGrid();
+            GC.Collect();   //Вызов сборщика мусора
+            GC.WaitForPendingFinalizers();  //ждем освобождение памяти
+
+            // zacupcaGrid = new ZacupcaGrid();
+            //if (supplyDocumentGrid == null)
             supplyDocumentGrid = new SupplyDocumentGrid(attributes);
             frameWorkArea.Navigate(supplyDocumentGrid); // открытие страницы
         }
         public void ButtonSupplyDocumentF(FormUsers.SupplyDocument.LocalRow _localRow, Boolean _isDocumentChanged = false)
         {
+            GC.Collect();   //Вызов сборщика мусора
+            GC.WaitForPendingFinalizers();  //ждем освобождение памяти
+
             // zacupcaGrid = new ZacupcaGrid();
             if (_localRow != null && _isDocumentChanged)
                 supplyDocumentGrid = new SupplyDocumentGrid(attributes);
@@ -150,14 +171,22 @@ namespace Sklad_v1_001
 
         public void ButtonNewSupplyDocument()
         {
-            newSupplyDocumentGrid = new NewSupplyDocumentGrid(attributes);
+            GC.Collect();   //Вызов сборщика мусора
+            GC.WaitForPendingFinalizers();  //ждем освобождение памяти
+
+            if (newSupplyDocumentGrid == null)
+                newSupplyDocumentGrid = new NewSupplyDocumentGrid(attributes);
             newSupplyDocumentGrid.Status = 0;
             this.frameWorkArea.Navigate(newSupplyDocumentGrid);
         }
 
         public void ButtonNewSupplyDocumentF(FormUsers.SupplyDocument.LocalRow document)
         {
-            newSupplyDocumentGrid = new NewSupplyDocumentGrid(attributes);
+            GC.Collect();   //Вызов сборщика мусора
+            GC.WaitForPendingFinalizers();  //ждем освобождение памяти
+
+            if (newSupplyDocumentGrid == null)
+                newSupplyDocumentGrid = new NewSupplyDocumentGrid(attributes);
             newSupplyDocumentGrid.Document = document;
             this.frameWorkArea.Navigate(newSupplyDocumentGrid);
         }
@@ -165,33 +194,49 @@ namespace Sklad_v1_001
         //
         public void ButtonNewAddProduct()
         {
+            GC.Collect();   //Вызов сборщика мусора
+            GC.WaitForPendingFinalizers();  //ждем освобождение памяти
+
             FlexWindows addProductWindow = new FlexWindows(Properties.Resources.ADDPRODUCT);
-            newAddProductItem = new NewAddProductItem(attributes);
+            if (newAddProductItem == null)
+                newAddProductItem = new NewAddProductItem(attributes);
             addProductWindow.Content = newAddProductItem;
             addProductWindow.ShowDialog();
         }
 
         public void ButtonNewAddProductF(FormUsers.Product.LocalRow _localeRow)
         {
+            GC.Collect();   //Вызов сборщика мусора
+            GC.WaitForPendingFinalizers();  //ждем освобождение памяти
+
             FlexWindows addProductWindow = new FlexWindows(Properties.Resources.ADDPRODUCT);
             newAddProductItem = new NewAddProductItem(attributes);
-            newAddProductItem.ProductLocalRow = _localeRow;
+            if (newAddProductItem == null)
+                newAddProductItem.ProductLocalRow = _localeRow;
             addProductWindow.Content = newAddProductItem;
             addProductWindow.ShowDialog();
         }
 
         public void ButtonNewDelivery()
         {
+            GC.Collect();   //Вызов сборщика мусора
+            GC.WaitForPendingFinalizers();  //ждем освобождение памяти
+
             FlexWindows addDeliveryWindow = new FlexWindows(Properties.Resources.ADDDELIVERY);
-            supplyDocumentDeliveryItem = new SupplyDocumentDeliveryItem(attributes);
+            if (supplyDocumentDeliveryItem == null)
+                supplyDocumentDeliveryItem = new SupplyDocumentDeliveryItem(attributes);
             addDeliveryWindow.Content = supplyDocumentDeliveryItem;
             addDeliveryWindow.ShowDialog();
         }
 
         public void ButtonNewDeliveryF(FormUsers.SupplyDocumentDelivery.LocaleRow _localeRow)
         {
+            GC.Collect();   //Вызов сборщика мусора
+            GC.WaitForPendingFinalizers();  //ждем освобождение памяти
+
             FlexWindows addDeliveryWindow = new FlexWindows(Properties.Resources.ADDDELIVERY);
-            supplyDocumentDeliveryItem = new SupplyDocumentDeliveryItem(attributes);
+            if (supplyDocumentDeliveryItem == null)
+                supplyDocumentDeliveryItem = new SupplyDocumentDeliveryItem(attributes);
             supplyDocumentDeliveryItem.DeliveryRow = _localeRow;
             addDeliveryWindow.Content = supplyDocumentDeliveryItem;
             addDeliveryWindow.ShowDialog();
@@ -201,7 +246,8 @@ namespace Sklad_v1_001
         #region настройки
         private void ButtonSettingsOpen()
         {
-
+            GC.Collect();   //Вызов сборщика мусора
+            GC.WaitForPendingFinalizers();  //ждем освобождение памяти
         }
         #endregion
 
