@@ -65,24 +65,27 @@
                     <DataGridTextColumn Binding="{Binding Path=Invoice, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.SyncDate}" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding Path=SupplyDocumentNumberString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NumberDocument}" Width="Auto"/>
 
-                    <!--<DataGridTemplateColumn x:Name="FilterManagerName" Width="Auto" IsReadOnly="True" SortMemberPath="ShortLDisplayNameUser" CanUserSort="True">
+                    <DataGridTemplateColumn x:Name="FilterQuantity" Width="Auto" IsReadOnly="True" SortMemberPath="Quantity" CanUserSort="True">
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>
-                                <FlexFilter:FlexGridCheckBox x:Name="FilterManagerNameID"
-                                                         ButtonApplyClick="FilterManagerNameID_ButtonApplyClick"
-                                                         DataTableData="{Binding ElementName=page, Path=FilterIDManagerName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                         ImageSource="{Binding ElementName=page, Path=ClearfilterManagerNameID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                         CheckAll="True"
-                                                         LabelText="{x:Static res:Resources.ManagerCompany}"/>
+                                <FlexFilter:FlexGridFromTo HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" x:Name="FilterQuantity" 
+                                                       To="{Binding ElementName=page, Path=QuantityMax, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                       From="{Binding ElementName=page, Path=QuantityMin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                       DefaultMax="{Binding ElementName=page, Path=DefaultquantityMax, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                       DefaultMin="{Binding ElementName=page, Path=DefaultquantityMin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                       ImageSource="{Binding ElementName=page, Path=ClearfilterQuantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                       ButtonApplyClick="FilterQuantity_ButtonApplyClick"
+                                                       LabelText="{x:Static res:Resources.Quantity}"
+                                                      />
                             </DataTemplate>
                         </DataGridTemplateColumn.HeaderTemplate>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Content="{Binding Path=ManagerName, Mode=OneWay}"/>
+                                <Label HorizontalContentAlignment="Right" Content="{Binding Path=Amount, Mode=OneWay}" ContentStringFormat=" {0:N2}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>-->
-
+                    </DataGridTemplateColumn>
+                    
                     <!--<DataGridTemplateColumn x:Name="FilterDelivery" Width="Auto" IsReadOnly="True" SortMemberPath="ShortLDisplayNameUser" CanUserSort="True">
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>
@@ -140,14 +143,32 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-
+                   
+                    <DataGridTemplateColumn x:Name="FilterUserName" Width="Auto" IsReadOnly="True" SortMemberPath="ShortLDisplayNameUser" CanUserSort="True">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <FlexFilter:FlexGridCheckBox x:Name="FilterUserID"                                                            
+                                                             IsVisibility="Collapsed"
+                                                             ButtonApplyClick="FilterUserID_ButtonApplyClick"
+                                                             DataTableData="{Binding ElementName=page, Path=FilterIDManagerName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                             ImageSource="{Binding ElementName=page, Path=ClearfilterManagerNameID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                             CheckAll="True"
+                                                             LabelText="{x:Static res:Resources.UserName}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Content="{Binding Path=ManagerName, Mode=OneWay}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
 
                 </DataGrid.Columns>
 
             </DataGrid>
         </Grid>
         <TabControl x:Name="tabControl" Grid.Row="3" Style="{DynamicResource TabControlStyle}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-            <TabItem Header="{x:Static res:Resources.ListProducts}" Style="{DynamicResource TabItemStyle}" x:Name="ProductData">
+            <TabItem Header="{x:Static res:Resources.CheckProduct}" Style="{DynamicResource TabItemStyle}" x:Name="ProductData">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="6*"/>
@@ -175,11 +196,8 @@
                             <DataGridTextColumn Header="{x:Static res:Resources.Name}" SortMemberPath="Name" CanUserSort="True" Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  MaxWidth="500"/>
                             <DataGridTextColumn Header="{x:Static res:Resources.Model}" SortMemberPath="Model" CanUserSort="True" Binding="{Binding Path=Model, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                             <DataGridTextColumn Header="{x:Static res:Resources.Quantity}" SortMemberPath="KtIDDescription" CanUserSort="True" Binding="{Binding Path=Quantity , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                            <DataGridTextColumn Header="{x:Static res:Resources.TagPriceUSA}" SortMemberPath="Size" CanUserSort="True" Binding="{Binding Path=TagPriceUSA , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
                             <DataGridTextColumn Header="{x:Static res:Resources.TagPriceRus}" SortMemberPath="Color" CanUserSort="True" Binding="{Binding Path=TagPriceRUS , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
                             <DataGridTextColumn Header="{x:Static res:Resources.SizeProduct}" SortMemberPath="SizeProduct" CanUserSort="True" Binding="{Binding Path=SizeProduct , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
-                            <!--<DataGridTextColumn Header="{x:Static res:Resources.Currency}" SortMemberPath="Currency" CanUserSort="True" Binding="{Binding Path=CurrencyShortDescription , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />-->
-                            <DataGridTextColumn Header="{x:Static res:Resources.Package}" SortMemberPath="Gender" CanUserSort="True" Binding="{Binding Path=Package, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                             <DataGridTemplateColumn MaxWidth="100">
                                 <DataGridTemplateColumn.HeaderTemplate>
                                     <DataTemplate>
@@ -246,23 +264,7 @@
                                             CanUserSort="True" 
                                             Binding="{Binding Path=RRN , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
 
-                            <DataGridTemplateColumn MaxWidth="300">
-                                <DataGridTemplateColumn.HeaderTemplate>
-                                    <DataTemplate>
-                                        <Label Content="{x:Static res:Resources.AddFileRRN}" HorizontalAlignment="Center" Width="Auto"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.HeaderTemplate>
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Image Source="{Binding Path=ImageSourceRRN, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="24" Height="24"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-
-                            <DataGridTextColumn Header="{x:Static res:Resources.LastModifiadDateText}" 
-                                            SortMemberPath="LastModicatedDate"
-                                            CanUserSort="True" 
-                                            Binding="{Binding Path=LastModifiadDateText , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                           
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

@@ -43,6 +43,7 @@ namespace Sklad_v1_001
         ProductGrid productGrid;
         // Продажи
         NewSaleDocumentGrid newSaleDocument;
+        SaleDocumentGrid saleDocumentGrid;
         //поставки товра
         SupplyDocumentGrid supplyDocumentGrid;
         NewSupplyDocumentGrid newSupplyDocumentGrid;
@@ -153,6 +154,9 @@ namespace Sklad_v1_001
         {
             GC.Collect();   //Вызов сборщика мусора
             GC.WaitForPendingFinalizers();  //ждем освобождение памяти
+            //if (saleDocumentGrid==null)
+            saleDocumentGrid = new SaleDocumentGrid(attributes);           
+            frameWorkArea.Navigate(saleDocumentGrid);
         }
 
         #endregion

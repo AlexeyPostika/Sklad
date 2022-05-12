@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sklad_v1_001.GlobalAttributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
     /// </summary>
     public partial class SaleDocumentGrid : Page
     {
-        public SaleDocumentGrid()
+        Attributes attributes;
+
+        public SaleDocumentGrid(Attributes _attributes)
         {
             InitializeComponent();
+            this.attributes = _attributes;
         }
 
         #region DataGrid SaleDocument
@@ -47,6 +51,15 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
         {
 
         }
+        private void FilterUserID_ButtonApplyClick(string text)
+        {
+
+        }
+        private void FilterQuantity_ButtonApplyClick()
+        {
+
+        }
+
 
         #endregion
 
@@ -115,5 +128,7 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
 
         }
         #endregion
+
+       
     }
 }
