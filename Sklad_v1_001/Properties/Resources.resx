@@ -816,4 +816,10 @@
   <data name="PaymentPay" xml:space="preserve">
     <value>Оплата</value>
   </data>
+  <data name="DocumentDate" xml:space="preserve">
+    <value>Дата документа</value>
+  </data>
+  <data name="SyncDate" xml:space="preserve">
+    <value>Дата синхр-ции</value>
+  </data>
 </root>

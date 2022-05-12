@@ -601,6 +601,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Дата документа.
+        /// </summary>
+        public static string DocumentDate {
+            get {
+                return ResourceManager.GetString("DocumentDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Должность.
         /// </summary>
         public static string Dolwnost {
@@ -1866,6 +1875,15 @@ namespace Sklad_v1_001.Properties {
         public static string SupplyTitly {
             get {
                 return ResourceManager.GetString("SupplyTitly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Дата синхр-ции.
+        /// </summary>
+        public static string SyncDate {
+            get {
+                return ResourceManager.GetString("SyncDate", resourceCulture);
             }
         }
         

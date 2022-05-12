@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sklad_v1_001.GlobalAttributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
     {
         Int32 iD;
         Int32 userID;
+        Int32 basketShopUserID;
 
         public Int32 ID
         {
@@ -34,13 +36,29 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
                 userID = value;
             }
         }
+        public Int32 BasketShopUserID
+        {
+            get
+            {
+                return basketShopUserID;
+            }
+            set
+            {
+                basketShopUserID = value;
+            }
+        }
     }
 
     public class LocalRow
     {
 
     }
-    class SaleDocumentLogic
+    public class SaleDocumentLogic
     {
+        Attributes attributes;
+        public SaleDocumentLogic(Attributes _attributs)
+        {
+            this.attributes = _attributs;
+        }
     }
 }

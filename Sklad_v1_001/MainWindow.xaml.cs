@@ -145,7 +145,7 @@ namespace Sklad_v1_001
             {
                 FormUsers.SaleDocument.LocalFilter localFilter= new FormUsers.SaleDocument.LocalFilter();
                 newSaleDocument = new NewSaleDocumentGrid(attributes);
-                newSaleDocument.LocalFilterDocument.UserID = _userID;
+                newSaleDocument.LocalFilterDocument.BasketShopUserID = _userID;
                 frameWorkArea.Navigate(newSaleDocument);
             }        
         }
