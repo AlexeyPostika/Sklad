@@ -35,9 +35,22 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
         }
         Attributes attributes;
 
+        LocalFilter localFilterDocument;
+
         ObservableCollection<BasketShop.LocalRow> datalistBasketShop;
 
+        public LocalFilter LocalFilterDocument
+        {
+            get
+            {
+                return localFilterDocument;
+            }
 
+            set
+            {
+                localFilterDocument = value;
+            }
+        }
 
         public ObservableCollection<BasketShop.LocalRow> DatalistBasketShop
         {
@@ -64,6 +77,8 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
             InitializeComponent();
 
             this.attributes = _attributes;
+
+            LocalFilterDocument = new LocalFilter();
 
             UserIDDocument.ComboBoxElement.ItemsSource = attributes.datalistUsers;
             

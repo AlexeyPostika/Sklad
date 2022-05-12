@@ -870,22 +870,7 @@ namespace Sklad_v1_001.FormUsers.Product
 
         private void toolBarProduct_ButtonBasket()
         {
-            if (datalistBasketShop.Count > 0)
-            {
-                shemaStorаge.BasketShop.Clear();
-                foreach (BasketShop.LocalRow local in datalistBasketShop)
-                {
-                    DataRow row = shemaStorаge.BasketShop.NewRow();
-                    row["UserID"] = local.UserID;
-                    row["ProductID"] = local.ProductID;
-                    row["Quantity"] = local.Quantity;
-                    shemaStorаge.BasketShop.Rows.Add(row);
-                }
-                if (!NewDocumentBasketShop)
-                    basketShopLogic.SaveRow(shemaStorаge, 1);
-                else
-                    basketShopLogic.SaveRow(shemaStorаge);
-            }          
+            MainWindow.AppWindow.ButtonNewSaleDocumentOpenBasket(attributes.numeric.userEdit.AddUserID);
         }
 
         #endregion
