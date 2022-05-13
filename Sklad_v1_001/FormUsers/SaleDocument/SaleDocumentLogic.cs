@@ -1,4 +1,5 @@
 ﻿using Sklad_v1_001.GlobalAttributes;
+using Sklad_v1_001.GlobalVariable;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
         Int32 iD;
         Int32 userID;
         Int32 basketShopUserID;
+        private string screenTypeGrid;
 
         public Int32 ID
         {
@@ -46,6 +48,22 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
             {
                 basketShopUserID = value;
             }
+        }
+
+        public String ScreenTypeGrid
+        {
+            get
+            {
+                return screenTypeGrid;
+            }
+            set
+            {
+                screenTypeGrid = value;
+            }
+        }
+        public LocalFilter()
+        {
+            ScreenTypeGrid = ScreenType.ScreenTypeGrid;
         }
     }
 
