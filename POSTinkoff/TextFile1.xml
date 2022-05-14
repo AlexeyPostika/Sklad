@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<request>
+	<field id="00">100</field>
+	<field id="04">643</field>
+	<field id="21">20150729121815</field>
+	<field id="25">1</field>
+	<field id="26"> </field>
+	<field id="27">00199991</field>
+	<field id="90">0102030405060708090a0b0c0d0e0f10</field>
+</request>

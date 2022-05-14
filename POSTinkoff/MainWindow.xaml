@@ -1,0 +1,132 @@
+﻿<Window x:Class="POSTinkoff.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:POSTinkoff"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="1100">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="DualConnector">
+            <StackPanel>
+                <Button x:Name="signalcheck" 
+                    Margin="5,5,5,0"
+                    Content="Проверка сигнала"
+                    Click="signalcheck_Click"/>
+                <GroupBox x:Name="EditSalePax" Header="Продажа">
+                    <StackPanel>
+                        <Label x:Name="amountPax" Content="Сумма"/>
+                        <TextBox x:Name="taxPricePax" Height="30"/>
+                        <Button x:Name="sale" 
+                                Margin="0,5,0,0"
+                                Content="Продажа"
+                                Click="sale_Click"/>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox x:Name="EditReturnPax" Header="Возврат">
+                    <StackPanel>
+                        <Label x:Name="amountRPax" Content="Сумма"/>
+                        <TextBox x:Name="taxPriceRPax" Height="30"/>
+                        <Label x:Name="rrnRPax" Content="Ссылка"/>
+                        <TextBox x:Name="rrnNumberRPax" Height="30"/>
+                        <Button x:Name="return" 
+                                Margin="0,5,0,0"
+                                Content="Возврат"
+                                Click="return_Click"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <Button x:Name="buy" 
+                    Margin="5,5,5,0"
+                    Content="Покупка"
+                    Click="buy_Click"/>
+
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="Arcus" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                
+            <StackPanel x:Name="Arcus" Grid.Column="1">
+                <Button x:Name="signalcheckArcus" 
+                    Margin="5,5,5,0"
+                    Content="Проверка сигнала Arcus"
+                    Click="signalcheckArcus_Click"/>
+                <GroupBox x:Name="EditSale" Header="Продажа">
+                    <StackPanel>
+                        <Label x:Name="amount" Content="Сумма"/>
+                        <TextBox x:Name="taxPrice" Height="30"/>
+                        <Button x:Name="saleArcus" 
+                                Margin="0,5,0,0"
+                                Content="Пррдажа"
+                                Click="saleArcus_Click"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox x:Name="EditReturn" Header="Возврат">
+                    <StackPanel>
+                        <Label x:Name="amountК" Content="Сумма"/>
+                        <TextBox x:Name="taxPriceR" Height="30"/>
+                        <Label x:Name="rrn" Content="Ссылка"/>
+                        <TextBox x:Name="rrnNumber" Height="30"/>
+                        <Button x:Name="returnArcus" 
+                                Margin="0,5,0,0"
+                                Content="Возврат"
+                                Click="returnArcus_Click"/>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox x:Name="searchRRN" Header="Повтор чека">
+                    <StackPanel>
+                        <Label x:Name="SearchRRN" Content="Ссылка"/>
+                        <TextBox x:Name="textSearchRRN" Height="30"/>
+                        <Button x:Name="search" 
+                                Margin="0,5,0,0"
+                                Content="Поиск"
+                                Click="search_Click"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Header="Стандартные команды">
+                    <StackPanel>
+                        <Button x:Name="completeMagazine" 
+                                Margin="0,5,0,0"
+                                Content="Полный отчет"
+                                Click="completeMagazine_Click"/>
+
+                        <Button x:Name="briefReport" 
+                                Margin="0,5,0,0"
+                                Content="Краткий отчет"
+                                Click="briefReport_Click"/>
+
+                        <Button x:Name="report1" 
+                                Margin="0,5,0,0"
+                                Content="Сверка итогов 1"
+                                Visibility="Collapsed"
+                                Click="report1_Click"/>
+
+                        <Button x:Name="report2" 
+                                Margin="0,5,0,0"
+                                Content="Сверка итогов 2"
+                                Click="report2_Click"/>
+
+                        <Button x:Name="report3" 
+                                Margin="0,5,0,0"
+                                Visibility="Collapsed"
+                                Content="Сверка итогов 3"
+                                Click="report3_Click"/>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </GroupBox>
+
+
+        <Grid Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <TextBox Grid.Column="1" x:Name="checkprint" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Height="Auto" Width="480" Background="#FFD4CDCD"
+                       ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"/>
+        </Grid>
+    </Grid>
+</Window>

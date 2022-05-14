@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSTinkoff", "POSTinkoff.csproj", "{57B3C8F4-0776-4BA6-803D-256A896CB8DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{57B3C8F4-0776-4BA6-803D-256A896CB8DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57B3C8F4-0776-4BA6-803D-256A896CB8DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57B3C8F4-0776-4BA6-803D-256A896CB8DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57B3C8F4-0776-4BA6-803D-256A896CB8DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {767BE6BF-59DD-422F-9B1E-A484B7110C9C}
+	EndGlobalSection
+EndGlobal
