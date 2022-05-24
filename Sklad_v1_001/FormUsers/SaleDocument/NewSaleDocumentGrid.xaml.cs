@@ -37,7 +37,7 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
 
         LocalFilter localFilterDocument;
 
-        ObservableCollection<BasketShop.LocalRow> datalistBasketShop;
+        ObservableCollection<SaleDocumentProduct.LocalRow> datalistBasketShop;
 
         public LocalFilter LocalFilterDocument
         {
@@ -52,7 +52,7 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
             }
         }
 
-        public ObservableCollection<BasketShop.LocalRow> DatalistBasketShop
+        public ObservableCollection<SaleDocumentProduct.LocalRow> DatalistBasketShop
         {
             get
             {
@@ -64,10 +64,11 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
                 if (value.Count > 0)
                 {
                     datalistBasketShop = value;
-                    foreach(BasketShop.LocalRow basket in datalistBasketShop)
-                    {
+                    this.DataProduct.ItemsSource = DatalistBasketShop;
+                    //foreach(SaleDocumentProduct.LocalRow basket in datalistBasketShop)
+                    //{
 
-                    }
+                    //}
                 }
             }
         }

@@ -52,6 +52,8 @@ namespace Sklad_v1_001.FormUsers.Product
         ObservableCollection<LocalRow> datalist;
         ObservableCollection<BasketShop.LocalRow> datalistBasketShop;
 
+        ObservableCollection<SaleDocumentProduct.LocalRow> datalistSaleProduct;
+
         FlexFilterContenerProductWindows flexFilterContenerProductWindows;
 
         DataTable filterCreatedByUserID;
@@ -566,14 +568,14 @@ namespace Sklad_v1_001.FormUsers.Product
                         BasketShop.LocalRow rowBasket = new BasketShop.LocalRow();
                         rowBasket.ProductID = row.ID;
                         rowBasket.UserID = attributes.numeric.userEdit.AddUserID;
-                        rowBasket.Quantity = 1;
+                        rowBasket.BasketQuantity = 1;
                         rowBasket.NewDocumentBasketShop = true;
                         datalistBasketShop.Add(rowBasket);
                     }
                     else
                     {
                         tempID.NewDocumentBasketShop = true;
-                        tempID.Quantity += 1;
+                        tempID.BasketQuantity += 1;
                     }
                 }
 
@@ -585,7 +587,7 @@ namespace Sklad_v1_001.FormUsers.Product
                         DataRow rowTabel = shemaStorаge.BasketShop.NewRow();
                         rowTabel["UserID"] = local.UserID;
                         rowTabel["ProductID"] = local.ProductID;
-                        rowTabel["Quantity"] = local.Quantity;
+                        rowTabel["Quantity"] = local.BasketQuantity;
                         shemaStorаge.BasketShop.Rows.Add(rowTabel);
                     }
                     catch(Exception ex){}
@@ -870,7 +872,27 @@ namespace Sklad_v1_001.FormUsers.Product
 
         private void toolBarProduct_ButtonBasket()
         {
-            MainWindow.AppWindow.ButtonNewSaleDocumentOpenBasket(attributes.numeric.userEdit.AddUserID);
+            datalistSaleProduct = new ObservableCollection<SaleDocumentProduct.LocalRow>();
+
+            datalistBasketShop.ToList<BasketShop.LocalRow>().ForEach(Revise);
+
+            MainWindow.AppWindow.ButtonNewSaleDocumentOpenBasket(datalistSaleProduct);
+        }
+
+        public void Revise(BasketShop.LocalRow basketRow)
+        {
+            if (basketRow.ProductQuantity > 0)
+            {
+                SaleDocumentProduct.LocalRow localRowProduct = new SaleDocumentProduct.LocalRow();
+                localRowProduct.LineDocument = datalistSaleProduct.Count + 1;
+                localRowProduct.ProductID = basketRow.ProductID;
+                localRowProduct.Quantity = basketRow.ProductQuantity;
+                localRowProduct.TagPriceWithVAT = basketRow.ProductQuantity * basketRow.TagPriceRUS;
+                localRowProduct.Name = basketRow.Name;
+                localRowProduct.Model = basketRow.Model;
+                localRowProduct.SizeProduct = basketRow.SizeProduct;
+                datalistSaleProduct.Add(localRowProduct);
+            }
         }
 
         #endregion

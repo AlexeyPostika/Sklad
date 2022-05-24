@@ -98,7 +98,13 @@ namespace Sklad_v1_001.FormUsers.BasketShop
         private Int32 iD;
         private Int32 userID;
         private Int32 productID;
-        private Int32 quantity;
+        private Int32 basketQuantity;
+        private Int32 productQuantity;
+        private String name;
+        private String model;
+        private String sizeProduct;
+        private Boolean isActiveRow;
+        private Decimal tagPriceRUS;
         private DateTime? createdDate;
         private String createdDateString;
         private DateTime? lastModificatedDate;
@@ -152,17 +158,101 @@ namespace Sklad_v1_001.FormUsers.BasketShop
                 OnPropertyChanged("ProductID");
             }
         }
-        public Int32 Quantity
+        public Int32 BasketQuantity
         {
             get
             {
-                return quantity;
+                return basketQuantity;
             }
 
             set
             {
-                quantity = value;
-                OnPropertyChanged("Quantity");
+                basketQuantity = value;
+                OnPropertyChanged("BasketQuantity");
+            }
+        }
+ 
+        public Int32 ProductQuantity
+        {
+            get
+            {
+                return productQuantity;
+            }
+
+            set
+            {
+                productQuantity = value;
+                OnPropertyChanged("ProductQuantity");
+            }
+        }
+
+        public String Name
+        {
+            get
+            {
+                return name;
+            }
+
+            set
+            {
+                name = value;
+                OnPropertyChanged("Name");
+            }
+        }
+
+        public String Model
+        {
+            get
+            {
+                return model;
+            }
+
+            set
+            {
+                model = value;
+                OnPropertyChanged("Model");
+            }
+        }
+
+        public String SizeProduct
+        {
+            get
+            {
+                return sizeProduct;
+            }
+
+            set
+            {
+                sizeProduct = value;
+                OnPropertyChanged("SizeProduct");
+            }
+        }
+
+        public Boolean IsActiveRow
+        {
+            get
+            {
+                return isActiveRow;
+            }
+
+            set
+            {
+                isActiveRow = value;
+                OnPropertyChanged("IsActiveRow");
+            }
+        }
+
+        public Decimal TagPriceRUS
+        {
+            get
+            {
+                return tagPriceRUS;
+            }
+
+            set
+            {
+                tagPriceRUS = value;
+                OnPropertyChanged("TagPriceRUS");
             }
         }
         public DateTime? CreatedDate
@@ -359,8 +449,14 @@ namespace Sklad_v1_001.FormUsers.BasketShop
                     
             _localeRow.UserID = convertData.ConvertDataInt32("UserID");
             _localeRow.ProductID = convertData.ConvertDataInt32("ProductID");
-            _localeRow.Quantity = convertData.ConvertDataInt32("Quantity");
-           
+            _localeRow.BasketQuantity = convertData.ConvertDataInt32("BasketQuantity");
+            _localeRow.ProductQuantity = convertData.ConvertDataInt32("ProductQuantity");
+            _localeRow.IsActiveRow = convertData.ConvertDataBoolean("IsActiveRow");
+            _localeRow.TagPriceRUS = convertData.ConvertDataDecimal("TagPriceRUS");
+            _localeRow.Name = convertData.ConvertDataString("Name");
+            _localeRow.Model = convertData.ConvertDataString("Model");
+            _localeRow.SizeProduct = convertData.ConvertDataString("SizeProduct");
+
             _localeRow.CreatedDate = convertData.ConvertDataDateTime("CreatedDate");
             _localeRow.CreatedDateString = convertData.DateTimeConvertShortString(_localeRow.CreatedDate);
             _localeRow.LastModificatedDate = convertData.ConvertDataDateTime("LastModificatedDate");

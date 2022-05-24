@@ -138,15 +138,15 @@ namespace Sklad_v1_001
             frameWorkArea.Navigate(newSaleDocument);
         }
 
-        public void ButtonNewSaleDocumentOpenBasket(Int32 _userID = 0)
+        public void ButtonNewSaleDocumentOpenBasket(ObservableCollection<FormUsers.SaleDocumentProduct.LocalRow> _listProduct = null)
         {
             GC.Collect();   //Вызов сборщика мусора
             GC.WaitForPendingFinalizers();  //ждем освобождение памяти
-            if (_userID >0)
+            if (_listProduct!=null && _listProduct.Count() > 0)
             {
                 FormUsers.SaleDocument.LocalFilter localFilter= new FormUsers.SaleDocument.LocalFilter();
                 newSaleDocument = new NewSaleDocumentGrid(attributes);
-                newSaleDocument.LocalFilterDocument.BasketShopUserID = _userID;
+                newSaleDocument.DatalistBasketShop = _listProduct;
                 frameWorkArea.Navigate(newSaleDocument);
             }        
         }
