@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="Sklad_v1_001.Control.SimpleControl.EditBoxNumericGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sklad_v1_001.Control.SimpleControl"
+             mc:Ignorable="d"
+             Name="control">
+    
+    <Grid Height="30" Name="grid">
+        <Grid>
+            <TextBox Style="{DynamicResource TextBoxStyle}" Name="TextBox" Grid.Column="1" Text="{Binding ElementName=control, Path=Value, Mode=TwoWay, StringFormat=\{0:N0\}, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Right" TextChanged="TextBox_TextChanged" PreviewTextInput="TextBox_OnPreviewTextInput" DataObject.Pasting="TextBox_Pasting" TextInput="TextBox_TextInput"/>
+        </Grid>
+    </Grid>
+</UserControl>

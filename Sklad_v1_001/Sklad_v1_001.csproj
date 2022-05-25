@@ -84,6 +84,7 @@
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -249,6 +250,9 @@
     <Compile Include="Control\FlexTextBox\FlexLabelTextBox.xaml.cs">
       <DependentUpon>FlexLabelTextBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\SimpleControl\EditBoxNumericGrid.xaml.cs">
+      <DependentUpon>EditBoxNumericGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\SimpleControl\EditBoxPasswordWithLabel.xaml.xaml.cs">
       <DependentUpon>EditBoxPasswordWithLabel.xaml.xaml</DependentUpon>
     </Compile>
@@ -264,12 +268,19 @@
     <Compile Include="Control\SimpleControl\EditBoxWithLabelNumericForEdit.xaml.cs">
       <DependentUpon>EditBoxWithLabelNumericForEdit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\SimpleControl\EditBoxWithLabelPhone.xaml.cs">
+      <DependentUpon>EditBoxWithLabelPhone.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\SimpleControl\EditBoxWithLabelScan.xaml.cs">
       <DependentUpon>EditBoxWithLabelScan.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\SimpleControl\EditBoxWithLabelTime.xaml.cs">
       <DependentUpon>EditBoxWithLabelTime.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\SimpleControl\EditBoxWithLabelTimeSpan.xaml.cs">
+      <DependentUpon>EditBoxWithLabelTimeSpan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\SimpleControl\TextBoxTimeBehavior.cs" />
     <Compile Include="Control\ToolBar\Close.xaml.cs">
       <DependentUpon>Close.xaml</DependentUpon>
     </Compile>
@@ -322,6 +333,9 @@
       <DependentUpon>SelectCategoryYellowTable.xaml</DependentUpon>
     </Compile>
     <Compile Include="Crypto\CryptDecrypt.cs" />
+    <Compile Include="FormUsers\BasketShop\BasketShopItem.xaml.cs">
+      <DependentUpon>BasketShopItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FormUsers\BasketShop\BasketShopLogic.cs" />
     <Compile Include="FormUsers\CategoryDetails\CategoryDetailsLigic.cs" />
     <Compile Include="FormUsers\CategoryDetails\NewCategoryDetailsItem.xaml.cs">
@@ -605,6 +619,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Control\SimpleControl\EditBoxNumericGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\SimpleControl\EditBoxPasswordWithLabel.xaml.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -625,6 +643,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Control\SimpleControl\EditBoxWithLabelPhone.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\SimpleControl\EditBoxWithLabelScan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -632,6 +654,10 @@
     <Page Include="Control\SimpleControl\EditBoxWithLabelTime.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\SimpleControl\EditBoxWithLabelTimeSpan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\ToolBar\Close.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -688,6 +714,10 @@
     <Page Include="Control\Zona\Yellow\SelectCategoryYellowTable.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FormUsers\BasketShop\BasketShopItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FormUsers\CategoryDetails\NewCategoryDetailsItem.xaml">
       <Generator>MSBuild:Compile</Generator>

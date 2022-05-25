@@ -1,0 +1,70 @@
+﻿<Page x:Class="Sklad_v1_001.FormUsers.BasketShop.BasketShopItem"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Sklad_v1_001.FormUsers.BasketShop"
+      xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+      xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
+      xmlns:FlexFilter="clr-namespace:Sklad_v1_001.Control.FlexFilter"
+      xmlns:Contener="clr-namespace:Sklad_v1_001.Control.Contener"
+      xmlns:SimpleControl="clr-namespace:Sklad_v1_001.Control.SimpleControl"
+      mc:Ignorable="d" 
+      Title="{x:Static res:Resources.BASKET}" 
+      Style="{DynamicResource UsersPageWidth}"   
+      x:Name="page">
+
+    <Grid>
+        <DataGrid x:Name="DataBasketShop" 
+                              Grid.RowSpan="2"
+                              Grid.ColumnSpan="2"
+                              Grid.Row="1"
+                              Style="{DynamicResource DataGridStyle}" 
+                              ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" 
+                              RowStyle="{DynamicResource DataGridRowStyle}" 
+                              CellStyle="{DynamicResource DataGridCellStyle}"
+                              ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                              ScrollViewer.VerticalScrollBarVisibility="Auto"
+                              AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="{x:Static res:Resources.ID}" SortMemberPath="ID" CanUserSort="True" Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Visibility="Collapsed"/>
+                <DataGridTextColumn Header="{x:Static res:Resources.ID}" SortMemberPath="ID" CanUserSort="True" Binding="{Binding Path=LineDocument, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                
+                <DataGridTemplateColumn MaxWidth="100">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <Label Content="{x:Static res:Resources.Photo}" HorizontalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=PhotoImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="24" Height="24"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="{x:Static res:Resources.Name}" SortMemberPath="Name" CanUserSort="True" Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  MaxWidth="250"/>
+
+                <DataGridTemplateColumn MaxWidth="100">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <Label Content="{x:Static res:Resources.Quantity}" HorizontalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <SimpleControl:EditBoxNumericGrid Value="{Binding Path=BasketQuantity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                                                              MaxValue="{Binding Path=ProductQuantity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                              TextChanged="EditBoxNumericGrid_TextChanged"
+                                                              VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                                
+                <DataGridTextColumn Header="{x:Static res:Resources.TagPriceRus}" SortMemberPath="Color" CanUserSort="True" Binding="{Binding Path=TagPriceRUS , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
+                
+               
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

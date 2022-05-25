@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="Sklad_v1_001.Control.SimpleControl.EditBoxWithLabelPhone"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sklad_v1_001.Control.SimpleControl"
+             mc:Ignorable="d"
+             Name="control">
+    <Grid x:Name="grid" Height="30" Margin="0, 10, 10, 0">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Label Margin="5,0,0,0" Style="{DynamicResource LabelStyle}" x:Name="label" Height="30"/>
+            <Border x:Name="TextBox" Style="{DynamicResource FilterBorderStyle}" Grid.Column="2" Width="Auto">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Margin="2 0 0 0" HorizontalContentAlignment="Center" Height="26" VerticalAlignment="Center" Width="Auto" VerticalContentAlignment="Center" IsEnabled="False" Padding="0" Content="+" FontSize="16" FontFamily="Arial" Background="Transparent"/>
+                    <TextBox x:Name="TextCodeCountry" Style="{DynamicResource TextBoxPhoneStyle}" Grid.Column="1" MinWidth="10" Margin="0" Height="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding ElementName=control, Path=TextCodeCountryValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Width="Auto" Background="Transparent" FontSize="16" FontFamily="Arial" PreviewTextInput="TextBox_OnPreviewTextInput"/>
+                    <Label HorizontalContentAlignment="Center" Grid.Column="2" Height="26" VerticalAlignment="Center" Width="Auto" VerticalContentAlignment="Center" Padding="0 0 1 2" IsEnabled="False" Content="(" FontSize="16" FontFamily="Arial" Background="Transparent"/>
+                    <TextBox x:Name="TextCodeOperator" Style="{DynamicResource TextBoxPhoneStyle}" Grid.Column="3" MinWidth="10" Margin="0" Height="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding ElementName=control, Path=TextCodeOperatorValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Width="Auto" Background="Transparent" FontSize="16" FontFamily="Arial" PreviewTextInput="TextBox_OnPreviewTextInput"/>
+                    <Label HorizontalContentAlignment="Center" Grid.Column="4" Height="26" VerticalAlignment="Center" Width="Auto" VerticalContentAlignment="Center" Padding="1 0 0 2" IsEnabled="False" Content=")" FontSize="16" FontFamily="Arial" Background="Transparent"/>
+                    <TextBox x:Name="TextPhone1" Style="{DynamicResource TextBoxPhoneStyle}" Grid.Column="5" MinWidth="30" Margin="0" Height="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="Auto" Background="Transparent" FontSize="16" FontFamily="Arial" Text="{Binding ElementName=control, Path=TextPhoneValue1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="TextBox_OnPreviewTextInput"/>
+                    <Label HorizontalContentAlignment="Center" Grid.Column="6" Height="26" VerticalAlignment="Center" Width="Auto" VerticalContentAlignment="Center" Padding="0 0 0 2" IsEnabled="False" Content="-" FontSize="16" FontFamily="Arial" Background="Transparent"/>
+                    <TextBox x:Name="TextPhone2" Style="{DynamicResource TextBoxPhoneStyle}" Grid.Column="8" MinWidth="16" Height="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="Auto" Text="{Binding ElementName=control, Path=TextPhoneValue2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="TextBox_OnPreviewTextInput"/>
+                    <Label HorizontalContentAlignment="Center" Grid.Column="9" Height="26" VerticalAlignment="Center" Width="Auto" VerticalContentAlignment="Center" Padding="0 0 0 2" IsEnabled="False" Content="-" FontSize="16" FontFamily="Arial" Background="Transparent"/>
+                    <TextBox x:Name="TextPhone3" Style="{DynamicResource TextBoxPhoneStyle}" Grid.Column="10" MinWidth="16" Margin="0 0 2 0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="Auto" Text="{Binding ElementName=control, Path=TextPhoneValue3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="TextBox_OnPreviewTextInput"/>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

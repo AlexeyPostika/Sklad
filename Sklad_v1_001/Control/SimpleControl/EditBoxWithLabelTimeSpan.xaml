@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="Sklad_v1_001.Control.SimpleControl.EditBoxWithLabelTimeSpan"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sklad_v1_001.Control.SimpleControl"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             mc:Ignorable="d"
+             x:Name="control">
+    <Grid x:Name="grid" Height="30">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Label x:Name="label" Style="{DynamicResource LabelStyle}"
+                   Content="{Binding ElementName=control, Path=LabelText,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                   Width="{Binding ElementName=control, Path=LabelWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                   Margin="0"
+                   Padding="0"
+                   />
+
+            <Border x:Name="BorderTextBox" Style="{StaticResource FilterBorderStyle}" Grid.Column="1" Padding="2,0,0,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition x:Name="Column1" Width="18"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="InputTextBox" Text="{Binding ElementName=control, Path=TimeString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" BorderThickness="0" BorderBrush="Transparent" Style="{DynamicResource TextBoxStyle}" HorizontalAlignment="Center">
+                        <i:Interaction.Behaviors>
+                            <local:TextBoxTimeBehavior x:Name="TimeBehavior" InputMask="{Binding ElementName=control, Path=Mask, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" ResultTimeString="{Binding ElementName=control, Path=ResultTimeString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" IsError="{Binding ElementName=control, Path=IsError, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                        </i:Interaction.Behaviors>
+                    </TextBox>
+
+                    <StackPanel Grid.Column="1" Margin="0 6 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding ElementName=control, Path=VisibilitySpan, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                        <Button Height="10" VerticalContentAlignment="Center" VerticalAlignment="Center" Click="Button_Click_Up" Style="{DynamicResource ButtonStyleSpinnerUp}"/>
+                        <Button Height="10" VerticalContentAlignment="Center" VerticalAlignment="Center" Click="Button_Click_Down" Style="{DynamicResource ButtonStyleSpinnerDown}"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

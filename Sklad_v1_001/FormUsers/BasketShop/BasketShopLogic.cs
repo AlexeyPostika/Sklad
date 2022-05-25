@@ -10,6 +10,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace Sklad_v1_001.FormUsers.BasketShop
 {
@@ -112,6 +113,9 @@ namespace Sklad_v1_001.FormUsers.BasketShop
         private Int32 createdUserID;
         private Int32 lastModificatedUserID;
         private Int32 saleDocumentID;
+
+        private Byte[] photoImageByte;
+        private ImageSource photoImage;
 
         private Boolean newDocumentBasketShop;
 
@@ -366,9 +370,36 @@ namespace Sklad_v1_001.FormUsers.BasketShop
                 OnPropertyChanged("NewDocumentBasketShop");
             }
         }
+        public byte[] PhotoImageByte
+        {
+            get
+            {
+                return photoImageByte;
+            }
+
+            set
+            {
+                photoImageByte = value;
+                OnPropertyChanged("PhotoImageByte");
+            }
+        }
+        public ImageSource PhotoImage
+        {
+            get
+            {
+                return photoImage;
+            }
+
+            set
+            {
+                photoImage = value;
+                OnPropertyChanged("PhotoImage");
+            }
+        }
         public LocalRow()
         {
             ShemaStorаgeLocal = new ShemaStorаge();
+            PhotoImage = ImageHelper.GenerateImage("IconNotCamera_X80.png");
         }
     }
 
@@ -444,6 +475,7 @@ namespace Sklad_v1_001.FormUsers.BasketShop
         public LocalRow Convert(DataRow _dataRow, LocalRow _localeRow)
         {          
             ConvertData convertData = new ConvertData(_dataRow, _localeRow);
+            ImageSql imageSql = new ImageSql();
 
             _localeRow.ID = convertData.ConvertDataInt32("ID");
                     
@@ -464,6 +496,11 @@ namespace Sklad_v1_001.FormUsers.BasketShop
             _localeRow.CreatedUserID = convertData.ConvertDataInt32("CreatedUserID");
             _localeRow.LastModificatedUserID = convertData.ConvertDataInt32("LastModificatedUserID");
             _localeRow.NewDocumentBasketShop = false;
+
+            if (_dataRow["ImageProduct"] as byte[] != null)
+                _localeRow.PhotoImage = imageSql.BytesToImageSource(_dataRow["ImageProduct"] as byte[]);
+            else
+                _localeRow.PhotoImage = ImageHelper.GenerateImage("IconNotCamera_X80.png");
 
             return _localeRow;
         }
