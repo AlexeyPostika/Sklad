@@ -592,6 +592,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на ОФОРМИТЬ.
+        /// </summary>
+        public static string DESIGN {
+            get {
+                return ResourceManager.GetString("DESIGN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Описание.
         /// </summary>
         public static string Discription {

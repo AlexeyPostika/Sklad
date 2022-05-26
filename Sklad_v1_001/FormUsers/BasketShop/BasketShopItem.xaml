@@ -9,16 +9,18 @@
       xmlns:FlexFilter="clr-namespace:Sklad_v1_001.Control.FlexFilter"
       xmlns:Contener="clr-namespace:Sklad_v1_001.Control.Contener"
       xmlns:SimpleControl="clr-namespace:Sklad_v1_001.Control.SimpleControl"
+      xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton"
       mc:Ignorable="d" 
       Title="{x:Static res:Resources.BASKET}" 
       Style="{DynamicResource UsersPageWidth}"   
       x:Name="page">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
         <DataGrid x:Name="DataBasketShop" 
-                              Grid.RowSpan="2"
-                              Grid.ColumnSpan="2"
-                              Grid.Row="1"
                               Style="{DynamicResource DataGridStyle}" 
                               ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" 
                               RowStyle="{DynamicResource DataGridRowStyle}" 
@@ -63,9 +65,17 @@
 
                 <DataGridTextColumn Header="{x:Static res:Resources.QuantityStore}" SortMemberPath="Name" CanUserSort="True" Binding="{Binding Path=ProductQuantity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  MaxWidth="250"/>
                 <DataGridTextColumn Header="{x:Static res:Resources.TagPriceRus}" SortMemberPath="Color" CanUserSort="True" Binding="{Binding Path=TagPriceRUS , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
-                
-               
+                            
             </DataGrid.Columns>
         </DataGrid>
+        
+        <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            
+            <FlexButton:LevelButton x:Name="basketShop" 
+                                Margin="0,5,0,10"
+                                Grid.Column="3"
+                                Text="{x:Static res:Resources.DESIGN}"
+                                ButtonClick="basketShop_ButtonClick"/>
+        </Grid>
     </Grid>
 </Page>

@@ -60,5 +60,10 @@ namespace Sklad_v1_001.FormUsers.BasketShop
         {
 
         }
+
+        private void basketShop_ButtonClick()
+        {
+
+        }
     }
 }

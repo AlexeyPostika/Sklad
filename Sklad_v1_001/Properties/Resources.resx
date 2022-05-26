@@ -825,4 +825,7 @@
   <data name="QuantityStore" xml:space="preserve">
     <value>Кол-во на складе</value>
   </data>
+  <data name="DESIGN" xml:space="preserve">
+    <value>ОФОРМИТЬ</value>
+  </data>
 </root>
