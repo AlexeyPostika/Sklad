@@ -97,6 +97,7 @@ namespace Sklad_v1_001.FormUsers.BasketShop
         ShemaStorаge shemaStorаgeLocal;
 
         private Int32 iD;
+        private Int32 lineDocument;
         private Int32 userID;
         private Int32 productID;
         private Int32 basketQuantity;
@@ -134,7 +135,20 @@ namespace Sklad_v1_001.FormUsers.BasketShop
                 OnPropertyChanged("ID");
             }
         }
+       
+        public Int32 LineDocument
+        {
+            get
+            {
+                return lineDocument;
+            }
 
+            set
+            {
+                lineDocument = value;
+                OnPropertyChanged("LineDocument");
+            }
+        }
         public Int32 UserID
         {
             get
@@ -436,7 +450,7 @@ namespace Sklad_v1_001.FormUsers.BasketShop
             _sqlRequestSelect.SetParametrValue("@p_UserID", attributes.numeric.userEdit.AddUserID.ToString());
 
             _sqlRequestSelect.AddParametr("@p_SortColumn", SqlDbType.NVarChar, 255);
-            _sqlRequestSelect.SetParametrValue("@p_SortColumn", 0);
+            _sqlRequestSelect.SetParametrValue("@p_SortColumn", "");
 
             _sqlRequestSelect.AddParametr("@p_Sort", SqlDbType.Bit);
             _sqlRequestSelect.SetParametrValue("@p_Sort", 0);
@@ -453,11 +467,14 @@ namespace Sklad_v1_001.FormUsers.BasketShop
 
         }
 
-        public DataTable FillGrid()
+        public DataTable FillGrid(LocalFilter localFilter)
         {
             _sqlRequestSelect.SqlAnswer.datatable.Clear();
             _data.Clear();
-         
+
+            _sqlRequestSelect.SetParametrValue("@p_SortColumn", localFilter.SortColumn);
+            _sqlRequestSelect.SetParametrValue("@p_Sort", localFilter.Sort);
+
             _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
             _data = _sqlRequestSelect.SqlAnswer.datatable;
             return _data;
@@ -478,7 +495,8 @@ namespace Sklad_v1_001.FormUsers.BasketShop
             ImageSql imageSql = new ImageSql();
 
             _localeRow.ID = convertData.ConvertDataInt32("ID");
-                    
+            _localeRow.LineDocument = convertData.ConvertDataInt32("LineDocument");
+
             _localeRow.UserID = convertData.ConvertDataInt32("UserID");
             _localeRow.ProductID = convertData.ConvertDataInt32("ProductID");
             _localeRow.BasketQuantity = convertData.ConvertDataInt32("BasketQuantity");

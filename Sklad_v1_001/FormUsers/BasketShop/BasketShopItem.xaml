@@ -60,7 +60,8 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                                
+
+                <DataGridTextColumn Header="{x:Static res:Resources.QuantityStore}" SortMemberPath="Name" CanUserSort="True" Binding="{Binding Path=ProductQuantity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  MaxWidth="250"/>
                 <DataGridTextColumn Header="{x:Static res:Resources.TagPriceRus}" SortMemberPath="Color" CanUserSort="True" Binding="{Binding Path=TagPriceRUS , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
                 
                

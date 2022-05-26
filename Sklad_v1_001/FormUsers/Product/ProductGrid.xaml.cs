@@ -513,7 +513,7 @@ namespace Sklad_v1_001.FormUsers.Product
         {
             datalistBasketShop.Clear();
 
-            DataTable dataTable = basketShopLogic.FillGrid();
+            DataTable dataTable = basketShopLogic.FillGrid(new BasketShop.LocalFilter()) ;
             QuantityBasket = 0;
             foreach (DataRow row in dataTable.Rows)
             {
@@ -872,11 +872,24 @@ namespace Sklad_v1_001.FormUsers.Product
 
         private void toolBarProduct_ButtonBasket()
         {
-            datalistSaleProduct = new ObservableCollection<SaleDocumentProduct.LocalRow>();
+            FlexMessageBox flexMessageBox = new FlexMessageBox();
+            var location = PointToScreen(new Point(0, 0));
+            flexMessageBox.WindowStartupLocation = WindowStartupLocation.Manual;
+            flexMessageBox.Left = toolBarProduct.Scan.PointToScreen(new Point(0, 0)).X + toolBarProduct.Scan.ActualWidth - 580;//620;// 
+            flexMessageBox.Top = location.Y = 70;
+            flexMessageBox.AllowDrop = false;
 
-            datalistBasketShop.ToList<BasketShop.LocalRow>().ForEach(Revise);
+            BasketShopItem basketShopItem = new BasketShopItem(attributes);
+            basketShopItem.ListBasketShop = datalistBasketShop;
+            flexMessageBox.Content = basketShopItem;
 
-            MainWindow.AppWindow.ButtonNewSaleDocumentOpenBasket(datalistSaleProduct);
+            flexMessageBox.Show(Properties.Resources.BASKET);
+
+            //datalistSaleProduct = new ObservableCollection<SaleDocumentProduct.LocalRow>();
+
+            //datalistBasketShop.ToList<BasketShop.LocalRow>().ForEach(Revise);
+
+            //MainWindow.AppWindow.ButtonNewSaleDocumentOpenBasket(datalistSaleProduct);
         }
 
         public void Revise(BasketShop.LocalRow basketRow)

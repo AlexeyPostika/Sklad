@@ -1618,6 +1618,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Кол-во на складе.
+        /// </summary>
+        public static string QuantityStore {
+            get {
+                return ResourceManager.GetString("QuantityStore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Вы действительно хотите удалить данную запись?.
         /// </summary>
         public static string QuestionDelete {

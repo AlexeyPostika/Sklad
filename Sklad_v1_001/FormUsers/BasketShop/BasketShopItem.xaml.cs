@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Sklad_v1_001.GlobalAttributes;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,11 +21,44 @@ namespace Sklad_v1_001.FormUsers.BasketShop
     /// <summary>
     /// Логика взаимодействия для BasketShopItem.xaml
     /// </summary>
-    public partial class BasketShopItem : Page
+    public partial class BasketShopItem : Page, INotifyPropertyChanged
     {
-        public BasketShopItem()
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        Attributes attributes;
+
+        ObservableCollection<LocalRow> listBasketShop;
+        public ObservableCollection<LocalRow> ListBasketShop
+        {
+            get
+            {
+                return listBasketShop;
+            }
+
+            set
+            {
+                listBasketShop = value;
+                if (value != null)
+                    this.DataBasketShop.ItemsSource = ListBasketShop;
+                OnPropertyChanged("ListBasketShop");
+            }
+        }
+        public BasketShopItem(Attributes _attributes )
         {
             InitializeComponent();
+            this.attributes = _attributes;
+
+            this.DataBasketShop.ItemsSource = ListBasketShop;
+
+        }
+
+        private void EditBoxNumericGrid_TextChanged()
+        {
+
         }
     }
 }
