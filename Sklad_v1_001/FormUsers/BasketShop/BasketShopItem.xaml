@@ -20,14 +20,29 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        <!--RowStyle="{DynamicResource DataGridRowStyle}"-->
         <DataGrid x:Name="DataBasketShop" 
                               Style="{DynamicResource DataGridStyle}" 
                               ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" 
-                              RowStyle="{DynamicResource DataGridRowStyle}" 
+                              
                               CellStyle="{DynamicResource DataGridCellStyle}"
                               ScrollViewer.HorizontalScrollBarVisibility="Auto"
                               ScrollViewer.VerticalScrollBarVisibility="Auto"
                               AutoGenerateColumns="False">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsActiveRow}" Value="true">
+                            <Setter Property="Background" Value="Red"></Setter>
+                            <Setter Property="Foreground" Value="White"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsActiveRow}" Value="false">
+                            <Setter Property="Background" Value="#eeeeee"></Setter>
+                            <Setter Property="Foreground" Value="Black"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="{x:Static res:Resources.ID}" SortMemberPath="ID" CanUserSort="True" Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Visibility="Collapsed"/>
                 <DataGridTextColumn Header="{x:Static res:Resources.ID}" SortMemberPath="ID" CanUserSort="True" Binding="{Binding Path=LineDocument, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
