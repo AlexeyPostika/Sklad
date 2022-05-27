@@ -885,22 +885,26 @@ namespace Sklad_v1_001.FormUsers.Product
 
             flexMessageBox.Show(Properties.Resources.BASKET);
 
-            //datalistSaleProduct = new ObservableCollection<SaleDocumentProduct.LocalRow>();
+            if (basketShopItem.IsClickButtonOK == MessageBoxResult.OK)
+            {
+                datalistSaleProduct = new ObservableCollection<SaleDocumentProduct.LocalRow>();
 
-            //datalistBasketShop.ToList<BasketShop.LocalRow>().ForEach(Revise);
+                datalistBasketShop.ToList<BasketShop.LocalRow>().ForEach(Revise);
+                MainWindow.AppWindow.ButtonNewSaleDocumentOpenBasket(datalistSaleProduct);
+            }
 
-            //MainWindow.AppWindow.ButtonNewSaleDocumentOpenBasket(datalistSaleProduct);
+
         }
 
         public void Revise(BasketShop.LocalRow basketRow)
         {
-            if (basketRow.ProductQuantity > 0)
+            if (basketRow.ProductQuantity > 0 && basketRow.ProductQuantity >= basketRow.BasketQuantity)
             {
                 SaleDocumentProduct.LocalRow localRowProduct = new SaleDocumentProduct.LocalRow();
                 localRowProduct.LineDocument = datalistSaleProduct.Count + 1;
                 localRowProduct.ProductID = basketRow.ProductID;
                 localRowProduct.Quantity = basketRow.ProductQuantity;
-                localRowProduct.TagPriceWithVAT = basketRow.ProductQuantity * basketRow.TagPriceRUS;
+                localRowProduct.TagPriceWithVAT = basketRow.BasketQuantity * basketRow.TagPriceRUS;
                 localRowProduct.Name = basketRow.Name;
                 localRowProduct.Model = basketRow.Model;
                 localRowProduct.SizeProduct = basketRow.SizeProduct;

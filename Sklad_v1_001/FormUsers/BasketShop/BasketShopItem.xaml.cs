@@ -28,6 +28,16 @@ namespace Sklad_v1_001.FormUsers.BasketShop
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        public static readonly DependencyProperty IsClickButtonOKProperty = DependencyProperty.Register(
+                    "IsClickButtonOK",
+                    typeof(MessageBoxResult),
+                   typeof(BasketShopItem), new PropertyMetadata(MessageBoxResult.Cancel));
+
+        public MessageBoxResult IsClickButtonOK
+        {
+            get { return (MessageBoxResult)GetValue(IsClickButtonOKProperty); }
+            set { SetValue(IsClickButtonOKProperty, value); }
+        }
 
         Attributes attributes;
 
@@ -63,7 +73,9 @@ namespace Sklad_v1_001.FormUsers.BasketShop
 
         private void basketShop_ButtonClick()
         {
-
+            IsClickButtonOK = MessageBoxResult.OK;
+            Window win = Parent as Window;
+            win.Close();
         }
     }
 }
