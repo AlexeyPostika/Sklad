@@ -1,4 +1,5 @@
 ﻿using Sklad_v1_001.GlobalAttributes;
+using Sklad_v1_001.GlobalVariable;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -61,6 +62,8 @@ namespace Sklad_v1_001.FormUsers.BasketShop
         {
             InitializeComponent();
             this.attributes = _attributes;
+            
+            basketShop.Image.Source = ImageHelper.GenerateImage("IconPrintCheck_X30.png");
 
             this.DataBasketShop.ItemsSource = ListBasketShop;
 
