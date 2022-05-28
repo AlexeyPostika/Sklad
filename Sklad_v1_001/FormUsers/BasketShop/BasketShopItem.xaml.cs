@@ -68,7 +68,14 @@ namespace Sklad_v1_001.FormUsers.BasketShop
 
         private void EditBoxNumericGrid_TextChanged()
         {
-
+            LocalRow currentrow = this.DataBasketShop.SelectedItem as LocalRow;
+            if (currentrow != null)
+            {
+                if (currentrow.BasketQuantity <= currentrow.ProductQuantity)
+                    currentrow.IsActiveRow = false;
+                else
+                    currentrow.IsActiveRow = true;
+            }
         }
 
         private void basketShop_ButtonClick()
