@@ -1,9 +1,11 @@
 ﻿using Sklad_v1_001.GlobalAttributes;
 using Sklad_v1_001.GlobalVariable;
+using Sklad_v1_001.SQLCommand;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,8 +41,14 @@ namespace Sklad_v1_001.FormUsers.BasketShop
             get { return (MessageBoxResult)GetValue(IsClickButtonOKProperty); }
             set { SetValue(IsClickButtonOKProperty, value); }
         }
-        
+
+        public event Action ButtonClick; //получаем название события
         Attributes attributes;
+
+        //схема структуры SupplyDocument
+        ShemaStorаge shemaStorаge;
+
+        BasketShopLogic basketShopLogic;
 
         ObservableCollection<LocalRow> listBasketShop;
         public ObservableCollection<LocalRow> ListBasketShop
@@ -54,7 +62,21 @@ namespace Sklad_v1_001.FormUsers.BasketShop
             {
                 listBasketShop = value;
                 if (value != null)
+                {
+                    if (listBasketShop.Count>0)
+                    {
+                        basketShop.IsEnabled = true;
+                    }
+                    else
+                    {
+                        basketShop.IsEnabled = false;
+                    }
                     this.DataBasketShop.ItemsSource = ListBasketShop;
+                }
+                else
+                {
+                    basketShop.IsEnabled = false;
+                }
                 OnPropertyChanged("ListBasketShop");
             }
         }
@@ -62,7 +84,11 @@ namespace Sklad_v1_001.FormUsers.BasketShop
         {
             InitializeComponent();
             this.attributes = _attributes;
-            
+
+            shemaStorаge = new ShemaStorаge();
+
+            basketShopLogic = new BasketShopLogic(attributes);
+
             basketShop.Image.Source = ImageHelper.GenerateImage("IconPrintCheck_X30.png");
 
             this.DataBasketShop.ItemsSource = ListBasketShop;
@@ -94,7 +120,25 @@ namespace Sklad_v1_001.FormUsers.BasketShop
             if (currentrow != null)
             {
                 ListBasketShop.Remove(currentrow);
+                
+                shemaStorаge.BasketShop.Clear();
+                
+                foreach (BasketShop.LocalRow local in ListBasketShop)
+                {
+                    try
+                    {
+                        DataRow rowTabel = shemaStorаge.BasketShop.NewRow();
+                        rowTabel["UserID"] = local.UserID;
+                        rowTabel["ProductID"] = local.ProductID;
+                        rowTabel["Quantity"] = local.BasketQuantity;
+                        shemaStorаge.BasketShop.Rows.Add(rowTabel);
+                    }
+                    catch (Exception ex) { }
+
+                }
+                basketShopLogic.SaveRow(shemaStorаge, 1);
             }
+            ButtonClick?.Invoke();
         }
        
     }

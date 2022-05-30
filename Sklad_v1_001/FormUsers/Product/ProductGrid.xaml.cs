@@ -542,7 +542,7 @@ namespace Sklad_v1_001.FormUsers.Product
                     FlexMessageBox flexMessageBox = new FlexMessageBox();
                     ProductItemGrid productItemGrid = new ProductItemGrid(attributes);
                     productItemGrid.LocalRowDetails = datalist.FirstOrDefault(x => x.ID == convertData.FlexDataConvertToInt32(rowID));
-                    flexMessageBox.Content = productItemGrid;
+                    flexMessageBox.Content = productItemGrid;            
                     flexMessageBox.Show(Properties.Resources.ProductsEdit);
                     
                     if (productItemGrid.statusWindows == StatusWindows.Refresh)
@@ -881,10 +881,10 @@ namespace Sklad_v1_001.FormUsers.Product
 
             BasketShopItem basketShopItem = new BasketShopItem(attributes);
             basketShopItem.ListBasketShop = datalistBasketShop;
-            flexMessageBox.Content = basketShopItem;
-
-            flexMessageBox.Show(Properties.Resources.BASKET);
-
+            basketShopItem.ButtonClick += BasketShopItem_ButtonClick;
+            
+            flexMessageBox.Content = basketShopItem;         
+            flexMessageBox.Show(Properties.Resources.BASKET);           
             if (basketShopItem.IsClickButtonOK == MessageBoxResult.OK)
             {
                 datalistSaleProduct = new ObservableCollection<SaleDocumentProduct.LocalRow>();
@@ -892,6 +892,11 @@ namespace Sklad_v1_001.FormUsers.Product
                 datalistBasketShop.ToList<BasketShop.LocalRow>().ForEach(Revise);
                 MainWindow.AppWindow.ButtonNewSaleDocumentOpenBasket(datalistSaleProduct);
             }
+        }
+
+        private void BasketShopItem_ButtonClick()
+        {
+            QuantityBasket = datalistBasketShop.Count;
         }
 
         public void Revise(BasketShop.LocalRow basketRow)
