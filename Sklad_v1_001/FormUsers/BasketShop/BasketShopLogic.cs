@@ -118,6 +118,8 @@ namespace Sklad_v1_001.FormUsers.BasketShop
         private Byte[] photoImageByte;
         private ImageSource photoImage;
 
+        private ImageSource iconSourceDelete;
+
         private Boolean newDocumentBasketShop;
 
         public ShemaStorаge ShemaStorаgeLocal { get => shemaStorаgeLocal; set => shemaStorаgeLocal = value; }
@@ -410,10 +412,25 @@ namespace Sklad_v1_001.FormUsers.BasketShop
                 OnPropertyChanged("PhotoImage");
             }
         }
+
+        public ImageSource IconSourceDelete
+        {
+            get
+            {
+                return iconSourceDelete;
+            }
+
+            set
+            {
+                iconSourceDelete = value;
+                OnPropertyChanged("IconSourceDelete");
+            }
+        }
         public LocalRow()
         {
             ShemaStorаgeLocal = new ShemaStorаge();
             PhotoImage = ImageHelper.GenerateImage("IconNotCamera_X80.png");
+            IconSourceDelete= ImageHelper.GenerateImage("IconDelete.png");
         }
     }
 

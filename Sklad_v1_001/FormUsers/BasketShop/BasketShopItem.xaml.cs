@@ -33,13 +33,13 @@ namespace Sklad_v1_001.FormUsers.BasketShop
                     "IsClickButtonOK",
                     typeof(MessageBoxResult),
                    typeof(BasketShopItem), new PropertyMetadata(MessageBoxResult.Cancel));
-
+        
         public MessageBoxResult IsClickButtonOK
         {
             get { return (MessageBoxResult)GetValue(IsClickButtonOKProperty); }
             set { SetValue(IsClickButtonOKProperty, value); }
         }
-
+        
         Attributes attributes;
 
         ObservableCollection<LocalRow> listBasketShop;
@@ -87,5 +87,15 @@ namespace Sklad_v1_001.FormUsers.BasketShop
             Window win = Parent as Window;
             win.Close();
         }
+
+        private void delete_ButtonClick()
+        {
+            LocalRow currentrow = this.DataBasketShop.SelectedItem as LocalRow;
+            if (currentrow != null)
+            {
+                ListBasketShop.Remove(currentrow);
+            }
+        }
+       
     }
 }

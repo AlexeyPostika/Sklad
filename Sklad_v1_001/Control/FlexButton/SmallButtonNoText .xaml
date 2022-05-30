@@ -4,13 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Sklad_v1_001.Control.FlexButton"             
-             mc:Ignorable="d">
+             mc:Ignorable="d"
+             x:Name="control">
     <Grid>
         <Button Name="button"
                 Style="{DynamicResource RoundBorderButtonStyle}"
                 Click="button_Click">
             <StackPanel Orientation="Vertical" >
-                <Image x:Name="Image" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None" RenderOptions.BitmapScalingMode="NearestNeighbor"/>                
+                <Image x:Name="Image" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None" RenderOptions.BitmapScalingMode="NearestNeighbor"
+                       Source="{Binding ElementName=control, Path=IconSource, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>                
             </StackPanel>
         </Button>
     </Grid>

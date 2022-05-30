@@ -23,6 +23,16 @@ namespace Sklad_v1_001.Control.FlexButton
     /// 
     public partial class SmallButtonNoText : UserControl, IAbstractButton
     {
+        public static readonly DependencyProperty IconSourceProperty = DependencyProperty.Register(
+                    "IconSource",
+                    typeof(ImageSource),
+                   typeof(SmallButtonNoText), new PropertyMetadata());
+
+        public ImageSource IconSource
+        {
+            get { return (ImageSource)GetValue(IconSourceProperty); }
+            set { SetValue(IconSourceProperty, value); }
+        }
         public SmallButtonNoText()
         {
             InitializeComponent();        

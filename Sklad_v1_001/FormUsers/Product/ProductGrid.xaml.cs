@@ -875,7 +875,7 @@ namespace Sklad_v1_001.FormUsers.Product
             FlexMessageBox flexMessageBox = new FlexMessageBox();
             var location = PointToScreen(new Point(0, 0));
             flexMessageBox.WindowStartupLocation = WindowStartupLocation.Manual;
-            flexMessageBox.Left = toolBarProduct.Scan.PointToScreen(new Point(0, 0)).X + toolBarProduct.Scan.ActualWidth - 580;//620;// 
+            flexMessageBox.Left = toolBarProduct.Scan.PointToScreen(new Point(0, 0)).X + toolBarProduct.Scan.ActualWidth - 620;//620;// 
             flexMessageBox.Top = location.Y = 70;
             flexMessageBox.AllowDrop = false;
 
@@ -892,8 +892,6 @@ namespace Sklad_v1_001.FormUsers.Product
                 datalistBasketShop.ToList<BasketShop.LocalRow>().ForEach(Revise);
                 MainWindow.AppWindow.ButtonNewSaleDocumentOpenBasket(datalistSaleProduct);
             }
-
-
         }
 
         public void Revise(BasketShop.LocalRow basketRow)

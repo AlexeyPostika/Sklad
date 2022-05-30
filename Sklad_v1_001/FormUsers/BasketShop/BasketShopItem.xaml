@@ -80,7 +80,22 @@
 
                 <DataGridTextColumn Header="{x:Static res:Resources.QuantityStore}" SortMemberPath="Name" CanUserSort="True" Binding="{Binding Path=ProductQuantity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  MaxWidth="250"/>
                 <DataGridTextColumn Header="{x:Static res:Resources.TagPriceRus}" SortMemberPath="Color" CanUserSort="True" Binding="{Binding Path=TagPriceRUS , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}" />
-                            
+                
+                <DataGridTemplateColumn MaxWidth="100">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <FlexButton:SmallButtonNoText x:Name="delete" 
+                                                          IconSource="{Binding Path=IconSourceDelete, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                          ButtonClick="delete_ButtonClick"
+                                                         />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+           
             </DataGrid.Columns>
         </DataGrid>
         
