@@ -110,6 +110,7 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
         private String shortLDisplayNameUser;
         private String lDisplayNameUserID;
         private String shortLDisplayNameUserID;
+        private Int32 status;
 
         public Int32 RowNumber
         {
@@ -501,6 +502,20 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
                 OnPropertyChanged("ShortLDisplayNameUserID");
             }
         }
+
+        public Int32 Status
+        {
+            get
+            {
+                return status;
+            }
+
+            set
+            {
+                status = value;
+                OnPropertyChanged("Status");
+            }
+        }
         public LocalRow()
         {
             ClientCardNumber = String.Empty;
@@ -509,9 +524,151 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
             SendCheck = false;
             SendPaperCheck = false;
             Currency = 0;
+            Status = 0;
         }
 
     }
+
+    public class RowSummary : INotifyPropertyChanged
+    {
+        Int32 summaryQuantityLine;
+        Int32 summaryQuantityProduct;
+        decimal summaryProductTagPriceUSA;
+        decimal summaryProductTagPriceRUS;
+
+        Int32 summaryDeliveryQuantity;
+        decimal summaryAmountUSA;
+        decimal summaryAmountRUS;
+
+        decimal summaryPaymentBalans;
+        decimal summaryPaymentRemains;
+
+        public Int32 SummaryQuantityLine
+        {
+            get
+            {
+                return summaryQuantityLine;
+            }
+
+            set
+            {
+                summaryQuantityLine = value;
+                OnPropertyChanged("SummaryQuantityLine");
+            }
+        }
+        public Int32 SummaryQuantityProduct
+        {
+            get
+            {
+                return summaryQuantityProduct;
+            }
+
+            set
+            {
+                summaryQuantityProduct = value;
+                OnPropertyChanged("SummaryQuantityProduct");
+            }
+        }
+
+        public decimal SummaryProductTagPriceUSA
+        {
+            get
+            {
+                return summaryProductTagPriceUSA;
+            }
+
+            set
+            {
+                summaryProductTagPriceUSA = value;
+                OnPropertyChanged("SummaryProductTagPriceUSA");
+            }
+        }
+        public decimal SummaryProductTagPriceRUS
+        {
+            get
+            {
+                return summaryProductTagPriceRUS;
+            }
+
+            set
+            {
+                summaryProductTagPriceRUS = value;
+                OnPropertyChanged("SummaryProductTagPriceRUS");
+            }
+        }
+        public int SummaryDeliveryQuantity
+        {
+            get
+            {
+                return summaryDeliveryQuantity;
+            }
+
+            set
+            {
+                summaryDeliveryQuantity = value;
+                OnPropertyChanged("SummaryDeliveryQuantity");
+            }
+        }
+        public decimal SummaryAmountUSA
+        {
+            get
+            {
+                return summaryAmountUSA;
+            }
+
+            set
+            {
+                summaryAmountUSA = value;
+                OnPropertyChanged("SummaryAmountUSA");
+            }
+        }
+        public decimal SummaryAmountRUS
+        {
+            get
+            {
+                return summaryAmountRUS;
+            }
+
+            set
+            {
+                summaryAmountRUS = value;
+                OnPropertyChanged("SummaryAmountRUS");
+            }
+        }
+        public decimal SummaryPaymentBalans
+        {
+            get
+            {
+                return summaryPaymentBalans;
+            }
+
+            set
+            {
+                summaryPaymentBalans = value;
+                OnPropertyChanged("SummaryPaymentBalans");
+            }
+        }
+        public decimal SummaryPaymentRemains
+        {
+            get
+            {
+                return summaryPaymentRemains;
+            }
+
+            set
+            {
+                summaryPaymentRemains = value;
+                OnPropertyChanged("SummaryPaymentRemains");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+
     public class SaleDocumentLogic
     {
         Attributes attributes;

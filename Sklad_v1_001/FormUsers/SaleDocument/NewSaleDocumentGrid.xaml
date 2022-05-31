@@ -29,7 +29,7 @@
                                                  ButtonApply="SupplyDocumentDetailsToolBar_ButtonApply"
                                                  />
 
-        <GroupBox Name="DocumentDetails" Grid.Row="1" Margin="10,0,10,10" Header="{x:Static res:Resources.SaleDocumentGroupBox}">
+        <GroupBox Name="DocumentDetails" Style="{DynamicResource GroupBoxStyle}" Grid.Row="1" Margin="10,0,10,10" Header="{x:Static res:Resources.SaleDocumentGroupBox}">
             <WrapPanel>
                 <Grid x:Name="DocumentGrid">
                     <Grid.RowDefinitions>
@@ -53,7 +53,7 @@
                                                  IsEnabled="False"
                                                  IsReadOnly="True" LabelWidth="50" Width="230"/>
                 <FlexComboBox:ComboBoxWithLabel x:Name="UserIDDocument" Grid.Row="1" Grid.Column="1"
-                                                Value="{Binding Path=LastModificatedUserID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                Value="{Binding Path=UserID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                                 LabelText="{x:Static res:Resources.UserName}"
                                                 LabelWidth="100" Width="280"/>
                 <FlexComboBox:ComboBoxWithLabel x:Name="StatusDocument" Grid.Row="2" Grid.Column="1"
@@ -64,7 +64,7 @@
             </WrapPanel>
         </GroupBox>
 
-        <GroupBox Name="DocumentSummary" Grid.Row="2" Margin="10,0,10,10"
+        <GroupBox Style="{DynamicResource GroupBoxStyle}" Name="DocumentSummary" Grid.Row="2" Margin="10,0,10,10"
             Header="{x:Static res:Resources.SupplyDocumentHeaderSummary}" >
             <Grid x:Name="DocumentSummaryGrid">
                 <Grid.RowDefinitions>
@@ -77,7 +77,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Content="Продукт" Margin="100,0,0,0"/>
+                <Label Style="{DynamicResource LabelStyle}" Content="Продукт" Margin="100,0,0,0"/>
                 <Border Style="{DynamicResource BorderStyle}" Grid.Row="1">
                     <StackPanel>
                         <SimpleControl:EditBoxWithLabel x:Name="ProductQuantitySummary"
@@ -86,11 +86,11 @@
                                             IsEnabled="False"
                                             IsReadOnly="True" LabelWidth="100" Width="280"/>
 
-                        <SimpleControl:EditBoxWithLabel  x:Name="ProductTagPriceUSASummary"
+                        <!--<SimpleControl:EditBoxWithLabel  x:Name="ProductTagPriceUSASummary"
                                                  Text="{Binding Path=SummaryProductTagPriceUSA, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}"
                                                  LabelText="{x:Static res:Resources.AmountUSA}"
                                                  IsEnabled="False"
-                                                 IsReadOnly="True" LabelWidth="100" Width="280"/>
+                                                 IsReadOnly="True" LabelWidth="100" Width="280"/>-->
 
                         <SimpleControl:EditBoxWithLabel x:Name="ProductTagPriceRUSSummary" Margin="0,0,0,5"                                  
                                                 Text="{Binding Path=SummaryProductTagPriceRUS, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}"                                           
@@ -100,7 +100,7 @@
 
                     </StackPanel>
                 </Border>
-                <Label Content="Доставка" Margin="120,0,0,0" Grid.Column="1"/>
+                <!--<Label Style="{DynamicResource LabelStyle}" Content="Доставка" Margin="120,0,0,0" Grid.Column="1"/>
                 <Border Style="{DynamicResource BorderStyle}" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1">
                     <StackPanel>
                         <SimpleControl:EditBoxWithLabel x:Name="DeliveryQuantitySummary"                                         
@@ -109,11 +109,11 @@
                                                 IsEnabled="False"
                                                 IsReadOnly="True" LabelWidth="100" Width="280"/>
 
-                        <SimpleControl:EditBoxWithLabel x:Name="DeliveryTagPriceUSASummary"                                          
+                        --><!--<SimpleControl:EditBoxWithLabel x:Name="DeliveryTagPriceUSASummary"                                          
                                                 Text="{Binding Path=SummaryAmountUSA, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}"                                           
                                                 LabelText="{x:Static res:Resources.AmountUSA}"
                                                 IsEnabled="False"
-                                                IsReadOnly="True" LabelWidth="100" Width="280"/>
+                                                IsReadOnly="True" LabelWidth="100" Width="280"/>--><!--
 
                         <SimpleControl:EditBoxWithLabel x:Name="DeliveryTagPriceRUSSummary"                                   
                                                 Text="{Binding Path=SummaryAmountRUS, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat=\{0:N2\}}"                                           
@@ -122,8 +122,8 @@
                                                 IsReadOnly="True" LabelWidth="100" Width="280" Margin="0,0,0,5" />
 
                     </StackPanel>
-                </Border>
-                <Label Content="Итого" Margin="120,0,0,0" Grid.Column="2"/>
+                </Border>-->
+                <Label Style="{DynamicResource LabelStyle}" Content="Итого" Margin="120,0,0,0" Grid.Column="2"/>
                 <Border Style="{DynamicResource BorderStyle}" Margin="10,0,0,0" Grid.Row="1" Grid.Column="2">
                     <StackPanel>
                         <SimpleControl:EditBoxWithLabel x:Name="PaymentQuantitySummary"                                       

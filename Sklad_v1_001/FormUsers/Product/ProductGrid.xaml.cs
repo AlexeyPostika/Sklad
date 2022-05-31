@@ -883,7 +883,8 @@ namespace Sklad_v1_001.FormUsers.Product
             basketShopItem.ListBasketShop = datalistBasketShop;
             basketShopItem.ButtonClick += BasketShopItem_ButtonClick;
             
-            flexMessageBox.Content = basketShopItem;         
+            flexMessageBox.Content = basketShopItem;
+           
             flexMessageBox.Show(Properties.Resources.BASKET);           
             if (basketShopItem.IsClickButtonOK == MessageBoxResult.OK)
             {
