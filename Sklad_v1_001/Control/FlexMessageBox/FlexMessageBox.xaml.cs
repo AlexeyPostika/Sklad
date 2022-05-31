@@ -233,10 +233,7 @@ namespace Sklad_v1_001.Control.FlexMessageBox
         {
             InitializeComponent();
             // this.Width = 300;
-            if (this.Owner != null)
-            {
-                this.Owner = MainWindow.AppWindow;
-            }
+            
             this.ShowInTaskbar = false;
             fieldNameForHistory = "";
             this.Topmost = true;
@@ -480,7 +477,7 @@ namespace Sklad_v1_001.Control.FlexMessageBox
             ChooseButtons(MessageBoxButtons.OK);
             ChooseIcons(MessageBoxIcon.None);
           
-            this.ShowDialog();
+            ShowDialog();
             return Value;
         }
 
@@ -492,7 +489,7 @@ namespace Sklad_v1_001.Control.FlexMessageBox
             ChooseButtons(MessageBoxButtons.OK);
             ChooseIcons(MessageBoxIcon.None);
 
-            this.ShowDialog();
+            ShowDialog();
             return Value;
         }
 
@@ -505,7 +502,7 @@ namespace Sklad_v1_001.Control.FlexMessageBox
             ChooseButtons(_buttonType);
             ChooseIcons(MessageBoxIcon.None);
 
-            this.ShowDialog();
+            ShowDialog();
             return Value;
         }
 
