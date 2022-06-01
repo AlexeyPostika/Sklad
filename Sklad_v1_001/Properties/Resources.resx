@@ -834,4 +834,22 @@
   <data name="RepeatingProductIdTitle" xml:space="preserve">
     <value>повторное добавление товара</value>
   </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Пол</value>
+  </data>
+  <data name="ResetAllFilters" xml:space="preserve">
+    <value>Сбросить фильтры</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Размер</value>
+  </data>
+  <data name="Summa" xml:space="preserve">
+    <value>Стоимость</value>
+  </data>
+  <data name="TotalCashBox" xml:space="preserve">
+    <value>Цена</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>Вес</value>
+  </data>
 </root>

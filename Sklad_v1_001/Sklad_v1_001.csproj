@@ -365,6 +365,9 @@
     <Compile Include="FormUsers\Product\ProductGrid.xaml.cs">
       <DependentUpon>ProductGrid.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FormUsers\Product\ProductInGrid.xaml.cs">
+      <DependentUpon>ProductInGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FormUsers\Product\ProductItemGrid.xaml.cs">
       <DependentUpon>ProductItemGrid.xaml</DependentUpon>
     </Compile>
@@ -748,6 +751,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FormUsers\Product\ProductGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FormUsers\Product\ProductInGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

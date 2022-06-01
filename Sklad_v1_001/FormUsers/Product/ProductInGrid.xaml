@@ -1,0 +1,194 @@
+﻿<Page x:Class="Sklad_v1_001.FormUsers.Product.ProductInGrid"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Sklad_v1_001.FormUsers.Product"
+      xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+      xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
+      xmlns:FlexFilter="clr-namespace:Sklad_v1_001.Control.FlexFilter"
+      xmlns:SimpleControl="clr-namespace:Sklad_v1_001.Control.SimpleControl"
+      xmlns:FlexComboBox="clr-namespace:Sklad_v1_001.Control.FlexComboBox"
+      xmlns:FlexEditBox="clr-namespace:Sklad_v1_001.Control.FlexEditBox"
+      xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton"
+      mc:Ignorable="d" 
+      Title="{x:Static res:Resources.SupplyTitly}" 
+      Style="{DynamicResource PageStyle}"     
+      x:Name="page">
+
+    <Grid x:Name="wrappanel" Style="{DynamicResource GridStyle}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" x:Name="Toolbar"/>
+            <RowDefinition Height="Auto" x:Name="Summary"/>
+            <RowDefinition Height="Auto" x:Name="SummaryShow"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Style="{DynamicResource GridStyle}" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <FlexEditBox:EditBoxDeleteWithLabel LabelText="{x:Static res:Resources.Search}"  x:Name="SearchFilter" VerticalAlignment="Center" Text="{Binding Path=Search, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" ButtonClearClick="SearchFilter_ButtonClearClick" ButtonTextChangedClick="SearchFilter_ButtonTextChangedClick" Grid.Column="2"/>
+            <FlexButton:ToolBarButton x:Name="ButtonClearFilters" Margin="0, 10, 10, 0" Text="{x:Static res:Resources.ResetAllFilters}" VerticalAlignment="Center" ButtonClick="ScrabToolbar_ButtonClearFiltersClick" Grid.Column="3"/>
+        </Grid>
+
+        <DataGrid Name="ProductGrid"
+                  Style="{DynamicResource DataGridStyle}"
+                  ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}"
+                  RowStyle="{DynamicResource DataGridRowStyle}"
+                  CellStyle="{DynamicResource DataGridCellStyle}"
+                  Grid.Row="3"
+                  IsReadOnly="True"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False" 
+                  Sorting="RelatedProductDataGrid_Sorting" 
+                  MouseDoubleClick="RelatedProductDataGrid_MouseDoubleClick">
+            <DataGrid.Resources>
+                <local:DataContextSpy x:Key="dcSpy1" DataContext="{Binding ElementName=Page, Path=VisibilitySalePriceWithVAT, Mode=TwoWay}"/>
+            </DataGrid.Resources>
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="{x:Static res:Resources.ID}" IsReadOnly="True" SortMemberPath="ID" CanUserSort="True" Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                <DataGridTextColumn Header="{x:Static res:Resources.Model}" IsReadOnly="True" SortMemberPath="Model" CanUserSort="True" Binding="{Binding Path=Model, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+
+                <!--<DataGridTextColumn Header="{x:Static res:Resources.ProductType}" IsReadOnly="True" SortMemberPath="Model" CanUserSort="True" Binding="{Binding Path=Type, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>-->
+                <DataGridTemplateColumn x:Name="FilterTypeColumn"   IsReadOnly="True" SortMemberPath="Type" CanUserSort="True" >
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <FlexFilter:FlexGridCheckBox x:Name="FilterType" 
+                                                         ButtonApplyClick="FilterType_ButtonApplyClick"
+                                                         DataTableData="{Binding ElementName=Page, Path=FilterType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         ImageSource="{Binding ElementName=Page, Path=ClearfilterType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         CheckAll="True"
+                                                         LabelText="{x:Static res:Resources.ProductType}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label Style="{DynamicResource GridLabelStyle}" Content="{Binding Path=Type, Mode=OneWay}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <!--<DataGridTextColumn Header="{x:Static res:Resources.Gender}" IsReadOnly="True" SortMemberPath="Gender" CanUserSort="True" Binding="{Binding Path=GenderDescription, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>-->
+                <DataGridTemplateColumn x:Name="FilterGenderColumn" IsReadOnly="True" SortMemberPath="Gender" CanUserSort="True">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <FlexFilter:FlexGridCheckBox x:Name="FilterGender"
+                                                         ButtonApplyClick="FilterGender_ButtonApplyClick"
+                                                         DataTableData="{Binding ElementName=Page, Path=FilterGender, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         ImageSource="{Binding ElementName=Page, Path=ClearfilterGender, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         CheckAll="True"
+                                                         LabelText="{x:Static res:Resources.Gender}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label Style="{DynamicResource GridLabelStyle}" Content="{Binding Path=GenderDescription, Mode=OneWay}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <!--<DataGridTextColumn Header="{x:Static res:Resources.Size}" IsReadOnly="True" SortMemberPath="Size" CanUserSort="True" Binding="{Binding Path=Size, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>-->
+
+                <DataGridTemplateColumn x:Name="FilterSizeColumn"   IsReadOnly="True" SortMemberPath="Size" CanUserSort="True"   >
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <FlexFilter:FlexGridCheckBox x:Name="FilterSize"
+                                                        ButtonApplyClick="FilterSize_ButtonApplyClick"
+                                                        DataTableData="{Binding ElementName=Page, Path=FilterSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                        ImageSource="{Binding ElementName=Page, Path=ClearfilterSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                        CheckAll="True" LabelText="{x:Static res:Resources.Size}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label Style="{DynamicResource GridLabelStyle}" Content="{Binding Path=Size, Mode=OneWay}" HorizontalContentAlignment="Right"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn x:Name="FilterWeightColumn" IsReadOnly="True" SortMemberPath="Weight" CanUserSort="True">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <FlexFilter:FlexGridFromTo HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" x:Name="FilterWeight" 
+                                                       To="{Binding ElementName=Page, Path=WeightMax, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                       From="{Binding ElementName=Page, Path=WeightMin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                       DefaultMax="{Binding ElementName=Page, Path=DefaultWeightMax, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                       DefaultMin="{Binding ElementName=Page, Path=DefaultWeightMin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                       ImageSource="{Binding ElementName=Page, Path=ClearFilterWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                       ButtonApplyClick="FilterWeight_ButtonApplyClick"
+                                                       LabelText="{x:Static res:Resources.Weight}"                                                    
+                                                       />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label Style="{DynamicResource GridLabelStyle}" HorizontalContentAlignment="Right" Content="{Binding Path=Weight, Mode=OneWay}" ContentStringFormat=" {0:N2}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn x:Name="FilterTagPriceWithVATColumn" IsReadOnly="True" SortMemberPath="TagPriceWithVAT" CanUserSort="True">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <FlexFilter:FlexGridFromTo HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" x:Name="FilterTagPriceWithVAT" 
+                                                       To="{Binding ElementName=Page, Path=TagPriceWithVATMax, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                       From="{Binding ElementName=Page, Path=TagPriceWithVATMin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                       DefaultMax="{Binding ElementName=Page, Path=DefaultTagPriceWithVATMax, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                       DefaultMin="{Binding ElementName=Page, Path=DefaultTagPriceWithVATMin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                       ImageSource="{Binding ElementName=Page, Path=ClearFilterTagPriceWithVAT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                       ButtonApplyClick="FilterTagPriceWithVAT_ButtonApplyClick"
+                                                       LabelText="{x:Static res:Resources.Summa}"
+                                                       />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label Style="{DynamicResource GridLabelStyle}" HorizontalContentAlignment="Right" Content="{Binding Path=TagPriceWithVAT, Mode=OneWay}" ContentStringFormat=" {0:N2}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn x:Name="FilterTotalSalePriceWithVATColumn" IsReadOnly="True" SortMemberPath="SalePriceWithVAT" CanUserSort="True" 
+                                        Visibility="{Binding Source={StaticResource dcSpy1}, Path=DataContext}">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <FlexFilter:FlexGridFromTo HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" x:Name="FilterSalePriceWithVAT" 
+                                                       To="{Binding ElementName=Page, Path=SalePriceWithVATMax, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                       From="{Binding ElementName=Page, Path=SalePriceWithVATMin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                       DefaultMax="{Binding ElementName=Page, Path=DefaultSalePriceWithVATMax, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                       DefaultMin="{Binding ElementName=Page, Path=DefaultSalePriceWithVATMin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                       ImageSource="{Binding ElementName=Page, Path=ClearSalePriceWithVAT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                       ButtonApplyClick="FilterSalePriceWithVAT_ButtonApplyClick"
+                                                       LabelText="{x:Static res:Resources.TotalCashBox}"
+                                                       />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label Style="{DynamicResource GridLabelStyle}" HorizontalContentAlignment="Right" Content="{Binding Path=SalePriceWithVAT, Mode=OneWay}" ContentStringFormat=" {0:N2}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <!--<DataGridTextColumn Header="{x:Static res:Resources.Currency}" IsReadOnly="True" SortMemberPath="Currency" CanUserSort="True" Binding="{Binding Path=CurrencyShortDescription, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>-->
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <ToolBar:ToolBarNextToBack x:Name="ToolbarNextPageData"
+                                   ButtonBack="ToolBarNextToBack_ButtonBack"
+                                   ButtonNext="ToolBarNextToBack_ButtonNext"
+                                   ButtonBackIn="ToolbarNextPageData_ButtonBackIn"
+                                   ButtonNextEnd="ToolbarNextPageData_ButtonNextEnd"                                 
+                                   CurrentPage="{Binding ElementName=page, Path=CurrentPage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   TotalCount="{Binding ElementName=page, Path=TotalCount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   PageCount="{Binding ElementName=page, Path=PageCount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+    </Grid>
+</Page>

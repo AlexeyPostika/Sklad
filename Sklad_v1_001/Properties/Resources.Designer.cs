@@ -826,6 +826,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Пол.
+        /// </summary>
+        public static string Gender {
+            get {
+                return ResourceManager.GetString("Gender", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Ошибка.
         /// </summary>
         public static string HandTitle {
@@ -1681,6 +1690,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Сбросить фильтры.
+        /// </summary>
+        public static string ResetAllFilters {
+            get {
+                return ResourceManager.GetString("ResetAllFilters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Сбросить фильтер.
         /// </summary>
         public static string ResetFilter {
@@ -1807,6 +1825,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Размер.
+        /// </summary>
+        public static string Size {
+            get {
+                return ResourceManager.GetString("Size", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Размеры продукта.
         /// </summary>
         public static string SizeProduct {
@@ -1839,6 +1866,15 @@ namespace Sklad_v1_001.Properties {
         public static string StopTitle {
             get {
                 return ResourceManager.GetString("StopTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Стоимость.
+        /// </summary>
+        public static string Summa {
+            get {
+                return ResourceManager.GetString("Summa", resourceCulture);
             }
         }
         
@@ -1983,6 +2019,15 @@ namespace Sklad_v1_001.Properties {
         public static string TOBASKET {
             get {
                 return ResourceManager.GetString("TOBASKET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Цена.
+        /// </summary>
+        public static string TotalCashBox {
+            get {
+                return ResourceManager.GetString("TotalCashBox", resourceCulture);
             }
         }
         
@@ -2190,6 +2235,15 @@ namespace Sklad_v1_001.Properties {
         public static string WarningTitle {
             get {
                 return ResourceManager.GetString("WarningTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Вес.
+        /// </summary>
+        public static string Weight {
+            get {
+                return ResourceManager.GetString("Weight", resourceCulture);
             }
         }
         
