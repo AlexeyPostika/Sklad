@@ -828,4 +828,10 @@
   <data name="DESIGN" xml:space="preserve">
     <value>ОФОРМИТЬ</value>
   </data>
+  <data name="RepeatingProductID" xml:space="preserve">
+    <value>Данный товар уже добавлен в документ</value>
+  </data>
+  <data name="RepeatingProductIdTitle" xml:space="preserve">
+    <value>повторное добавление товара</value>
+  </data>
 </root>

@@ -153,11 +153,15 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
-                    <ToolBar:DataViewToolNewSupplyDocument x:Name="ToolBarProduct"
-                                                           Margin="10,10,0,0"
-                                                           Grid.ColumnSpan="2"
-                                                           ButtonNewProductClick="ToolBarProduct_ButtonNewProductClick"
-                                                           ButtonDeleteClick="ToolBarProduct_ButtonDeleteClick"/>
+                    <ToolBar:NewSaleDocumentGridToolBar x:Name="ToolBarProduct"
+                                                        Margin="10,10,0,0"
+                                                        Grid.ColumnSpan="2"
+                                                        LabelWidth="100"                                                       
+                                                        Text="{Binding ElementName=page, Path=ProductScan, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                        IsEnabledTextBoxScan="{Binding ElementName=page, Path=IsEnabledTextBoxScan, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                        ButtonNewProductClick="ToolBarProduct_ButtonNewProductClick"
+                                                        ButtonDeleteClick="ToolBarProduct_ButtonDeleteClick"
+                                                        ButtonScanClick="ToolBarProduct_ButtonScanClick"/>
                     <DataGrid x:Name="DataProduct" 
                               Grid.RowSpan="2"
                               Grid.ColumnSpan="2"

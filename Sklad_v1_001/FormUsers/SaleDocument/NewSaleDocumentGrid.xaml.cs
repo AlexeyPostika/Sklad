@@ -1,4 +1,6 @@
-﻿using Sklad_v1_001.GlobalAttributes;
+﻿using Sklad_v1_001.Control.FlexMessageBox;
+using Sklad_v1_001.GlobalAttributes;
+using Sklad_v1_001.HelperGlobal;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static Sklad_v1_001.HelperGlobal.MessageBoxTitleHelper;
 
 namespace Sklad_v1_001.FormUsers.SaleDocument
 {
@@ -28,12 +31,36 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
                   typeof(Boolean),
                  typeof(NewSaleDocumentGrid), new PropertyMetadata(true));
 
+        public static readonly DependencyProperty ProductScanProperty = DependencyProperty.Register(
+                 "ProductScan",
+                 typeof(String),
+                typeof(NewSaleDocumentGrid), new PropertyMetadata(String.Empty));
+
+        public static readonly DependencyProperty IsEnabledTextBoxScanProperty = DependencyProperty.Register(
+                "IsEnabledTextBoxScan",
+                typeof(Boolean),
+               typeof(NewSaleDocumentGrid), new PropertyMetadata(true));
+
         public Boolean IsPaymentAddButton
         {
             get { return (Boolean)GetValue(IsPaymentAddButtonProperty); }
             set { SetValue(IsPaymentAddButtonProperty, value); }
         }
+
+        public String ProductScan
+        {
+            get { return (String)GetValue(ProductScanProperty); }
+            set { SetValue(ProductScanProperty, value); }
+        }
+
+        public Boolean IsEnabledTextBoxScan
+        {
+            get { return (Boolean)GetValue(IsEnabledTextBoxScanProperty); }
+            set { SetValue(IsEnabledTextBoxScanProperty, value); }
+        }
+
         Attributes attributes;
+        ConvertData convertData;
 
         LocalFilter localFilterDocument;
         LocalRow document;
@@ -153,6 +180,7 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
             InitializeComponent();
 
             this.attributes = _attributes;
+            convertData = new ConvertData();
 
             LocalFilterDocument = new LocalFilter();
             Document = new LocalRow();
@@ -163,6 +191,8 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
 
             UserIDDocument.ComboBoxElement.ItemsSource = attributes.datalistUsers;
             this.DocumentSummary.DataContext = summary;
+
+            ToolBarProduct.Scan.ScanTextBox.Focus();
 
         }
 
@@ -192,7 +222,7 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
         #region AddProduct
         private void ToolBarProduct_ButtonNewProductClick()
         {
-
+            ToolBarProduct_ButtonScanClick();
         }
 
         private void ToolBarProduct_ButtonDeleteClick()
@@ -204,6 +234,19 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
 
         }
 
+        private void ToolBarProduct_ButtonScanClick()
+        {
+            if (!String.IsNullOrEmpty(ProductScan))
+            {
+                Int64 temp = convertData.FlexDataConvertToInt64(ProductScan);
+                if (datalistBasketShop.FirstOrDefault(x => x.ID == temp) != null)
+                {
+                    FlexMessageBox mb = new FlexMessageBox();
+                    mb.Show(Properties.Resources.RepeatingProductID, GenerateTitle(TitleType.Warning, Properties.Resources.RepeatingProductIdTitle), MessageBoxButton.OK, MessageBoxImage.Warning);
+                    ToolBarProduct.Scan.ScanTextBox.Focus();
+                }
+            }
+        }
         #endregion
 
         #region Payment
@@ -321,6 +364,6 @@ namespace Sklad_v1_001.FormUsers.SaleDocument
         {
 
         }
-        #endregion
+        #endregion       
     }
 }

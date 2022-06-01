@@ -1663,6 +1663,24 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Данный товар уже добавлен в документ.
+        /// </summary>
+        public static string RepeatingProductID {
+            get {
+                return ResourceManager.GetString("RepeatingProductID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на повторное добавление товара.
+        /// </summary>
+        public static string RepeatingProductIdTitle {
+            get {
+                return ResourceManager.GetString("RepeatingProductIdTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Сбросить фильтер.
         /// </summary>
         public static string ResetFilter {

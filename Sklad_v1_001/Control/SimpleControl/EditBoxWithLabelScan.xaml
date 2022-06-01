@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Sklad_v1_001.Control.SimpleControl"
              mc:Ignorable="d" 
              Name="control">
-    <Grid Height="30" Name="grid" Margin="0, 3, 3, 0">
+    <Grid Height="30" Name="grid" Margin="0, 0, 0, 0">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
