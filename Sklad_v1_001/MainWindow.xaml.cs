@@ -196,9 +196,8 @@ namespace Sklad_v1_001
         {
             GC.Collect();   //Вызов сборщика мусора
             GC.WaitForPendingFinalizers();  //ждем освобождение памяти
-
-            if (newSupplyDocumentGrid == null)
-                newSupplyDocumentGrid = new NewSupplyDocumentGrid(attributes);
+           
+            newSupplyDocumentGrid = new NewSupplyDocumentGrid(attributes);
             newSupplyDocumentGrid.Status = 0;
             this.frameWorkArea.Navigate(newSupplyDocumentGrid);
         }

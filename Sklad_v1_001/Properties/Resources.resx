@@ -852,4 +852,10 @@
   <data name="Weight" xml:space="preserve">
     <value>Вес</value>
   </data>
+  <data name="SupplyDocument5" xml:space="preserve">
+    <value>Подтвержден</value>
+  </data>
+  <data name="SupplyDocument6" xml:space="preserve">
+    <value>Отменен</value>
+  </data>
 </root>

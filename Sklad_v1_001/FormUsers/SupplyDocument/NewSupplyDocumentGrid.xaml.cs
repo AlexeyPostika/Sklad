@@ -195,13 +195,13 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             set
             {
                 document = value;
-                if (document == null || document.ID==0)
+                if (document == null || document.ID == 0)
                 {
                     status = 0;
                 }
                 else
                     status = 1;
-            
+
                 this.DataContext = Document;
                 NewDocument = Document.ID == 0;
                 if (NewDocument)
@@ -297,6 +297,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         private void Refresh()
         {
+            supplyDocumentDetails.Clear();
+            supplyDocumentDelivery.Clear();
+            supplyDocumentPayment.Clear();
+
             DataTable dataTableSupplyDocumentDetails = supplyDocumentDetailsLogic.FillGridDocument(Document.ID);
             foreach(DataRow row in dataTableSupplyDocumentDetails.Rows)
             {

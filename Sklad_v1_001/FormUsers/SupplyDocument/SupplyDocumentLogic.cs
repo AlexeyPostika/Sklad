@@ -1369,6 +1369,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         {
             ReffDate = DateTime.Now;
             ShemaStorаgeLocal = new ShemaStorаge();
+            Status = 0;
         }
     }
 

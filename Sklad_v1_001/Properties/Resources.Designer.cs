@@ -1924,6 +1924,24 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Подтвержден.
+        /// </summary>
+        public static string SupplyDocument5 {
+            get {
+                return ResourceManager.GetString("SupplyDocument5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Отменен.
+        /// </summary>
+        public static string SupplyDocument6 {
+            get {
+                return ResourceManager.GetString("SupplyDocument6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Документ поставки.
         /// </summary>
         public static string SupplyDocumentHeader {
