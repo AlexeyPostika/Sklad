@@ -2101,7 +2101,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         }
 
 
-        public Int32 SetRow(LocalRow row)
+        public Int64 SetRow(LocalRow row)
         {
             //SupplyDocument
             _sqlRequestSet.SetParametrValue("@p_AddUserID", row.LastModificatedUserID);
@@ -2109,7 +2109,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSet.SetParametrValue("@p_DocumentNumber", row.SupplyDocumentNumber);
 
             _sqlRequestSet.ComplexRequest(set_store_procedure, CommandType.StoredProcedure, null);
-            return (Int32)_sqlRequestSet.SqlAnswer.result;
+            return (Int64)_sqlRequestSet.SqlAnswer.result;
         }
 
         public RowsFilters ConvertFilter(DataRow _dataRow, RowsFilters _localeRow)

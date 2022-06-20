@@ -858,35 +858,39 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         {
             if (Save() > 0)
             {
-                Document.ID = supplyDocumentLogic.SetRow(Document);
+                Document.SupplyDocumentNumber = supplyDocumentLogic.SetRow(Document);
 
-                SupplyDocumentRequest supplyDocumentRequest = new SupplyDocumentRequest(attributes);
-                supplyDocumentRequest.Convert(Document, supplyDocumentRequest.Document);
-
-               
-                
-
-                // Выполняем запрос по адресу и получаем ответ в виде строки
-                using (var webClient = new WebClient())
+                if (Document.ID > 0)
                 {
-                    // Выполняем запрос по адресу и получаем ответ в виде строки
-                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3;
-                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                    webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
-                    string response = webClient.UploadString(new Uri(@"https://192.168.0.112:60000/api/supplydocument"), "POST", JsonConvert.SerializeObject(supplyDocumentRequest, Newtonsoft.Json.Formatting.Indented));
-                    Response resultOUT = JsonConvert.DeserializeObject<Response>(response);
-                    if (resultOUT != null)
-                    {
-                        if (resultOUT.ErrorCode == 0)
-                        {
-                            
-                        }
-                        else
-                        {
 
+                    SupplyDocumentRequest supplyDocumentRequest = new SupplyDocumentRequest(attributes);
+                    supplyDocumentRequest.Convert(Document, supplyDocumentRequest.Document);
+
+                    // Выполняем запрос по адресу и получаем ответ в виде строки
+                    using (var webClient = new WebClient())
+                    {
+                        // Выполняем запрос по адресу и получаем ответ в виде строки
+                        ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3;
+                        System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                        ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, errors) => {
+                            return true;
+                        };
+                        webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+                        string response = webClient.UploadString(new Uri(@"https://192.168.0.112:60000/api/supplydocument"), "POST", JsonConvert.SerializeObject(supplyDocumentRequest, Newtonsoft.Json.Formatting.Indented));
+                        Response resultOUT = JsonConvert.DeserializeObject<Response>(response);
+                        if (resultOUT != null)
+                        {
+                            if (resultOUT.ErrorCode == 0)
+                            {
+
+                            }
+                            else
+                            {
+
+                            }
                         }
-                    }
                         //return resultOUT.ErrorCode;
+                    }
                 }
 
 
