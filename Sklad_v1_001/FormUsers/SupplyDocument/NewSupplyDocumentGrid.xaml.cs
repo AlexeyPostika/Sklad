@@ -1,4 +1,5 @@
-﻿using Sklad_v1_001.Control.FlexMessageBox;
+﻿using Newtonsoft.Json;
+using Sklad_v1_001.Control.FlexMessageBox;
 using Sklad_v1_001.FormUsers.Delivery;
 using Sklad_v1_001.FormUsers.Product;
 using Sklad_v1_001.FormUsers.SupplyDocumentDelivery;
@@ -7,12 +8,15 @@ using Sklad_v1_001.FormUsers.SupplyDocumentPayment;
 using Sklad_v1_001.GlobalAttributes;
 using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.HelperGlobal;
+using Sklad_v1_001.HelperGlobal.StoreAPI;
 using Sklad_v1_001.SQLCommand;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,6 +28,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 using static Sklad_v1_001.HelperGlobal.MessageBoxTitleHelper;
 
 namespace Sklad_v1_001.FormUsers.SupplyDocument
@@ -142,6 +147,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         //остновной документ      
         LocalRow document;
         SupplyDocumentLogic supplyDocumentLogic;
+        SupplyDocumentRequest supplyDocumentRequest;
 
         //Продукт
         Product.LocalRow localeRowProduct;
@@ -263,6 +269,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             shemaStorаge = new ShemaStorаge();
 
+            supplyDocumentRequest = new SupplyDocumentRequest(attributes);
             supplyDocumentLogic = new SupplyDocumentLogic(attributes);
             supplyDocumentDetailsLogic = new SupplyDocumentDetailsLogic(attributes);
             supplyDocumentDeliveryLogic = new SupplyDocumentDeliveryLogic(attributes);
@@ -633,6 +640,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 shemaStorаge.SupplyDocumentDetails.Clear();
                 shemaStorаge.SupplyDocumentDelivery.Clear();
                 shemaStorаge.SupplyDocumentPayment.Clear();
+                supplyDocumentRequest.Details.Clear();
+                supplyDocumentRequest.Delivery.Clear();
+                supplyDocumentRequest.Payment.Clear();
 
                 //продукты                   
                 foreach (SupplyDocumentDetails.LocaleRow currentrow in supplyDocumentDetails)
@@ -655,7 +665,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     row["Model"] = currentrow.Model;
                     row["SizeProduct"] = currentrow.SizeProduct;
                     row["Size"] = currentrow.Package;
-                    shemaStorаge.SupplyDocumentDetails.Rows.Add(row);                    
+                    shemaStorаge.SupplyDocumentDetails.Rows.Add(row);
+                    
+                    SupplyDocumentDetailsRequest rowDetailsRequest = new SupplyDocumentDetailsRequest(attributes);
+                    rowDetailsRequest.Convert(currentrow, rowDetailsRequest);                    
+                    supplyDocumentRequest.Details.Add(rowDetailsRequest);
                 }
 
                 //сопуствующие товары             
@@ -680,6 +694,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     row["LastModificatedDate"] = DateTime.Now;
                     row["LastModificatedUserID"] = Document.UserID;                
                     shemaStorаge.SupplyDocumentDelivery.Rows.Add(row);
+
+                    SupplyDocumentDeliveryRequest rowDeliveryRequest = new SupplyDocumentDeliveryRequest(attributes);
+                    rowDeliveryRequest.Convert(currentrow, rowDeliveryRequest);
+                    supplyDocumentRequest.Delivery.Add(rowDeliveryRequest);
                 }
 
                 //виды оплат
@@ -698,6 +716,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     row["LastModificatedDate"] = DateTime.Now;
                     row["LastModificatedUserID"] = Document.UserID;
                     shemaStorаge.SupplyDocumentPayment.Rows.Add(row);
+                    
+                    SupplyDocumentPaymentRequest rowPaymentRequest = new SupplyDocumentPaymentRequest(attributes);
+                    rowPaymentRequest.Convert(currentrow, rowPaymentRequest);
+                    supplyDocumentRequest.Payment.Add(rowPaymentRequest);
                 }
                 Document.Amount = summary.SummaryProductTagPriceRUS;
                 Document.Count = summary.SummaryQuantityProduct;
@@ -837,6 +859,37 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             if (Save() > 0)
             {
                 Document.ID = supplyDocumentLogic.SetRow(Document);
+
+                SupplyDocumentRequest supplyDocumentRequest = new SupplyDocumentRequest(attributes);
+                supplyDocumentRequest.Convert(Document, supplyDocumentRequest.Document);
+
+               
+                
+
+                // Выполняем запрос по адресу и получаем ответ в виде строки
+                using (var webClient = new WebClient())
+                {
+                    // Выполняем запрос по адресу и получаем ответ в виде строки
+                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3;
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                    webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+                    string response = webClient.UploadString(new Uri(@"https://192.168.0.112:60000/api/supplydocument"), "POST", JsonConvert.SerializeObject(supplyDocumentRequest, Newtonsoft.Json.Formatting.Indented));
+                    Response resultOUT = JsonConvert.DeserializeObject<Response>(response);
+                    if (resultOUT != null)
+                    {
+                        if (resultOUT.ErrorCode == 0)
+                        {
+                            
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                        //return resultOUT.ErrorCode;
+                }
+
+
                 MainWindow.AppWindow.ButtonSupplyDocumentF(Document, NewDocument);
             }
         }

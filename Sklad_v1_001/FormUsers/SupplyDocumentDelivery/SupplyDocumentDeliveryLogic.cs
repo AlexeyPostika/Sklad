@@ -83,6 +83,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
         private Int32 iD;
         private Int32 lineDocument;
         private Int64 documentNumber;
+        private Int64 documentID;
         private Int32 tempID;
         private Int32 deliveryID;
         private Int32 deliveryDetailsID;
@@ -152,6 +153,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
             {
                 documentNumber = value;
                 OnPropertyChanged("DocumentNumber");
+            }
+        }
+        //DocumentID
+        public Int64 DocumentID
+        {
+            get
+            {
+                return documentID;
+            }
+
+            set
+            {
+                documentID = value;
+                OnPropertyChanged("DocumentID");
             }
         }
         //tempID

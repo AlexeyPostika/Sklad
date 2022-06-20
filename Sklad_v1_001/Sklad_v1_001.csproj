@@ -68,6 +68,7 @@
     <Reference Include="Moq, Version=4.16.0.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.16.1\lib\net45\Moq.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="PdfSharp.Charting, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
       <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.Charting.dll</HintPath>
     </Reference>
@@ -79,6 +80,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Printing" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
@@ -390,11 +392,14 @@
       <DependentUpon>NewAddProductItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\SupplyDocumentDelivery\SupplyDocumentDeliveryLogic.cs" />
+    <Compile Include="FormUsers\SupplyDocumentDelivery\SupplyDocumentDeliveryRequest.cs" />
     <Compile Include="FormUsers\SupplyDocumentDetails\SupplyDocumentDetailsLogic.cs" />
+    <Compile Include="FormUsers\SupplyDocumentDetails\SupplyDocumentDetailsRequest.cs" />
     <Compile Include="FormUsers\SupplyDocumentPayment\NewSupplyDocumentPaymentItem.xaml.cs">
       <DependentUpon>NewSupplyDocumentPaymentItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\SupplyDocumentPayment\SupplyDocumentPaymentLogic.cs" />
+    <Compile Include="FormUsers\SupplyDocumentPayment\SupplyDocumentPaymentRequest.cs" />
     <Compile Include="FormUsers\SupplyDocument\NewSupplyDocumentGrid.xaml.cs">
       <DependentUpon>NewSupplyDocumentGrid.xaml</DependentUpon>
     </Compile>
@@ -402,6 +407,7 @@
       <DependentUpon>SupplyDocumentGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\SupplyDocument\SupplyDocumentLogic.cs" />
+    <Compile Include="FormUsers\SupplyDocument\SupplyDocumentRequest.cs" />
     <Compile Include="FormUsers\Tovar\TovarInZona.xaml.cs">
       <DependentUpon>TovarInZona.xaml</DependentUpon>
     </Compile>
@@ -431,6 +437,7 @@
     </Compile>
     <Compile Include="HelperGlobal\ImageSql.cs" />
     <Compile Include="HelperGlobal\MessageBoxTitleHelper.cs" />
+    <Compile Include="HelperGlobal\StoreAPI\Response.cs" />
     <Compile Include="LoginScreen.xaml.cs">
       <DependentUpon>LoginScreen.xaml</DependentUpon>
     </Compile>
