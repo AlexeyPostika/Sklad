@@ -17,6 +17,8 @@ using System.Data;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -872,7 +874,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                         // Выполняем запрос по адресу и получаем ответ в виде строки
                         ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3;
                         System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                        ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, errors) => {
+
+                        //httpHandler.ClientCertificates.Add(GetCertificateFromStore(""));
+                        //ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => certificate == GetCertificateFromStore("");
+                        ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, errors) =>
+                        {
                             return true;
                         };
                         webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
@@ -895,6 +901,30 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
 
                 MainWindow.AppWindow.ButtonSupplyDocumentF(Document, NewDocument);
+            }
+        }
+        
+        private static X509Certificate2 GetCertificateFromStore(string certificateNumber)
+        {
+            // Get the certificate store for the current user.          
+            X509Store store = new X509Store(StoreLocation.CurrentUser);
+            try
+            {
+                store.Open(OpenFlags.ReadOnly);
+                // Place all certificates in an X509Certificate2Collection object.
+                // идентификация по серийному номеру - 0364CFD7000CAE138642975ED9A3C76F79
+                X509Certificate2Collection certCollection = store.Certificates;
+                // If using a certificate with a trusted root you do not need to FindByTimeValid, instead:
+                X509Certificate2Collection currentCerts = certCollection.Find(X509FindType.FindByTimeValid, DateTime.Now, false);
+                X509Certificate2Collection signingCert = currentCerts.Find(X509FindType.FindBySerialNumber, certificateNumber, false);
+                // if (signingCert.Count == 0)
+                // return null;
+                // Return the first certificate in the collection, has the right name and is current.
+                return signingCert[0];
+            }
+            finally
+            {
+                store.Close();
             }
         }
         #endregion
