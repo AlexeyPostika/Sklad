@@ -38,32 +38,37 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI
 
         private Response SupplyDocumentPOST(SupplyDocumentRequest _supplyDocumentRequest)
         {
-            using (var webClient = new WebClient())
+            try
             {
-                // Выполняем запрос по адресу и получаем ответ в виде строки
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3;
-                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
-                ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, errors) =>
+                using (var webClient = new WebClient())
                 {
-                    return true;
-                };
-                webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
-                string response = webClient.UploadString(new Uri(@"https://192.168.0.112:60000/api/supplydocument"), "POST", JsonConvert.SerializeObject(_supplyDocumentRequest, Newtonsoft.Json.Formatting.Indented));
-                Response resultOUT = JsonConvert.DeserializeObject<Response>(response);
-                if (resultOUT != null)
-                {
-                    if (resultOUT.ErrorCode == 0)
-                    {
+                    // Выполняем запрос по адресу и получаем ответ в виде строки
+                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3;
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-                    }
-                    else
+                    ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, errors) =>
                     {
-
+                        return true;
+                    };
+                    webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+                    //string temp = JsonConvert.SerializeObject(_supplyDocumentRequest, Newtonsoft.Json.Formatting.Indented);
+                    string response = webClient.UploadString(new Uri(@"https://192.168.0.112:60000/api/supplydocument"), "POST", JsonConvert.SerializeObject(_supplyDocumentRequest, Newtonsoft.Json.Formatting.Indented));
+                    Response resultOUT = JsonConvert.DeserializeObject<Response>(response);
+                    if (resultOUT != null)
+                    {
+                        return resultOUT;
                     }
+                    return null;
                 }
+            }
+            catch (Exception ex)
+            {
+                Response resultOUT = new Response();
+                resultOUT.ErrorCode = -1;
+                resultOUT.DescriptionEX = ex.Message;
                 return resultOUT;
             }
+            
         }
 
         private static X509Certificate2 GetCertificateFromStore(string certificateNumber)

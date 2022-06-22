@@ -184,6 +184,7 @@ namespace Sklad_v1_001.GlobalList
                 new SupplyType {ID=0,Description=Properties.Resources.SupplyDocument1 },
                 new SupplyType {ID=1,Description=Properties.Resources.SupplyDocument2 },
                 new SupplyType {ID=2,Description=Properties.Resources.SupplyDocument3 },
+                new SupplyType {ID=6,Description=Properties.Resources.SupplyDocument7 },
                 new SupplyType {ID=3,Description=Properties.Resources.SupplyDocument5 },
                 new SupplyType {ID=4,Description=Properties.Resources.SupplyDocument4 },
                 new SupplyType {ID=5,Description=Properties.Resources.SupplyDocument6 },

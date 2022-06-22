@@ -775,7 +775,6 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
 
         public SupplyDocumentDetailsRequest Convert(LocaleRow row, SupplyDocumentDetailsRequest _supplyDocumentDetailsRequest)
         {
-            _supplyDocumentDetailsRequest.ID = row.ID;
             _supplyDocumentDetailsRequest.DocumentID = row.DocumentID;
             _supplyDocumentDetailsRequest.Name = row.Name;
             _supplyDocumentDetailsRequest.Quantity = row.Quantity;

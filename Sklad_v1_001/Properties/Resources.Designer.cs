@@ -673,6 +673,24 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка при сохранении данных.
+        /// </summary>
+        public static string ErrorDB {
+            get {
+                return ResourceManager.GetString("ErrorDB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Работа с БД.
+        /// </summary>
+        public static string ErrorDBTitle {
+            get {
+                return ResourceManager.GetString("ErrorDBTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Ошибка при загрузки фото продукта.
         /// </summary>
         public static string ErrorDowloadImage {
@@ -705,6 +723,24 @@ namespace Sklad_v1_001.Properties {
         public static string ErrorSaveProduct {
             get {
                 return ResourceManager.GetString("ErrorSaveProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка при передачи данных.
+        /// </summary>
+        public static string ErrorSendAPI {
+            get {
+                return ResourceManager.GetString("ErrorSendAPI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Передача AZURE.
+        /// </summary>
+        public static string ErrorSendAPITitle {
+            get {
+                return ResourceManager.GetString("ErrorSendAPITitle", resourceCulture);
             }
         }
         
@@ -1938,6 +1974,15 @@ namespace Sklad_v1_001.Properties {
         public static string SupplyDocument6 {
             get {
                 return ResourceManager.GetString("SupplyDocument6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Заказ зарегистрирован.
+        /// </summary>
+        public static string SupplyDocument7 {
+            get {
+                return ResourceManager.GetString("SupplyDocument7", resourceCulture);
             }
         }
         

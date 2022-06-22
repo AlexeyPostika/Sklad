@@ -405,7 +405,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         private String managerName;
         private String delivery;
 
-        private DateTime reffDate;
+        private DateTime? reffDate;
         private Int64 supplyDocumentNumber;
         private String supplyDocumentNumberString;
         private DateTime? createdDate;
@@ -1317,7 +1317,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 OnPropertyChanged("ReffID");
             }
         }
-        public DateTime ReffDate
+        public DateTime? ReffDate
         {
             get
             {
@@ -1605,6 +1605,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         string get_summary_procedure = "xp_GetSupplyDocumentSummary";
 
         string get_save_procedure = "xp_SaveSupplyDocument";
+        String get_saveRequest_procedure = "xp_SaveSupplyDocumentRequest";
         string get_save_procedure_table = "xp_SaveSupplyDocumentTable";
 
         string set_store_procedure = "xp_SetSupplyDocumentID";
@@ -1614,6 +1615,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         SQLCommanSelect _sqlRequestSelectSummary = null;
         SQLCommanSelect _sqlRequestSave = null;
         SQLCommanSelect _sqlRequestSaveTable = null;
+        SQLCommanSelect _sqlRequestAPISave = null;
         SQLCommanSelect _sqlRequestSet = null;
 
         //результат запроса
@@ -1677,6 +1679,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSelectSummary = new SQLCommanSelect();
             _sqlRequestSave = new SQLCommanSelect();
             _sqlRequestSaveTable = new SQLCommanSelect();
+            _sqlRequestAPISave = new SQLCommanSelect();
             _sqlRequestSet = new SQLCommanSelect();
 
             //----------------------------------------------------------------------------
@@ -1921,6 +1924,22 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSaveTable.SetParametrValue("@p_tablePayment", shemaStorаge.SupplyDocumentPayment);
 
             //----------------------------------------------------------------------------
+            _sqlRequestAPISave.AddParametr("@p_AddUserID", SqlDbType.Int);
+            _sqlRequestAPISave.SetParametrValue("@p_AddUserID", 1);
+
+            _sqlRequestAPISave.AddParametr("@p_Status", SqlDbType.Int);
+            _sqlRequestAPISave.SetParametrValue("@p_Status", 0);
+
+            _sqlRequestAPISave.AddParametr("@p_ID", SqlDbType.BigInt);
+            _sqlRequestAPISave.SetParametrValue("@p_ID", 0);
+
+            _sqlRequestAPISave.AddParametr("@p_ReffID", SqlDbType.Int);
+            _sqlRequestAPISave.SetParametrValue("@p_ReffID", 0);
+
+            _sqlRequestAPISave.AddParametr("@p_ReffDate", SqlDbType.DateTime);
+            _sqlRequestAPISave.SetParametrValue("@p_ReffDate",  DateTime.UtcNow);
+
+            //----------------------------------------------------------------------------
             _sqlRequestSet.AddParametr("@p_AddUserID", SqlDbType.Int);
             _sqlRequestSet.SetParametrValue("@p_AddUserID", 1);
 
@@ -2099,6 +2118,18 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             
             _sqlRequestSaveTable.ComplexRequest(get_save_procedure_table, CommandType.StoredProcedure, null);
             return (Int32)_sqlRequestSaveTable.SqlAnswer.result;
+        }
+
+        public Int32 SaveRequest(LocalRow row)
+        {
+            //SupplyDocument          
+            _sqlRequestAPISave.SetParametrValue("@p_Status", row.Status);
+            _sqlRequestAPISave.SetParametrValue("@p_ID", row.ID);
+            _sqlRequestAPISave.SetParametrValue("@p_ReffID", row.ReffID);
+            _sqlRequestAPISave.SetParametrValue("@p_ReffDate", row.ReffDate);
+
+            _sqlRequestAPISave.ComplexRequest(get_saveRequest_procedure, CommandType.StoredProcedure, null);
+            return (Int32)_sqlRequestAPISave.SqlAnswer.result;
         }
 
 

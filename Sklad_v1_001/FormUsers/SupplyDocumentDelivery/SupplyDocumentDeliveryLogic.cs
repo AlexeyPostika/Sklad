@@ -649,12 +649,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
 
         public SupplyDocumentDeliveryRequest Convert(LocaleRow row, SupplyDocumentDeliveryRequest _supplyDocumentDeliveryRequest)
         {
-            _supplyDocumentDeliveryRequest.ID = row.ID;
             _supplyDocumentDeliveryRequest.DocumentID = row.DocumentID;
             _supplyDocumentDeliveryRequest.DeliveryID = row.DeliveryID;
             _supplyDocumentDeliveryRequest.DeliveryDetailsID = row.DeliveryDetailsID;
             _supplyDocumentDeliveryRequest.DeliveryTTN = row.TTN;
-            _supplyDocumentDeliveryRequest.ImageTTN = row.InvoiceDocumentByte;
+            _supplyDocumentDeliveryRequest.ImageTTN = row.TTNDocumentByte;
             _supplyDocumentDeliveryRequest.Invoice = row.Invoice;
             _supplyDocumentDeliveryRequest.ImageInvoice = row.InvoiceDocumentByte;
             _supplyDocumentDeliveryRequest.AmountUSA = row.AmountUSA;

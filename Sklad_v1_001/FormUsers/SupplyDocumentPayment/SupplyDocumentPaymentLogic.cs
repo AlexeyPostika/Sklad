@@ -380,7 +380,6 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
 
         public SupplyDocumentPaymentRequest Convert(LocaleRow row, SupplyDocumentPaymentRequest _supplyDocumentPaymentRequest)
         {
-            _supplyDocumentPaymentRequest.ID = row.ID;
             _supplyDocumentPaymentRequest.DocumentID = row.DocumentID;
             _supplyDocumentPaymentRequest.Status = row.Status;
             _supplyDocumentPaymentRequest.OperationType = row.OpertionType;

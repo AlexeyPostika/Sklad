@@ -7,6 +7,7 @@ using Sklad_v1_001.FormUsers.SupplyDocumentDetails;
 using Sklad_v1_001.FormUsers.SupplyDocumentPayment;
 using Sklad_v1_001.GlobalAttributes;
 using Sklad_v1_001.GlobalList;
+using Sklad_v1_001.GlobalVariable;
 using Sklad_v1_001.HelperGlobal;
 using Sklad_v1_001.HelperGlobal.StoreAPI;
 using Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocument;
@@ -737,6 +738,12 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             }
             return 0;
         }
+
+        Int32 SaveRequest()
+        {
+            Document.ID = supplyDocumentLogic.SaveRequest(Document);
+            return Document.ID;
+        }
         #endregion
 
         #region ToolBarNewSupplyDocument
@@ -870,12 +877,38 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 if (Document.ID > 0)
                 {
                     SupplyDocumentRequest supplyDocumentRequest = new SupplyDocumentRequest(attributes);
-                    supplyDocumentLogic.Convert(Document, supplyDocumentRequest.Document);
-
+                    supplyDocumentLogic.Convert(Document, request.supplyDocument.Document);
+                   
                     Response response= request.GetCommand(1);
                     if (response!=null && response.ErrorCode == 0)
                     {
-                        //Save();
+                        Document.Status = response.SupplyDocumentOutput.Document.Status;
+                        Document.ReffID = response.SupplyDocumentOutput.Document.ID;
+                        Document.ReffDate = response.SupplyDocumentOutput.Document.SyncDate;
+                        if (SaveRequest() == 0)
+                        {
+                            FlexMessageBox mb2 = new FlexMessageBox();
+                            List<BitmapImage> ButtonImages = new List<BitmapImage>();
+                            ButtonImages.Add(ImageHelper.GenerateImage("IconAdd.png"));
+                            ButtonImages.Add(ImageHelper.GenerateImage("IconContinueWork.png"));
+                            List<string> ButtonText = new List<string>();
+                            ButtonText.Add(Properties.Resources.AddSmall);
+                            ButtonText.Add(Properties.Resources.MessageIgnore);
+
+                            mb2.Show(Properties.Resources.ErrorDB, GenerateTitle(TitleType.Error, Properties.Resources.ErrorDBTitle), MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
+                    else
+                    {
+                        FlexMessageBox mb2 = new FlexMessageBox();
+                        List<BitmapImage> ButtonImages = new List<BitmapImage>();
+                        ButtonImages.Add(ImageHelper.GenerateImage("IconAdd.png"));
+                        ButtonImages.Add(ImageHelper.GenerateImage("IconContinueWork.png"));
+                        List<string> ButtonText = new List<string>();
+                        ButtonText.Add(Properties.Resources.AddSmall);
+                        ButtonText.Add(Properties.Resources.MessageIgnore);
+
+                        mb2.Show("Ошибка: " + response.ErrorCode + " - " + response.DescriptionEX, GenerateTitle(TitleType.Error, Properties.Resources.ErrorSendAPITitle), MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     // Выполняем запрос по адресу и получаем ответ в виде строки
                    

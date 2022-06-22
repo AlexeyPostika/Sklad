@@ -858,4 +858,19 @@
   <data name="SupplyDocument6" xml:space="preserve">
     <value>Отменен</value>
   </data>
+  <data name="ErrorDB" xml:space="preserve">
+    <value>Ошибка при сохранении данных</value>
+  </data>
+  <data name="ErrorDBTitle" xml:space="preserve">
+    <value>Работа с БД</value>
+  </data>
+  <data name="ErrorSendAPI" xml:space="preserve">
+    <value>Ошибка при передачи данных</value>
+  </data>
+  <data name="ErrorSendAPITitle" xml:space="preserve">
+    <value>Передача AZURE</value>
+  </data>
+  <data name="SupplyDocument7" xml:space="preserve">
+    <value>Заказ зарегистрирован</value>
+  </data>
 </root>
