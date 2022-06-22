@@ -1,6 +1,7 @@
 ﻿using Sklad_v1_001.GlobalAttributes;
 using Sklad_v1_001.GlobalVariable;
 using Sklad_v1_001.HelperGlobal;
+using Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocumentDetails;
 using Sklad_v1_001.SQL;
 using System;
 using System.Collections.Generic;
@@ -770,6 +771,31 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             _row.LastModificatedUserID = _localeRow.LastModificatedUserID;
 
             return _row;
+        }
+
+        public SupplyDocumentDetailsRequest Convert(LocaleRow row, SupplyDocumentDetailsRequest _supplyDocumentDetailsRequest)
+        {
+            _supplyDocumentDetailsRequest.ID = row.ID;
+            _supplyDocumentDetailsRequest.DocumentID = row.DocumentID;
+            _supplyDocumentDetailsRequest.Name = row.Name;
+            _supplyDocumentDetailsRequest.Quantity = row.Quantity;
+            _supplyDocumentDetailsRequest.TagPriceUSA = row.TagPriceUSA;
+            _supplyDocumentDetailsRequest.TagPriceRUS = row.TagPriceRUS;
+            _supplyDocumentDetailsRequest.SaleTagPriceUSA = 0;
+            _supplyDocumentDetailsRequest.SaleTagPriceRUS = 0;
+            _supplyDocumentDetailsRequest.CategoryID = row.CategoryID;
+            _supplyDocumentDetailsRequest.CategoryDetailsID = row.CategoryDetailsID;
+            _supplyDocumentDetailsRequest.ImageProduct = row.ImageProduct;
+            _supplyDocumentDetailsRequest.BarcodesShop = row.BarCodeString;
+            _supplyDocumentDetailsRequest.Model = row.Model;
+            _supplyDocumentDetailsRequest.SizeProduct = row.SizeProduct;
+            //_supplyDocumentDetailsRequest.Size =row.
+            _supplyDocumentDetailsRequest.CreatedDate = row.CreatedDate;
+            _supplyDocumentDetailsRequest.CreatedUserID = row.CreatedUserID;
+            _supplyDocumentDetailsRequest.LastModificatedDate = row.LastModificatedDate;
+            _supplyDocumentDetailsRequest.LastModificatedUserID = row.LastModificatedUserID;
+
+            return _supplyDocumentDetailsRequest;
         }
     }
 }

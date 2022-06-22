@@ -2,13 +2,16 @@
 using Sklad_v1_001.FormUsers.SupplyDocumentDetails;
 using Sklad_v1_001.FormUsers.SupplyDocumentPayment;
 using Sklad_v1_001.GlobalAttributes;
+using Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocumentDelivery;
+using Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocumentDetails;
+using Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocumentPayment;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sklad_v1_001.FormUsers.SupplyDocument
+namespace Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocument
 {
     public class SupplyDocuments
     {
@@ -49,23 +52,6 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             Delivery = new List<SupplyDocumentDeliveryRequest>();
             Details = new List<SupplyDocumentDetailsRequest>();
             Payment = new List<SupplyDocumentPaymentRequest>();          
-        }
-
-        public SupplyDocuments Convert(LocalRow row, SupplyDocuments _supplyDocumentRequest)
-        {
-            _supplyDocumentRequest.ID = row.ID;          
-            _supplyDocumentRequest.Count = row.Count;
-            _supplyDocumentRequest.Amount = row.Amount;
-            _supplyDocumentRequest.SupplyDocumentNumber = row.SupplyDocumentNumber;
-            _supplyDocumentRequest.Status = row.Status;
-           
-            //_supplyDocumentDetailsRequest.Size =row.
-            _supplyDocumentRequest.CreatedDate = row.CreatedDate;
-            _supplyDocumentRequest.CreatedUserID = row.CreatedUserID;
-            _supplyDocumentRequest.LastModificatedDate = row.LastModificatedDate;
-            _supplyDocumentRequest.LastModificatedUserID = row.LastModificatedUserID;
-
-            return _supplyDocumentRequest;
-        }
+        }       
     }
 }

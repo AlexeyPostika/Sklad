@@ -2,6 +2,7 @@
 using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.GlobalVariable;
 using Sklad_v1_001.HelperGlobal;
+using Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocument;
 using Sklad_v1_001.SQL;
 using Sklad_v1_001.SQLCommand;
 using System;
@@ -2168,6 +2169,23 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _localeRow.SummaryPaymentBalans = convertData.ConvertDataDecimal("PaymentAmountBalans");
             _localeRow.SummaryPaymentRemains = convertData.ConvertDataDecimal("PaymentAmountRemains");
 
+        }
+
+        public SupplyDocuments Convert(LocalRow row, SupplyDocuments _supplyDocumentRequest)
+        {
+            _supplyDocumentRequest.ID = row.ID;
+            _supplyDocumentRequest.Count = row.Count;
+            _supplyDocumentRequest.Amount = row.Amount;
+            _supplyDocumentRequest.SupplyDocumentNumber = row.SupplyDocumentNumber;
+            _supplyDocumentRequest.Status = row.Status;
+
+            //_supplyDocumentDetailsRequest.Size =row.
+            _supplyDocumentRequest.CreatedDate = row.CreatedDate;
+            _supplyDocumentRequest.CreatedUserID = row.CreatedUserID;
+            _supplyDocumentRequest.LastModificatedDate = row.LastModificatedDate;
+            _supplyDocumentRequest.LastModificatedUserID = row.LastModificatedUserID;
+
+            return _supplyDocumentRequest;
         }
 
         public DataTable GetFilter(String filterName)

@@ -392,14 +392,14 @@
       <DependentUpon>NewAddProductItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\SupplyDocumentDelivery\SupplyDocumentDeliveryLogic.cs" />
-    <Compile Include="FormUsers\SupplyDocumentDelivery\SupplyDocumentDeliveryRequest.cs" />
+    <Compile Include="HelperGlobal\StoreAPI\Model\SupplyDocument\SupplyDocumentDeliveryRequest.cs" />
     <Compile Include="FormUsers\SupplyDocumentDetails\SupplyDocumentDetailsLogic.cs" />
-    <Compile Include="FormUsers\SupplyDocumentDetails\SupplyDocumentDetailsRequest.cs" />
+    <Compile Include="HelperGlobal\StoreAPI\Model\SupplyDocument\SupplyDocumentDetailsRequest.cs" />
     <Compile Include="FormUsers\SupplyDocumentPayment\NewSupplyDocumentPaymentItem.xaml.cs">
       <DependentUpon>NewSupplyDocumentPaymentItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\SupplyDocumentPayment\SupplyDocumentPaymentLogic.cs" />
-    <Compile Include="FormUsers\SupplyDocumentPayment\SupplyDocumentPaymentRequest.cs" />
+    <Compile Include="HelperGlobal\StoreAPI\Model\SupplyDocument\SupplyDocumentPaymentRequest.cs" />
     <Compile Include="FormUsers\SupplyDocument\NewSupplyDocumentGrid.xaml.cs">
       <DependentUpon>NewSupplyDocumentGrid.xaml</DependentUpon>
     </Compile>
@@ -407,7 +407,6 @@
       <DependentUpon>SupplyDocumentGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\SupplyDocument\SupplyDocumentLogic.cs" />
-    <Compile Include="FormUsers\SupplyDocument\SupplyDocumentRequest.cs" />
     <Compile Include="FormUsers\Tovar\TovarInZona.xaml.cs">
       <DependentUpon>TovarInZona.xaml</DependentUpon>
     </Compile>
@@ -437,6 +436,8 @@
     </Compile>
     <Compile Include="HelperGlobal\ImageSql.cs" />
     <Compile Include="HelperGlobal\MessageBoxTitleHelper.cs" />
+    <Compile Include="HelperGlobal\StoreAPI\Model\SupplyDocument\SupplyDocumentRequest.cs" />
+    <Compile Include="HelperGlobal\StoreAPI\Request.cs" />
     <Compile Include="HelperGlobal\StoreAPI\Response.cs" />
     <Compile Include="LoginScreen.xaml.cs">
       <DependentUpon>LoginScreen.xaml</DependentUpon>

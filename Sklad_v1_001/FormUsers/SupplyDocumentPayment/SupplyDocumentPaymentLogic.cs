@@ -2,6 +2,7 @@
 using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.GlobalVariable;
 using Sklad_v1_001.HelperGlobal;
+using Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocumentPayment;
 using Sklad_v1_001.SQL;
 using System;
 using System.Collections.Generic;
@@ -377,5 +378,22 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
             return _localeRow;
         }
 
+        public SupplyDocumentPaymentRequest Convert(LocaleRow row, SupplyDocumentPaymentRequest _supplyDocumentPaymentRequest)
+        {
+            _supplyDocumentPaymentRequest.ID = row.ID;
+            _supplyDocumentPaymentRequest.DocumentID = row.DocumentID;
+            _supplyDocumentPaymentRequest.Status = row.Status;
+            _supplyDocumentPaymentRequest.OperationType = row.OpertionType;
+            _supplyDocumentPaymentRequest.Amount = row.Amount;
+            _supplyDocumentPaymentRequest.Description = row.Description;
+            _supplyDocumentPaymentRequest.RRN = row.RRN;
+            _supplyDocumentPaymentRequest.DocRRN = row.RRNDocumentByte;
+            _supplyDocumentPaymentRequest.CreatedDate = row.CreatedDate;
+            _supplyDocumentPaymentRequest.CreatedUserID = row.CreatedUserID;
+            _supplyDocumentPaymentRequest.LastModificatedDate = row.LastModificatedDate;
+            _supplyDocumentPaymentRequest.LastModificatedUserID = row.LastModificatedUserID;
+
+            return _supplyDocumentPaymentRequest;
+        }
     }
 }

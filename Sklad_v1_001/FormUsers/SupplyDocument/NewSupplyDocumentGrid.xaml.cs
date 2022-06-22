@@ -9,6 +9,10 @@ using Sklad_v1_001.GlobalAttributes;
 using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.HelperGlobal;
 using Sklad_v1_001.HelperGlobal.StoreAPI;
+using Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocument;
+using Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocumentDelivery;
+using Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocumentDetails;
+using Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocumentPayment;
 using Sklad_v1_001.SQLCommand;
 using System;
 using System.Collections.Generic;
@@ -149,7 +153,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         //остновной документ      
         LocalRow document;
         SupplyDocumentLogic supplyDocumentLogic;
-        SupplyDocumentRequest supplyDocumentRequest;
+        Request request;
 
         //Продукт
         Product.LocalRow localeRowProduct;
@@ -271,7 +275,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             shemaStorаge = new ShemaStorаge();
 
-            supplyDocumentRequest = new SupplyDocumentRequest(attributes);
+            request = new Request(attributes);
             supplyDocumentLogic = new SupplyDocumentLogic(attributes);
             supplyDocumentDetailsLogic = new SupplyDocumentDetailsLogic(attributes);
             supplyDocumentDeliveryLogic = new SupplyDocumentDeliveryLogic(attributes);
@@ -642,9 +646,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 shemaStorаge.SupplyDocumentDetails.Clear();
                 shemaStorаge.SupplyDocumentDelivery.Clear();
                 shemaStorаge.SupplyDocumentPayment.Clear();
-                supplyDocumentRequest.Details.Clear();
-                supplyDocumentRequest.Delivery.Clear();
-                supplyDocumentRequest.Payment.Clear();
+               
+                request.supplyDocument.Details.Clear();
+                request.supplyDocument.Delivery.Clear();
+                request.supplyDocument.Payment.Clear();
 
                 //продукты                   
                 foreach (SupplyDocumentDetails.LocaleRow currentrow in supplyDocumentDetails)
@@ -668,10 +673,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     row["SizeProduct"] = currentrow.SizeProduct;
                     row["Size"] = currentrow.Package;
                     shemaStorаge.SupplyDocumentDetails.Rows.Add(row);
-                    
-                    SupplyDocumentDetailsRequest rowDetailsRequest = new SupplyDocumentDetailsRequest(attributes);
-                    rowDetailsRequest.Convert(currentrow, rowDetailsRequest);                    
-                    supplyDocumentRequest.Details.Add(rowDetailsRequest);
+
+                    SupplyDocumentDetailsRequest supplyDocumentDetailsRequest = new SupplyDocumentDetailsRequest();                  
+                    supplyDocumentDetailsLogic.Convert(currentrow, supplyDocumentDetailsRequest);                    
+                    request.supplyDocument.Details.Add(supplyDocumentDetailsRequest);
                 }
 
                 //сопуствующие товары             
@@ -698,8 +703,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     shemaStorаge.SupplyDocumentDelivery.Rows.Add(row);
 
                     SupplyDocumentDeliveryRequest rowDeliveryRequest = new SupplyDocumentDeliveryRequest(attributes);
-                    rowDeliveryRequest.Convert(currentrow, rowDeliveryRequest);
-                    supplyDocumentRequest.Delivery.Add(rowDeliveryRequest);
+                    supplyDocumentDeliveryLogic.Convert(currentrow, rowDeliveryRequest);
+                    request.supplyDocument.Delivery.Add(rowDeliveryRequest);
                 }
 
                 //виды оплат
@@ -720,8 +725,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     shemaStorаge.SupplyDocumentPayment.Rows.Add(row);
                     
                     SupplyDocumentPaymentRequest rowPaymentRequest = new SupplyDocumentPaymentRequest(attributes);
-                    rowPaymentRequest.Convert(currentrow, rowPaymentRequest);
-                    supplyDocumentRequest.Payment.Add(rowPaymentRequest);
+                    supplyDocumentPaymentLogic.Convert(currentrow, rowPaymentRequest);
+                    request.supplyDocument.Payment.Add(rowPaymentRequest);
                 }
                 Document.Amount = summary.SummaryProductTagPriceRUS;
                 Document.Count = summary.SummaryQuantityProduct;
@@ -864,69 +869,23 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
                 if (Document.ID > 0)
                 {
-
                     SupplyDocumentRequest supplyDocumentRequest = new SupplyDocumentRequest(attributes);
-                    supplyDocumentRequest.Convert(Document, supplyDocumentRequest.Document);
+                    supplyDocumentLogic.Convert(Document, supplyDocumentRequest.Document);
 
-                    // Выполняем запрос по адресу и получаем ответ в виде строки
-                    using (var webClient = new WebClient())
+                    Response response= request.GetCommand(1);
+                    if (response!=null && response.ErrorCode == 0)
                     {
-                        // Выполняем запрос по адресу и получаем ответ в виде строки
-                        ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3;
-                        System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
-                        //httpHandler.ClientCertificates.Add(GetCertificateFromStore(""));
-                        //ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => certificate == GetCertificateFromStore("");
-                        ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, errors) =>
-                        {
-                            return true;
-                        };
-                        webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
-                        string response = webClient.UploadString(new Uri(@"https://192.168.0.112:60000/api/supplydocument"), "POST", JsonConvert.SerializeObject(supplyDocumentRequest, Newtonsoft.Json.Formatting.Indented));
-                        Response resultOUT = JsonConvert.DeserializeObject<Response>(response);
-                        if (resultOUT != null)
-                        {
-                            if (resultOUT.ErrorCode == 0)
-                            {
-
-                            }
-                            else
-                            {
-
-                            }
-                        }
-                        //return resultOUT.ErrorCode;
+                        //Save();
                     }
+                    // Выполняем запрос по адресу и получаем ответ в виде строки
+                   
                 }
 
 
                 MainWindow.AppWindow.ButtonSupplyDocumentF(Document, NewDocument);
             }
         }
-        
-        private static X509Certificate2 GetCertificateFromStore(string certificateNumber)
-        {
-            // Get the certificate store for the current user.          
-            X509Store store = new X509Store(StoreLocation.CurrentUser);
-            try
-            {
-                store.Open(OpenFlags.ReadOnly);
-                // Place all certificates in an X509Certificate2Collection object.
-                // идентификация по серийному номеру - 0364CFD7000CAE138642975ED9A3C76F79
-                X509Certificate2Collection certCollection = store.Certificates;
-                // If using a certificate with a trusted root you do not need to FindByTimeValid, instead:
-                X509Certificate2Collection currentCerts = certCollection.Find(X509FindType.FindByTimeValid, DateTime.Now, false);
-                X509Certificate2Collection signingCert = currentCerts.Find(X509FindType.FindBySerialNumber, certificateNumber, false);
-                // if (signingCert.Count == 0)
-                // return null;
-                // Return the first certificate in the collection, has the right name and is current.
-                return signingCert[0];
-            }
-            finally
-            {
-                store.Close();
-            }
-        }
+       
         #endregion
 
     }
