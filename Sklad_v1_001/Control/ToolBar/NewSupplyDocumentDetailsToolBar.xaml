@@ -14,11 +14,16 @@
             <ColumnDefinition/>            
             <ColumnDefinition />
             <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <FlexButton:ToolBarButton x:Name="ButtonSaveb" Margin="5,0,0,0" Text="{x:Static res:Resources.SAVELIST}" ButtonClick="ButtonSave_ButtonClick"/>
         <FlexButton:ToolBarButton x:Name="ButtonSaveClose" Grid.Column="1" Margin="15,0,0,0" Text="{x:Static res:Resources.SAVECLOCE}" ButtonClick="ButtonSaveClose_ButtonClick"/>
         <FlexButton:ToolBarButton x:Name="ButtonListcansel" Grid.Column="2" Margin="15,0,0,0" Text="{x:Static res:Resources.LISTDOCUMENT}" ButtonClick="ButtonListcansel_ButtonClick"/>
-        <FlexButton:ToolBarButton x:Name="BottonApplyb" Grid.Column="3" Margin="15,0,15,0" Text="{x:Static res:Resources.APPLYBUTTON}" 
+        <!---->
+        <FlexButton:ToolBarButton x:Name="ButtonRequestSend" Grid.Column="3" Margin="15,0,0,0" Text="{x:Static res:Resources.REQUST_SEND}" ButtonClick="ButtonRequestSend_ButtonClick"/>
+        <FlexButton:ToolBarButton x:Name="ButtonRegistrate" Grid.Column="4" Margin="15,0,0,0" Text="{x:Static res:Resources.REGISTER}" ButtonClick="ButtonRegistrate_ButtonClick"/>
+        <FlexButton:ToolBarButton x:Name="BottonApplyb" Grid.Column="5" Margin="15,0,15,0" Text="{x:Static res:Resources.APPLYBUTTON}" 
                                   IsEnabled="{Binding ElementName=control, Path=IsEnableApply, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                   Visibility="{Binding ElementName=control, Path=VisibilityApply, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                   ButtonClick="BottonApply_ButtonClick"/>

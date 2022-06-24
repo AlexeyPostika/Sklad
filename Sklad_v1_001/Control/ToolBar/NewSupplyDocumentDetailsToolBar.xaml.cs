@@ -46,6 +46,8 @@ namespace Sklad_v1_001.Control.ToolBar
         public event Action ButtonSave;
         public event Action ButtonSaveclose;
         public event Action ButtonListCancel;
+        public event Action ButtonRequest;
+        public event Action ButtonRgister;
         public event Action ButtonApply;
         public NewSupplyDocumentDetailsToolBar()
         {
@@ -54,6 +56,8 @@ namespace Sklad_v1_001.Control.ToolBar
             ButtonSaveClose.Image.Source = ImageHelper.GenerateImage("IconSaveClose_x24.png");
             ButtonListcansel.Image.Source = ImageHelper.GenerateImage("IconToList_x24.png");
             BottonApplyb.Image.Source = ImageHelper.GenerateImage("IconOK_x24.png");
+            ButtonRequestSend.Image.Source = ImageHelper.GenerateImage("IconSendRequest_X24.png");
+            ButtonRegistrate.Image.Source = ImageHelper.GenerateImage("IconRegisterDocument_X24.png");
         }
 
         private void ButtonSave_ButtonClick()
@@ -74,6 +78,16 @@ namespace Sklad_v1_001.Control.ToolBar
         private void BottonApply_ButtonClick()
         {
             ButtonApply?.Invoke();
+        }
+
+        private void ButtonRegistrate_ButtonClick()
+        {
+            ButtonRgister?.Invoke();
+        }
+
+        private void ButtonRequestSend_ButtonClick()
+        {
+            ButtonRequest?.Invoke();
         }
     }
 }

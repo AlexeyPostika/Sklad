@@ -379,7 +379,7 @@
     <value>Подтвердить</value>
   </data>
   <data name="LISTDOCUMENT" xml:space="preserve">
-    <value>К списку документов</value>
+    <value>К списку док.</value>
   </data>
   <data name="SAVECLOCE" xml:space="preserve">
     <value>Сохранить и выйти</value>
@@ -763,7 +763,7 @@
     <value>Выйти</value>
   </data>
   <data name="LISTPRODUCT" xml:space="preserve">
-    <value>К списку продуктов</value>
+    <value>К списку прод.</value>
   </data>
   <data name="ErrorDowloadImage" xml:space="preserve">
     <value>Ошибка при загрузки фото продукта</value>
@@ -872,5 +872,11 @@
   </data>
   <data name="SupplyDocument7" xml:space="preserve">
     <value>Заказ зарегистрирован</value>
+  </data>
+  <data name="REGISTER" xml:space="preserve">
+    <value>Зарегистрировать</value>
+  </data>
+  <data name="REQUST_SEND" xml:space="preserve">
+    <value>Отп. Запрос</value>
   </data>
 </root>

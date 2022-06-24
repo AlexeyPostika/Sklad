@@ -952,7 +952,7 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на К списку документов.
+        ///   Ищет локализованную строку, похожую на К списку док..
         /// </summary>
         public static string LISTDOCUMENT {
             get {
@@ -970,7 +970,7 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на К списку продуктов.
+        ///   Ищет локализованную строку, похожую на К списку прод..
         /// </summary>
         public static string LISTPRODUCT {
             get {
@@ -1699,6 +1699,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Зарегистрировать.
+        /// </summary>
+        public static string REGISTER {
+            get {
+                return ResourceManager.GetString("REGISTER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Остаток.
         /// </summary>
         public static string RemainsAmount {
@@ -1722,6 +1731,15 @@ namespace Sklad_v1_001.Properties {
         public static string RepeatingProductIdTitle {
             get {
                 return ResourceManager.GetString("RepeatingProductIdTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Отп. Запрос.
+        /// </summary>
+        public static string REQUST_SEND {
+            get {
+                return ResourceManager.GetString("REQUST_SEND", resourceCulture);
             }
         }
         
