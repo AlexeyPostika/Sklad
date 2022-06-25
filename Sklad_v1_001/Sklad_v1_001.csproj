@@ -306,6 +306,9 @@
     <Compile Include="Control\ToolBar\ProductToolBar.xaml.cs">
       <DependentUpon>ProductToolBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\ToolBar\RegisterToolBar.xaml.cs">
+      <DependentUpon>RegisterToolBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\ToolBar\ToolBarSaveCancel.xaml.cs">
       <DependentUpon>ToolBarSaveCancel.xaml</DependentUpon>
     </Compile>
@@ -372,6 +375,9 @@
     </Compile>
     <Compile Include="FormUsers\Product\ProductItemGrid.xaml.cs">
       <DependentUpon>ProductItemGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsers\RegisterDocument\RegisterDocumentGrid.xaml.cs">
+      <DependentUpon>RegisterDocumentGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\SaleDocumentPayment\SaleDocumentPaymentLogic.cs" />
     <Compile Include="FormUsers\SaleDocumentProduct\SaleDocumentProductLogic.cs" />
@@ -703,6 +709,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Control\ToolBar\RegisterToolBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Control\ToolBar\ToolBarSaveCancel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -768,6 +778,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FormUsers\Product\ProductItemGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FormUsers\RegisterDocument\RegisterDocumentGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

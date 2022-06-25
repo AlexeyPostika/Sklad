@@ -306,7 +306,7 @@
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
                     <ToolBar:DataViewToolNewSupplyDocument x:Name="ToolBarPayment"                                                         
-                                                           rule:AccessRules.Rule="Director"
+                                                           Visibility="Collapsed"
                                                            Margin="10,10,0,0"
                                                            Grid.ColumnSpan="2"
                                                            ButtonNewProductClick="ToolBarPayment_ButtonNewProductClick"

@@ -19,6 +19,7 @@ using Sklad_v1_001.Control.FlexMessageBox;
 using Sklad_v1_001.FormUsers;
 using Sklad_v1_001.FormUsers.Delivery;
 using Sklad_v1_001.FormUsers.Product;
+using Sklad_v1_001.FormUsers.RegisterDocument;
 using Sklad_v1_001.FormUsers.SaleDocument;
 using Sklad_v1_001.FormUsers.SupplyDocument;
 using Sklad_v1_001.FormUsers.SupplyDocumentDelivery;
@@ -47,6 +48,9 @@ namespace Sklad_v1_001
         //поставки товра
         SupplyDocumentGrid supplyDocumentGrid;
         NewSupplyDocumentGrid newSupplyDocumentGrid;
+        //регистрация документов
+        RegisterDocumentGrid registerDocumentGrid;
+
 
         NewAddProductItem newAddProductItem;
         SupplyDocumentDeliveryItem supplyDocumentDeliveryItem;
@@ -271,7 +275,11 @@ namespace Sklad_v1_001
         #region Регистрация документов
         private void ButtonRegisterListDocument()
         {
-           
+            //RegisterDocumentGrid
+            GC.Collect();   //Вызов сборщика мусора
+            GC.WaitForPendingFinalizers();  //ждем освобождение памяти
+            registerDocumentGrid = new RegisterDocumentGrid(attributes);
+            frameWorkArea.Navigate(registerDocumentGrid); // открытие страницы
         }
         #endregion
 

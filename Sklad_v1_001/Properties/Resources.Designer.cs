@@ -1303,6 +1303,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на №-документа вход..
+        /// </summary>
+        public static string NumberDocumentShop {
+            get {
+                return ResourceManager.GetString("NumberDocumentShop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на №-телефона.
         /// </summary>
         public static string NumberPhone {
@@ -1879,6 +1888,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Магазины.
+        /// </summary>
+        public static string Shop {
+            get {
+                return ResourceManager.GetString("Shop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Витрина.
         /// </summary>
         public static string Showcase {
@@ -2208,6 +2226,15 @@ namespace Sklad_v1_001.Properties {
         public static string UserName {
             get {
                 return ResourceManager.GetString("UserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Инициатор.
+        /// </summary>
+        public static string UserNameInput {
+            get {
+                return ResourceManager.GetString("UserNameInput", resourceCulture);
             }
         }
         

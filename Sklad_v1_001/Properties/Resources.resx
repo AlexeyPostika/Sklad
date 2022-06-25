@@ -885,4 +885,13 @@
   <data name="RegisterDocument" xml:space="preserve">
     <value>Регистрация документов</value>
   </data>
+  <data name="NumberDocumentShop" xml:space="preserve">
+    <value>№-документа вход.</value>
+  </data>
+  <data name="UserNameInput" xml:space="preserve">
+    <value>Инициатор</value>
+  </data>
+  <data name="Shop" xml:space="preserve">
+    <value>Магазины</value>
+  </data>
 </root>

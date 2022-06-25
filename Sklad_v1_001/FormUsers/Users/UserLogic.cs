@@ -642,7 +642,8 @@ namespace Sklad_v1_001.FormUsers.Users
                 localrow.PhotoUserImage = ImageHelper.GenerateImage("admin1.png");
             localrow.SyncDate = convertData.ConvertDataDateTime("SyncDate");
             localrow.SyncStatus = convertData.ConvertDataInt32("SyncStatus");
-            
+            localrow.RoleID = convertData.ConvertDataInt32("RoleID");
+
             return localrow;
         }
         ////users
