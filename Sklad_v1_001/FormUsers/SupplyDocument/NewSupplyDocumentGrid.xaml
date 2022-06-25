@@ -8,7 +8,8 @@
       xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
       xmlns:FlexFilter="clr-namespace:Sklad_v1_001.Control.FlexFilter"
       xmlns:SimpleControl="clr-namespace:Sklad_v1_001.Control.SimpleControl"
-      xmlns:FlexComboBox="clr-namespace:Sklad_v1_001.Control.FlexComboBox"     
+      xmlns:FlexComboBox="clr-namespace:Sklad_v1_001.Control.FlexComboBox"  
+      xmlns:rule="clr-namespace:Sklad_v1_001.HelperGlobal.Role"
       mc:Ignorable="d" 
       Title="{x:Static res:Resources.SupplyTitly}" 
       Style="{DynamicResource PageStyle}"     
@@ -305,7 +306,7 @@
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
                     <ToolBar:DataViewToolNewSupplyDocument x:Name="ToolBarPayment"                                                         
-                                                           Visibility="Collapsed"
+                                                           rule:AccessRules.Rule="Director"
                                                            Margin="10,10,0,0"
                                                            Grid.ColumnSpan="2"
                                                            ButtonNewProductClick="ToolBarPayment_ButtonNewProductClick"

@@ -89,13 +89,16 @@ namespace Sklad_v1_001
             //поставки
             PageframeMenuLevel.ButtonDeliveryNewSupplyOpen += new Action(ButtonNewSupplyDocument);
             PageframeMenuLevel.ButtonDeliveryListSupplyOpen += new Action(ButtonSupplyDocument);
+            //регистрация документов
+            PageframeMenuLevel.ButtonRegisterListDocument += new Action(ButtonRegisterListDocument);
+
             //настройки                
             PageframeMenuLevel.ButtonSettingsOpen += new Action(ButtonSettingsOpen);
             //выход
             PageframeMenuLevel.ButtonExiteOpen += new Action(ButtonExiteOpen);
 
-        }
-   
+        }       
+
         #region Product
         public void ButtonProductOpen()
         {
@@ -262,6 +265,13 @@ namespace Sklad_v1_001
             supplyDocumentDeliveryItem.DeliveryRow = _localeRow;
             addDeliveryWindow.Content = supplyDocumentDeliveryItem;
             addDeliveryWindow.ShowDialog();
+        }
+        #endregion
+
+        #region Регистрация документов
+        private void ButtonRegisterListDocument()
+        {
+           
         }
         #endregion
 

@@ -35,7 +35,7 @@
                 <FlexButton:LevelButton Margin="0,4,0,0" x:Name="ButtonRegisterDocument" ButtonClick="ButtonRegisterDocument_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.RegisterDocument}" rule:AccessRules.Rule="Director"/>
                 <StackPanel Visibility="{Binding ElementName=Menu, Path=VisibilityRegister, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
                     <!--<FlexButton:LevelButton x:Name="ButtonNewSupplyDocument" ButtonClick="ButtonNewSupplyDocument_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.NewSupplyDocument}"/>-->
-                    <FlexButton:LevelButton  x:Name="ButtonListRegisterDocumentDocument" ButtonClick="ButtonListRegisterDocumentDocument_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.ListRegisterDocument}"/>
+                    <FlexButton:LevelButton  x:Name="ButtonListRegisterDocument" ButtonClick="ButtonListRegisterDocumentDocument_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.ListRegisterDocument}"/>
                 </StackPanel>
                 <FlexButton:LevelButton Margin="0,4,0,0" x:Name="ButtonDelivery" ButtonClick="ButtonDelivery_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.Deliveries}" rule:AccessRules.Rule="SeniorManager"/>
                 <StackPanel Visibility="{Binding ElementName=Menu, Path=VisibilitySupply, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
