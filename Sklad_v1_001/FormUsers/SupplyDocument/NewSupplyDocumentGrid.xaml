@@ -25,6 +25,7 @@
                                                  ButtonSave="SupplyDocumentDetailsToolBar_ButtonSave"
                                                  ButtonSaveclose="SupplyDocumentDetailsToolBar_ButtonSaveclose"
                                                  ButtonListCancel="SupplyDocumentDetailsToolBar_ButtonListCancel"
+                                                 ButtonRequest="SupplyDocumentDetailsToolBar_ButtonRequest"
                                                  ButtonApply="SupplyDocumentDetailsToolBar_ButtonApply"
                                                  IsEnableApply="{Binding ElementName=page, Path=IsApplyDocument , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 

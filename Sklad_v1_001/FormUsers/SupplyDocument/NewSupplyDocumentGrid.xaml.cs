@@ -225,20 +225,31 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 switch (Document.Status)
                 {
                     case 0:
+                        ToolBarProduct.ButtonNewProduct.IsEnabled = true;
+                        ToolBarProduct.ButtonDelete.IsEnabled = true;
+                        ToolBarDelivery.ButtonNewProduct.IsEnabled = true;
+                        ToolBarDelivery.ButtonDelete.IsEnabled = true;
                         SupplyDocumentDetailsToolBar.VisibilityApply = Visibility.Visible;
                         SupplyDocumentDetailsToolBar.BottonApplyb.IsEnabled = false;
                         SupplyDocumentDetailsToolBar.ButtonSaveb.IsEnabled = true;
                         SupplyDocumentDetailsToolBar.ButtonSaveClose.IsEnabled = true;
                         SupplyDocumentDetailsToolBar.ButtonListcansel.IsEnabled = true;
+                        SupplyDocumentDetailsToolBar.ButtonRequestSend.IsEnabled = true;
                         UserIDDocument.IsEnabled = true;
                         break;
                     case 1:
+                    case 6:
+                        ToolBarProduct.ButtonNewProduct.IsEnabled = false;
+                        ToolBarProduct.ButtonDelete.IsEnabled = false;
+                        ToolBarDelivery.ButtonNewProduct.IsEnabled = false;
+                        ToolBarDelivery.ButtonDelete.IsEnabled = false;
                         SupplyDocumentDetailsToolBar.VisibilityApply = Visibility.Visible;
                         SupplyDocumentDetailsToolBar.BottonApplyb.IsEnabled = false;
                         SupplyDocumentDetailsToolBar.ButtonSaveb.IsEnabled = false;
                         SupplyDocumentDetailsToolBar.ButtonSaveClose.IsEnabled = false;
                         SupplyDocumentDetailsToolBar.ButtonListcansel.IsEnabled = true;
-                        UserIDDocument.IsEnabled = false;
+                        SupplyDocumentDetailsToolBar.ButtonRequestSend.IsEnabled = false;
+                        UserIDDocument.IsEnabled = false;                   
                         //SupplyDocumentDetailsToolBar.ButtonPrintLabels.IsEnabled = false;
                         break;                  
                     case 2:
@@ -741,7 +752,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         Int32 SaveRequest()
         {
-            Document.ID = supplyDocumentLogic.SaveRequest(Document);
+            Document.ID = supplyDocumentLogic.SaveRespons(Document);
             return Document.ID;
         }
         #endregion
@@ -763,9 +774,14 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             MainWindow.AppWindow.ButtonSupplyDocumentF(Document, NewDocument);
         }
 
-        private void SupplyDocumentDetailsToolBar_ButtonApply()
+        private void SupplyDocumentDetailsToolBar_ButtonRequest()
         {
             Sucsess();
+        }
+
+        private void SupplyDocumentDetailsToolBar_ButtonApply()
+        {
+           
         }
         #endregion
 
@@ -873,7 +889,6 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             if (Save() > 0)
             {
                 Document.SupplyDocumentNumber = supplyDocumentLogic.SetRow(Document);
-
                 if (Document.ID > 0)
                 {
                     SupplyDocumentRequest supplyDocumentRequest = new SupplyDocumentRequest(attributes);
@@ -883,7 +898,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     if (response!=null && response.ErrorCode == 0)
                     {
                         Document.Status = response.SupplyDocumentOutput.Document.Status;
-                        Document.ReffID = response.SupplyDocumentOutput.Document.ID;
+                        Document.ReffID = 0;
                         Document.ReffDate = response.SupplyDocumentOutput.Document.SyncDate;
                         if (SaveRequest() == 0)
                         {
@@ -918,8 +933,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 MainWindow.AppWindow.ButtonSupplyDocumentF(Document, NewDocument);
             }
         }
-       
+
         #endregion
 
+      
     }
 }
