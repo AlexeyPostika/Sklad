@@ -21,8 +21,9 @@ namespace Sklad_v1_001.GlobalAttributes
 {    
     public class Attributes
     {
-        public Numeric numeric { get; set; }
 
+        public Numeric numeric { get; set; }
+        public static Attributes globalData;
         ConvertData convertData;
         //работа с схемой БД 
         ShemaStorаge shemaStorage;
@@ -89,7 +90,7 @@ namespace Sklad_v1_001.GlobalAttributes
             userLogic = new UserLogic();
             datalistUsers = new ObservableCollection<FormUsers.Users.LocalRow > ();
             FillUsers();
-
+            globalData = this;
         }
 
         //заполним Category и CategoryDetails

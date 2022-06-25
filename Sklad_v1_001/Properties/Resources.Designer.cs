@@ -988,6 +988,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Список документов.
+        /// </summary>
+        public static string ListRegisterDocument {
+            get {
+                return ResourceManager.GetString("ListRegisterDocument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Список продаж.
         /// </summary>
         public static string ListSaleDocument {
@@ -1704,6 +1713,15 @@ namespace Sklad_v1_001.Properties {
         public static string REGISTER {
             get {
                 return ResourceManager.GetString("REGISTER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Регистрация документов.
+        /// </summary>
+        public static string RegisterDocument {
+            get {
+                return ResourceManager.GetString("RegisterDocument", resourceCulture);
             }
         }
         

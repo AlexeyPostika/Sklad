@@ -392,6 +392,7 @@
       <DependentUpon>NewAddProductItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\SupplyDocumentDelivery\SupplyDocumentDeliveryLogic.cs" />
+    <Compile Include="HelperGlobal\Role\AccessRules.cs" />
     <Compile Include="HelperGlobal\StoreAPI\Model\SupplyDocument\SupplyDocumentDeliveryRequest.cs" />
     <Compile Include="FormUsers\SupplyDocumentDetails\SupplyDocumentDetailsLogic.cs" />
     <Compile Include="HelperGlobal\StoreAPI\Model\SupplyDocument\SupplyDocumentDetailsRequest.cs" />
@@ -1086,6 +1087,7 @@
     <Resource Include="Icone\IconRegisterDocument_X24.png" />
     <Resource Include="Icone\IconRegisterDocument_X30.png" />
     <Resource Include="Icone\IconRegisterDocument_X40.png" />
+    <Resource Include="Icone\IconRegisterDocumetn_X40.png" />
     <Content Include="SQLCommand\JDB_DataAdapter.sql" />
     <Content Include="SQLCommand\JDB_POS.sql" />
     <Resource Include="Icone\IconOk.png" />

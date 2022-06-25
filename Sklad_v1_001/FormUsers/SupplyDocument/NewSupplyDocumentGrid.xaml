@@ -8,7 +8,7 @@
       xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
       xmlns:FlexFilter="clr-namespace:Sklad_v1_001.Control.FlexFilter"
       xmlns:SimpleControl="clr-namespace:Sklad_v1_001.Control.SimpleControl"
-      xmlns:FlexComboBox="clr-namespace:Sklad_v1_001.Control.FlexComboBox"
+      xmlns:FlexComboBox="clr-namespace:Sklad_v1_001.Control.FlexComboBox"     
       mc:Ignorable="d" 
       Title="{x:Static res:Resources.SupplyTitly}" 
       Style="{DynamicResource PageStyle}"     
@@ -294,7 +294,7 @@
                     </DataGrid>
                 </Grid>
             </TabItem>
-            <TabItem Header="{x:Static res:Resources.ListPayment}" Style="{DynamicResource TabItemStyle}" x:Name="ListPaymentDocument" >
+            <TabItem Header="{x:Static res:Resources.ListPayment}" Style="{DynamicResource TabItemStyle}" x:Name="ListPaymentDocument">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="6*"/>
@@ -304,7 +304,8 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
-                    <ToolBar:DataViewToolNewSupplyDocument x:Name="ToolBarPayment"
+                    <ToolBar:DataViewToolNewSupplyDocument x:Name="ToolBarPayment"                                                         
+                                                           Visibility="Collapsed"
                                                            Margin="10,10,0,0"
                                                            Grid.ColumnSpan="2"
                                                            ButtonNewProductClick="ToolBarPayment_ButtonNewProductClick"

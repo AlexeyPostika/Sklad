@@ -34,6 +34,12 @@ namespace Sklad_v1_001.Control.FlexMenu
                        typeof(Visibility),
                        typeof(frameMenu), new UIPropertyMetadata(Visibility.Collapsed));
 
+        //
+        public static readonly DependencyProperty VisibilityRegisterProperty = DependencyProperty.Register(
+                      "VisibilityRegister",
+                      typeof(Visibility),
+                      typeof(frameMenu), new UIPropertyMetadata(Visibility.Collapsed));
+        
         // Обычное свойство .NET  - обертка над свойством зависимостей
         public Visibility VisibilitySale
         {
@@ -59,6 +65,19 @@ namespace Sklad_v1_001.Control.FlexMenu
             }
         }
 
+        public Visibility VisibilityRegister
+        {
+            get
+            {
+                return (Visibility)GetValue(VisibilityRegisterProperty);
+            }
+            set
+            {
+                SetValue(VisibilityRegisterProperty, value);
+            }
+        }
+
+
         Attributes attributes;
 
         public event Action ButtonProductOpen;
@@ -66,6 +85,8 @@ namespace Sklad_v1_001.Control.FlexMenu
         //операция продажа
         public event Action ButtonNewSaleDocumentOpen;
         public event Action ButtonListSaleDocumentOpen;
+        //регистрация документов
+        public event Action ButtonRegisterListDocument;
         //операция поставки
         public event Action ButtonDeliveryNewSupplyOpen;
         public event Action ButtonDeliveryListSupplyOpen;
@@ -92,6 +113,7 @@ namespace Sklad_v1_001.Control.FlexMenu
         {
             ButtonProduct.Image.Source = ImageHelper.GenerateImage("IconProducts.png");
             ButtonSaleDocument.Image.Source = ImageHelper.GenerateImage("IconSale.png");
+            ButtonRegisterDocument.Image.Source = ImageHelper.GenerateImage("IconRegisterDocumetn_X40.png");
             ButtonDelivery.Image.Source = ImageHelper.GenerateImage("IconDelivery.png");
             ButtonTransferDocument.Image.Source = ImageHelper.GenerateImage("IconTransfer.png");
             ButtonSettings.Image.Source = ImageHelper.GenerateImage("IconServices.png");
@@ -111,11 +133,13 @@ namespace Sklad_v1_001.Control.FlexMenu
             VisibilitySupply = Visibility.Collapsed;
             ButtonProductEditOpen?.Invoke();
         }
+
         #region SupplyDocument
         private void ButtonDelivery_ButtonClick()
         {
             VisibilitySale = Visibility.Collapsed;
             VisibilitySupply = Visibility.Visible;
+            VisibilityRegister = Visibility.Collapsed;
         }
 
         private void ButtonNewSupplyDocument_ButtonClick()
@@ -133,6 +157,7 @@ namespace Sklad_v1_001.Control.FlexMenu
         {
             VisibilitySale = Visibility.Collapsed;
             VisibilitySupply = Visibility.Collapsed;
+            VisibilityRegister = Visibility.Collapsed;
             ButtonTransferDocumentOpen?.Invoke();
         }
 
@@ -140,6 +165,7 @@ namespace Sklad_v1_001.Control.FlexMenu
         {
             VisibilitySale = Visibility.Collapsed;
             VisibilitySupply = Visibility.Collapsed;
+            VisibilityRegister = Visibility.Collapsed;
             ButtonSettingsOpen?.Invoke();
         }
 
@@ -153,6 +179,7 @@ namespace Sklad_v1_001.Control.FlexMenu
         {
             VisibilitySale = Visibility.Visible;
             VisibilitySupply = Visibility.Collapsed;
+            VisibilityRegister = Visibility.Collapsed;
         }
 
         private void ButtonNewSaleDocument_ButtonClick()
@@ -164,8 +191,22 @@ namespace Sklad_v1_001.Control.FlexMenu
         {
             ButtonListSaleDocumentOpen?.Invoke();
         }
+
         #endregion
 
-      
+        #region Регистрация документа
+
+        private void ButtonRegisterDocument_ButtonClick()
+        {
+            VisibilitySale = Visibility.Collapsed;
+            VisibilitySupply = Visibility.Collapsed;
+            VisibilityRegister = Visibility.Visible;
+        }
+
+        private void ButtonListRegisterDocumentDocument_ButtonClick()
+        {
+            ButtonRegisterListDocument?.Invoke();
+        }
+        #endregion
     }
 }
