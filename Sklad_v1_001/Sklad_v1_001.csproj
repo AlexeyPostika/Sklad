@@ -376,9 +376,13 @@
     <Compile Include="FormUsers\Product\ProductItemGrid.xaml.cs">
       <DependentUpon>ProductItemGrid.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FormUsers\RegisterDocumentDetails\RegisterDocumentDetailsLogic.cs" />
+    <Compile Include="FormUsers\RegisterDocumentPayment\RegisterDocumentPaymentLogic.cs" />
     <Compile Include="FormUsers\RegisterDocument\RegisterDocumentGrid.xaml.cs">
       <DependentUpon>RegisterDocumentGrid.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FormUsers\RegisterDocument\RegisterDocumentLogic.cs" />
+    <Compile Include="FormUsers\RegisterDocumentDelivery\RegisterDocumentDeliveryLogic.cs" />
     <Compile Include="FormUsers\SaleDocumentPayment\SaleDocumentPaymentLogic.cs" />
     <Compile Include="FormUsers\SaleDocumentProduct\SaleDocumentProductLogic.cs" />
     <Compile Include="FormUsers\SaleDocument\NewSaleDocumentGrid.xaml.cs">
