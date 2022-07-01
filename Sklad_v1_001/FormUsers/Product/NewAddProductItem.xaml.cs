@@ -191,7 +191,7 @@ namespace Sklad_v1_001.FormUsers.Product
             {
                 mb = new FlexMessageBox();
                 mb.Show(Properties.Resources.ErrorEmptyField, GenerateTitle(TitleType.Error, Properties.Resources.EmptyField, BarCode.LabelText), MessageBoxButton.OK, MessageBoxImage.Error);
-                BarCode.TextBox.Focus();
+                BarCode.EditBoxDelete.TextField.Focus();
                 return false;
             }
 
@@ -491,8 +491,17 @@ namespace Sklad_v1_001.FormUsers.Product
            
         }
 
-        #endregion
 
-        
+        #endregion
+       
+        private void BarCode_ButtonClearClick()
+        {
+
+        }
+
+        private void BarCode_ButtonTextChangedClick()
+        {
+
+        }
     }
 }
