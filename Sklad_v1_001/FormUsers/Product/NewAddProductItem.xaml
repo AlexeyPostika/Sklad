@@ -61,12 +61,12 @@
                                               IsRequired="Visible"
                                               Description="{Binding Path=Model, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                             
                                               EnableTextBox="True"/>
-                <FlexEditBox:EditBoxDeleteWithLabel x:Name="BarCode" LabelText="{x:Static res:Resources.BarCodeID}"
-                                                    Text="{Binding Path=BarCodeString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                    ButtonClearClick="BarCode_ButtonClearClick"
-                                                    ButtonTextChangedClick="BarCode_ButtonTextChangedClick"
-                                                    LabelWidth="151"
-                                                    Margin="3,0,0,0"/>
+                <FlexEditBox:EditBoxSelectWithLabel x:Name="BarCode" LabelText="{x:Static res:Resources.BarCodeID}"
+                                                    Value="{Binding Path=BarCodeString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                              
+                                                    LabelWidth="150"
+                                                    LostFocus="BarCode_LostFocus"
+                                                    ButtonSelectClick="BarCode_ButtonSelectClick"
+                                                    />
                 <!--<SimpleControl:EditBoxWithLabel x:Name="BarCode"  LabelText="{x:Static res:Resources.BarCodeID}"
                                                               IsRequired="Visible"
                                                               Text="{Binding Path=BarCodeString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=\{0:N0\}}"

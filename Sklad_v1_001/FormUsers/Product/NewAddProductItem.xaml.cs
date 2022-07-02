@@ -20,6 +20,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using static Sklad_v1_001.HelperGlobal.MessageBoxTitleHelper;
 
 namespace Sklad_v1_001.FormUsers.Product
@@ -191,7 +192,7 @@ namespace Sklad_v1_001.FormUsers.Product
             {
                 mb = new FlexMessageBox();
                 mb.Show(Properties.Resources.ErrorEmptyField, GenerateTitle(TitleType.Error, Properties.Resources.EmptyField, BarCode.LabelText), MessageBoxButton.OK, MessageBoxImage.Error);
-                BarCode.EditBoxDelete.TextField.Focus();
+                //BarCode.EditBoxDelete.TextField.Focus();
                 return false;
             }
 
@@ -492,16 +493,85 @@ namespace Sklad_v1_001.FormUsers.Product
         }
 
 
-        #endregion
-       
-        private void BarCode_ButtonClearClick()
-        {
+        #endregion      
 
+        private void BarCode_LostFocus(object sender, RoutedEventArgs e)
+        {
+            // Если MainWindow закрывается то нужно прервать последующие обработки
+            Dispatcher.BeginInvoke(DispatcherPriority.ContextIdle, new Action(() =>
+            {
+                if (this.IsVisible == true)
+                    CheckCorrectReceiver();
+            }));
         }
 
-        private void BarCode_ButtonTextChangedClick()
+        private void BarCode_ButtonSelectClick()
         {
-
+            //locationInGrid = new LocationInGrid(_numeric, _databasedata);
+            //Window LocationWindow = new FlexWindow(Properties.Resources.LocationItemTitle);
+            //var location = EditBoxReceiver.EditBoxSelect.PointToScreen(new Point(0, 0));
+            //LocationWindow.WindowStartupLocation = WindowStartupLocation.Manual;
+            //LocationWindow.Left = location.X;
+            //LocationWindow.Top = location.Y + EditBoxReceiver.EditBoxSelect.ActualHeight;
+            //LocationWindow.Content = locationInGrid;
+            //LocationWindow.ShowDialog();
+            //if (!String.IsNullOrEmpty(locationInGrid.LocaleRow.Description))
+            //    Document.ReceiverDescription = String.IsNullOrEmpty(locationInGrid.LocaleRow.Description) ? String.Concat(locationInGrid.LocaleRow.ID) : String.Concat(locationInGrid.LocaleRow.ID, " - ", locationInGrid.LocaleRow.Description);
+            //else
+            //    Document.ReceiverDescription = "";
+            //Document.ReceiverID = locationInGrid.LocaleRow.ID;
+            //EditBoxReceiver.EditBoxSelect.TextField.Focus();
+            //EditBoxReceiver.EditBoxSelect.TextField.CaretIndex = Document.ReceiverDescription.Length;
         }
+        private Boolean CheckCorrectReceiver()
+        {
+            //FlexMessageBox mb = new FlexMessageBox();
+
+            //if (!String.IsNullOrEmpty(Document.ReceiverDescription))
+            //{
+            //    Int32 id = 0;
+            //    if (Int32.TryParse(Document.ReceiverDescription, out id))
+            //    {
+            //        locationLogic = new LocationLogic(_numeric, _databasedata);
+            //        DataTable dt = locationLogic.FillGrid(id);
+            //        if (dt != null && dt.Rows.Count > 0)
+            //        {
+            //            Location.LocaleRow localrow = new Location.LocaleRow();
+            //            locationLogic.Convert(dt.Rows[0], localrow);
+            //            if (!String.IsNullOrEmpty(localrow.Description))
+            //                Document.ReceiverDescription = String.IsNullOrEmpty(localrow.Description) ? String.Concat(localrow.ID) : String.Concat(localrow.ID, " - ", localrow.Description);
+            //            else
+            //                Document.ReceiverDescription = String.Concat(localrow.ID);
+            //            Document.ReceiverID = localrow.ID;
+            //            return true;
+            //        }
+            //    }
+
+            //    else
+            //    {
+            //        locationLogic = new LocationLogic(_numeric, _databasedata);
+            //        DataTable dt = locationLogic.FillGrid(Document.ReceiverDescription);
+            //        if (dt != null && dt.Rows.Count > 0)
+            //        {
+            //            return true;
+            //        }
+            //    }
+
+            //    mb.Show(Properties.Resources.Warning, GenerateTitle(TitleType.Warning, Properties.Resources.BadData, EditBoxReceiver.LabelText), MessageBoxButton.OK, MessageBoxImage.Warning);
+            //    Document.ReceiverID = 0;
+            //    Document.ReceiverDescription = Properties.Resources.BadData;
+            //    //EditBoxReceiver_ButtonSelectClick();
+            //}
+            //else
+            //{
+            //    mb.Show(Properties.Resources.Warning, GenerateTitle(TitleType.Warning, Properties.Resources.BadData, EditBoxReceiver.LabelText), MessageBoxButton.OK, MessageBoxImage.Warning);
+            //    Document.ReceiverID = 0;
+            //    Document.ReceiverDescription = Properties.Resources.BadData;
+            //    //EditBoxReceiver_ButtonSelectClick();
+            //}
+
+            return false;
+        }
+
     }
 }

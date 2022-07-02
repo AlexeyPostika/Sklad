@@ -170,6 +170,12 @@
     <Compile Include="Control\FlexEditBox\EditBoxDeleteWithLabel.xaml.cs">
       <DependentUpon>EditBoxDeleteWithLabel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexEditBox\EditBoxSelect.xaml.cs">
+      <DependentUpon>EditBoxSelect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexEditBox\EditBoxSelectWithLabel.xaml.cs">
+      <DependentUpon>EditBoxSelectWithLabel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexEditBox\EditBoxUser.xaml.cs">
       <DependentUpon>EditBoxUser.xaml</DependentUpon>
     </Compile>
@@ -534,6 +540,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\FlexEditBox\EditBoxDeleteWithLabel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\FlexEditBox\EditBoxSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\FlexEditBox\EditBoxSelectWithLabel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1106,6 +1120,9 @@
     <Resource Include="Icone\IconRegisterDocument_X30.png" />
     <Resource Include="Icone\IconRegisterDocument_X40.png" />
     <Resource Include="Icone\IconRegisterDocumetn_X40.png" />
+    <Resource Include="Icone\IconSelect_X24.png" />
+    <Resource Include="Icone\IconSelect_X30.png" />
+    <Resource Include="Icone\IconSelect_X40.png" />
     <Content Include="SQLCommand\JDB_DataAdapter.sql" />
     <Content Include="SQLCommand\JDB_POS.sql" />
     <Resource Include="Icone\IconOk.png" />
