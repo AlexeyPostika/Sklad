@@ -25,7 +25,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Grid Style="{DynamicResource GridStyle}" Grid.Row="1">
+        <Grid Style="{DynamicResource GridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="1*"/>
@@ -41,7 +41,7 @@
                   ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}"
                   RowStyle="{DynamicResource DataGridRowStyle}"
                   CellStyle="{DynamicResource DataGridCellStyle}"
-                  Grid.Row="3"
+                  Grid.Row="1"
                   IsReadOnly="True"
                   AutoGenerateColumns="False"
                   CanUserAddRows="False" 
@@ -186,7 +186,8 @@
                                    ButtonBack="ToolBarNextToBack_ButtonBack"
                                    ButtonNext="ToolBarNextToBack_ButtonNext"
                                    ButtonBackIn="ToolbarNextPageData_ButtonBackIn"
-                                   ButtonNextEnd="ToolbarNextPageData_ButtonNextEnd"                                 
+                                   ButtonNextEnd="ToolbarNextPageData_ButtonNextEnd"   
+                                   Grid.Row="3"
                                    CurrentPage="{Binding ElementName=page, Path=CurrentPage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                    TotalCount="{Binding ElementName=page, Path=TotalCount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                    PageCount="{Binding ElementName=page, Path=PageCount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />

@@ -128,7 +128,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         Attributes attributes;
         //работаем с продуктами
-        FlexMessageBox addProductWindow;
+        FlexWindows addProductWindow;
         NewAddProductItem newAddProductItem;
         ObservableCollection<Product.LocalRow> dataListProduct;
         //******************************
@@ -139,7 +139,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         //******************************
 
         //работаем с доставкой
-        FlexMessageBox addDeliveryWindow;
+        FlexWindows addDeliveryWindow;
         SupplyDocumentDeliveryItem supplyDocumentDeliveryItem;
         ObservableCollection<Delivery.LocaleRow> dataListDelivery;
         ObservableCollection<DeliveryDetails.LocaleRow> dataListDeliveryDetails;
@@ -147,7 +147,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         //******************************
 
         //работаем с оплатами
-        FlexMessageBox addSuppluPaymentWindow;
+        FlexWindows addSuppluPaymentWindow;
         NewSupplyDocumentPaymentItem newSupplyDocumentPaymentItem;
         //******************************
 
@@ -352,11 +352,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         private void EditProduct(SupplyDocumentDetails.LocaleRow currentrow = null)
         {
             newAddProductItem = new NewAddProductItem(attributes);
-            addProductWindow = new FlexMessageBox();
+            addProductWindow = new FlexWindows(Properties.Resources.Products);
             newAddProductItem.StatusDocument = Document.Status == 0;
             newAddProductItem.ProductLocalRow = currentrow != null ? supplyDocumentDetailsLogic.ConvertSupplyDocumentDetailsToProduct(new Product.LocalRow(), currentrow) : new Product.LocalRow();
             addProductWindow.Content = newAddProductItem;
-            addProductWindow.Show(Properties.Resources.Products);
+            addProductWindow.ShowDialog();
             if (newAddProductItem.IsClickButtonOK == MessageBoxResult.OK)
             {
                 if (newAddProductItem.ProductLocalRow != null)
@@ -454,13 +454,13 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         {           
             SupplyDocumentDelivery.LocaleRow localeRowDelivery = new SupplyDocumentDelivery.LocaleRow();
             supplyDocumentDeliveryItem = new SupplyDocumentDeliveryItem(attributes);
-            addDeliveryWindow = new FlexMessageBox();
+            addDeliveryWindow = new FlexWindows(Properties.Resources.Deliveries);
 
             supplyDocumentDeliveryItem.StatusDocument = Document.Status == 0;        
             supplyDocumentDeliveryItem.DeliveryRow= currentrow != null ? currentrow : new SupplyDocumentDelivery.LocaleRow();
            
             addDeliveryWindow.Content = supplyDocumentDeliveryItem;
-            addDeliveryWindow.Show(Properties.Resources.Deliveries);
+            addDeliveryWindow.ShowDialog();
             //тут проблема посмотреть, не правильно добавляется ID
             if (supplyDocumentDeliveryItem.IsClickButtonOK == MessageBoxResult.OK)
             {
@@ -538,12 +538,12 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         {
             supplyDocumentPaymentLocaleRow = new SupplyDocumentPayment.LocaleRow();
             newSupplyDocumentPaymentItem = new NewSupplyDocumentPaymentItem();
-            addSuppluPaymentWindow = new FlexMessageBox();
+            addSuppluPaymentWindow = new FlexWindows(Properties.Resources.Payment1);
             newSupplyDocumentPaymentItem.AmountMax = (Double)summary.SummaryPaymentRemains;
             newSupplyDocumentPaymentItem.StatusDocument = Document.Status == 0;
             newSupplyDocumentPaymentItem.PaymentLocalRow = currentrow != null ? currentrow : new SupplyDocumentPayment.LocaleRow();          
             addSuppluPaymentWindow.Content = newSupplyDocumentPaymentItem;
-            addSuppluPaymentWindow.Show(Properties.Resources.Payment1);
+            addSuppluPaymentWindow.ShowDialog();
             if (newSupplyDocumentPaymentItem.IsClickButtonOK == MessageBoxResult.OK)
             {
                 if (newSupplyDocumentPaymentItem.PaymentLocalRow != null)

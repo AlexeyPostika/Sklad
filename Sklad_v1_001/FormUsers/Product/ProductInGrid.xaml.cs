@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sklad_v1_001.GlobalAttributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -45,9 +46,27 @@ namespace Sklad_v1_001.FormUsers.Product
     /// </summary>
     public partial class ProductInGrid : Page
     {
-        public ProductInGrid()
+        Attributes attributes;
+
+        LocalRow localRow;
+
+        public LocalRow LocalRow
+        {
+            get
+            {
+                return localRow;
+            }
+
+            set
+            {
+                localRow = value;             
+            }
+        }
+
+        public ProductInGrid(Attributes _attributes)
         {
             InitializeComponent();
+            this.attributes = _attributes;
         }
 
         private void RelatedProductDataGrid_Sorting(object sender, DataGridSortingEventArgs e)

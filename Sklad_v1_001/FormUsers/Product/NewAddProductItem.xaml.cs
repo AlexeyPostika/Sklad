@@ -89,6 +89,8 @@ namespace Sklad_v1_001.FormUsers.Product
         NewCategoryDetailsItem newCategoryDetailsItem;
 
         LocalRow productLocalRow;
+
+        ProductInGrid productInGrid;
         public LocalRow ProductLocalRow
         {
             get
@@ -507,27 +509,29 @@ namespace Sklad_v1_001.FormUsers.Product
 
         private void BarCode_ButtonSelectClick()
         {
-            //locationInGrid = new LocationInGrid(_numeric, _databasedata);
-            //Window LocationWindow = new FlexWindow(Properties.Resources.LocationItemTitle);
-            //var location = EditBoxReceiver.EditBoxSelect.PointToScreen(new Point(0, 0));
-            //LocationWindow.WindowStartupLocation = WindowStartupLocation.Manual;
-            //LocationWindow.Left = location.X;
-            //LocationWindow.Top = location.Y + EditBoxReceiver.EditBoxSelect.ActualHeight;
-            //LocationWindow.Content = locationInGrid;
-            //LocationWindow.ShowDialog();
-            //if (!String.IsNullOrEmpty(locationInGrid.LocaleRow.Description))
-            //    Document.ReceiverDescription = String.IsNullOrEmpty(locationInGrid.LocaleRow.Description) ? String.Concat(locationInGrid.LocaleRow.ID) : String.Concat(locationInGrid.LocaleRow.ID, " - ", locationInGrid.LocaleRow.Description);
-            //else
-            //    Document.ReceiverDescription = "";
-            //Document.ReceiverID = locationInGrid.LocaleRow.ID;
-            //EditBoxReceiver.EditBoxSelect.TextField.Focus();
-            //EditBoxReceiver.EditBoxSelect.TextField.CaretIndex = Document.ReceiverDescription.Length;
+            productInGrid = new ProductInGrid(attributes);
+            Window LocationWindow = new FlexWindows(Properties.Resources.Products);
+            var location = BarCode.EditBoxSelect.PointToScreen(new Point(0, 0));
+            LocationWindow.WindowStartupLocation = WindowStartupLocation.Manual;
+            LocationWindow.Left = location.X;
+            LocationWindow.Top = location.Y + BarCode.EditBoxSelect.ActualHeight;
+            LocationWindow.Content = productInGrid;
+            LocationWindow.ShowDialog();
+            if (productInGrid.LocalRow != null)
+            {
+                ProductLocalRow = productInGrid.LocalRow;
+                BarCode.EditBoxSelect.TextField.CaretIndex = ProductLocalRow.BarCodeString.Length;
+            }
+            else
+                ProductLocalRow = null;
+            BarCode.EditBoxSelect.TextField.Focus();
+           
         }
         private Boolean CheckCorrectReceiver()
         {
-            //FlexMessageBox mb = new FlexMessageBox();
+            FlexMessageBox mb = new FlexMessageBox();
 
-            //if (!String.IsNullOrEmpty(Document.ReceiverDescription))
+           // if (!String.IsNullOrEmpty(Document.ReceiverDescription))
             //{
             //    Int32 id = 0;
             //    if (Int32.TryParse(Document.ReceiverDescription, out id))
