@@ -1,11 +1,11 @@
-﻿using POS.GlobalVariable;
+﻿using Sklad_v1_001.GlobalVariable;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace POS.FlexControls.FlexEditBox
+namespace Sklad_v1_001.Control.FlexEditBox
 {
     /// <summary>
     /// Логика взаимодействия для EditBoxDelete.xaml
@@ -28,7 +28,7 @@ namespace POS.FlexControls.FlexEditBox
         public EditBoxSelect()
         {
             InitializeComponent();
-            image.Source = ImageHelper.GenerateImage("IconSelect.png");
+            image.Source = ImageHelper.GenerateImage("IconSelect_X24.png");
         }
 
         public event Action ButtonSelectClick;

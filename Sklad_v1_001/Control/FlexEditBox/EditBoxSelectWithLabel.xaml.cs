@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace POS.FlexControls.FlexEditBox
+namespace Sklad_v1_001.Control.FlexEditBox
 {
     /// <summary>
     /// Логика взаимодействия для EditBoxDelete.xaml
