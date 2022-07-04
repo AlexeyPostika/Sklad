@@ -398,7 +398,7 @@ namespace Sklad_v1_001.FormUsers.Product
             shemaStorаge = new ShemaStorаge();
 
             FilterCreatedByUserID = new DataTable();
-            filterLastModifiedByUserID = new DataTable();
+            FilterLastModifiedByUserID = new DataTable();
             FilterStatus = new DataTable();
             FilterShowcase = new DataTable();
             FilterProcreator = new DataTable();
@@ -409,9 +409,9 @@ namespace Sklad_v1_001.FormUsers.Product
             FilterCreatedByUserID.Columns.Add("IsChecked");
             FilterCreatedByUserID.Columns.Add("Description");
 
-            filterLastModifiedByUserID.Columns.Add("ID");
-            filterLastModifiedByUserID.Columns.Add("IsChecked");
-            filterLastModifiedByUserID.Columns.Add("Description");
+            FilterLastModifiedByUserID.Columns.Add("ID");
+            FilterLastModifiedByUserID.Columns.Add("IsChecked");
+            FilterLastModifiedByUserID.Columns.Add("Description");
 
             FilterStatus.Columns.Add("ID");
             FilterStatus.Columns.Add("IsChecked");
