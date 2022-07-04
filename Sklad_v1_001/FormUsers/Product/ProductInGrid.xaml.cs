@@ -434,7 +434,7 @@ namespace Sklad_v1_001.FormUsers.Product
             InitFilters();
 
             this.ProductGrid.ItemsSource = datalist;
-
+            Refresh();
         }
 
         #region фильтры

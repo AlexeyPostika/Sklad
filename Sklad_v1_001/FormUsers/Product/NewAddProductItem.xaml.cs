@@ -510,6 +510,7 @@ namespace Sklad_v1_001.FormUsers.Product
         private void BarCode_ButtonSelectClick()
         {
             productInGrid = new ProductInGrid(attributes);
+           //FlexMessageBox flexMessageBox = new FlexMessageBox();
             Window LocationWindow = new FlexWindows(Properties.Resources.Products);
             var location = BarCode.EditBoxSelect.PointToScreen(new Point(0, 0));
             LocationWindow.WindowStartupLocation = WindowStartupLocation.Manual;
