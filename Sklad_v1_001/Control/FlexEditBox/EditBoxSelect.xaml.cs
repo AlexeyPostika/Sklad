@@ -28,7 +28,7 @@ namespace Sklad_v1_001.Control.FlexEditBox
         public EditBoxSelect()
         {
             InitializeComponent();
-            image.Source = ImageHelper.GenerateImage("IconSelect_X24.png");
+            image.Source = ImageHelper.GenerateImage("IconSelect_X16.png");
         }
 
         public event Action ButtonSelectClick;
