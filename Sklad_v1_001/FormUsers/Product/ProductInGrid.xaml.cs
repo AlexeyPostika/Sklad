@@ -1,5 +1,6 @@
 ﻿using Sklad_v1_001.GlobalAttributes;
 using Sklad_v1_001.GlobalList;
+using Sklad_v1_001.GlobalVariable;
 using Sklad_v1_001.HelperGlobal;
 using System;
 using System.Collections.Generic;
@@ -85,6 +86,10 @@ namespace Sklad_v1_001.FormUsers.Product
         Double tagPriceWithVATMax;
         Double defaultTagPriceWithVATMin;
         Double defaultTagPriceWithVATMax;
+
+        ImageSource clearfilterCategoryDetails;
+        ImageSource clearFilterQuantity;
+        ImageSource clearFilterTagPriceWithVAT;
 
         Boolean isAllowFilter;
         Boolean isPaginator;
@@ -323,6 +328,49 @@ namespace Sklad_v1_001.FormUsers.Product
             }
         }
 
+       
+        public ImageSource ClearfilterCategoryDetails
+        {
+            get
+            {
+                return clearfilterCategoryDetails;
+            }
+
+            set
+            {
+                clearfilterCategoryDetails = value;
+                OnPropertyChanged("ClearfilterCategoryDetails");
+            }
+        }
+       
+        public ImageSource ClearFilterQuantity
+        {
+            get
+            {
+                return clearFilterQuantity;
+            }
+
+            set
+            {
+                clearFilterQuantity = value;
+                OnPropertyChanged("ClearFilterQuantity");
+            }
+        }
+
+        public ImageSource ClearFilterTagPriceWithVAT
+        {
+            get
+            {
+                return clearFilterTagPriceWithVAT;
+            }
+
+            set
+            {
+                clearFilterTagPriceWithVAT = value;
+                OnPropertyChanged("ClearFilterTagPriceWithVAT");
+            }
+        }
+
         public Boolean IsPaginator
         {
             get
@@ -441,6 +489,9 @@ namespace Sklad_v1_001.FormUsers.Product
         void InitFilters()
         {
             ProductStatusList productStatusList = new ProductStatusList();
+            ClearfilterCategoryDetails = ImageHelper.GenerateImage("IconFilter.png");
+            ClearFilterQuantity = ImageHelper.GenerateImage("IconFilter.png");
+            ClearFilterTagPriceWithVAT = ImageHelper.GenerateImage("IconFilter.png");
 
             FilterCreatedByUserID.Clear();
             if (productLogic.GetFilter("CreatedByUserID") != null)
@@ -552,33 +603,24 @@ namespace Sklad_v1_001.FormUsers.Product
 
         private void FilterType_ButtonApplyClick(string text)
         {
-
-        }
-
-        private void FilterGender_ButtonApplyClick(string text)
-        {
-
-        }
-
-        private void FilterSize_ButtonApplyClick(string text)
-        {
-
+            localFilter.Category = text;
+            Refresh();
         }
 
         private void FilterWeight_ButtonApplyClick()
         {
-
+            localFilter.QuantityMax = QuantityMax;
+            localFilter.QuantityMin = QuantityMin;
+            Refresh();
         }
 
         private void FilterTagPriceWithVAT_ButtonApplyClick()
         {
-
+            localFilter.TagPriceVATRUS_Max = TagPriceWithVATMax;
+            localFilter.TagPriceVATRUS_Min = TagPriceWithVATMin;
+            Refresh();
         }
        
-        private void FilterSalePriceWithVAT_ButtonApplyClick()
-        {
-
-        }
 
         #endregion
 
