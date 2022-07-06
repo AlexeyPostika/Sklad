@@ -518,9 +518,9 @@ namespace Sklad_v1_001.FormUsers.Product
             LocationWindow.Top = location.Y + BarCode.EditBoxSelect.ActualHeight;
             LocationWindow.Content = productInGrid;
             LocationWindow.ShowDialog();
-            if (productInGrid.LocalRow != null)
+            if (productInGrid.LocalRowProduct != null)
             {
-                ProductLocalRow = productInGrid.LocalRow;
+                ProductLocalRow = productInGrid.LocalRowProduct;
                 BarCode.EditBoxSelect.TextField.CaretIndex = ProductLocalRow.BarCodeString.Length;
             }
             BarCode.EditBoxSelect.TextField.Focus();

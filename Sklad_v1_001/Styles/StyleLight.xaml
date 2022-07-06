@@ -59,9 +59,10 @@
     <SolidColorBrush x:Key="GroupBoxForeground" Color="#FF000000"/>
     <SolidColorBrush x:Key="GroupBoxBorder" Color="#FFABAdB3"/>
 
-    <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
+    <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABADB3"/>
     <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
     <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
 
     <SolidColorBrush x:Key="ColorFilterButtonBorder" Color="#FFFFFFFF"/>
+
 </ResourceDictionary>

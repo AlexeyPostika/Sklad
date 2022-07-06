@@ -62,7 +62,7 @@ namespace Sklad_v1_001.FormUsers.Product
 
         ProductLogic productLogic;
 
-        LocalRow localRow;
+        LocalRow localRowProduct;
         LocalFilter localFilter;
 
         RowSummary summary;
@@ -99,16 +99,16 @@ namespace Sklad_v1_001.FormUsers.Product
         Int32 totalCount;
         Int32 pageCount;
 
-        public LocalRow LocalRow
+        public LocalRow LocalRowProduct
         {
             get
             {
-                return localRow;
+                return localRowProduct;
             }
 
             set
             {
-                localRow = value;             
+                localRowProduct = value;             
             }
         }
 
@@ -694,7 +694,13 @@ namespace Sklad_v1_001.FormUsers.Product
 
         private void RelatedProductDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            LocalRow local = ProductGrid.SelectedItem as LocalRow;
+            if (local != null)
+            {
+                LocalRowProduct = local;            
+                Window win = Parent as Window;
+                win.Close();
+            }
         }
 
         private void ToolBarNextToBack_ButtonBack()

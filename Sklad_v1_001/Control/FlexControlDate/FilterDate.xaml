@@ -13,6 +13,7 @@
         </Grid.ColumnDefinitions>
         <Label x:Name="labelDate" Content="{Binding Path=labelText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
                HorizontalAlignment="Center" 
+               Style="{DynamicResource LabelStyle}"
                VerticalAlignment="Center" 
                VerticalContentAlignment="Center" 
                HorizontalContentAlignment="Center" />
@@ -21,6 +22,7 @@
                 DisplayMemberPath="Description"
                 Grid.Column="0" 
                 SelectionChanged="FilterID_SelectionChanged"
+                Style="{DynamicResource ComboBoxStyleStandart}" 
                 SelectedValue="{Binding ElementName=control, Path=Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                 Loaded="FilterID_Loaded"
                 DropDownClosed="FilterID_DropDownClosed"/>
