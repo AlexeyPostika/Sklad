@@ -69,6 +69,7 @@ namespace Sklad_v1_001.FormUsers.Product
 
         ObservableCollection<LocalRow> datalist;
 
+        private String search;
         DataTable filterCreatedByUserID;
         DataTable filterLastModifiedByUserID;
         DataTable filterStatus;
@@ -111,6 +112,19 @@ namespace Sklad_v1_001.FormUsers.Product
             }
         }
 
+        public String Search
+        {
+            get
+            {
+                return search;
+            }
+
+            set
+            {
+                search = value;
+                OnPropertyChanged("Search");
+            }
+        }
         public DataTable FilterCreatedByUserID
         {
             get
@@ -493,6 +507,8 @@ namespace Sklad_v1_001.FormUsers.Product
             ClearFilterQuantity = ImageHelper.GenerateImage("IconFilter.png");
             ClearFilterTagPriceWithVAT = ImageHelper.GenerateImage("IconFilter.png");
 
+            Search = String.Empty;
+
             FilterCreatedByUserID.Clear();
             if (productLogic.GetFilter("CreatedByUserID") != null)
             {
@@ -620,13 +636,30 @@ namespace Sklad_v1_001.FormUsers.Product
             localFilter.TagPriceVATRUS_Min = TagPriceWithVATMin;
             Refresh();
         }
-       
+        private void ScrabToolbar_ButtonClearFiltersClick()
+        {
+            InitFilters();
+            Refresh();
+        }
+        private void SearchFilter_ButtonClearClick()
+        {
+            Search = String.Empty;
+            localFilter.Search = String.Empty;
+            Refresh();
+        }
+
+        private void SearchFilter_ButtonTextChangedClick()
+        {
+            localFilter.Search = Search;
+            Refresh();
+        }
 
         #endregion
 
         #region refresh
         private void Refresh()
         {
+            datalist.Clear();
             DataTable dataTable = productLogic.FillGrid(localFilter);
             foreach (DataRow row in dataTable.Rows)
             {
@@ -684,19 +717,7 @@ namespace Sklad_v1_001.FormUsers.Product
 
         }
 
-        private void SearchFilter_ButtonClearClick()
-        {
-
-        }
-
-        private void SearchFilter_ButtonTextChangedClick()
-        {
-
-        }
-
-        private void ScrabToolbar_ButtonClearFiltersClick()
-        {
-
-        }
+       
+       
     }
 }
