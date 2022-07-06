@@ -23,7 +23,8 @@ namespace Sklad_v1_001.Control.FlexMessageBox
         public FlexWindows(string title)
         {
             InitializeComponent();
-            this.Title = title;         
+            this.Title = title;
+            this.Owner = MainWindow.AppWindow;
         }
 
         private void WindowName_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -48,9 +49,10 @@ namespace Sklad_v1_001.Control.FlexMessageBox
             //    else
             //    {
             //        MainWindow.AppWindow.DataChanged.Add(window.Content.ToString(), false);
-                    e.Cancel = false;
+
             //    }
             //}
+            MainWindow.AppWindow.Activate();
         }
     }
 }

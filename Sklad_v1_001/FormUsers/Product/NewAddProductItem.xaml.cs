@@ -523,8 +523,6 @@ namespace Sklad_v1_001.FormUsers.Product
                 ProductLocalRow = productInGrid.LocalRow;
                 BarCode.EditBoxSelect.TextField.CaretIndex = ProductLocalRow.BarCodeString.Length;
             }
-            else
-                ProductLocalRow = null;
             BarCode.EditBoxSelect.TextField.Focus();
            
         }
