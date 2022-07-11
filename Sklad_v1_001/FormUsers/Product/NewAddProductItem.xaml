@@ -63,6 +63,7 @@
                                               EnableTextBox="True"/>
                 <FlexEditBox:EditBoxSelectWithLabel x:Name="BarCode" LabelText="{x:Static res:Resources.BarCodeID}"
                                                     Value="{Binding Path=BarCodeString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                              
+                                                    DisplayValue="{Binding Path=BarCodeString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                     LabelWidth="150"
                                                     LostFocus="BarCode_LostFocus"
                                                     ButtonSelectClick="BarCode_ButtonSelectClick"

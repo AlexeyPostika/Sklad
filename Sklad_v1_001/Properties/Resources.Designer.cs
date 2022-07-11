@@ -655,6 +655,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на BarCode - уже существует, использвать данный продукт?.
+        /// </summary>
+        public static string ErrorAddProductSupplyDocument {
+            get {
+                return ResourceManager.GetString("ErrorAddProductSupplyDocument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Выберите категорию.
         /// </summary>
         public static string ErrorCategory0 {

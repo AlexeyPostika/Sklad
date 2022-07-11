@@ -338,6 +338,7 @@ namespace Sklad_v1_001.FormUsers.Product
 
         private String model;
         private String barCodeString;
+        private String bareCodeEXTRString;
         private Int32 quantity;
         private Decimal tagPriceUSA;
         private Decimal tagPriceRUS;
@@ -503,6 +504,20 @@ namespace Sklad_v1_001.FormUsers.Product
             {
                 barCodeString = value;
                 OnPropertyChanged("BarCodeString");
+            }
+        }
+        //
+        public string BareCodeEXTRString
+        {
+            get
+            {
+                return bareCodeEXTRString;
+            }
+
+            set
+            {
+                bareCodeEXTRString = value;
+                OnPropertyChanged("BareCodeEXTString");
             }
         }
         public Int32 Quantity
@@ -1241,6 +1256,9 @@ namespace Sklad_v1_001.FormUsers.Product
             _sqlRequestSelect.AddParametr("@p_CategoryDetails", SqlDbType.NVarChar);
             _sqlRequestSelect.SetParametrValue("@p_CategoryDetails", "");
 
+            _sqlRequestSelect.AddParametr("@p_BareCode", SqlDbType.NVarChar);
+            _sqlRequestSelect.SetParametrValue("@p_BareCode", "");
+
             _sqlRequestSelect.AddParametr("@p_Quantity_Min", SqlDbType.Int);
             _sqlRequestSelect.SetParametrValue("@p_Quantity_Min", 0);
 
@@ -1347,6 +1365,7 @@ namespace Sklad_v1_001.FormUsers.Product
             _sqlRequestSelect.SetParametrValue("@p_Procreator", localFilter.Procreator);
             _sqlRequestSelect.SetParametrValue("@p_Category", localFilter.Category);
             _sqlRequestSelect.SetParametrValue("@p_CategoryDetails", localFilter.CategoryDetails);
+            _sqlRequestSelect.SetParametrValue("@p_BareCode", localFilter.CategoryDetails);           
 
             _sqlRequestSelect.SetParametrValue("@p_Quantity_Min", localFilter.QuantityMin);
             _sqlRequestSelect.SetParametrValue("@p_Quantity_Max", localFilter.QuantityMax);
@@ -1362,7 +1381,18 @@ namespace Sklad_v1_001.FormUsers.Product
             _data = _sqlRequestSelect.SqlAnswer.datatable;
             return _data;
         }
-
+        public DataTable FillGrid(String _barCode)
+        {
+            _sqlRequestSelect.SqlAnswer.datatable.Clear();
+            _data.Clear();
+            
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeName);
+            _sqlRequestSelect.SetParametrValue("@p_BareCode", _barCode);
+            
+            _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
+            _data = _sqlRequestSelect.SqlAnswer.datatable;
+            return _data;
+        }
 
         public DataTable FillGridImage(Int32 _documentID)
         {
@@ -1446,6 +1476,7 @@ namespace Sklad_v1_001.FormUsers.Product
             _localeRow.CategoryDetailsName = convertData.ConvertDataString("CategoryDetailsName");
 
             _localeRow.BarCodeString = convertData.ConvertDataString("BarCodeString");
+            _localeRow.BareCodeEXTRString = convertData.ConvertDataString("BarcodeExtr");
             _localeRow.ManufacturerID = convertData.ConvertDataInt32("ProcreatorID");
             _localeRow.ManufacturerIDName= convertData.ConvertDataString("ProcreatorIDName");
 

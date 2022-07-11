@@ -16,7 +16,8 @@
                 <Label Style="{DynamicResource LabelStyle}" Name="label" Height="30"/>
                 <Label Style="{DynamicResource LabelStyle}" Name="required" Margin="-9,0,0,0" FontSize="18" Height="30" Visibility="{Binding ElementName=control, Path=IsRequired, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="Red" Content="*" HorizontalAlignment="Left"/>
             </WrapPanel>
-            <FlexEditBox:EditBoxSelect x:Name="EditBoxSelect" Grid.Column="1" ButtonSelectClick="EditBoxSelect_ButtonSelectClick" ButtonLostFocusClick="EditBoxSelect_ButtonLostFocusClick" Text="{Binding ElementName=control, Path=DisplayValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <FlexEditBox:EditBoxSelect x:Name="EditBoxSelect" Grid.Column="1" ButtonSelectClick="EditBoxSelect_ButtonSelectClick" ButtonLostFocusClick="EditBoxSelect_ButtonLostFocusClick" 
+                                       Text="{Binding ElementName=control, Path=DisplayValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Grid>
     </Grid>
 </UserControl>

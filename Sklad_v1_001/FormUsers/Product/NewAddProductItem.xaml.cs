@@ -88,6 +88,9 @@ namespace Sklad_v1_001.FormUsers.Product
         FlexMessageBox addCategoryDetailsWindow;
         NewCategoryDetailsItem newCategoryDetailsItem;
 
+        //продукт
+        ProductLogic productLogic;
+
         LocalRow productLocalRow;
 
         ProductInGrid productInGrid;
@@ -178,7 +181,7 @@ namespace Sklad_v1_001.FormUsers.Product
             {
                 //mb = new FlexMessageBox();
                 //mb.Show(Properties.Resources.ErrorEmptyField, GenerateTitle(TitleType.Error, Properties.Resources.EmptyField, CategoryName.LabelText), MessageBoxButton.OK, MessageBoxImage.Error);
-               // CategoryName.EditBoxUser.TextField.Focus();
+                //CategoryName.EditBoxUser.TextField.Focus();
                 return false;
             }
 
@@ -529,51 +532,21 @@ namespace Sklad_v1_001.FormUsers.Product
         private Boolean CheckCorrectReceiver()
         {
             FlexMessageBox mb = new FlexMessageBox();
+            if (!String.IsNullOrEmpty(ProductLocalRow.BarCodeString))
+            {
 
-           // if (!String.IsNullOrEmpty(Document.ReceiverDescription))
-            //{
-            //    Int32 id = 0;
-            //    if (Int32.TryParse(Document.ReceiverDescription, out id))
-            //    {
-            //        locationLogic = new LocationLogic(_numeric, _databasedata);
-            //        DataTable dt = locationLogic.FillGrid(id);
-            //        if (dt != null && dt.Rows.Count > 0)
-            //        {
-            //            Location.LocaleRow localrow = new Location.LocaleRow();
-            //            locationLogic.Convert(dt.Rows[0], localrow);
-            //            if (!String.IsNullOrEmpty(localrow.Description))
-            //                Document.ReceiverDescription = String.IsNullOrEmpty(localrow.Description) ? String.Concat(localrow.ID) : String.Concat(localrow.ID, " - ", localrow.Description);
-            //            else
-            //                Document.ReceiverDescription = String.Concat(localrow.ID);
-            //            Document.ReceiverID = localrow.ID;
-            //            return true;
-            //        }
-            //    }
-
-            //    else
-            //    {
-            //        locationLogic = new LocationLogic(_numeric, _databasedata);
-            //        DataTable dt = locationLogic.FillGrid(Document.ReceiverDescription);
-            //        if (dt != null && dt.Rows.Count > 0)
-            //        {
-            //            return true;
-            //        }
-            //    }
-
-            //    mb.Show(Properties.Resources.Warning, GenerateTitle(TitleType.Warning, Properties.Resources.BadData, EditBoxReceiver.LabelText), MessageBoxButton.OK, MessageBoxImage.Warning);
-            //    Document.ReceiverID = 0;
-            //    Document.ReceiverDescription = Properties.Resources.BadData;
-            //    //EditBoxReceiver_ButtonSelectClick();
-            //}
-            //else
-            //{
-            //    mb.Show(Properties.Resources.Warning, GenerateTitle(TitleType.Warning, Properties.Resources.BadData, EditBoxReceiver.LabelText), MessageBoxButton.OK, MessageBoxImage.Warning);
-            //    Document.ReceiverID = 0;
-            //    Document.ReceiverDescription = Properties.Resources.BadData;
-            //    //EditBoxReceiver_ButtonSelectClick();
-            //}
-
-            return false;
+                productLogic = new ProductLogic(attributes);
+                DataTable dt = productLogic.FillGrid(ProductLocalRow.BarCodeString);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    if (mb.Show(Properties.Resources.ErrorAddProductSupplyDocument, GenerateTitle(TitleType.Warning, Properties.Resources.BadData, BarCode.LabelText), MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.OK) 
+                    {
+                        productLogic.Convert(dt.Rows[0], productLocalRow);
+                        return true;
+                    }                    
+                }
+            }
+            return true;
         }
 
     }

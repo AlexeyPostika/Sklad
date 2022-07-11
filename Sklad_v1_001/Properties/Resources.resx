@@ -894,4 +894,7 @@
   <data name="Shop" xml:space="preserve">
     <value>Магазины</value>
   </data>
+  <data name="ErrorAddProductSupplyDocument" xml:space="preserve">
+    <value>BarCode - уже существует, использвать данный продукт?</value>
+  </data>
 </root>

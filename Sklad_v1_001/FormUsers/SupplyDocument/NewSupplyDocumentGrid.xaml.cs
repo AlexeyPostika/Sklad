@@ -363,7 +363,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 {
                     SupplyDocumentDetails.LocaleRow locale = new SupplyDocumentDetails.LocaleRow();
                     localeRowProduct = newAddProductItem.ProductLocalRow;
-                    if (newAddProductItem.ProductLocalRow.ID == 0)
+                    if (newAddProductItem.ProductLocalRow!=null)
                     {                            
                         locale.TempID = supplyDocumentDetails.Count() + 1;
                         locale.LineDocument = supplyDocumentDetails.Count() + 1;

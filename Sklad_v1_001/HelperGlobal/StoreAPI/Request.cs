@@ -53,7 +53,7 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI
                     };
                     webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
                     string temp = JsonConvert.SerializeObject(_supplyDocumentRequest, Newtonsoft.Json.Formatting.Indented);
-                    string response = webClient.UploadString(new Uri(@"https://192.168.0.112:60000/api/supplydocument"), "POST", JsonConvert.SerializeObject(_supplyDocumentRequest, Newtonsoft.Json.Formatting.Indented));
+                    string response = webClient.UploadString(new Uri(@"https://192.168.0.254:60000/api/supplydocument"), "POST", JsonConvert.SerializeObject(_supplyDocumentRequest, Newtonsoft.Json.Formatting.Indented));
                     Response resultOUT = JsonConvert.DeserializeObject<Response>(response);
                     if (resultOUT != null)
                     {
