@@ -259,6 +259,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Штрих-код внутр..
+        /// </summary>
+        public static string BarCodeID_BD {
+            get {
+                return ResourceManager.GetString("BarCodeID_BD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на КОРЗИНА.
         /// </summary>
         public static string BASKET {

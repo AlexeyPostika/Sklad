@@ -897,4 +897,7 @@
   <data name="ErrorAddProductSupplyDocument" xml:space="preserve">
     <value>BarCode - уже существует, использвать данный продукт?</value>
   </data>
+  <data name="BarCodeID_BD" xml:space="preserve">
+    <value>Штрих-код внутр.</value>
+  </data>
 </root>
