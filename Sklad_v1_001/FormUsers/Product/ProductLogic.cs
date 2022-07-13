@@ -340,6 +340,7 @@ namespace Sklad_v1_001.FormUsers.Product
         private String barCodeString;
         private String bareCodeEXTRString;
         private Int32 quantity;
+        private Int32 quantityStore;
         private Decimal tagPriceUSA;
         private Decimal tagPriceRUS;
         private String sizeProduct;
@@ -531,6 +532,20 @@ namespace Sklad_v1_001.FormUsers.Product
             {
                 quantity = value;
                 OnPropertyChanged("Quantity");
+            }
+        }
+
+        public Int32 QuantityStore
+        {
+            get
+            {
+                return quantityStore;
+            }
+
+            set
+            {
+                quantityStore = value;
+                OnPropertyChanged("QuantityStore");
             }
         }
         //PhonesDetails
@@ -991,6 +1006,7 @@ namespace Sklad_v1_001.FormUsers.Product
             ImageSourceTTN = ImageHelper.GenerateImage("IconMinus.png");
             ImageSourceInvoice = ImageHelper.GenerateImage("IconMinus.png");
             ListImage = new List<ImageSource>();
+            QuantityStore = 0;
         }
     }
 

@@ -61,8 +61,7 @@
                                               IsRequired="Visible"
                                               Description="{Binding Path=Model, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                             
                                               EnableTextBox="True"/>
-                <FlexEditBox:EditBoxSelectWithLabel x:Name="BarCode" LabelText="{x:Static res:Resources.BarCodeID}"
-                                                    Value="{Binding Path=BareCodeEXTRString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                              
+                <FlexEditBox:EditBoxSelectWithLabel x:Name="BarCode" LabelText="{x:Static res:Resources.BarCodeID}"                                                               
                                                     DisplayValue="{Binding Path=BareCodeEXTRString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                     LabelWidth="150"
                                                     LostFocus="BarCode_LostFocus"
@@ -74,9 +73,15 @@
                                                 IsEnabled="False"
                                                 LabelWidth="150"/>
                 <SimpleControl:EditBoxWithLabelNumericForEdit x:Name="QuantityName"  LabelText="{x:Static res:Resources.Quantity}"
-                                                              IsRequired="Visible"
+                                                              IsRequired="Collapsed"
                                                               Value="{Binding Path=Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=\{0:N0\}}"
                                                               LabelWidth="150"/>
+                <SimpleControl:EditBoxWithLabelNumericForEdit x:Name="QuantityStore"  LabelText="{x:Static res:Resources.QuantityStore}"
+                                                IsRequired="Collapsed"
+                                                Value="{Binding Path=QuantityStore, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                IsEnabled="False"
+                                                LabelWidth="150"/>
+                
                 <SimpleControl:EditBoxWithLabelFloatForEdit x:Name="TagPriceUSAName" LabelText="{x:Static res:Resources.TagPriceUSA}" 
                                                             IsRequired="Visible"
                                                             Value="{Binding Path=TagPriceUSA, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=\{0:N0\}}"

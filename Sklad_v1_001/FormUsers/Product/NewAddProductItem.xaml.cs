@@ -193,7 +193,7 @@ namespace Sklad_v1_001.FormUsers.Product
                 return false;
             }
             
-            if (String.IsNullOrEmpty(ProductLocalRow.BarCodeString))
+            if (String.IsNullOrEmpty(ProductLocalRow.BareCodeEXTRString))
             {
                 mb = new FlexMessageBox();
                 mb.Show(Properties.Resources.ErrorEmptyField, GenerateTitle(TitleType.Error, Properties.Resources.EmptyField, BarCode.LabelText), MessageBoxButton.OK, MessageBoxImage.Error);
@@ -524,6 +524,8 @@ namespace Sklad_v1_001.FormUsers.Product
             if (productInGrid.LocalRowProduct != null)
             {
                 ProductLocalRow = productInGrid.LocalRowProduct;
+                ProductLocalRow.QuantityStore = productInGrid.LocalRowProduct.Quantity;
+                ProductLocalRow.Quantity = 0;            
                 BarCode.EditBoxSelect.TextField.CaretIndex = ProductLocalRow.BarCodeString.Length;
             }
             BarCode.EditBoxSelect.TextField.Focus();
