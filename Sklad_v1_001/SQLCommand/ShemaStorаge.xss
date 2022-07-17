@@ -11,7 +11,7 @@
     <Shape ID="DesignTable:GetCategoryTable" ZOrder="6" X="310" Y="37" Height="267" Width="176" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="216" />
     <Shape ID="DesignTable:GetDeliveryCompanyTable" ZOrder="5" X="494" Y="40" Height="248" Width="144" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="197" />
     <Shape ID="DesignTable:SupplyDocumentDelivery" ZOrder="11" X="27" Y="314" Height="257" Width="214" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
-    <Shape ID="DesignTable:SupplyDocumentDetails" ZOrder="10" X="256" Y="316" Height="256" Width="205" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="252" />
+    <Shape ID="DesignTable:SupplyDocumentDetails" ZOrder="10" X="256" Y="316" Height="352" Width="205" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="348" />
     <Shape ID="DesignTable:SupplyDocumentPayment" ZOrder="9" X="471" Y="318" Height="219" Width="217" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="215" />
     <Shape ID="DesignTable:ShowCase" ZOrder="3" X="906" Y="390" Height="105" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="101" />
     <Shape ID="DesignTable:ProductImage" ZOrder="2" X="903" Y="316" Height="67" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="63" />

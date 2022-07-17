@@ -108,6 +108,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
         private ImageSource imageSourcePackage;
         private BitmapImage photoProductImage;
         private String barCodeString;
+        private String barcodesInput;
 
         //стандартные поля
         private DateTime? createdDate;
@@ -355,6 +356,19 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             {
                 barCodeString = value;
                 OnPropertyChanged("BarCodeString");
+            }
+        }
+        public string BarcodesInput
+        {
+            get
+            {
+                return barcodesInput;
+            }
+
+            set
+            {
+                barcodesInput = value;
+                OnPropertyChanged("BareCodeEXTRString");
             }
         }
 
@@ -667,6 +681,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             _localeRow.SizeProduct = convertData.ConvertDataString("SizeProduct");
             _localeRow.Package = convertData.ConvertDataBoolean("Size");
             _localeRow.BarCodeString= convertData.ConvertDataString("BarCodeString");
+            _localeRow.BarcodesInput = convertData.ConvertDataString("BarcodesInput");
             if (_dataRow["ImageProduct"] as byte[] != null)
             {
                 _localeRow.ImageProductByte = _dataRow["ImageProduct"] as byte[];
@@ -709,6 +724,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             _localeRow.Model = _row.Model;
             _localeRow.SizeProduct = _row.SizeProduct;
             _localeRow.BarCodeString = _row.BarCodeString;
+            _localeRow.BarcodesInput = _row.BareCodeEXTRString;
 
             //стандартные данные
             if (_localeRow.ID == 0)
@@ -755,7 +771,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             _row.Model = _localeRow.Model;
             _row.SizeProduct = _localeRow.SizeProduct;
             _row.BarCodeString = _localeRow.BarCodeString;
-
+            _row.BareCodeEXTRString = _localeRow.BarcodesInput;
             //стандартные данные
             if (_localeRow.ID == 0)
             {
@@ -786,6 +802,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentDetails
             _supplyDocumentDetailsRequest.CategoryDetailsID = row.CategoryDetailsID;
             _supplyDocumentDetailsRequest.ImageProduct = row.ImageProduct;
             _supplyDocumentDetailsRequest.BarcodesShop = row.BarCodeString;
+
             _supplyDocumentDetailsRequest.Model = row.Model;
             _supplyDocumentDetailsRequest.SizeProduct = row.SizeProduct;
             //_supplyDocumentDetailsRequest.Size =row.

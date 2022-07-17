@@ -2648,6 +2648,8 @@ namespace Sklad_v1_001.SQLCommand {
             
             private global::System.Data.DataColumn columnBarcodes;
             
+            private global::System.Data.DataColumn columnBarcodesInput;
+            
             private global::System.Data.DataColumn columnCreatedDate;
             
             private global::System.Data.DataColumn columnCreatedUserID;
@@ -2769,6 +2771,14 @@ namespace Sklad_v1_001.SQLCommand {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BarcodesInputColumn {
+                get {
+                    return this.columnBarcodesInput;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn CreatedDateColumn {
                 get {
                     return this.columnCreatedDate;
@@ -2870,6 +2880,7 @@ namespace Sklad_v1_001.SQLCommand {
                         int CategoryDetailsID, 
                         byte[] ImageProduct, 
                         string Barcodes, 
+                        string BarcodesInput, 
                         string CreatedDate, 
                         int CreatedUserID, 
                         string LastModificatedDate, 
@@ -2888,6 +2899,7 @@ namespace Sklad_v1_001.SQLCommand {
                         CategoryDetailsID,
                         ImageProduct,
                         Barcodes,
+                        BarcodesInput,
                         CreatedDate,
                         CreatedUserID,
                         LastModificatedDate,
@@ -2926,6 +2938,7 @@ namespace Sklad_v1_001.SQLCommand {
                 this.columnCategoryDetailsID = base.Columns["CategoryDetailsID"];
                 this.columnImageProduct = base.Columns["ImageProduct"];
                 this.columnBarcodes = base.Columns["Barcodes"];
+                this.columnBarcodesInput = base.Columns["BarcodesInput"];
                 this.columnCreatedDate = base.Columns["CreatedDate"];
                 this.columnCreatedUserID = base.Columns["CreatedUserID"];
                 this.columnLastModificatedDate = base.Columns["LastModificatedDate"];
@@ -2956,6 +2969,8 @@ namespace Sklad_v1_001.SQLCommand {
                 base.Columns.Add(this.columnImageProduct);
                 this.columnBarcodes = new global::System.Data.DataColumn("Barcodes", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBarcodes);
+                this.columnBarcodesInput = new global::System.Data.DataColumn("BarcodesInput", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBarcodesInput);
                 this.columnCreatedDate = new global::System.Data.DataColumn("CreatedDate", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCreatedDate);
                 this.columnCreatedUserID = new global::System.Data.DataColumn("CreatedUserID", typeof(int), null, global::System.Data.MappingType.Element);
@@ -6589,6 +6604,23 @@ namespace Sklad_v1_001.SQLCommand {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string BarcodesInput {
+                get {
+                    try {
+                        return ((string)(this[this.tableSupplyDocumentDetails.BarcodesInputColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'BarcodesInput\' в таблице \'SupplyDocumentDetails\' равно DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableSupplyDocumentDetails.BarcodesInputColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string CreatedDate {
                 get {
                     try {
@@ -6810,6 +6842,18 @@ namespace Sklad_v1_001.SQLCommand {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetBarcodesNull() {
                 this[this.tableSupplyDocumentDetails.BarcodesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsBarcodesInputNull() {
+                return this.IsNull(this.tableSupplyDocumentDetails.BarcodesInputColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetBarcodesInputNull() {
+                this[this.tableSupplyDocumentDetails.BarcodesInputColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

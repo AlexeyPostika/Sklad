@@ -256,6 +256,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                         SupplyDocumentDetailsToolBar.VisibilityApply = Visibility.Collapsed;
                         //DocumentToolbar.ButtonPrintLabels.IsEnabled = true;
                         break;
+                    case 3:
+                        ToolBarProduct.ButtonNewProduct.IsEnabled = false;
+                        ToolBarProduct.ButtonDelete.IsEnabled = false;
+                        ToolBarDelivery.ButtonNewProduct.IsEnabled = false;
+                        ToolBarDelivery.ButtonDelete.IsEnabled = false;
+                        SupplyDocumentDetailsToolBar.VisibilityApply = Visibility.Visible;                 
+                        SupplyDocumentDetailsToolBar.BottonApplyb.IsEnabled = false;
+                        SupplyDocumentDetailsToolBar.ButtonSaveb.IsEnabled = false;
+                        SupplyDocumentDetailsToolBar.ButtonSaveClose.IsEnabled = false;
+                        SupplyDocumentDetailsToolBar.ButtonListcansel.IsEnabled = true;
+                        SupplyDocumentDetailsToolBar.ButtonRequestSend.IsEnabled = false;
+                        IsApplyDocument = true;
+                        UserIDDocument.IsEnabled = false;
+                        break;
                 }
                 if (document.ID>0)
                     Refresh();
@@ -684,6 +698,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     row["Model"] = currentrow.Model;
                     row["SizeProduct"] = currentrow.SizeProduct;
                     row["Size"] = currentrow.Package;
+                    row["BarcodesInput"] = currentrow.BarcodesInput;
                     shemaStorаge.SupplyDocumentDetails.Rows.Add(row);
 
                     SupplyDocumentDetailsRequest supplyDocumentDetailsRequest = new SupplyDocumentDetailsRequest();                  
