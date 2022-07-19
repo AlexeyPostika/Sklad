@@ -702,28 +702,30 @@ namespace Sklad_v1_001.FormUsers.Product
                 win.Close();
             }
         }
-
-        private void ToolBarNextToBack_ButtonBack()
-        {
-
-        }
-
-        private void ToolBarNextToBack_ButtonNext()
-        {
-
-        }
-
         private void ToolbarNextPageData_ButtonBackIn()
         {
-
+            IsPaginator = true;
+            localFilter.PageNumber = 0;
+            Refresh();
+        }
+        private void ToolBarNextToBack_ButtonBack()
+        {
+            IsPaginator = true;
+            localFilter.PageNumber--;
+            Refresh();
+        }
+        private void ToolBarNextToBack_ButtonNext()
+        {
+            IsPaginator = true;
+            localFilter.PageNumber++;
+            Refresh();
         }
 
         private void ToolbarNextPageData_ButtonNextEnd()
         {
-
+            IsPaginator = true;
+            localFilter.PageNumber = (Int32)(Math.Ceiling((double)summary.CountID / localFilter.PagerowCount) - 1);
+            Refresh();
         }
-
-       
-       
     }
 }
