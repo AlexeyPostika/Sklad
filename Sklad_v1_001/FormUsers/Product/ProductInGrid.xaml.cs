@@ -667,6 +667,7 @@ namespace Sklad_v1_001.FormUsers.Product
                 datalist.Add(productLogic.Convert(row, localRow));              
             }
 
+
             CalculateSummary();
 
             TotalCount = summary.CountID;
@@ -725,6 +726,12 @@ namespace Sklad_v1_001.FormUsers.Product
         {
             IsPaginator = true;
             localFilter.PageNumber = (Int32)(Math.Ceiling((double)summary.CountID / localFilter.PagerowCount) - 1);
+            Refresh();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            localFilter.PagerowCount = (Int32)(Page.ActualHeight) / 210;
             Refresh();
         }
     }

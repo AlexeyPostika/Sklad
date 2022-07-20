@@ -14,6 +14,7 @@
       mc:Ignorable="d" 
       Title="{x:Static res:Resources.SupplyTitly}" 
       Style="{DynamicResource PageStyle}"     
+      Loaded="Page_Loaded"
       x:Name="Page">
 
     <Grid x:Name="wrappanel" Style="{DynamicResource GridStyle}">
@@ -130,8 +131,8 @@
                                    ButtonBackIn="ToolbarNextPageData_ButtonBackIn"
                                    ButtonNextEnd="ToolbarNextPageData_ButtonNextEnd"   
                                    Grid.Row="3"                                   
-                                   CurrentPage="{Binding ElementName=page, Path=CurrentPage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                   TotalCount="{Binding ElementName=page, Path=TotalCount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                   PageCount="{Binding ElementName=page, Path=PageCount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                   CurrentPage="{Binding ElementName=Page, Path=CurrentPage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   TotalCount="{Binding ElementName=Page, Path=TotalCount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   PageCount="{Binding ElementName=Page, Path=PageCount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
     </Grid>
 </Page>

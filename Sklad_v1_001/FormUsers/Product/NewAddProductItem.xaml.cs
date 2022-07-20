@@ -516,7 +516,7 @@ namespace Sklad_v1_001.FormUsers.Product
            //FlexMessageBox flexMessageBox = new FlexMessageBox();
             Window LocationWindow = new FlexWindows(Properties.Resources.Products);
             var location = BarCode.EditBoxSelect.PointToScreen(new Point(0, 0));
-            LocationWindow.WindowStartupLocation = WindowStartupLocation.Manual;
+            LocationWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             LocationWindow.Left = location.X;
             LocationWindow.Top = location.Y + BarCode.EditBoxSelect.ActualHeight;
             LocationWindow.Content = productInGrid;
