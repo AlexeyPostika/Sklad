@@ -1978,7 +1978,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         {
             _sqlRequestSelect.SqlAnswer.datatable.Clear();
             _data.Clear();
-            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeGrid);
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ItemByStatus);
             _sqlRequestSelect.SetParametrValue("@p_ID", id);
 
             _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
@@ -1991,8 +1991,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSelect.SqlAnswer.datatable.Clear();
             _data.Clear();
 
-            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeGrid);
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", _localFilter.ScreenTypeGrid);
             _sqlRequestSelect.SetParametrValue("@p_Search", _localFilter.Search);
+            _sqlRequestSelect.SetParametrValue("@p_ID", _localFilter.ID);
             _sqlRequestSelect.SetParametrValue("@p_CreatedUserID", _localFilter.CreatedByUserID);
             _sqlRequestSelect.SetParametrValue("@p_LastModifiedUserID", _localFilter.LastModifiedByUserID);
             _sqlRequestSelect.SetParametrValue("@p_Status", _localFilter.Status);

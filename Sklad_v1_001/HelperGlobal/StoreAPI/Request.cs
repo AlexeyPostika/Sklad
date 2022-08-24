@@ -51,7 +51,7 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI
                        // GetCertificateFromStore("");
                         return true;
                     };
-                   
+                    webClient.Encoding = System.Text.Encoding.UTF8;
                     //webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
                     webClient.Headers[HttpRequestHeader.ContentType] = "application/json";
                     string temp = JsonConvert.SerializeObject(_supplyDocumentRequest, Newtonsoft.Json.Formatting.Indented);

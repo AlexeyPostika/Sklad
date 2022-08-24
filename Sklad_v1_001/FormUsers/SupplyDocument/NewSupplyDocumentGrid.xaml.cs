@@ -701,9 +701,6 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     row["BarcodesInput"] = currentrow.BarcodesInput;
                     shemaStorаge.SupplyDocumentDetails.Rows.Add(row);
 
-                    SupplyDocumentDetailsRequest supplyDocumentDetailsRequest = new SupplyDocumentDetailsRequest();                  
-                    supplyDocumentDetailsLogic.Convert(currentrow, supplyDocumentDetailsRequest);                    
-                    request.supplyDocument.Details.Add(supplyDocumentDetailsRequest);
                 }
 
                 //сопуствующие товары             
@@ -727,11 +724,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     row["CreatedUserID"] = currentrow.CreatedUserID;
                     row["LastModificatedDate"] = DateTime.Now;
                     row["LastModificatedUserID"] = Document.UserID;                
-                    shemaStorаge.SupplyDocumentDelivery.Rows.Add(row);
-
-                    SupplyDocumentDeliveryRequest rowDeliveryRequest = new SupplyDocumentDeliveryRequest(attributes);
-                    supplyDocumentDeliveryLogic.Convert(currentrow, rowDeliveryRequest);
-                    request.supplyDocument.Delivery.Add(rowDeliveryRequest);
+                    shemaStorаge.SupplyDocumentDelivery.Rows.Add(row);                    
                 }
 
                 //виды оплат
@@ -750,10 +743,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     row["LastModificatedDate"] = DateTime.Now;
                     row["LastModificatedUserID"] = Document.UserID;
                     shemaStorаge.SupplyDocumentPayment.Rows.Add(row);
-                    
-                    SupplyDocumentPaymentRequest rowPaymentRequest = new SupplyDocumentPaymentRequest(attributes);
-                    supplyDocumentPaymentLogic.Convert(currentrow, rowPaymentRequest);
-                    request.supplyDocument.Payment.Add(rowPaymentRequest);
+                                      
                 }
                 Document.Amount = summary.SummaryProductTagPriceRUS;
                 Document.Count = summary.SummaryQuantityProduct;
@@ -903,9 +893,50 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         {
             if (Save() > 0)
             {
+                request = new Request(attributes);
                 Document.SupplyDocumentNumber = supplyDocumentLogic.SetRow(Document);
                 if (Document.ID > 0)
                 {
+                    SupplyDocumentLogic supplyDocumentLogic = new SupplyDocumentLogic(attributes);
+                    SupplyDocument.LocalFilter localeFilter = new SupplyDocument.LocalFilter();
+                    localeFilter.ScreenTypeGrid = ScreenType.ItemByStatus;
+                    localeFilter.ID = Document.ID;
+                    DataTable documentTable = supplyDocumentLogic.FillGrid(localeFilter);
+                    foreach(DataRow row in documentTable.Rows)
+                    {
+                        supplyDocumentLogic.Convert(row, Document);
+                        DataTable dataTableSupplyDocumentDetails = supplyDocumentDetailsLogic.FillGridDocument(Document.ID);
+                        foreach (DataRow rowDetails in dataTableSupplyDocumentDetails.Rows)
+                        {
+                            SupplyDocumentDetails.LocaleRow localeRowDetails = new SupplyDocumentDetails.LocaleRow();
+                            supplyDocumentDetails.Add(supplyDocumentDetailsLogic.Convert(rowDetails, localeRowDetails));
+                            SupplyDocumentDetailsRequest supplyDocumentDetailsRequest = new SupplyDocumentDetailsRequest();
+                            //localeRowDetails.BarCodeString = string.Empty;
+                            supplyDocumentDetailsLogic.Convert(localeRowDetails, supplyDocumentDetailsRequest);
+                            request.supplyDocument.Details.Add(supplyDocumentDetailsRequest);
+                        }
+
+                        DataTable dataTableSupplyDocumentDelivery = supplyDocumentDeliveryLogic.FillGrid(Document.ID);
+                        foreach (DataRow rowdelivery in dataTableSupplyDocumentDelivery.Rows)
+                        {
+                            SupplyDocumentDelivery.LocaleRow localeRowDelivery = new SupplyDocumentDelivery.LocaleRow();
+                            supplyDocumentDelivery.Add(supplyDocumentDeliveryLogic.Convert(rowdelivery, localeRowDelivery));
+                            SupplyDocumentDeliveryRequest rowDeliveryRequest = new SupplyDocumentDeliveryRequest(attributes);
+                            supplyDocumentDeliveryLogic.Convert(localeRowDelivery, rowDeliveryRequest);
+                            request.supplyDocument.Delivery.Add(rowDeliveryRequest);
+                        }
+
+                        DataTable dataTableSupplyDocumentPayment = supplyDocumentPaymentLogic.FillGrid(Document.ID);
+                        foreach (DataRow rowPayment in dataTableSupplyDocumentPayment.Rows)
+                        {
+                            SupplyDocumentPayment.LocaleRow localeRowPayment = new SupplyDocumentPayment.LocaleRow();
+                            supplyDocumentPayment.Add(supplyDocumentPaymentLogic.Convert(rowPayment, localeRowPayment));
+                            SupplyDocumentPaymentRequest rowPaymentRequest = new SupplyDocumentPaymentRequest(attributes);
+                            supplyDocumentPaymentLogic.Convert(localeRowPayment, rowPaymentRequest);
+                            request.supplyDocument.Payment.Add(rowPaymentRequest);
+                        }
+                    }
+
                     SupplyDocumentRequest supplyDocumentRequest = new SupplyDocumentRequest(attributes);
                     supplyDocumentLogic.Convert(Document, request.supplyDocument.Document);
                    
