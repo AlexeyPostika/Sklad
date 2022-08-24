@@ -1735,6 +1735,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на ОБНОВИТЬ.
+        /// </summary>
+        public static string REFRESH {
+            get {
+                return ResourceManager.GetString("REFRESH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Зарегистрировать.
         /// </summary>
         public static string REGISTER {

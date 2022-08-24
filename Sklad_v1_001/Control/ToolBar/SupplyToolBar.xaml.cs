@@ -41,6 +41,11 @@ namespace Sklad_v1_001.Control.ToolBar
          typeof(String),
          typeof(SupplyToolBar), new UIPropertyMetadata(""));
 
+        //IsEnableRefresh
+        public static readonly DependencyProperty IsEnableRefreshProperty = DependencyProperty.Register(
+         "IsEnableRefresh",
+         typeof(Boolean),
+         typeof(SupplyToolBar), new UIPropertyMetadata(false));
         public Boolean IsEnableAdd
         {
             get { return (Boolean)GetValue(IsEnableAddProperty); }
@@ -64,7 +69,11 @@ namespace Sklad_v1_001.Control.ToolBar
             get { return (String)GetValue(SearchProperty); }
             set { SetValue(SearchProperty, value); }
         }
-
+        public Boolean IsEnableRefresh
+        {
+            get { return (Boolean)GetValue(IsEnableRefreshProperty); }
+            set { SetValue(IsEnableRefreshProperty, value); }
+        }
         public delegate void ButtonScanHandler(String text);
 
         public event Action ButtonAdd;        
@@ -73,6 +82,7 @@ namespace Sklad_v1_001.Control.ToolBar
         public event ButtonScanHandler ButtonScan;
         public event Action ButtonClean;
         public event Action ButtonClear;
+        public event Action ButtonRefresh;
 
         public SupplyToolBar()
         {
@@ -81,6 +91,7 @@ namespace Sklad_v1_001.Control.ToolBar
             EditButton.Image.Source = ImageHelper.GenerateImage("IconDetails_X30.png");
             DeletedButton.Image.Source = ImageHelper.GenerateImage("IconDelete_X32.png");
             ClearButton.Image.Source = ImageHelper.GenerateImage("IconClearAllFilters_X32.png");
+            RefreshButton.Image.Source = ImageHelper.GenerateImage("IconRefresh_X32.png");
         }
 
 
@@ -112,6 +123,11 @@ namespace Sklad_v1_001.Control.ToolBar
         private void Scan_ButtonTextChangedClick()
         {
             ButtonScan?.Invoke(Search);
+        }
+
+        private void RefreshButton_ButtonClick()
+        {
+            ButtonRefresh?.Invoke();
         }
     }
 }

@@ -18,6 +18,8 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="280"/>
             <ColumnDefinition Width="5"/>
@@ -44,9 +46,16 @@
                                 Text="{x:Static res:Resources.DELETE}"
                                 IsEnabled="{Binding ElementName=control, Path=IsEnableDeleted, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                 ButtonClick="DeletedButton_ButtonClick"/>
+        
+        <FlexButton:LevelButton x:Name="RefreshButton"
+                                Margin="0,5,0,0"
+                                Grid.Column="7"
+                                Text="{x:Static res:Resources.REFRESH}"
+                                IsEnabled="{Binding ElementName=control, Path=IsEnableRefresh, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                ButtonClick="RefreshButton_ButtonClick"/>
 
         <FlexEditBox:EditBoxDeleteWithLabel x:Name="Scan" 
-                                            Grid.Column="7"
+                                            Grid.Column="9"
                                             LabelWidth="55"
                                             Margin="0,0,0,5"
                                             LabelText="{x:Static res:Resources.Search}"
@@ -62,7 +71,7 @@
 
         <FlexButton:LevelButton x:Name="ClearButton"
                                 Margin="0,5,0,0"
-                                Grid.Column="9"
+                                Grid.Column="11"
                                 Text="{x:Static res:Resources.CLEAR}"
                                 ButtonClick="ClearButton_ButtonClick"/>
     </Grid>
