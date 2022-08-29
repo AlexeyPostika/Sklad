@@ -751,6 +751,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             ToolBarSupply.Scan.Text = String.Empty;
             Refresh();
         }
+
+        private void ToolBarSupply_ButtonRefresh()
+        {
+
+        }
         #endregion
 
         #region Refresh

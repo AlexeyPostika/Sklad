@@ -26,8 +26,10 @@
                                ButtonClear="SupplyToolBar_ButtonClear"
                                ButtonScan="SupplyToolBar_ButtonScan"
                                ButtonClean="ToolBarSupply_ButtonClean"
+                               ButtonRefresh="ToolBarSupply_ButtonRefresh"
                                IsEnableAdd="True"
                                IsEnableEdit="True"
+                               IsEnableRefresh ="True"
                                IsEnableDeleted="{Binding ElementName=page, Path=IsEnableDeleted, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
         <Grid Grid.Row="1" x:Name="SypplyDocumentList">
