@@ -416,6 +416,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         private String lastModificatedDateString;
         private Int32 lastModificatedUserID;
         private String lastModificatedUserIDString;
+        public Int32 CompanyID { get; set; }
+        public Int32 ShopID { get; set; }
 
         //Category
         private String massCategoryID;
@@ -1371,6 +1373,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             ReffDate = DateTime.Now;
             ShemaStorаgeLocal = new ShemaStorаge();
             Status = 0;
+            ShopID = 100;
+            CompanyID = 1;
         }
     }
 
@@ -2237,6 +2241,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _supplyDocumentRequest.CreatedUserID = row.CreatedUserID;
             _supplyDocumentRequest.LastModificatedDate = row.LastModificatedDate;
             _supplyDocumentRequest.LastModificatedUserID = row.LastModificatedUserID;
+            _supplyDocumentRequest.ShopID = attributes.numeric.attributeCompany.ShopId;
+            _supplyDocumentRequest.CompanyID = attributes.numeric.attributeCompany.CompanyID;
 
             return _supplyDocumentRequest;
         }
