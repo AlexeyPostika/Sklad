@@ -73,6 +73,7 @@ namespace Sklad_v1_001.Control.ToolBar
         public event ButtonScanHandler ButtonScan;
         public event Action ButtonClean;
         public event Action ButtonClear;
+        public event Action ButtonRefresh;
 
         public RegisterToolBar()
         {
@@ -81,6 +82,7 @@ namespace Sklad_v1_001.Control.ToolBar
             EditButton.Image.Source = ImageHelper.GenerateImage("IconDetails_X30.png");
             DeletedButton.Image.Source = ImageHelper.GenerateImage("IconDelete_X32.png");
             ClearButton.Image.Source = ImageHelper.GenerateImage("IconClearAllFilters_X32.png");
+            RefreshButton.Image.Source = ImageHelper.GenerateImage("IconRefresh_X32.png");
         }
 
 
@@ -112,6 +114,11 @@ namespace Sklad_v1_001.Control.ToolBar
         private void Scan_ButtonTextChangedClick()
         {
             ButtonScan?.Invoke(Search);
+        }
+
+        private void RefreshButton_ButtonClick()
+        {
+            ButtonRefresh?.Invoke();
         }
     }
 }

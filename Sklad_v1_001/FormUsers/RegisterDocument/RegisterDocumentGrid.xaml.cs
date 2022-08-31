@@ -1,4 +1,5 @@
 ﻿using Sklad_v1_001.GlobalAttributes;
+using Sklad_v1_001.HelperGlobal.StoreAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,6 +54,16 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
         private void ToolBarSaleDocument_ButtonClean()
         {
 
+        }
+        private void ToolBarSaleDocument_ButtonRefresh()
+        {
+            Request request = new Request(attributes);
+            request.supplyDocument.Document.Status = 6;//затягиваем документы, которые нужно подтвердить
+            Response response = request.GetCommand(2);
+            if (response != null)
+            {
+
+            }
         }
 
         #endregion
@@ -135,5 +146,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
         }
 
         #endregion
+
+       
     }
 }

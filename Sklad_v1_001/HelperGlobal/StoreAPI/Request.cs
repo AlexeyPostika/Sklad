@@ -31,6 +31,7 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI
                     response = SupplyDocumentPOST(supplyDocument);
                     break;
                 case 2:
+                    response = SupplyDocumentGet(supplyDocument);
                     break;
             }
             return response;
@@ -72,6 +73,45 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI
                 return resultOUT;
             }
             
+        }
+
+        private Response SupplyDocumentGet(SupplyDocumentRequest _supplyDocumentRequest)
+        {
+            Response response = new Response();
+            try
+            {
+                using (var webClient = new WebClient())
+                {
+                    
+                    // Выполняем запрос по адресу и получаем ответ в виде строки
+                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3;
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                    ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, errors) =>
+                    {
+                        // GetCertificateFromStore("");
+                        return true;
+                    };
+                    webClient.Encoding = System.Text.Encoding.UTF8;
+                    //webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+                    webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
+                    string responseString = webClient.DownloadString(new Uri(@"https://192.168.0.254:60000/api/supplydocument/"+ _supplyDocumentRequest.Document.Status.ToString()));               
+                    response.SupplyDocumentListOutput = JsonConvert.DeserializeObject<SupplyDocumentRequestList>(responseString);
+                    if (response.SupplyDocumentListOutput != null)
+                    {                      
+                        return response;
+                    }
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Response resultOUT = new Response();
+                resultOUT.ErrorCode = -1;
+                resultOUT.DescriptionEX = ex.Message;
+                return resultOUT;
+            }
+
         }
 
         private static X509Certificate2 GetCertificateFromStore(string certificateNumber)

@@ -33,6 +33,7 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocument
 
     public class SupplyDocumentRequest
     {
+        //public Int32 Status { get; set; }
         public SupplyDocuments Document { get; set; }
         public List<SupplyDocumentDeliveryRequest> Delivery { get; set; }
         public List<SupplyDocumentDetailsRequest> Details { get; set; }
@@ -45,6 +46,7 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocument
             Payment = new List<SupplyDocumentPaymentRequest>();
             Document.ShopID = 100;
             Document.CompanyID = 1;
+            //Status = 0;
         }
         public SupplyDocumentRequest()
         {
@@ -53,5 +55,15 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocument
             Details = new List<SupplyDocumentDetailsRequest>();
             Payment = new List<SupplyDocumentPaymentRequest>();          
         }       
+    }
+
+    public class SupplyDocumentRequestList
+    {
+        public List<SupplyDocumentRequest> ListDocuments { get; set; }
+
+        public SupplyDocumentRequestList()
+        {
+            ListDocuments = new List<SupplyDocumentRequest>();
+        }
     }
 }

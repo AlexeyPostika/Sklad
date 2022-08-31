@@ -36,6 +36,12 @@
                                 IsEnabled="{Binding ElementName=control, Path=IsEnableDeleted, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                 ButtonClick="DeletedButton_ButtonClick"/>
 
+        <FlexButton:LevelButton x:Name="RefreshButton"
+                                Margin="0,5,0,0"
+                                Grid.Column="4"
+                                Text="{x:Static res:Resources.REFRESH}"                                
+                                ButtonClick="RefreshButton_ButtonClick"/>
+
         <FlexEditBox:EditBoxDeleteWithLabel x:Name="Scan" 
                                             Grid.Column="6"
                                             LabelWidth="55"

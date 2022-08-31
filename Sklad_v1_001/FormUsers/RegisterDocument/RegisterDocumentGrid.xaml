@@ -21,15 +21,16 @@
                 <RowDefinition Height="20*"/>
             </Grid.RowDefinitions>
             <ToolBar:RegisterToolBar x:Name="ToolBarSaleDocument"
-                               Margin="5,5,5,0"                             
-                               ButtonEdit="ToolBarSaleDocument_ButtonEdit"
-                               ButtonDelete="ToolBarSaleDocument_ButtonDelete"
-                               ButtonClear="ToolBarSaleDocument_ButtonClear"
-                               ButtonScan="ToolBarSaleDocument_ButtonScan"
-                               ButtonClean="ToolBarSaleDocument_ButtonClean"
-                               IsEnableAdd="True"
-                               IsEnableEdit="True"
-                               IsEnableDeleted="{Binding ElementName=page, Path=IsEnableDeleted, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                                     Margin="5,5,5,0"                             
+                                     ButtonEdit="ToolBarSaleDocument_ButtonEdit"
+                                     ButtonDelete="ToolBarSaleDocument_ButtonDelete"
+                                     ButtonClear="ToolBarSaleDocument_ButtonClear"
+                                     ButtonScan="ToolBarSaleDocument_ButtonScan"
+                                     ButtonClean="ToolBarSaleDocument_ButtonClean"
+                                     ButtonRefresh="ToolBarSaleDocument_ButtonRefresh"
+                                     IsEnableAdd="True"
+                                     IsEnableEdit="True"
+                                     IsEnableDeleted="{Binding ElementName=page, Path=IsEnableDeleted, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
             <Grid Grid.Row="1" x:Name="registerDocumentList">
                 <DataGrid x:Name="saleDocument" 
