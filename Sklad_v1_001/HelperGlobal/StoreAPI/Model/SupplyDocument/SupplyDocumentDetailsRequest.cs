@@ -1,6 +1,7 @@
 ﻿using Sklad_v1_001.GlobalAttributes;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +31,8 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocumentDetails
         public Int32 LastModificatedUserID { get; set; }
         public Int32 CompanyID { get; set; }
         public Int32 ShopID { get; set; }
+        [Timestamp]
+        public Byte[] ReffTimeRow { get; set; }
         public SupplyDocumentDetailsRequest()
         {
             CompanyID = 1;
