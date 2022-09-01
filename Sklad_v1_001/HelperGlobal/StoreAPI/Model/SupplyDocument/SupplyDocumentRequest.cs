@@ -28,6 +28,7 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocument
         public Int32 CreatedUserID { get; set; }
         public DateTime? LastModificatedDate { get; set; }
         public Int32 LastModificatedUserID { get; set; }
+        public String ReffTimeRow { get; set; }
     }
 
 
