@@ -5863,7 +5863,7 @@ namespace Sklad_v1_001.SQLCommand {
                         System.DateTime CreatedDate, 
                         int CreatedUserID, 
                         System.DateTime LastModificatedDate, 
-                        System.DateTime LastModificatedUserID, 
+                        int LastModificatedUserID, 
                         string Model, 
                         string SizeProduct, 
                         byte Size, 
@@ -5961,7 +5961,7 @@ namespace Sklad_v1_001.SQLCommand {
                 base.Columns.Add(this.columnCreatedUserID);
                 this.columnLastModificatedDate = new global::System.Data.DataColumn("LastModificatedDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLastModificatedDate);
-                this.columnLastModificatedUserID = new global::System.Data.DataColumn("LastModificatedUserID", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                this.columnLastModificatedUserID = new global::System.Data.DataColumn("LastModificatedUserID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLastModificatedUserID);
                 this.columnModel = new global::System.Data.DataColumn("Model", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnModel);
@@ -10966,10 +10966,10 @@ namespace Sklad_v1_001.SQLCommand {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime LastModificatedUserID {
+            public int LastModificatedUserID {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableRegisterDocumentDetails.LastModificatedUserIDColumn]));
+                        return ((int)(this[this.tableRegisterDocumentDetails.LastModificatedUserIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("Значение для столбца \'LastModificatedUserID\' в таблице \'RegisterDocumentDetails\' " +

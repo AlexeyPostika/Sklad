@@ -26,9 +26,8 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocumentDelivery
         public DateTime? CreatedDate { get; set; }
         public Int32 CreatedUserID { get; set; }
         public DateTime? LastModificatedDate { get; set; }
-        public Int32 LastModificatedUserID { get; set; }
-        [Timestamp]
-        public Byte[] ReffTimeRow { get; set; }
+        public Int32 LastModificatedUserID { get; set; }   
+        public String TimeRow { get; set; }
         public SupplyDocumentDeliveryRequest(Attributes _attributes)
         {
             CompanyID = 1;

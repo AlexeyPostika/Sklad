@@ -24,8 +24,7 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocumentPayment
         public Int32 CreatedUserID { get; set; }
         public DateTime? LastModificatedDate { get; set; }
         public Int32 LastModificatedUserID { get; set; }
-        [Timestamp]
-        public Byte[] ReffTimeRow { get; set; }
+        public String TimeRow { get; set; }
         public SupplyDocumentPaymentRequest(Attributes _attributes)
         {
             CompanyID = 1;

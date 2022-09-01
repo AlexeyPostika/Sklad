@@ -77,17 +77,17 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
                     row["Count"] = rowResponse.Document.Count;
                     row["Amount"] = rowResponse.Document.Amount;
                     row["ReffID"] = rowResponse.Document.ID;
-                    row["ReffDate"] = null;
-                    row["RegisterDocumentNumber"] = null;
+                   // row["ReffDate"] = null;
+                    //row["RegisterDocumentNumber"] = null;
                     row["SupplyDocumentNumber"] = rowResponse.Document.SupplyDocumentNumber;                   
                     row["CreatedDate"] = rowResponse.Document.CreatedDate == null ? DateTime.Now : rowResponse.Document.CreatedDate;
                     row["CreatedUserID"] = rowResponse.Document.CreatedUserID;
                     row["LastModificatedDate"] = DateTime.Now;
                     row["LastModificatedUserID"] = attributes.numeric.userEdit.AddUserID;
-                    row["Status"] = rowResponse.Document.Status;
+                    row["Status"] = rowResponse.Document.Status == 6 ? 0 : rowResponse.Document.Status;
                     row["ShopID"] = rowResponse.Document.ShopID;
                     row["CompanyId"] = rowResponse.Document.CompanyID;
-                    row["ReffTimeRow"] = rowResponse.Document.ReffTimeRow;
+                    row["ReffTimeRow"] = rowResponse.Document.TimeRow;
                     shemaStore.RegisterDocument.Rows.Add(row);
 
                     foreach (SupplyDocumentDeliveryRequest rowDeliveryReff in rowResponse.Delivery)
@@ -124,7 +124,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
                         rowDetails["CategoryDetailsID"] = rowDetailsReff.CategoryDetailsID;
                         if (rowDetailsReff.ImageProduct != null)
                             rowDetails["ImageProduct"] = rowDetailsReff.ImageProduct;
-                        rowDetails["Barcodes"] = rowDetailsReff.BarcodesShop;
+                        rowDetails["Barecodes"] = rowDetailsReff.BarcodesShop;
                         rowDetails["CreatedDate"] = rowDetailsReff.CreatedDate == null ? DateTime.Now : rowDetailsReff.CreatedDate;
                         rowDetails["CreatedUserID"] = rowDetailsReff.CreatedUserID;
                         rowDetails["LastModificatedDate"] = DateTime.Now;
