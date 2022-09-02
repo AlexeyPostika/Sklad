@@ -1600,16 +1600,16 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
         Dictionary<String, DataTable> filters;
         Dictionary<String, Range> filtersFromTo;
 
-        string get_store_procedure = "xp_GetSupplyDocumentTable";
-        string get_filters_procedure = "xp_GetSupplyDocumentFilter";
-        string get_summary_procedure = "xp_GetSupplyDocumentSummary";
+        string get_store_procedure = "xp_GetRegisterDocumentTable";
+        string get_filters_procedure = "xp_GetRegisterDocumentFilter";
+        string get_summary_procedure = "xp_GetRegisterDocumentSummary";
 
-        string get_save_procedure = "xp_SaveSupplyDocument";    
-        string get_save_procedure_table = "xp_SaveSupplyDocumentTable";
+        string get_save_procedure = "xp_SaveRegisterDocument";    
+        string get_save_procedure_table = "xp_SaveRegisterDocumentTable";
 
-        string sender_store_procedure = "xp_SenderSupplyDocumentID";
-        string response_store_procedure = "xp_ResponseSaveSupplyDocument";
-        string set_store_procedure = "xp_SetSupplyDocumentID";
+        string sender_store_procedure = "xp_SenderRegisterDocumentID";
+        string response_store_procedure = "xp_ResponseSaveRegisterDocument";
+        string set_store_procedure = "xp_SetRegisterDocumentID";
 
         SQLCommanSelect _sqlRequestSelect = null;
         SQLCommanSelect _sqlRequestSelectFilters = null;
@@ -1897,34 +1897,22 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
 
             //----------------------------------------------------------------------------
             _sqlRequestSaveTable.AddParametr("@p_AddUserID", SqlDbType.Int);
-            _sqlRequestSaveTable.SetParametrValue("@p_AddUserID", 1);
+            _sqlRequestSaveTable.SetParametrValue("@p_AddUserID", attributes.numeric.userEdit.AddUserID);
 
-            _sqlRequestSaveTable.AddParametr("@p_UserID", SqlDbType.Int);
-            _sqlRequestSaveTable.SetParametrValue("@p_UserID", 0);
+            _sqlRequestSaveTable.AddParametr("@p_DateUTCOut", SqlDbType.DateTime);
+            _sqlRequestSaveTable.SetParametrValue("@p_DateUTCOut", DateTime.Now);
 
-            _sqlRequestSaveTable.AddParametr("@p_ID", SqlDbType.Int);
-            _sqlRequestSaveTable.SetParametrValue("@p_ID", 0);
-
-            _sqlRequestSaveTable.AddParametr("@p_Status", SqlDbType.Int);
-            _sqlRequestSaveTable.SetParametrValue("@p_Status", 0);
-
-            _sqlRequestSaveTable.AddParametr("@p_Count", SqlDbType.Int);
-            _sqlRequestSaveTable.SetParametrValue("@p_Count", 0);
-
-            _sqlRequestSaveTable.AddParametr("@p_Amount", SqlDbType.Money);
-            _sqlRequestSaveTable.SetParametrValue("@p_Amount", 0);
-           
-            _sqlRequestSaveTable.AddParametr("@p_SupplyDocumentNumber", SqlDbType.BigInt);
-            _sqlRequestSaveTable.SetParametrValue("@p_SupplyDocumentNumber", 0);
+            _sqlRequestSaveTable.AddParametr("@p_tableDocument", SqlDbType.Structured);
+            _sqlRequestSaveTable.SetParametrValue("@p_tableDocument", new DataTable());
 
             _sqlRequestSaveTable.AddParametr("@p_tableDetails", SqlDbType.Structured);
-            _sqlRequestSaveTable.SetParametrValue("@p_tableDetails", shemaStorаge.SupplyDocumentDetails);
+            _sqlRequestSaveTable.SetParametrValue("@p_tableDetails", new DataTable());
 
             _sqlRequestSaveTable.AddParametr("@p_tableDelivery", SqlDbType.Structured);
-            _sqlRequestSaveTable.SetParametrValue("@p_tableDelivery", shemaStorаge.SupplyDocumentDelivery);
+            _sqlRequestSaveTable.SetParametrValue("@p_tableDelivery", new DataTable());
 
-            _sqlRequestSaveTable.AddParametr("@p_tablePayment", SqlDbType.Structured);
-            _sqlRequestSaveTable.SetParametrValue("@p_tablePayment", shemaStorаge.SupplyDocumentPayment);
+            //_sqlRequestSaveTable.AddParametr("@p_tablePayment", SqlDbType.Structured);
+            //_sqlRequestSaveTable.SetParametrValue("@p_tablePayment", new DataTable());
 
             //----------------------------------------------------------------------------
             _sqlResponseSave.AddParametr("@p_AddUserID", SqlDbType.Int);
@@ -2100,25 +2088,19 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             return (Int32)_sqlRequestSave.SqlAnswer.result;
         }
 
-        public Int32 SaveRowTable(LocalRow row)
+        public Int32 SaveRowTable(LocalRow row, DataTable dataTable)
         {
-            //SupplyDocument
-            _sqlRequestSaveTable.SetParametrValue("@p_UserID", row.LastModificatedUserID);
-            _sqlRequestSaveTable.SetParametrValue("@p_ID", row.ID);
-            _sqlRequestSaveTable.SetParametrValue("@p_Status", row.Status);
-            _sqlRequestSaveTable.SetParametrValue("@p_Count", row.Count);
-            _sqlRequestSaveTable.SetParametrValue("@p_Amount", row.Amount);
-            _sqlRequestSaveTable.SetParametrValue("@p_SupplyDocumentNumber", row.SupplyDocumentNumber);
+            //RegisterDocument
+            _sqlRequestSaveTable.SetParametrValue("@p_tableDocument", row.ShemaStorаgeLocal.RegisterDocument);
 
-            //SupplyDocumentDetails
-            _sqlRequestSaveTable.SetParametrValue("@p_tableDetails", row.ShemaStorаgeLocal.SupplyDocumentDetails);
+            //RegisterDocumentDetails
+            _sqlRequestSaveTable.SetParametrValue("@p_tableDetails", row.ShemaStorаgeLocal.RegisterDocumentDetails);
 
-            //SupplyDocumentDeliverry
-            _sqlRequestSaveTable.SetParametrValue("@p_tableDelivery", row.ShemaStorаgeLocal.SupplyDocumentDelivery);
+            ////RegisterDocumentDeliverry
+            _sqlRequestSaveTable.SetParametrValue("@p_tableDelivery", row.ShemaStorаgeLocal.RegisterDocumentDelivery);//row.ShemaStorаgeLocal.RegisterDocumentDelivery
 
-            //SupplyDocumentPayment
-            _sqlRequestSaveTable.SetParametrValue("@p_tablePayment", row.ShemaStorаgeLocal.SupplyDocumentPayment);
-
+            ////RegisterDocumentPayment
+            //_sqlRequestSaveTable.SetParametrValue("@p_tablePayment", row.ShemaStorаgeLocal.RegisterDocumentPayment);
 
             _sqlRequestSaveTable.ComplexRequest(get_save_procedure_table, CommandType.StoredProcedure, null);
             return (Int32)_sqlRequestSaveTable.SqlAnswer.result;

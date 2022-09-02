@@ -2,6 +2,11 @@
 {
     partial class ShemaStorаge
     {
+        partial class RegisterDocumentDataTable
+        {
+            
+        }
+
         partial class BasketShopDataTable
         {
         }
