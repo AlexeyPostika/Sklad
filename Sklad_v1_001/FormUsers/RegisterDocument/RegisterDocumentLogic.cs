@@ -1911,8 +1911,8 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             _sqlRequestSaveTable.AddParametr("@p_tableDelivery", SqlDbType.Structured);
             _sqlRequestSaveTable.SetParametrValue("@p_tableDelivery", new DataTable());
 
-            //_sqlRequestSaveTable.AddParametr("@p_tablePayment", SqlDbType.Structured);
-            //_sqlRequestSaveTable.SetParametrValue("@p_tablePayment", new DataTable());
+            _sqlRequestSaveTable.AddParametr("@p_tablePayment", SqlDbType.Structured);
+            _sqlRequestSaveTable.SetParametrValue("@p_tablePayment", new DataTable());
 
             //----------------------------------------------------------------------------
             _sqlResponseSave.AddParametr("@p_AddUserID", SqlDbType.Int);
@@ -2099,8 +2099,8 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             ////RegisterDocumentDeliverry
             _sqlRequestSaveTable.SetParametrValue("@p_tableDelivery", row.ShemaStorаgeLocal.RegisterDocumentDelivery);//row.ShemaStorаgeLocal.RegisterDocumentDelivery
 
-            ////RegisterDocumentPayment
-            //_sqlRequestSaveTable.SetParametrValue("@p_tablePayment", row.ShemaStorаgeLocal.RegisterDocumentPayment);
+            //RegisterDocumentPayment
+            _sqlRequestSaveTable.SetParametrValue("@p_tablePayment", row.ShemaStorаgeLocal.RegisterDocumentPayment);
 
             _sqlRequestSaveTable.ComplexRequest(get_save_procedure_table, CommandType.StoredProcedure, null);
             return (Int32)_sqlRequestSaveTable.SqlAnswer.result;

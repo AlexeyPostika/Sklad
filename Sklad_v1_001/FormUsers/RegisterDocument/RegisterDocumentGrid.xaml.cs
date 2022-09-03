@@ -88,7 +88,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             Request request = new Request(attributes);
             request.supplyDocument.Document.Status = 6;//затягиваем документы, которые нужно подтвердить
             Response response = request.GetCommand(2);
-            if (response != null)
+            if (response != null && response.ErrorCode==0)
             {
                 Save(response);
             }
