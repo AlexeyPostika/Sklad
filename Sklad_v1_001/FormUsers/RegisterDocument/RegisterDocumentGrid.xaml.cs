@@ -644,17 +644,30 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
 
         private void ToolBarSaleDocument_ButtonClear()
         {
+            InitFilters();
+            filter = new LocalFilter();
+            filter.Status = "All";
+            filter.LastModifiedByUserID = "All";
+            filter.Shop = "All";
+            filter.CreatedByUserID = "All";
+            filter.DeliveryID = "All";
 
+            filter.AmountMin = AmountMin;
+            filter.AmountMax = AmountMax;
+            ClearfilterStatusID = ImageHelper.GenerateImage("IconFilter.png");
+            Refresh();
         }
 
         private void ToolBarSaleDocument_ButtonScan(string text)
         {
-
+            filter.Search = text;
+            Refresh();
         }
 
         private void ToolBarSaleDocument_ButtonClean()
         {
-
+            ToolBarRegisterDocument.Scan.Text = String.Empty;
+            Refresh();
         }
         private void ToolBarSaleDocument_ButtonRefresh()
         {           
@@ -688,7 +701,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
         private void saleDocument_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             List<LocalRow> currentrow = this.registerDocument.SelectedItems.Cast<LocalRow>().ToList();
-            if (currentrow != null)
+            if (currentrow != null && currentrow.Count() > 0)
             {
                 //if (currentrow.Last().SupplyDocumentNumber > 0)
                 //    IsEnableDeleted = false;

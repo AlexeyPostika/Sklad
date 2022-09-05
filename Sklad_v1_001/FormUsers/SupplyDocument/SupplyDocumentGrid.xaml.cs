@@ -830,7 +830,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         private void SypplyDocument_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             List<LocalRow> currentrow = this.SypplyDocument.SelectedItems.Cast<LocalRow>().ToList();
-            if (currentrow != null)
+            if (currentrow != null && currentrow.Count() > 0)
             {
                 if (currentrow.Last().SupplyDocumentNumber > 0)
                     IsEnableDeleted = false;
@@ -881,6 +881,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         private void SupplyToolBar_ButtonClear()
         {          
             InitFilters();
+            localFilter = new LocalFilter();
             localFilter.Status = "All";
             localFilter.AmountMin = AmountMin;
             localFilter.AmountMax = AmountMax;

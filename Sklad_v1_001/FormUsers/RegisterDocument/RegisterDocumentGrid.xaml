@@ -20,7 +20,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="20*"/>
             </Grid.RowDefinitions>
-            <ToolBar:RegisterToolBar x:Name="ToolBarSaleDocument"
+            <ToolBar:RegisterToolBar x:Name="ToolBarRegisterDocument"
                                      Margin="5,5,5,0"                             
                                      ButtonEdit="ToolBarSaleDocument_ButtonEdit"
                                      ButtonDelete="ToolBarSaleDocument_ButtonDelete"
@@ -70,7 +70,7 @@
                         <DataGridTextColumn Binding="{Binding Path=RegisterDocumentNumberString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NumberDocument}" Width="Auto"/>
                         <DataGridTextColumn Binding="{Binding Path=SupplyDocumentNumberString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NumberDocumentShop}" Width="Auto"/>
 
-                        <DataGridTemplateColumn x:Name="FilterQuantity" Width="Auto" IsReadOnly="True" SortMemberPath="Quantity" CanUserSort="True">
+                        <DataGridTemplateColumn x:Name="FilterQuantity" Width="Auto" IsReadOnly="True" SortMemberPath="Count" CanUserSort="True">
                             <DataGridTemplateColumn.HeaderTemplate>
                                 <DataTemplate>
                                     <FlexFilter:FlexGridFromTo HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" x:Name="FilterQuantity" 
