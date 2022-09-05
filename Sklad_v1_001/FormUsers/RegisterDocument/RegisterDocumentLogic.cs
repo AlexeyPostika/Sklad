@@ -1197,6 +1197,9 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
 
             _sqlRequestSelect.AddParametr("@p_DeliveryID", SqlDbType.NVarChar, 255);
             _sqlRequestSelect.SetParametrValue("@p_DeliveryID", "");
+            
+            _sqlRequestSelect.AddParametr("@p_Shop", SqlDbType.NVarChar, 255);
+            _sqlRequestSelect.SetParametrValue("@p_Shop", "");
 
             _sqlRequestSelect.AddParametr("@p_Quantity_Min", SqlDbType.Int);
             _sqlRequestSelect.SetParametrValue("@p_Quantity_Min", 0);
@@ -1474,6 +1477,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             _sqlRequestSelect.SetParametrValue("@p_Status", _localFilter.Status);
             _sqlRequestSelect.SetParametrValue("@p_ManagerUserID", _localFilter.ManagerUserID);
             _sqlRequestSelect.SetParametrValue("@p_DeliveryID", _localFilter.DeliveryID);
+            _sqlRequestSelect.SetParametrValue("@p_Shop", _localFilter.Shop);
             _sqlRequestSelect.SetParametrValue("@p_Quantity_Min", _localFilter.QuantityMin);
             _sqlRequestSelect.SetParametrValue("@p_Quantity_Max", _localFilter.QuantityMax);
             _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Min", _localFilter.AmountMin);
