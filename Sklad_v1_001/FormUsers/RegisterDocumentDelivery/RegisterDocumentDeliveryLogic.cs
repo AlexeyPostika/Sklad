@@ -536,7 +536,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocumetnDelivery
     {
         Attributes attributes;
 
-        string get_store_procedure = "xp_GetSupplyDocumentDeliveryTable";
+        string get_store_procedure = "xp_GetRegisterDocumentDeliveryTable";
 
         // запрос
         SQLCommanSelect _sqlRequestSelect = null;

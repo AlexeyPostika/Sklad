@@ -936,7 +936,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                             request.supplyDocument.Payment.Add(rowPaymentRequest);
                         }
                     }
-
+                    Document.Count = request.supplyDocument.Payment.Count() + request.supplyDocument.Delivery.Count() + request.supplyDocument.Details.Count();
                     SupplyDocumentRequest supplyDocumentRequest = new SupplyDocumentRequest(attributes);
                     supplyDocumentLogic.Convert(Document, request.supplyDocument.Document);
                    

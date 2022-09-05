@@ -1,4 +1,5 @@
-﻿using Sklad_v1_001.FormUsers.RegisterDocumentDetails;
+﻿using Sklad_v1_001.Control.FlexMessageBox;
+using Sklad_v1_001.FormUsers.RegisterDocumentDetails;
 using Sklad_v1_001.FormUsers.RegisterDocumentPayment;
 using Sklad_v1_001.FormUsers.RegisterDocumetnDelivery;
 using Sklad_v1_001.GlobalAttributes;
@@ -30,6 +31,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static Sklad_v1_001.HelperGlobal.MessageBoxTitleHelper;
 
 namespace Sklad_v1_001.FormUsers.RegisterDocument
 {
@@ -67,7 +69,9 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
         DataTable filterIDManagerName;
         DataTable filterIDDelivery;
         DataTable filterIDStatus;
+        DataTable filterInputUserID;
         DataTable filterLastModifiedByUserID;
+        DataTable filterIDShop;
 
         Int32 filterDateIDLastModifiadDate;
         DateTime? fromLastModifiadDate;
@@ -225,6 +229,20 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
                 OnPropertyChanged("FilterIDStatus");
             }
         }
+
+        public DataTable FilterInputUserID
+        {
+            get
+            {
+                return filterInputUserID;
+            }
+
+            set
+            {
+                filterInputUserID = value;
+                OnPropertyChanged("FilterInputUserID");
+            }
+        }
         public DataTable FilterLastModifiedByUserID
         {
             get
@@ -236,6 +254,20 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             {
                 filterLastModifiedByUserID = value;
                 OnPropertyChanged("FilterLastModifiedByUserID");
+            }
+        }
+
+        public DataTable FilterIDShop
+        {
+            get
+            {
+                return filterIDShop;
+            }
+
+            set
+            {
+                filterIDShop = value;
+                OnPropertyChanged("FilterIDShop");
             }
         }
         public int FilterDateIDLastModifiadDate
@@ -542,7 +574,9 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             FilterIDManagerName = new DataTable();
             FilterIDDelivery = new DataTable();
             FilterIDStatus = new DataTable();
+            FilterInputUserID = new DataTable();
             FilterLastModifiedByUserID = new DataTable();
+            FilterIDShop = new DataTable();
 
             FilterIDManagerName.Columns.Add("ID");
             FilterIDManagerName.Columns.Add("IsChecked");
@@ -556,9 +590,17 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             FilterIDStatus.Columns.Add("IsChecked");
             FilterIDStatus.Columns.Add("Description");
 
+            FilterInputUserID.Columns.Add("ID");
+            FilterInputUserID.Columns.Add("IsChecked");
+            FilterInputUserID.Columns.Add("Description");
+
             FilterLastModifiedByUserID.Columns.Add("ID");
             FilterLastModifiedByUserID.Columns.Add("IsChecked");
             FilterLastModifiedByUserID.Columns.Add("Description");
+
+            FilterIDShop.Columns.Add("ID");
+            FilterIDShop.Columns.Add("IsChecked");
+            FilterIDShop.Columns.Add("Description");
 
             convertData = new ConvertData();
 
@@ -622,6 +664,21 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             if (response != null && response.ErrorCode==0)
             {
                 Save(response);
+                InitFilters();
+                Refresh();
+            }
+            else
+            {
+                FlexMessageBox mb2 = new FlexMessageBox();
+                List<BitmapImage> ButtonImages = new List<BitmapImage>();
+                ButtonImages.Add(ImageHelper.GenerateImage("IconAdd.png"));
+                ButtonImages.Add(ImageHelper.GenerateImage("IconContinueWork.png"));
+                List<string> ButtonText = new List<string>();
+                ButtonText.Add(Properties.Resources.AddSmall);
+                ButtonText.Add(Properties.Resources.MessageIgnore);
+
+                mb2.Show("Ошибка: " + response.ErrorCode + " - " + response.DescriptionEX, GenerateTitle(TitleType.Error, Properties.Resources.ErrorSendAPITitle), MessageBoxButton.OK, MessageBoxImage.Error);
+
             }
         }
 
@@ -719,6 +776,31 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             ClearfilterAmount = ImageHelper.GenerateImage("IconFilter.png");
  
             SupplyTypeList supplyTypeList = new SupplyTypeList();
+            FilterIDShop.Clear();
+            if (registerDocumentLogic.GetFilter("ShopID") != null)
+            {
+                foreach (DataRow row in registerDocumentLogic.GetFilter("ShopID").Rows)
+                {
+                    DataRow newrow = FilterIDShop.NewRow();
+                    newrow["ID"] = row["ID"];
+                    newrow["IsChecked"] = true;
+                    newrow["Description"] = row["Description"];
+                    FilterIDShop.Rows.Add(newrow);
+                }
+            }
+
+            FilterInputUserID.Clear();
+            if (registerDocumentLogic.GetFilter("InputUserID") != null)
+            {
+                foreach (DataRow row in registerDocumentLogic.GetFilter("InputUserID").Rows)
+                {
+                    DataRow newrow = FilterInputUserID.NewRow();
+                    newrow["ID"] = row["ID"];
+                    newrow["IsChecked"] = true;
+                    newrow["Description"] = row["Description"];
+                    FilterInputUserID.Rows.Add(newrow);
+                }
+            }
 
             FilterIDManagerName.Clear();
             if (registerDocumentLogic.GetFilter("ManagerName") != null)

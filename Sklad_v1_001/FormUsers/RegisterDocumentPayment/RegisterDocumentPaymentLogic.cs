@@ -317,7 +317,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocumentPayment
     {
         Attributes attributes;
 
-        string get_store_procedure = "xp_GetSupplyDocumentPaymentTable";
+        string get_store_procedure = "xp_GetRegisterDocumentPaymentTable";
 
         // запрос
         SQLCommanSelect _sqlRequestSelect = null;

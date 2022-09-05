@@ -414,12 +414,14 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
         private String supplyDocumentNumberString;
         private DateTime? createdDate;
         private String createdDateString;
-        private Int32 createdUserID;
-        private String createdUserIDString;
+        private Int32 inputUserID;
+        private String displayInputUserID;
+        private String shortDisplayInputUserID;
         private DateTime? lastModificatedDate;
         private String lastModificatedDateString;
         private Int32 lastModificatedUserID;
-        private String lastModificatedUserIDString;       
+        private String lDisplayNameUser;
+        private String shortLDisplayNameUser;
 
         public Int32 ID
         {
@@ -629,31 +631,45 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             }
         }
 
-        public Int32 CreatedUserID
+        public Int32 InputUserID
         {
             get
             {
-                return createdUserID;
+                return inputUserID;
             }
 
             set
             {
-                createdUserID = value;
-                OnPropertyChanged("CreatedUserID");
+                inputUserID = value;
+                OnPropertyChanged("InputUserID");
             }
         }
     
-        public string CreatedUserIDString
+        public string DisplayInputUserID
         {
             get
             {
-                return createdUserIDString;
+                return displayInputUserID;
             }
 
             set
             {
-                createdUserIDString = value;
-                OnPropertyChanged("CreatedUserIDString");
+                displayInputUserID = value;
+                OnPropertyChanged("DisplayInputUserID");
+            }
+        }
+        
+        public string ShortDisplayInputUserID
+        {
+            get
+            {
+                return shortDisplayInputUserID;
+            }
+
+            set
+            {
+                shortDisplayInputUserID = value;
+                OnPropertyChanged("ShortDisplayInputUserID");
             }
         }
         public DateTime? LastModificatedDate
@@ -698,19 +714,33 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             }
         }
 
-        public string LastModificatedUserIDString
+        public string LDisplayNameUser
         {
             get
             {
-                return lastModificatedUserIDString;
+                return lDisplayNameUser;
             }
 
             set
             {
-                lastModificatedUserIDString = value;
-                OnPropertyChanged("LastModificatedUserIDString");
+                lDisplayNameUser = value;
+                OnPropertyChanged("LDisplayNameUser");
             }
-        }     
+        }
+        
+        public string ShortLDisplayNameUser
+        {
+            get
+            {
+                return shortLDisplayNameUser;
+            }
+
+            set
+            {
+                shortLDisplayNameUser = value;
+                OnPropertyChanged("ShortLDisplayNameUser");
+            }
+        }
         public Int32 Count
         {
             get
@@ -1026,6 +1056,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
         public DataTable innerList3;
         public DataTable innerList4;
         public DataTable innerList5;
+        public DataTable innerList6;
 
         public class Range
         {
@@ -1080,6 +1111,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             innerList3 = new DataTable();
             innerList4 = new DataTable();
             innerList5 = new DataTable();
+            innerList6 = new DataTable();
 
             innerList1.Columns.Add("ID");
             innerList1.Columns.Add("IsChecked");
@@ -1101,11 +1133,16 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             innerList5.Columns.Add("IsChecked");
             innerList5.Columns.Add("Description");
 
-            filters.Add("CreatedByUserID", innerList1);
+            innerList6.Columns.Add("ID");
+            innerList6.Columns.Add("IsChecked");
+            innerList6.Columns.Add("Description");
+
+            filters.Add("InputUserID", innerList1);
             filters.Add("LastModifiedByUserID", innerList2);
             filters.Add("Delivery", innerList3);
             filters.Add("ManagerName", innerList4);
             filters.Add("Status", innerList5);
+            filters.Add("ShopID", innerList6);
 
             Range QuantityRange = new Range();
             Range AmountRange = new Range();
@@ -1561,10 +1598,14 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             _localeRow.CreatedDateString = convertData.DateTimeConvertShortString(_localeRow.CreatedDate);
             _localeRow.LastModificatedDate = convertData.ConvertDataDateTime("LastModificatedDate");
             _localeRow.LastModificatedDateString = convertData.DateTimeConvertShortString(_localeRow.LastModificatedDate);
-            _localeRow.CreatedUserID = convertData.ConvertDataInt32("CreatedUserID");
-            _localeRow.LastModificatedUserID = convertData.ConvertDataInt32("LUserId");
-            _localeRow.CreatedUserIDString= convertData.ConvertDataString("CreatedUserIDString");
-            _localeRow.LastModificatedUserIDString = convertData.ConvertDataString("LastModificatedUserIDString");
+            _localeRow.InputUserID = convertData.ConvertDataInt32("InputUserID");
+            _localeRow.DisplayInputUserID = convertData.ConvertDataString("DisplayInputUserID");
+            _localeRow.ShortDisplayInputUserID= convertData.ConvertDataString("ShortDisplayInputUserID");
+            
+            _localeRow.LastModificatedUserID = convertData.ConvertDataInt32("LastModificatedUserID");           
+            _localeRow.LDisplayNameUser = convertData.ConvertDataString("LDisplayNameUser");
+            _localeRow.ShortLDisplayNameUser= convertData.ConvertDataString("ShortLDisplayNameUser");
+
             _localeRow.Invoice = convertData.ConvertDataString("Invoice");
             _localeRow.TTN = convertData.ConvertDataString("TTN");
             _localeRow.ManagerName = convertData.ConvertDataString("ManagerName");
@@ -1604,7 +1645,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
 
             //_supplyDocumentDetailsRequest.Size =row.
             _supplyDocumentRequest.CreatedDate = row.CreatedDate;
-            _supplyDocumentRequest.CreatedUserID = row.CreatedUserID;
+            _supplyDocumentRequest.CreatedUserID = row.InputUserID;
             _supplyDocumentRequest.LastModificatedDate = row.LastModificatedDate;
             _supplyDocumentRequest.LastModificatedUserID = row.LastModificatedUserID;
 
@@ -1624,11 +1665,12 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
         public void InitFilters()
         {
             DataTable table = FillGridAllFilter();
-            FillFilter("CreatedByUserID", table);
+            FillFilter("InputUserID", table);
             FillFilter("LastModifiedByUserID", table);
             FillFilter("Delivery", table);
             FillFilter("ManagerName", table);
             FillFilter("Status", table);
+            FillFilter("ShopID", table);
 
             RowsFilters rowsFilters;
             foreach(DataRow row in table.Rows)

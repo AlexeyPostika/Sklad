@@ -561,7 +561,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocumentDetails
     public class RegisterDocumentDetailsLogic
     {
         Attributes attributes;
-        string get_store_procedure = "xp_GetSupplyDocumentDetailsTable";
+        string get_store_procedure = "xp_GetRegisterDocumentDetailsTable";
 
         // запрос
         SQLCommanSelect _sqlRequestSelect = null;
