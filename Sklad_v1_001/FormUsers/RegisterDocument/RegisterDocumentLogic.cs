@@ -27,6 +27,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
         private String createdByUserID;
         private String lastModifiedByUserID;
         private String status;
+        private String shop;
 
         private Double quantityMin;
         private Double quantityMax;
@@ -213,7 +214,20 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
                 OnPropertyChanged("Status");
             }
         }
+       
+        public string Shop
+        {
+            get
+            {
+                return shop;
+            }
 
+            set
+            {
+                shop = value;
+                OnPropertyChanged("Shop");
+            }
+        }
         public string CreatedByUserID
         {
             get
@@ -383,6 +397,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             LastModifiedByUserID = "All";
             ManagerUserID = "All";
             DeliveryID = "All";
+            Shop = "All";
         }
 
     }

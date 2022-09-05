@@ -873,27 +873,35 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
 
         private void FilterShopID_ButtonApplyClick(string text)
         {
-
+            filter.Shop = text;
+            Refresh();
         }
 
         private void FilterQuantity_ButtonApplyClick()
         {
-
+            filter.QuantityMax = QuantityMax;
+            filter.QuantityMin = QuantityMin;
+            Refresh();
         }
 
         private void FilterAmount_ButtonApplyClick()
         {
 
+            filter.AmountMax = AmountMax;
+            filter.AmountMin = AmountMin;
+            Refresh();
         }
 
         private void filterIdUserInput_ButtonApplyClick(string text)
         {
-
+            filter.CreatedByUserID = text;
+            Refresh();
         }
 
         private void FilterUserID_ButtonApplyClick(string text)
         {
-
+            filter.LastModifiedByUserID = text;
+            Refresh();
         }
 
         #endregion
