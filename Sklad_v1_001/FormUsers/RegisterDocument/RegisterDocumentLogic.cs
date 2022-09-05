@@ -404,6 +404,10 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
         private String tTN;
         private String managerName;
         private String delivery;
+        private Int32 shopID;
+        private String nameShopID;
+        private Int32 companyID;
+        private String nameCompanyID;
 
         private DateTime? reffDate;
         private Int64 supplyDocumentNumber;
@@ -415,63 +419,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
         private DateTime? lastModificatedDate;
         private String lastModificatedDateString;
         private Int32 lastModificatedUserID;
-        private String lastModificatedUserIDString;
-
-        //Category
-        private String massCategoryID;
-        private String massName;
-        private String massDescription;
-        //CategoryDetails
-        private String massCategoryDetailsID;
-        private String massIDCategory;
-        private String massCategoryDetailsName;
-        private String massCategoryDetailsDescription;
-
-        //Delivery
-        private String massDeliveryID;
-        private String massNameCompanyDelivery;
-        private String massPhonesDelivery;
-        private String massAdressDelivery;
-        private String massCountryDelivery;
-        //DeliveryDetails
-        private String massDeliveryDetailsID;
-        private String massIDDelivery;
-        private String massManagerName;
-        private String massPhonesDeliveryDetails;
-
-        //SupplyDocumentDetails
-        private String massSupplyDocumentDetailsID;
-        private String massSupplyDocumentDetailsName;
-        private String massSupplyDocumentDetailsQuantity;
-        private String massSupplyDocumentDetailsTagPriceUSA;
-        private String massSupplyDocumentDetailsTagPriceRUS;
-        private String massSupplyDocumentDetailsCategoryID;
-        private String massSupplyDocumentDetailsCategoryDetailsID;
-        private String massSupplyDocumentDetailsImageProduct;
-        private String massSupplyDocumentDetailsModel;
-        private String massSupplyDocumentDetailsSizeProduct;
-        private String massSupplyDocumentDetailsSize;
-        private String massSupplyDocumentDetailsBarCode;     
-
-        //SupplyDocumentDelivery
-        private String massSupplyDocumentDeliveryID;
-        private String massSupplyDocumentDeliveryDeliveryID;
-        private String massSupplyDocumentDeliveryDeliveryDetailsID;
-        //@p_MassSupplyDocumentDeliveryDocumentID nvarchar(MAX) = '',
-        private String massSupplyDocumentDeliveryTTN;
-        private String massSupplyDocumentDeliveryImageTTN;
-        private String massSupplyDocumentDeliveryInvoice;
-        private String massSupplyDocumentDeliveryImageInvoice;
-        private String massSupplyDocumentDeliveryAmountUSA;
-        private String massSupplyDocumentDeliveryAmountRUS;
-
-        //SupplyDocumentPayment
-        private String massSupplyDocumentPaymentID;
-        private String massSupplyDocumentPaymentAmount;
-        private String massSupplyDocumentPaymentStatus;
-        private String massSupplyDocumentPaymentOperationType;
-        private String massSupplyDocumentPaymentDescription;
-        private String massSupplyDocumentPaymentRRN;
+        private String lastModificatedUserIDString;       
 
         public Int32 ID
         {
@@ -594,6 +542,62 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             {
                 delivery = value;
                 OnPropertyChanged("Delivery");
+            }
+        }
+
+        public Int32 ShopID
+        {
+            get
+            {
+                return shopID;
+            }
+
+            set
+            {
+                shopID = value;
+                OnPropertyChanged("ShopID");
+            }
+        }
+
+        public String NameShopID
+        {
+            get
+            {
+                return nameShopID;
+            }
+
+            set
+            {
+                nameShopID = value;
+                OnPropertyChanged("NameShopID");
+            }
+        }
+        
+        public Int32 CompanyID
+        {
+            get
+            {
+                return companyID;
+            }
+
+            set
+            {
+                companyID = value;
+                OnPropertyChanged("CompanyID");
+            }
+        }
+       
+        public String NameCompanyID
+        {
+            get
+            {
+                return nameCompanyID;
+            }
+
+            set
+            {
+                nameCompanyID = value;
+                OnPropertyChanged("NameCompanyID");
             }
         }
 
@@ -735,575 +739,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             }
         }
 
-        public string MassCategoryID
-        {
-            get
-            {
-                return massCategoryID;
-            }
-
-            set
-            {
-                massCategoryID = value;
-                OnPropertyChanged("MassCategoryID");
-            }
-        }
-        public string MassName
-        {
-            get
-            {
-                return massName;
-            }
-
-            set
-            {
-                massName = value;
-                OnPropertyChanged("MassName");
-            }
-        }
-        public string MassDescription
-        {
-            get
-            {
-                return massDescription;
-            }
-
-            set
-            {
-                massDescription = value;
-                OnPropertyChanged("MassDescription");
-            }
-        }
-        public string MassCategoryDetailsID
-        {
-            get
-            {
-                return massCategoryDetailsID;
-            }
-
-            set
-            {
-                massCategoryDetailsID = value;
-                OnPropertyChanged("MassCategoryDetailsID");
-            }
-        }
-        public string MassIDCategory
-        {
-            get
-            {
-                return massIDCategory;
-            }
-
-            set
-            {
-                massIDCategory = value;
-                OnPropertyChanged("MassIDCategory");
-            }
-        }
-        public string MassCategoryDetailsName
-        {
-            get
-            {
-                return massCategoryDetailsName;
-            }
-
-            set
-            {
-                massCategoryDetailsName = value;
-                OnPropertyChanged("MassCategoryDetailsName");
-            }
-        }
-        public string MassCategoryDetailsDescription
-        {
-            get
-            {
-                return massCategoryDetailsDescription;
-            }
-
-            set
-            {
-                massCategoryDetailsDescription = value;
-                OnPropertyChanged("MassCategoryDetailsDescription");
-            }
-        }
-        public string MassDeliveryID
-        {
-            get
-            {
-                return massDeliveryID;
-            }
-
-            set
-            {
-                massDeliveryID = value;
-                OnPropertyChanged("MassDeliveryID");
-            }
-        }
-        public string MassNameCompanyDelivery
-        {
-            get
-            {
-                return massNameCompanyDelivery;
-            }
-
-            set
-            {
-                massNameCompanyDelivery = value;
-                OnPropertyChanged("MassNameCompanyDelivery");
-            }
-        }
-        public string MassPhonesDelivery
-        {
-            get
-            {
-                return massPhonesDelivery;
-            }
-
-            set
-            {
-                massPhonesDelivery = value;
-                OnPropertyChanged("MassPhonesDelivery");
-            }
-        }
-        public string MassAdressDelivery
-        {
-            get
-            {
-                return massAdressDelivery;
-            }
-
-            set
-            {
-                massAdressDelivery = value;
-                OnPropertyChanged("MassAdressDelivery");
-            }
-        }
-        public string MassCountryDelivery
-        {
-            get
-            {
-                return massCountryDelivery;
-            }
-
-            set
-            {
-                massCountryDelivery = value;
-                OnPropertyChanged("MassCountryDelivery");
-            }
-        }
-        public string MassDeliveryDetailsID
-        {
-            get
-            {
-                return massDeliveryDetailsID;
-            }
-
-            set
-            {
-                massDeliveryDetailsID = value;
-                OnPropertyChanged("MassDeliveryDetailsID");
-            }
-        }
-        public string MassIDDelivery
-        {
-            get
-            {
-                return massIDDelivery;
-            }
-
-            set
-            {
-                massIDDelivery = value;
-                OnPropertyChanged("MassIDDelivery");
-            }
-        }
-        public string MassManagerName
-        {
-            get
-            {
-                return massManagerName;
-            }
-
-            set
-            {
-                massManagerName = value;
-                OnPropertyChanged("MassManagerName");
-            }
-        }
-        public string MassPhonesDeliveryDetails
-        {
-            get
-            {
-                return massPhonesDeliveryDetails;
-            }
-
-            set
-            {
-                massPhonesDeliveryDetails = value;
-                OnPropertyChanged("MassPhonesDeliveryDetails");
-            }
-        }
-        public string MassSupplyDocumentDetailsID
-        {
-            get
-            {
-                return massSupplyDocumentDetailsID;
-            }
-
-            set
-            {
-                massSupplyDocumentDetailsID = value;
-                OnPropertyChanged("MassSupplyDocumentDetailsID");
-            }
-        }
-        public string MassSupplyDocumentDetailsName
-        {
-            get
-            {
-                return massSupplyDocumentDetailsName;
-            }
-
-            set
-            {
-                massSupplyDocumentDetailsName = value;
-                OnPropertyChanged("MassSupplyDocumentDetailsName");
-            }
-        }
-        public string MassSupplyDocumentDetailsQuantity
-        {
-            get
-            {
-                return massSupplyDocumentDetailsQuantity;
-            }
-
-            set
-            {
-                massSupplyDocumentDetailsQuantity = value;
-                OnPropertyChanged("MassSupplyDocumentDetailsQuantity");
-            }
-        }
-        public string MassSupplyDocumentDetailsTagPriceUSA
-        {
-            get
-            {
-                return massSupplyDocumentDetailsTagPriceUSA;
-            }
-
-            set
-            {
-                massSupplyDocumentDetailsTagPriceUSA = value;
-                OnPropertyChanged("MassSupplyDocumentDetailsTagPriceUSA");
-            }
-        }
-        public string MassSupplyDocumentDetailsTagPriceRUS
-        {
-            get
-            {
-                return massSupplyDocumentDetailsTagPriceRUS;
-            }
-
-            set
-            {
-                massSupplyDocumentDetailsTagPriceRUS = value;
-                OnPropertyChanged("MassSupplyDocumentDetailsTagPriceRUS");
-            }
-        }
-        public string MassSupplyDocumentDetailsCategoryID
-        {
-            get
-            {
-                return massSupplyDocumentDetailsCategoryID;
-            }
-
-            set
-            {
-                massSupplyDocumentDetailsCategoryID = value;
-                OnPropertyChanged("MassSupplyDocumentDetailsCategoryID");
-            }
-        }
-        public string MassSupplyDocumentDetailsCategoryDetailsID
-        {
-            get
-            {
-                return massSupplyDocumentDetailsCategoryDetailsID;
-            }
-
-            set
-            {
-                massSupplyDocumentDetailsCategoryDetailsID = value;
-                OnPropertyChanged("MassSupplyDocumentDetailsCategoryDetailsID");
-            }
-        }
-        public String MassSupplyDocumentDetailsImageProduct
-        {
-            get
-            {
-                return massSupplyDocumentDetailsImageProduct;
-            }
-
-            set
-            {
-                massSupplyDocumentDetailsImageProduct = value;
-                OnPropertyChanged("MassSupplyDocumentDetailsImageProduct");
-            }
-        }
-
-        public String MassSupplyDocumentDetailsModel
-        {
-            get
-            {
-                return massSupplyDocumentDetailsModel;
-            }
-
-            set
-            {
-                massSupplyDocumentDetailsModel = value;
-                OnPropertyChanged("MassSupplyDocumentDetailsModel");
-            }
-        }
-
-        public String MassSupplyDocumentDetailsSizeProduct
-        {
-            get
-            {
-                return massSupplyDocumentDetailsSizeProduct;
-            }
-
-            set
-            {
-                massSupplyDocumentDetailsSizeProduct = value;
-                OnPropertyChanged("MassSupplyDocumentDetailsSizeProduct");
-            }
-        }
-      
-        public String MassSupplyDocumentDetailsSize
-        {
-            get
-            {
-                return massSupplyDocumentDetailsSize;
-            }
-
-            set
-            {
-                massSupplyDocumentDetailsSize = value;
-                OnPropertyChanged("MassSupplyDocumentDetailsSize");
-            }
-        }
-
-        public String MassSupplyDocumentDetailsBarCode
-        {
-            get
-            {
-                return massSupplyDocumentDetailsBarCode;
-            }
-
-            set
-            {
-                massSupplyDocumentDetailsBarCode = value;
-                OnPropertyChanged("MassSupplyDocumentDetailsBarCode");
-            }
-        }
-
-        public string MassSupplyDocumentDeliveryID
-        {
-            get
-            {
-                return massSupplyDocumentDeliveryID;
-            }
-
-            set
-            {
-                massSupplyDocumentDeliveryID = value;
-                OnPropertyChanged("MassSupplyDocumentDeliveryID");
-            }
-        }
-        public string MassSupplyDocumentDeliveryDeliveryID
-        {
-            get
-            {
-                return massSupplyDocumentDeliveryDeliveryID;
-            }
-
-            set
-            {
-                massSupplyDocumentDeliveryDeliveryID = value;
-                OnPropertyChanged("MassSupplyDocumentDeliveryDeliveryID");
-            }
-        }
-        public string MassSupplyDocumentDeliveryDeliveryDetailsID
-        {
-            get
-            {
-                return massSupplyDocumentDeliveryDeliveryDetailsID;
-            }
-
-            set
-            {
-                massSupplyDocumentDeliveryDeliveryDetailsID = value;
-                OnPropertyChanged("MassSupplyDocumentDeliveryDeliveryDetailsID");
-            }
-        }
-        public string MassSupplyDocumentDeliveryTTN
-        {
-            get
-            {
-                return massSupplyDocumentDeliveryTTN;
-            }
-
-            set
-            {
-                massSupplyDocumentDeliveryTTN = value;
-                OnPropertyChanged("MassSupplyDocumentDeliveryTTN");
-            }
-        }
-        public string MassSupplyDocumentDeliveryImageTTN
-        {
-            get
-            {
-                return massSupplyDocumentDeliveryImageTTN;
-            }
-
-            set
-            {
-                massSupplyDocumentDeliveryImageTTN = value;
-                OnPropertyChanged("MassSupplyDocumentDeliveryImageTTN");
-            }
-        }
-        public string MassSupplyDocumentDeliveryInvoice
-        {
-            get
-            {
-                return massSupplyDocumentDeliveryInvoice;
-            }
-
-            set
-            {
-                massSupplyDocumentDeliveryInvoice = value;
-                OnPropertyChanged("MassSupplyDocumentDeliveryInvoice");
-            }
-        }
-        public string MassSupplyDocumentDeliveryImageInvoice
-        {
-            get
-            {
-                return massSupplyDocumentDeliveryImageInvoice;
-            }
-
-            set
-            {
-                massSupplyDocumentDeliveryImageInvoice = value;
-                OnPropertyChanged("MassSupplyDocumentDeliveryImageInvoice");
-            }
-        }
-
-        public string MassSupplyDocumentDeliveryAmountUSA
-        {
-            get
-            {
-                return massSupplyDocumentDeliveryAmountUSA;
-            }
-
-            set
-            {
-                massSupplyDocumentDeliveryAmountUSA = value;
-                OnPropertyChanged("MassSupplyDocumentDeliveryAmountUSA");
-            }
-        }
-      
-        public string MassSupplyDocumentDeliveryAmountRUS
-        {
-            get
-            {
-                return massSupplyDocumentDeliveryAmountRUS;
-            }
-
-            set
-            {
-                massSupplyDocumentDeliveryAmountRUS = value;
-                OnPropertyChanged("MassSupplyDocumentDeliveryAmountRUS");
-            }
-        }
-        public string MassSupplyDocumentPaymentStatus
-        {
-            get
-            {
-                return massSupplyDocumentPaymentStatus;
-            }
-
-            set
-            {
-                massSupplyDocumentPaymentStatus = value;
-                OnPropertyChanged("MassSupplyDocumentPaymentStatus");
-            }
-        }
-        public string MassSupplyDocumentPaymentID
-        {
-            get
-            {
-                return massSupplyDocumentPaymentID;
-            }
-
-            set
-            {
-                massSupplyDocumentPaymentID = value;
-                OnPropertyChanged("MassSupplyDocumentPaymentID");
-            }
-        }
-        public string MassSupplyDocumentPaymentAmount
-        {
-            get
-            {
-                return massSupplyDocumentPaymentAmount;
-            }
-
-            set
-            {
-                massSupplyDocumentPaymentAmount = value;
-                OnPropertyChanged("MassSupplyDocumentPaymentAmount");
-            }
-        }
-        public string MassSupplyDocumentPaymentOperationType
-        {
-            get
-            {
-                return massSupplyDocumentPaymentOperationType;
-            }
-
-            set
-            {
-                massSupplyDocumentPaymentOperationType = value;
-                OnPropertyChanged("MassSupplyDocumentPaymentOperationType");
-            }
-        }
        
-        public string MassSupplyDocumentPaymentDescription
-        {
-            get
-            {
-                return massSupplyDocumentPaymentDescription;
-            }
-
-            set
-            {
-                massSupplyDocumentPaymentDescription = value;
-                OnPropertyChanged("MassSupplyDocumentPaymentDescription");
-            }
-        }
-
-        public string MassSupplyDocumentPaymentRRN
-        {
-            get
-            {
-                return massSupplyDocumentPaymentRRN;
-            }
-
-            set
-            {
-                massSupplyDocumentPaymentRRN = value;
-                OnPropertyChanged("MassSupplyDocumentPaymentRRN");
-            }
-        }
-
         public int ReffID
         {
             get
@@ -2037,58 +1473,8 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             _data = _sqlRequestSelectSummary.SqlAnswer.datatable;
             return _data;
         }
-      
-        public Int32 SaveRow(LocalRow row)
-        {
-            //SupplyDocument
-            _sqlRequestSave.SetParametrValue("@p_UserID", row.UserID);
-            _sqlRequestSave.SetParametrValue("@p_ID", row.ID);
-            _sqlRequestSave.SetParametrValue("@p_Status", row.Status);
-            _sqlRequestSave.SetParametrValue("@p_Count", row.Count);
-            _sqlRequestSave.SetParametrValue("@p_Amount", row.Amount);
-            //_sqlRequestSave.SetParametrValue("@p_ReffID", row.ReffID);
-            //_sqlRequestSave.SetParametrValue("@p_ReffDate", row.ReffDate);
-            _sqlRequestSave.SetParametrValue("@p_SupplyDocumentNumber", row.SupplyDocumentNumber);         
-
-            //SupplyDocumentDetails
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsID", row.MassSupplyDocumentDetailsID);
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsName", row.MassSupplyDocumentDetailsName);
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsQuantity", row.MassSupplyDocumentDetailsQuantity);
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsTagPriceUSA", row.MassSupplyDocumentDetailsTagPriceUSA);
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsTagPriceRUS", row.MassSupplyDocumentDetailsTagPriceRUS);
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsCategoryID", row.MassSupplyDocumentDetailsCategoryID);
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsCategoryDetailsID", row.MassSupplyDocumentDetailsCategoryDetailsID);
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsImageProduct", row.MassSupplyDocumentDetailsImageProduct);
-
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsModel", row.MassSupplyDocumentDetailsModel);
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsSizeProduct", row.MassSupplyDocumentDetailsSizeProduct);
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailssize", row.MassSupplyDocumentDetailsSize);
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDetailsBarCode", row.MassSupplyDocumentDetailsBarCode);
-
-            //SupplyDocumentDeliverry
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryID", row.MassSupplyDocumentDeliveryID);
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryDeliveryID", row.MassSupplyDocumentDeliveryDeliveryID);
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryDeliveryDetailsID", row.MassSupplyDocumentDeliveryDeliveryDetailsID);
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryTTN", row.MassSupplyDocumentDeliveryTTN);
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryImageTTN", row.MassSupplyDocumentDeliveryImageTTN);
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryInvoice", row.MassSupplyDocumentDeliveryInvoice);
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryImageInvoice", row.MassSupplyDocumentDeliveryImageInvoice);
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryAmountUSA", row.MassSupplyDocumentDeliveryAmountUSA);
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentDeliveryAmountRUS", row.MassSupplyDocumentDeliveryAmountRUS);
-
-            //SupplyDocumentPayment
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentID", row.MassSupplyDocumentPaymentID);
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentAmount", row.MassSupplyDocumentPaymentAmount);
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentOperationType", row.MassSupplyDocumentPaymentOperationType);
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentStatus", row.MassSupplyDocumentPaymentStatus);
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentDescription", row.MassSupplyDocumentPaymentDescription);
-            _sqlRequestSave.SetParametrValue("@p_MassSupplyDocumentPaymentRRN", row.MassSupplyDocumentPaymentRRN);
-
-            _sqlRequestSave.ComplexRequest(get_save_procedure, CommandType.StoredProcedure, null);
-            return (Int32)_sqlRequestSave.SqlAnswer.result;
-        }
-
-        public Int32 SaveRowTable(LocalRow row, DataTable dataTable)
+           
+        public Int32 SaveRowTable(LocalRow row)
         {
             //RegisterDocument
             _sqlRequestSaveTable.SetParametrValue("@p_tableDocument", row.ShemaStorаgeLocal.RegisterDocument);
@@ -2185,7 +1571,10 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             _localeRow.Delivery = convertData.ConvertDataString("Delivery");
             _localeRow.Amount = (Decimal)convertData.ConvertDataDouble("Amount");
             _localeRow.Count = convertData.ConvertDataInt32("Count");
-         
+            _localeRow.ShopID = convertData.ConvertDataInt32("ShopID");
+            _localeRow.CompanyID = convertData.ConvertDataInt32("CompanyID");
+            _localeRow.NameShopID = _localeRow.ShopID + " - " + convertData.ConvertDataString("NameShopID");
+            _localeRow.NameCompanyID = convertData.ConvertDataString("NameCompanyID");
             return _localeRow;
         }
 

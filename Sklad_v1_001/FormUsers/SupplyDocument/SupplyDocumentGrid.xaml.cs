@@ -829,10 +829,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         private void SypplyDocument_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            LocalRow currentrow = this.SypplyDocument.SelectedItem as LocalRow;
+            List<LocalRow> currentrow = this.SypplyDocument.SelectedItems.Cast<LocalRow>().ToList();
             if (currentrow != null)
             {
-                if (currentrow.SupplyDocumentNumber > 0)
+                if (currentrow.Last().SupplyDocumentNumber > 0)
                     IsEnableDeleted = false;
                 else
                     IsEnableDeleted = true;
@@ -841,19 +841,19 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 datalistDelivery.Clear();
                 datalistPayment.Clear();
 
-                DataTable dataTableSupplyDocumentDetails = supplyDocumentDetailsLogic.FillGridDocument(currentrow.ID);
+                DataTable dataTableSupplyDocumentDetails = supplyDocumentDetailsLogic.FillGridDocument(currentrow.Last().ID);
                 foreach (DataRow row in dataTableSupplyDocumentDetails.Rows)
                 {
                     datalistDetails.Add(supplyDocumentDetailsLogic.Convert(row, new SupplyDocumentDetails.LocaleRow()));
                 }
 
-                DataTable dataTableSupplyDocumentDelivery = supplyDocumentDeliveryLogic.FillGrid(currentrow.ID);
+                DataTable dataTableSupplyDocumentDelivery = supplyDocumentDeliveryLogic.FillGrid(currentrow.Last().ID);
                 foreach (DataRow row in dataTableSupplyDocumentDelivery.Rows)
                 {
                     datalistDelivery.Add(supplyDocumentDeliveryLogic.Convert(row, new SupplyDocumentDelivery.LocaleRow()));
                 }
 
-                DataTable dataTableSupplyDocumentPayment = supplyDocumentPaymentLogic.FillGrid(currentrow.ID);
+                DataTable dataTableSupplyDocumentPayment = supplyDocumentPaymentLogic.FillGrid(currentrow.Last().ID);
                 foreach (DataRow row in dataTableSupplyDocumentPayment.Rows)
                 {
                     datalistPayment.Add(supplyDocumentPaymentLogic.Convert(row, new SupplyDocumentPayment.LocaleRow()));
