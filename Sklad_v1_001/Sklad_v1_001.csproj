@@ -305,6 +305,9 @@
     <Compile Include="Control\ToolBar\DataViewToolNewSupplyDocument.xaml.cs">
       <DependentUpon>DataViewToolNewSupplyDocument.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\ToolBar\NewRegisterDocumentToolBar.xaml.cs">
+      <DependentUpon>NewRegisterDocumentToolBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\ToolBar\ProductItemGridToolBar.xaml.cs">
       <DependentUpon>ProductItemGridToolBar.xaml</DependentUpon>
     </Compile>
@@ -386,6 +389,9 @@
     </Compile>
     <Compile Include="FormUsers\RegisterDocumentDetails\RegisterDocumentDetailsLogic.cs" />
     <Compile Include="FormUsers\RegisterDocumentPayment\RegisterDocumentPaymentLogic.cs" />
+    <Compile Include="FormUsers\RegisterDocument\NewRegisterDocumentGrid.xaml.cs">
+      <DependentUpon>NewRegisterDocumentGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FormUsers\RegisterDocument\RegisterDocumentGrid.xaml.cs">
       <DependentUpon>RegisterDocumentGrid.xaml</DependentUpon>
     </Compile>
@@ -717,6 +723,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Control\ToolBar\NewRegisterDocumentToolBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Control\ToolBar\ProductItemGridToolBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -800,6 +810,10 @@
     <Page Include="FormUsers\Product\ProductItemGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FormUsers\RegisterDocument\NewRegisterDocumentGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="FormUsers\RegisterDocument\RegisterDocumentGrid.xaml">
       <SubType>Designer</SubType>

@@ -430,6 +430,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Дата соз. заявки.
+        /// </summary>
+        public static string CreatedDateRegister {
+            get {
+                return ResourceManager.GetString("CreatedDateRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Сегодня.
         /// </summary>
         public static string CurrentDay {
@@ -916,6 +925,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Вх. №-документа.
+        /// </summary>
+        public static string InputNumberDocument {
+            get {
+                return ResourceManager.GetString("InputNumberDocument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на №-заказа.
         /// </summary>
         public static string Invoice {
@@ -1245,6 +1263,15 @@ namespace Sklad_v1_001.Properties {
         public static string NEWPRODUCT {
             get {
                 return ResourceManager.GetString("NEWPRODUCT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Новая регистрация.
+        /// </summary>
+        public static string NewRegisterDocument {
+            get {
+                return ResourceManager.GetString("NewRegisterDocument", resourceCulture);
             }
         }
         

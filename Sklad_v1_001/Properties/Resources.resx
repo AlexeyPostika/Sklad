@@ -903,4 +903,13 @@
   <data name="REFRESH" xml:space="preserve">
     <value>ОБНОВИТЬ</value>
   </data>
+  <data name="NewRegisterDocument" xml:space="preserve">
+    <value>Новая регистрация</value>
+  </data>
+  <data name="InputNumberDocument" xml:space="preserve">
+    <value>Вх. №-документа</value>
+  </data>
+  <data name="CreatedDateRegister" xml:space="preserve">
+    <value>Дата соз. заявки</value>
+  </data>
 </root>

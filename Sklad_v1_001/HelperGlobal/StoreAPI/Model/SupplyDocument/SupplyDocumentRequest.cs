@@ -1,4 +1,4 @@
-﻿using Sklad_v1_001.FormUsers.SupplyDocumentDelivery;
+﻿using Sklad_v1_001.FormUsers.RegisterDocumentDelivery;
 using Sklad_v1_001.FormUsers.SupplyDocumentDetails;
 using Sklad_v1_001.FormUsers.SupplyDocumentPayment;
 using Sklad_v1_001.GlobalAttributes;

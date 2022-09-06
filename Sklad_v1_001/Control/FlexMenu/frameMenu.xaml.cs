@@ -86,6 +86,7 @@ namespace Sklad_v1_001.Control.FlexMenu
         public event Action ButtonNewSaleDocumentOpen;
         public event Action ButtonListSaleDocumentOpen;
         //регистрация документов
+        public event Action ButtonNewRegisterDocumentOpen;
         public event Action ButtonRegisterListDocument;
         //операция поставки
         public event Action ButtonDeliveryNewSupplyOpen;
@@ -207,6 +208,13 @@ namespace Sklad_v1_001.Control.FlexMenu
         {
             ButtonRegisterListDocument?.Invoke();
         }
+
+        private void ButtonNewRegisterDocument_ButtonClick()
+        {
+            ButtonNewRegisterDocumentOpen?.Invoke();
+        }
         #endregion
+
+
     }
 }

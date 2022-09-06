@@ -56,7 +56,7 @@ namespace Sklad_v1_001.Control.ToolBar
             ButtonSaveClose.Image.Source = ImageHelper.GenerateImage("IconSaveClose_x24.png");
             ButtonListcansel.Image.Source = ImageHelper.GenerateImage("IconToList_x24.png");
             BottonApplyb.Image.Source = ImageHelper.GenerateImage("IconOK_x24.png");
-            ButtonCancelSend.Image.Source = ImageHelper.GenerateImage("IconSendRequest_X24.png");
+            ButtonCancelSend.Image.Source = ImageHelper.GenerateImage("IconClose_X24.png");
             ButtonRegistrate.Image.Source = ImageHelper.GenerateImage("IconRegisterDocument_X24.png");
         }
 

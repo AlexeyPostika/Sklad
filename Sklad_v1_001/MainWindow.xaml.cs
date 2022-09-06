@@ -22,7 +22,7 @@ using Sklad_v1_001.FormUsers.Product;
 using Sklad_v1_001.FormUsers.RegisterDocument;
 using Sklad_v1_001.FormUsers.SaleDocument;
 using Sklad_v1_001.FormUsers.SupplyDocument;
-using Sklad_v1_001.FormUsers.SupplyDocumentDelivery;
+using Sklad_v1_001.FormUsers.RegisterDocumentDelivery;
 using Sklad_v1_001.FormUsers.Tovar;
 using Sklad_v1_001.FormUsers.Zacupca;
 using Sklad_v1_001.GlobalAttributes;
@@ -50,7 +50,7 @@ namespace Sklad_v1_001
         NewSupplyDocumentGrid newSupplyDocumentGrid;
         //регистрация документов
         RegisterDocumentGrid registerDocumentGrid;
-
+        NewRegisterDocumentGrid newRegisterDocumentGrid;
 
         NewAddProductItem newAddProductItem;
         SupplyDocumentDeliveryItem supplyDocumentDeliveryItem;
@@ -95,13 +95,13 @@ namespace Sklad_v1_001
             PageframeMenuLevel.ButtonDeliveryListSupplyOpen += new Action(ButtonSupplyDocument);
             //регистрация документов
             PageframeMenuLevel.ButtonRegisterListDocument += new Action(ButtonRegisterListDocument);
-
+            PageframeMenuLevel.ButtonNewRegisterDocumentOpen += new Action(ButtonRegisterNewDocument);
             //настройки                
             PageframeMenuLevel.ButtonSettingsOpen += new Action(ButtonSettingsOpen);
             //выход
             PageframeMenuLevel.ButtonExiteOpen += new Action(ButtonExiteOpen);
 
-        }       
+        }
 
         #region Product
         public void ButtonProductOpen()
@@ -258,7 +258,7 @@ namespace Sklad_v1_001
             addDeliveryWindow.ShowDialog();
         }
 
-        public void ButtonNewDeliveryF(FormUsers.SupplyDocumentDelivery.LocaleRow _localeRow)
+        public void ButtonNewDeliveryF(FormUsers.RegisterDocumentDelivery.LocaleRow _localeRow)
         {
             GC.Collect();   //Вызов сборщика мусора
             GC.WaitForPendingFinalizers();  //ждем освобождение памяти
@@ -281,6 +281,13 @@ namespace Sklad_v1_001
             registerDocumentGrid = new RegisterDocumentGrid(attributes);
             frameWorkArea.Navigate(registerDocumentGrid); // открытие страницы
         }
+
+        private void ButtonRegisterNewDocument()
+        {
+            newRegisterDocumentGrid = new NewRegisterDocumentGrid(attributes);
+            frameWorkArea.Navigate(newRegisterDocumentGrid); // открытие страницы
+        }
+
         #endregion
 
         #region настройки

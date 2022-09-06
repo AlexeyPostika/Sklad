@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using Sklad_v1_001.FormUsers.SupplyDocumentDelivery;
+using Sklad_v1_001.FormUsers.RegisterDocumentDelivery;
 using Sklad_v1_001.GlobalAttributes;
 using Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocument;
 using System;

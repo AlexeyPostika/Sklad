@@ -2,7 +2,9 @@
 using Sklad_v1_001.Control.FlexMessageBox;
 using Sklad_v1_001.FormUsers.Delivery;
 using Sklad_v1_001.FormUsers.Product;
-using Sklad_v1_001.FormUsers.SupplyDocumentDelivery;
+using Sklad_v1_001.FormUsers.RegisterDocumentDetails;
+using Sklad_v1_001.FormUsers.RegisterDocumentPayment;
+using Sklad_v1_001.FormUsers.RegisterDocumentDelivery;
 using Sklad_v1_001.FormUsers.SupplyDocumentDetails;
 using Sklad_v1_001.FormUsers.SupplyDocumentPayment;
 using Sklad_v1_001.GlobalAttributes;
@@ -37,8 +39,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml;
 using static Sklad_v1_001.HelperGlobal.MessageBoxTitleHelper;
+using Sklad_v1_001.FormUsers.RegisterDocumetnDelivery;
 
-namespace Sklad_v1_001.FormUsers.SupplyDocument
+namespace Sklad_v1_001.FormUsers.RegisterDocument
 {
 
     public class DataContextSpy : Freezable
@@ -68,20 +71,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
     /// <summary>
     /// Логика взаимодействия для NewSupplyDocument.xaml
     /// </summary>
-    public partial class NewSupplyDocumentGrid : Page
+    public partial class NewRegisterDocumentGrid : Page
     {
         //IsPaymentAddButton
         //AmountMax
         public static readonly DependencyProperty IsPaymentAddButtonProperty = DependencyProperty.Register(
                    "IsPaymentAddButton",
                    typeof(Boolean),
-                  typeof(NewSupplyDocumentGrid), new PropertyMetadata(true));
+                  typeof(NewRegisterDocumentGrid), new PropertyMetadata(true));
 
         //IsApplyDocument
         public static readonly DependencyProperty IsApplyDocumentProperty = DependencyProperty.Register(
                   "IsApplyDocument",
                   typeof(Boolean),
-                 typeof(NewSupplyDocumentGrid), new PropertyMetadata(false));
+                 typeof(NewRegisterDocumentGrid), new PropertyMetadata(false));
         public Boolean IsPaymentAddButton
         {
             get { return (Boolean)GetValue(IsPaymentAddButtonProperty); }
@@ -153,7 +156,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         //остновной документ      
         LocalRow document;
-        SupplyDocumentLogic supplyDocumentLogic;
+        RegisterDocumentLogic registerDocumentLogic;
         Request request;
 
         //Продукт
@@ -161,17 +164,17 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         //ObservableCollection<Product.LocaleRow> detailsProduct;
 
         //доставка
-        SupplyDocumentDeliveryLogic supplyDocumentDeliveryLogic;      
-        ObservableCollection<SupplyDocumentDelivery.LocaleRow> supplyDocumentDelivery;
+        RegisterDocumentDeliveryLogic registerDocumentDeliveryLogic;      
+        ObservableCollection<RegisterDocumentDelivery.LocaleRow> registerDocumentDelivery;
 
         //SupplyDocumentDetails
-        SupplyDocumentDetailsLogic supplyDocumentDetailsLogic;      
-        ObservableCollection<SupplyDocumentDetails.LocaleRow> supplyDocumentDetails;
+        RegisterDocumentDetailsLogic registerDocumentDetailsLogic;      
+        ObservableCollection<RegisterDocumentDetails.LocaleRow> registerDocumentDetails;
 
         //оплата
-        SupplyDocumentPaymentLogic supplyDocumentPaymentLogic;
-        SupplyDocumentPayment.LocaleRow supplyDocumentPaymentLocaleRow;
-        ObservableCollection<SupplyDocumentPayment.LocaleRow> supplyDocumentPayment;
+        RegisterDocumentPaymentLogic registerDocumentPaymentLogic;
+        RegisterDocumentPayment.LocaleRow registerDocumentPaymentLocaleRow;
+        ObservableCollection<RegisterDocumentPayment.LocaleRow> registerDocumentPayment;
 
         //коллекция для удаления строк
         ObservableCollection<ComplexKey> datalistDeleted;
@@ -225,50 +228,50 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 switch (Document.Status)
                 {
                     case 0:
-                        ToolBarProduct.ButtonNewProduct.IsEnabled = true;
-                        ToolBarProduct.ButtonDelete.IsEnabled = true;
-                        ToolBarDelivery.ButtonNewProduct.IsEnabled = true;
-                        ToolBarDelivery.ButtonDelete.IsEnabled = true;
-                        SupplyDocumentDetailsToolBar.VisibilityApply = Visibility.Visible;
-                        SupplyDocumentDetailsToolBar.BottonApplyb.IsEnabled = false;
-                        SupplyDocumentDetailsToolBar.ButtonSaveb.IsEnabled = true;
-                        SupplyDocumentDetailsToolBar.ButtonSaveClose.IsEnabled = true;
-                        SupplyDocumentDetailsToolBar.ButtonListcansel.IsEnabled = true;
-                        SupplyDocumentDetailsToolBar.ButtonRequestSend.IsEnabled = true;
-                        UserIDDocument.IsEnabled = true;
+                        //ToolBarProduct.ButtonNewProduct.IsEnabled = true;
+                        //ToolBarProduct.ButtonDelete.IsEnabled = true;
+                        //ToolBarDelivery.ButtonNewProduct.IsEnabled = true;
+                        //ToolBarDelivery.ButtonDelete.IsEnabled = true;
+                        //SupplyDocumentDetailsToolBar.VisibilityApply = Visibility.Visible;
+                        //SupplyDocumentDetailsToolBar.BottonApplyb.IsEnabled = false;
+                        //SupplyDocumentDetailsToolBar.ButtonSaveb.IsEnabled = true;
+                        //SupplyDocumentDetailsToolBar.ButtonSaveClose.IsEnabled = true;
+                        //SupplyDocumentDetailsToolBar.ButtonListcansel.IsEnabled = true;
+                        //SupplyDocumentDetailsToolBar.ButtonRequestSend.IsEnabled = true;
+                        //UserIDDocument.IsEnabled = true;
                         break;
                     case 1:
                     case 6:
-                        ToolBarProduct.ButtonNewProduct.IsEnabled = false;
-                        ToolBarProduct.ButtonDelete.IsEnabled = false;
-                        ToolBarDelivery.ButtonNewProduct.IsEnabled = false;
-                        ToolBarDelivery.ButtonDelete.IsEnabled = false;
-                        SupplyDocumentDetailsToolBar.VisibilityApply = Visibility.Visible;
-                        SupplyDocumentDetailsToolBar.BottonApplyb.IsEnabled = false;
-                        SupplyDocumentDetailsToolBar.ButtonSaveb.IsEnabled = false;
-                        SupplyDocumentDetailsToolBar.ButtonSaveClose.IsEnabled = false;
-                        SupplyDocumentDetailsToolBar.ButtonListcansel.IsEnabled = true;
-                        SupplyDocumentDetailsToolBar.ButtonRequestSend.IsEnabled = false;
-                        UserIDDocument.IsEnabled = false;                   
+                        //ToolBarProduct.ButtonNewProduct.IsEnabled = false;
+                        //ToolBarProduct.ButtonDelete.IsEnabled = false;
+                        //ToolBarDelivery.ButtonNewProduct.IsEnabled = false;
+                        //ToolBarDelivery.ButtonDelete.IsEnabled = false;
+                        //SupplyDocumentDetailsToolBar.VisibilityApply = Visibility.Visible;
+                        //SupplyDocumentDetailsToolBar.BottonApplyb.IsEnabled = false;
+                        //SupplyDocumentDetailsToolBar.ButtonSaveb.IsEnabled = false;
+                        //SupplyDocumentDetailsToolBar.ButtonSaveClose.IsEnabled = false;
+                        //SupplyDocumentDetailsToolBar.ButtonListcansel.IsEnabled = true;
+                        //SupplyDocumentDetailsToolBar.ButtonRequestSend.IsEnabled = false;
+                        //UserIDDocument.IsEnabled = false;                   
                         //SupplyDocumentDetailsToolBar.ButtonPrintLabels.IsEnabled = false;
                         break;                  
                     case 2:
-                        SupplyDocumentDetailsToolBar.VisibilityApply = Visibility.Collapsed;
+                        //SupplyDocumentDetailsToolBar.VisibilityApply = Visibility.Collapsed;
                         //DocumentToolbar.ButtonPrintLabels.IsEnabled = true;
                         break;
                     case 3:
-                        ToolBarProduct.ButtonNewProduct.IsEnabled = false;
-                        ToolBarProduct.ButtonDelete.IsEnabled = false;
-                        ToolBarDelivery.ButtonNewProduct.IsEnabled = false;
-                        ToolBarDelivery.ButtonDelete.IsEnabled = false;
-                        SupplyDocumentDetailsToolBar.VisibilityApply = Visibility.Visible;                 
-                        SupplyDocumentDetailsToolBar.BottonApplyb.IsEnabled = false;
-                        SupplyDocumentDetailsToolBar.ButtonSaveb.IsEnabled = false;
-                        SupplyDocumentDetailsToolBar.ButtonSaveClose.IsEnabled = false;
-                        SupplyDocumentDetailsToolBar.ButtonListcansel.IsEnabled = true;
-                        SupplyDocumentDetailsToolBar.ButtonRequestSend.IsEnabled = false;
-                        IsApplyDocument = true;
-                        UserIDDocument.IsEnabled = false;
+                        //ToolBarProduct.ButtonNewProduct.IsEnabled = false;
+                        //ToolBarProduct.ButtonDelete.IsEnabled = false;
+                        //ToolBarDelivery.ButtonNewProduct.IsEnabled = false;
+                        //ToolBarDelivery.ButtonDelete.IsEnabled = false;
+                        //SupplyDocumentDetailsToolBar.VisibilityApply = Visibility.Visible;                 
+                        //SupplyDocumentDetailsToolBar.BottonApplyb.IsEnabled = false;
+                        //SupplyDocumentDetailsToolBar.ButtonSaveb.IsEnabled = false;
+                        //SupplyDocumentDetailsToolBar.ButtonSaveClose.IsEnabled = false;
+                        //SupplyDocumentDetailsToolBar.ButtonListcansel.IsEnabled = true;
+                        //SupplyDocumentDetailsToolBar.ButtonRequestSend.IsEnabled = false;
+                        //IsApplyDocument = true;
+                        //UserIDDocument.IsEnabled = false;
                         break;
                 }
                 if (document.ID>0)
@@ -290,7 +293,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         }
 
 
-        public NewSupplyDocumentGrid(Attributes _attributes)
+        public NewRegisterDocumentGrid(Attributes _attributes)
         {
             InitializeComponent();
 
@@ -302,14 +305,14 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             shemaStorаge = new ShemaStorаge();
 
             request = new Request(attributes);
-            supplyDocumentLogic = new SupplyDocumentLogic(attributes);
-            supplyDocumentDetailsLogic = new SupplyDocumentDetailsLogic(attributes);
-            supplyDocumentDeliveryLogic = new SupplyDocumentDeliveryLogic(attributes);
-            supplyDocumentPaymentLogic = new SupplyDocumentPaymentLogic(attributes);
+            registerDocumentLogic = new RegisterDocumentLogic(attributes);
+            registerDocumentDetailsLogic = new RegisterDocumentDetailsLogic(attributes);
+            registerDocumentDeliveryLogic = new RegisterDocumentDeliveryLogic(attributes);
+            registerDocumentPaymentLogic = new RegisterDocumentPaymentLogic(attributes);
 
-            supplyDocumentDetails = new ObservableCollection<SupplyDocumentDetails.LocaleRow>();
-            supplyDocumentDelivery = new ObservableCollection<SupplyDocumentDelivery.LocaleRow>();
-            supplyDocumentPayment = new ObservableCollection<SupplyDocumentPayment.LocaleRow>();
+            registerDocumentDetails = new ObservableCollection<RegisterDocumentDetails.LocaleRow>();
+            registerDocumentDelivery = new ObservableCollection<RegisterDocumentDelivery.LocaleRow>();
+            registerDocumentPayment = new ObservableCollection<RegisterDocumentPayment.LocaleRow>();
 
             datalistDeleted = new ObservableCollection<ComplexKey>();
 
@@ -320,11 +323,10 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             SupplyTypeList supplyTypeList = new SupplyTypeList();
             this.StatusDocument.ComboBoxElement.ItemsSource = supplyTypeList.innerList;
 
-            this.DataProduct.ItemsSource = supplyDocumentDetails;
-            this.DataDelivery.ItemsSource = supplyDocumentDelivery;
-            this.DataPayment.ItemsSource = supplyDocumentPayment;
-
-            this.ToolBarDelivery.ButtonNewProduct.Text = Properties.Resources.ADD;
+            this.DataProduct.ItemsSource = registerDocumentDetails;
+            this.DataDelivery.ItemsSource = registerDocumentDelivery;
+            this.DataPayment.ItemsSource = registerDocumentPayment;
+           
             this.ToolBarPayment.ButtonNewProduct.Text = Properties.Resources.ADD;
 
             this.DataContext = Document;
@@ -336,26 +338,26 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         private void Refresh()
         {
-            supplyDocumentDetails.Clear();
-            supplyDocumentDelivery.Clear();
-            supplyDocumentPayment.Clear();
+            registerDocumentDetails.Clear();
+            registerDocumentDelivery.Clear();
+            registerDocumentPayment.Clear();
 
-            DataTable dataTableSupplyDocumentDetails = supplyDocumentDetailsLogic.FillGridDocument(Document.ID);
+            DataTable dataTableSupplyDocumentDetails = registerDocumentDetailsLogic.FillGridDocument(Document.ID);
             foreach(DataRow row in dataTableSupplyDocumentDetails.Rows)
             {
-                supplyDocumentDetails.Add(supplyDocumentDetailsLogic.Convert(row, new SupplyDocumentDetails.LocaleRow()));
+                registerDocumentDetails.Add(registerDocumentDetailsLogic.Convert(row, new RegisterDocumentDetails.LocaleRow()));
             }
            
-            DataTable dataTableSupplyDocumentDelivery = supplyDocumentDeliveryLogic.FillGrid(Document.ID);
+            DataTable dataTableSupplyDocumentDelivery = registerDocumentDeliveryLogic.FillGrid(Document.ID);
             foreach (DataRow row in dataTableSupplyDocumentDelivery.Rows)
             {
-                supplyDocumentDelivery.Add(supplyDocumentDeliveryLogic.Convert(row, new SupplyDocumentDelivery.LocaleRow()));
+               // registerDocumentDelivery.Add(registerDocumentDeliveryLogic.Convert(row, new RegisterDocumetnDelivery.LocaleRow()));
             }
            
-            DataTable dataTableSupplyDocumentPayment = supplyDocumentPaymentLogic.FillGrid(Document.ID);
+            DataTable dataTableSupplyDocumentPayment = registerDocumentPaymentLogic.FillGrid(Document.ID);
             foreach (DataRow row in dataTableSupplyDocumentPayment.Rows)
             {
-                supplyDocumentPayment.Add(supplyDocumentPaymentLogic.Convert(row, new SupplyDocumentPayment.LocaleRow()));
+                registerDocumentPayment.Add(registerDocumentPaymentLogic.Convert(row, new RegisterDocumentPayment.LocaleRow()));
             }
 
             CalculateSummary();
@@ -363,51 +365,47 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
        
         #region Продукт
 
-        private void EditProduct(SupplyDocumentDetails.LocaleRow currentrow = null)
+        private void EditProduct(RegisterDocumentDetails.LocaleRow currentrow = null)
         {
             newAddProductItem = new NewAddProductItem(attributes);
             addProductWindow = new FlexWindows(Properties.Resources.Products);
             newAddProductItem.StatusDocument = Document.Status == 0;
-            newAddProductItem.ProductLocalRow = currentrow != null ? supplyDocumentDetailsLogic.ConvertSupplyDocumentDetailsToProduct(new Product.LocalRow(), currentrow) : new Product.LocalRow();
+            newAddProductItem.ProductLocalRow = currentrow != null ? registerDocumentDetailsLogic.ConvertSupplyDocumentDetailsToProduct(new Product.LocalRow(), currentrow) : new Product.LocalRow();
             addProductWindow.Content = newAddProductItem;
             addProductWindow.ShowDialog();
             if (newAddProductItem.IsClickButtonOK == MessageBoxResult.OK)
             {
                 if (newAddProductItem.ProductLocalRow != null)
                 {
-                    SupplyDocumentDetails.LocaleRow locale = new SupplyDocumentDetails.LocaleRow();
+                    RegisterDocumentDetails.LocaleRow locale = new RegisterDocumentDetails.LocaleRow();
                     localeRowProduct = newAddProductItem.ProductLocalRow;
                     if (newAddProductItem.ProductLocalRow!=null)
                     {                            
-                        locale.TempID = supplyDocumentDetails.Count() + 1;
-                        locale.LineDocument = supplyDocumentDetails.Count() + 1;
-                        supplyDocumentDetails.Add(supplyDocumentDetailsLogic.ConvertProductToSupplyDocumentDetails(localeRowProduct, locale));
+                        locale.TempID = registerDocumentDetails.Count() + 1;
+                        locale.LineDocument = registerDocumentDetails.Count() + 1;
+                        registerDocumentDetails.Add(registerDocumentDetailsLogic.ConvertProductToSupplyDocumentDetails(localeRowProduct, locale));
                     }
                     else
                     {
-                        int tempID = supplyDocumentDetails.FirstOrDefault(x => x.LineDocument == localeRowProduct.ID) != null ? supplyDocumentDetails.FirstOrDefault(x => x.LineDocument == localeRowProduct.ID).LineDocument : 0;
+                        int tempID = registerDocumentDetails.FirstOrDefault(x => x.LineDocument == localeRowProduct.ID) != null ? registerDocumentDetails.FirstOrDefault(x => x.LineDocument == localeRowProduct.ID).LineDocument : 0;
                         
-                        locale = supplyDocumentDetails.FirstOrDefault(x => x.LineDocument == localeRowProduct.ID);
-                        supplyDocumentDetails.Remove(locale);
+                        locale = registerDocumentDetails.FirstOrDefault(x => x.LineDocument == localeRowProduct.ID);
+                        registerDocumentDetails.Remove(locale);
                         
                         if (locale == null)
-                            locale = new SupplyDocumentDetails.LocaleRow();
+                            locale = new RegisterDocumentDetails.LocaleRow();
 
-                        supplyDocumentDetailsLogic.ConvertProductToSupplyDocumentDetails(localeRowProduct, locale);                      
+                        registerDocumentDetailsLogic.ConvertProductToSupplyDocumentDetails(localeRowProduct, locale);                      
                         locale.TempID = tempID;
                         locale.LineDocument = tempID;
-                        supplyDocumentDetails.Add(locale);
+                        registerDocumentDetails.Add(locale);
                     }
                 }
             }
             CalculateSummary();
         }
 
-        private void ToolBarProduct_ButtonNewProductClick()
-        {
-            //MainWindow.AppWindow.ButtonNewAddProduct();           
-            EditProduct();
-        }
+       
 
         private void DataProduct_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -415,35 +413,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             if (currentrow != null)
             {
                 //MainWindow.AppWindow.ButtonNewAddProductF(supplyDocumentDetailsLogic.ConvertSupplyDocumentDetailsToProduct(new Product.LocaleRow(), currentrow));
-                EditProduct(currentrow);
+                //EditProduct(currentrow);
             }
-        }
-
-        private void ToolBarProduct_ButtonDeleteClick()
-        {
-            if (DataProduct.SelectedItems.Count > 0)
-            {
-                FlexMessageBox mb = new FlexMessageBox();
-                MessageBoxResult dialogresult = mb.Show(Properties.Resources.QuestionDelete, GenerateTitle(TitleType.Question, Properties.Resources.Deletion), MessageBoxButton.OKCancel, MessageBoxImage.Question, 3);
-                if (dialogresult == MessageBoxResult.OK)
-                {
-                    var currentRowViews = DataProduct.SelectedItems;
-                    foreach (SupplyDocumentDetails.LocaleRow currentrow in currentRowViews)
-                    {
-                        SupplyDocumentDetails.LocaleRow deleteProduct = supplyDocumentDetails.LastOrDefault(x => x.TempID == currentrow.TempID);                      
-                        ComplexKey complexKey = new ComplexKey();
-                        complexKey.Id = deleteProduct.ID;
-                        complexKey.Type = 1;
-                        datalistDeleted.Add(complexKey);
-                    }
-                    foreach (ComplexKey complex in datalistDeleted)
-                    {
-                        SupplyDocumentDetails.LocaleRow deleteProduct = supplyDocumentDetails.LastOrDefault(x => x.ID == complex.Id);
-                        supplyDocumentDetails.Remove(deleteProduct);
-                    }
-                }                 
-            }
-            CalculateSummary();
         }
 
         private void CheckAll_Click(object sender, RoutedEventArgs e)
@@ -464,14 +435,14 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         #region Поставщик
 
-        private void EditDelivery(SupplyDocumentDelivery.LocaleRow currentrow = null)
+        private void EditDelivery(RegisterDocumentDelivery.LocaleRow currentrow = null)
         {           
-            SupplyDocumentDelivery.LocaleRow localeRowDelivery = new SupplyDocumentDelivery.LocaleRow();
+            RegisterDocumentDelivery.LocaleRow localeRowDelivery = new RegisterDocumentDelivery.LocaleRow();
             supplyDocumentDeliveryItem = new SupplyDocumentDeliveryItem(attributes);
             addDeliveryWindow = new FlexWindows(Properties.Resources.Deliveries);
 
             supplyDocumentDeliveryItem.StatusDocument = Document.Status == 0;        
-            supplyDocumentDeliveryItem.DeliveryRow= currentrow != null ? currentrow : new SupplyDocumentDelivery.LocaleRow();
+            supplyDocumentDeliveryItem.DeliveryRow= currentrow != null ? currentrow : new RegisterDocumentDelivery.LocaleRow();
            
             addDeliveryWindow.Content = supplyDocumentDeliveryItem;
             addDeliveryWindow.ShowDialog();
@@ -481,68 +452,35 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 if (supplyDocumentDeliveryItem.DeliveryRow != null && !String.IsNullOrEmpty(supplyDocumentDeliveryItem.DeliveryRow.NameCompany))
                 {
                     localeRowDelivery = supplyDocumentDeliveryItem.DeliveryRow;
-                    SupplyDocumentDelivery.LocaleRow locale = new SupplyDocumentDelivery.LocaleRow();
+                    RegisterDocumentDelivery.LocaleRow locale = new RegisterDocumentDelivery.LocaleRow();
                     if (localeRowDelivery.LineDocument == 0)
                     {               
-                        localeRowDelivery.TempID = supplyDocumentDelivery.Count() + 1;
-                        localeRowDelivery.LineDocument = supplyDocumentDelivery.Count() + 1;
-                        supplyDocumentDelivery.Add(localeRowDelivery);
+                        localeRowDelivery.TempID = registerDocumentDelivery.Count() + 1;
+                        localeRowDelivery.LineDocument = registerDocumentDelivery.Count() + 1;
+                        registerDocumentDelivery.Add(localeRowDelivery);
                     }
                     else
                     {
-                        int tempID = supplyDocumentDelivery.FirstOrDefault(x => x.LineDocument == localeRowDelivery.LineDocument) != null ? supplyDocumentDelivery.FirstOrDefault(x => x.LineDocument == localeRowDelivery.LineDocument).LineDocument : 0;
-                        locale = supplyDocumentDelivery.FirstOrDefault(x => x.LineDocument == localeRowDelivery.LineDocument);
-                        supplyDocumentDelivery.Remove(locale);
+                        int tempID = registerDocumentDelivery.FirstOrDefault(x => x.LineDocument == localeRowDelivery.LineDocument) != null ? registerDocumentDelivery.FirstOrDefault(x => x.LineDocument == localeRowDelivery.LineDocument).LineDocument : 0;
+                        locale = registerDocumentDelivery.FirstOrDefault(x => x.LineDocument == localeRowDelivery.LineDocument);
+                        registerDocumentDelivery.Remove(locale);
                         locale = localeRowDelivery;
                         locale.TempID = tempID;
                         locale.LineDocument = tempID;
-                        supplyDocumentDelivery.Add(locale);
+                        registerDocumentDelivery.Add(locale);
                     }
                 }
             }
             CalculateSummary();         
         }
-        private void ToolBarDelivery_ButtonNewProductClick()
-        {
-            EditDelivery();
-        }
-
+       
         private void DataDelivery_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            SupplyDocumentDelivery.LocaleRow currentrow = this.DataDelivery.SelectedItem as SupplyDocumentDelivery.LocaleRow;
+            RegisterDocumentDelivery.LocaleRow currentrow = this.DataDelivery.SelectedItem as RegisterDocumentDelivery.LocaleRow;
             if (currentrow != null)
             {               
                 EditDelivery(currentrow);
             }
-        }
-
-        private void ToolBarDelivery_ButtonDeleteClick()
-        {
-            datalistDeleted.Clear();
-
-            if (DataDelivery.SelectedItems.Count > 0)
-            {
-                FlexMessageBox mb = new FlexMessageBox();
-                MessageBoxResult dialogresult = mb.Show(Properties.Resources.QuestionDelete, GenerateTitle(TitleType.Question, Properties.Resources.Deletion), MessageBoxButton.OKCancel, MessageBoxImage.Question, 3);
-                if (dialogresult == MessageBoxResult.OK)
-                {
-                    var currentRowViews = DataDelivery.SelectedItems;
-                    foreach (SupplyDocumentDelivery.LocaleRow currentrow in currentRowViews)
-                    {
-                        SupplyDocumentDelivery.LocaleRow deleteDelivery = supplyDocumentDelivery.LastOrDefault(x => x.TempID == currentrow.TempID);
-                        ComplexKey complexKey = new ComplexKey();
-                        complexKey.Id = deleteDelivery.TempID;
-                        complexKey.Type = 2;
-                        datalistDeleted.Add(complexKey);
-                    }
-                    foreach (ComplexKey complex in datalistDeleted)
-                    {
-                        SupplyDocumentDelivery.LocaleRow deleteDelivery = supplyDocumentDelivery.LastOrDefault(x => x.TempID == complex.Id);
-                        supplyDocumentDelivery.Remove(deleteDelivery);
-                    }
-                }
-            }
-            CalculateSummary();
         }
 
         #endregion
@@ -550,7 +488,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         #region оплата
         private void EditPayment(SupplyDocumentPayment.LocaleRow currentrow = null)
         {
-            supplyDocumentPaymentLocaleRow = new SupplyDocumentPayment.LocaleRow();
+            registerDocumentPaymentLocaleRow = new RegisterDocumentPayment.LocaleRow();
             newSupplyDocumentPaymentItem = new NewSupplyDocumentPaymentItem();
             addSuppluPaymentWindow = new FlexWindows(Properties.Resources.Payment1);
             newSupplyDocumentPaymentItem.AmountMax = (Double)summary.SummaryPaymentRemains;
@@ -562,24 +500,24 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             {
                 if (newSupplyDocumentPaymentItem.PaymentLocalRow != null)
                 {
-                    SupplyDocumentPayment.LocaleRow paymentLocalRow = newSupplyDocumentPaymentItem.PaymentLocalRow;
-                    SupplyDocumentPayment.LocaleRow locale = new SupplyDocumentPayment.LocaleRow();
-                    if (paymentLocalRow.LineDocument == 0)
-                    {
-                        paymentLocalRow.TempID = supplyDocumentPayment.Count() + 1;
-                        paymentLocalRow.LineDocument = supplyDocumentPayment.Count() + 1;
-                        supplyDocumentPayment.Add(paymentLocalRow);
-                    }
-                    else
-                    {
-                        int tempID = supplyDocumentPayment.FirstOrDefault(x => x.LineDocument == paymentLocalRow.ID) != null ? supplyDocumentPayment.FirstOrDefault(x => x.LineDocument == paymentLocalRow.ID).LineDocument : 0;
+                    //RegisterDocumentPayment.LocaleRow paymentLocalRow = newSupplyDocumentPaymentItem.PaymentLocalRow;
+                    //RegisterDocumentPayment.LocaleRow locale = new SupplyDocumentPayment.LocaleRow();
+                    //if (paymentLocalRow.LineDocument == 0)
+                    //{
+                    //    paymentLocalRow.TempID = registerDocumentPayment.Count() + 1;
+                    //    paymentLocalRow.LineDocument = registerDocumentPayment.Count() + 1;
+                    //    registerDocumentPayment.Add(paymentLocalRow);
+                    //}
+                    //else
+                    //{
+                    //    int tempID = registerDocumentPayment.FirstOrDefault(x => x.LineDocument == paymentLocalRow.ID) != null ? registerDocumentPayment.FirstOrDefault(x => x.LineDocument == paymentLocalRow.ID).LineDocument : 0;
                         
-                        locale = supplyDocumentPayment.FirstOrDefault(x => x.LineDocument == paymentLocalRow.LineDocument);
-                        supplyDocumentPayment.Remove(locale);                      
-                        locale = paymentLocalRow;
-                        locale.LineDocument = tempID;
-                        supplyDocumentPayment.Add(locale);
-                    }
+                    //    locale = registerDocumentPayment.FirstOrDefault(x => x.LineDocument == paymentLocalRow.LineDocument);
+                    //    registerDocumentPayment.Remove(locale);                      
+                    //    locale = paymentLocalRow;
+                    //    locale.LineDocument = tempID;
+                    //    registerDocumentPayment.Add(locale);
+                    //}
                 }
             }
             CalculateSummary();
@@ -608,20 +546,20 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 MessageBoxResult dialogresult = mb.Show(Properties.Resources.QuestionDelete, GenerateTitle(TitleType.Question, Properties.Resources.Deletion), MessageBoxButton.OKCancel, MessageBoxImage.Question, 3);
                 if (dialogresult == MessageBoxResult.OK)
                 {
-                    var currentRowViews = DataPayment.SelectedItems;
-                    foreach (SupplyDocumentPayment.LocaleRow currentrow in currentRowViews)
-                    {
-                        SupplyDocumentPayment.LocaleRow deletePayment = supplyDocumentPayment.LastOrDefault(x => x.TempID == currentrow.TempID);                      
-                        ComplexKey complexKey = new ComplexKey();
-                        complexKey.Id = deletePayment.TempID;
-                        complexKey.Type = 3;
-                        datalistDeleted.Add(complexKey);
-                    }
-                    foreach (ComplexKey complex in datalistDeleted)
-                    {
-                        SupplyDocumentPayment.LocaleRow deletePayment = supplyDocumentPayment.LastOrDefault(x => x.TempID == complex.Id);
-                        supplyDocumentPayment.Remove(deletePayment);
-                    }
+                    //var currentRowViews = DataPayment.SelectedItems;
+                    //foreach (SupplyDocumentPayment.LocaleRow currentrow in currentRowViews)
+                    //{
+                    //    SupplyDocumentPayment.LocaleRow deletePayment = registerDocumentPayment.LastOrDefault(x => x.TempID == currentrow.TempID);                      
+                    //    ComplexKey complexKey = new ComplexKey();
+                    //    complexKey.Id = deletePayment.TempID;
+                    //    complexKey.Type = 3;
+                    //    datalistDeleted.Add(complexKey);
+                    //}
+                    //foreach (ComplexKey complex in datalistDeleted)
+                    //{
+                    //    RegisterDocumentPayment.LocaleRow deletePayment = registerDocumentPayment.LastOrDefault(x => x.TempID == complex.Id);
+                    //    RegisterDocumentPayment.Remove(deletePayment);
+                    //}
                 }
             }
             CalculateSummary();
@@ -667,97 +605,97 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         {
             ConvertData convertdata = new ConvertData();         
 
-            if (FieldVerify(supplyDocumentDetails))
-            {
-                shemaStorаge.SupplyDocumentDetails.Clear();
-                shemaStorаge.SupplyDocumentDelivery.Clear();
-                shemaStorаge.SupplyDocumentPayment.Clear();
+            //if (FieldVerify(registerDocumentDetails))
+            //{
+            //    shemaStorаge.SupplyDocumentDetails.Clear();
+            //    shemaStorаge.SupplyDocumentDelivery.Clear();
+            //    shemaStorаge.SupplyDocumentPayment.Clear();
                
-                request.supplyDocument.Details.Clear();
-                request.supplyDocument.Delivery.Clear();
-                request.supplyDocument.Payment.Clear();
+            //    request.supplyDocument.Details.Clear();
+            //    request.supplyDocument.Delivery.Clear();
+            //    request.supplyDocument.Payment.Clear();
 
-                //продукты                   
-                foreach (SupplyDocumentDetails.LocaleRow currentrow in supplyDocumentDetails)
-                {                    
-                    DataRow row = shemaStorаge.SupplyDocumentDetails.NewRow();
-                    row["DocumentID"] = 0;
-                    row["Name"] = currentrow.Name;
-                    row["Quantity"] = currentrow.Quantity;
-                    row["TagPriceUSA"] = currentrow.TagPriceUSA;
-                    row["TagPriceRUS"] = currentrow.TagPriceRUS;
-                    row["CategoryID"] = currentrow.CategoryID;
-                    row["CategoryDetailsID"] = currentrow.CategoryDetailsID;
-                    if (currentrow.ImageProduct!=null)
-                        row["ImageProduct"] = currentrow.ImageProduct;
-                    row["Barcodes"] = currentrow.BarCodeString;
-                    row["CreatedDate"] = currentrow.CreatedDate == null ? DateTime.Now : currentrow.CreatedDate;
-                    row["CreatedUserID"] = currentrow.CreatedUserID;
-                    row["LastModificatedDate"] = DateTime.Now;
-                    row["LastModificatedUserID"] = Document.UserID;
-                    row["Model"] = currentrow.Model;
-                    row["SizeProduct"] = currentrow.SizeProduct;
-                    row["Size"] = currentrow.Package;
-                    row["BarcodesInput"] = currentrow.BarcodesInput;
-                    shemaStorаge.SupplyDocumentDetails.Rows.Add(row);
+            //    //продукты                   
+            //    foreach (SupplyDocumentDetails.LocaleRow currentrow in registerDocumentDetails)
+            //    {                    
+            //        DataRow row = shemaStorаge.SupplyDocumentDetails.NewRow();
+            //        row["DocumentID"] = 0;
+            //        row["Name"] = currentrow.Name;
+            //        row["Quantity"] = currentrow.Quantity;
+            //        row["TagPriceUSA"] = currentrow.TagPriceUSA;
+            //        row["TagPriceRUS"] = currentrow.TagPriceRUS;
+            //        row["CategoryID"] = currentrow.CategoryID;
+            //        row["CategoryDetailsID"] = currentrow.CategoryDetailsID;
+            //        if (currentrow.ImageProduct!=null)
+            //            row["ImageProduct"] = currentrow.ImageProduct;
+            //        row["Barcodes"] = currentrow.BarCodeString;
+            //        row["CreatedDate"] = currentrow.CreatedDate == null ? DateTime.Now : currentrow.CreatedDate;
+            //        row["CreatedUserID"] = currentrow.CreatedUserID;
+            //        row["LastModificatedDate"] = DateTime.Now;
+            //        row["LastModificatedUserID"] = Document.UserID;
+            //        row["Model"] = currentrow.Model;
+            //        row["SizeProduct"] = currentrow.SizeProduct;
+            //        row["Size"] = currentrow.Package;
+            //        row["BarcodesInput"] = currentrow.BarcodesInput;
+            //        shemaStorаge.SupplyDocumentDetails.Rows.Add(row);
 
-                }
+            //    }
 
-                //сопуствующие товары             
-                foreach (SupplyDocumentDelivery.LocaleRow currentrow in supplyDocumentDelivery)
-                {                                     
-                    DataRow row = shemaStorаge.SupplyDocumentDelivery.NewRow();
-                    row["DocumentID"] = 0;
-                    row["DeliveryID"] = currentrow.DeliveryID;
-                    row["DeliveryDetailsID"] = currentrow.DeliveryDetailsID;
-                    row["DeliveryTTN"] = "";
-                    if (currentrow.TTNDocumentByte != null)
-                        row["ImageTTN"] = currentrow.TTNDocumentByte;
-                    row["Invoice"] = currentrow.Invoice;
-                    if (currentrow.InvoiceDocumentByte != null)
-                        row["ImageInvoice"] = currentrow.InvoiceDocumentByte;
-                    row["AmountUSA"] = currentrow.AmountUSA;
-                    row["AmountRUS"] = currentrow.AmountRUS;
-                    row["Description"] = currentrow.Description;
-                    row["TTN"] = currentrow.TTN;
-                    row["CreatedDate"] = currentrow.CreatedDate == null ? DateTime.Now : currentrow.CreatedDate;
-                    row["CreatedUserID"] = currentrow.CreatedUserID;
-                    row["LastModificatedDate"] = DateTime.Now;
-                    row["LastModificatedUserID"] = Document.UserID;                
-                    shemaStorаge.SupplyDocumentDelivery.Rows.Add(row);                    
-                }
+            //    //сопуствующие товары             
+            //    foreach (RegisterDocumentDelivery.LocaleRow currentrow in registerDocumentDelivery)
+            //    {                                     
+            //        DataRow row = shemaStorаge.SupplyDocumentDelivery.NewRow();
+            //        row["DocumentID"] = 0;
+            //        row["DeliveryID"] = currentrow.DeliveryID;
+            //        row["DeliveryDetailsID"] = currentrow.DeliveryDetailsID;
+            //        row["DeliveryTTN"] = "";
+            //        if (currentrow.TTNDocumentByte != null)
+            //            row["ImageTTN"] = currentrow.TTNDocumentByte;
+            //        row["Invoice"] = currentrow.Invoice;
+            //        if (currentrow.InvoiceDocumentByte != null)
+            //            row["ImageInvoice"] = currentrow.InvoiceDocumentByte;
+            //        row["AmountUSA"] = currentrow.AmountUSA;
+            //        row["AmountRUS"] = currentrow.AmountRUS;
+            //        row["Description"] = currentrow.Description;
+            //        row["TTN"] = currentrow.TTN;
+            //        row["CreatedDate"] = currentrow.CreatedDate == null ? DateTime.Now : currentrow.CreatedDate;
+            //        row["CreatedUserID"] = currentrow.CreatedUserID;
+            //        row["LastModificatedDate"] = DateTime.Now;
+            //        row["LastModificatedUserID"] = Document.UserID;                
+            //        shemaStorаge.SupplyDocumentDelivery.Rows.Add(row);                    
+            //    }
 
-                //виды оплат
-                shemaStorаge.SupplyDocumentPayment.Clear();
-                foreach (SupplyDocumentPayment.LocaleRow currentrow in supplyDocumentPayment)
-                {
-                    DataRow row = shemaStorаge.SupplyDocumentPayment.NewRow();
-                    row["DocumentID"] = 0;
-                    row["Status"] = currentrow.Status;
-                    row["OperationType"] = currentrow.OpertionType;
-                    row["Amount"] = currentrow.Amount;                
-                    row["Description"] = currentrow.Description;
-                    row["RRN"] = currentrow.RRN;
-                    row["CreatedDate"] = currentrow.CreatedDate == null ? DateTime.Now : currentrow.CreatedDate;
-                    row["CreatedUserID"] = currentrow.CreatedUserID;
-                    row["LastModificatedDate"] = DateTime.Now;
-                    row["LastModificatedUserID"] = Document.UserID;
-                    shemaStorаge.SupplyDocumentPayment.Rows.Add(row);
+            //    //виды оплат
+            //    shemaStorаge.SupplyDocumentPayment.Clear();
+            //    foreach (SupplyDocumentPayment.LocaleRow currentrow in registerDocumentPayment)
+            //    {
+            //        DataRow row = shemaStorаge.SupplyDocumentPayment.NewRow();
+            //        row["DocumentID"] = 0;
+            //        row["Status"] = currentrow.Status;
+            //        row["OperationType"] = currentrow.OpertionType;
+            //        row["Amount"] = currentrow.Amount;                
+            //        row["Description"] = currentrow.Description;
+            //        row["RRN"] = currentrow.RRN;
+            //        row["CreatedDate"] = currentrow.CreatedDate == null ? DateTime.Now : currentrow.CreatedDate;
+            //        row["CreatedUserID"] = currentrow.CreatedUserID;
+            //        row["LastModificatedDate"] = DateTime.Now;
+            //        row["LastModificatedUserID"] = Document.UserID;
+            //        shemaStorаge.SupplyDocumentPayment.Rows.Add(row);
                                       
-                }
-                Document.Amount = summary.SummaryProductTagPriceRUS;
-                Document.Count = summary.SummaryQuantityProduct;
-                Document.ShemaStorаgeLocal = shemaStorаge;
-                Document.ID = supplyDocumentLogic.SaveRowTable(Document);
+            //    }
+            //    Document.Amount = summary.SummaryProductTagPriceRUS;
+            //    Document.Count = summary.SummaryQuantityProduct;
+            //    Document.ShemaStorаgeLocal = shemaStorаge;
+            //    Document.ID = registerDocumentLogic.SaveRowTable(Document);
                
-                return Document.ID;
-            }
+            //    return Document.ID;
+            //}
             return 0;
         }
 
         Int32 SaveRequest()
         {
-            Document.ID = supplyDocumentLogic.SaveRespons(Document);
+            Document.ID = registerDocumentLogic.SaveRespons(Document);
             return Document.ID;
         }
         #endregion
@@ -770,13 +708,13 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         private void SupplyDocumentDetailsToolBar_ButtonSaveclose()
         {
-            if (Save() > 0)
-                MainWindow.AppWindow.ButtonSupplyDocumentF(Document, NewDocument);
+            if (Save() > 0) { }
+                //MainWindow.AppWindow.ButtonSupplyDocumentF(Document, NewDocument);
         }
 
         private void SupplyDocumentDetailsToolBar_ButtonListCancel()
         {
-            MainWindow.AppWindow.ButtonSupplyDocumentF(Document, NewDocument);
+            //MainWindow.AppWindow.ButtonSupplyDocumentF(Document, NewDocument);
         }
 
         private void SupplyDocumentDetailsToolBar_ButtonRequest()
@@ -807,15 +745,15 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             decimal SummaryPaymentBalansTemp = 0; //Оплачено
             decimal SummaryPaymentRemainsTemp = 0; // остаток         
 
-            foreach (SupplyDocumentDetails.LocaleRow row in supplyDocumentDetails)
+            foreach (RegisterDocumentDetails.LocaleRow row in registerDocumentDetails)
             {
                 SummaryQuantityProductTemp = SummaryQuantityProductTemp + row.Quantity;
                 SummaryTagPriceWithUSATemp = SummaryTagPriceWithUSATemp + row.TagPriceUSA;
                 SummaryTagPriceWithRUSTemp = SummaryTagPriceWithRUSTemp + row.TagPriceRUS; 
             }
 
-            SummaryQuantityDeliveryTemp = supplyDocumentDelivery.Count();
-            foreach (SupplyDocumentDelivery.LocaleRow row in supplyDocumentDelivery)
+            SummaryQuantityDeliveryTemp = registerDocumentDelivery.Count();
+            foreach (RegisterDocumentDelivery.LocaleRow row in registerDocumentDelivery)
             {               
                 SummaryAmountUSATemp = SummaryAmountUSATemp + row.AmountUSA;
                 SummaryAmountRUSTemp = SummaryAmountRUSTemp + row.AmountRUS;
@@ -823,7 +761,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             SummaryPaymentRemainsTemp = SummaryAmountRUSTemp + SummaryTagPriceWithRUSTemp;
 
-            foreach (SupplyDocumentPayment.LocaleRow row in supplyDocumentPayment)
+            foreach (RegisterDocumentPayment.LocaleRow row in registerDocumentPayment)
             {
                 if (row.Status == 1)
                 {
@@ -865,20 +803,12 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     {
                         IsApplyDocument = false;
                     }
-                    ToolBarProduct.ButtonNewProduct.IsEnabled = true;
-                    ToolBarProduct.ButtonDelete.IsEnabled = true;
-                    ToolBarDelivery.ButtonNewProduct.IsEnabled = true;
-                    ToolBarDelivery.ButtonDelete.IsEnabled = true;
-                    ToolBarPayment.ButtonDelete.IsEnabled = true;
+                    
                     break;
                 case 1:
                     IsPaymentAddButton = false;
                     IsApplyDocument = false;
-                    ToolBarProduct.ButtonNewProduct.IsEnabled = false;
-                    ToolBarProduct.ButtonDelete.IsEnabled = false;
-                    ToolBarDelivery.ButtonNewProduct.IsEnabled = false;
-                    ToolBarDelivery.ButtonDelete.IsEnabled = false;
-                    ToolBarPayment.ButtonDelete.IsEnabled = false;
+                   
                     break;
             }
            
@@ -893,95 +823,99 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         {
             if (Save() > 0)
             {
-                request = new Request(attributes);
-                Document.SupplyDocumentNumber = supplyDocumentLogic.SetRow(Document);
-                if (Document.ID > 0)
-                {
-                    SupplyDocumentLogic supplyDocumentLogic = new SupplyDocumentLogic(attributes);
-                    SupplyDocument.LocalFilter localeFilter = new SupplyDocument.LocalFilter();
-                    localeFilter.ScreenTypeGrid = ScreenType.ItemByStatus;
-                    localeFilter.ID = Document.ID;
-                    DataTable documentTable = supplyDocumentLogic.FillGrid(localeFilter);
-                    foreach(DataRow row in documentTable.Rows)
-                    {
-                        supplyDocumentLogic.Convert(row, Document);
-                        DataTable dataTableSupplyDocumentDetails = supplyDocumentDetailsLogic.FillGridDocument(Document.ID);
-                        foreach (DataRow rowDetails in dataTableSupplyDocumentDetails.Rows)
-                        {
-                            SupplyDocumentDetails.LocaleRow localeRowDetails = new SupplyDocumentDetails.LocaleRow();
-                            supplyDocumentDetails.Add(supplyDocumentDetailsLogic.Convert(rowDetails, localeRowDetails));
-                            SupplyDocumentDetailsRequest supplyDocumentDetailsRequest = new SupplyDocumentDetailsRequest();
-                            //localeRowDetails.BarCodeString = string.Empty;
-                            supplyDocumentDetailsLogic.Convert(localeRowDetails, supplyDocumentDetailsRequest);
-                            request.supplyDocument.Details.Add(supplyDocumentDetailsRequest);
-                        }
+                //request = new Request(attributes);
+                //Document.SupplyDocumentNumber = registerDocumentLogic.SetRow(Document);
+                //if (Document.ID > 0)
+                //{
+                //    RegisterDocumentLogic registerDocumentLogic = new RegisterDocumentLogic(attributes);
+                //    RegisterDocument.LocalFilter localeFilter = new RegisterDocument.LocalFilter();
+                //    localeFilter.ScreenTypeGrid = ScreenType.ItemByStatus;
+                //    localeFilter.ID = Document.ID;
+                //    DataTable documentTable = registerDocumentLogic.FillGrid(localeFilter);
+                //    foreach(DataRow row in documentTable.Rows)
+                //    {
+                //        registerDocumentLogic.Convert(row, Document);
+                //        DataTable dataTableSupplyDocumentDetails = registerDocumentDetailsLogic.FillGridDocument(Document.ID);
+                //        foreach (DataRow rowDetails in dataTableSupplyDocumentDetails.Rows)
+                //        {
+                //            SupplyDocumentDetails.LocaleRow localeRowDetails = new SupplyDocumentDetails.LocaleRow();
+                //            registerDocumentDetails.Add(registerDocumentDetailsLogic.Convert(rowDetails, localeRowDetails));
+                //            SupplyDocumentDetailsRequest supplyDocumentDetailsRequest = new SupplyDocumentDetailsRequest();
+                //            //localeRowDetails.BarCodeString = string.Empty;
+                //            registerDocumentDetailsLogic.Convert(localeRowDetails, supplyDocumentDetailsRequest);
+                //            request.supplyDocument.Details.Add(supplyDocumentDetailsRequest);
+                //        }
 
-                        DataTable dataTableSupplyDocumentDelivery = supplyDocumentDeliveryLogic.FillGrid(Document.ID);
-                        foreach (DataRow rowdelivery in dataTableSupplyDocumentDelivery.Rows)
-                        {
-                            SupplyDocumentDelivery.LocaleRow localeRowDelivery = new SupplyDocumentDelivery.LocaleRow();
-                            supplyDocumentDelivery.Add(supplyDocumentDeliveryLogic.Convert(rowdelivery, localeRowDelivery));
-                            SupplyDocumentDeliveryRequest rowDeliveryRequest = new SupplyDocumentDeliveryRequest(attributes);
-                            supplyDocumentDeliveryLogic.Convert(localeRowDelivery, rowDeliveryRequest);
-                            request.supplyDocument.Delivery.Add(rowDeliveryRequest);
-                        }
+                //        DataTable dataTableSupplyDocumentDelivery = registerDocumentDeliveryLogic.FillGrid(Document.ID);
+                //        foreach (DataRow rowdelivery in dataTableSupplyDocumentDelivery.Rows)
+                //        {
+                //            RegisterDocumentDelivery.LocaleRow localeRowDelivery = new RegisterDocumentDelivery.LocaleRow();
+                //            registerDocumentDelivery.Add(registerDocumentDeliveryLogic.Convert(rowdelivery, localeRowDelivery));
+                //            SupplyDocumentDeliveryRequest rowDeliveryRequest = new SupplyDocumentDeliveryRequest(attributes);
+                //            registerDocumentDeliveryLogic.Convert(localeRowDelivery, rowDeliveryRequest);
+                //            request.supplyDocument.Delivery.Add(rowDeliveryRequest);
+                //        }
 
-                        DataTable dataTableSupplyDocumentPayment = supplyDocumentPaymentLogic.FillGrid(Document.ID);
-                        foreach (DataRow rowPayment in dataTableSupplyDocumentPayment.Rows)
-                        {
-                            SupplyDocumentPayment.LocaleRow localeRowPayment = new SupplyDocumentPayment.LocaleRow();
-                            supplyDocumentPayment.Add(supplyDocumentPaymentLogic.Convert(rowPayment, localeRowPayment));
-                            SupplyDocumentPaymentRequest rowPaymentRequest = new SupplyDocumentPaymentRequest(attributes);
-                            supplyDocumentPaymentLogic.Convert(localeRowPayment, rowPaymentRequest);
-                            request.supplyDocument.Payment.Add(rowPaymentRequest);
-                        }
-                    }
-                    Document.Count = request.supplyDocument.Payment.Count() + request.supplyDocument.Delivery.Count() + request.supplyDocument.Details.Count();
-                    SupplyDocumentRequest supplyDocumentRequest = new SupplyDocumentRequest(attributes);
-                    supplyDocumentLogic.Convert(Document, request.supplyDocument.Document);
+                //        DataTable dataTableSupplyDocumentPayment = registerDocumentPaymentLogic.FillGrid(Document.ID);
+                //        foreach (DataRow rowPayment in dataTableSupplyDocumentPayment.Rows)
+                //        {
+                //            SupplyDocumentPayment.LocaleRow localeRowPayment = new SupplyDocumentPayment.LocaleRow();
+                //            registerDocumentPayment.Add(registerDocumentPaymentLogic.Convert(rowPayment, localeRowPayment));
+                //            SupplyDocumentPaymentRequest rowPaymentRequest = new SupplyDocumentPaymentRequest(attributes);
+                //            registerDocumentPaymentLogic.Convert(localeRowPayment, rowPaymentRequest);
+                //            request.supplyDocument.Payment.Add(rowPaymentRequest);
+                //        }
+                //    }
+                //    Document.Count = request.supplyDocument.Payment.Count() + request.supplyDocument.Delivery.Count() + request.supplyDocument.Details.Count();
+                //    SupplyDocumentRequest supplyDocumentRequest = new SupplyDocumentRequest(attributes);
+                //    registerDocumentLogic.Convert(Document, request.supplyDocument.Document);
                    
-                    Response response= request.GetCommand(1);
-                    if (response!=null && response.ErrorCode == 0)
-                    {
-                        Document.Status = response.SupplyDocumentOutput.Document.Status;
-                        Document.ReffID = 0;
-                        Document.ReffDate = response.SupplyDocumentOutput.Document.SyncDate;
-                        if (SaveRequest() == 0)
-                        {
-                            FlexMessageBox mb2 = new FlexMessageBox();
-                            List<BitmapImage> ButtonImages = new List<BitmapImage>();
-                            ButtonImages.Add(ImageHelper.GenerateImage("IconAdd.png"));
-                            ButtonImages.Add(ImageHelper.GenerateImage("IconContinueWork.png"));
-                            List<string> ButtonText = new List<string>();
-                            ButtonText.Add(Properties.Resources.AddSmall);
-                            ButtonText.Add(Properties.Resources.MessageIgnore);
+                //    Response response= request.GetCommand(1);
+                //    if (response!=null && response.ErrorCode == 0)
+                //    {
+                //        Document.Status = response.SupplyDocumentOutput.Document.Status;
+                //        Document.ReffID = 0;
+                //        Document.ReffDate = response.SupplyDocumentOutput.Document.SyncDate;
+                //        if (SaveRequest() == 0)
+                //        {
+                //            FlexMessageBox mb2 = new FlexMessageBox();
+                //            List<BitmapImage> ButtonImages = new List<BitmapImage>();
+                //            ButtonImages.Add(ImageHelper.GenerateImage("IconAdd.png"));
+                //            ButtonImages.Add(ImageHelper.GenerateImage("IconContinueWork.png"));
+                //            List<string> ButtonText = new List<string>();
+                //            ButtonText.Add(Properties.Resources.AddSmall);
+                //            ButtonText.Add(Properties.Resources.MessageIgnore);
 
-                            mb2.Show(Properties.Resources.ErrorDB, GenerateTitle(TitleType.Error, Properties.Resources.ErrorDBTitle), MessageBoxButton.OK, MessageBoxImage.Error);
-                        }
-                    }
-                    else
-                    {
-                        FlexMessageBox mb2 = new FlexMessageBox();
-                        List<BitmapImage> ButtonImages = new List<BitmapImage>();
-                        ButtonImages.Add(ImageHelper.GenerateImage("IconAdd.png"));
-                        ButtonImages.Add(ImageHelper.GenerateImage("IconContinueWork.png"));
-                        List<string> ButtonText = new List<string>();
-                        ButtonText.Add(Properties.Resources.AddSmall);
-                        ButtonText.Add(Properties.Resources.MessageIgnore);
+                //            mb2.Show(Properties.Resources.ErrorDB, GenerateTitle(TitleType.Error, Properties.Resources.ErrorDBTitle), MessageBoxButton.OK, MessageBoxImage.Error);
+                //        }
+                //    }
+                //    else
+                //    {
+                //        FlexMessageBox mb2 = new FlexMessageBox();
+                //        List<BitmapImage> ButtonImages = new List<BitmapImage>();
+                //        ButtonImages.Add(ImageHelper.GenerateImage("IconAdd.png"));
+                //        ButtonImages.Add(ImageHelper.GenerateImage("IconContinueWork.png"));
+                //        List<string> ButtonText = new List<string>();
+                //        ButtonText.Add(Properties.Resources.AddSmall);
+                //        ButtonText.Add(Properties.Resources.MessageIgnore);
 
-                        mb2.Show("Ошибка: " + response.ErrorCode + " - " + response.DescriptionEX, GenerateTitle(TitleType.Error, Properties.Resources.ErrorSendAPITitle), MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                    // Выполняем запрос по адресу и получаем ответ в виде строки
+                //        mb2.Show("Ошибка: " + response.ErrorCode + " - " + response.DescriptionEX, GenerateTitle(TitleType.Error, Properties.Resources.ErrorSendAPITitle), MessageBoxButton.OK, MessageBoxImage.Error);
+                //    }
+                //    // Выполняем запрос по адресу и получаем ответ в виде строки
                    
-                }
+                //}
 
 
-                MainWindow.AppWindow.ButtonSupplyDocumentF(Document, NewDocument);
+               // MainWindow.AppWindow.ButtonSupplyDocumentF(Document, NewDocument);
             }
         }
 
+
         #endregion
 
-      
+        private void SupplyDocumentDetailsToolBar_ButtonCancel()
+        {
+
+        }
     }
 }

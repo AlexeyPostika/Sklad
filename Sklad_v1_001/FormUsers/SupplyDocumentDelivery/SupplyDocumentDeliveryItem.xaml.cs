@@ -25,7 +25,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static Sklad_v1_001.HelperGlobal.MessageBoxTitleHelper;
 
-namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
+namespace Sklad_v1_001.FormUsers.RegisterDocumentDelivery
 {
     /// <summary>
     /// Логика взаимодействия для NewDeliveryItem.xaml

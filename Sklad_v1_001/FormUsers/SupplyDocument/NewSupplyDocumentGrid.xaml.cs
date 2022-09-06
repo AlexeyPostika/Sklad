@@ -2,7 +2,7 @@
 using Sklad_v1_001.Control.FlexMessageBox;
 using Sklad_v1_001.FormUsers.Delivery;
 using Sklad_v1_001.FormUsers.Product;
-using Sklad_v1_001.FormUsers.SupplyDocumentDelivery;
+using Sklad_v1_001.FormUsers.RegisterDocumentDelivery;
 using Sklad_v1_001.FormUsers.SupplyDocumentDetails;
 using Sklad_v1_001.FormUsers.SupplyDocumentPayment;
 using Sklad_v1_001.GlobalAttributes;
@@ -162,7 +162,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         //доставка
         SupplyDocumentDeliveryLogic supplyDocumentDeliveryLogic;      
-        ObservableCollection<SupplyDocumentDelivery.LocaleRow> supplyDocumentDelivery;
+        ObservableCollection<RegisterDocumentDelivery.LocaleRow> supplyDocumentDelivery;
 
         //SupplyDocumentDetails
         SupplyDocumentDetailsLogic supplyDocumentDetailsLogic;      
@@ -308,7 +308,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             supplyDocumentPaymentLogic = new SupplyDocumentPaymentLogic(attributes);
 
             supplyDocumentDetails = new ObservableCollection<SupplyDocumentDetails.LocaleRow>();
-            supplyDocumentDelivery = new ObservableCollection<SupplyDocumentDelivery.LocaleRow>();
+            supplyDocumentDelivery = new ObservableCollection<RegisterDocumentDelivery.LocaleRow>();
             supplyDocumentPayment = new ObservableCollection<SupplyDocumentPayment.LocaleRow>();
 
             datalistDeleted = new ObservableCollection<ComplexKey>();
@@ -349,7 +349,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             DataTable dataTableSupplyDocumentDelivery = supplyDocumentDeliveryLogic.FillGrid(Document.ID);
             foreach (DataRow row in dataTableSupplyDocumentDelivery.Rows)
             {
-                supplyDocumentDelivery.Add(supplyDocumentDeliveryLogic.Convert(row, new SupplyDocumentDelivery.LocaleRow()));
+                supplyDocumentDelivery.Add(supplyDocumentDeliveryLogic.Convert(row, new RegisterDocumentDelivery.LocaleRow()));
             }
            
             DataTable dataTableSupplyDocumentPayment = supplyDocumentPaymentLogic.FillGrid(Document.ID);
@@ -464,14 +464,14 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         #region Поставщик
 
-        private void EditDelivery(SupplyDocumentDelivery.LocaleRow currentrow = null)
+        private void EditDelivery(RegisterDocumentDelivery.LocaleRow currentrow = null)
         {           
-            SupplyDocumentDelivery.LocaleRow localeRowDelivery = new SupplyDocumentDelivery.LocaleRow();
+            RegisterDocumentDelivery.LocaleRow localeRowDelivery = new RegisterDocumentDelivery.LocaleRow();
             supplyDocumentDeliveryItem = new SupplyDocumentDeliveryItem(attributes);
             addDeliveryWindow = new FlexWindows(Properties.Resources.Deliveries);
 
             supplyDocumentDeliveryItem.StatusDocument = Document.Status == 0;        
-            supplyDocumentDeliveryItem.DeliveryRow= currentrow != null ? currentrow : new SupplyDocumentDelivery.LocaleRow();
+            supplyDocumentDeliveryItem.DeliveryRow= currentrow != null ? currentrow : new RegisterDocumentDelivery.LocaleRow();
            
             addDeliveryWindow.Content = supplyDocumentDeliveryItem;
             addDeliveryWindow.ShowDialog();
@@ -481,7 +481,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 if (supplyDocumentDeliveryItem.DeliveryRow != null && !String.IsNullOrEmpty(supplyDocumentDeliveryItem.DeliveryRow.NameCompany))
                 {
                     localeRowDelivery = supplyDocumentDeliveryItem.DeliveryRow;
-                    SupplyDocumentDelivery.LocaleRow locale = new SupplyDocumentDelivery.LocaleRow();
+                    RegisterDocumentDelivery.LocaleRow locale = new RegisterDocumentDelivery.LocaleRow();
                     if (localeRowDelivery.LineDocument == 0)
                     {               
                         localeRowDelivery.TempID = supplyDocumentDelivery.Count() + 1;
@@ -509,7 +509,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         private void DataDelivery_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            SupplyDocumentDelivery.LocaleRow currentrow = this.DataDelivery.SelectedItem as SupplyDocumentDelivery.LocaleRow;
+            RegisterDocumentDelivery.LocaleRow currentrow = this.DataDelivery.SelectedItem as RegisterDocumentDelivery.LocaleRow;
             if (currentrow != null)
             {               
                 EditDelivery(currentrow);
@@ -527,9 +527,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 if (dialogresult == MessageBoxResult.OK)
                 {
                     var currentRowViews = DataDelivery.SelectedItems;
-                    foreach (SupplyDocumentDelivery.LocaleRow currentrow in currentRowViews)
+                    foreach (RegisterDocumentDelivery.LocaleRow currentrow in currentRowViews)
                     {
-                        SupplyDocumentDelivery.LocaleRow deleteDelivery = supplyDocumentDelivery.LastOrDefault(x => x.TempID == currentrow.TempID);
+                        RegisterDocumentDelivery.LocaleRow deleteDelivery = supplyDocumentDelivery.LastOrDefault(x => x.TempID == currentrow.TempID);
                         ComplexKey complexKey = new ComplexKey();
                         complexKey.Id = deleteDelivery.TempID;
                         complexKey.Type = 2;
@@ -537,7 +537,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     }
                     foreach (ComplexKey complex in datalistDeleted)
                     {
-                        SupplyDocumentDelivery.LocaleRow deleteDelivery = supplyDocumentDelivery.LastOrDefault(x => x.TempID == complex.Id);
+                        RegisterDocumentDelivery.LocaleRow deleteDelivery = supplyDocumentDelivery.LastOrDefault(x => x.TempID == complex.Id);
                         supplyDocumentDelivery.Remove(deleteDelivery);
                     }
                 }
@@ -704,7 +704,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 }
 
                 //сопуствующие товары             
-                foreach (SupplyDocumentDelivery.LocaleRow currentrow in supplyDocumentDelivery)
+                foreach (RegisterDocumentDelivery.LocaleRow currentrow in supplyDocumentDelivery)
                 {                                     
                     DataRow row = shemaStorаge.SupplyDocumentDelivery.NewRow();
                     row["DocumentID"] = 0;
@@ -815,7 +815,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             }
 
             SummaryQuantityDeliveryTemp = supplyDocumentDelivery.Count();
-            foreach (SupplyDocumentDelivery.LocaleRow row in supplyDocumentDelivery)
+            foreach (RegisterDocumentDelivery.LocaleRow row in supplyDocumentDelivery)
             {               
                 SummaryAmountUSATemp = SummaryAmountUSATemp + row.AmountUSA;
                 SummaryAmountRUSTemp = SummaryAmountRUSTemp + row.AmountRUS;
@@ -919,7 +919,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                         DataTable dataTableSupplyDocumentDelivery = supplyDocumentDeliveryLogic.FillGrid(Document.ID);
                         foreach (DataRow rowdelivery in dataTableSupplyDocumentDelivery.Rows)
                         {
-                            SupplyDocumentDelivery.LocaleRow localeRowDelivery = new SupplyDocumentDelivery.LocaleRow();
+                            RegisterDocumentDelivery.LocaleRow localeRowDelivery = new RegisterDocumentDelivery.LocaleRow();
                             supplyDocumentDelivery.Add(supplyDocumentDeliveryLogic.Convert(rowdelivery, localeRowDelivery));
                             SupplyDocumentDeliveryRequest rowDeliveryRequest = new SupplyDocumentDeliveryRequest(attributes);
                             supplyDocumentDeliveryLogic.Convert(localeRowDelivery, rowDeliveryRequest);

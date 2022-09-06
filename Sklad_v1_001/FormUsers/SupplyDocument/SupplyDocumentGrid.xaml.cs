@@ -1,5 +1,5 @@
 ﻿using Sklad_v1_001.Control.FlexMessageBox;
-using Sklad_v1_001.FormUsers.SupplyDocumentDelivery;
+using Sklad_v1_001.FormUsers.RegisterDocumentDelivery;
 using Sklad_v1_001.FormUsers.SupplyDocumentDetails;
 using Sklad_v1_001.FormUsers.SupplyDocumentPayment;
 using Sklad_v1_001.GlobalAttributes;
@@ -52,12 +52,12 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         SupplyDocument.LocalFilter localFilter;
         LocalRow localRow;
         SupplyDocumentDetails.LocaleFilter filterDetails;
-        SupplyDocumentDelivery.LocaleFilter filterDelivery;
+        RegisterDocumentDelivery.LocaleFilter filterDelivery;
         //SupplyDocumentPayment
 
         ObservableCollection<LocalRow> datalist;
         ObservableCollection<SupplyDocumentDetails.LocaleRow> datalistDetails;
-        ObservableCollection<SupplyDocumentDelivery.LocaleRow> datalistDelivery;
+        ObservableCollection<RegisterDocumentDelivery.LocaleRow> datalistDelivery;
         ObservableCollection<SupplyDocumentPayment.LocaleRow> datalistPayment;
 
         RowSummary summary;
@@ -554,7 +554,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             datalist = new ObservableCollection<LocalRow>();
             datalistDetails = new ObservableCollection<SupplyDocumentDetails.LocaleRow>();
-            datalistDelivery = new ObservableCollection<SupplyDocumentDelivery.LocaleRow>();
+            datalistDelivery = new ObservableCollection<RegisterDocumentDelivery.LocaleRow>();
             datalistPayment = new ObservableCollection<SupplyDocumentPayment.LocaleRow>();
 
             summary = new RowSummary();
@@ -850,7 +850,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 DataTable dataTableSupplyDocumentDelivery = supplyDocumentDeliveryLogic.FillGrid(currentrow.Last().ID);
                 foreach (DataRow row in dataTableSupplyDocumentDelivery.Rows)
                 {
-                    datalistDelivery.Add(supplyDocumentDeliveryLogic.Convert(row, new SupplyDocumentDelivery.LocaleRow()));
+                    datalistDelivery.Add(supplyDocumentDeliveryLogic.Convert(row, new RegisterDocumentDelivery.LocaleRow()));
                 }
 
                 DataTable dataTableSupplyDocumentPayment = supplyDocumentPaymentLogic.FillGrid(currentrow.Last().ID);
