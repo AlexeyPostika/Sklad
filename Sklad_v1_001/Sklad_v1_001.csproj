@@ -378,6 +378,10 @@
       <DependentUpon>NewDeliveryItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\Manufacturer\ManufacturerLogic.cs" />
+    <Compile Include="FormUsers\Payment\PaymentItem.xaml.cs">
+      <DependentUpon>PaymentItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsers\Payment\PaymentLogic.cs" />
     <Compile Include="FormUsers\Product\ProductGrid.xaml.cs">
       <DependentUpon>ProductGrid.xaml</DependentUpon>
     </Compile>
@@ -420,9 +424,6 @@
     <Compile Include="HelperGlobal\StoreAPI\Model\SupplyDocument\SupplyDocumentDeliveryRequest.cs" />
     <Compile Include="FormUsers\SupplyDocumentDetails\SupplyDocumentDetailsLogic.cs" />
     <Compile Include="HelperGlobal\StoreAPI\Model\SupplyDocument\SupplyDocumentDetailsRequest.cs" />
-    <Compile Include="FormUsers\SupplyDocumentPayment\NewSupplyDocumentPaymentItem.xaml.cs">
-      <DependentUpon>NewSupplyDocumentPaymentItem.xaml</DependentUpon>
-    </Compile>
     <Compile Include="FormUsers\SupplyDocumentPayment\SupplyDocumentPaymentLogic.cs" />
     <Compile Include="HelperGlobal\StoreAPI\Model\SupplyDocument\SupplyDocumentPaymentRequest.cs" />
     <Compile Include="FormUsers\SupplyDocument\NewSupplyDocumentGrid.xaml.cs">
@@ -799,6 +800,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FormUsers\Payment\PaymentItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="FormUsers\Product\ProductGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -834,10 +839,6 @@
     <Page Include="FormUsers\Product\NewAddProductItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="FormUsers\SupplyDocumentPayment\NewSupplyDocumentPaymentItem.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="FormUsers\SupplyDocument\NewSupplyDocumentGrid.xaml">
       <SubType>Designer</SubType>
@@ -1167,9 +1168,7 @@
     <Resource Include="Icone\IconErase.png" />
     <Resource Include="Icone\IconSaveAs.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="FormUsers\Payment\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

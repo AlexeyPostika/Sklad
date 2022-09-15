@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Sklad_v1_001.Control.FlexMessageBox;
 using Sklad_v1_001.FormUsers.Delivery;
+using Sklad_v1_001.FormUsers.Payment;
 using Sklad_v1_001.FormUsers.Product;
 using Sklad_v1_001.FormUsers.RegisterDocumentDelivery;
 using Sklad_v1_001.FormUsers.SupplyDocumentDetails;
@@ -148,7 +149,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         //работаем с оплатами
         FlexWindows addSuppluPaymentWindow;
-        NewSupplyDocumentPaymentItem newSupplyDocumentPaymentItem;
+        PaymentItem newSupplyDocumentPaymentItem;
+        Payment.PaymentLogic paymentLogic;
         //******************************
 
         //остновной документ      
@@ -548,21 +550,21 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         #endregion
 
         #region оплата
-        private void EditPayment(SupplyDocumentPayment.LocaleRow currentrow = null)
+        private void EditPayment(Payment.LocaleRow currentrow = null)
         {
             supplyDocumentPaymentLocaleRow = new SupplyDocumentPayment.LocaleRow();
-            newSupplyDocumentPaymentItem = new NewSupplyDocumentPaymentItem();
+            newSupplyDocumentPaymentItem = new PaymentItem();
             addSuppluPaymentWindow = new FlexWindows(Properties.Resources.Payment1);
             newSupplyDocumentPaymentItem.AmountMax = (Double)summary.SummaryPaymentRemains;
             newSupplyDocumentPaymentItem.StatusDocument = Document.Status == 0;
-            newSupplyDocumentPaymentItem.PaymentLocalRow = currentrow != null ? currentrow : new SupplyDocumentPayment.LocaleRow();          
+            newSupplyDocumentPaymentItem.PaymentLocalRow = currentrow != null ? currentrow : new Payment.LocaleRow();          
             addSuppluPaymentWindow.Content = newSupplyDocumentPaymentItem;
             addSuppluPaymentWindow.ShowDialog();
             if (newSupplyDocumentPaymentItem.IsClickButtonOK == MessageBoxResult.OK)
             {
                 if (newSupplyDocumentPaymentItem.PaymentLocalRow != null)
                 {
-                    SupplyDocumentPayment.LocaleRow paymentLocalRow = newSupplyDocumentPaymentItem.PaymentLocalRow;
+                    SupplyDocumentPayment.LocaleRow paymentLocalRow = paymentLogic.ConvertPaymentToSupplyDocument(newSupplyDocumentPaymentItem.PaymentLocalRow, new SupplyDocumentPayment.LocaleRow());
                     SupplyDocumentPayment.LocaleRow locale = new SupplyDocumentPayment.LocaleRow();
                     if (paymentLocalRow.LineDocument == 0)
                     {
@@ -593,10 +595,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         private void DataPayment_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            SupplyDocumentPayment.LocaleRow currentrow = this.DataPayment.SelectedItem as SupplyDocumentPayment.LocaleRow;
-            if (currentrow != null)
+           List<SupplyDocumentPayment.LocaleRow> currentrow = this.DataPayment.SelectedItems.Cast<SupplyDocumentPayment.LocaleRow>().ToList();
+            if (currentrow != null && currentrow.Count()>0)
             {
-                EditPayment(currentrow);
+                paymentLogic = new PaymentLogic(attributes);
+                EditPayment(paymentLogic.ConvertSupplyDocumentToPayment(currentrow.First(), new Payment.LocaleRow()));
             }
         }
 

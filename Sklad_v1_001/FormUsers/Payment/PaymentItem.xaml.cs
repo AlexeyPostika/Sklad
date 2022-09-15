@@ -17,12 +17,12 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static Sklad_v1_001.HelperGlobal.MessageBoxTitleHelper;
 
-namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
+namespace Sklad_v1_001.FormUsers.Payment
 {
     /// <summary>
     /// Логика взаимодействия для NewAddProductItem.xaml
     /// </summary>
-    public partial class NewSupplyDocumentPaymentItem : Page, INotifyPropertyChanged
+    public partial class PaymentItem : Page, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
@@ -33,17 +33,17 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
         public static readonly DependencyProperty IsClickButtonOKProperty = DependencyProperty.Register(
                     "IsClickButtonOK",
                     typeof(MessageBoxResult),
-                   typeof(NewSupplyDocumentPaymentItem), new PropertyMetadata(MessageBoxResult.Cancel));
+                   typeof(PaymentItem), new PropertyMetadata(MessageBoxResult.Cancel));
         //AmountMax
         public static readonly DependencyProperty AmountMaxProperty = DependencyProperty.Register(
                    "AmountMax",
                    typeof(Double),
-                  typeof(NewSupplyDocumentPaymentItem));
+                  typeof(PaymentItem));
 
         public static readonly DependencyProperty StatusDocumentProperty = DependencyProperty.Register(
                     "StatusDocument",
                     typeof(Boolean),
-                   typeof(NewSupplyDocumentPaymentItem), new PropertyMetadata(false));
+                   typeof(PaymentItem), new PropertyMetadata(false));
 
         public MessageBoxResult IsClickButtonOK
         {
@@ -84,7 +84,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
             }
         }
 
-        public NewSupplyDocumentPaymentItem()
+        public PaymentItem()
         {
             InitializeComponent();
             

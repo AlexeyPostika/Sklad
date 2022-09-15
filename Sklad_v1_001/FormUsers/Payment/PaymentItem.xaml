@@ -1,4 +1,4 @@
-﻿<Page x:Class="Sklad_v1_001.FormUsers.SupplyDocumentPayment.NewSupplyDocumentPaymentItem"
+﻿<Page x:Class="Sklad_v1_001.FormUsers.Payment.PaymentItem"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 

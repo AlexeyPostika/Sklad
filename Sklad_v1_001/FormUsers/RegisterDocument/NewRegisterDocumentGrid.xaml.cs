@@ -40,6 +40,7 @@ using System.Windows.Shapes;
 using System.Xml;
 using static Sklad_v1_001.HelperGlobal.MessageBoxTitleHelper;
 using Sklad_v1_001.FormUsers.RegisterDocumetnDelivery;
+using Sklad_v1_001.FormUsers.Payment;
 
 namespace Sklad_v1_001.FormUsers.RegisterDocument
 {
@@ -151,7 +152,8 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
 
         //работаем с оплатами
         FlexWindows addSuppluPaymentWindow;
-        NewSupplyDocumentPaymentItem newSupplyDocumentPaymentItem;
+        PaymentItem newRegisterDocumentPaymentItem;
+        Payment.PaymentLogic paymentLogic;
         //******************************
 
         //остновной документ      
@@ -486,19 +488,19 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
         #endregion
 
         #region оплата
-        private void EditPayment(SupplyDocumentPayment.LocaleRow currentrow = null)
+        private void EditPayment(Payment.LocaleRow currentrow = null)
         {
             registerDocumentPaymentLocaleRow = new RegisterDocumentPayment.LocaleRow();
-            newSupplyDocumentPaymentItem = new NewSupplyDocumentPaymentItem();
+            newRegisterDocumentPaymentItem = new PaymentItem();
             addSuppluPaymentWindow = new FlexWindows(Properties.Resources.Payment1);
-            newSupplyDocumentPaymentItem.AmountMax = (Double)summary.SummaryPaymentRemains;
-            newSupplyDocumentPaymentItem.StatusDocument = Document.Status == 0;
-            newSupplyDocumentPaymentItem.PaymentLocalRow = currentrow != null ? currentrow : new SupplyDocumentPayment.LocaleRow();          
-            addSuppluPaymentWindow.Content = newSupplyDocumentPaymentItem;
+            newRegisterDocumentPaymentItem.AmountMax = (Double)summary.SummaryPaymentRemains;
+            newRegisterDocumentPaymentItem.StatusDocument = Document.Status == 0;
+            newRegisterDocumentPaymentItem.PaymentLocalRow = currentrow != null ? currentrow : new Payment.LocaleRow();          
+            addSuppluPaymentWindow.Content = newRegisterDocumentPaymentItem;
             addSuppluPaymentWindow.ShowDialog();
-            if (newSupplyDocumentPaymentItem.IsClickButtonOK == MessageBoxResult.OK)
+            if (newRegisterDocumentPaymentItem.IsClickButtonOK == MessageBoxResult.OK)
             {
-                if (newSupplyDocumentPaymentItem.PaymentLocalRow != null)
+                if (newRegisterDocumentPaymentItem.PaymentLocalRow != null)
                 {
                     //RegisterDocumentPayment.LocaleRow paymentLocalRow = newSupplyDocumentPaymentItem.PaymentLocalRow;
                     //RegisterDocumentPayment.LocaleRow locale = new SupplyDocumentPayment.LocaleRow();
@@ -531,10 +533,11 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
 
         private void DataPayment_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            SupplyDocumentPayment.LocaleRow currentrow = this.DataPayment.SelectedItem as SupplyDocumentPayment.LocaleRow;
-            if (currentrow != null)
+            List<RegisterDocumentPayment.LocaleRow> currentrow = this.DataPayment.SelectedItems.Cast<RegisterDocumentPayment.LocaleRow>().ToList();
+            if (currentrow != null && currentrow.Count() > 0)
             {
-                EditPayment(currentrow);
+                paymentLogic = new PaymentLogic(attributes);
+                EditPayment(paymentLogic.ConvertRegisterDocumentToPayment(currentrow.First(), new Payment.LocaleRow()));
             }
         }
 
