@@ -634,12 +634,20 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
         #region Toolbar верхний
         private void ToolBarSaleDocument_ButtonEdit()
         {
-
+            List<LocalRow> currentrow = this.registerDocument.SelectedItems.Cast<LocalRow>().ToList();
+            if (currentrow != null && currentrow.Count() > 0)
+            {
+                EditDetails(currentrow.First());
+            }
         }
-
         private void ToolBarSaleDocument_ButtonDelete()
         {
 
+        }
+
+        public void EditDetails(LocalRow document)
+        {
+            MainWindow.AppWindow.ButtonNewRegisterDocumentF(document);
         }
 
         private void ToolBarSaleDocument_ButtonClear()
@@ -734,7 +742,11 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
         }
         private void saleDocument_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            List<LocalRow> currentrow = this.registerDocument.SelectedItems.Cast<LocalRow>().ToList();
+            if (currentrow != null && currentrow.Count() > 0)
+            {
+                EditDetails(currentrow.First());
+            }
         }
         private void saleDocument_Loaded(object sender, RoutedEventArgs e)
         {

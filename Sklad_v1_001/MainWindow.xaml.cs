@@ -287,7 +287,17 @@ namespace Sklad_v1_001
             newRegisterDocumentGrid = new NewRegisterDocumentGrid(attributes);
             frameWorkArea.Navigate(newRegisterDocumentGrid); // открытие страницы
         }
+        //
+        public void ButtonNewRegisterDocumentF(FormUsers.RegisterDocument.LocalRow document)
+        {
+            GC.Collect();   //Вызов сборщика мусора
+            GC.WaitForPendingFinalizers();  //ждем освобождение памяти
 
+            if (newRegisterDocumentGrid == null)
+                newRegisterDocumentGrid = new NewRegisterDocumentGrid(attributes);
+            newRegisterDocumentGrid.Document = document;
+            this.frameWorkArea.Navigate(newRegisterDocumentGrid);
+        }
         #endregion
 
         #region настройки

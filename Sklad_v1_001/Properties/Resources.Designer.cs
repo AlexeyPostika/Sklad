@@ -133,6 +133,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на На доработку.
+        /// </summary>
+        public static string ADJUSTMENT {
+            get {
+                return ResourceManager.GetString("ADJUSTMENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Адресс доставки.
         /// </summary>
         public static string Adress {

@@ -912,4 +912,7 @@
   <data name="CreatedDateRegister" xml:space="preserve">
     <value>Дата соз. заявки</value>
   </data>
+  <data name="ADJUSTMENT" xml:space="preserve">
+    <value>На доработку</value>
+  </data>
 </root>

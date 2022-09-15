@@ -48,6 +48,7 @@ namespace Sklad_v1_001.Control.ToolBar
         public event Action ButtonListCancel;
         public event Action ButtonCancel;
         public event Action ButtonRgister;
+        public event Action ButtonAdjustment;
         public event Action ButtonApply;
         public NewRegisterDocumentToolBar()
         {
@@ -57,7 +58,8 @@ namespace Sklad_v1_001.Control.ToolBar
             ButtonListcansel.Image.Source = ImageHelper.GenerateImage("IconToList_x24.png");
             BottonApplyb.Image.Source = ImageHelper.GenerateImage("IconOK_x24.png");
             ButtonCancelSend.Image.Source = ImageHelper.GenerateImage("IconClose_X24.png");
-            ButtonRegistrate.Image.Source = ImageHelper.GenerateImage("IconRegisterDocument_X24.png");
+            ButtonRegistrate.Image.Source = ImageHelper.GenerateImage("IconRegisterDocument_X24.png");//
+            Buttonadjustment.Image.Source = ImageHelper.GenerateImage("IconRepiterDocument_X24.png");//IconDetails_X32
         }
 
         private void ButtonSave_ButtonClick()
@@ -88,6 +90,11 @@ namespace Sklad_v1_001.Control.ToolBar
         private void ButtonCancelSend_ButtonClick()
         {
             ButtonCancel?.Invoke();
+        }
+
+        private void ButtonAdjustment_ButtonClick()
+        {
+            ButtonAdjustment?.Invoke();
         }
     }
 }
