@@ -1006,7 +1006,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             });
 
             Document.ShemaStorаgeLocal.Clear();
-            foreach (SupplyDocumentRequest rowResponse in response.SupplyDocumentListOutput.ListDocuments)
+            foreach (SupplyDocumentRequest rowResponse in response.listSupplyDocumentOutput.ListDocuments)
             {
 
                 //DataRow dataRow = updateDataTable.NewRow();

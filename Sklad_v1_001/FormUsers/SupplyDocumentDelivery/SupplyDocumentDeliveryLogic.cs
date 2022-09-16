@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace Sklad_v1_001.FormUsers.RegisterDocumentDelivery
+namespace Sklad_v1_001.FormUsers.SupplyDocumentDelivery
 {
     public class LocaleFilter : INotifyPropertyChanged
     {

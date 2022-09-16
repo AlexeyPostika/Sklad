@@ -1,8 +1,15 @@
-﻿using Sklad_v1_001.GlobalAttributes;
+﻿using Sklad_v1_001.FormUsers.SupplyDocumentDelivery;
+using Sklad_v1_001.FormUsers.SupplyDocumentDetails;
+using Sklad_v1_001.FormUsers.SupplyDocumentPayment;
+using Sklad_v1_001.GlobalAttributes;
 using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.GlobalVariable;
 using Sklad_v1_001.HelperGlobal;
+using Sklad_v1_001.HelperGlobal.StoreAPI;
 using Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocument;
+using Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocumentDelivery;
+using Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocumentDetails;
+using Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocumentPayment;
 using Sklad_v1_001.SQL;
 using Sklad_v1_001.SQLCommand;
 using System;
@@ -1605,6 +1612,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         Dictionary<String, Range> filtersFromTo;
 
         string get_store_procedure = "xp_GetSupplyDocumentTable";
+        string get_multiplestore_procedure = "xp_GetMultipleObjectTable";
         string get_filters_procedure = "xp_GetSupplyDocumentFilter";
         string get_summary_procedure = "xp_GetSupplyDocumentSummary";
 
@@ -1616,6 +1624,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         string set_store_procedure = "xp_SetSupplyDocumentID";
 
         SQLCommanSelect _sqlRequestSelect = null;
+        SQLCommanSelect _sqlMultipleRequestSelect = null;
         SQLCommanSelect _sqlRequestSelectFilters = null;
         SQLCommanSelect _sqlRequestSelectSummary = null;
         SQLCommanSelect _sqlRequestSave = null;
@@ -1630,6 +1639,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         //структура таблиц
         ShemaStorаge shemaStorаge;
+
+        //отпрвка данных на удаленный сервер
+        SupplyDocumentRequestList supplyDocumentRequestList;
 
         public SupplyDocumentLogic(Attributes _attributes)
         {
@@ -1688,6 +1700,9 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlResponseSave = new SQLCommanSelect();
             _sqlRequestSet = new SQLCommanSelect();
             _sqlRequestSender = new SQLCommanSelect();
+            _sqlMultipleRequestSelect = new SQLCommanSelect();
+
+            supplyDocumentRequestList = new SupplyDocumentRequestList();
 
             //----------------------------------------------------------------------------
             _sqlRequestSelect.AddParametr("@p_TypeScreen", SqlDbType.VarChar, 10);
@@ -1749,6 +1764,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             _sqlRequestSelect.AddParametr("@p_Sort", SqlDbType.Bit);
             _sqlRequestSelect.SetParametrValue("@p_Sort", 0);
+            //----------------------------------------------------------------------------
+
+            _sqlMultipleRequestSelect.AddParametr("@p_Object", SqlDbType.NVarChar, 50);
+            _sqlMultipleRequestSelect.SetParametrValue("@p_Object", String.Empty);
+
             //----------------------------------------------------------------------------
 
             _sqlRequestSelectSummary.AddParametr("@p_Search", SqlDbType.NVarChar);
@@ -2030,6 +2050,16 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _data = _sqlRequestSelectFilters.SqlAnswer.datatable;
             return _data;
         }
+        //ComplexMultipleRequest,,
+        public List<DataTable> GridComplexMultiple(String _object)
+        {
+            _sqlMultipleRequestSelect.SqlAnswer.listDatatable.Clear();
+
+            _sqlMultipleRequestSelect.SetParametrValue("@p_Object", _object);
+
+            _sqlMultipleRequestSelect.ComplexMultipleRequest(get_multiplestore_procedure, CommandType.StoredProcedure, null);
+            return _sqlMultipleRequestSelect.SqlAnswer.listDatatable;
+        }
 
         public DataTable FillSummary(LocalFilter _localFilter)
         {
@@ -2301,5 +2331,105 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 }
             }
         }
+
+        public SupplyDocumentRequestList SendRequest(List<DataTable> _listDocument)
+        {
+            supplyDocumentRequestList.ListDocuments.Clear();
+            //supplyDocumentRequestList
+            Request request = new Request(attributes);
+            SupplyDocumentRequest supplyDocumentRequest = null;
+            
+            List<LocalRow> Document = new List<LocalRow>();
+            List<SupplyDocumentDelivery.LocaleRow> Delivery = new List<SupplyDocumentDelivery.LocaleRow>();
+            List<SupplyDocumentDetails.LocaleRow> Details = new List<SupplyDocumentDetails.LocaleRow>();
+            List<SupplyDocumentPayment.LocaleRow> Payment = new List<SupplyDocumentPayment.LocaleRow>();
+
+            SupplyDocumentDeliveryLogic supplyDocumentDeliveryLogic = new SupplyDocumentDeliveryLogic(attributes);
+            SupplyDocumentDetailsLogic supplyDocumentDetailsLogic = new SupplyDocumentDetailsLogic(attributes);
+            SupplyDocumentPaymentLogic supplyDocumentPaymentLogic = new SupplyDocumentPaymentLogic(attributes);
+            
+            foreach (DataTable dataTable in _listDocument)
+            {
+                Int32 columnDocument = dataTable.Columns.Cast<DataColumn>().FirstOrDefault(x => x.ColumnName == "SupplyDocumentNumber") != null ? 1 : 0;//.Select(x => x.ColumnName == "ReffID" && x.ColumnName == "SupplyDocumentNumber") != null ? 1 : 0;
+                if (columnDocument == 0)
+                    columnDocument = dataTable.Columns.Cast<DataColumn>().FirstOrDefault(x => x.ColumnName == "DeliveryID") != null ? 2 : 0;
+                if (columnDocument == 0)
+                    columnDocument = dataTable.Columns.Cast<DataColumn>().FirstOrDefault(x => x.ColumnName == "Barcodes") != null ? 3 : 0;
+                if (columnDocument == 0)
+                    columnDocument = dataTable.Columns.Cast<DataColumn>().FirstOrDefault(x => x.ColumnName == "OperationType") != null ? 4 : 0;
+
+                //supplyDocumentRequestList.ListDocuments
+                switch (columnDocument)
+                {
+                    case 1://document                       
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            Document.Add(Convert(row, new LocalRow()));
+                        }
+                        break;
+                   
+                    case 2://delivery
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            Delivery.Add(supplyDocumentDeliveryLogic.Convert(row, new SupplyDocumentDelivery.LocaleRow()));
+                        }
+                        break;
+                    case 3://details
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            Details.Add(supplyDocumentDetailsLogic.Convert(row, new SupplyDocumentDetails.LocaleRow()));
+                        }
+                        break;
+                    case 4://payment
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            Payment.Add(supplyDocumentPaymentLogic.Convert(row, new SupplyDocumentPayment.LocaleRow()));
+                        }
+                        break;
+                }
+            }
+            foreach(LocalRow documentRow in Document)
+            {
+                supplyDocumentRequest = new SupplyDocumentRequest();
+                //supplyDocumentLogic.Convert(Document, request.supplyDocument.Document);
+                Convert(documentRow, supplyDocumentRequest.Document);
+                
+                foreach(SupplyDocumentDelivery.LocaleRow deliveryRow in Delivery.Where(x => x.DocumentID == documentRow.ID))
+                {                                     
+                    supplyDocumentRequest.Delivery.Add(supplyDocumentDeliveryLogic.Convert(deliveryRow, new SupplyDocumentDeliveryRequest(attributes)));
+                }
+
+                foreach (SupplyDocumentDetails.LocaleRow detailsRow in Details.Where(x => x.DocumentID == documentRow.ID))
+                {
+                    supplyDocumentRequest.Details.Add(supplyDocumentDetailsLogic.Convert(detailsRow, new SupplyDocumentDetailsRequest(attributes)));
+                }
+
+                foreach (SupplyDocumentPayment.LocaleRow paymentRow in Payment.Where(x => x.DocumentID == documentRow.ID))
+                {
+                    supplyDocumentRequest.Payment.Add(supplyDocumentPaymentLogic.Convert(paymentRow, new SupplyDocumentPaymentRequest(attributes)));
+                }
+                supplyDocumentRequestList.ListDocuments.Add(supplyDocumentRequest);
+            }
+            request.supplyDocumentRequestList = supplyDocumentRequestList;
+            Response response = request.GetCommand(3);
+            if (response != null)
+            {
+                SupplyDocumentLogic supplyDocumentLogic = new SupplyDocumentLogic(attributes);
+                foreach(SupplyDocumentRequest rowRequest in response.listSupplyDocumentOutput.ListDocuments)
+                {
+                    if (rowRequest.Document != null)
+                    {
+                        LocalRow document = new LocalRow();
+                        document.SupplyDocumentNumber = rowRequest.Document.SupplyDocumentNumber;
+                        document.Status = rowRequest.Document.Status;
+                        document.ReffDate = rowRequest.Document.SyncDate;
+                        document.ID = rowRequest.Document.ID;
+                        SaveRespons(document);
+                    }
+                   
+                }
+            }
+            return supplyDocumentRequestList;
+        }      
     }
 }

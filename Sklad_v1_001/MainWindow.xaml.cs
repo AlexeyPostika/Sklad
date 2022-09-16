@@ -22,7 +22,7 @@ using Sklad_v1_001.FormUsers.Product;
 using Sklad_v1_001.FormUsers.RegisterDocument;
 using Sklad_v1_001.FormUsers.SaleDocument;
 using Sklad_v1_001.FormUsers.SupplyDocument;
-using Sklad_v1_001.FormUsers.RegisterDocumentDelivery;
+using Sklad_v1_001.FormUsers.SupplyDocumentDelivery;
 using Sklad_v1_001.FormUsers.Tovar;
 using Sklad_v1_001.FormUsers.Zacupca;
 using Sklad_v1_001.GlobalAttributes;
@@ -258,7 +258,7 @@ namespace Sklad_v1_001
             addDeliveryWindow.ShowDialog();
         }
 
-        public void ButtonNewDeliveryF(FormUsers.RegisterDocumentDelivery.LocaleRow _localeRow)
+        public void ButtonNewDeliveryF(FormUsers.SupplyDocumentDelivery.LocaleRow _localeRow)
         {
             GC.Collect();   //Вызов сборщика мусора
             GC.WaitForPendingFinalizers();  //ждем освобождение памяти

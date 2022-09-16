@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using Sklad_v1_001.FormUsers.RegisterDocumentDelivery;
+using Sklad_v1_001.FormUsers.SupplyDocumentDelivery;
 using Sklad_v1_001.GlobalAttributes;
 using Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocument;
 using System;
@@ -16,10 +16,12 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI
     {
         Attributes attributes;
         public SupplyDocumentRequest supplyDocument { get; set; }
+        public SupplyDocumentRequestList supplyDocumentRequestList { get; set; }
         public Request(Attributes _attributes)
         {
             this.attributes = _attributes;
             supplyDocument = new SupplyDocumentRequest();
+            supplyDocumentRequestList = new SupplyDocumentRequestList();
         }
 
         public Response GetCommand(Int32 _com)
@@ -32,6 +34,9 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI
                     break;
                 case 2:
                     response = SupplyDocumentGet(supplyDocument);
+                    break;
+                case 3:
+                    response = SupplyDocumentListPOST(supplyDocumentRequestList);
                     break;
             }
             return response;
@@ -56,7 +61,7 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI
                     //webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
                     webClient.Headers[HttpRequestHeader.ContentType] = "application/json";
                     string temp = JsonConvert.SerializeObject(_supplyDocumentRequest, Newtonsoft.Json.Formatting.Indented);
-                    string response = webClient.UploadString(new Uri(@"https://192.168.0.254:60000/api/supplydocument"), "POST", temp);
+                    string response = webClient.UploadString(new Uri(@"https://192.168.0.254:60000/api/supplydocument/Post"), "POST", temp);
                     Response resultOUT = JsonConvert.DeserializeObject<Response>(response);
                     if (resultOUT != null)
                     {
@@ -73,6 +78,45 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI
                 return resultOUT;
             }
             
+        }
+
+        private Response SupplyDocumentListPOST(SupplyDocumentRequestList _supplyDocumentRequestList)
+        {
+            try
+            {
+                Response response = new Response();
+                using (var webClient = new WebClient())
+                {
+                    // Выполняем запрос по адресу и получаем ответ в виде строки
+                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3;
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                    ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, errors) =>
+                    {
+                        // GetCertificateFromStore("");
+                        return true;
+                    };
+                    webClient.Encoding = System.Text.Encoding.UTF8;
+                    //webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+                    webClient.Headers[HttpRequestHeader.ContentType] = "application/json";
+                    string temp = JsonConvert.SerializeObject(_supplyDocumentRequestList, Newtonsoft.Json.Formatting.Indented);
+                    string respon = webClient.UploadString(new Uri(@"https://192.168.0.254:60000/api/supplydocument/ListPost"), "POST", temp);
+                    response = JsonConvert.DeserializeObject<Response>(respon);
+                    if (response.listSupplyDocumentOutput != null)
+                    {
+                        return response;
+                    }
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Response resultOUT = new Response();
+                resultOUT.ErrorCode = -1;
+                resultOUT.DescriptionEX = ex.Message;
+                return resultOUT;
+            }
+
         }
 
         private Response SupplyDocumentGet(SupplyDocumentRequest _supplyDocumentRequest)
@@ -96,8 +140,8 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI
                     //webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
                     webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
                     string responseString = webClient.DownloadString(new Uri(@"https://192.168.0.254:60000/api/supplydocument/"+ _supplyDocumentRequest.Document.Status.ToString()));               
-                    response.SupplyDocumentListOutput = JsonConvert.DeserializeObject<SupplyDocumentRequestList>(responseString);
-                    if (response.SupplyDocumentListOutput != null)
+                    response.listSupplyDocumentOutput = JsonConvert.DeserializeObject<SupplyDocumentRequestList>(responseString);
+                    if (response.listSupplyDocumentOutput != null)
                     {                      
                         return response;
                     }

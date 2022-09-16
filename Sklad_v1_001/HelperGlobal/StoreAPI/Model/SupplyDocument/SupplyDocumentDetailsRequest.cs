@@ -32,7 +32,7 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocumentDetails
         public Int32 CompanyID { get; set; }
         public Int32 ShopID { get; set; }        
         public String TimeRow { get; set; }
-        public SupplyDocumentDetailsRequest()
+        public SupplyDocumentDetailsRequest(Attributes attributes)
         {
             CompanyID = 1;
             ShopID = 100;

@@ -1,4 +1,4 @@
-﻿using Sklad_v1_001.FormUsers.RegisterDocumentDelivery;
+﻿using Sklad_v1_001.FormUsers.SupplyDocumentDelivery;
 using Sklad_v1_001.FormUsers.SupplyDocumentDetails;
 using Sklad_v1_001.FormUsers.SupplyDocumentPayment;
 using Sklad_v1_001.GlobalAttributes;
@@ -20,6 +20,7 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocument
         public Int32 Count { get; set; }
         public Decimal Amount { get; set; }
         public Int64 SupplyDocumentNumber { get; set; }
+        public Int64 RegisterDocumentNumber { get; set; }
         public Int32 ShopID { get; set; }
         public Int32 CompanyID { get; set; }
         public Int32 Status { get; set; }

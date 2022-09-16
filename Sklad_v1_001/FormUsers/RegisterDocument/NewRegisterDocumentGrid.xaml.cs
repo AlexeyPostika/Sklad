@@ -4,7 +4,7 @@ using Sklad_v1_001.FormUsers.Delivery;
 using Sklad_v1_001.FormUsers.Product;
 using Sklad_v1_001.FormUsers.RegisterDocumentDetails;
 using Sklad_v1_001.FormUsers.RegisterDocumentPayment;
-using Sklad_v1_001.FormUsers.RegisterDocumentDelivery;
+using Sklad_v1_001.FormUsers.SupplyDocumentDelivery;
 using Sklad_v1_001.FormUsers.SupplyDocumentDetails;
 using Sklad_v1_001.FormUsers.SupplyDocumentPayment;
 using Sklad_v1_001.GlobalAttributes;
@@ -167,7 +167,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
 
         //доставка
         RegisterDocumentDeliveryLogic registerDocumentDeliveryLogic;      
-        ObservableCollection<RegisterDocumentDelivery.LocaleRow> registerDocumentDelivery;
+        ObservableCollection<SupplyDocumentDelivery.LocaleRow> registerDocumentDelivery;
 
         //SupplyDocumentDetails
         RegisterDocumentDetailsLogic registerDocumentDetailsLogic;      
@@ -313,7 +313,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             registerDocumentPaymentLogic = new RegisterDocumentPaymentLogic(attributes);
 
             registerDocumentDetails = new ObservableCollection<RegisterDocumentDetails.LocaleRow>();
-            registerDocumentDelivery = new ObservableCollection<RegisterDocumentDelivery.LocaleRow>();
+            registerDocumentDelivery = new ObservableCollection<SupplyDocumentDelivery.LocaleRow>();
             registerDocumentPayment = new ObservableCollection<RegisterDocumentPayment.LocaleRow>();
 
             datalistDeleted = new ObservableCollection<ComplexKey>();
@@ -437,14 +437,14 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
 
         #region Поставщик
 
-        private void EditDelivery(RegisterDocumentDelivery.LocaleRow currentrow = null)
+        private void EditDelivery(SupplyDocumentDelivery.LocaleRow currentrow = null)
         {           
-            RegisterDocumentDelivery.LocaleRow localeRowDelivery = new RegisterDocumentDelivery.LocaleRow();
+            SupplyDocumentDelivery.LocaleRow localeRowDelivery = new SupplyDocumentDelivery.LocaleRow();
             supplyDocumentDeliveryItem = new SupplyDocumentDeliveryItem(attributes);
             addDeliveryWindow = new FlexWindows(Properties.Resources.Deliveries);
 
             supplyDocumentDeliveryItem.StatusDocument = Document.Status == 0;        
-            supplyDocumentDeliveryItem.DeliveryRow= currentrow != null ? currentrow : new RegisterDocumentDelivery.LocaleRow();
+            supplyDocumentDeliveryItem.DeliveryRow= currentrow != null ? currentrow : new SupplyDocumentDelivery.LocaleRow();
            
             addDeliveryWindow.Content = supplyDocumentDeliveryItem;
             addDeliveryWindow.ShowDialog();
@@ -454,7 +454,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
                 if (supplyDocumentDeliveryItem.DeliveryRow != null && !String.IsNullOrEmpty(supplyDocumentDeliveryItem.DeliveryRow.NameCompany))
                 {
                     localeRowDelivery = supplyDocumentDeliveryItem.DeliveryRow;
-                    RegisterDocumentDelivery.LocaleRow locale = new RegisterDocumentDelivery.LocaleRow();
+                    SupplyDocumentDelivery.LocaleRow locale = new SupplyDocumentDelivery.LocaleRow();
                     if (localeRowDelivery.LineDocument == 0)
                     {               
                         localeRowDelivery.TempID = registerDocumentDelivery.Count() + 1;
@@ -478,7 +478,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
        
         private void DataDelivery_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            RegisterDocumentDelivery.LocaleRow currentrow = this.DataDelivery.SelectedItem as RegisterDocumentDelivery.LocaleRow;
+            SupplyDocumentDelivery.LocaleRow currentrow = this.DataDelivery.SelectedItem as SupplyDocumentDelivery.LocaleRow;
             if (currentrow != null)
             {               
                 EditDelivery(currentrow);
@@ -756,7 +756,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             }
 
             SummaryQuantityDeliveryTemp = registerDocumentDelivery.Count();
-            foreach (RegisterDocumentDelivery.LocaleRow row in registerDocumentDelivery)
+            foreach (SupplyDocumentDelivery.LocaleRow row in registerDocumentDelivery)
             {               
                 SummaryAmountUSATemp = SummaryAmountUSATemp + row.AmountUSA;
                 SummaryAmountRUSTemp = SummaryAmountRUSTemp + row.AmountRUS;

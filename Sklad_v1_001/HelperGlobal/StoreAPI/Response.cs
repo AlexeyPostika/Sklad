@@ -17,13 +17,13 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI
         public String DescriptionEX { get; set; }
         public SupplyDocumentRequest SupplyDocumentOutput { get; set; }
 
-        public SupplyDocumentRequestList SupplyDocumentListOutput { get; set; }
+        public SupplyDocumentRequestList listSupplyDocumentOutput { get; set; }
 
         public Response()
         {
             ErrorCode = 0;
             SupplyDocumentOutput = new SupplyDocumentRequest();
-            SupplyDocumentListOutput = new SupplyDocumentRequestList();
+            listSupplyDocumentOutput = new SupplyDocumentRequestList();
         }
     }
 }
