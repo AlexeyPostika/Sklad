@@ -371,6 +371,7 @@ namespace Sklad_v1_001.FormUsers.Product
         private Byte[] photoImageByte;
         private ImageSource photoImage;
         private List<ImageSource> listImage;
+        private String reffTimeRow;
 
         public int ID
         {
@@ -1001,6 +1002,19 @@ namespace Sklad_v1_001.FormUsers.Product
             }
         }
 
+        public String ReffTimeRow
+        {
+            get
+            {
+                return reffTimeRow;
+            }
+
+            set
+            {
+                reffTimeRow = value;
+                OnPropertyChanged("ReffTimeRow");
+            }
+        }
         public LocalRow()
         {
             ImageSourceTTN = ImageHelper.GenerateImage("IconMinus.png");

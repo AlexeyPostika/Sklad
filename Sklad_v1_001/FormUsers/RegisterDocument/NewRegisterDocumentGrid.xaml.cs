@@ -167,7 +167,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
 
         //доставка
         RegisterDocumentDeliveryLogic registerDocumentDeliveryLogic;      
-        ObservableCollection<SupplyDocumentDelivery.LocaleRow> registerDocumentDelivery;
+        ObservableCollection<RegisterDocumetnDelivery.LocaleRow> registerDocumentDelivery;
 
         //SupplyDocumentDetails
         RegisterDocumentDetailsLogic registerDocumentDetailsLogic;      
@@ -313,7 +313,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             registerDocumentPaymentLogic = new RegisterDocumentPaymentLogic(attributes);
 
             registerDocumentDetails = new ObservableCollection<RegisterDocumentDetails.LocaleRow>();
-            registerDocumentDelivery = new ObservableCollection<SupplyDocumentDelivery.LocaleRow>();
+            registerDocumentDelivery = new ObservableCollection<RegisterDocumetnDelivery.LocaleRow>();
             registerDocumentPayment = new ObservableCollection<RegisterDocumentPayment.LocaleRow>();
 
             datalistDeleted = new ObservableCollection<ComplexKey>();
@@ -353,7 +353,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             DataTable dataTableSupplyDocumentDelivery = registerDocumentDeliveryLogic.FillGrid(Document.ID);
             foreach (DataRow row in dataTableSupplyDocumentDelivery.Rows)
             {
-               // registerDocumentDelivery.Add(registerDocumentDeliveryLogic.Convert(row, new RegisterDocumetnDelivery.LocaleRow()));
+                registerDocumentDelivery.Add(registerDocumentDeliveryLogic.Convert(row, new RegisterDocumetnDelivery.LocaleRow()));
             }
            
             DataTable dataTableSupplyDocumentPayment = registerDocumentPaymentLogic.FillGrid(Document.ID);
@@ -438,41 +438,41 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
         #region Поставщик
 
         private void EditDelivery(SupplyDocumentDelivery.LocaleRow currentrow = null)
-        {           
-            SupplyDocumentDelivery.LocaleRow localeRowDelivery = new SupplyDocumentDelivery.LocaleRow();
-            supplyDocumentDeliveryItem = new SupplyDocumentDeliveryItem(attributes);
-            addDeliveryWindow = new FlexWindows(Properties.Resources.Deliveries);
+        {
+            RegisterDocumetnDelivery.LocaleRow localeRowDelivery = new RegisterDocumetnDelivery.LocaleRow();
+            //supplyDocumentDeliveryItem = new SupplyDocumentDeliveryItem(attributes);
+            //addDeliveryWindow = new FlexWindows(Properties.Resources.Deliveries);
 
-            supplyDocumentDeliveryItem.StatusDocument = Document.Status == 0;        
-            supplyDocumentDeliveryItem.DeliveryRow= currentrow != null ? currentrow : new SupplyDocumentDelivery.LocaleRow();
-           
-            addDeliveryWindow.Content = supplyDocumentDeliveryItem;
-            addDeliveryWindow.ShowDialog();
-            //тут проблема посмотреть, не правильно добавляется ID
-            if (supplyDocumentDeliveryItem.IsClickButtonOK == MessageBoxResult.OK)
-            {
-                if (supplyDocumentDeliveryItem.DeliveryRow != null && !String.IsNullOrEmpty(supplyDocumentDeliveryItem.DeliveryRow.NameCompany))
-                {
-                    localeRowDelivery = supplyDocumentDeliveryItem.DeliveryRow;
-                    SupplyDocumentDelivery.LocaleRow locale = new SupplyDocumentDelivery.LocaleRow();
-                    if (localeRowDelivery.LineDocument == 0)
-                    {               
-                        localeRowDelivery.TempID = registerDocumentDelivery.Count() + 1;
-                        localeRowDelivery.LineDocument = registerDocumentDelivery.Count() + 1;
-                        registerDocumentDelivery.Add(localeRowDelivery);
-                    }
-                    else
-                    {
-                        int tempID = registerDocumentDelivery.FirstOrDefault(x => x.LineDocument == localeRowDelivery.LineDocument) != null ? registerDocumentDelivery.FirstOrDefault(x => x.LineDocument == localeRowDelivery.LineDocument).LineDocument : 0;
-                        locale = registerDocumentDelivery.FirstOrDefault(x => x.LineDocument == localeRowDelivery.LineDocument);
-                        registerDocumentDelivery.Remove(locale);
-                        locale = localeRowDelivery;
-                        locale.TempID = tempID;
-                        locale.LineDocument = tempID;
-                        registerDocumentDelivery.Add(locale);
-                    }
-                }
-            }
+            //supplyDocumentDeliveryItem.StatusDocument = Document.Status == 0;
+            //supplyDocumentDeliveryItem.DeliveryRow = currentrow != null ? currentrow : new SupplyDocumentDelivery.LocaleRow();
+
+            //addDeliveryWindow.Content = supplyDocumentDeliveryItem;
+            //addDeliveryWindow.ShowDialog();
+            ////тут проблема посмотреть, не правильно добавляется ID
+            //if (supplyDocumentDeliveryItem.IsClickButtonOK == MessageBoxResult.OK)
+            //{
+            //    if (supplyDocumentDeliveryItem.DeliveryRow != null && !String.IsNullOrEmpty(supplyDocumentDeliveryItem.DeliveryRow.NameCompany))
+            //    {
+            //        localeRowDelivery = supplyDocumentDeliveryItem.DeliveryRow;
+            //        SupplyDocumentDelivery.LocaleRow locale = new SupplyDocumentDelivery.LocaleRow();
+            //        if (localeRowDelivery.LineDocument == 0)
+            //        {
+            //            localeRowDelivery.TempID = registerDocumentDelivery.Count() + 1;
+            //            localeRowDelivery.LineDocument = registerDocumentDelivery.Count() + 1;
+            //            registerDocumentDelivery.Add(localeRowDelivery);
+            //        }
+            //        else
+            //        {
+            //            int tempID = registerDocumentDelivery.FirstOrDefault(x => x.LineDocument == localeRowDelivery.LineDocument) != null ? registerDocumentDelivery.FirstOrDefault(x => x.LineDocument == localeRowDelivery.LineDocument).LineDocument : 0;
+            //            locale = registerDocumentDelivery.FirstOrDefault(x => x.LineDocument == localeRowDelivery.LineDocument);
+            //            registerDocumentDelivery.Remove(locale);
+            //            locale = localeRowDelivery;
+            //            locale.TempID = tempID;
+            //            locale.LineDocument = tempID;
+            //            registerDocumentDelivery.Add(locale);
+            //        }
+            //    }
+            //}
             CalculateSummary();         
         }
        
@@ -493,7 +493,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             registerDocumentPaymentLocaleRow = new RegisterDocumentPayment.LocaleRow();
             newRegisterDocumentPaymentItem = new PaymentItem();
             addSuppluPaymentWindow = new FlexWindows(Properties.Resources.Payment1);
-            newRegisterDocumentPaymentItem.AmountMax = (Double)summary.SummaryPaymentRemains;
+            newRegisterDocumentPaymentItem.AmountMax = (Double)summary.SummaryPaymentRemains == 0 ? (Double)summary.SummaryPaymentBalans : (Double)summary.SummaryPaymentRemains;
             newRegisterDocumentPaymentItem.StatusDocument = Document.Status == 0;
             newRegisterDocumentPaymentItem.PaymentLocalRow = currentrow != null ? currentrow : new Payment.LocaleRow();          
             addSuppluPaymentWindow.Content = newRegisterDocumentPaymentItem;
@@ -502,6 +502,46 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             {
                 if (newRegisterDocumentPaymentItem.PaymentLocalRow != null)
                 {
+                    Int32 countTemp = registerDocumentPayment.Count() + 1;
+                    var temp = registerDocumentPayment.FirstOrDefault(x => x.LineDocument == newRegisterDocumentPaymentItem.PaymentLocalRow.LineDocument || x.TempID == newRegisterDocumentPaymentItem.PaymentLocalRow.TempID);
+                    if (temp == null)
+                    {
+                        registerDocumentPaymentLocaleRow.Amount = newRegisterDocumentPaymentItem.PaymentLocalRow.Amount;
+                        registerDocumentPaymentLocaleRow.CreatedDate = newRegisterDocumentPaymentItem.PaymentLocalRow.CreatedDate;
+                        registerDocumentPaymentLocaleRow.CreatedUserID = newRegisterDocumentPaymentItem.PaymentLocalRow.CreatedUserID;
+                        registerDocumentPaymentLocaleRow.Description = newRegisterDocumentPaymentItem.PaymentLocalRow.Description;
+                        registerDocumentPaymentLocaleRow.DocumentID = newRegisterDocumentPaymentItem.PaymentLocalRow.DocumentID;
+                        registerDocumentPaymentLocaleRow.ID = newRegisterDocumentPaymentItem.PaymentLocalRow.ID;
+                        registerDocumentPaymentLocaleRow.ImageSourceRRN = newRegisterDocumentPaymentItem.PaymentLocalRow.ImageSourceRRN;
+                        registerDocumentPaymentLocaleRow.LineDocument = newRegisterDocumentPaymentItem.PaymentLocalRow.LineDocument == 0 ? countTemp : newRegisterDocumentPaymentItem.PaymentLocalRow.LineDocument;
+                        registerDocumentPaymentLocaleRow.OpertionType = newRegisterDocumentPaymentItem.PaymentLocalRow.OpertionType;
+                        registerDocumentPaymentLocaleRow.OpertionTypeString = newRegisterDocumentPaymentItem.PaymentLocalRow.OpertionTypeString;
+                        registerDocumentPaymentLocaleRow.RRN = newRegisterDocumentPaymentItem.PaymentLocalRow.RRN;
+                        registerDocumentPaymentLocaleRow.RRNDocumentByte = newRegisterDocumentPaymentItem.PaymentLocalRow.RRNDocumentByte;
+                        registerDocumentPaymentLocaleRow.Status = newRegisterDocumentPaymentItem.PaymentLocalRow.Status;
+                        registerDocumentPaymentLocaleRow.StatusString = newRegisterDocumentPaymentItem.PaymentLocalRow.StatusString;
+                        registerDocumentPaymentLocaleRow.TempID = newRegisterDocumentPaymentItem.PaymentLocalRow.TempID == 0 ? countTemp : newRegisterDocumentPaymentItem.PaymentLocalRow.TempID;
+                        registerDocumentPayment.Add(registerDocumentPaymentLocaleRow);
+                    }
+                    else
+                    {
+                        temp.Amount = newRegisterDocumentPaymentItem.PaymentLocalRow.Amount;
+                        temp.CreatedDate = newRegisterDocumentPaymentItem.PaymentLocalRow.CreatedDate;
+                        temp.CreatedUserID = newRegisterDocumentPaymentItem.PaymentLocalRow.CreatedUserID;
+                        temp.Description = newRegisterDocumentPaymentItem.PaymentLocalRow.Description;
+                        temp.DocumentID = newRegisterDocumentPaymentItem.PaymentLocalRow.DocumentID;
+                        temp.ID = newRegisterDocumentPaymentItem.PaymentLocalRow.ID;
+                        temp.ImageSourceRRN = newRegisterDocumentPaymentItem.PaymentLocalRow.ImageSourceRRN;
+                        temp.LineDocument = newRegisterDocumentPaymentItem.PaymentLocalRow.LineDocument;
+                        temp.OpertionType = newRegisterDocumentPaymentItem.PaymentLocalRow.OpertionType;
+                        temp.OpertionTypeString = newRegisterDocumentPaymentItem.PaymentLocalRow.OpertionTypeString;
+                        temp.RRN = newRegisterDocumentPaymentItem.PaymentLocalRow.RRN;
+                        temp.RRNDocumentByte = newRegisterDocumentPaymentItem.PaymentLocalRow.RRNDocumentByte;
+                        temp.Status = newRegisterDocumentPaymentItem.PaymentLocalRow.Status;
+                        temp.StatusString = newRegisterDocumentPaymentItem.PaymentLocalRow.StatusString;
+                        temp.TempID = newRegisterDocumentPaymentItem.PaymentLocalRow.TempID;
+                    }
+
                     //RegisterDocumentPayment.LocaleRow paymentLocalRow = newSupplyDocumentPaymentItem.PaymentLocalRow;
                     //RegisterDocumentPayment.LocaleRow locale = new SupplyDocumentPayment.LocaleRow();
                     //if (paymentLocalRow.LineDocument == 0)
@@ -513,7 +553,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
                     //else
                     //{
                     //    int tempID = registerDocumentPayment.FirstOrDefault(x => x.LineDocument == paymentLocalRow.ID) != null ? registerDocumentPayment.FirstOrDefault(x => x.LineDocument == paymentLocalRow.ID).LineDocument : 0;
-                        
+
                     //    locale = registerDocumentPayment.FirstOrDefault(x => x.LineDocument == paymentLocalRow.LineDocument);
                     //    registerDocumentPayment.Remove(locale);                      
                     //    locale = paymentLocalRow;
@@ -606,94 +646,121 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
 
         Int32 Save()
         {
-            ConvertData convertdata = new ConvertData();         
+            ConvertData convertdata = new ConvertData();
 
             //if (FieldVerify(registerDocumentDetails))
             //{
-            //    shemaStorаge.SupplyDocumentDetails.Clear();
-            //    shemaStorаge.SupplyDocumentDelivery.Clear();
-            //    shemaStorаge.SupplyDocumentPayment.Clear();
-               
-            //    request.supplyDocument.Details.Clear();
-            //    request.supplyDocument.Delivery.Clear();
-            //    request.supplyDocument.Payment.Clear();
+            shemaStorаge.RegisterDocument.Clear();
+            shemaStorаge.RegisterDocumentDetails.Clear();
+            shemaStorаge.RegisterDocumentDelivery.Clear();
+            shemaStorаge.RegisterDocumentPayment.Clear();
 
-            //    //продукты                   
-            //    foreach (SupplyDocumentDetails.LocaleRow currentrow in registerDocumentDetails)
-            //    {                    
-            //        DataRow row = shemaStorаge.SupplyDocumentDetails.NewRow();
-            //        row["DocumentID"] = 0;
-            //        row["Name"] = currentrow.Name;
-            //        row["Quantity"] = currentrow.Quantity;
-            //        row["TagPriceUSA"] = currentrow.TagPriceUSA;
-            //        row["TagPriceRUS"] = currentrow.TagPriceRUS;
-            //        row["CategoryID"] = currentrow.CategoryID;
-            //        row["CategoryDetailsID"] = currentrow.CategoryDetailsID;
-            //        if (currentrow.ImageProduct!=null)
-            //            row["ImageProduct"] = currentrow.ImageProduct;
-            //        row["Barcodes"] = currentrow.BarCodeString;
-            //        row["CreatedDate"] = currentrow.CreatedDate == null ? DateTime.Now : currentrow.CreatedDate;
-            //        row["CreatedUserID"] = currentrow.CreatedUserID;
-            //        row["LastModificatedDate"] = DateTime.Now;
-            //        row["LastModificatedUserID"] = Document.UserID;
-            //        row["Model"] = currentrow.Model;
-            //        row["SizeProduct"] = currentrow.SizeProduct;
-            //        row["Size"] = currentrow.Package;
-            //        row["BarcodesInput"] = currentrow.BarcodesInput;
-            //        shemaStorаge.SupplyDocumentDetails.Rows.Add(row);
+            request.supplyDocument.Details.Clear();
+            request.supplyDocument.Delivery.Clear();
+            request.supplyDocument.Payment.Clear();              
 
-            //    }
+            //продукты                   
+            foreach (RegisterDocumentDetails.LocaleRow currentrow in registerDocumentDetails)
+            {
+                DataRow row = shemaStorаge.RegisterDocumentDetails.NewRow();
+                row["DocumentID"] = Document.ReffID;
+                row["Name"] = currentrow.Name;
+                row["Quantity"] = currentrow.Quantity;
+                row["TagPriceUSA"] = currentrow.TagPriceUSA;
+                row["TagPriceRUS"] = currentrow.TagPriceRUS;
+                row["CategoryID"] = currentrow.CategoryID;
+                row["CategoryDetailsID"] = currentrow.CategoryDetailsID;
+                if (currentrow.ImageProduct != null)
+                    row["ImageProduct"] = currentrow.ImageProduct;
+                row["Barecodes"] = currentrow.BarCodeString;
+                row["CreatedDate"] = currentrow.CreatedDate == null ? DateTime.Now : currentrow.CreatedDate;
+                row["CreatedUserID"] = currentrow.CreatedUserID;
+                row["LastModificatedDate"] = DateTime.Now;
+                row["LastModificatedUserID"] = attributes.numeric.userEdit.AddUserID; 
+                row["Model"] = currentrow.Model;
+                row["SizeProduct"] = currentrow.SizeProduct;
+                row["Size"] = currentrow.Package;
+                row["ShopID"] = attributes.numeric.attributeCompany.ShopId;
+                row["CompanyID"] = attributes.numeric.attributeCompany.CompanyID;
+                row["ReffTimeRow"] = currentrow.ReffTimeRow;             
+                shemaStorаge.RegisterDocumentDetails.Rows.Add(row);
 
-            //    //сопуствующие товары             
-            //    foreach (RegisterDocumentDelivery.LocaleRow currentrow in registerDocumentDelivery)
-            //    {                                     
-            //        DataRow row = shemaStorаge.SupplyDocumentDelivery.NewRow();
-            //        row["DocumentID"] = 0;
-            //        row["DeliveryID"] = currentrow.DeliveryID;
-            //        row["DeliveryDetailsID"] = currentrow.DeliveryDetailsID;
-            //        row["DeliveryTTN"] = "";
-            //        if (currentrow.TTNDocumentByte != null)
-            //            row["ImageTTN"] = currentrow.TTNDocumentByte;
-            //        row["Invoice"] = currentrow.Invoice;
-            //        if (currentrow.InvoiceDocumentByte != null)
-            //            row["ImageInvoice"] = currentrow.InvoiceDocumentByte;
-            //        row["AmountUSA"] = currentrow.AmountUSA;
-            //        row["AmountRUS"] = currentrow.AmountRUS;
-            //        row["Description"] = currentrow.Description;
-            //        row["TTN"] = currentrow.TTN;
-            //        row["CreatedDate"] = currentrow.CreatedDate == null ? DateTime.Now : currentrow.CreatedDate;
-            //        row["CreatedUserID"] = currentrow.CreatedUserID;
-            //        row["LastModificatedDate"] = DateTime.Now;
-            //        row["LastModificatedUserID"] = Document.UserID;                
-            //        shemaStorаge.SupplyDocumentDelivery.Rows.Add(row);                    
-            //    }
+            }
 
-            //    //виды оплат
-            //    shemaStorаge.SupplyDocumentPayment.Clear();
-            //    foreach (SupplyDocumentPayment.LocaleRow currentrow in registerDocumentPayment)
-            //    {
-            //        DataRow row = shemaStorаge.SupplyDocumentPayment.NewRow();
-            //        row["DocumentID"] = 0;
-            //        row["Status"] = currentrow.Status;
-            //        row["OperationType"] = currentrow.OpertionType;
-            //        row["Amount"] = currentrow.Amount;                
-            //        row["Description"] = currentrow.Description;
-            //        row["RRN"] = currentrow.RRN;
-            //        row["CreatedDate"] = currentrow.CreatedDate == null ? DateTime.Now : currentrow.CreatedDate;
-            //        row["CreatedUserID"] = currentrow.CreatedUserID;
-            //        row["LastModificatedDate"] = DateTime.Now;
-            //        row["LastModificatedUserID"] = Document.UserID;
-            //        shemaStorаge.SupplyDocumentPayment.Rows.Add(row);
-                                      
-            //    }
-            //    Document.Amount = summary.SummaryProductTagPriceRUS;
-            //    Document.Count = summary.SummaryQuantityProduct;
-            //    Document.ShemaStorаgeLocal = shemaStorаge;
-            //    Document.ID = registerDocumentLogic.SaveRowTable(Document);
-               
-            //    return Document.ID;
+            //сопуствующие товары             
+            foreach (RegisterDocumetnDelivery.LocaleRow currentrow in registerDocumentDelivery)
+            {
+                DataRow row = shemaStorаge.RegisterDocumentDelivery.NewRow();
+                row["DocumentID"] = Document.ReffID;
+                row["DeliveryID"] = currentrow.DeliveryID;
+                row["DeliveryDetailsID"] = currentrow.DeliveryDetailsID;
+                row["DeliveryTTN"] = currentrow.DeliveryTTN;
+                if (currentrow.TTNDocumentByte != null)
+                    row["ImageTTN"] = currentrow.TTNDocumentByte;
+                row["Invoice"] = currentrow.Invoice;
+                if (currentrow.InvoiceDocumentByte != null)
+                    row["ImageInvoice"] = currentrow.InvoiceDocumentByte;
+                row["AmountUSA"] = currentrow.AmountUSA;
+                row["AmountRUS"] = currentrow.AmountRUS;
+                row["Description"] = currentrow.Description;
+                row["TTN"] = currentrow.DeliveryTTN;
+                row["CreatedDate"] = currentrow.CreatedDate == null ? DateTime.Now : currentrow.CreatedDate;
+                row["CreatedUserID"] = currentrow.CreatedUserID;
+                row["LastModificatedDate"] = DateTime.Now;
+                row["LastModificatedUserID"] = attributes.numeric.userEdit.AddUserID; 
+                row["ShopID"] = attributes.numeric.attributeCompany.ShopId;
+                row["CompanyID"] = attributes.numeric.attributeCompany.CompanyID;
+                row["ReffTimeRow"] =  currentrow.ReffTimeRow;       
+                shemaStorаge.RegisterDocumentDelivery.Rows.Add(row);
+            }
+
+            //виды оплат
+            shemaStorаge.SupplyDocumentPayment.Clear();
+            foreach (RegisterDocumentPayment.LocaleRow currentrow in registerDocumentPayment)
+            {
+                DataRow row = shemaStorаge.RegisterDocumentPayment.NewRow();
+                row["DocumentID"] = Document.ReffID;
+                row["Status"] = currentrow.Status;
+                row["OperationType"] = currentrow.OpertionType;
+                row["Amount"] = currentrow.Amount;
+                row["Description"] = currentrow.Description;
+                row["RRN"] = currentrow.RRN;
+                row["CreatedDate"] = currentrow.CreatedDate == null ? DateTime.Now : currentrow.CreatedDate;
+                row["CreatedUserID"] = currentrow.CreatedUserID;
+                row["LastModificatedDate"] = DateTime.Now;
+                row["LastModificatedUserID"] = attributes.numeric.userEdit.AddUserID;
+                row["ShopID"] = attributes.numeric.attributeCompany.ShopId;
+                row["CompanyID"] = attributes.numeric.attributeCompany.CompanyID;
+                row["ReffTimeRow"] = currentrow.ReffTimeRow;     
+                shemaStorаge.RegisterDocumentPayment.Rows.Add(row);
+
+            }
+            Document.Amount = summary.SummaryProductTagPriceRUS;
+            Document.Count = summary.SummaryQuantityProduct;
+            //докуметн
+            DataRow rowDocument = shemaStorаge.RegisterDocument.NewRow();
+            rowDocument["Count"] = Document.Count;
+            rowDocument["Amount"] = Document.Amount;
+            rowDocument["ReffID"] = Document.ReffID;
+            rowDocument["ReffDate"] = Document.ReffDate;
+            rowDocument["SupplyDocumentNumber"] = Document.SupplyDocumentNumber;
+            rowDocument["CreatedDate"] = DateTime.Now;
+            rowDocument["CreatedUserID"] = 1;// Document.UserID;
+            rowDocument["LastModificatedDate"] = DateTime.Now;
+            rowDocument["LastModificatedUserID"] = attributes.numeric.userEdit.AddUserID;
+            rowDocument["Status"] = Document.Status;
+            rowDocument["ShopID"] = attributes.numeric.attributeCompany.ShopId;
+            rowDocument["CompanyID"] = attributes.numeric.attributeCompany.CompanyID;
+            rowDocument["ReffTimeRow"] = Document.ReffTimeRow;
+            rowDocument["RegisterDocumentNumber"] = 0;
+            //rowDocument["ReffTimeRow"] = Document.ReffTimeRow;
+            shemaStorаge.RegisterDocument.Rows.Add(rowDocument);
+            Document.ShemaStorаgeLocal = shemaStorаge;
+            Document.ID = registerDocumentLogic.SaveRowTable(Document);
+
+            return Document.ID;
             //}
-            return 0;
+            //return 0;
         }
 
         Int32 SaveRequest()
@@ -756,7 +823,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             }
 
             SummaryQuantityDeliveryTemp = registerDocumentDelivery.Count();
-            foreach (SupplyDocumentDelivery.LocaleRow row in registerDocumentDelivery)
+            foreach (RegisterDocumetnDelivery.LocaleRow row in registerDocumentDelivery)
             {               
                 SummaryAmountUSATemp = SummaryAmountUSATemp + row.AmountUSA;
                 SummaryAmountRUSTemp = SummaryAmountRUSTemp + row.AmountRUS;

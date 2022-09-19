@@ -189,7 +189,8 @@ namespace Sklad_v1_001.FormUsers.Payment
             set
             {
                 lastModificatedDate = value;
-                if (!String.IsNullOrEmpty(value.Value.ToString()))
+
+                if (value!=null && !String.IsNullOrEmpty(value.Value.ToString()))
                 {
                     ConvertData convertData = new ConvertData();
                     lastModifiadDateText = convertData.DateTimeConvertShortDateString(value);

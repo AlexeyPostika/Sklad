@@ -112,9 +112,11 @@ namespace Sklad_v1_001.FormUsers.RegisterDocumetnDelivery
         private Byte[] invoiceDocumentByte;
         private ImageSource imageSourceInvoice;
 
-        private String tTN;
+        private String deliveryTTN;
         private Byte[] tTNDocumentByte;
         private ImageSource imageSourceTTN;
+        private String reffTimeRow;
+        private Byte[] timeRow;
 
         public int ID
         {
@@ -373,16 +375,16 @@ namespace Sklad_v1_001.FormUsers.RegisterDocumetnDelivery
                 OnPropertyChanged("ImageSourceInvoice");
             }
         }
-        public string TTN
+        public string DeliveryTTN
         {
             get
             {
-                return tTN;
+                return deliveryTTN;
             }
 
             set
             {
-                tTN = value;
+                deliveryTTN = value;
                 OnPropertyChanged("TTN");
             }
         }
@@ -524,6 +526,34 @@ namespace Sklad_v1_001.FormUsers.RegisterDocumetnDelivery
             }
         }
 
+
+        public String ReffTimeRow
+        {
+            get
+            {
+                return reffTimeRow;
+            }
+
+            set
+            {
+                reffTimeRow = value;
+                OnPropertyChanged("SupplyDocumentNumberString");
+            }
+        }
+
+        public Byte[] TimeRow
+        {
+            get
+            {
+                return timeRow;
+            }
+
+            set
+            {
+                timeRow = value;
+                OnPropertyChanged("TimeRow");
+            }
+        }
         public LocaleRow()
         {
             ImageSourceTTN = ImageHelper.GenerateImage("IconMinus.png");
@@ -600,7 +630,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocumetnDelivery
             _localeRow.DeliveryDetailsID = convertData.ConvertDataInt32("DeliveryDetailsID");
             _localeRow.ManagerName = convertData.ConvertDataString("ManagerName");
             _localeRow.PhonesManager = convertData.ConvertDataString("PhonesManager");
-            _localeRow.TTN = convertData.ConvertDataString("TTN");
+            _localeRow.DeliveryTTN = convertData.ConvertDataString("DeliveryTTN");
             _localeRow.Invoice = convertData.ConvertDataString("Invoice");
             if (_dataRow["ImageTTN"] as byte[] != null)
             {
@@ -620,7 +650,8 @@ namespace Sklad_v1_001.FormUsers.RegisterDocumetnDelivery
             _localeRow.LastModificatedDate = convertData.ConvertDataDateTime("LastModificatedDate");
             _localeRow.LastModifiadDateText = convertData.DateTimeConvertShortDateString(_localeRow.LastModificatedDate);
             _localeRow.LastModificatedUserID = convertData.ConvertDataInt32("ID");
-                                    
+            _localeRow.ReffTimeRow = convertData.ConvertDataString("ReffTimeRow");
+
             return _localeRow;
         }
 
@@ -652,7 +683,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocumetnDelivery
             _supplyDocumentDeliveryRequest.DocumentID = row.DocumentID;
             _supplyDocumentDeliveryRequest.DeliveryID = row.DeliveryID;
             _supplyDocumentDeliveryRequest.DeliveryDetailsID = row.DeliveryDetailsID;
-            _supplyDocumentDeliveryRequest.DeliveryTTN = row.TTN;
+            _supplyDocumentDeliveryRequest.DeliveryTTN = row.DeliveryTTN;
             _supplyDocumentDeliveryRequest.ImageTTN = row.TTNDocumentByte;
             _supplyDocumentDeliveryRequest.Invoice = row.Invoice;
             _supplyDocumentDeliveryRequest.ImageInvoice = row.InvoiceDocumentByte;
@@ -664,6 +695,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocumetnDelivery
             _supplyDocumentDeliveryRequest.CreatedUserID = row.CreatedUserID;
             _supplyDocumentDeliveryRequest.LastModificatedDate = row.LastModificatedDate;
             _supplyDocumentDeliveryRequest.LastModificatedUserID = row.LastModificatedUserID;
+            _supplyDocumentDeliveryRequest.TimeRow = row.ReffTimeRow; 
 
             return _supplyDocumentDeliveryRequest;
         }

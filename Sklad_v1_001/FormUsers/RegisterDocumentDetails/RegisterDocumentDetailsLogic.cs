@@ -118,6 +118,8 @@ namespace Sklad_v1_001.FormUsers.RegisterDocumentDetails
         private String lastModificatedDateString;
         private Int32 lastModificatedUserID;
         private String lastModificatedUserIDString;
+        private Byte[] timeRow;
+        private String reffTimeRow;
 
         public int ID
         {
@@ -556,6 +558,33 @@ namespace Sklad_v1_001.FormUsers.RegisterDocumentDetails
                 OnPropertyChanged("CategoryDetailsDescription");
             }
         }
+        public Byte[] TimeRow
+        {
+            get
+            {
+                return timeRow;
+            }
+
+            set
+            {
+                timeRow = value;
+                OnPropertyChanged("TimeRow");
+            }
+        }
+
+        public String ReffTimeRow
+        {
+            get
+            {
+                return reffTimeRow;
+            }
+
+            set
+            {
+                reffTimeRow = value;
+                OnPropertyChanged("ReffTimeRow");
+            }
+        }
     }
 
     public class RegisterDocumentDetailsLogic
@@ -679,6 +708,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocumentDetails
             _localeRow.LastModificatedDateString = convertData.DateTimeConvertShortString(_localeRow.LastModificatedDate);
             _localeRow.CreatedUserID = convertData.ConvertDataInt32("CreatedUserID");
             _localeRow.LastModificatedUserID = convertData.ConvertDataInt32("LastModificatedUserID");
+            _localeRow.ReffTimeRow = convertData.ConvertDataString("ReffTimeRow");
 
             return _localeRow;
         }
@@ -726,6 +756,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocumentDetails
 
             _localeRow.CreatedUserID = _row.CreatedUserID;
             _localeRow.LastModificatedUserID = _row.LastModificatedUserID;
+            _localeRow.ReffTimeRow = _row.ReffTimeRow;
 
             return _localeRow;
         }
@@ -769,6 +800,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocumentDetails
 
             _row.CreatedUserID = _localeRow.CreatedUserID;
             _row.LastModificatedUserID = _localeRow.LastModificatedUserID;
+            _row.ReffTimeRow = _localeRow.ReffTimeRow;
 
             return _row;
         }
@@ -793,6 +825,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocumentDetails
             _supplyDocumentDetailsRequest.CreatedUserID = row.CreatedUserID;
             _supplyDocumentDetailsRequest.LastModificatedDate = row.LastModificatedDate;
             _supplyDocumentDetailsRequest.LastModificatedUserID = row.LastModificatedUserID;
+            _supplyDocumentDetailsRequest.TimeRow = row.ReffTimeRow;
 
             return _supplyDocumentDetailsRequest;
         }

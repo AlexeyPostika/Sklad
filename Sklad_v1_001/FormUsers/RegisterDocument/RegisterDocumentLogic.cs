@@ -437,7 +437,8 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
         private Int32 lastModificatedUserID;
         private String lDisplayNameUser;
         private String shortLDisplayNameUser;
-
+        private String reffTimeRow;
+        private Byte[] timeRow;
         public Int32 ID
         {
             get
@@ -836,6 +837,34 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             {
                 supplyDocumentNumberString = value;
                 OnPropertyChanged("SupplyDocumentNumberString");
+            }
+        }
+       
+        public String ReffTimeRow
+        {
+            get
+            {
+                return reffTimeRow;
+            }
+
+            set
+            {
+                reffTimeRow = value;
+                OnPropertyChanged("SupplyDocumentNumberString");
+            }
+        }
+       
+        public Byte[] TimeRow
+        {
+            get
+            {
+                return timeRow;
+            }
+
+            set
+            {
+                timeRow = value;
+                OnPropertyChanged("TimeRow");
             }
         }
 
@@ -1605,6 +1634,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             ConvertData convertData = new ConvertData(_dataRow, _localeRow);
 
             _localeRow.ID = convertData.ConvertDataInt32("ID");
+            _localeRow.ReffID = convertData.ConvertDataInt32("ReffID");
             _localeRow.SupplyDocumentNumber = convertData.ConvertDataInt64("SupplyDocumentNumber");
             _localeRow.SupplyDocumentNumberString = "";
             if (_localeRow.SupplyDocumentNumber > 0)
@@ -1635,6 +1665,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             _localeRow.CompanyID = convertData.ConvertDataInt32("CompanyID");
             _localeRow.NameShopID = _localeRow.ShopID + " - " + convertData.ConvertDataString("NameShopID");
             _localeRow.NameCompanyID = convertData.ConvertDataString("NameCompanyID");
+            _localeRow.ReffTimeRow = convertData.ConvertDataString("ReffTimeRow");
             return _localeRow;
         }
 
@@ -1656,7 +1687,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
 
         public SupplyDocuments Convert(LocalRow row, SupplyDocuments _supplyDocumentRequest)
         {
-            _supplyDocumentRequest.ID = row.ID;
+            _supplyDocumentRequest.ID = row.ID;            
             _supplyDocumentRequest.Count = row.Count;
             _supplyDocumentRequest.Amount = row.Amount;
             _supplyDocumentRequest.SupplyDocumentNumber = row.SupplyDocumentNumber;

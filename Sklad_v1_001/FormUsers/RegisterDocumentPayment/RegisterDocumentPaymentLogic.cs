@@ -41,6 +41,8 @@ namespace Sklad_v1_001.FormUsers.RegisterDocumentPayment
 
         private String rRN;
         private Byte[] rRNDocumentByte;
+        private String reffTimeRow;
+        private Byte[] timeRow;
         private ImageSource imageSourceRRN;
 
         public int ID
@@ -197,6 +199,10 @@ namespace Sklad_v1_001.FormUsers.RegisterDocumentPayment
                     ConvertData convertData = new ConvertData();
                     lastModifiadDateText = convertData.DateTimeConvertShortDateString(value);
                 }
+                else
+                {
+                    lastModificatedDate = DateTime.Now;
+                }
                 OnPropertyChanged("LastModificatedDate");
             }
         }
@@ -308,6 +314,34 @@ namespace Sklad_v1_001.FormUsers.RegisterDocumentPayment
                 OnPropertyChanged("StatusString");
             }
         }
+
+        public String ReffTimeRow
+        {
+            get
+            {
+                return reffTimeRow;
+            }
+
+            set
+            {
+                reffTimeRow = value;
+                OnPropertyChanged("SupplyDocumentNumberString");
+            }
+        }
+
+        public Byte[] TimeRow
+        {
+            get
+            {
+                return timeRow;
+            }
+
+            set
+            {
+                timeRow = value;
+                OnPropertyChanged("TimeRow");
+            }
+        }
         public LocaleRow()
         {
             ImageSourceRRN = ImageHelper.GenerateImage("IconMinus.png");      
@@ -374,6 +408,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocumentPayment
             _localeRow.CreatedUserID = convertData.ConvertDataInt32("ID");
             _localeRow.LastModificatedDate = convertData.ConvertDataDateTime("LastModificatedDate");           
             _localeRow.LastModificatedUserID = convertData.ConvertDataInt32("ID");
+            _localeRow.ReffTimeRow = convertData.ConvertDataString("ReffTimeRow");
 
             return _localeRow;
         }
@@ -391,6 +426,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocumentPayment
             _supplyDocumentPaymentRequest.CreatedUserID = row.CreatedUserID;
             _supplyDocumentPaymentRequest.LastModificatedDate = row.LastModificatedDate;
             _supplyDocumentPaymentRequest.LastModificatedUserID = row.LastModificatedUserID;
+            _supplyDocumentPaymentRequest.TimeRow = row.ReffTimeRow;
 
             return _supplyDocumentPaymentRequest;
         }
