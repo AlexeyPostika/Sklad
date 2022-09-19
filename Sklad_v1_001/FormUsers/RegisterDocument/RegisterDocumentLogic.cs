@@ -1283,10 +1283,10 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             _sqlRequestSelect.SetParametrValue("@p_Quantity_Max", SqlInt32.MaxValue);
 
             _sqlRequestSelect.AddParametr("@p_TagPriceVATRUS_Min", SqlDbType.Decimal);
-            _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Min", SqlDecimal.MaxValue);
+            _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Min", 0);
 
             _sqlRequestSelect.AddParametr("@p_TagPriceVATRUS_Max", SqlDbType.Decimal);
-            _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Max", SqlDecimal.MaxValue);
+            _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Max", Int32.MaxValue);
 
             //_sqlRequestSelect.AddParametr("@p_FromCreatedDate", SqlDbType.DateTime);
             //_sqlRequestSelect.SetParametrValue("@p_FromCreatedDate", SqlDateTime.MinValue);
@@ -1528,12 +1528,12 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             return _data;
         }
 
-        public DataTable FillGrid(Int32 id)
+        public DataTable FillGrid(Int64 _supplyDocumentNumber)
         {
             _sqlRequestSelect.SqlAnswer.datatable.Clear();
             _data.Clear();
             _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ItemByStatus);
-            _sqlRequestSelect.SetParametrValue("@p_ID", id);
+            _sqlRequestSelect.SetParametrValue("@p_Search", _supplyDocumentNumber);
 
             _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
             _data = _sqlRequestSelect.SqlAnswer.datatable;

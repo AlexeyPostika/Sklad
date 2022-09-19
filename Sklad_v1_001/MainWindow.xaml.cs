@@ -273,7 +273,7 @@ namespace Sklad_v1_001
         #endregion
 
         #region Регистрация документов
-        private void ButtonRegisterListDocument()
+        public void ButtonRegisterListDocument()
         {
             //RegisterDocumentGrid
             GC.Collect();   //Вызов сборщика мусора

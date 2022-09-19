@@ -797,7 +797,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             {
                 if (registerDocumentLogic.SetRow(Document) > 0)
                 {
-                    DataTable document = registerDocumentLogic.FillGrid(Document.ID);
+                    DataTable document = registerDocumentLogic.FillGrid(Document.SupplyDocumentNumber);
                     foreach (DataRow row in document.Rows)
                     {
                         registerDocumentLogic.Convert(row, Document);
@@ -903,93 +903,56 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
         #region SetSupplyDocument
         private void Sucsess()
         {
-            if (Save() > 0)
+            //if (Save() > 0)
+            //{
+            request = new Request(attributes);
+
+            DataTable dataTableSupplyDocumentPayment = registerDocumentPaymentLogic.FillGrid(Document.ID);
+            foreach (DataRow rowPayment in dataTableSupplyDocumentPayment.Rows)
             {
-                //request = new Request(attributes);
-                //Document.SupplyDocumentNumber = registerDocumentLogic.SetRow(Document);
-                //if (Document.ID > 0)
-                //{
-                //    RegisterDocumentLogic registerDocumentLogic = new RegisterDocumentLogic(attributes);
-                //    RegisterDocument.LocalFilter localeFilter = new RegisterDocument.LocalFilter();
-                //    localeFilter.ScreenTypeGrid = ScreenType.ItemByStatus;
-                //    localeFilter.ID = Document.ID;
-                //    DataTable documentTable = registerDocumentLogic.FillGrid(localeFilter);
-                //    foreach(DataRow row in documentTable.Rows)
-                //    {
-                //        registerDocumentLogic.Convert(row, Document);
-                //        DataTable dataTableSupplyDocumentDetails = registerDocumentDetailsLogic.FillGridDocument(Document.ID);
-                //        foreach (DataRow rowDetails in dataTableSupplyDocumentDetails.Rows)
-                //        {
-                //            SupplyDocumentDetails.LocaleRow localeRowDetails = new SupplyDocumentDetails.LocaleRow();
-                //            registerDocumentDetails.Add(registerDocumentDetailsLogic.Convert(rowDetails, localeRowDetails));
-                //            SupplyDocumentDetailsRequest supplyDocumentDetailsRequest = new SupplyDocumentDetailsRequest();
-                //            //localeRowDetails.BarCodeString = string.Empty;
-                //            registerDocumentDetailsLogic.Convert(localeRowDetails, supplyDocumentDetailsRequest);
-                //            request.supplyDocument.Details.Add(supplyDocumentDetailsRequest);
-                //        }
-
-                //        DataTable dataTableSupplyDocumentDelivery = registerDocumentDeliveryLogic.FillGrid(Document.ID);
-                //        foreach (DataRow rowdelivery in dataTableSupplyDocumentDelivery.Rows)
-                //        {
-                //            RegisterDocumentDelivery.LocaleRow localeRowDelivery = new RegisterDocumentDelivery.LocaleRow();
-                //            registerDocumentDelivery.Add(registerDocumentDeliveryLogic.Convert(rowdelivery, localeRowDelivery));
-                //            SupplyDocumentDeliveryRequest rowDeliveryRequest = new SupplyDocumentDeliveryRequest(attributes);
-                //            registerDocumentDeliveryLogic.Convert(localeRowDelivery, rowDeliveryRequest);
-                //            request.supplyDocument.Delivery.Add(rowDeliveryRequest);
-                //        }
-
-                //        DataTable dataTableSupplyDocumentPayment = registerDocumentPaymentLogic.FillGrid(Document.ID);
-                //        foreach (DataRow rowPayment in dataTableSupplyDocumentPayment.Rows)
-                //        {
-                //            SupplyDocumentPayment.LocaleRow localeRowPayment = new SupplyDocumentPayment.LocaleRow();
-                //            registerDocumentPayment.Add(registerDocumentPaymentLogic.Convert(rowPayment, localeRowPayment));
-                //            SupplyDocumentPaymentRequest rowPaymentRequest = new SupplyDocumentPaymentRequest(attributes);
-                //            registerDocumentPaymentLogic.Convert(localeRowPayment, rowPaymentRequest);
-                //            request.supplyDocument.Payment.Add(rowPaymentRequest);
-                //        }
-                //    }
-                //    Document.Count = request.supplyDocument.Payment.Count() + request.supplyDocument.Delivery.Count() + request.supplyDocument.Details.Count();
-                //    SupplyDocumentRequest supplyDocumentRequest = new SupplyDocumentRequest(attributes);
-                //    registerDocumentLogic.Convert(Document, request.supplyDocument.Document);
-                   
-                //    Response response= request.GetCommand(1);
-                //    if (response!=null && response.ErrorCode == 0)
-                //    {
-                //        Document.Status = response.SupplyDocumentOutput.Document.Status;
-                //        Document.ReffID = 0;
-                //        Document.ReffDate = response.SupplyDocumentOutput.Document.SyncDate;
-                //        if (SaveRequest() == 0)
-                //        {
-                //            FlexMessageBox mb2 = new FlexMessageBox();
-                //            List<BitmapImage> ButtonImages = new List<BitmapImage>();
-                //            ButtonImages.Add(ImageHelper.GenerateImage("IconAdd.png"));
-                //            ButtonImages.Add(ImageHelper.GenerateImage("IconContinueWork.png"));
-                //            List<string> ButtonText = new List<string>();
-                //            ButtonText.Add(Properties.Resources.AddSmall);
-                //            ButtonText.Add(Properties.Resources.MessageIgnore);
-
-                //            mb2.Show(Properties.Resources.ErrorDB, GenerateTitle(TitleType.Error, Properties.Resources.ErrorDBTitle), MessageBoxButton.OK, MessageBoxImage.Error);
-                //        }
-                //    }
-                //    else
-                //    {
-                //        FlexMessageBox mb2 = new FlexMessageBox();
-                //        List<BitmapImage> ButtonImages = new List<BitmapImage>();
-                //        ButtonImages.Add(ImageHelper.GenerateImage("IconAdd.png"));
-                //        ButtonImages.Add(ImageHelper.GenerateImage("IconContinueWork.png"));
-                //        List<string> ButtonText = new List<string>();
-                //        ButtonText.Add(Properties.Resources.AddSmall);
-                //        ButtonText.Add(Properties.Resources.MessageIgnore);
-
-                //        mb2.Show("Ошибка: " + response.ErrorCode + " - " + response.DescriptionEX, GenerateTitle(TitleType.Error, Properties.Resources.ErrorSendAPITitle), MessageBoxButton.OK, MessageBoxImage.Error);
-                //    }
-                //    // Выполняем запрос по адресу и получаем ответ в виде строки
-                   
-                //}
-
-
-               // MainWindow.AppWindow.ButtonSupplyDocumentF(Document, NewDocument);
+                RegisterDocumentPayment.LocaleRow localeRowPayment = new RegisterDocumentPayment.LocaleRow();
+                registerDocumentPayment.Add(registerDocumentPaymentLogic.Convert(rowPayment, localeRowPayment));
+                SupplyDocumentPaymentRequest rowPaymentRequest = new SupplyDocumentPaymentRequest(attributes);
+                registerDocumentPaymentLogic.Convert(localeRowPayment, rowPaymentRequest);
+                request.supplyDocument.Payment.Add(rowPaymentRequest);
             }
+            Document.Count = request.supplyDocument.Payment.Count() + request.supplyDocument.Delivery.Count() + request.supplyDocument.Details.Count();
+            SupplyDocumentRequest supplyDocumentRequest = new SupplyDocumentRequest(attributes);
+            registerDocumentLogic.Convert(Document, request.supplyDocument.Document);
+
+            Response response = request.GetCommand(1);
+            if (response != null && response.ErrorCode == 0)
+            {
+                Document.Status = response.SupplyDocumentOutput.Document.Status;
+                Document.ReffID = 0;
+                Document.ReffDate = response.SupplyDocumentOutput.Document.SyncDate;
+                if (SaveRequest() == 0)
+                {
+                    FlexMessageBox mb2 = new FlexMessageBox();
+                    List<BitmapImage> ButtonImages = new List<BitmapImage>();
+                    ButtonImages.Add(ImageHelper.GenerateImage("IconAdd.png"));
+                    ButtonImages.Add(ImageHelper.GenerateImage("IconContinueWork.png"));
+                    List<string> ButtonText = new List<string>();
+                    ButtonText.Add(Properties.Resources.AddSmall);
+                    ButtonText.Add(Properties.Resources.MessageIgnore);
+                    mb2.Show(Properties.Resources.ErrorDB, GenerateTitle(TitleType.Error, Properties.Resources.ErrorDBTitle), MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            else
+            {
+                FlexMessageBox mb2 = new FlexMessageBox();
+                List<BitmapImage> ButtonImages = new List<BitmapImage>();
+                ButtonImages.Add(ImageHelper.GenerateImage("IconAdd.png"));
+                ButtonImages.Add(ImageHelper.GenerateImage("IconContinueWork.png"));
+                List<string> ButtonText = new List<string>();
+                ButtonText.Add(Properties.Resources.AddSmall);
+                ButtonText.Add(Properties.Resources.MessageIgnore);
+
+                mb2.Show("Ошибка: " + response.ErrorCode + " - " + response.DescriptionEX, GenerateTitle(TitleType.Error, Properties.Resources.ErrorSendAPITitle), MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
+             MainWindow.AppWindow.ButtonRegisterListDocument();
+            //}
         }
 
 
