@@ -415,6 +415,8 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
         private Int32 count;
         private Decimal amount;
         private Int32 reffID;
+        private DateTime? reffDate;
+        private String reffDateString;
         private String invoice;
         private String tTN;
         private String managerName;
@@ -424,9 +426,11 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
         private Int32 companyID;
         private String nameCompanyID;
 
-        private DateTime? reffDate;
+        
         private Int64 supplyDocumentNumber;
         private String supplyDocumentNumberString;
+        private Int64 registerDocumentNumber;
+        private String registerDocumentNumberString;
         private DateTime? createdDate;
         private String createdDateString;
         private Int32 inputUserID;
@@ -812,6 +816,20 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
                 OnPropertyChanged("ReffDate");
             }
         }
+
+        public String ReffDateString
+        {
+            get
+            {
+                return reffDateString;
+            }
+
+            set
+            {
+                reffDateString = value;
+                OnPropertyChanged("ReffDateString");
+            }
+        }
         public long SupplyDocumentNumber
         {
             get
@@ -839,7 +857,35 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
                 OnPropertyChanged("SupplyDocumentNumberString");
             }
         }
-       
+
+        public long RegisterDocumentNumber
+        {
+            get
+            {
+                return registerDocumentNumber;
+            }
+
+            set
+            {
+                registerDocumentNumber = value;
+                OnPropertyChanged("SupplyDocumentNumber");
+            }
+        }
+
+        public String RegisterDocumentNumberString
+        {
+            get
+            {
+                return registerDocumentNumberString;
+            }
+
+            set
+            {
+                registerDocumentNumberString = value;
+                OnPropertyChanged("SupplyDocumentNumberString");
+            }
+        }
+
         public String ReffTimeRow
         {
             get
@@ -1452,7 +1498,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
 
             //----------------------------------------------------------------------------
             _sqlRequestSet.AddParametr("@p_AddUserID", SqlDbType.Int);
-            _sqlRequestSet.SetParametrValue("@p_AddUserID", 1);
+            _sqlRequestSet.SetParametrValue("@p_AddUserID", attributes.numeric.userEdit.AddUserID);
 
             _sqlRequestSet.AddParametr("@p_DocumentID", SqlDbType.Int);
             _sqlRequestSet.SetParametrValue("@p_DocumentID", 0);
@@ -1486,7 +1532,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
         {
             _sqlRequestSelect.SqlAnswer.datatable.Clear();
             _data.Clear();
-            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeGrid);
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ItemByStatus);
             _sqlRequestSelect.SetParametrValue("@p_ID", id);
 
             _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
@@ -1635,10 +1681,15 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
 
             _localeRow.ID = convertData.ConvertDataInt32("ID");
             _localeRow.ReffID = convertData.ConvertDataInt32("ReffID");
+            _localeRow.ReffDate = convertData.ConvertDataDateTime("ReffDate");
+            _localeRow.ReffDateString= convertData.DateTimeConvertShortString(_localeRow.ReffDate);
             _localeRow.SupplyDocumentNumber = convertData.ConvertDataInt64("SupplyDocumentNumber");
             _localeRow.SupplyDocumentNumberString = "";
             if (_localeRow.SupplyDocumentNumber > 0)
                 _localeRow.SupplyDocumentNumberString = _localeRow.SupplyDocumentNumber.ToString();
+            _localeRow.RegisterDocumentNumber = convertData.ConvertDataInt64("RegisterDocumentNumber");
+            if (_localeRow.RegisterDocumentNumber > 0)
+                _localeRow.RegisterDocumentNumberString = _localeRow.RegisterDocumentNumber.ToString();
             _localeRow.LineDocument= convertData.ConvertDataInt32("RowNumber");
             _localeRow.Status = convertData.ConvertDataInt32("Status");
             _localeRow.StatusString = supplyTypeList.innerList.FirstOrDefault(x => x.ID == _localeRow.Status) != null ?

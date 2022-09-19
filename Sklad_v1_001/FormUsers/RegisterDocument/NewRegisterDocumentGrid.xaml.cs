@@ -741,8 +741,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             DataRow rowDocument = shemaStorаge.RegisterDocument.NewRow();
             rowDocument["Count"] = Document.Count;
             rowDocument["Amount"] = Document.Amount;
-            rowDocument["ReffID"] = Document.ReffID;
-            rowDocument["ReffDate"] = Document.ReffDate;
+            rowDocument["ReffID"] = Document.ReffID;           
             rowDocument["SupplyDocumentNumber"] = Document.SupplyDocumentNumber;
             rowDocument["CreatedDate"] = DateTime.Now;
             rowDocument["CreatedUserID"] = 1;// Document.UserID;
@@ -794,7 +793,20 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
 
         private void SupplyDocumentDetailsToolBar_ButtonApply()
         {
-           
+            if (Save() > 0)
+            {
+                if (registerDocumentLogic.SetRow(Document) > 0)
+                {
+                    DataTable document = registerDocumentLogic.FillGrid(Document.ID);
+                    foreach (DataRow row in document.Rows)
+                    {
+                        registerDocumentLogic.Convert(row, Document);
+                        Sucsess();
+                    }
+                }
+            }
+            
+
         }
         #endregion
 
