@@ -678,7 +678,13 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             Refresh();
         }
         private void ToolBarSaleDocument_ButtonRefresh()
-        {           
+        {
+            //List<DataTable> listDocument = registerDocumentLogic.GridComplexMultiple("SupplyDocument");
+            //if (listDocument != null && listDocument.Count() > 0)
+            //{
+            //    registerDocumentLogic.SendRequest(listDocument);
+            //    Refresh();
+            //}
             Request request = new Request(attributes);
             request.supplyDocument.Document.Status = 6;//затягиваем документы, которые нужно подтвердить
             Response response = request.GetCommand(2);

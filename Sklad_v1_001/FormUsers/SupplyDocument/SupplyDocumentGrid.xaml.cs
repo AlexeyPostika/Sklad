@@ -7,11 +7,17 @@ using Sklad_v1_001.GlobalAttributes;
 using Sklad_v1_001.GlobalList;
 using Sklad_v1_001.GlobalVariable;
 using Sklad_v1_001.HelperGlobal;
+using Sklad_v1_001.HelperGlobal.StoreAPI;
+using Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocument;
+using Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocumentDelivery;
+using Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocumentDetails;
+using Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocumentPayment;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -25,6 +31,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static Sklad_v1_001.HelperGlobal.MessageBoxTitleHelper;
 
 namespace Sklad_v1_001.FormUsers.SupplyDocument
 {
@@ -759,8 +766,77 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             if (listDocument!=null && listDocument.Count() > 0)
             {
                 supplyDocumentLogic.SendRequest(listDocument);
-                Refresh();
+               // 
             }
+
+            Request request = new Request(attributes);
+            request.supplyDocument.Document.Status = 3;//затягиваем документы, которые уже потверждены/отказано/редактировать
+            Response response = request.GetCommand(2);
+            if (response != null && response.ErrorCode == 0)
+            {
+                //Save(response);
+                //InitFilters();
+                //Refresh();
+            }
+            else
+            {
+                FlexMessageBox mb2 = new FlexMessageBox();
+                List<BitmapImage> ButtonImages = new List<BitmapImage>();
+                ButtonImages.Add(ImageHelper.GenerateImage("IconAdd.png"));
+                ButtonImages.Add(ImageHelper.GenerateImage("IconContinueWork.png"));
+                List<string> ButtonText = new List<string>();
+                ButtonText.Add(Properties.Resources.AddSmall);
+                ButtonText.Add(Properties.Resources.MessageIgnore);
+
+                mb2.Show("Ошибка: " + response.ErrorCode + " - " + response.DescriptionEX, GenerateTitle(TitleType.Error, Properties.Resources.ErrorSendAPITitle), MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            Refresh();
+        }
+        #endregion
+
+        #region SAVE
+        public void Save(Response response)
+        {
+            localRow.ShemaStorаgeLocal.Clear();
+            foreach (SupplyDocumentRequest rowResponse in response.listSupplyDocumentOutput.ListDocuments)
+            {              
+                DataRow row = localRow.ShemaStorаgeLocal.SupplyDocument.NewRow();
+                row["Count"] = rowResponse.Document.Count;
+                row["Amount"] = rowResponse.Document.Amount;
+                row["ReffID"] = rowResponse.Document.ID;
+                row["ReffDate"] = SqlDateTime.MinValue.Value;
+                //row["RegisterDocumentNumber"] = 23243432;
+                row["SupplyDocumentNumber"] = rowResponse.Document.SupplyDocumentNumber;
+                row["CreatedDate"] = rowResponse.Document.CreatedDate == null ? DateTime.Now : rowResponse.Document.CreatedDate;
+                row["CreatedUserID"] = rowResponse.Document.CreatedUserID;
+                row["LastModificatedDate"] = DateTime.Now;
+                row["LastModificatedUserID"] = attributes.numeric.userEdit.AddUserID;
+                row["Status"] = rowResponse.Document.Status;
+                row["ShopID"] = rowResponse.Document.ShopID;
+                row["CompanyId"] = rowResponse.Document.CompanyID;
+                row["ReffTimeRow"] = rowResponse.Document.TimeRow;
+                localRow.ShemaStorаgeLocal.SupplyDocument.Rows.Add(row);
+               
+                foreach (SupplyDocumentPaymentRequest rowPaymentReff in rowResponse.Payment)
+                {
+                    DataRow rowPayment = localRow.ShemaStorаgeLocal.SupplyDocumentPayment.NewRow();
+                    rowPayment["DocumentID"] = rowPaymentReff.DocumentID;
+                    rowPayment["Status"] = rowPaymentReff.Status;
+                    rowPayment["OperationType"] = rowPaymentReff.OperationType;
+                    rowPayment["Amount"] = rowPaymentReff.Amount;
+                    rowPayment["Description"] = rowPaymentReff.Description;
+                    rowPayment["RRN"] = rowPaymentReff.RRN;
+                    rowPayment["CreatedDate"] = rowPaymentReff.CreatedDate == null ? DateTime.Now : rowPaymentReff.CreatedDate;
+                    rowPayment["CreatedUserID"] = rowPaymentReff.CreatedUserID;
+                    rowPayment["LastModificatedDate"] = DateTime.Now;
+                    rowPayment["LastModificatedUserID"] = attributes.numeric.userEdit.AddUserID;
+                    rowPayment["ShopID"] = rowPaymentReff.ShopID;
+                    rowPayment["CompanyId"] = rowPaymentReff.CompanyID;
+                    rowPayment["ReffTimeRow"] = rowPaymentReff.TimeRow;
+                    localRow.ShemaStorаgeLocal.SupplyDocumentPayment.Rows.Add(rowPayment);
+                }
+            }
+           // registerDocumentLogic.SaveRowTable(Document);
         }
         #endregion
 
