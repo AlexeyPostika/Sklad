@@ -927,6 +927,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             ReffDate = DateTime.Now;
             ShemaStorаgeLocal = new ShemaStorаge();
             Status = 0;
+            RegisterDocumentNumber = 0;
         }
     }
 
@@ -1490,9 +1491,6 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             _sqlResponseSave.AddParametr("@p_ID", SqlDbType.BigInt);
             _sqlResponseSave.SetParametrValue("@p_ID", 0);
 
-            _sqlResponseSave.AddParametr("@p_ReffID", SqlDbType.Int);
-            _sqlResponseSave.SetParametrValue("@p_ReffID", 0);
-
             _sqlResponseSave.AddParametr("@p_ReffDate", SqlDbType.DateTime);
             _sqlResponseSave.SetParametrValue("@p_ReffDate",  DateTime.UtcNow);
 
@@ -1637,7 +1635,6 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             //SupplyDocument          
             _sqlResponseSave.SetParametrValue("@p_Status", row.Status);
             _sqlResponseSave.SetParametrValue("@p_ID", row.ID);
-            _sqlResponseSave.SetParametrValue("@p_ReffID", row.ReffID);
             _sqlResponseSave.SetParametrValue("@p_ReffDate", row.ReffDate);
 
             _sqlResponseSave.ComplexRequest(response_store_procedure, CommandType.StoredProcedure, null);
@@ -1743,6 +1740,8 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             _supplyDocumentRequest.Amount = row.Amount;
             _supplyDocumentRequest.SupplyDocumentNumber = row.SupplyDocumentNumber;
             _supplyDocumentRequest.Status = row.Status;
+            _supplyDocumentRequest.RegisterDocumentNumber = row.RegisterDocumentNumber;
+            _supplyDocumentRequest.TimeRow = row.ReffTimeRow;
 
             //_supplyDocumentDetailsRequest.Size =row.
             _supplyDocumentRequest.CreatedDate = row.CreatedDate;

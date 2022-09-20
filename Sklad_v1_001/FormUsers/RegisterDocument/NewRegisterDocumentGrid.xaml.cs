@@ -916,7 +916,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
                 registerDocumentPaymentLogic.Convert(localeRowPayment, rowPaymentRequest);
                 request.supplyDocument.Payment.Add(rowPaymentRequest);
             }
-            Document.Count = request.supplyDocument.Payment.Count() + request.supplyDocument.Delivery.Count() + request.supplyDocument.Details.Count();
+            //Document.Count = request.supplyDocument.Payment.Count() + request.supplyDocument.Delivery.Count() + request.supplyDocument.Details.Count();
             SupplyDocumentRequest supplyDocumentRequest = new SupplyDocumentRequest(attributes);
             registerDocumentLogic.Convert(Document, request.supplyDocument.Document);
 
@@ -924,8 +924,7 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
             if (response != null && response.ErrorCode == 0)
             {
                 Document.Status = response.SupplyDocumentOutput.Document.Status;
-                Document.ReffID = 0;
-                Document.ReffDate = response.SupplyDocumentOutput.Document.SyncDate;
+                Document.ReffDate = response.SupplyDocumentOutput.Document.SyncDate == null ? DateTime.Now : response.SupplyDocumentOutput.Document.SyncDate;
                 if (SaveRequest() == 0)
                 {
                     FlexMessageBox mb2 = new FlexMessageBox();

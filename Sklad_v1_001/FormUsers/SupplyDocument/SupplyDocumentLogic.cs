@@ -2268,7 +2268,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             //_supplyDocumentDetailsRequest.Size =row.
             _supplyDocumentRequest.CreatedDate = row.CreatedDate;
-            _supplyDocumentRequest.CreatedUserID = row.CreatedUserID;
+            _supplyDocumentRequest.CreatedUserID = row.CreatedUserID != 0 ? row.CreatedUserID : row.LastModificatedUserID;
             _supplyDocumentRequest.LastModificatedDate = row.LastModificatedDate;
             _supplyDocumentRequest.LastModificatedUserID = row.LastModificatedUserID;
             _supplyDocumentRequest.ShopID = attributes.numeric.attributeCompany.ShopId;
