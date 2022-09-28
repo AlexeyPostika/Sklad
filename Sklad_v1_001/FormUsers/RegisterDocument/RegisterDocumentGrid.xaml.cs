@@ -756,7 +756,8 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
         }
         private void saleDocument_Loaded(object sender, RoutedEventArgs e)
         {
-
+            filter.PagerowCount = (Int32)(registerDocument.ActualHeight) / 40;
+            Refresh();
         }
 
         #endregion
@@ -776,22 +777,30 @@ namespace Sklad_v1_001.FormUsers.RegisterDocument
 
         #region Paginator
 
+        private void ToolbarNextPageData_ButtonBackIn()
+        {
+            IsPaginator = true;
+            filter.PageNumber = 0;
+            Refresh();
+        }
         private void ToolBarNextToBack_ButtonBack()
         {
-
+            IsPaginator = true;
+            filter.PageNumber--;
+            Refresh();
         }
         private void ToolBarNextToBack_ButtonNext()
         {
-
-        }
-        private void ToolbarNextPageData_ButtonBackIn()
-        {
-
+            IsPaginator = true;
+            filter.PageNumber++;
+            Refresh();
         }
 
         private void ToolbarNextPageData_ButtonNextEnd()
         {
-
+            IsPaginator = true;
+            filter.PageNumber = (Int32)(Math.Ceiling((double)summary.SummaryQuantityLine / filter.PagerowCount) - 1);
+            Refresh();
         }
 
         #endregion
