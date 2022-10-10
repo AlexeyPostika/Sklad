@@ -66,6 +66,8 @@ using System.Windows.Media.Imaging;
             }
             catch { return null; }
         }
+       
+        
         public static List<String> imagesNameList = new List<String>();
         static String ResourceIconPath = "Resources";
         public static BitmapImage bitmapImage;

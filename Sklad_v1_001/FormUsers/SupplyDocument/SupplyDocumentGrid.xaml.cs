@@ -774,7 +774,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             Response response = request.GetCommand(2);
             if (response != null && response.ErrorCode == 0)
             {
-                //Save(response);
+                Save(response);
                 //InitFilters();
                 //Refresh();
             }
@@ -799,7 +799,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         {
             localRow.ShemaStorаgeLocal.Clear();
             foreach (SupplyDocumentRequest rowResponse in response.listSupplyDocumentOutput.ListDocuments)
-            {              
+            {
                 DataRow row = localRow.ShemaStorаgeLocal.SupplyDocument.NewRow();
                 row["Count"] = rowResponse.Document.Count;
                 row["Amount"] = rowResponse.Document.Amount;
@@ -816,7 +816,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 row["CompanyId"] = rowResponse.Document.CompanyID;
                 row["ReffTimeRow"] = rowResponse.Document.TimeRow;
                 localRow.ShemaStorаgeLocal.SupplyDocument.Rows.Add(row);
-               
+
                 foreach (SupplyDocumentPaymentRequest rowPaymentReff in rowResponse.Payment)
                 {
                     DataRow rowPayment = localRow.ShemaStorаgeLocal.SupplyDocumentPayment.NewRow();
@@ -836,7 +836,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     localRow.ShemaStorаgeLocal.SupplyDocumentPayment.Rows.Add(rowPayment);
                 }
             }
-           // registerDocumentLogic.SaveRowTable(Document);
+            //registerDocumentLogic.SaveRowTable(Document);
         }
         #endregion
 

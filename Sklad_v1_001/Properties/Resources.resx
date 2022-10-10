@@ -856,7 +856,7 @@
     <value>Подтвержден</value>
   </data>
   <data name="SupplyDocument6" xml:space="preserve">
-    <value>Отменен</value>
+    <value>Заказ зарегистрирован</value>
   </data>
   <data name="ErrorDB" xml:space="preserve">
     <value>Ошибка при сохранении данных</value>
@@ -871,7 +871,7 @@
     <value>Передача AZURE</value>
   </data>
   <data name="SupplyDocument7" xml:space="preserve">
-    <value>Заказ зарегистрирован</value>
+    <value>Редактировать</value>
   </data>
   <data name="REGISTER" xml:space="preserve">
     <value>Зарегистрировать</value>
@@ -914,5 +914,8 @@
   </data>
   <data name="ADJUSTMENT" xml:space="preserve">
     <value>На доработку</value>
+  </data>
+  <data name="SupplyDocument8" xml:space="preserve">
+    <value>Отменен</value>
   </data>
 </root>

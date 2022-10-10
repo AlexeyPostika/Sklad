@@ -2086,7 +2086,7 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Отменен.
+        ///   Ищет локализованную строку, похожую на Заказ зарегистрирован.
         /// </summary>
         public static string SupplyDocument6 {
             get {
@@ -2095,11 +2095,20 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Заказ зарегистрирован.
+        ///   Ищет локализованную строку, похожую на Редактировать.
         /// </summary>
         public static string SupplyDocument7 {
             get {
                 return ResourceManager.GetString("SupplyDocument7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Отменен.
+        /// </summary>
+        public static string SupplyDocument8 {
+            get {
+                return ResourceManager.GetString("SupplyDocument8", resourceCulture);
             }
         }
         

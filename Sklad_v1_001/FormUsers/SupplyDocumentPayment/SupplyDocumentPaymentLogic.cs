@@ -317,11 +317,12 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
     {
         Attributes attributes;
 
+        string save_store_procedure = "xp_SaveSupplyDocumentPayment";
         string get_store_procedure = "xp_GetSupplyDocumentPaymentTable";
 
         // запрос
         SQLCommanSelect _sqlRequestSelect = null;
-
+        SQLCommanSelect _sqlRequestSave = null;
         // результаты запроса
         DataTable _data = null;
         DataTable _datarow = null;
@@ -330,6 +331,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
         {
             this.attributes = _attributes;
             _sqlRequestSelect = new SQLCommanSelect();
+            _sqlRequestSave = new SQLCommanSelect();
 
 
             _data = new DataTable();
@@ -341,6 +343,40 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
 
             _sqlRequestSelect.AddParametr("@p_DocumentID", SqlDbType.BigInt);
             _sqlRequestSelect.SetParametrValue("@p_DocumentID", 0);
+
+            //----------------------------------------------------------------------------
+            _sqlRequestSave.AddParametr("@p_AddUserID", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_AddUserID", _attributes.numeric.userEdit.AddUserID);
+
+            _sqlRequestSave.AddParametr("@p_ID", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_ID", 0);
+
+            _sqlRequestSave.AddParametr("@p_DocumentID", SqlDbType.BigInt);
+            _sqlRequestSave.SetParametrValue("@p_DocumentID", 0);
+
+            _sqlRequestSave.AddParametr("@p_Status", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_Status", 0);
+
+            _sqlRequestSave.AddParametr("@p_OperationType", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_OperationType", 0);
+
+            _sqlRequestSave.AddParametr("@p_Amount", SqlDbType.Money);
+            _sqlRequestSave.SetParametrValue("@p_Amount", 0);
+
+            _sqlRequestSave.AddParametr("@p_CreatedUserID", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_CreatedUserID", 0);
+
+            _sqlRequestSave.AddParametr("@p_LastModificatedDate", SqlDbType.DateTime);
+            _sqlRequestSave.SetParametrValue("@p_LastModificatedDate", DateTime.Now);
+
+            _sqlRequestSave.AddParametr("@p_LastModificatedUserID", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_LastModificatedUserID", 0);
+
+            _sqlRequestSave.AddParametr("@p_RRN", SqlDbType.NVarChar, 255);
+            _sqlRequestSave.SetParametrValue("@p_RRN", String.Empty);
+
+            _sqlRequestSave.AddParametr("@p_DocRRN", SqlDbType.VarBinary);
+            _sqlRequestSave.SetParametrValue("@p_DocRRN", null);
 
         }
 
@@ -354,6 +390,24 @@ namespace Sklad_v1_001.FormUsers.SupplyDocumentPayment
             _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
             _data = _sqlRequestSelect.SqlAnswer.datatable;
             return _data;
+        }
+
+        public Int32 SaveRow(LocaleRow row)
+        {
+            _sqlRequestSave.SetParametrValue("@p_ID", row.ID);
+            _sqlRequestSave.SetParametrValue("@p_DocumentID", row.DocumentID);
+            _sqlRequestSave.SetParametrValue("@p_Status", row.Status);
+            _sqlRequestSave.SetParametrValue("@p_OperationType", row.OpertionType);
+            _sqlRequestSave.SetParametrValue("@p_Amount", row.Amount);
+            _sqlRequestSave.SetParametrValue("@p_Description", row.Description);
+            _sqlRequestSave.SetParametrValue("@p_CreatedUserID", row.CreatedUserID);
+            _sqlRequestSave.SetParametrValue("@p_LastModificatedDate", row.LastModificatedDate);
+            _sqlRequestSave.SetParametrValue("@p_LastModificatedUserID", row.LastModificatedUserID);
+            _sqlRequestSave.SetParametrValue("@p_RRN", row.RRN);
+            _sqlRequestSave.SetParametrValue("@p_DocRRN", row.RRNDocumentByte);
+
+            _sqlRequestSave.ComplexRequest(save_store_procedure, CommandType.StoredProcedure, null);
+            return (Int32)_sqlRequestSave.SqlAnswer.result;
         }
 
         public LocaleRow Convert(DataRow _dataRow, LocaleRow _localeRow)
