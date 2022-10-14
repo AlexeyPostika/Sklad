@@ -766,7 +766,6 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             if (listDocument!=null && listDocument.Count() > 0)
             {
                 supplyDocumentLogic.SendRequest(listDocument);
-               // 
             }
 
             Request request = new Request(attributes);
@@ -775,8 +774,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             if (response != null && response.ErrorCode == 0)
             {
                 Save(response);
-                //InitFilters();
-                //Refresh();
+                InitFilters();
+                Refresh();
             }
             else
             {
@@ -804,17 +803,13 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                 row["Count"] = rowResponse.Document.Count;
                 row["Amount"] = rowResponse.Document.Amount;
                 row["ReffID"] = rowResponse.Document.ID;
-                row["ReffDate"] = SqlDateTime.MinValue.Value;
-                //row["RegisterDocumentNumber"] = 23243432;
+                row["ReffDate"] = rowResponse.Document.CreatedDate == null ? DateTime.Now : rowResponse.Document.CreatedDate;              
                 row["SupplyDocumentNumber"] = rowResponse.Document.SupplyDocumentNumber;
                 row["CreatedDate"] = rowResponse.Document.CreatedDate == null ? DateTime.Now : rowResponse.Document.CreatedDate;
                 row["CreatedUserID"] = rowResponse.Document.CreatedUserID;
                 row["LastModificatedDate"] = DateTime.Now;
                 row["LastModificatedUserID"] = attributes.numeric.userEdit.AddUserID;
-                row["Status"] = rowResponse.Document.Status;
-                row["ShopID"] = rowResponse.Document.ShopID;
-                row["CompanyId"] = rowResponse.Document.CompanyID;
-                row["ReffTimeRow"] = rowResponse.Document.TimeRow;
+                row["Status"] = rowResponse.Document.Status;        
                 localRow.ShemaStorаgeLocal.SupplyDocument.Rows.Add(row);
 
                 foreach (SupplyDocumentPaymentRequest rowPaymentReff in rowResponse.Payment)
@@ -830,13 +825,11 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     rowPayment["CreatedUserID"] = rowPaymentReff.CreatedUserID;
                     rowPayment["LastModificatedDate"] = DateTime.Now;
                     rowPayment["LastModificatedUserID"] = attributes.numeric.userEdit.AddUserID;
-                    rowPayment["ShopID"] = rowPaymentReff.ShopID;
-                    rowPayment["CompanyId"] = rowPaymentReff.CompanyID;
-                    rowPayment["ReffTimeRow"] = rowPaymentReff.TimeRow;
+                   
                     localRow.ShemaStorаgeLocal.SupplyDocumentPayment.Rows.Add(rowPayment);
                 }
             }
-            //registerDocumentLogic.SaveRowTable(Document);
+            supplyDocumentLogic.SaveRowTable_V2(localRow);
         }
         #endregion
 

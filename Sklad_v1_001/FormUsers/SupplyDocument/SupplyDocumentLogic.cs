@@ -1618,6 +1618,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         string get_save_procedure = "xp_SaveSupplyDocument";    
         string get_save_procedure_table = "xp_SaveSupplyDocumentTable";
+        string get_save_procedure_table_V2 = "xp_SaveSupplyDocumentTable_V2";
 
         string sender_store_procedure = "xp_SenderSupplyDocumentID";
         string response_store_procedure = "xp_ResponseSaveSupplyDocument";
@@ -1629,6 +1630,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
         SQLCommanSelect _sqlRequestSelectSummary = null;
         SQLCommanSelect _sqlRequestSave = null;
         SQLCommanSelect _sqlRequestSaveTable = null;
+        SQLCommanSelect _sqlRequestSaveTable_V2 = null;
         SQLCommanSelect _sqlResponseSave = null;
         SQLCommanSelect _sqlRequestSet = null;
         SQLCommanSelect _sqlRequestSender = null;
@@ -1697,6 +1699,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlRequestSelectSummary = new SQLCommanSelect();
             _sqlRequestSave = new SQLCommanSelect();
             _sqlRequestSaveTable = new SQLCommanSelect();
+            _sqlRequestSaveTable_V2 = new SQLCommanSelect();
             _sqlResponseSave = new SQLCommanSelect();
             _sqlRequestSet = new SQLCommanSelect();
             _sqlRequestSender = new SQLCommanSelect();
@@ -1921,7 +1924,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             //----------------------------------------------------------------------------
             _sqlRequestSaveTable.AddParametr("@p_AddUserID", SqlDbType.Int);
-            _sqlRequestSaveTable.SetParametrValue("@p_AddUserID", 1);
+            _sqlRequestSaveTable.SetParametrValue("@p_AddUserID", attributes.numeric.userEdit.AddUserID);
 
             _sqlRequestSaveTable.AddParametr("@p_UserID", SqlDbType.Int);
             _sqlRequestSaveTable.SetParametrValue("@p_UserID", 0);
@@ -1949,6 +1952,22 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             _sqlRequestSaveTable.AddParametr("@p_tablePayment", SqlDbType.Structured);
             _sqlRequestSaveTable.SetParametrValue("@p_tablePayment", shemaStorаge.SupplyDocumentPayment);
+
+            //----------------------------------------------------------------------------
+            _sqlRequestSaveTable_V2.AddParametr("@p_AddUserID", SqlDbType.Int);
+            _sqlRequestSaveTable_V2.SetParametrValue("@p_AddUserID", attributes.numeric.userEdit.AddUserID);
+
+            _sqlRequestSaveTable_V2.AddParametr("@p_tableDocument", SqlDbType.Structured);
+            _sqlRequestSaveTable_V2.SetParametrValue("@p_tableDocument", shemaStorаge.SupplyDocument);
+
+            _sqlRequestSaveTable_V2.AddParametr("@p_tableDetails", SqlDbType.Structured);
+            _sqlRequestSaveTable_V2.SetParametrValue("@p_tableDetails", shemaStorаge.SupplyDocumentDetails);
+
+            _sqlRequestSaveTable_V2.AddParametr("@p_tableDelivery", SqlDbType.Structured);
+            _sqlRequestSaveTable_V2.SetParametrValue("@p_tableDelivery", shemaStorаge.SupplyDocumentDelivery);
+
+            _sqlRequestSaveTable_V2.AddParametr("@p_tablePayment", SqlDbType.Structured);
+            _sqlRequestSaveTable_V2.SetParametrValue("@p_tablePayment", shemaStorаge.SupplyDocumentPayment);
 
             //----------------------------------------------------------------------------
             _sqlResponseSave.AddParametr("@p_AddUserID", SqlDbType.Int);
@@ -2157,6 +2176,24 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             _sqlRequestSaveTable.ComplexRequest(get_save_procedure_table, CommandType.StoredProcedure, null);
             return (Int32)_sqlRequestSaveTable.SqlAnswer.result;
+        }
+        public Int32 SaveRowTable_V2(LocalRow row)
+        {
+            //SupplyDocument
+            _sqlRequestSaveTable_V2.SetParametrValue("@p_tableDocument", row.ShemaStorаgeLocal.SupplyDocument);
+
+            //SupplyDocumentDetails
+            _sqlRequestSaveTable_V2.SetParametrValue("@p_tableDetails", row.ShemaStorаgeLocal.SupplyDocumentDetails);
+
+            //SupplyDocumentDeliverry
+            _sqlRequestSaveTable_V2.SetParametrValue("@p_tableDelivery", row.ShemaStorаgeLocal.SupplyDocumentDelivery);
+
+            //SupplyDocumentPayment
+            _sqlRequestSaveTable_V2.SetParametrValue("@p_tablePayment", row.ShemaStorаgeLocal.SupplyDocumentPayment);
+
+
+            _sqlRequestSaveTable_V2.ComplexRequest(get_save_procedure_table_V2, CommandType.StoredProcedure, null);
+            return (Int32)_sqlRequestSaveTable_V2.SqlAnswer.result;
         }
 
         public Int32 SaveRowTable(Int32 documentNumber)
