@@ -898,7 +898,7 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             if (Save() > 0)
             {
                 request = new Request(attributes);
-                Document.SupplyDocumentNumber = supplyDocumentLogic.SetRow(Document);
+                Document.SupplyDocumentNumber = supplyDocumentLogic.ResponseSetRow(Document);
                 if (Document.ID > 0)
                 {
                     SupplyDocumentLogic supplyDocumentLogic = new SupplyDocumentLogic(attributes);
