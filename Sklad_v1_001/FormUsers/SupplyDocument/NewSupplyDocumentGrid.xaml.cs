@@ -790,7 +790,8 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
         private void SupplyDocumentDetailsToolBar_ButtonApply()
         {
-           
+            if (supplyDocumentLogic.SetRow(Document) > 0)
+                MainWindow.AppWindow.ButtonSupplyDocumentF(Document, NewDocument);
         }
         #endregion
 
@@ -978,8 +979,6 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
                     // Выполняем запрос по адресу и получаем ответ в виде строки
                    
                 }
-
-
                 MainWindow.AppWindow.ButtonSupplyDocumentF(Document, NewDocument);
             }
         }

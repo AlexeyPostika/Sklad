@@ -1999,6 +1999,19 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
             _sqlResponseSet.SetParametrValue("@p_DocumentNumber", 0);
 
             //----------------------------------------------------------------------------
+            _sqlRequestSet.AddParametr("@p_AddUserID", SqlDbType.Int);
+            _sqlRequestSet.SetParametrValue("@p_AddUserID", attributes.numeric.userEdit.AddUserID);
+
+            _sqlRequestSet.AddParametr("@p_DocumentID", SqlDbType.Int);
+            _sqlRequestSet.SetParametrValue("@p_DocumentID", 0);
+
+            _sqlRequestSet.AddParametr("@p_DocumentNumber", SqlDbType.BigInt);
+            _sqlRequestSet.SetParametrValue("@p_DocumentNumber", 0);
+
+            _sqlRequestSet.AddParametr("@p_Status", SqlDbType.Int);
+            _sqlRequestSet.SetParametrValue("@p_Status", 0);
+
+            //----------------------------------------------------------------------------
             _sqlRequestSender.AddParametr("@p_AddUserID", SqlDbType.Int);
             _sqlRequestSender.SetParametrValue("@p_AddUserID", attributes.numeric.userEdit.AddUserID);
 
@@ -2237,6 +2250,16 @@ namespace Sklad_v1_001.FormUsers.SupplyDocument
 
             _sqlResponseSet.ComplexRequest(response_set_store_procedure, CommandType.StoredProcedure, null);
             return (Int64)_sqlResponseSet.SqlAnswer.result;
+        }
+
+        public Int64 SetRow(LocalRow row)
+        {
+            //SupplyDocument
+            _sqlRequestSet.SetParametrValue("@p_DocumentID", row.ID);
+            _sqlRequestSet.SetParametrValue("@p_DocumentNumber", row.SupplyDocumentNumber);
+
+            _sqlRequestSet.ComplexRequest(set_store_procedure, CommandType.StoredProcedure, null);
+            return (Int64)_sqlRequestSet.SqlAnswer.result;
         }
 
         public RowsFilters ConvertFilter(DataRow _dataRow, RowsFilters _localeRow)
