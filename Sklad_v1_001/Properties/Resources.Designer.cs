@@ -61,6 +61,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Директов/руководитель.
+        /// </summary>
+        public static string AccountCompany {
+            get {
+                return ResourceManager.GetString("AccountCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на ДОБАВИТЬ.
         /// </summary>
         public static string ADD {
@@ -147,6 +156,15 @@ namespace Sklad_v1_001.Properties {
         public static string Adress {
             get {
                 return ResourceManager.GetString("Adress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Адрес компании.
+        /// </summary>
+        public static string AdressCompany {
+            get {
+                return ResourceManager.GetString("AdressCompany", resourceCulture);
             }
         }
         
@@ -421,6 +439,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Атрибуты компании/фирмы/ИП.
+        /// </summary>
+        public static string CompanyAttribute {
+            get {
+                return ResourceManager.GetString("CompanyAttribute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Доставка.
         /// </summary>
         public static string CompanyDelivery {
@@ -628,6 +655,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Директор.
+        /// </summary>
+        public static string Directory {
+            get {
+                return ResourceManager.GetString("Directory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Описание.
         /// </summary>
         public static string Discription {
@@ -660,6 +696,15 @@ namespace Sklad_v1_001.Properties {
         public static string EDITBUTTON {
             get {
                 return ResourceManager.GetString("EDITBUTTON", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Email.
+        /// </summary>
+        public static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
             }
         }
         
@@ -880,6 +925,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Атрибуты компании.
+        /// </summary>
+        public static string FiscalAttributes {
+            get {
+                return ResourceManager.GetString("FiscalAttributes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Закрыть фильтер.
         /// </summary>
         public static string FliterClose {
@@ -894,6 +948,15 @@ namespace Sklad_v1_001.Properties {
         public static string FromWhere {
             get {
                 return ResourceManager.GetString("FromWhere", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Полное наименование.
+        /// </summary>
+        public static string FullNameCompany {
+            get {
+                return ResourceManager.GetString("FullNameCompany", resourceCulture);
             }
         }
         
@@ -930,6 +993,15 @@ namespace Sklad_v1_001.Properties {
         public static string InformationTitle {
             get {
                 return ResourceManager.GetString("InformationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ИНН.
+        /// </summary>
+        public static string INN {
+            get {
+                return ResourceManager.GetString("INN", resourceCulture);
             }
         }
         
@@ -1942,6 +2014,24 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Отчество.
+        /// </summary>
+        public static string SecondName {
+            get {
+                return ResourceManager.GetString("SecondName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Главный бухгалтер.
+        /// </summary>
+        public static string SeniorAccount {
+            get {
+                return ResourceManager.GetString("SeniorAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Настройки.
         /// </summary>
         public static string Settings {
@@ -1956,6 +2046,15 @@ namespace Sklad_v1_001.Properties {
         public static string Shop {
             get {
                 return ResourceManager.GetString("Shop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Сокращенное наименование.
+        /// </summary>
+        public static string ShortNameCompany {
+            get {
+                return ResourceManager.GetString("ShortNameCompany", resourceCulture);
             }
         }
         

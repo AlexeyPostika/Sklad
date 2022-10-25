@@ -918,4 +918,37 @@
   <data name="SupplyDocument8" xml:space="preserve">
     <value>Отменен</value>
   </data>
+  <data name="AccountCompany" xml:space="preserve">
+    <value>Директов/руководитель</value>
+  </data>
+  <data name="AdressCompany" xml:space="preserve">
+    <value>Адрес компании</value>
+  </data>
+  <data name="CompanyAttribute" xml:space="preserve">
+    <value>Атрибуты компании/фирмы/ИП</value>
+  </data>
+  <data name="Directory" xml:space="preserve">
+    <value>Директор</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="FiscalAttributes" xml:space="preserve">
+    <value>Атрибуты компании</value>
+  </data>
+  <data name="FullNameCompany" xml:space="preserve">
+    <value>Полное наименование</value>
+  </data>
+  <data name="INN" xml:space="preserve">
+    <value>ИНН</value>
+  </data>
+  <data name="SecondName" xml:space="preserve">
+    <value>Отчество</value>
+  </data>
+  <data name="SeniorAccount" xml:space="preserve">
+    <value>Главный бухгалтер</value>
+  </data>
+  <data name="ShortNameCompany" xml:space="preserve">
+    <value>Сокращенное наименование</value>
+  </data>
 </root>

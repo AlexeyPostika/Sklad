@@ -369,6 +369,13 @@
     <Compile Include="FormUsers\Category\NewCategoryItem.xaml.cs">
       <DependentUpon>NewCategoryItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FormUsers\Company\CompanyGrid.xaml.cs">
+      <DependentUpon>CompanyGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsers\Company\CompanyLogic.cs" />
+    <Compile Include="FormUsers\Company\NewCompanyItem.xaml.cs">
+      <DependentUpon>NewCompanyItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FormUsers\DeliveryDetails\DeliveryDetailsLogic.cs" />
     <Compile Include="FormUsers\DeliveryDetails\NewDeliveryDetailsItem.xaml.cs">
       <DependentUpon>NewDeliveryDetailsItem.xaml</DependentUpon>
@@ -789,6 +796,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="FormUsers\Category\NewCategoryItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FormUsers\Company\CompanyGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FormUsers\Company\NewCompanyItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
