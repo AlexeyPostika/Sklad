@@ -975,4 +975,10 @@
   <data name="TaxRate" xml:space="preserve">
     <value>Налоговая ставка</value>
   </data>
+  <data name="ListCompany" xml:space="preserve">
+    <value>Список компаний</value>
+  </data>
+  <data name="NewCompany" xml:space="preserve">
+    <value>Новая компания</value>
+  </data>
 </root>

@@ -16,7 +16,7 @@
                             ButtonTransferDocumentOpen="FrameMenu_ButtonTransferDocumentOpen"
                             ButtonDeliveryNewSupplyOpen="frameMenu_ButtonDeliveryNewSupplyOpen"
                             ButtonDeliveryListSupplyOpen="FrameMenu_ButtonDeliveryOpen"
-                            ButtonSettingsOpen="FrameMenu_ButtonSettingsOpen"
+                            ButtonNewCompanyOpen="FrameMenu_ButtonSettingsOpen"
                             ButtonExiteOpen="FrameMenu_ButtonExiteOpen"/>
     </Grid>
 </Page>

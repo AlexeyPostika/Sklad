@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using Sklad_v1_001.Control.FlexMenu;
 using Sklad_v1_001.Control.FlexMessageBox;
 using Sklad_v1_001.FormUsers;
+using Sklad_v1_001.FormUsers.Company;
 using Sklad_v1_001.FormUsers.Delivery;
 using Sklad_v1_001.FormUsers.Product;
 using Sklad_v1_001.FormUsers.RegisterDocument;
@@ -40,20 +41,26 @@ namespace Sklad_v1_001
         TovarZona tovarZona;
         TovarInZona tovarInZona;
         ZacupcaGrid zacupcaGrid;
+       
         //продукция
         ProductGrid productGrid;
+        NewAddProductItem newAddProductItem;
         // Продажи
         NewSaleDocumentGrid newSaleDocument;
         SaleDocumentGrid saleDocumentGrid;
         //поставки товра
         SupplyDocumentGrid supplyDocumentGrid;
         NewSupplyDocumentGrid newSupplyDocumentGrid;
+        SupplyDocumentDeliveryItem supplyDocumentDeliveryItem;
+        
         //регистрация документов
         RegisterDocumentGrid registerDocumentGrid;
         NewRegisterDocumentGrid newRegisterDocumentGrid;
 
-        NewAddProductItem newAddProductItem;
-        SupplyDocumentDeliveryItem supplyDocumentDeliveryItem;
+        //регистрация компаний
+        NewCompanyGrid newCompanyGrid;
+        CompanyGrid companyGrid;
+
 
         //public static WorkZona AppWindow;
         //public MainWindow mailWindows1;
@@ -97,7 +104,8 @@ namespace Sklad_v1_001
             PageframeMenuLevel.ButtonRegisterListDocument += new Action(ButtonRegisterListDocument);
             PageframeMenuLevel.ButtonNewRegisterDocumentOpen += new Action(ButtonRegisterNewDocument);
             //настройки                
-            PageframeMenuLevel.ButtonSettingsOpen += new Action(ButtonSettingsOpen);
+            PageframeMenuLevel.ButtonNewCompanyOpen += new Action(ButtonNewCompanyOpen);
+            PageframeMenuLevel.ButtonListCompanyOpen += new Action(ButtonListCompanyOpen);
             //выход
             PageframeMenuLevel.ButtonExiteOpen += new Action(ButtonExiteOpen);
 
@@ -301,11 +309,22 @@ namespace Sklad_v1_001
         #endregion
 
         #region настройки
-        private void ButtonSettingsOpen()
+        private void ButtonNewCompanyOpen()
         {
             GC.Collect();   //Вызов сборщика мусора
             GC.WaitForPendingFinalizers();  //ждем освобождение памяти
+            newCompanyGrid = new NewCompanyGrid(attributes);
+            frameWorkArea.Navigate(newCompanyGrid); // открытие страницы
         }
+
+        private void ButtonListCompanyOpen()
+        {
+            GC.Collect();   //Вызов сборщика мусора
+            GC.WaitForPendingFinalizers();  //ждем освобождение памяти
+            companyGrid = new CompanyGrid(attributes);
+            frameWorkArea.Navigate(companyGrid); // открытие страницы
+        }
+
         #endregion
 
         #region выход

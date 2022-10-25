@@ -39,7 +39,13 @@ namespace Sklad_v1_001.Control.FlexMenu
                       "VisibilityRegister",
                       typeof(Visibility),
                       typeof(frameMenu), new UIPropertyMetadata(Visibility.Collapsed));
-        
+
+       
+        public static readonly DependencyProperty VisibilityCompanyProperty = DependencyProperty.Register(
+                     "VisibilityCompany",
+                     typeof(Visibility),
+                     typeof(frameMenu), new UIPropertyMetadata(Visibility.Collapsed));
+
         // Обычное свойство .NET  - обертка над свойством зависимостей
         public Visibility VisibilitySale
         {
@@ -77,6 +83,17 @@ namespace Sklad_v1_001.Control.FlexMenu
             }
         }
 
+        public Visibility VisibilityCompany
+        {
+            get
+            {
+                return (Visibility)GetValue(VisibilityCompanyProperty);
+            }
+            set
+            {
+                SetValue(VisibilityCompanyProperty, value);
+            }
+        }
 
         Attributes attributes;
 
@@ -93,7 +110,10 @@ namespace Sklad_v1_001.Control.FlexMenu
         public event Action ButtonDeliveryListSupplyOpen;
 
         public event Action ButtonTransferDocumentOpen;
-        public event Action ButtonSettingsOpen;
+        //настройки
+        public event Action ButtonNewCompanyOpen;
+        public event Action ButtonListCompanyOpen;
+
         public event Action ButtonExiteOpen;
         public frameMenu(Attributes _attributes)
         {
@@ -141,6 +161,7 @@ namespace Sklad_v1_001.Control.FlexMenu
             VisibilitySale = Visibility.Collapsed;
             VisibilitySupply = Visibility.Visible;
             VisibilityRegister = Visibility.Collapsed;
+            VisibilityCompany = Visibility.Collapsed;
         }
 
         private void ButtonNewSupplyDocument_ButtonClick()
@@ -161,18 +182,9 @@ namespace Sklad_v1_001.Control.FlexMenu
             VisibilityRegister = Visibility.Collapsed;
             ButtonTransferDocumentOpen?.Invoke();
         }
-
-        private void ButtonSettings_ButtonClick()
-        {
-            VisibilitySale = Visibility.Collapsed;
-            VisibilitySupply = Visibility.Collapsed;
-            VisibilityRegister = Visibility.Collapsed;
-            ButtonSettingsOpen?.Invoke();
-        }
-
+      
         private void ButtonExite_ButtonClick()
-        {
-            VisibilitySale = Visibility.Collapsed;
+        {           
             ButtonExiteOpen?.Invoke();
         }
         #region Sale
@@ -181,6 +193,7 @@ namespace Sklad_v1_001.Control.FlexMenu
             VisibilitySale = Visibility.Visible;
             VisibilitySupply = Visibility.Collapsed;
             VisibilityRegister = Visibility.Collapsed;
+            VisibilityCompany = Visibility.Collapsed;
         }
 
         private void ButtonNewSaleDocument_ButtonClick()
@@ -202,6 +215,7 @@ namespace Sklad_v1_001.Control.FlexMenu
             VisibilitySale = Visibility.Collapsed;
             VisibilitySupply = Visibility.Collapsed;
             VisibilityRegister = Visibility.Visible;
+            VisibilityCompany = Visibility.Collapsed;
         }
 
         private void ButtonListRegisterDocumentDocument_ButtonClick()
@@ -213,8 +227,27 @@ namespace Sklad_v1_001.Control.FlexMenu
         {
             ButtonNewRegisterDocumentOpen?.Invoke();
         }
+
         #endregion
 
+        #region Компания
+        private void ButtonSettings_ButtonClick()
+        {
+            VisibilitySale = Visibility.Collapsed;
+            VisibilitySupply = Visibility.Collapsed;
+            VisibilityRegister = Visibility.Collapsed;
+            VisibilityCompany = Visibility.Visible;
+        }
 
+        private void buttonNewCompanyItem_ButtonClick()
+        {
+            ButtonNewCompanyOpen?.Invoke();
+        }
+
+        private void buttonCompanyGrid_ButtonClick()
+        {
+            ButtonListCompanyOpen?.Invoke();
+        }
+        #endregion
     }
 }

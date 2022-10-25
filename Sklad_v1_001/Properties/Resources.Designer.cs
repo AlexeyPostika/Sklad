@@ -1114,6 +1114,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Список компаний.
+        /// </summary>
+        public static string ListCompany {
+            get {
+                return ResourceManager.GetString("ListCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Список компаний доставки.
         /// </summary>
         public static string ListDelivery {
@@ -1389,6 +1398,15 @@ namespace Sklad_v1_001.Properties {
         public static string NameTypeCategory {
             get {
                 return ResourceManager.GetString("NameTypeCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Новая компания.
+        /// </summary>
+        public static string NewCompany {
+            get {
+                return ResourceManager.GetString("NewCompany", resourceCulture);
             }
         }
         
