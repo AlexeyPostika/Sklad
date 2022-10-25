@@ -208,7 +208,80 @@
                 </GroupBox>
 
                 <GroupBox Header="{x:Static res:Resources.FiscalAttributes}">
-                    
+                    <WrapPanel>
+                        <FlexTextBox:FlexLabelTextBox x:Name="innAttributes"
+                                                      IsRequired="Visible"
+                                                      Width="200"
+                                                      MaxWidth="250"
+                                                      LabelText="{x:Static res:Resources.INN}"
+                                                      Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      EnableTextBox="True"/>
+
+                        <FlexTextBox:FlexLabelTextBox x:Name="kppAttributes"
+                                                      IsRequired="Visible"
+                                                      Width="200"
+                                                      MaxWidth="250"
+                                                      LabelText="{x:Static res:Resources.KPP}"
+                                                      Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      EnableTextBox="True"/>
+
+                        <FlexTextBox:FlexLabelTextBox x:Name="rcbicAttributes"
+                                                      IsRequired="Visible"
+                                                      Width="300"
+                                                      MaxWidth="350"
+                                                      LabelText="{x:Static res:Resources.RCBIC}"
+                                                      Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      EnableTextBox="True"/>
+
+                        <FlexTextBox:FlexLabelTextBox x:Name="correspondentAccountAttributes"
+                                                      IsRequired="Visible"
+                                                      Width="150"
+                                                      MaxWidth="200"
+                                                      LabelText="{x:Static res:Resources.CorrespondentAccount}"
+                                                      Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      EnableTextBox="True"/>
+
+                        <FlexTextBox:FlexLabelTextBox x:Name="bankNameAttributes"
+                                                      IsRequired="Visible"
+                                                      Width="200"
+                                                      MaxWidth="250"
+                                                      LabelText="{x:Static res:Resources.BankName}"
+                                                      Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      EnableTextBox="True"/>
+
+                        <FlexTextBox:FlexLabelTextBox x:Name="bankAdressAttributes"
+                                                      IsRequired="Visible"
+                                                      Width="350"
+                                                      MaxWidth="400"
+                                                      LabelText="{x:Static res:Resources.BankAdress}"
+                                                      Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      EnableTextBox="True"/>
+
+                        <FlexTextBox:FlexLabelTextBox x:Name="taxRateAttributes"
+                                                      IsRequired="Visible"
+                                                      Width="150"
+                                                      MaxWidth="200"
+                                                      LabelText="{x:Static res:Resources.TaxRate}"
+                                                      Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      EnableTextBox="True"/>
+
+                        <FlexTextBox:FlexLabelTextBox x:Name="currentCodeAttributes"
+                                                      IsRequired="Visible"
+                                                      Width="110"
+                                                      MaxWidth="350"
+                                                      LabelText="{x:Static res:Resources.CurrentCode}"
+                                                      Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      EnableTextBox="True"/>
+
+                        <FlexTextBox:FlexLabelTextBox x:Name="currentNameAttributes"
+                                                      IsRequired="Visible"
+                                                      Width="180"
+                                                      MaxWidth="200"
+                                                      LabelText="{x:Static res:Resources.CurrentName}"
+                                                      Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      EnableTextBox="True"/>
+
+                    </WrapPanel>
                 </GroupBox>
             </StackPanel>
         </GroupBox>

@@ -277,6 +277,24 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Адрес банка.
+        /// </summary>
+        public static string BankAdress {
+            get {
+                return ResourceManager.GetString("BankAdress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Название банка.
+        /// </summary>
+        public static string BankName {
+            get {
+                return ResourceManager.GetString("BankName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Штрих-код.
         /// </summary>
         public static string BarCodeID {
@@ -457,6 +475,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на КС.
+        /// </summary>
+        public static string CorrespondentAccount {
+            get {
+                return ResourceManager.GetString("CorrespondentAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Дата.
         /// </summary>
         public static string CreatedDate {
@@ -475,11 +502,29 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Код валюты.
+        /// </summary>
+        public static string CurrentCode {
+            get {
+                return ResourceManager.GetString("CurrentCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Сегодня.
         /// </summary>
         public static string CurrentDay {
             get {
                 return ResourceManager.GetString("CurrentDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Наименование валюты.
+        /// </summary>
+        public static string CurrentName {
+            get {
+                return ResourceManager.GetString("CurrentName", resourceCulture);
             }
         }
         
@@ -1020,6 +1065,15 @@ namespace Sklad_v1_001.Properties {
         public static string Invoice {
             get {
                 return ResourceManager.GetString("Invoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на КРР.
+        /// </summary>
+        public static string KPP {
+            get {
+                return ResourceManager.GetString("KPP", resourceCulture);
             }
         }
         
@@ -1843,6 +1897,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на БИК.
+        /// </summary>
+        public static string RCBIC {
+            get {
+                return ResourceManager.GetString("RCBIC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на ОБНОВИТЬ.
         /// </summary>
         public static string REFRESH {
@@ -2280,6 +2343,15 @@ namespace Sklad_v1_001.Properties {
         public static string TagPriceUSA {
             get {
                 return ResourceManager.GetString("TagPriceUSA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Налоговая ставка.
+        /// </summary>
+        public static string TaxRate {
+            get {
+                return ResourceManager.GetString("TaxRate", resourceCulture);
             }
         }
         

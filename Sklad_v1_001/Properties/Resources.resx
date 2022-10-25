@@ -951,4 +951,28 @@
   <data name="ShortNameCompany" xml:space="preserve">
     <value>Сокращенное наименование</value>
   </data>
+  <data name="BankAdress" xml:space="preserve">
+    <value>Адрес банка</value>
+  </data>
+  <data name="BankName" xml:space="preserve">
+    <value>Название банка</value>
+  </data>
+  <data name="CorrespondentAccount" xml:space="preserve">
+    <value>КС</value>
+  </data>
+  <data name="CurrentCode" xml:space="preserve">
+    <value>Код валюты</value>
+  </data>
+  <data name="CurrentName" xml:space="preserve">
+    <value>Наименование валюты</value>
+  </data>
+  <data name="KPP" xml:space="preserve">
+    <value>КРР</value>
+  </data>
+  <data name="RCBIC" xml:space="preserve">
+    <value>БИК</value>
+  </data>
+  <data name="TaxRate" xml:space="preserve">
+    <value>Налоговая ставка</value>
+  </data>
 </root>
