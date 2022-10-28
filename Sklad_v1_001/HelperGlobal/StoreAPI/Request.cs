@@ -61,7 +61,7 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI
                     //webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
                     webClient.Headers[HttpRequestHeader.ContentType] = "application/json";
                     string temp = JsonConvert.SerializeObject(_supplyDocumentRequest, Newtonsoft.Json.Formatting.Indented);
-                    string response = webClient.UploadString(new Uri(@"https://192.168.0.254:60000/api/supplydocument/Post"), "POST", temp);
+                    string response = webClient.UploadString(new Uri(@"https://192.168.0.126:60000/api/supplydocument/Post"), "POST", temp);
                     Response resultOUT = JsonConvert.DeserializeObject<Response>(response);
                     if (resultOUT != null)
                     {
@@ -100,7 +100,7 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI
                     //webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
                     webClient.Headers[HttpRequestHeader.ContentType] = "application/json";
                     string temp = JsonConvert.SerializeObject(_supplyDocumentRequestList, Newtonsoft.Json.Formatting.Indented);
-                    string respon = webClient.UploadString(new Uri(@"https://192.168.0.254:60000/api/supplydocument/ListPost"), "POST", temp);
+                    string respon = webClient.UploadString(new Uri(@"https://192.168.0.126:60000/api/supplydocument/ListPost"), "POST", temp);
                     response = JsonConvert.DeserializeObject<Response>(respon);
                     if (response.listSupplyDocumentOutput != null)
                     {
@@ -139,7 +139,7 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI
                     webClient.Encoding = System.Text.Encoding.UTF8;
                     //webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
                     webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-                    string responseString = webClient.DownloadString(new Uri(@"https://192.168.0.254:60000/api/supplydocument/"+ _supplyDocumentRequest.Document.Status.ToString()));               
+                    string responseString = webClient.DownloadString(new Uri(@"https://192.168.0.126:60000/api/supplydocument/"+ _supplyDocumentRequest.Document.Status.ToString()));               
                     response.listSupplyDocumentOutput = JsonConvert.DeserializeObject<SupplyDocumentRequestList>(responseString);
                     if (response.listSupplyDocumentOutput != null)
                     {                      
