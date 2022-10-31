@@ -43,11 +43,17 @@
                     <FlexButton:LevelButton  x:Name="ButtonListSupplyDocument" ButtonClick="ButtonListSupplyDocument_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.ListSupplyDocument}"/>
                 </StackPanel>
                 <FlexButton:LevelButton Margin="0,4,0,4" x:Name="ButtonTransferDocument" ButtonClick="ButtonTransferDocument_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.TransferDocument}" rule:AccessRules.Rule="SeniorManager"/>
-                
-                <FlexButton:LevelButton Margin="0,0,0,4" x:Name="ButtonSettings" ButtonClick="ButtonSettings_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.Settings}"/>
+
+                <FlexButton:LevelButton Margin="0,0,0,4" x:Name="ButtonCompany" ButtonClick="ButtonCompany_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.ListCompany}"/>
                 <StackPanel Visibility="{Binding ElementName=Menu, Path=VisibilityCompany, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
                     <FlexButton:LevelButton x:Name="buttonNewCompanyItem" ButtonClick="buttonNewCompanyItem_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.NewCompany}"/>
                     <FlexButton:LevelButton  x:Name="buttonCompanyGrid" ButtonClick="buttonCompanyGrid_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.ListCompany}"/>
+                </StackPanel>
+
+                <FlexButton:LevelButton Margin="0,0,0,4" x:Name="ButtonSettings" ButtonClick="ButtonSettings_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.Settings}"/>
+                <StackPanel Visibility="{Binding ElementName=Menu, Path=VisibilitySetting, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                    <!--<FlexButton:LevelButton x:Name="buttonNewCompanyItem" ButtonClick="buttonNewCompanyItem_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.NewCompany}"/>-->
+                    <!--<FlexButton:LevelButton  x:Name="buttonCompanyGrid" ButtonClick="buttonCompanyGrid_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.ListCompany}"/>-->
                 </StackPanel>
             </StackPanel>
         </Grid>

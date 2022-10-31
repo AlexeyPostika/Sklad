@@ -1166,6 +1166,7 @@
     <Resource Include="Icone\IconRepiterDocument_X30.png" />
     <Resource Include="Icone\IconRepiterDocument_X32.png" />
     <Resource Include="Icone\IconRepiterDocument_X40.png" />
+    <Resource Include="Icone\IconCraufting_X30.png" />
     <Content Include="SQLCommand\JDB_DataAdapter.sql" />
     <Content Include="SQLCommand\JDB_POS.sql" />
     <Resource Include="Icone\IconOk.png" />

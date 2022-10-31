@@ -46,6 +46,11 @@ namespace Sklad_v1_001.Control.FlexMenu
                      typeof(Visibility),
                      typeof(frameMenu), new UIPropertyMetadata(Visibility.Collapsed));
 
+        // 
+        public static readonly DependencyProperty VisibilitySettingProperty = DependencyProperty.Register(
+                      "VisibilitySetting",
+                      typeof(Visibility),
+                      typeof(frameMenu), new UIPropertyMetadata(Visibility.Collapsed));
         // Обычное свойство .NET  - обертка над свойством зависимостей
         public Visibility VisibilitySale
         {
@@ -95,6 +100,17 @@ namespace Sklad_v1_001.Control.FlexMenu
             }
         }
 
+        public Visibility VisibilitySetting
+        {
+            get
+            {
+                return (Visibility)GetValue(VisibilitySettingProperty);
+            }
+            set
+            {
+                SetValue(VisibilitySettingProperty, value);
+            }
+        }
         Attributes attributes;
 
         public event Action ButtonProductOpen;
@@ -137,6 +153,7 @@ namespace Sklad_v1_001.Control.FlexMenu
             ButtonRegisterDocument.Image.Source = ImageHelper.GenerateImage("IconRegisterDocumetn_X40.png");
             ButtonDelivery.Image.Source = ImageHelper.GenerateImage("IconDelivery.png");
             ButtonTransferDocument.Image.Source = ImageHelper.GenerateImage("IconTransfer.png");
+            ButtonCompany.Image.Source = ImageHelper.GenerateImage("IconCraufting_X30.png");
             ButtonSettings.Image.Source = ImageHelper.GenerateImage("IconServices.png");
             ButtonExite.Image.Source = ImageHelper.GenerateImage("IconExit.png");
         }
@@ -145,6 +162,8 @@ namespace Sklad_v1_001.Control.FlexMenu
         {
             VisibilitySale = Visibility.Collapsed;
             VisibilitySupply = Visibility.Collapsed;
+            VisibilitySetting = Visibility.Collapsed;
+            VisibilityCompany = Visibility.Collapsed;
             ButtonProductOpen?.Invoke();
         }
 
@@ -152,6 +171,8 @@ namespace Sklad_v1_001.Control.FlexMenu
         {
             VisibilitySale = Visibility.Collapsed;
             VisibilitySupply = Visibility.Collapsed;
+            VisibilitySetting = Visibility.Collapsed;
+            VisibilityCompany = Visibility.Collapsed;
             ButtonProductEditOpen?.Invoke();
         }
 
@@ -161,6 +182,7 @@ namespace Sklad_v1_001.Control.FlexMenu
             VisibilitySale = Visibility.Collapsed;
             VisibilitySupply = Visibility.Visible;
             VisibilityRegister = Visibility.Collapsed;
+            VisibilitySetting = Visibility.Collapsed;
             VisibilityCompany = Visibility.Collapsed;
         }
 
@@ -180,6 +202,8 @@ namespace Sklad_v1_001.Control.FlexMenu
             VisibilitySale = Visibility.Collapsed;
             VisibilitySupply = Visibility.Collapsed;
             VisibilityRegister = Visibility.Collapsed;
+            VisibilitySetting = Visibility.Collapsed;
+            VisibilityCompany = Visibility.Collapsed;
             ButtonTransferDocumentOpen?.Invoke();
         }
       
@@ -231,12 +255,13 @@ namespace Sklad_v1_001.Control.FlexMenu
         #endregion
 
         #region Компания
-        private void ButtonSettings_ButtonClick()
+        private void ButtonCompany_ButtonClick()
         {
             VisibilitySale = Visibility.Collapsed;
             VisibilitySupply = Visibility.Collapsed;
             VisibilityRegister = Visibility.Collapsed;
             VisibilityCompany = Visibility.Visible;
+            VisibilitySetting = Visibility.Collapsed;
         }
 
         private void buttonNewCompanyItem_ButtonClick()
@@ -247,6 +272,17 @@ namespace Sklad_v1_001.Control.FlexMenu
         private void buttonCompanyGrid_ButtonClick()
         {
             ButtonListCompanyOpen?.Invoke();
+        }
+        #endregion
+
+        #region Setting
+        private void ButtonSettings_ButtonClick()
+        {
+            VisibilitySale = Visibility.Collapsed;
+            VisibilitySupply = Visibility.Collapsed;
+            VisibilityRegister = Visibility.Collapsed;
+            VisibilityCompany = Visibility.Collapsed;
+            VisibilitySetting = Visibility.Visible;
         }
         #endregion
     }
