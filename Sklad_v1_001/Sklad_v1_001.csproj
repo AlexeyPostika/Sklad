@@ -417,6 +417,7 @@
       <DependentUpon>SaleDocumentGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\SaleDocument\SaleDocumentLogic.cs" />
+    <Compile Include="FormUsers\Shops\ShopsLogic.cs" />
     <Compile Include="FormUsers\ShowCase\ShowCaseLogic.cs" />
     <Compile Include="FormUsers\SupplyDocumentDelivery\SupplyDocumentDeliveryItem.xaml.cs">
       <DependentUpon>SupplyDocumentDeliveryItem.xaml</DependentUpon>

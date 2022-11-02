@@ -27,6 +27,8 @@ namespace Sklad_v1_001.FormUsers.Company
 
         private FormUsers.Users.LocalRow generalDirectory;
         private FormUsers.Users.LocalRow seniorAccount;
+        private Shops.LocaleRow shop;
+
         private String senttlementAccount;
 
         private String iNN;
@@ -38,6 +40,15 @@ namespace Sklad_v1_001.FormUsers.Company
         private String currentName;
         private String rCBIC;
         private String correspondentAccount;
+
+        private DateTime? createdDate;
+        private String createdDateString;
+        private DateTime? lastModifiedDate;
+        private String lastModifiedDateString;
+        private Int32 createdByUserID;
+        private Int32 lastModifiedByUserID;
+        public DateTime? syncDate;
+        public Int32 syncStatus;
 
         public int ID
         {
@@ -154,6 +165,20 @@ namespace Sklad_v1_001.FormUsers.Company
             {
                 seniorAccount = value;
                 OnPropertyChanged("SeniorAccount");
+            }
+        }
+       
+        public Shops.LocaleRow Shop
+        {
+            get
+            {
+                return shop;
+            }
+
+            set
+            {
+                shop = value;
+                OnPropertyChanged("Shop");
             }
         }
         public String SenttlementAccount
@@ -284,6 +309,115 @@ namespace Sklad_v1_001.FormUsers.Company
             {
                 correspondentAccount = value;
                 OnPropertyChanged("CorrespondentAccount");
+            }
+        }
+        public DateTime? CreatedDate
+        {
+            get
+            {
+                return createdDate;
+            }
+
+            set
+            {
+                createdDate = value;
+                OnPropertyChanged("CreatedDate");
+            }
+        }
+
+        public String CreatedDateString
+        {
+            get
+            {
+                return createdDateString;
+            }
+
+            set
+            {
+                createdDateString = value;
+                OnPropertyChanged("CreatedDateString");
+            }
+        }
+
+        public DateTime? LastModifiedDate
+        {
+            get
+            {
+                return lastModifiedDate;
+            }
+
+            set
+            {
+                lastModifiedDate = value;
+                OnPropertyChanged("LastModifiedDate");
+            }
+        }
+
+        public String LastModifiedDateString
+        {
+            get
+            {
+                return lastModifiedDateString;
+            }
+
+            set
+            {
+                lastModifiedDateString = value;
+                OnPropertyChanged("LastModifiedDateString");
+            }
+        }
+
+        public Int32 CreatedByUserID
+        {
+            get
+            {
+                return createdByUserID;
+            }
+
+            set
+            {
+                createdByUserID = value;
+                OnPropertyChanged("CreatedByUserID");
+            }
+        }
+
+        public Int32 LastModifiedByUserID
+        {
+            get
+            {
+                return lastModifiedByUserID;
+            }
+
+            set
+            {
+                lastModifiedByUserID = value;
+                OnPropertyChanged("LastModifiedByUserID");
+            }
+        }
+        public DateTime? SyncDate
+        {
+            get
+            {
+                return syncDate;
+            }
+
+            set
+            {
+                syncDate = value;
+                OnPropertyChanged("SyncDate");
+            }
+        }
+        public int SyncStatus
+        {
+            get
+            {
+                return syncStatus;
+            }
+
+            set
+            {
+                syncStatus = value;
+                OnPropertyChanged("SyncStatus");
             }
         }
     }
