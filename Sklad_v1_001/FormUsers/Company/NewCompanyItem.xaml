@@ -40,7 +40,7 @@
                                               Width="300"
                                               MaxWidth="350"
                                               LabelText="{x:Static res:Resources.FullNameCompany}"
-                                              Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              Description="{Binding Path=FullNameCompany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                               EnableTextBox="True"/>
                 
                 <FlexTextBox:FlexLabelTextBox x:Name="shortNameCompany"
@@ -48,7 +48,7 @@
                                               Width="250"
                                               MaxWidth="300"
                                               LabelText="{x:Static res:Resources.ShortNameCompany}"
-                                              Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              Description="{Binding Path=ShortNameCompany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                               EnableTextBox="True"/>
                 
                 <FlexTextBox:FlexLabelTextBox x:Name="adress"
@@ -56,7 +56,7 @@
                                               Width="350"
                                               MaxWidth="450"
                                               LabelText="{x:Static res:Resources.AdressCompany}"
-                                              Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              Description="{Binding Path=Adress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                               EnableTextBox="True"/>
 
                 <FlexTextBox:FlexLabelTextBox x:Name="phone"
@@ -64,15 +64,15 @@
                                               Width="150"
                                               MaxWidth="200"
                                               LabelText="{x:Static res:Resources.Phone}"
-                                              Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              Description="{Binding Path=Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                               EnableTextBox="True"/>
 
                 <SimpleControl:EditBoxWithLabelDownloadFile x:Name="RRN"                                                           
-                                                            LabelText="{x:Static res:Resources.RRN}" 
-                                                            LabelWidth="110"
-                                                            Width="350"
+                                                            LabelText="{x:Static res:Resources.Logo}" 
+                                                            LabelWidth="80"
+                                                            Width="300"
                                                             IsRequired="Visible"
-                                                            Text="{Binding Path=RRN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
+                                                            Text="{Binding Path=Logo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
                                                             FilterPuth="Jpg files|*.jpg|Png files|*.png|Bitmap files|*.bmp"
                                                             Mode="JPG"
                                                             />
@@ -81,7 +81,7 @@
                                                       Width="200"
                                                       MaxWidth="250"
                                                       LabelText="{x:Static res:Resources.INN}"
-                                                      Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      Description="{Binding Path=INN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
 
                 <FlexTextBox:FlexLabelTextBox x:Name="kppAttributes"
@@ -89,7 +89,7 @@
                                                       Width="200"
                                                       MaxWidth="250"
                                                       LabelText="{x:Static res:Resources.KPP}"
-                                                      Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      Description="{Binding Path=KPP, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
 
                 <FlexTextBox:FlexLabelTextBox x:Name="rcbicAttributes"
@@ -97,7 +97,7 @@
                                                       Width="300"
                                                       MaxWidth="350"
                                                       LabelText="{x:Static res:Resources.RCBIC}"
-                                                      Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      Description="{Binding Path=RCBIC, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
 
                 <FlexTextBox:FlexLabelTextBox x:Name="correspondentAccountAttributes"
@@ -105,7 +105,7 @@
                                                       Width="150"
                                                       MaxWidth="200"
                                                       LabelText="{x:Static res:Resources.CorrespondentAccount}"
-                                                      Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      Description="{Binding Path=CorrespondentAccount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
 
                 <FlexTextBox:FlexLabelTextBox x:Name="bankNameAttributes"
@@ -113,7 +113,7 @@
                                                       Width="200"
                                                       MaxWidth="250"
                                                       LabelText="{x:Static res:Resources.BankName}"
-                                                      Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      Description="{Binding Path=BankName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
 
                 <FlexTextBox:FlexLabelTextBox x:Name="bankAdressAttributes"
@@ -121,7 +121,7 @@
                                                       Width="350"
                                                       MaxWidth="400"
                                                       LabelText="{x:Static res:Resources.BankAdress}"
-                                                      Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      Description="{Binding Path=BankAdress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
 
                 <FlexTextBox:FlexLabelTextBox x:Name="taxRateAttributes"
@@ -129,7 +129,7 @@
                                                       Width="150"
                                                       MaxWidth="200"
                                                       LabelText="{x:Static res:Resources.TaxRate}"
-                                                      Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      Description="{Binding Path=TaxRate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
 
                 <FlexTextBox:FlexLabelTextBox x:Name="currentCodeAttributes"
@@ -137,7 +137,7 @@
                                                       Width="110"
                                                       MaxWidth="350"
                                                       LabelText="{x:Static res:Resources.CurrentCode}"
-                                                      Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      Description="{Binding Path=CurrentCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
 
                 <FlexTextBox:FlexLabelTextBox x:Name="currentNameAttributes"
@@ -145,7 +145,7 @@
                                                       Width="180"
                                                       MaxWidth="200"
                                                       LabelText="{x:Static res:Resources.CurrentName}"
-                                                      Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      Description="{Binding Path=CurrentName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
             </WrapPanel>
         </GroupBox>
@@ -159,7 +159,7 @@
                                                   Width="300"
                                                   MaxWidth="350"
                                                   LabelText="{x:Static res:Resources.FirstName}"
-                                                  Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  Description="{Binding Path=FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   EnableTextBox="True"/>
 
                         <FlexTextBox:FlexLabelTextBox x:Name="lastName"
@@ -167,7 +167,7 @@
                                                   Width="300"
                                                   MaxWidth="350"
                                                   LabelText="{x:Static res:Resources.LastName}"
-                                                  Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  Description="{Binding Path=LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   EnableTextBox="True"/>
 
                         <FlexTextBox:FlexLabelTextBox x:Name="secondName"
@@ -175,7 +175,7 @@
                                                   Width="300"
                                                   MaxWidth="350"
                                                   LabelText="{x:Static res:Resources.SecondName}"
-                                                  Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  Description="{Binding Path=SecondName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   EnableTextBox="True"/>
 
                         <FlexTextBox:FlexLabelTextBox x:Name="inn"
@@ -183,7 +183,7 @@
                                                   Width="150"
                                                   MaxWidth="200"
                                                   LabelText="{x:Static res:Resources.INN}"
-                                                  Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  Description="{Binding Path=INN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   EnableTextBox="True"/>
                        
                         <FlexTextBox:FlexLabelTextBox x:Name="phones"
@@ -191,7 +191,7 @@
                                                   Width="150"
                                                   MaxWidth="200"
                                                   LabelText="{x:Static res:Resources.Phone}"
-                                                  Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  Description="{Binding Path=Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   EnableTextBox="True"/>
 
                         <FlexTextBox:FlexLabelTextBox x:Name="email"
@@ -199,7 +199,7 @@
                                                   Width="250"
                                                   MaxWidth="300"
                                                   LabelText="{x:Static res:Resources.Email}"
-                                                  Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  Description="{Binding Path=Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   EnableTextBox="True"/>
 
                         <FlexTextBox:FlexLabelTextBox x:Name="login"
@@ -207,7 +207,7 @@
                                                   Width="250"
                                                   MaxWidth="300"
                                                   LabelText="{x:Static res:Resources.LoginLabel}"
-                                                  Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  Description="{Binding Path=Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   EnableTextBox="True"/>
 
                         <FlexTextBox:FlexLabelTextBox x:Name="password"
@@ -215,7 +215,7 @@
                                                   Width="250"
                                                   MaxWidth="300"
                                                   LabelText="{x:Static res:Resources.PasswordLabel}"
-                                                  Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  Description="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   EnableTextBox="True"/>
                     </WrapPanel>
                 </GroupBox>
@@ -228,7 +228,7 @@
                                                       Width="300"
                                                       MaxWidth="350"
                                                       LabelText="{x:Static res:Resources.FirstName}"
-                                                      Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      Description="{Binding Path=FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
 
                         <FlexTextBox:FlexLabelTextBox x:Name="lastNameSenior"
@@ -236,7 +236,7 @@
                                                       Width="300"
                                                       MaxWidth="350"
                                                       LabelText="{x:Static res:Resources.LastName}"
-                                                      Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      Description="{Binding Path=LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
 
                         <FlexTextBox:FlexLabelTextBox x:Name="secondNameSenior"
@@ -244,7 +244,7 @@
                                                       Width="300"
                                                       MaxWidth="350"
                                                       LabelText="{x:Static res:Resources.SecondName}"
-                                                      Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      Description="{Binding Path=SecondName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
 
                         <FlexTextBox:FlexLabelTextBox x:Name="innSenior"
@@ -252,7 +252,7 @@
                                                       Width="150"
                                                       MaxWidth="200"
                                                       LabelText="{x:Static res:Resources.INN}"
-                                                      Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      Description="{Binding Path=INN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
 
                         <FlexTextBox:FlexLabelTextBox x:Name="phonesSenior"
@@ -260,7 +260,7 @@
                                                   Width="150"
                                                   MaxWidth="200"
                                                   LabelText="{x:Static res:Resources.Phone}"
-                                                  Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  Description="{Binding Path=Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   EnableTextBox="True"/>
 
                         <FlexTextBox:FlexLabelTextBox x:Name="emailSenior"
@@ -268,7 +268,7 @@
                                                       Width="250"
                                                       MaxWidth="300"
                                                       LabelText="{x:Static res:Resources.Email}"
-                                                      Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      Description="{Binding Path=Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
 
                         <FlexTextBox:FlexLabelTextBox x:Name="loginSenior"
@@ -276,7 +276,7 @@
                                                       Width="250"
                                                       MaxWidth="300"
                                                       LabelText="{x:Static res:Resources.LoginLabel}"
-                                                      Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      Description="{Binding Path=Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
 
                         <FlexTextBox:FlexLabelTextBox x:Name="passwordSenior"
@@ -284,7 +284,7 @@
                                                       Width="250"
                                                       MaxWidth="300"
                                                       LabelText="{x:Static res:Resources.PasswordLabel}"
-                                                      Description="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      Description="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
                     </WrapPanel>
                 </GroupBox>

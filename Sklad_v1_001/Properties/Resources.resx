@@ -981,4 +981,7 @@
   <data name="NewCompany" xml:space="preserve">
     <value>Новая компания</value>
   </data>
+  <data name="Logo" xml:space="preserve">
+    <value>Логотип</value>
+  </data>
 </root>
