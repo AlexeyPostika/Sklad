@@ -33,6 +33,7 @@ namespace Sklad_v1_001.FormUsers.Shops
         private Int32 lastModifiedByUserID;
         public DateTime? syncDate ;
         public Int32 syncStatus ;
+        public Boolean active;
         [Timestamp]
         public Byte[] TimeRow { get; set; }
         public int ID
@@ -234,7 +235,20 @@ namespace Sklad_v1_001.FormUsers.Shops
                 syncStatus = value;
                 OnPropertyChanged("SyncStatus");
             }
-        }       
+        }
+        public Boolean Active
+        {
+            get
+            {
+                return active;
+            }
+
+            set
+            {
+                active = value;
+                OnPropertyChanged("Active");
+            }
+        }
     }
     class ShopsLogic
     {

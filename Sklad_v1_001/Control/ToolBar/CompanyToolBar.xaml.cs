@@ -19,27 +19,27 @@ namespace Sklad_v1_001.Control.ToolBar
     /// <summary>
     /// Логика взаимодействия для ToolBarZakupkaxaml.xaml
     /// </summary>
-    public partial class RegisterToolBar : UserControl
+    public partial class CompanyToolBar : UserControl
     {
         public static readonly DependencyProperty IsEnableAddProperty = DependencyProperty.Register(
            "IsEnableAdd",
            typeof(Boolean),
-           typeof(RegisterToolBar), new UIPropertyMetadata(false));
+           typeof(CompanyToolBar), new UIPropertyMetadata(false));
 
         public static readonly DependencyProperty IsEnableEditProperty = DependencyProperty.Register(
          "IsEnableEdit",
          typeof(Boolean),
-         typeof(RegisterToolBar), new UIPropertyMetadata(false));
+         typeof(CompanyToolBar), new UIPropertyMetadata(false));
 
         public static readonly DependencyProperty IsEnableDeletedProperty = DependencyProperty.Register(
           "IsEnableDeleted",
           typeof(Boolean),
-          typeof(RegisterToolBar), new UIPropertyMetadata(false));
+          typeof(CompanyToolBar), new UIPropertyMetadata(false));
 
         public static readonly DependencyProperty SearchProperty = DependencyProperty.Register(
          "Search",
          typeof(String),
-         typeof(RegisterToolBar), new UIPropertyMetadata(""));
+         typeof(CompanyToolBar), new UIPropertyMetadata(""));
 
         public Boolean IsEnableAdd
         {
@@ -75,7 +75,7 @@ namespace Sklad_v1_001.Control.ToolBar
         public event Action ButtonClear;
         public event Action ButtonRefresh;
 
-        public RegisterToolBar()
+        public CompanyToolBar()
         {
             InitializeComponent();
             //NewButton.Image.Source= ImageHelper.GenerateImage("IconAddList_X32.png");

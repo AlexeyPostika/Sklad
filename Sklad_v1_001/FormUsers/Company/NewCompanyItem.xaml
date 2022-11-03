@@ -11,6 +11,7 @@
       xmlns:FlexComboBox="clr-namespace:Sklad_v1_001.Control.FlexComboBox"
       xmlns:FlexRadioButton="clr-namespace:Sklad_v1_001.Control.FlexRadio"
       xmlns:FlexEditBox="clr-namespace:Sklad_v1_001.Control.FlexEditBox"
+      xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
       mc:Ignorable="d" 
      
       Title="NewCompanyGrid"
@@ -20,11 +21,19 @@
 
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" x:Name ="company"/>
+            <RowDefinition Height="Auto" x:Name ="toolbar"/>
+            <RowDefinition Height="Auto" x:Name="company"/>
             <RowDefinition Height="Auto" x:Name="account"/>
-            <RowDefinition Height="Auto" x:Name="ndfl"/>
         </Grid.RowDefinitions>
-        <GroupBox Header="{x:Static res:Resources.CompanyAttribute}">
+        <ToolBar:NewCompanytDetailsToolBar x:Name="toolbarCompany"
+                                           Margin="5,10,0,0"
+                                           ButtonSave="toolbarCompany_ButtonSave"
+                                           ButtonSaveclose="toolbarCompany_ButtonSaveclose"
+                                           ButtonListCancel="toolbarCompany_ButtonListCancel"
+                                           ButtonApply="toolbarCompany_ButtonApply"/>
+        <GroupBox Header="{x:Static res:Resources.CompanyAttribute}" 
+                  Style="{DynamicResource GroupBoxStyle}"
+                  Grid.Row="1">
             <WrapPanel>
                 <FlexTextBox:FlexLabelTextBox x:Name="fullNameCompany"
                                               IsRequired="Visible"
@@ -140,10 +149,11 @@
                                                       EnableTextBox="True"/>
             </WrapPanel>
         </GroupBox>
-        <GroupBox Header="{x:Static res:Resources.AccountCompany}" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <GroupBox Header="{x:Static res:Resources.AccountCompany}" Style="{DynamicResource GroupBoxStyle}" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <StackPanel>
-                <GroupBox Header="{x:Static res:Resources.Directory}">
-                    <WrapPanel>
+                <GroupBox Header="{x:Static res:Resources.Directory}"
+                          Style="{DynamicResource GroupBoxStyle}">
+                    <WrapPanel DataContext="{Binding Path=GeneralDirectory, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
                         <FlexTextBox:FlexLabelTextBox x:Name="firstName"
                                                   IsRequired="Visible"
                                                   Width="300"
@@ -210,8 +220,9 @@
                     </WrapPanel>
                 </GroupBox>
 
-                <GroupBox Header="{x:Static res:Resources.SeniorAccount}">
-                    <WrapPanel>
+                <GroupBox Header="{x:Static res:Resources.SeniorAccount}"
+                          Style="{DynamicResource GroupBoxStyle}">
+                    <WrapPanel DataContext="{Binding Path=SeniorAccount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
                         <FlexTextBox:FlexLabelTextBox x:Name="firstNameSenior"
                                                       IsRequired="Visible"
                                                       Width="300"

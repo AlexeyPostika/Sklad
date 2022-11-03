@@ -51,5 +51,26 @@ namespace Sklad_v1_001.FormUsers.Company
             this.attributes = _attributes;
             this.DataContext = LocaleRowCompany;
         }
+        #region ToolBar
+        private void toolbarCompany_ButtonSave()
+        {
+
+        }
+
+        private void toolbarCompany_ButtonSaveclose()
+        {
+
+        }
+
+        private void toolbarCompany_ButtonListCancel()
+        {
+
+        }
+
+        private void toolbarCompany_ButtonApply()
+        {
+
+        }
+        #endregion
     }
 }

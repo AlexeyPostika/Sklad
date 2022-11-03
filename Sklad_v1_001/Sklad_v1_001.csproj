@@ -308,6 +308,9 @@
     <Compile Include="Control\ToolBar\NewRegisterDocumentToolBar.xaml.cs">
       <DependentUpon>NewRegisterDocumentToolBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\ToolBar\NewCompanytDetailsToolBar.xaml.cs">
+      <DependentUpon>NewCompanytDetailsToolBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\ToolBar\ProductItemGridToolBar.xaml.cs">
       <DependentUpon>ProductItemGridToolBar.xaml</DependentUpon>
     </Compile>
@@ -316,6 +319,9 @@
     </Compile>
     <Compile Include="Control\ToolBar\ProductToolBar.xaml.cs">
       <DependentUpon>ProductToolBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ToolBar\CompanyToolBar.xaml.cs">
+      <DependentUpon>CompanyToolBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\ToolBar\RegisterToolBar.xaml.cs">
       <DependentUpon>RegisterToolBar.xaml</DependentUpon>
@@ -736,6 +742,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Control\ToolBar\NewCompanytDetailsToolBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Control\ToolBar\ProductItemGridToolBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -745,6 +755,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Control\ToolBar\ProductToolBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\ToolBar\CompanyToolBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
