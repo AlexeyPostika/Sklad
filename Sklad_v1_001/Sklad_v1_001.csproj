@@ -435,6 +435,8 @@
     </Compile>
     <Compile Include="FormUsers\SupplyDocumentDelivery\SupplyDocumentDeliveryLogic.cs" />
     <Compile Include="HelperGlobal\Role\AccessRules.cs" />
+    <Compile Include="HelperGlobal\StoreAPI\Model\Company\CompanyRequest.cs" />
+    <Compile Include="HelperGlobal\StoreAPI\Model\Shops\ShopRequest.cs" />
     <Compile Include="HelperGlobal\StoreAPI\Model\SupplyDocument\SupplyDocumentDeliveryRequest.cs" />
     <Compile Include="FormUsers\SupplyDocumentDetails\SupplyDocumentDetailsLogic.cs" />
     <Compile Include="HelperGlobal\StoreAPI\Model\SupplyDocument\SupplyDocumentDetailsRequest.cs" />
@@ -477,6 +479,7 @@
     <Compile Include="HelperGlobal\ImageSql.cs" />
     <Compile Include="HelperGlobal\MessageBoxTitleHelper.cs" />
     <Compile Include="HelperGlobal\StoreAPI\Model\SupplyDocument\SupplyDocumentRequest.cs" />
+    <Compile Include="HelperGlobal\StoreAPI\Model\Users\UsersRequest.cs" />
     <Compile Include="HelperGlobal\StoreAPI\Request.cs" />
     <Compile Include="HelperGlobal\StoreAPI\Response.cs" />
     <Compile Include="LoginScreen.xaml.cs">

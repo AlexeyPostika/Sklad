@@ -1,4 +1,5 @@
 ﻿using Sklad_v1_001.GlobalAttributes;
+using Sklad_v1_001.HelperGlobal.StoreAPI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,6 +33,8 @@ namespace Sklad_v1_001.FormUsers.Company
 
         Attributes attributes;
         LocaleRow localeRowCompany;
+
+        Request request;
         public LocaleRow LocaleRowCompany
         {
             get
@@ -69,7 +72,17 @@ namespace Sklad_v1_001.FormUsers.Company
 
         private void toolbarCompany_ButtonApply()
         {
-
+            request = new Request(attributes);
+            Response response = request.GetCommand(4);
+            if (response != null && response.ErrorCode == 0)
+            {
+                //Document.Status = response.SupplyDocumentOutput.Document.Status;
+                //Document.ReffID = 0;
+                //Document.ReffDate = response.SupplyDocumentOutput.Document.SyncDate;
+                //if (SaveRequest() == 0)
+                //{
+                //}
+            }
         }
         #endregion
     }

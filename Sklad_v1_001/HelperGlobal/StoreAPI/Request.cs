@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Sklad_v1_001.FormUsers.SupplyDocumentDelivery;
 using Sklad_v1_001.GlobalAttributes;
+using Sklad_v1_001.HelperGlobal.StoreAPI.Model.Company;
 using Sklad_v1_001.HelperGlobal.StoreAPI.Model.SupplyDocument;
 using System;
 using System.Collections.Generic;
@@ -17,11 +18,13 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI
         Attributes attributes;
         public SupplyDocumentRequest supplyDocument { get; set; }
         public SupplyDocumentRequestList supplyDocumentRequestList { get; set; }
+        public CompanyRequest companyRequest { get; set; }
         public Request(Attributes _attributes)
         {
             this.attributes = _attributes;
             supplyDocument = new SupplyDocumentRequest();
             supplyDocumentRequestList = new SupplyDocumentRequestList();
+            companyRequest = new CompanyRequest();
         }
 
         public Response GetCommand(Int32 _com)
@@ -37,6 +40,9 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI
                     break;
                 case 3:
                     response = SupplyDocumentListPOST(supplyDocumentRequestList);
+                    break;
+                case 4:
+                    response = CompanyPOST(companyRequest);
                     break;
             }
             return response;
@@ -157,6 +163,46 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI
             }
 
         }
+
+        #region Company
+        private Response CompanyPOST(CompanyRequest _companyRequest)
+        {
+            try
+            {
+                using (var webClient = new WebClient())
+                {
+                    // Выполняем запрос по адресу и получаем ответ в виде строки
+                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3;
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                    ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, errors) =>
+                    {
+                        // GetCertificateFromStore("");
+                        return true;
+                    };
+                    webClient.Encoding = System.Text.Encoding.UTF8;
+                    //webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+                    webClient.Headers[HttpRequestHeader.ContentType] = "application/json";
+                    string temp = JsonConvert.SerializeObject(_companyRequest, Newtonsoft.Json.Formatting.Indented);
+                    string response = webClient.UploadString(new Uri(@"https://192.168.0.126:60000/api/company"), "POST", temp);
+                    Response resultOUT = JsonConvert.DeserializeObject<Response>(response);
+                    if (resultOUT != null)
+                    {
+                        return resultOUT;
+                    }
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Response resultOUT = new Response();
+                resultOUT.ErrorCode = -1;
+                resultOUT.DescriptionEX = ex.Message;
+                return resultOUT;
+            }
+
+        }
+        #endregion
 
         private static X509Certificate2 GetCertificateFromStore(string certificateNumber)
         {
