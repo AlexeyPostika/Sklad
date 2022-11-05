@@ -17,9 +17,9 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI.Model.Shops
         public String address { get; set; }
         public String phone { get; set; }
         public Int32 createdUserID { get; set; }
-        public DateTime lastModificatedDate { get; set; }
+        public DateTime? lastModificatedDate { get; set; }
         public Int32 lastModificatedUserID { get; set; }
-        public DateTime syncDate { get; set; }
+        public DateTime? syncDate { get; set; }
         public Int32 syncStatus { get; set; }
         [Timestamp]
         public Byte[] TimeRow { get; set; }

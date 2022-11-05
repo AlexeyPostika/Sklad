@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sklad_v1_001.HelperGlobal.StoreAPI.Model.Company
 {
-    public class Company
+    public class LocaleRow
     {
         public Int32 iD { get; set; }
         public Int32 addUserID { get; set; }
@@ -33,9 +33,19 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI.Model.Company
         public String description { get; set; }
         [Timestamp]
         public Byte[] TimeRow { get; set; }
+        public LocaleRow()
+        {
+            generalDirectory = new Users.Users();
+            seniorAccount = new Users.Users();
+            shop = new Shops.Shop();
+        }
     }
     public class CompanyRequest
     {
-        public Company company { get; set; }
+        public LocaleRow company { get; set; }
+        public CompanyRequest()
+        {
+            company = new LocaleRow();
+        }
     }
 }

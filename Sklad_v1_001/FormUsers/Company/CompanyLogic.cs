@@ -154,7 +154,7 @@ namespace Sklad_v1_001.FormUsers.Company
                 OnPropertyChanged("GeneralDirectory");
             }
         }
-        public FormUsers.Users.LocalRow SeniorAccount
+        public Users.LocalRow SeniorAccount
         {
             get
             {
@@ -419,6 +419,13 @@ namespace Sklad_v1_001.FormUsers.Company
                 syncStatus = value;
                 OnPropertyChanged("SyncStatus");
             }
+        }
+        public LocaleRow()
+        {
+            GeneralDirectory = new LocalRow();
+            SeniorAccount = new LocalRow();
+            Shop = new Shops.LocaleRow();
+
         }
     }
     public class CompanyLogic
