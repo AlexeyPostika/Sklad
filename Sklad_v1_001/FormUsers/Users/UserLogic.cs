@@ -158,6 +158,7 @@ namespace Sklad_v1_001.FormUsers.Users
         private Int32 lastModifiedByUserID;
         private DateTime? birthday;
         private Int32 genderID;
+        private Int32 companyID;
 
         private Byte[] photoUserByte;
         private ImageSource photoUserImage;
@@ -444,7 +445,19 @@ namespace Sklad_v1_001.FormUsers.Users
                 OnPropertyChanged("LastModifiedByUserID");
             }
         }
+        public Int32 CompanyID
+        {
+            get
+            {
+                return companyID;
+            }
 
+            set
+            {
+                companyID = value;
+                OnPropertyChanged("CompanyID");
+            }
+        }
         public DateTime? Birthday
         {
             get
