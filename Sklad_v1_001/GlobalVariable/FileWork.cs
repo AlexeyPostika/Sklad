@@ -166,10 +166,11 @@ namespace Sklad_v1_001.GlobalVariable
                 winForms.DialogResult result = dlg.ShowDialog();
                 if (result == System.Windows.Forms.DialogResult.OK)
                 {
-                    if (dlg.Filter.Split('|', '*')[dlg.FilterIndex * 3 - 1] == Path.GetExtension(dlg.FileName))
-                    {
-                        return PuthString = dlg.FileName;
-                    }
+                    if (!String.IsNullOrEmpty(dlg.Filter))
+                        if (dlg.Filter.Split('|', '*')[dlg.FilterIndex * 3 - 1] == Path.GetExtension(dlg.FileName))
+                        {
+                            return PuthString = dlg.FileName;
+                        }
                 }
             }
             return string.Empty;

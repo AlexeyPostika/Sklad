@@ -35,13 +35,24 @@
                   Style="{DynamicResource GroupBoxStyle}"
                   Grid.Row="1">
             <WrapPanel>
-                <FlexTextBox:FlexLabelTextBox x:Name="fullNameCompany"
+                <!--<FlexTextBox:FlexLabelTextBox x:Name="fullNameCompany"
                                               IsRequired="Visible"
                                               Width="300"
                                               MaxWidth="350"
                                               LabelText="{x:Static res:Resources.FullNameCompany}"
                                               Description="{Binding Path=FullNameCompany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                              EnableTextBox="True"/>
+                                              EnableTextBox="True"/>-->
+
+                <SimpleControl:EditBoxWithLabelDownloadFile_V2 x:Name="fullNameCompany"                                                           
+                                                            LabelText="{x:Static res:Resources.FullNameCompany}" 
+                                                            LabelWidth="300"
+                                                            Width="300"
+                                                            IsRequired="Visible"
+                                                            Text="{Binding Path=Logo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
+                                                            ByteFaile="{Binding Path=FullNameCompany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            FilterPuth="Jpg files|*.jpg|Png files|*.png|Bitmap files|*.bmp"
+                                                            Mode="JPG"
+                                                            />
                 
                 <FlexTextBox:FlexLabelTextBox x:Name="shortNameCompany"
                                               IsRequired="Visible"
@@ -67,15 +78,7 @@
                                               Description="{Binding Path=Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                               EnableTextBox="True"/>
 
-                <SimpleControl:EditBoxWithLabelDownloadFile x:Name="RRN"                                                           
-                                                            LabelText="{x:Static res:Resources.Logo}" 
-                                                            LabelWidth="80"
-                                                            Width="300"
-                                                            IsRequired="Visible"
-                                                            Text="{Binding Path=Logo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
-                                                            FilterPuth="Jpg files|*.jpg|Png files|*.png|Bitmap files|*.bmp"
-                                                            Mode="JPG"
-                                                            />
+                
                 <FlexTextBox:FlexLabelTextBox x:Name="innAttributes"
                                                       IsRequired="Visible"
                                                       Width="200"

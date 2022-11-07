@@ -461,7 +461,8 @@ namespace Sklad_v1_001.FormUsers.Company
             GeneralDirectory = new LocalRow();
             SeniorAccount = new LocalRow();
             Shop = new Shops.LocaleRow();
-
+            CreatedDate = DateTime.Now;
+            LastModifiedDate= DateTime.Now;
         }
     }
     public class CompanyLogic

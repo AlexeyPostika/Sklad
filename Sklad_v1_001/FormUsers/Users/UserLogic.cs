@@ -547,6 +547,11 @@ namespace Sklad_v1_001.FormUsers.Users
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
+        public LocalRow()
+        {
+            CreatedDate = DateTime.Now;
+            LastModifiedDate = DateTime.Now;
+        }
     }
     public class UserLogic
     {

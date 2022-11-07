@@ -274,6 +274,9 @@
     <Compile Include="Control\SimpleControl\EditBoxWithLabel.xaml.cs">
       <DependentUpon>EditBoxWithLabel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\SimpleControl\EditBoxWithLabelDownloadFile_V2.xaml.cs">
+      <DependentUpon>EditBoxWithLabelDownloadFile_V2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\SimpleControl\EditBoxWithLabelDownloadFile.xaml.cs">
       <DependentUpon>EditBoxWithLabelDownloadFile.xaml</DependentUpon>
     </Compile>
@@ -700,6 +703,10 @@
     <Page Include="Control\SimpleControl\EditBoxWithLabel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\SimpleControl\EditBoxWithLabelDownloadFile_V2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Control\SimpleControl\EditBoxWithLabelDownloadFile.xaml">
       <SubType>Designer</SubType>

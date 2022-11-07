@@ -249,6 +249,12 @@ namespace Sklad_v1_001.FormUsers.Shops
                 OnPropertyChanged("Active");
             }
         }
+        public LocaleRow()
+        {
+            CreatedDate = DateTime.Now;
+            LastModifiedDate = DateTime.Now;
+            SyncDate = DateTime.Now;
+        }
     }
     class ShopsLogic
     {

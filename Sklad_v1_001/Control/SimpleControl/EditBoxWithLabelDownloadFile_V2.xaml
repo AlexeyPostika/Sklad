@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="Sklad_v1_001.Control.SimpleControl.EditBoxWithLabelDownloadFile_V2"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sklad_v1_001.Control.SimpleControl"
+             xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton"
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
+             mc:Ignorable="d"
+             Name="control">
+    <Grid Name="grid">
+        <StackPanel Margin="3,0" Height="Auto">
+            <WrapPanel Name="wrapPanel"  Width="Auto" HorizontalAlignment="Left" >
+                <Label Name="labelName" Style="{DynamicResource LabelStyle}"  Content="{Binding ElementName=control, Path=LabelText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                <Label Name="required" Style="{DynamicResource LabelStyle}"  Margin="-9,0,0,0" FontSize="18" Height="30" Visibility="{Binding ElementName=control, Path=IsRequired, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="Red" Content="*" HorizontalAlignment="Left"/>
+            </WrapPanel>
+            <local:EditBoxWithLabelDownloadFile x:Name="dowload" LabelWidth="0"
+                                                Margin="0, -10, -3, 0"
+                                                ButtonAddClick="button_ButtonClick"
+                                                ButtonLoopClick="buttonLoop_ButtonClick"
+                                                ButtonClearClick="buttonClear_ButtonClick"
+                                                NameFile="{Binding ElementName=control, Path=NameFile, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                ByteFaile ="{Binding ElementName=control, Path=ByteFaile, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                IsRequired="Collapsed"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
