@@ -56,6 +56,7 @@ namespace Sklad_v1_001.FormUsers.Company
         private Int32 lastModifiedByUserID;
         public DateTime? syncDate;
         public Int32 syncStatus;
+        public Int32 reffID;
 
         public String description;
 
@@ -455,6 +456,19 @@ namespace Sklad_v1_001.FormUsers.Company
                 description = value;
                 OnPropertyChanged("Description");
             }
+        }      
+        public Int32 ReffID
+        {
+            get
+            {
+                return reffID;
+            }
+
+            set
+            {
+                reffID = value;
+                OnPropertyChanged("ReffID");
+            }
         }
         public LocaleRow()
         {
@@ -463,6 +477,7 @@ namespace Sklad_v1_001.FormUsers.Company
             Shop = new Shops.LocaleRow();
             CreatedDate = DateTime.Now;
             LastModifiedDate= DateTime.Now;
+            ReffID = 0;
         }
     }
     public class CompanyLogic
@@ -796,6 +811,85 @@ namespace Sklad_v1_001.FormUsers.Company
             _companyRequest.company.shortCompanyName = _localeRow.ShortCompanyName;
             _companyRequest.company.taxRate = _localeRow.TaxRate;
             return _companyRequest;
+        }
+
+        public LocaleRow Convert(CompanyRequest _companyRequest, LocaleRow _localeRow)
+        {
+            _localeRow.Active = _companyRequest.company.active;
+            _localeRow.Adress = _companyRequest.company.adress;
+            _localeRow.BancAdress = _companyRequest.company.bancAdress;
+            _localeRow.BancName = _companyRequest.company.bancName;
+            _localeRow.CorrespondentAccount = _companyRequest.company.correspondentAccount;
+            _localeRow.CurrentCode = _companyRequest.company.currentCode;
+            _localeRow.CurrentName = _companyRequest.company.currentName;
+            _localeRow.Description = _companyRequest.company.description;
+            _localeRow.FullCompanyName = _companyRequest.company.fullCompanyName;
+            _localeRow.GeneralDirectory.Active = _companyRequest.company.generalDirectory.active;
+            _localeRow.GeneralDirectory.Birthday = _companyRequest.company.generalDirectory.birthday;
+            _localeRow.GeneralDirectory.CompanyID = _companyRequest.company.generalDirectory.companyID;
+            _localeRow.GeneralDirectory.CreatedByUserID = _companyRequest.company.generalDirectory.createdByUserID;
+            _localeRow.GeneralDirectory.CreatedDate = _companyRequest.company.generalDirectory.createdDate;
+            _localeRow.GeneralDirectory.CreatedDateString = _companyRequest.company.generalDirectory.createdDateString;
+            _localeRow.GeneralDirectory.Description = _companyRequest.company.generalDirectory.description;
+            _localeRow.GeneralDirectory.Email = _companyRequest.company.generalDirectory.email;
+            _localeRow.GeneralDirectory.FirstName = _companyRequest.company.generalDirectory.firstName;
+            _localeRow.GeneralDirectory.GenderID = _companyRequest.company.generalDirectory.genderID;
+            _localeRow.GeneralDirectory.ID = _companyRequest.company.generalDirectory.iD;
+            _localeRow.GeneralDirectory.INN = _companyRequest.company.generalDirectory.iNN;
+            _localeRow.GeneralDirectory.LastModifiedByUserID = _companyRequest.company.generalDirectory.lastModifiedByUserID;
+            _localeRow.GeneralDirectory.LastModifiedDate = _companyRequest.company.generalDirectory.lastModifiedDate;
+            _localeRow.GeneralDirectory.LastModifiedDateString = _companyRequest.company.generalDirectory.lastModifiedDateString;
+            _localeRow.GeneralDirectory.LastName = _companyRequest.company.generalDirectory.lastName;
+            _localeRow.GeneralDirectory.Login = _companyRequest.company.generalDirectory.login;
+            _localeRow.GeneralDirectory.Number = _companyRequest.company.generalDirectory.number;
+            _localeRow.GeneralDirectory.Password = _companyRequest.company.generalDirectory.password;
+            _localeRow.GeneralDirectory.Phone = _companyRequest.company.generalDirectory.phone;
+            _localeRow.GeneralDirectory.RoleID = _companyRequest.company.generalDirectory.roleID;
+            _localeRow.GeneralDirectory.SecondName = _companyRequest.company.generalDirectory.secondName;
+            _localeRow.GeneralDirectory.UserID = _companyRequest.company.generalDirectory.userID;
+            _localeRow.ID = _companyRequest.company.iD;
+            _localeRow.INN = _companyRequest.company.iNN;
+            _localeRow.KPP = _companyRequest.company.kPP;
+            _localeRow.Logo = _companyRequest.company.logo;
+            _localeRow.Phone = _companyRequest.company.phone;
+            _localeRow.RCBIC = _companyRequest.company.rCBIC;
+            _localeRow.SeniorAccount.Active = _companyRequest.company.seniorAccount.active;
+            _localeRow.SeniorAccount.Birthday = _companyRequest.company.seniorAccount.birthday;
+            _localeRow.SeniorAccount.CompanyID = _companyRequest.company.seniorAccount.companyID;
+            _localeRow.SeniorAccount.CreatedByUserID = _companyRequest.company.seniorAccount.createdByUserID;
+            _localeRow.SeniorAccount.CreatedDate = _companyRequest.company.seniorAccount.createdDate;
+            _localeRow.SeniorAccount.CreatedDateString = _companyRequest.company.seniorAccount.createdDateString;
+            _localeRow.SeniorAccount.Description = _companyRequest.company.seniorAccount.description;
+            _localeRow.SeniorAccount.Email = _companyRequest.company.seniorAccount.email;
+            _localeRow.SeniorAccount.FirstName = _companyRequest.company.seniorAccount.firstName;
+            _localeRow.SeniorAccount.GenderID = _companyRequest.company.seniorAccount.genderID;
+            _localeRow.SeniorAccount.ID = _companyRequest.company.seniorAccount.iD;
+            _localeRow.SeniorAccount.INN = _companyRequest.company.seniorAccount.iNN;
+            _localeRow.SeniorAccount.LastModifiedByUserID = _companyRequest.company.seniorAccount.lastModifiedByUserID;
+            _localeRow.SeniorAccount.LastModifiedDate = _companyRequest.company.seniorAccount.lastModifiedDate;
+            _localeRow.SeniorAccount.LastModifiedDateString = _companyRequest.company.seniorAccount.lastModifiedDateString;
+            _localeRow.SeniorAccount.LastName = _companyRequest.company.seniorAccount.lastName;
+            _localeRow.SeniorAccount.Login = _companyRequest.company.seniorAccount.login;
+            _localeRow.SeniorAccount.Number = _companyRequest.company.seniorAccount.number;
+            _localeRow.SeniorAccount.Password = _companyRequest.company.seniorAccount.password;
+            _localeRow.SeniorAccount.Phone = _companyRequest.company.seniorAccount.phone;
+            _localeRow.SeniorAccount.RoleID = _companyRequest.company.seniorAccount.roleID;
+            _localeRow.SeniorAccount.SecondName = _companyRequest.company.seniorAccount.secondName;
+            _localeRow.SeniorAccount.UserID = _companyRequest.company.seniorAccount.userID;
+            _localeRow.SenttlementAccount = _companyRequest.company.senttlementAccount;
+            _localeRow.Shop.address = _companyRequest.company.shop.address;
+            _localeRow.Shop.addUserID = attributes.numeric.userEdit.AddUserID;
+            _localeRow.Shop.companyID = _companyRequest.company.shop.companyID;         
+            _localeRow.Shop.ID = _companyRequest.company.shop.iD;
+            _localeRow.Shop.LastModifiedDate = _companyRequest.company.shop.lastModificatedDate;
+            _localeRow.Shop.LastModifiedByUserID = _companyRequest.company.shop.lastModificatedUserID;
+            _localeRow.Shop.Name = _companyRequest.company.shop.Name;
+            _localeRow.Shop.Phone = _companyRequest.company.shop.phone;
+            _localeRow.Shop.ShopNumber = _companyRequest.company.shop.shopNumber;
+            _localeRow.Shop.TimeRow = _companyRequest.company.shop.TimeRow;
+            _localeRow.ShortCompanyName = _companyRequest.company.shortCompanyName;
+            _localeRow.TaxRate = _companyRequest.company.taxRate;
+            return _localeRow;
         }
     }
 }

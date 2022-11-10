@@ -55,6 +55,8 @@ namespace Sklad_v1_001.FormUsers.Company
             InitializeComponent();
             LocaleRowCompany = new LocaleRow();
 
+            companyLogic = new CompanyLogic(attributes);
+
             this.attributes = _attributes;
             this.DataContext = LocaleRowCompany;
         }
@@ -76,13 +78,22 @@ namespace Sklad_v1_001.FormUsers.Company
 
         private void toolbarCompany_ButtonApply()
         {
-            companyLogic = new CompanyLogic(attributes);
+            
             request = new Request(attributes);
             companyLogic.Convert(LocaleRowCompany, request.companyRequest);
                    
             Response response = request.GetCommand(4);
             if (response != null && response.ErrorCode == 0)
             {
+                LocaleRowCompany = companyLogic.Convert(response.companyRequest, LocaleRowCompany);
+                LocaleRowCompany.ReffID = response.companyRequest.company.iD;
+                LocaleRowCompany.SyncDate = DateTime.Now;
+                LocaleRowCompany.SyncStatus = 3;
+
+               if (Save() > 0)
+                {
+
+                }
                 //Document.Status = response.SupplyDocumentOutput.Document.Status;
                 //Document.ReffID = 0;
                 //Document.ReffDate = response.SupplyDocumentOutput.Document.SyncDate;
@@ -90,6 +101,13 @@ namespace Sklad_v1_001.FormUsers.Company
                 //{
                 //}
             }
+        }
+        #endregion
+
+        #region Save
+        private Int32 Save()
+        {
+            return companyLogic.SaveRow(LocaleRowCompany);
         }
         #endregion
     }
