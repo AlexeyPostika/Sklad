@@ -20,14 +20,14 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI
 
         public SupplyDocumentRequestList listSupplyDocumentOutput { get; set; }
 
-        public CompanyRequest companyRequest { get; set; }
+        public CompanyRequest company { get; set; }
 
         public Response()
         {
             ErrorCode = 0;
             SupplyDocumentOutput = new SupplyDocumentRequest();
             listSupplyDocumentOutput = new SupplyDocumentRequestList();
-            companyRequest = new CompanyRequest();
+            company = new CompanyRequest();
         }
     }
 }

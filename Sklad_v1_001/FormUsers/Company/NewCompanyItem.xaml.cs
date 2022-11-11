@@ -53,6 +53,8 @@ namespace Sklad_v1_001.FormUsers.Company
         public NewCompanyGrid(Attributes _attributes)
         {
             InitializeComponent();
+            this.attributes = _attributes;
+
             LocaleRowCompany = new LocaleRow();
 
             companyLogic = new CompanyLogic(attributes);
@@ -85,14 +87,14 @@ namespace Sklad_v1_001.FormUsers.Company
             Response response = request.GetCommand(4);
             if (response != null && response.ErrorCode == 0)
             {
-                LocaleRowCompany = companyLogic.Convert(response.companyRequest, LocaleRowCompany);
-                LocaleRowCompany.ReffID = response.companyRequest.company.iD;
+                LocaleRowCompany = companyLogic.Convert(response.company, LocaleRowCompany);
+                LocaleRowCompany.ReffID = response.company.company.iD;
                 LocaleRowCompany.SyncDate = DateTime.Now;
                 LocaleRowCompany.SyncStatus = 3;
 
-               if (Save() > 0)
+                if (Save() > 0)
                 {
-
+                    //MainWindow.AppWindow.ButtonListCompanyOpen();
                 }
                 //Document.Status = response.SupplyDocumentOutput.Document.Status;
                 //Document.ReffID = 0;

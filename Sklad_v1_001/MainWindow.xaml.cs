@@ -82,7 +82,7 @@ namespace Sklad_v1_001
         public MainWindow(Attributes _attributes)
         {
             InitializeComponent();
-            
+                     
             this.attributes = _attributes;
             AppWindow = this;
 
@@ -309,7 +309,7 @@ namespace Sklad_v1_001
         #endregion
 
         #region настройки
-        private void ButtonNewCompanyOpen()
+        public void ButtonNewCompanyOpen()
         {
             GC.Collect();   //Вызов сборщика мусора
             GC.WaitForPendingFinalizers();  //ждем освобождение памяти
@@ -317,11 +317,12 @@ namespace Sklad_v1_001
             frameWorkArea.Navigate(newCompanyGrid); // открытие страницы
         }
 
-        private void ButtonListCompanyOpen()
+        public void ButtonListCompanyOpen()
         {
             GC.Collect();   //Вызов сборщика мусора
             GC.WaitForPendingFinalizers();  //ждем освобождение памяти
-            companyGrid = new CompanyGrid(attributes);
+            if (companyGrid == null)
+                companyGrid = new CompanyGrid(attributes);
             frameWorkArea.Navigate(companyGrid); // открытие страницы
         }
 
