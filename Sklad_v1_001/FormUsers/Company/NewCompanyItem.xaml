@@ -48,8 +48,8 @@
                                                             LabelWidth="300"
                                                             Width="300"
                                                             IsRequired="Visible"
-                                                            Text="{Binding Path=Logo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
-                                                            ByteFaile="{Binding Path=FullNameCompany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            Text="{Binding Path=FullNameCompany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
+                                                            ByteFaile="{Binding Path=Logo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                             FilterPuth="Jpg files|*.jpg|Png files|*.png|Bitmap files|*.bmp"
                                                             Mode="JPG"
                                                             />
