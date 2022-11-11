@@ -570,8 +570,8 @@ namespace Sklad_v1_001.FormUsers.Company
             _sqlResponseSave.AddParametr("@p_CorrespondentAccount", SqlDbType.NVarChar, 128);
             _sqlResponseSave.SetParametrValue("@p_CorrespondentAccount", "");
 
-            _sqlResponseSave.AddParametr("@p_SeniorAccount ", SqlDbType.NVarChar, 128);
-            _sqlResponseSave.SetParametrValue("@p_SeniorAccount ", "");
+            _sqlResponseSave.AddParametr("@p_SeniorAccount", SqlDbType.NVarChar, 128);
+            _sqlResponseSave.SetParametrValue("@p_SeniorAccount", "");
 
             _sqlResponseSave.AddParametr("@p_SentlementAccount", SqlDbType.NVarChar, 128);
             _sqlResponseSave.SetParametrValue("@p_SentlementAccount", "");

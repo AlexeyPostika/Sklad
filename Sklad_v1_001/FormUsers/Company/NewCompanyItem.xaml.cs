@@ -87,8 +87,8 @@ namespace Sklad_v1_001.FormUsers.Company
             Response response = request.GetCommand(4);
             if (response != null && response.ErrorCode == 0)
             {
-                LocaleRowCompany = companyLogic.Convert(response.company, LocaleRowCompany);
-                LocaleRowCompany.ReffID = response.company.company.iD;
+                LocaleRowCompany = companyLogic.Convert(response.companyRequest, LocaleRowCompany);
+                LocaleRowCompany.ReffID = response.companyRequest.company.iD;
                 LocaleRowCompany.SyncDate = DateTime.Now;
                 LocaleRowCompany.SyncStatus = 3;
 
