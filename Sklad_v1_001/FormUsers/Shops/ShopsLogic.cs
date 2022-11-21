@@ -18,22 +18,24 @@ namespace Sklad_v1_001.FormUsers.Shops
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
 
-        public Int32 addUserID;
-        public Int32 iD ;
-        public Int32 shopNumber ;
-        public Int32 companyID ;
-        public String name ;
-        public String address ;
-        public String phone ;
+        private Int32 addUserID;
+        private Int32 iD ;
+        private Int32 shopNumber ;
+        private Int32 companyID ;
+        private String name ;
+        private String address ;
+        private String phone ;
         private DateTime? createdDate;
         private String createdDateString;
         private DateTime? lastModifiedDate;
         private String lastModifiedDateString;
         private Int32 createdByUserID;
         private Int32 lastModifiedByUserID;
-        public DateTime? syncDate ;
-        public Int32 syncStatus ;
-        public Boolean active;
+        private DateTime? syncDate ;
+        private Int32 syncStatus ;
+        private Boolean active;
+        private Boolean isAddresRegister;
+
         [Timestamp]
         public Byte[] TimeRow { get; set; }
         public int ID
@@ -249,11 +251,26 @@ namespace Sklad_v1_001.FormUsers.Shops
                 OnPropertyChanged("Active");
             }
         }
+        //isAddresRegister
+        public Boolean IsAddresRegister
+        {
+            get
+            {
+                return isAddresRegister;
+            }
+
+            set
+            {
+                isAddresRegister = value;
+                OnPropertyChanged("IsAddresRegister");
+            }
+        }
         public LocaleRow()
         {
             CreatedDate = DateTime.Now;
             LastModifiedDate = DateTime.Now;
             SyncDate = DateTime.Now;
+            IsAddresRegister = false;
         }
     }
     class ShopsLogic

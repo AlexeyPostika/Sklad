@@ -877,9 +877,9 @@ namespace Sklad_v1_001.FormUsers.Company
             _localeRow.SeniorAccount.SecondName = _companyRequest.company.seniorAccount.secondName;
             _localeRow.SeniorAccount.UserID = _companyRequest.company.seniorAccount.userID;
             _localeRow.SenttlementAccount = _companyRequest.company.senttlementAccount;
-            _localeRow.Shop.address = _companyRequest.company.shop.address;
-            _localeRow.Shop.addUserID = attributes.numeric.userEdit.AddUserID;
-            _localeRow.Shop.companyID = _companyRequest.company.shop.companyID;         
+            _localeRow.Shop.Address = _companyRequest.company.shop.address;
+            _localeRow.Shop.AddUserID = attributes.numeric.userEdit.AddUserID;
+            _localeRow.Shop.CompanyID = _companyRequest.company.shop.companyID;         
             _localeRow.Shop.ID = _companyRequest.company.shop.iD;
             _localeRow.Shop.LastModifiedDate = _companyRequest.company.shop.lastModificatedDate;
             _localeRow.Shop.LastModifiedByUserID = _companyRequest.company.shop.lastModificatedUserID;

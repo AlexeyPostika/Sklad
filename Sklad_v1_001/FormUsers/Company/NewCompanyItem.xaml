@@ -33,10 +33,9 @@
                                            ButtonSaveclose="toolbarCompany_ButtonSaveclose"
                                            ButtonListCancel="toolbarCompany_ButtonListCancel"
                                            ButtonApply="toolbarCompany_ButtonApply"/>
-        
         <GroupBox Header="{x:Static res:Resources.CompanyAttribute}" 
                   Style="{DynamicResource GroupBoxStyle}"
-                  Grid.Row="1">
+                  Grid.Row="1">          
             <WrapPanel>
                 <!--<FlexTextBox:FlexLabelTextBox x:Name="fullNameCompany"
                                               IsRequired="Visible"
@@ -155,32 +154,73 @@
                                                       EnableTextBox="True"/>
             </WrapPanel>
         </GroupBox>
-       
+
         <Grid Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
               DataContext="{Binding Path=Shop, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
             <StackPanel>
                 <FlexCheckBox:CheckBoxWithLabelHideGroupBox x:Name="checkBoxShop" 
-                                                        LabelText="{x:Static res:Resources.AdressCompanyToShopAdress}"
-                                                        ButtonCheckedClick="checkBoxShop_ButtonCheckedClick"
-                                                        ButtonUnCheckedClick="checkBoxShop_ButtonUnCheckedClick"/>
+                                                            LabelText="{x:Static res:Resources.AdressCompanyToShopAdress}"
+                                                            IsChecked="{Binding Path=IsAddresRegister, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                            ButtonCheckedClick="checkBoxShop_ButtonCheckedClick"
+                                                            ButtonUnCheckedClick="checkBoxShop_ButtonUnCheckedClick"/>
                 <GroupBox Header="{x:Static res:Resources.Shop}" Style="{DynamicResource GroupBoxStyle}" 
                       HorizontalAlignment="Stretch" 
                       VerticalAlignment="Stretch"
                       Visibility="{Binding ElementName=page, Path=VisibilityShopItem, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                    <StackPanel>
+                        <FlexCheckBox:CheckBoxWithLabelHideGroupBox x:Name="shopActive" 
+                                                            LabelText="{x:Static res:Resources.ShopActive}"
+                                                            IsChecked="{Binding Path=Active, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                            />
+                        <WrapPanel>
+                            <FlexTextBox:FlexLabelTextBox x:Name="shopNumber"
+                                              IsRequired="Visible"
+                                              Width="250"
+                                              MaxWidth="300"
+                                              LabelText="{x:Static res:Resources.ShopNumber}"
+                                              Description="{Binding Path=ShopNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              EnableTextBox="True"/>
 
+                            <FlexTextBox:FlexLabelTextBox x:Name="nameShop"
+                                              IsRequired="Visible"
+                                              Width="350"
+                                              MaxWidth="450"
+                                              LabelText="{x:Static res:Resources.Name}"
+                                              Description="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              EnableTextBox="True"/>
+
+                            <FlexTextBox:FlexLabelTextBox x:Name="adressShop"
+                                              IsRequired="Visible"
+                                              Width="350"
+                                              MaxWidth="450"
+                                              LabelText="{x:Static res:Resources.Adress}"
+                                              Description="{Binding Path=Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              EnableTextBox="True"/>
+
+                            <FlexTextBox:FlexLabelTextBox x:Name="phoneShop"
+                                              IsRequired="Visible"
+                                              Width="150"
+                                              MaxWidth="200"
+                                              LabelText="{x:Static res:Resources.Phone}"
+                                              Description="{Binding Path=Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              EnableTextBox="True"/>
+                        </WrapPanel>
+                    </StackPanel>
                 </GroupBox>
             </StackPanel>
         </Grid>
-        
-        <GroupBox Header="{x:Static res:Resources.AccountCompany}" Style="{DynamicResource GroupBoxStyle}" 
-                  Grid.Row="3" 
+        <ScrollViewer VerticalScrollBarVisibility="Auto"  Grid.Row="3" >
+            <GroupBox Header="{x:Static res:Resources.AccountCompany}" Style="{DynamicResource GroupBoxStyle}" 
+                 
                   HorizontalAlignment="Stretch" 
                   VerticalAlignment="Stretch">
-            <StackPanel>
-                <GroupBox Header="{x:Static res:Resources.Directory}"
+
+                <StackPanel ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <GroupBox Header="{x:Static res:Resources.Directory}"
                           Style="{DynamicResource GroupBoxStyle}">
-                    <WrapPanel DataContext="{Binding Path=GeneralDirectory, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                        <FlexTextBox:FlexLabelTextBox x:Name="firstName"
+                        <WrapPanel DataContext="{Binding Path=GeneralDirectory, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                            <FlexTextBox:FlexLabelTextBox x:Name="firstName"
                                                   IsRequired="Visible"
                                                   Width="300"
                                                   MaxWidth="350"
@@ -188,7 +228,7 @@
                                                   Description="{Binding Path=FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   EnableTextBox="True"/>
 
-                        <FlexTextBox:FlexLabelTextBox x:Name="lastName"
+                            <FlexTextBox:FlexLabelTextBox x:Name="lastName"
                                                   IsRequired="Visible"
                                                   Width="300"
                                                   MaxWidth="350"
@@ -196,7 +236,7 @@
                                                   Description="{Binding Path=LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   EnableTextBox="True"/>
 
-                        <FlexTextBox:FlexLabelTextBox x:Name="secondName"
+                            <FlexTextBox:FlexLabelTextBox x:Name="secondName"
                                                   IsRequired="Visible"
                                                   Width="300"
                                                   MaxWidth="350"
@@ -204,15 +244,15 @@
                                                   Description="{Binding Path=SecondName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   EnableTextBox="True"/>
 
-                        <FlexTextBox:FlexLabelTextBox x:Name="inn"
+                            <FlexTextBox:FlexLabelTextBox x:Name="inn"
                                                   IsRequired="Visible"
                                                   Width="150"
                                                   MaxWidth="200"
                                                   LabelText="{x:Static res:Resources.INN}"
                                                   Description="{Binding Path=INN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   EnableTextBox="True"/>
-                       
-                        <FlexTextBox:FlexLabelTextBox x:Name="phones"
+
+                            <FlexTextBox:FlexLabelTextBox x:Name="phones"
                                                   IsRequired="Visible"
                                                   Width="150"
                                                   MaxWidth="200"
@@ -220,7 +260,7 @@
                                                   Description="{Binding Path=Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   EnableTextBox="True"/>
 
-                        <FlexTextBox:FlexLabelTextBox x:Name="email"
+                            <FlexTextBox:FlexLabelTextBox x:Name="email"
                                                   IsRequired="Visible"
                                                   Width="250"
                                                   MaxWidth="300"
@@ -228,7 +268,7 @@
                                                   Description="{Binding Path=Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   EnableTextBox="True"/>
 
-                        <FlexTextBox:FlexLabelTextBox x:Name="login"
+                            <FlexTextBox:FlexLabelTextBox x:Name="login"
                                                   IsRequired="Visible"
                                                   Width="250"
                                                   MaxWidth="300"
@@ -236,20 +276,20 @@
                                                   Description="{Binding Path=Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   EnableTextBox="True"/>
 
-                        <FlexTextBox:FlexLabelTextBox x:Name="password"
+                            <FlexTextBox:FlexLabelTextBox x:Name="password"
                                                   IsRequired="Visible"
                                                   Width="250"
                                                   MaxWidth="300"
                                                   LabelText="{x:Static res:Resources.PasswordLabel}"
                                                   Description="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   EnableTextBox="True"/>
-                    </WrapPanel>
-                </GroupBox>
+                        </WrapPanel>
+                    </GroupBox>
 
-                <GroupBox Header="{x:Static res:Resources.SeniorAccount}"
+                    <GroupBox Header="{x:Static res:Resources.SeniorAccount}"
                           Style="{DynamicResource GroupBoxStyle}">
-                    <WrapPanel DataContext="{Binding Path=SeniorAccount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                        <FlexTextBox:FlexLabelTextBox x:Name="firstNameSenior"
+                        <WrapPanel DataContext="{Binding Path=SeniorAccount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                            <FlexTextBox:FlexLabelTextBox x:Name="firstNameSenior"
                                                       IsRequired="Visible"
                                                       Width="300"
                                                       MaxWidth="350"
@@ -257,7 +297,7 @@
                                                       Description="{Binding Path=FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
 
-                        <FlexTextBox:FlexLabelTextBox x:Name="lastNameSenior"
+                            <FlexTextBox:FlexLabelTextBox x:Name="lastNameSenior"
                                                       IsRequired="Visible"
                                                       Width="300"
                                                       MaxWidth="350"
@@ -265,7 +305,7 @@
                                                       Description="{Binding Path=LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
 
-                        <FlexTextBox:FlexLabelTextBox x:Name="secondNameSenior"
+                            <FlexTextBox:FlexLabelTextBox x:Name="secondNameSenior"
                                                       IsRequired="Visible"
                                                       Width="300"
                                                       MaxWidth="350"
@@ -273,7 +313,7 @@
                                                       Description="{Binding Path=SecondName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
 
-                        <FlexTextBox:FlexLabelTextBox x:Name="innSenior"
+                            <FlexTextBox:FlexLabelTextBox x:Name="innSenior"
                                                       IsRequired="Visible"
                                                       Width="150"
                                                       MaxWidth="200"
@@ -281,7 +321,7 @@
                                                       Description="{Binding Path=INN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
 
-                        <FlexTextBox:FlexLabelTextBox x:Name="phonesSenior"
+                            <FlexTextBox:FlexLabelTextBox x:Name="phonesSenior"
                                                   IsRequired="Visible"
                                                   Width="150"
                                                   MaxWidth="200"
@@ -289,7 +329,7 @@
                                                   Description="{Binding Path=Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   EnableTextBox="True"/>
 
-                        <FlexTextBox:FlexLabelTextBox x:Name="emailSenior"
+                            <FlexTextBox:FlexLabelTextBox x:Name="emailSenior"
                                                       IsRequired="Visible"
                                                       Width="250"
                                                       MaxWidth="300"
@@ -297,7 +337,7 @@
                                                       Description="{Binding Path=Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
 
-                        <FlexTextBox:FlexLabelTextBox x:Name="loginSenior"
+                            <FlexTextBox:FlexLabelTextBox x:Name="loginSenior"
                                                       IsRequired="Visible"
                                                       Width="250"
                                                       MaxWidth="300"
@@ -305,16 +345,19 @@
                                                       Description="{Binding Path=Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
 
-                        <FlexTextBox:FlexLabelTextBox x:Name="passwordSenior"
+                            <FlexTextBox:FlexLabelTextBox x:Name="passwordSenior"
                                                       IsRequired="Visible"
                                                       Width="250"
                                                       MaxWidth="300"
                                                       LabelText="{x:Static res:Resources.PasswordLabel}"
                                                       Description="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
-                    </WrapPanel>
-                </GroupBox>
-            </StackPanel>
-        </GroupBox>
+                        </WrapPanel>
+                    </GroupBox>
+                </StackPanel>
+
+            </GroupBox>
+        </ScrollViewer>
+
     </Grid>
 </Page>

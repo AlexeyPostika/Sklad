@@ -987,4 +987,10 @@
   <data name="AdressCompanyToShopAdress" xml:space="preserve">
     <value>Адрес магазина совпадает с адресом регистрации компании</value>
   </data>
+  <data name="ShopNumber" xml:space="preserve">
+    <value>Номер магазина</value>
+  </data>
+  <data name="ShopActive" xml:space="preserve">
+    <value>Активировать магазин</value>
+  </data>
 </root>

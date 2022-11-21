@@ -2149,6 +2149,24 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Активировать магазин.
+        /// </summary>
+        public static string ShopActive {
+            get {
+                return ResourceManager.GetString("ShopActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Номер магазина.
+        /// </summary>
+        public static string ShopNumber {
+            get {
+                return ResourceManager.GetString("ShopNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Сокращенное наименование.
         /// </summary>
         public static string ShortNameCompany {
