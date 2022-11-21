@@ -11,18 +11,20 @@
       xmlns:FlexComboBox="clr-namespace:Sklad_v1_001.Control.FlexComboBox"
       xmlns:FlexRadioButton="clr-namespace:Sklad_v1_001.Control.FlexRadio"
       xmlns:FlexEditBox="clr-namespace:Sklad_v1_001.Control.FlexEditBox"
+      xmlns:FlexCheckBox="clr-namespace:Sklad_v1_001.Control.FlexCheckBox"
       xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
-      mc:Ignorable="d" 
-     
+      mc:Ignorable="d"    
       Title="NewCompanyGrid"
       Style="{DynamicResource UsersPageWidth}" 
       Width="Auto"
-      Height="Auto">
+      Height="Auto"
+      x:Name="page">
 
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" x:Name ="toolbar"/>
             <RowDefinition Height="Auto" x:Name="company"/>
+            <RowDefinition Height="Auto" x:Name="shop"/>
             <RowDefinition Height="Auto" x:Name="account"/>
         </Grid.RowDefinitions>
         <ToolBar:NewCompanytDetailsToolBar x:Name="toolbarCompany"
@@ -31,6 +33,7 @@
                                            ButtonSaveclose="toolbarCompany_ButtonSaveclose"
                                            ButtonListCancel="toolbarCompany_ButtonListCancel"
                                            ButtonApply="toolbarCompany_ButtonApply"/>
+        
         <GroupBox Header="{x:Static res:Resources.CompanyAttribute}" 
                   Style="{DynamicResource GroupBoxStyle}"
                   Grid.Row="1">
@@ -152,7 +155,27 @@
                                                       EnableTextBox="True"/>
             </WrapPanel>
         </GroupBox>
-        <GroupBox Header="{x:Static res:Resources.AccountCompany}" Style="{DynamicResource GroupBoxStyle}" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+       
+        <Grid Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+              DataContext="{Binding Path=Shop, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+            <StackPanel>
+                <FlexCheckBox:CheckBoxWithLabelHideGroupBox x:Name="checkBoxShop" 
+                                                        LabelText="{x:Static res:Resources.AdressCompanyToShopAdress}"
+                                                        ButtonCheckedClick="checkBoxShop_ButtonCheckedClick"
+                                                        ButtonUnCheckedClick="checkBoxShop_ButtonUnCheckedClick"/>
+                <GroupBox Header="{x:Static res:Resources.Shop}" Style="{DynamicResource GroupBoxStyle}" 
+                      HorizontalAlignment="Stretch" 
+                      VerticalAlignment="Stretch"
+                      Visibility="{Binding ElementName=page, Path=VisibilityShopItem, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+
+                </GroupBox>
+            </StackPanel>
+        </Grid>
+        
+        <GroupBox Header="{x:Static res:Resources.AccountCompany}" Style="{DynamicResource GroupBoxStyle}" 
+                  Grid.Row="3" 
+                  HorizontalAlignment="Stretch" 
+                  VerticalAlignment="Stretch">
             <StackPanel>
                 <GroupBox Header="{x:Static res:Resources.Directory}"
                           Style="{DynamicResource GroupBoxStyle}">

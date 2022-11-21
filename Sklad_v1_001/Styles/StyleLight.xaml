@@ -65,4 +65,10 @@
 
     <SolidColorBrush x:Key="ColorFilterButtonBorder" Color="#FFFFFFFF"/>
 
+    <SolidColorBrush x:Key="ColorBrushSwitchEllipseEnabled" Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="ColorBrushSwitchBackgroundEnabled" Color="#FFC0C010"/><!--#FF7EB4EA-->
+    <SolidColorBrush x:Key="ColorBrushSwitchEllipseDisabled" Color="#FF555555"/>
+    <SolidColorBrush x:Key="ColorBrushSwitchBackgroundDisabled" Color="#FFCCCCCC"/>
+
+
 </ResourceDictionary>

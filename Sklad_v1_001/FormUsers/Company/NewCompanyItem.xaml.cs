@@ -30,6 +30,18 @@ namespace Sklad_v1_001.FormUsers.Company
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
+        // свойство зависимостей
+        public static readonly DependencyProperty VisibilityShopItemProperty = DependencyProperty.Register(
+                        "VisibilityShopItem",
+                        typeof(Visibility),
+                        typeof(NewCompanyGrid), new UIPropertyMetadata(Visibility.Collapsed));
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Visibility VisibilityShopItem
+        {
+            get { return (Visibility)GetValue(VisibilityShopItemProperty); }
+            set { SetValue(VisibilityShopItemProperty, value); }
+        }
 
         Attributes attributes;
         LocaleRow localeRowCompany;
@@ -112,5 +124,15 @@ namespace Sklad_v1_001.FormUsers.Company
             return companyLogic.SaveRow(LocaleRowCompany);
         }
         #endregion
+
+        private void checkBoxShop_ButtonCheckedClick(object sender, RoutedEventArgs e)
+        {
+            VisibilityShopItem = Visibility.Visible;
+        }
+
+        private void checkBoxShop_ButtonUnCheckedClick(object sender, RoutedEventArgs e)
+        {
+            VisibilityShopItem = Visibility.Collapsed;
+        }
     }
 }

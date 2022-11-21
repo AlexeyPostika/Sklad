@@ -169,6 +169,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Адрес магазина совпадает с адресом регистрации компании.
+        /// </summary>
+        public static string AdressCompanyToShopAdress {
+            get {
+                return ResourceManager.GetString("AdressCompanyToShopAdress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Сумма оплаты.
         /// </summary>
         public static string AmountPayment {

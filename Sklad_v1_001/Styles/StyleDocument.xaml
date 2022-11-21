@@ -3029,5 +3029,76 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <!-- Style Control_Users End -->
+    <Style x:Key="ToggleSwitch" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Grid x:Name="toggleSwitchGrid">
+                        <Border x:Name="Border" CornerRadius="10" Background="{DynamicResource ColorBrushSwitchBackgroundDisabled}" Width="40" Height="20" HorizontalAlignment="Left">
+                            <Ellipse x:Name="Ellipse" Fill="{DynamicResource ColorBrushSwitchEllipseDisabled}" Stretch="Uniform" Margin="3" HorizontalAlignment="Left" Width="16"/>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ToggleButton.IsChecked" Value="True" >
+                            <Setter TargetName="Ellipse" Property="Margin" Value="22 3 0 3"/>
+                            <Setter TargetName="Ellipse" Property="Fill" Value="{DynamicResource ColorBrushSwitchEllipseEnabled}"/>
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource ColorBrushSwitchBackgroundEnabled}"/>
+                        </Trigger>
+                        <Trigger Property="ToggleButton.IsChecked" Value="False" >
+                            <Setter TargetName="Ellipse" Property="Margin" Value="3"/>
+                            <Setter TargetName="Ellipse" Property="Fill" Value="{DynamicResource ColorBrushSwitchEllipseDisabled}" />
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource ColorBrushSwitchBackgroundDisabled}" />
+                        </Trigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="ToggleButton.IsChecked" Value="True" />
+                                <Condition Property="Tag" Value="true" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetName="Ellipse" Storyboard.TargetProperty="Margin" To="22 3 0 3" Duration="0:0:0.1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetName="Ellipse" Storyboard.TargetProperty="Margin" To="3" Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="ToggleButton.IsChecked" Value="False" />
+                                <Condition Property="Tag" Value="true" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetName="Ellipse" Storyboard.TargetProperty="Margin" To="3" Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetName="Ellipse" Storyboard.TargetProperty="Margin" To="22 3 0 3" Duration="0:0:0.1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <!-- Style Control_Users End -->
 
 </ResourceDictionary>

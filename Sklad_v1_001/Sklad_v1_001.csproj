@@ -136,6 +136,12 @@
     <Compile Include="Control\FlexButton\UserInfo.xaml.cs">
       <DependentUpon>UserInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexCheckBox\CheckBoxWithLabelHideGroupBox.xaml.cs">
+      <DependentUpon>CheckBoxWithLabelHideGroupBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexCheckBox\SwitchWithLabel.xaml.cs">
+      <DependentUpon>SwitchWithLabel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexComboBox\ComboBoxWithlabelToAddEdit.xaml.cs">
       <DependentUpon>ComboBoxWithlabelToAddEdit.xaml</DependentUpon>
     </Compile>
@@ -525,6 +531,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Control\FlexButton\UserInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\FlexCheckBox\CheckBoxWithLabelHideGroupBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\FlexCheckBox\SwitchWithLabel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="Sklad_v1_001.Control.FlexCheckBox.CheckBoxWithLabelHideGroupBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sklad_v1_001.Control.FlexCheckBox"         
+             mc:Ignorable="d" 
+             x:Name="control">
+    <Grid Margin="0,0,0,0" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <local:SwitchWithLabel x:Name="CheckBox" 
+                  IsChecked="{Binding ElementName=control, Path=IsChecked, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                  Checked="CheckBox_Checked"
+                  UnChecked="CheckBox_Unchecked"/>
+        <Label Style="{DynamicResource LabelStyle}" Name="CheckBoxLabel" Grid.Column="1" Margin="-20,10,0,0"/>
+    </Grid>
+</UserControl>
