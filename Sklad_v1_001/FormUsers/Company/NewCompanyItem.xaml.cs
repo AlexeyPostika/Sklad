@@ -92,20 +92,22 @@ namespace Sklad_v1_001.FormUsers.Company
 
         private void toolbarCompany_ButtonApply()
         {
-            
-            request = new Request(attributes);
-            companyLogic.Convert(LocaleRowCompany, request.companyRequest);
-                   
-            Response response = request.GetCommand(4);
-            if (response != null && response.ErrorCode == 0)
+            Int32 tempID = Save();
+            if (tempID > 0)
             {
-                LocaleRowCompany = companyLogic.Convert(response.companyRequest, LocaleRowCompany);
-                LocaleRowCompany.ReffID = response.companyRequest.company.iD;
-                LocaleRowCompany.SyncDate = DateTime.Now;
-                LocaleRowCompany.SyncStatus = 3;
+                request = new Request(attributes);
+                companyLogic.Convert(LocaleRowCompany, request.companyRequest);
 
-                if (Save() > 0)
+                Response response = request.GetCommand(4);
+                if (response != null && response.ErrorCode == 0)
                 {
+                    LocaleRowCompany = companyLogic.Convert(response.companyRequest, LocaleRowCompany);
+                    LocaleRowCompany.ReffID = response.companyRequest.company.iD;
+                    LocaleRowCompany.SyncDate = DateTime.Now;
+                    LocaleRowCompany.SyncStatus = 3;
+                    LocaleRowCompany.ID = tempID;
+                    Save();
+
                     //MainWindow.AppWindow.ButtonListCompanyOpen();
                 }
                 //Document.Status = response.SupplyDocumentOutput.Document.Status;
@@ -128,11 +130,14 @@ namespace Sklad_v1_001.FormUsers.Company
         private void checkBoxShop_ButtonCheckedClick(object sender, RoutedEventArgs e)
         {
             VisibilityShopItem = Visibility.Visible;
+            localeRowCompany.Shop.Address = localeRowCompany.Adress;
+
         }
 
         private void checkBoxShop_ButtonUnCheckedClick(object sender, RoutedEventArgs e)
         {
             VisibilityShopItem = Visibility.Collapsed;
+            localeRowCompany.Shop.Address = string.Empty;
         }
     }
 }
