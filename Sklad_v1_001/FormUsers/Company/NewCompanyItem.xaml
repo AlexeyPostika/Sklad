@@ -50,7 +50,7 @@
                                                             LabelWidth="300"
                                                             Width="300"
                                                             IsRequired="Visible"
-                                                            Text="{Binding Path=FullNameCompany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
+                                                            Text="{Binding Path=FullCompanyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
                                                             ByteFaile="{Binding Path=Logo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                             FilterPuth="Jpg files|*.jpg|Png files|*.png|Bitmap files|*.bmp"
                                                             Mode="JPG"
@@ -60,8 +60,8 @@
                                               IsRequired="Visible"
                                               Width="250"
                                               MaxWidth="300"
-                                              LabelText="{x:Static res:Resources.ShortNameCompany}"
-                                              Description="{Binding Path=ShortNameCompany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              LabelText="{x:Static res:Resources.ShortCompanyName}"
+                                              Description="{Binding Path=ShortCompanyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                               EnableTextBox="True"/>
                 
                 <FlexTextBox:FlexLabelTextBox x:Name="adress"
@@ -118,7 +118,7 @@
                                                       Width="200"
                                                       MaxWidth="250"
                                                       LabelText="{x:Static res:Resources.BankName}"
-                                                      Description="{Binding Path=BankName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      Description="{Binding Path=BancName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
 
                 <FlexTextBox:FlexLabelTextBox x:Name="bankAdressAttributes"
@@ -126,7 +126,7 @@
                                                       Width="350"
                                                       MaxWidth="400"
                                                       LabelText="{x:Static res:Resources.BankAdress}"
-                                                      Description="{Binding Path=BankAdress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      Description="{Binding Path=BancAdress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
 
                 <FlexTextBox:FlexLabelTextBox x:Name="taxRateAttributes"
