@@ -60,7 +60,7 @@
                                               IsRequired="Visible"
                                               Width="250"
                                               MaxWidth="300"
-                                              LabelText="{x:Static res:Resources.ShortCompanyName}"
+                                              LabelText="{x:Static res:Resources.ShortNameCompany}"
                                               Description="{Binding Path=ShortCompanyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                               EnableTextBox="True"/>
                 
@@ -155,7 +155,7 @@
             </WrapPanel>
         </GroupBox>
 
-        <Grid Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+        <!--<Grid Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
               DataContext="{Binding Path=Shop, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
             <StackPanel>
                 <FlexCheckBox:CheckBoxWithLabelHideGroupBox x:Name="checkBoxShop" 
@@ -208,7 +208,7 @@
                     </StackPanel>
                 </GroupBox>
             </StackPanel>
-        </Grid>
+        </Grid>-->
         <ScrollViewer VerticalScrollBarVisibility="Auto"  Grid.Row="3" >
             <GroupBox Header="{x:Static res:Resources.AccountCompany}" Style="{DynamicResource GroupBoxStyle}" 
                  

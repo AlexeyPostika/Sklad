@@ -478,6 +478,8 @@ namespace Sklad_v1_001.FormUsers.Company
             CreatedDate = DateTime.Now;
             LastModifiedDate= DateTime.Now;
             ReffID = 0;
+            BancAdress = "г. Москва";
+            BancName ="Сбербанк России";
         }
     }
     public class CompanyLogic

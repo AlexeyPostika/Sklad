@@ -131,13 +131,15 @@ namespace Sklad_v1_001.FormUsers.Company
         {
             VisibilityShopItem = Visibility.Visible;
             localeRowCompany.Shop.Address = localeRowCompany.Adress;
-
+            localeRowCompany.Shop.Active = true;
+            localeRowCompany.Active = true;
         }
 
         private void checkBoxShop_ButtonUnCheckedClick(object sender, RoutedEventArgs e)
         {
             VisibilityShopItem = Visibility.Collapsed;
             localeRowCompany.Shop.Address = string.Empty;
+            localeRowCompany.Shop.Active = false;
         }
     }
 }
