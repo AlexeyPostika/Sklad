@@ -46,6 +46,12 @@ namespace Sklad_v1_001.Control.FlexMenu
                      typeof(Visibility),
                      typeof(frameMenu), new UIPropertyMetadata(Visibility.Collapsed));
 
+
+        public static readonly DependencyProperty VisibilityShopsProperty = DependencyProperty.Register(
+                     "VisibilityShops",
+                     typeof(Visibility),
+                     typeof(frameMenu), new UIPropertyMetadata(Visibility.Collapsed));
+
         // 
         public static readonly DependencyProperty VisibilitySettingProperty = DependencyProperty.Register(
                       "VisibilitySetting",
@@ -99,7 +105,18 @@ namespace Sklad_v1_001.Control.FlexMenu
                 SetValue(VisibilityCompanyProperty, value);
             }
         }
-
+       
+        public Visibility VisibilityShops
+        {
+            get
+            {
+                return (Visibility)GetValue(VisibilityShopsProperty);
+            }
+            set
+            {
+                SetValue(VisibilityShopsProperty, value);
+            }
+        }
         public Visibility VisibilitySetting
         {
             get
@@ -126,9 +143,14 @@ namespace Sklad_v1_001.Control.FlexMenu
         public event Action ButtonDeliveryListSupplyOpen;
 
         public event Action ButtonTransferDocumentOpen;
-        //настройки
+        
+        //Компании
         public event Action ButtonNewCompanyOpen;
         public event Action ButtonListCompanyOpen;
+
+        //Магазины и склады
+        public event Action ButtonNewShopsOpen;
+        public event Action ButtonListShopsOpen;
 
         public event Action ButtonExiteOpen;
         public frameMenu(Attributes _attributes)
@@ -154,6 +176,7 @@ namespace Sklad_v1_001.Control.FlexMenu
             ButtonDelivery.Image.Source = ImageHelper.GenerateImage("IconDelivery.png");
             ButtonTransferDocument.Image.Source = ImageHelper.GenerateImage("IconTransfer.png");
             ButtonCompany.Image.Source = ImageHelper.GenerateImage("IconCraufting_X30.png");
+            ButtonShops.Image.Source = ImageHelper.GenerateImage("IconShops_X30.png");
             ButtonSettings.Image.Source = ImageHelper.GenerateImage("IconServices.png");
             ButtonExite.Image.Source = ImageHelper.GenerateImage("IconExit.png");
         }
@@ -164,6 +187,7 @@ namespace Sklad_v1_001.Control.FlexMenu
             VisibilitySupply = Visibility.Collapsed;
             VisibilitySetting = Visibility.Collapsed;
             VisibilityCompany = Visibility.Collapsed;
+            VisibilityShops = Visibility.Collapsed;
             ButtonProductOpen?.Invoke();
         }
 
@@ -173,6 +197,7 @@ namespace Sklad_v1_001.Control.FlexMenu
             VisibilitySupply = Visibility.Collapsed;
             VisibilitySetting = Visibility.Collapsed;
             VisibilityCompany = Visibility.Collapsed;
+            VisibilityShops = Visibility.Collapsed;
             ButtonProductEditOpen?.Invoke();
         }
 
@@ -184,6 +209,7 @@ namespace Sklad_v1_001.Control.FlexMenu
             VisibilityRegister = Visibility.Collapsed;
             VisibilitySetting = Visibility.Collapsed;
             VisibilityCompany = Visibility.Collapsed;
+            VisibilityShops = Visibility.Collapsed;
         }
 
         private void ButtonNewSupplyDocument_ButtonClick()
@@ -204,6 +230,7 @@ namespace Sklad_v1_001.Control.FlexMenu
             VisibilityRegister = Visibility.Collapsed;
             VisibilitySetting = Visibility.Collapsed;
             VisibilityCompany = Visibility.Collapsed;
+            VisibilityShops = Visibility.Collapsed;
             ButtonTransferDocumentOpen?.Invoke();
         }
       
@@ -218,6 +245,7 @@ namespace Sklad_v1_001.Control.FlexMenu
             VisibilitySupply = Visibility.Collapsed;
             VisibilityRegister = Visibility.Collapsed;
             VisibilityCompany = Visibility.Collapsed;
+            VisibilityShops = Visibility.Collapsed;
         }
 
         private void ButtonNewSaleDocument_ButtonClick()
@@ -240,6 +268,7 @@ namespace Sklad_v1_001.Control.FlexMenu
             VisibilitySupply = Visibility.Collapsed;
             VisibilityRegister = Visibility.Visible;
             VisibilityCompany = Visibility.Collapsed;
+            VisibilityShops = Visibility.Collapsed;
         }
 
         private void ButtonListRegisterDocumentDocument_ButtonClick()
@@ -262,6 +291,7 @@ namespace Sklad_v1_001.Control.FlexMenu
             VisibilityRegister = Visibility.Collapsed;
             VisibilityCompany = Visibility.Visible;
             VisibilitySetting = Visibility.Collapsed;
+            VisibilityShops = Visibility.Collapsed;
         }
 
         private void buttonNewCompanyItem_ButtonClick()
@@ -283,6 +313,28 @@ namespace Sklad_v1_001.Control.FlexMenu
             VisibilityRegister = Visibility.Collapsed;
             VisibilityCompany = Visibility.Collapsed;
             VisibilitySetting = Visibility.Visible;
+            VisibilityShops = Visibility.Collapsed;
+        }
+        #endregion
+
+        #region Shops
+        private void ButtonShops_ButtonClick()
+        {
+            VisibilitySale = Visibility.Collapsed;
+            VisibilitySupply = Visibility.Collapsed;
+            VisibilityRegister = Visibility.Collapsed;
+            VisibilityCompany = Visibility.Collapsed;
+            VisibilitySetting = Visibility.Collapsed;
+            VisibilityShops = Visibility.Visible;
+        }
+        private void buttonNewShopsItem_ButtonClick()
+        {
+            ButtonNewShopsOpen?.Invoke();
+        }
+
+        private void buttonShopsGrid_ButtonClick()
+        {
+            ButtonListShopsOpen?.Invoke();
         }
         #endregion
     }

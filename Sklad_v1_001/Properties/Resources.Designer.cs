@@ -1195,6 +1195,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Список магазинов/складов.
+        /// </summary>
+        public static string ListShops {
+            get {
+                return ResourceManager.GetString("ListShops", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Список поставок.
         /// </summary>
         public static string ListSupplyDocument {
@@ -1452,6 +1461,15 @@ namespace Sklad_v1_001.Properties {
         public static string NewSaleDocument {
             get {
                 return ResourceManager.GetString("NewSaleDocument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Новый магазин/склад.
+        /// </summary>
+        public static string NewShops {
+            get {
+                return ResourceManager.GetString("NewShops", resourceCulture);
             }
         }
         

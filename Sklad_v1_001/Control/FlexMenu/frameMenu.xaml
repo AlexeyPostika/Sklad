@@ -50,6 +50,12 @@
                     <FlexButton:LevelButton  x:Name="buttonCompanyGrid" ButtonClick="buttonCompanyGrid_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.ListCompany}"/>
                 </StackPanel>
 
+                <FlexButton:LevelButton Margin="0,0,0,4" x:Name="ButtonShops" ButtonClick="ButtonShops_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.ListShops}"/>
+                <StackPanel Visibility="{Binding ElementName=Menu, Path=VisibilityShops, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                    <FlexButton:LevelButton x:Name="buttonNewShopsItem" ButtonClick="buttonNewShopsItem_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.NewShops}"/>
+                    <FlexButton:LevelButton  x:Name="buttonShopsGrid" ButtonClick="buttonShopsGrid_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.ListShops}"/>
+                </StackPanel>
+
                 <FlexButton:LevelButton Margin="0,0,0,4" x:Name="ButtonSettings" ButtonClick="ButtonSettings_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.Settings}"/>
                 <StackPanel Visibility="{Binding ElementName=Menu, Path=VisibilitySetting, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
                     <!--<FlexButton:LevelButton x:Name="buttonNewCompanyItem" ButtonClick="buttonNewCompanyItem_ButtonClick" HorizontalAlignment="Stretch" Text="{x:Static res:Resources.NewCompany}"/>-->
