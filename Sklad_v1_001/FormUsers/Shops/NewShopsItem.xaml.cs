@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sklad_v1_001.GlobalAttributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,12 +18,24 @@ namespace Sklad_v1_001.FormUsers.Shops
 {
     /// <summary>
     /// Логика взаимодействия для NewShopsItem.xaml
-    /// </summary>
+    /// </summary>   
     public partial class NewShopsItem : Page
     {
-        public NewShopsItem()
+        Attributes attributes;
+        public NewShopsItem(Attributes _attributes)
         {
             InitializeComponent();
+            this.attributes = _attributes;
+        }
+
+        private void checkBoxShop_ButtonCheckedClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void checkBoxShop_ButtonUnCheckedClick(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

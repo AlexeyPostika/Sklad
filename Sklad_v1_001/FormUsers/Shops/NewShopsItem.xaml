@@ -1,0 +1,75 @@
+﻿<Page x:Class="Sklad_v1_001.FormUsers.Shops.NewShopsItem"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Sklad_v1_001.FormUsers.Shops"
+      xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+      xmlns:FlexButton="clr-namespace:Sklad_v1_001.Control.FlexButton"
+      xmlns:SimpleControl="clr-namespace:Sklad_v1_001.Control.SimpleControl"
+      xmlns:FlexTextBox="clr-namespace:Sklad_v1_001.Control.FlexTextBox"
+      xmlns:FlexComboBox="clr-namespace:Sklad_v1_001.Control.FlexComboBox"
+      xmlns:FlexRadioButton="clr-namespace:Sklad_v1_001.Control.FlexRadio"
+      xmlns:FlexEditBox="clr-namespace:Sklad_v1_001.Control.FlexEditBox"
+      xmlns:FlexCheckBox="clr-namespace:Sklad_v1_001.Control.FlexCheckBox"
+      xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
+      mc:Ignorable="d" 
+      Title="NewShopsItem"
+       Style="{DynamicResource UsersPageWidth}" 
+      Width="Auto"
+      Height="Auto"
+      x:Name="page">
+
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <StackPanel>
+            <FlexCheckBox:CheckBoxWithLabelHideGroupBox x:Name="checkBoxShop" 
+                                                            LabelText="{x:Static res:Resources.AdressCompanyToShopAdress}"
+                                                            IsChecked="{Binding Path=IsAddresRegister, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                            ButtonCheckedClick="checkBoxShop_ButtonCheckedClick"
+                                                            ButtonUnCheckedClick="checkBoxShop_ButtonUnCheckedClick"/>
+            <GroupBox Header="{x:Static res:Resources.Shop}" Style="{DynamicResource GroupBoxStyle}" 
+                      HorizontalAlignment="Stretch" 
+                      VerticalAlignment="Stretch">
+                <StackPanel>
+                    <FlexCheckBox:CheckBoxWithLabelHideGroupBox x:Name="shopActive" 
+                                                            LabelText="{x:Static res:Resources.ShopActive}"
+                                                            IsChecked="{Binding Path=Active, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                            />
+                    <WrapPanel>
+                        <FlexTextBox:FlexLabelTextBox x:Name="shopNumber"
+                                              IsRequired="Visible"
+                                              Width="250"
+                                              MaxWidth="300"
+                                              LabelText="{x:Static res:Resources.ShopNumber}"
+                                              Description="{Binding Path=ShopNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              EnableTextBox="True"/>
+
+                        <FlexTextBox:FlexLabelTextBox x:Name="nameShop"
+                                              IsRequired="Visible"
+                                              Width="350"
+                                              MaxWidth="450"
+                                              LabelText="{x:Static res:Resources.Name}"
+                                              Description="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              EnableTextBox="True"/>
+
+                        <FlexTextBox:FlexLabelTextBox x:Name="adressShop"
+                                              IsRequired="Visible"
+                                              Width="350"
+                                              MaxWidth="450"
+                                              LabelText="{x:Static res:Resources.Adress}"
+                                              Description="{Binding Path=Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              EnableTextBox="True"/>
+
+                        <FlexTextBox:FlexLabelTextBox x:Name="phoneShop"
+                                              IsRequired="Visible"
+                                              Width="150"
+                                              MaxWidth="200"
+                                              LabelText="{x:Static res:Resources.Phone}"
+                                              Description="{Binding Path=Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              EnableTextBox="True"/>
+                    </WrapPanel>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -432,6 +432,12 @@
       <DependentUpon>SaleDocumentGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\SaleDocument\SaleDocumentLogic.cs" />
+    <Compile Include="FormUsers\Shops\NewShopsItem.xaml.cs">
+      <DependentUpon>NewShopsItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsers\Shops\ShopsGrid.xaml.cs">
+      <DependentUpon>ShopsGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FormUsers\Shops\ShopsLogic.cs" />
     <Compile Include="FormUsers\ShowCase\ShowCaseLogic.cs" />
     <Compile Include="FormUsers\SupplyDocumentDelivery\SupplyDocumentDeliveryItem.xaml.cs">
@@ -883,6 +889,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FormUsers\SaleDocument\SaleDocumentGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FormUsers\Shops\NewShopsItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FormUsers\Shops\ShopsGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

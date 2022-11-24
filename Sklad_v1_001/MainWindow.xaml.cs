@@ -22,6 +22,7 @@ using Sklad_v1_001.FormUsers.Delivery;
 using Sklad_v1_001.FormUsers.Product;
 using Sklad_v1_001.FormUsers.RegisterDocument;
 using Sklad_v1_001.FormUsers.SaleDocument;
+using Sklad_v1_001.FormUsers.Shops;
 using Sklad_v1_001.FormUsers.SupplyDocument;
 using Sklad_v1_001.FormUsers.SupplyDocumentDelivery;
 using Sklad_v1_001.FormUsers.Tovar;
@@ -61,6 +62,9 @@ namespace Sklad_v1_001
         NewCompanyGrid newCompanyGrid;
         CompanyGrid companyGrid;
 
+        //регистрация магазина/склада
+        NewShopsItem newShopsItem;
+        ShopsGrid shopsGrid;
 
         //public static WorkZona AppWindow;
         //public MainWindow mailWindows1;
@@ -103,13 +107,16 @@ namespace Sklad_v1_001
             //регистрация документов
             PageframeMenuLevel.ButtonRegisterListDocument += new Action(ButtonRegisterListDocument);
             PageframeMenuLevel.ButtonNewRegisterDocumentOpen += new Action(ButtonRegisterNewDocument);
-            //настройки                
+            //регистрация компании                
             PageframeMenuLevel.ButtonNewCompanyOpen += new Action(ButtonNewCompanyOpen);
             PageframeMenuLevel.ButtonListCompanyOpen += new Action(ButtonListCompanyOpen);
+            //регистрация магазина/складов
+            PageframeMenuLevel.ButtonNewShopsOpen += new Action(ButtonNewShopsOpen);
+            PageframeMenuLevel.ButtonListShopsOpen += new Action(ButtonListShopsOpen);
             //выход
             PageframeMenuLevel.ButtonExiteOpen += new Action(ButtonExiteOpen);
 
-        }
+        }     
 
         #region Product
         public void ButtonProductOpen()
@@ -308,7 +315,7 @@ namespace Sklad_v1_001
         }
         #endregion
 
-        #region настройки
+        #region Компания
         public void ButtonNewCompanyOpen()
         {
             GC.Collect();   //Вызов сборщика мусора
@@ -326,6 +333,25 @@ namespace Sklad_v1_001
             frameWorkArea.Navigate(companyGrid); // открытие страницы
         }
 
+        #endregion
+
+        #region магазины/склады
+        private void ButtonListShopsOpen()
+        {
+            GC.Collect();   //Вызов сборщика мусора
+            GC.WaitForPendingFinalizers();  //ждем освобождение памяти
+            if (shopsGrid == null)
+                shopsGrid = new ShopsGrid(attributes);
+            frameWorkArea.Navigate(companyGrid); // открытие страницы
+        }
+
+        private void ButtonNewShopsOpen()
+        {
+            GC.Collect();   //Вызов сборщика мусора
+            GC.WaitForPendingFinalizers();  //ждем освобождение памяти
+            newShopsItem = new NewShopsItem(attributes);
+            frameWorkArea.Navigate(newShopsItem); // открытие страницы
+        }
         #endregion
 
         #region выход
