@@ -1,4 +1,5 @@
-﻿using Sklad_v1_001.GlobalAttributes;
+﻿using Sklad_v1_001.FormUsers.Users;
+using Sklad_v1_001.GlobalAttributes;
 using Sklad_v1_001.HelperGlobal.StoreAPI;
 using System;
 using System.Collections.Generic;
@@ -47,6 +48,8 @@ namespace Sklad_v1_001.FormUsers.Company
         LocaleRow localeRowCompany;
 
         CompanyLogic companyLogic;
+        //работа с users
+        UserLogic userLogic;
 
         Request request;
         public LocaleRow LocaleRowCompany
@@ -70,6 +73,7 @@ namespace Sklad_v1_001.FormUsers.Company
             LocaleRowCompany = new LocaleRow();
 
             companyLogic = new CompanyLogic(attributes);
+            userLogic = new UserLogic(attributes);
 
             this.attributes = _attributes;
             this.DataContext = LocaleRowCompany;
@@ -77,12 +81,15 @@ namespace Sklad_v1_001.FormUsers.Company
         #region ToolBar
         private void toolbarCompany_ButtonSave()
         {
-
+            Save();
         }
 
         private void toolbarCompany_ButtonSaveclose()
         {
+            if (Save() > 0)
+            {
 
+            }
         }
 
         private void toolbarCompany_ButtonListCancel()
@@ -106,7 +113,18 @@ namespace Sklad_v1_001.FormUsers.Company
                     LocaleRowCompany.SyncDate = DateTime.Now;
                     LocaleRowCompany.SyncStatus = 3;
                     LocaleRowCompany.ID = tempID;
-                    Save();
+                    if (Save() > 0)
+                    {
+                        LocaleRowCompany.GeneralDirectory.SyncDate = DateTime.Now;
+                        LocaleRowCompany.GeneralDirectory.SyncStatus = 3;
+                        if (userLogic.SaveRow(LocaleRowCompany.GeneralDirectory) > 0)
+                        {
+                            LocaleRowCompany.SeniorAccount.SyncDate = DateTime.Now;
+                            LocaleRowCompany.SeniorAccount.SyncStatus = 3;
+                            userLogic.SaveRow(LocaleRowCompany.SeniorAccount);
+                            MainWindow.AppWindow.ButtonListCompanyOpen();
+                        }
+                    }
 
                     //MainWindow.AppWindow.ButtonListCompanyOpen();
                 }

@@ -16,6 +16,34 @@ using Sklad_v1_001.HelperGlobal.StoreAPI.Model.Company;
 
 namespace Sklad_v1_001.FormUsers.Company
 {
+    public class LocaleFilter : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
+        public LocaleFilter()
+        {
+            ScreenTypeGrid = ScreenType.ScreenTypeGrid;
+        }
+
+        private string screenTypeGrid;
+        public string ScreenTypeGrid
+        {
+            get
+            {
+                return screenTypeGrid;
+            }
+
+            set
+            {
+                screenTypeGrid = value;
+                OnPropertyChanged("ScreenTypeGrid");
+            }
+        }
+    }
     public class LocaleRow : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -480,6 +508,15 @@ namespace Sklad_v1_001.FormUsers.Company
             ReffID = 0;
             BancAdress = "г. Москва";
             BancName ="Сбербанк России";
+            Active = true;
+            FullCompanyName = "Тестовый склад";
+            ShortCompanyName = "Тест";
+            Adress = "с.Татариново";
+            Phone = "+7(985)973-60-36";
+            INN = "9832487323";
+            KPP = "743598437587458743987435987";
+            RCBIC = "34324763245";
+
         }
     }
     public class CompanyLogic
@@ -504,42 +541,45 @@ namespace Sklad_v1_001.FormUsers.Company
             _sqlRequestSelect = new SQLCommanSelect();
             _sqlResponseSave = new SQLCommanSelect();
 
+            _data = new DataTable();
+            _datarow = new DataTable();
+
             //----------------------------------------------------------------------------
             _sqlRequestSelect.AddParametr("@p_TypeScreen", SqlDbType.VarChar, 10);
             _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeGrid);
 
-            _sqlRequestSelect.AddParametr("@p_Search", SqlDbType.NVarChar, 40);
-            _sqlRequestSelect.SetParametrValue("@p_Search", "");
+            //_sqlRequestSelect.AddParametr("@p_Search", SqlDbType.NVarChar, 40);
+            //_sqlRequestSelect.SetParametrValue("@p_Search", "");
 
-            _sqlRequestSelect.AddParametr("@p_ID", SqlDbType.Int);
-            _sqlRequestSelect.SetParametrValue("@p_ID", 0);
+            //_sqlRequestSelect.AddParametr("@p_ID", SqlDbType.Int);
+            //_sqlRequestSelect.SetParametrValue("@p_ID", 0);
 
-            _sqlRequestSelect.AddParametr("@p_CreatedUserID", SqlDbType.NVarChar, 255);
-            _sqlRequestSelect.SetParametrValue("@p_CreatedUserID", "");
+            //_sqlRequestSelect.AddParametr("@p_CreatedUserID", SqlDbType.NVarChar, 255);
+            //_sqlRequestSelect.SetParametrValue("@p_CreatedUserID", "");
 
-            _sqlRequestSelect.AddParametr("@p_LastModifiedUserID", SqlDbType.NVarChar, 255);
-            _sqlRequestSelect.SetParametrValue("@p_LastModifiedUserID", "");
+            //_sqlRequestSelect.AddParametr("@p_LastModifiedUserID", SqlDbType.NVarChar, 255);
+            //_sqlRequestSelect.SetParametrValue("@p_LastModifiedUserID", "");
 
-            _sqlRequestSelect.AddParametr("@p_Status", SqlDbType.NVarChar, 255);
-            _sqlRequestSelect.SetParametrValue("@p_Status", "");
+            //_sqlRequestSelect.AddParametr("@p_Status", SqlDbType.NVarChar, 255);
+            //_sqlRequestSelect.SetParametrValue("@p_Status", "");
 
-            _sqlRequestSelect.AddParametr("@p_ManagerUserID", SqlDbType.NVarChar, 255);
-            _sqlRequestSelect.SetParametrValue("@p_ManagerUserID", "");
+            //_sqlRequestSelect.AddParametr("@p_ManagerUserID", SqlDbType.NVarChar, 255);
+            //_sqlRequestSelect.SetParametrValue("@p_ManagerUserID", "");
 
-            _sqlRequestSelect.AddParametr("@p_DeliveryID", SqlDbType.NVarChar, 255);
-            _sqlRequestSelect.SetParametrValue("@p_DeliveryID", "");
+            //_sqlRequestSelect.AddParametr("@p_DeliveryID", SqlDbType.NVarChar, 255);
+            //_sqlRequestSelect.SetParametrValue("@p_DeliveryID", "");
 
-            _sqlRequestSelect.AddParametr("@p_Quantity_Min", SqlDbType.Int);
-            _sqlRequestSelect.SetParametrValue("@p_Quantity_Min", 0);
+            //_sqlRequestSelect.AddParametr("@p_Quantity_Min", SqlDbType.Int);
+            //_sqlRequestSelect.SetParametrValue("@p_Quantity_Min", 0);
 
-            _sqlRequestSelect.AddParametr("@p_Quantity_Max", SqlDbType.Int);
-            _sqlRequestSelect.SetParametrValue("@p_Quantity_Max", SqlInt32.MaxValue);
+            //_sqlRequestSelect.AddParametr("@p_Quantity_Max", SqlDbType.Int);
+            //_sqlRequestSelect.SetParametrValue("@p_Quantity_Max", SqlInt32.MaxValue);
 
-            _sqlRequestSelect.AddParametr("@p_TagPriceVATRUS_Min", SqlDbType.Decimal);
-            _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Min", SqlDecimal.MaxValue);
+            //_sqlRequestSelect.AddParametr("@p_TagPriceVATRUS_Min", SqlDbType.Decimal);
+            //_sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Min", SqlDecimal.MaxValue);
 
-            _sqlRequestSelect.AddParametr("@p_TagPriceVATRUS_Max", SqlDbType.Decimal);
-            _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Max", SqlDecimal.MaxValue);
+            //_sqlRequestSelect.AddParametr("@p_TagPriceVATRUS_Max", SqlDbType.Decimal);
+            //_sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Max", SqlDecimal.MaxValue);
 
             //----------------------------------------------------------------------------
             _sqlResponseSave.AddParametr("@p_AddUserID", SqlDbType.Int);
@@ -627,36 +667,36 @@ namespace Sklad_v1_001.FormUsers.Company
             return _data;
         }
 
-        //public DataTable FillGrid(LocalFilter _localFilter)
-        //{
-        //    _sqlRequestSelect.SqlAnswer.datatable.Clear();
-        //    _data.Clear();
+        public DataTable FillGrid(LocaleFilter _localFilter)
+        {
+            _sqlRequestSelect.SqlAnswer.datatable.Clear();
+            _data.Clear();
 
-        //    _sqlRequestSelect.SetParametrValue("@p_TypeScreen", _localFilter.ScreenTypeGrid);
-        //    _sqlRequestSelect.SetParametrValue("@p_Search", _localFilter.Search);
-        //    _sqlRequestSelect.SetParametrValue("@p_ID", _localFilter.ID);
-        //    _sqlRequestSelect.SetParametrValue("@p_CreatedUserID", _localFilter.CreatedByUserID);
-        //    _sqlRequestSelect.SetParametrValue("@p_LastModifiedUserID", _localFilter.LastModifiedByUserID);
-        //    _sqlRequestSelect.SetParametrValue("@p_Status", _localFilter.Status);
-        //    _sqlRequestSelect.SetParametrValue("@p_ManagerUserID", _localFilter.ManagerUserID);
-        //    _sqlRequestSelect.SetParametrValue("@p_DeliveryID", _localFilter.DeliveryID);
-        //    _sqlRequestSelect.SetParametrValue("@p_Quantity_Min", _localFilter.QuantityMin);
-        //    _sqlRequestSelect.SetParametrValue("@p_Quantity_Max", _localFilter.QuantityMax);
-        //    _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Min", _localFilter.AmountMin);
-        //    _sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Max", _localFilter.AmountMax);
-        //    //_sqlRequestSelect.SetParametrValue("@p_FromCreatedDate", _localFilter.FromCreatedDate);
-        //    //_sqlRequestSelect.SetParametrValue("@p_ToCreatedDate", _localFilter.ToCreatedDate);
-        //    //_sqlRequestSelect.SetParametrValue("@p_FromLastModifiedDate", _localFilter.FromLastModifiedDate);
-        //    //_sqlRequestSelect.SetParametrValue("@p_ToLastModifiedDate", _localFilter.ToLastModifiedDate);
-        //    _sqlRequestSelect.SetParametrValue("@p_PageNumber", _localFilter.PageNumber);
-        //    _sqlRequestSelect.SetParametrValue("@p_PagerowCount", _localFilter.PagerowCount);
-        //    _sqlRequestSelect.SetParametrValue("@p_SortColumn", _localFilter.SortColumn);
-        //    _sqlRequestSelect.SetParametrValue("@p_Sort", _localFilter.Sort); //тест github
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", _localFilter.ScreenTypeGrid);
+            //_sqlRequestSelect.SetParametrValue("@p_Search", _localFilter.Search);
+            //_sqlRequestSelect.SetParametrValue("@p_ID", _localFilter.ID);
+            //_sqlRequestSelect.SetParametrValue("@p_CreatedUserID", _localFilter.CreatedByUserID);
+            //_sqlRequestSelect.SetParametrValue("@p_LastModifiedUserID", _localFilter.LastModifiedByUserID);
+            //_sqlRequestSelect.SetParametrValue("@p_Status", _localFilter.Status);
+            //_sqlRequestSelect.SetParametrValue("@p_ManagerUserID", _localFilter.ManagerUserID);
+            //_sqlRequestSelect.SetParametrValue("@p_DeliveryID", _localFilter.DeliveryID);
+            //_sqlRequestSelect.SetParametrValue("@p_Quantity_Min", _localFilter.QuantityMin);
+            //_sqlRequestSelect.SetParametrValue("@p_Quantity_Max", _localFilter.QuantityMax);
+            //_sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Min", _localFilter.AmountMin);
+            //_sqlRequestSelect.SetParametrValue("@p_TagPriceVATRUS_Max", _localFilter.AmountMax);
+            ////_sqlRequestSelect.SetParametrValue("@p_FromCreatedDate", _localFilter.FromCreatedDate);
+            ////_sqlRequestSelect.SetParametrValue("@p_ToCreatedDate", _localFilter.ToCreatedDate);
+            ////_sqlRequestSelect.SetParametrValue("@p_FromLastModifiedDate", _localFilter.FromLastModifiedDate);
+            ////_sqlRequestSelect.SetParametrValue("@p_ToLastModifiedDate", _localFilter.ToLastModifiedDate);
+            //_sqlRequestSelect.SetParametrValue("@p_PageNumber", _localFilter.PageNumber);
+            //_sqlRequestSelect.SetParametrValue("@p_PagerowCount", _localFilter.PagerowCount);
+            //_sqlRequestSelect.SetParametrValue("@p_SortColumn", _localFilter.SortColumn);
+            //_sqlRequestSelect.SetParametrValue("@p_Sort", _localFilter.Sort); //тест github
 
-        //    _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
-        //    _data = _sqlRequestSelect.SqlAnswer.datatable;
-        //    return _data;
-        //}
+            _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
+            _data = _sqlRequestSelect.SqlAnswer.datatable;
+            return _data;
+        }
 
         public Int32 SaveRow(LocaleRow row)
         {
@@ -846,7 +886,7 @@ namespace Sklad_v1_001.FormUsers.Company
             _localeRow.GeneralDirectory.Number = _companyRequest.company.generalDirectory.number;
             _localeRow.GeneralDirectory.Password = _companyRequest.company.generalDirectory.password;
             _localeRow.GeneralDirectory.Phone = _companyRequest.company.generalDirectory.phone;
-            _localeRow.GeneralDirectory.RoleID = _companyRequest.company.generalDirectory.roleID;
+            _localeRow.GeneralDirectory.RoleID = 1;
             _localeRow.GeneralDirectory.SecondName = _companyRequest.company.generalDirectory.secondName;
             _localeRow.GeneralDirectory.UserID = _companyRequest.company.generalDirectory.userID;
             _localeRow.ID = _companyRequest.company.iD;
@@ -875,7 +915,7 @@ namespace Sklad_v1_001.FormUsers.Company
             _localeRow.SeniorAccount.Number = _companyRequest.company.seniorAccount.number;
             _localeRow.SeniorAccount.Password = _companyRequest.company.seniorAccount.password;
             _localeRow.SeniorAccount.Phone = _companyRequest.company.seniorAccount.phone;
-            _localeRow.SeniorAccount.RoleID = _companyRequest.company.seniorAccount.roleID;
+            _localeRow.SeniorAccount.RoleID = 2;
             _localeRow.SeniorAccount.SecondName = _companyRequest.company.seniorAccount.secondName;
             _localeRow.SeniorAccount.UserID = _companyRequest.company.seniorAccount.userID;
             _localeRow.SenttlementAccount = _companyRequest.company.senttlementAccount;

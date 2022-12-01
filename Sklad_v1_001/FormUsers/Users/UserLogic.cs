@@ -165,6 +165,7 @@ namespace Sklad_v1_001.FormUsers.Users
 
         private DateTime? syncDate;
         private Int32 syncStatus;
+        private Int32 reffID;
 
         public int ID
         {
@@ -540,7 +541,21 @@ namespace Sklad_v1_001.FormUsers.Users
                 OnPropertyChanged("SyncStatus");
             }
         }
-        
+        //
+        public Int32 ReffID
+        {
+            get
+            {
+                return reffID;
+            }
+
+            set
+            {
+                reffID = value;
+                OnPropertyChanged("ReffID");
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
@@ -555,20 +570,25 @@ namespace Sklad_v1_001.FormUsers.Users
     }
     public class UserLogic
     {
+        Attributes attributes;
         CryptDecrypt cryptoLogic;
         string get_store_procedure = "xp_GetUser";
+        string get_save_procedure = "xp_SaveUsers";
 
         SQLCommanSelect _sqlRequestSelect = null;
-       
+        SQLCommanSelect _sqlRequestSave = null;
+
         //результат запроса
         DataTable _data = null;
         DataTable _datarow = null;
        
-        public UserLogic()
+        public UserLogic(Attributes _attributes)
         {
+            this.attributes = _attributes;
             cryptoLogic = new CryptDecrypt();
             //объявили подключение
             _sqlRequestSelect = new SQLCommanSelect();
+            _sqlRequestSave = new SQLCommanSelect();
 
             _data = new DataTable();
             _datarow = new DataTable();
@@ -594,6 +614,64 @@ namespace Sklad_v1_001.FormUsers.Users
 
             _sqlRequestSelect.AddParametr("@p_sort", SqlDbType.NVarChar);
             _sqlRequestSelect.SetParametrValue("@p_sort", "");
+            
+            //----------------------------------------------------------------------------
+            _sqlRequestSave.AddParametr("@p_AddUserID", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_AddUserID", attributes.numeric.userEdit.AddUserID);
+            
+            _sqlRequestSave.AddParametr("@p_ID", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_ID", 0);
+         
+            _sqlRequestSave.AddParametr("@p_Number", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_Number", 0);
+           
+            _sqlRequestSave.AddParametr("@p_FirstName", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_FirstName", "");
+            
+            _sqlRequestSave.AddParametr("@p_LastName", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_LastName", "");
+         
+            _sqlRequestSave.AddParametr("@p_SecondName", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_SecondName", "");
+           
+            _sqlRequestSave.AddParametr("@p_INN", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_INN", "");
+
+            _sqlRequestSave.AddParametr("@p_RoleID", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_RoleID", 0);
+
+            _sqlRequestSave.AddParametr("@p_Phone", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_Phone", "");
+
+            _sqlRequestSave.AddParametr("@p_Email", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_Email", "");
+
+            _sqlRequestSave.AddParametr("@p_Active", SqlDbType.Bit);
+            _sqlRequestSave.SetParametrValue("@p_Active", 0);
+
+            _sqlRequestSave.AddParametr("@p_Login", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_Login", "");
+
+            _sqlRequestSave.AddParametr("@p_Password", SqlDbType.NVarChar);
+            _sqlRequestSave.SetParametrValue("@p_Password", "");
+
+            _sqlRequestSave.AddParametr("@p_Birthday", SqlDbType.DateTime);
+            _sqlRequestSave.SetParametrValue("@p_Birthday", DateTime.Now);
+
+            _sqlRequestSave.AddParametr("@p_GenderID", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_GenderID", 0);
+
+            _sqlRequestSave.AddParametr("@p_PhotoUser", SqlDbType.VarBinary);
+            _sqlRequestSave.SetParametrValue("@p_PhotoUser", null);
+
+            _sqlRequestSave.AddParametr("@p_SyncDate", SqlDbType.DateTime);
+            _sqlRequestSave.SetParametrValue("@p_SyncDate", DateTime.Now);
+
+            _sqlRequestSave.AddParametr("@p_SyncStatus", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_SyncStatus", 0);
+
+            _sqlRequestSave.AddParametr("@p_ReffID", SqlDbType.Int);
+            _sqlRequestSave.SetParametrValue("@p_ReffID", 0);
         }
 
         public DataTable FillGrid(LocaleFilter localeFilter)
@@ -626,7 +704,29 @@ namespace Sklad_v1_001.FormUsers.Users
             _datarow = _sqlRequestSelect.SqlAnswer.datatable;
             return _datarow;
         }
+        public Int32 SaveRow(LocalRow row)
+        {
+            _sqlRequestSave.SetParametrValue("@p_Number", row.Number);
+            _sqlRequestSave.SetParametrValue("@p_FirstName", row.FirstName);
+            _sqlRequestSave.SetParametrValue("@p_LastName", row.LastName);
+            _sqlRequestSave.SetParametrValue("@p_SecondName", row.SecondName);
+            _sqlRequestSave.SetParametrValue("@p_INN", row.INN);
+            _sqlRequestSave.SetParametrValue("@p_RoleID", row.RoleID);
+            _sqlRequestSave.SetParametrValue("@p_Phone", row.Phone);
+            _sqlRequestSave.SetParametrValue("@p_Email", row.Email);
+            _sqlRequestSave.SetParametrValue("@p_Active", row.Active);
+            _sqlRequestSave.SetParametrValue("@p_Login", row.Login);
+            _sqlRequestSave.SetParametrValue("@p_Password", row.Password);
+            _sqlRequestSave.SetParametrValue("@p_Birthday", row.Birthday);
+            _sqlRequestSave.SetParametrValue("@p_GenderID", row.GenderID);
+            _sqlRequestSave.SetParametrValue("@p_PhotoUser", row.PhotoUserByte);
+            _sqlRequestSave.SetParametrValue("@p_SyncDate", row.SyncDate);
+            _sqlRequestSave.SetParametrValue("@p_SyncStatus", row.SyncStatus);
+            _sqlRequestSave.SetParametrValue("@p_ReffID", row.ID);
 
+            _sqlRequestSave.ComplexRequest(get_save_procedure, CommandType.StoredProcedure, null);
+            return (Int32)_sqlRequestSave.SqlAnswer.result;
+        }
         public LocalRow Convert(DataRow _row, LocalRow localrow)
         {
             VetrinaList listVetrina = new VetrinaList();
@@ -661,6 +761,7 @@ namespace Sklad_v1_001.FormUsers.Users
             localrow.SyncDate = convertData.ConvertDataDateTime("SyncDate");
             localrow.SyncStatus = convertData.ConvertDataInt32("SyncStatus");
             localrow.RoleID = convertData.ConvertDataInt32("RoleID");
+            localrow.ReffID = convertData.ConvertDataInt32("ReffID");
 
             return localrow;
         }

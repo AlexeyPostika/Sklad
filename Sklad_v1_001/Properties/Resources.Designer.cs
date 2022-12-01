@@ -466,6 +466,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Активна/Не активна.
+        /// </summary>
+        public static string CompanyActive {
+            get {
+                return ResourceManager.GetString("CompanyActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Атрибуты компании/фирмы/ИП.
         /// </summary>
         public static string CompanyAttribute {

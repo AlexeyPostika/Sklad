@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sklad_v1_001.GlobalAttributes;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -24,6 +25,7 @@ namespace Sklad_v1_001.FormUsers.Users
     /// </summary>
     public partial class UserList : Page, INotifyPropertyChanged
     {
+        Attributes attributes;
         UserLogic userListLogic;
 
         ObservableCollection<LocalRow> dataUser;
@@ -34,12 +36,13 @@ namespace Sklad_v1_001.FormUsers.Users
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
-        public UserList()
+        public UserList(Attributes _attributes)
         {
             InitializeComponent();
+            this.attributes = _attributes;
             dataUser = new ObservableCollection<LocalRow>();
 
-            userListLogic = new UserLogic(); ;
+            userListLogic = new UserLogic(attributes); 
 
             //filterLocal = new LocalFilter();
             //filterLocal.Page = 0;

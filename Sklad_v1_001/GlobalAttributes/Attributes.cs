@@ -87,7 +87,7 @@ namespace Sklad_v1_001.GlobalAttributes
             FillManufacturer();
 
             //загружаем пользователей
-            userLogic = new UserLogic();
+            userLogic = new UserLogic(this);
             datalistUsers = new ObservableCollection<FormUsers.Users.LocalRow > ();
             FillUsers();
             globalData = this;
@@ -161,7 +161,7 @@ namespace Sklad_v1_001.GlobalAttributes
 
         public void FillUsers()
         {
-            UserLogic userListLogic = new UserLogic();
+            UserLogic userListLogic = new UserLogic(this);
             localeFilterUsers = new LocaleFilter();
             localeFilterUsers.MassIsActive = "1";
             DataTable dataTable = userListLogic.FillGrid(localeFilterUsers);

@@ -999,4 +999,7 @@
   <data name="NewShops" xml:space="preserve">
     <value>Новый магазин/склад</value>
   </data>
+  <data name="CompanyActive" xml:space="preserve">
+    <value>Активна/Не активна</value>
+  </data>
 </root>

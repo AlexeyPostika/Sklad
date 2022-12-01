@@ -1,6 +1,8 @@
 ﻿using Sklad_v1_001.GlobalAttributes;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,11 +24,29 @@ namespace Sklad_v1_001.FormUsers.Company
     public partial class CompanyGrid : Page
     {
         Attributes attributes;
+
+        CompanyLogic companyLogic;
+
+        LocaleRow localeRow;
+        LocaleFilter localeFilter;
+
+        ObservableCollection<LocaleRow> datalist;
+
         public CompanyGrid(Attributes _attributes)
         {
             InitializeComponent();
 
             this.attributes = _attributes;
+
+            companyLogic = new CompanyLogic(attributes);
+
+            localeFilter = new LocaleFilter();
+            datalist = new ObservableCollection<LocaleRow>();
+
+            listCompany.ItemsSource = datalist;
+                    
+            Refresh();
+
         }
         #region Toolbar
         private void ToolBarCompany_ButtonAdd()
@@ -75,13 +95,13 @@ namespace Sklad_v1_001.FormUsers.Company
         #region Refresh
         public void Refresh()
         {
-            //DataTable datatable = supplyDocumentLogic.FillGrid(localFilter);
-            //datalist.Clear();
+            DataTable datatable = companyLogic.FillGrid(localeFilter);
+            datalist.Clear();
 
-            //foreach (DataRow row in datatable.Rows)
-            //{
-            //    datalist.Add(supplyDocumentLogic.Convert(row, new LocalRow()));
-            //}
+            foreach (DataRow row in datatable.Rows)
+            {
+                datalist.Add(companyLogic.Convert(row, new LocaleRow()));
+            }
 
             //CalculateSummary();
 

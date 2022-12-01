@@ -15,10 +15,11 @@
                 <Label Name="required" Style="{DynamicResource LabelStyle}"  Margin="-9,0,0,0" FontSize="18" Height="30" Visibility="{Binding ElementName=control, Path=IsRequired, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="Red" Content="*" HorizontalAlignment="Left"/>
             </WrapPanel>
             <local:EditBoxWithLabelDownloadFile x:Name="dowload" LabelWidth="0"
-                                                Margin="0, -10, -3, 0"
+                                                Margin="-5, -10, -3, 0"
                                                 ButtonAddClick="button_ButtonClick"
                                                 ButtonLoopClick="buttonLoop_ButtonClick"
                                                 ButtonClearClick="buttonClear_ButtonClick"
+                                                Text="{Binding ElementName=control, Path=Text, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                                 NameFile="{Binding ElementName=control, Path=NameFile, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                                 ByteFaile ="{Binding ElementName=control, Path=ByteFaile, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                                 IsRequired="Collapsed"/>

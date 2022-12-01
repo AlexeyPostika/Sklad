@@ -36,7 +36,7 @@ namespace Sklad_v1_001
             attributes = new Attributes();
             convertData = new ConvertData();
 
-            userLogic = new FormUsers.Users.UserLogic();
+            userLogic = new FormUsers.Users.UserLogic(attributes);
 
             UserLogin.ComboBoxElement.ItemsSource = attributes.datalistUsers;
 
