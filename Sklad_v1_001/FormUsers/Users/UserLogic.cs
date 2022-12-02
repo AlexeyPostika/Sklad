@@ -138,7 +138,7 @@ namespace Sklad_v1_001.FormUsers.Users
     {        
         private Int32 iD;
         private Int32 userID;
-        private Int32 number;
+        private Int64 number;
         private String firstName;
         private String lastName;       
         private String secondName;
@@ -195,7 +195,7 @@ namespace Sklad_v1_001.FormUsers.Users
             }
         }
 
-        public int Number
+        public Int64 Number
         {
             get
             {

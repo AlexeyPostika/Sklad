@@ -10,7 +10,7 @@ namespace Sklad_v1_001.HelperGlobal.StoreAPI.Model.Users
     {
         public Int32 iD { get; set; }
         public Int32 userID { get; set; }
-        public Int32 number { get; set; }
+        public Int64 number { get; set; }
         public String firstName { get; set; }
         public String lastName { get; set; }
         public String secondName { get; set; }
