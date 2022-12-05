@@ -1006,10 +1006,10 @@
     <value>Черновик</value>
   </data>
   <data name="CompanyStatus1" xml:space="preserve">
-    <value>На регистрации</value>
+    <value>Не синхронизировано</value>
   </data>
   <data name="CompanyStatus2" xml:space="preserve">
-    <value>Зарегистрировано</value>
+    <value>Синхронизировано</value>
   </data>
   <data name="CompanyStatus3" xml:space="preserve">
     <value>Отказано</value>

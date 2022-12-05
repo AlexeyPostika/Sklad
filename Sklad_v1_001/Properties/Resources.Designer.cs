@@ -502,7 +502,7 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на На регистрации.
+        ///   Ищет локализованную строку, похожую на Не синхронизировано.
         /// </summary>
         public static string CompanyStatus1 {
             get {
@@ -511,7 +511,7 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Зарегистрировано.
+        ///   Ищет локализованную строку, похожую на Синхронизировано.
         /// </summary>
         public static string CompanyStatus2 {
             get {
