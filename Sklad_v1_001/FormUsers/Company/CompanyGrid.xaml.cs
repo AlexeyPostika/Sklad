@@ -1,4 +1,5 @@
-﻿using Sklad_v1_001.GlobalAttributes;
+﻿using Sklad_v1_001.FormUsers.Users;
+using Sklad_v1_001.GlobalAttributes;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,6 +25,7 @@ namespace Sklad_v1_001.FormUsers.Company
     public partial class CompanyGrid : Page
     {
         Attributes attributes;
+        UserLogic userLogic;
 
         CompanyLogic companyLogic;
 
@@ -95,12 +97,26 @@ namespace Sklad_v1_001.FormUsers.Company
         #region Refresh
         public void Refresh()
         {
-            DataTable datatable = companyLogic.FillGrid(localeFilter);
+            List<DataTable> listData = companyLogic.FillGrid(localeFilter);
+            DataTable datatable = listData.FirstOrDefault(x => x.TableName == "Company");
+            DataTable datatablyDirectory = listData.FirstOrDefault(x => x.TableName == "GeneralDirectory");
+            DataTable datatablySeniorAccount = listData.FirstOrDefault(x => x.TableName == "SeniorAccount");
+
             datalist.Clear();
 
             foreach (DataRow row in datatable.Rows)
             {
-                datalist.Add(companyLogic.Convert(row, new LocaleRow()));
+                LocaleRow localeRow = companyLogic.Convert(row, new LocaleRow());
+                userLogic = new UserLogic(attributes);
+                DataRow[] rowDirector = datatablyDirectory.Select("ID  = " + localeRow.GeneralDirectoryID);
+                if (rowDirector!=null && rowDirector.Count()>0)
+                    localeRow.GeneralDirectory = userLogic.Convert(rowDirector[0], new LocalRow());
+                DataRow[] rowSeniorAccount = datatablySeniorAccount.Select("ID  = " + localeRow.SeniorAccountID);
+                if (rowSeniorAccount != null && rowSeniorAccount.Count() > 0)
+                    localeRow.GeneralDirectory = userLogic.Convert(rowSeniorAccount[0], new LocalRow());
+                datalist.Add(localeRow);
+
+
             }
 
             //CalculateSummary();

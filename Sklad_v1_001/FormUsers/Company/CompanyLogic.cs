@@ -68,7 +68,9 @@ namespace Sklad_v1_001.FormUsers.Company
         private String shortGeneralDirectory;
         private String displaySeniorAccount;
         private String shortSeniorAccount;
+        private Int32 generalDirectoryID;
         private FormUsers.Users.LocalRow generalDirectory;
+        private Int32 seniorAccountID;
         private FormUsers.Users.LocalRow seniorAccount;
         private Shops.LocaleRow shop;
 
@@ -225,6 +227,19 @@ namespace Sklad_v1_001.FormUsers.Company
                 statusString = value;
                 OnPropertyChanged("StatusString");
             }
+        }       
+        public Int32 GeneralDirectoryID
+        {
+            get
+            {
+                return generalDirectoryID;
+            }
+
+            set
+            {
+                generalDirectoryID = value;
+                OnPropertyChanged("GeneralDirectoryID");
+            }
         }
         public FormUsers.Users.LocalRow GeneralDirectory
         {
@@ -237,6 +252,20 @@ namespace Sklad_v1_001.FormUsers.Company
             {
                 generalDirectory = value;
                 OnPropertyChanged("GeneralDirectory");
+            }
+        }
+
+        public Int32 SeniorAccountID
+        {
+            get
+            {
+                return seniorAccountID;
+            }
+
+            set
+            {
+                seniorAccountID = value;
+                OnPropertyChanged("SeniorAccountID");
             }
         }
         public Users.LocalRow SeniorAccount
@@ -760,7 +789,7 @@ namespace Sklad_v1_001.FormUsers.Company
             return _data;
         }
 
-        public DataTable FillGrid(LocaleFilter _localFilter)
+        public List<DataTable> FillGrid(LocaleFilter _localFilter)
         {
             _sqlRequestSelect.SqlAnswer.datatable.Clear();
             _data.Clear();
@@ -786,9 +815,8 @@ namespace Sklad_v1_001.FormUsers.Company
             //_sqlRequestSelect.SetParametrValue("@p_SortColumn", _localFilter.SortColumn);
             //_sqlRequestSelect.SetParametrValue("@p_Sort", _localFilter.Sort); //тест github
 
-            _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
-            _data = _sqlRequestSelect.SqlAnswer.datatable;
-            return _data;
+            _sqlRequestSelect.ComplexMultipleRequest(get_store_procedure, CommandType.StoredProcedure, null);
+            return _sqlRequestSelect.SqlAnswer.listDatatable; ;
         }
 
         public Int32 SaveRow(LocaleRow row)
@@ -861,7 +889,8 @@ namespace Sklad_v1_001.FormUsers.Company
 
             _localeRow.StatusString = сompanyStatusList.innerList.FirstOrDefault(x => x.ID == _localeRow.Status) != null ?
                                             сompanyStatusList.innerList.FirstOrDefault(x => x.ID == _localeRow.Status).Description : Properties.Resources.UndefindField;
-
+            _localeRow.GeneralDirectoryID= convertData.ConvertDataInt32("GeneralDirectory");
+            _localeRow.SeniorAccountID = convertData.ConvertDataInt32("SeniorAccount");
             // _localeRow.TimeRow = convertData.ConvertDataString("TimeRow");
             //_localeRow.logo = convertData.ConvertDataString("logo");
             // _localeRow.SeniorAccount = convertData.ConvertDataString("SeniorAccount");

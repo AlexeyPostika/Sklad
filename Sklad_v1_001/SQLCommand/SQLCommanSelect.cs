@@ -278,6 +278,12 @@ namespace Sklad_v1_001.SQL
                             {
                                 DataTable dataTable = new DataTable();
                                 dataTable.Load(requestanswer);
+
+                                if (dataTable.Rows.Count > 0)
+                                {
+                                    dataTable.TableName = dataTable.Rows[0]["TableName"].ToString();
+                                    dataTable.Columns.Remove("TableName");
+                                }
                                 _sqlAnswer.listDatatable.Add(dataTable);
                             }
                             while (!requestanswer.IsClosed);
