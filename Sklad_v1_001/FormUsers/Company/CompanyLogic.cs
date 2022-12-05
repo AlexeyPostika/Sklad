@@ -13,6 +13,7 @@ using Sklad_v1_001.GlobalVariable;
 using Sklad_v1_001.SQL;
 using System.Data.SqlTypes;
 using Sklad_v1_001.HelperGlobal.StoreAPI.Model.Company;
+using Sklad_v1_001.Crypto;
 
 namespace Sklad_v1_001.FormUsers.Company
 {
@@ -523,6 +524,7 @@ namespace Sklad_v1_001.FormUsers.Company
     {
         Attributes attributes;
         ConvertData convertData;
+        CryptDecrypt cryptoLogic;
 
         string get_store_procedure = "xp_GetCompanyTable";
         string get_save_procedure = "xp_SaveCompany";
@@ -537,6 +539,8 @@ namespace Sklad_v1_001.FormUsers.Company
         public CompanyLogic(Attributes _attributes)
         {
             this.attributes = _attributes;
+
+            cryptoLogic = new CryptDecrypt();
 
             _sqlRequestSelect = new SQLCommanSelect();
             _sqlResponseSave = new SQLCommanSelect();
@@ -884,7 +888,7 @@ namespace Sklad_v1_001.FormUsers.Company
             _localeRow.GeneralDirectory.LastName = _companyRequest.company.generalDirectory.lastName;
             _localeRow.GeneralDirectory.Login = _companyRequest.company.generalDirectory.login;
             _localeRow.GeneralDirectory.Number = _companyRequest.company.generalDirectory.number;
-            _localeRow.GeneralDirectory.Password = _companyRequest.company.generalDirectory.password;
+            _localeRow.GeneralDirectory.Password = cryptoLogic.Encrypt(_companyRequest.company.generalDirectory.password);
             _localeRow.GeneralDirectory.Phone = _companyRequest.company.generalDirectory.phone;
             _localeRow.GeneralDirectory.RoleID = 1;
             _localeRow.GeneralDirectory.SecondName = _companyRequest.company.generalDirectory.secondName;
