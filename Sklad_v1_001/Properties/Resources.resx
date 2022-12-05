@@ -1002,4 +1002,16 @@
   <data name="CompanyActive" xml:space="preserve">
     <value>Активна/Не активна</value>
   </data>
+  <data name="CompanyStatus0" xml:space="preserve">
+    <value>Черновик</value>
+  </data>
+  <data name="CompanyStatus1" xml:space="preserve">
+    <value>На регистрации</value>
+  </data>
+  <data name="CompanyStatus2" xml:space="preserve">
+    <value>Зарегистрировано</value>
+  </data>
+  <data name="CompanyStatus3" xml:space="preserve">
+    <value>Отказано</value>
+  </data>
 </root>

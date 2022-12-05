@@ -14,6 +14,7 @@ using Sklad_v1_001.SQL;
 using System.Data.SqlTypes;
 using Sklad_v1_001.HelperGlobal.StoreAPI.Model.Company;
 using Sklad_v1_001.Crypto;
+using Sklad_v1_001.GlobalList;
 
 namespace Sklad_v1_001.FormUsers.Company
 {
@@ -60,7 +61,13 @@ namespace Sklad_v1_001.FormUsers.Company
         private String adress;
         private String phone;
         private Byte[] logo;
-        private Boolean active;       
+        private Boolean active;
+        private Int32 status;
+        private String statusString;
+        private String displayGeneralDirectory;
+        private String shortGeneralDirectory;
+        private String displaySeniorAccount;
+        private String shortSeniorAccount;
         private FormUsers.Users.LocalRow generalDirectory;
         private FormUsers.Users.LocalRow seniorAccount;
         private Shops.LocaleRow shop;
@@ -192,7 +199,33 @@ namespace Sklad_v1_001.FormUsers.Company
                 active = value;
                 OnPropertyChanged("Active");
             }
-        }       
+        }
+        public Int32 Status
+        {
+            get
+            {
+                return status;
+            }
+
+            set
+            {
+                status = value;
+                OnPropertyChanged("Status");
+            }
+        }
+        public String StatusString
+        {
+            get
+            {
+                return statusString;
+            }
+
+            set
+            {
+                statusString = value;
+                OnPropertyChanged("StatusString");
+            }
+        }
         public FormUsers.Users.LocalRow GeneralDirectory
         {
             get
@@ -219,7 +252,59 @@ namespace Sklad_v1_001.FormUsers.Company
                 OnPropertyChanged("SeniorAccount");
             }
         }
-       
+
+        public String DisplayGeneralDirectory
+        {
+            get
+            {
+                return displayGeneralDirectory;
+            }
+
+            set
+            {
+                displayGeneralDirectory = value;
+                OnPropertyChanged("DisplayGeneralDirectory");
+            }
+        }
+        public String ShortGeneralDirectory
+        {
+            get
+            {
+                return shortGeneralDirectory;
+            }
+
+            set
+            {
+                shortGeneralDirectory = value;
+                OnPropertyChanged("ShortGeneralDirectory");
+            }
+        }
+        public String DisplaySeniorAccount
+        {
+            get
+            {
+                return displaySeniorAccount;
+            }
+
+            set
+            {
+                displaySeniorAccount = value;
+                OnPropertyChanged("DisplaySeniorAccount");
+            }
+        }
+        public String ShortSeniorAccount
+        {
+            get
+            {
+                return shortSeniorAccount;
+            }
+
+            set
+            {
+                shortSeniorAccount = value;
+                OnPropertyChanged("ShortSeniorAccount");
+            }
+        }
         public Shops.LocaleRow Shop
         {
             get
@@ -517,7 +602,8 @@ namespace Sklad_v1_001.FormUsers.Company
             INN = "9832487323";
             KPP = "743598437587458743987435987";
             RCBIC = "34324763245";
-
+            Status = 0;
+            StatusString = String.Empty;
         }
     }
     public class CompanyLogic
@@ -601,8 +687,8 @@ namespace Sklad_v1_001.FormUsers.Company
             _sqlResponseSave.AddParametr("@p_FullCompanyName", SqlDbType.NVarChar, 50);
             _sqlResponseSave.SetParametrValue("@p_FullCompanyName", "");
 
-            _sqlResponseSave.AddParametr("@p_ShortCompanyNane", SqlDbType.NVarChar, 50);
-            _sqlResponseSave.SetParametrValue("@p_ShortCompanyNane", "");
+            _sqlResponseSave.AddParametr("@p_ShortCompanyName", SqlDbType.NVarChar, 50);
+            _sqlResponseSave.SetParametrValue("@p_ShortCompanyName", "");
 
             _sqlResponseSave.AddParametr("@p_Adress", SqlDbType.NVarChar, 255);
             _sqlResponseSave.SetParametrValue("@p_Adress", "");
@@ -657,6 +743,9 @@ namespace Sklad_v1_001.FormUsers.Company
 
             _sqlResponseSave.AddParametr("@p_Active", SqlDbType.Bit);
             _sqlResponseSave.SetParametrValue("@p_Active", 1);
+
+            _sqlResponseSave.AddParametr("@p_Status", SqlDbType.Int);
+            _sqlResponseSave.SetParametrValue("@p_Status", 0);
         }
 
         public DataTable FillGrid(Int32 id)
@@ -708,7 +797,7 @@ namespace Sklad_v1_001.FormUsers.Company
             _sqlResponseSave.SetParametrValue("@p_INN", row.INN);
             _sqlResponseSave.SetParametrValue("@p_KPP", row.KPP);
             _sqlResponseSave.SetParametrValue("@p_FullCompanyName", row.FullCompanyName);
-            _sqlResponseSave.SetParametrValue("@p_ShortCompanyNane", row.ShortCompanyName);
+            _sqlResponseSave.SetParametrValue("@p_ShortCompanyName", row.ShortCompanyName);
             _sqlResponseSave.SetParametrValue("@p_Adress", row.Adress);
             _sqlResponseSave.SetParametrValue("@p_GeneralDirectory", row.GeneralDirectory.ID);
             _sqlResponseSave.SetParametrValue("@p_Phone", row.Phone);
@@ -728,6 +817,7 @@ namespace Sklad_v1_001.FormUsers.Company
             _sqlResponseSave.SetParametrValue("@p_LastModificatedUserID", row.LastModifiedByUserID);
             _sqlResponseSave.SetParametrValue("@p_logo", row.Logo);
             _sqlResponseSave.SetParametrValue("@p_Active", row.Active);
+            _sqlResponseSave.SetParametrValue("@p_Status", row.Status);
 
             _sqlResponseSave.ComplexRequest(get_save_procedure, CommandType.StoredProcedure, null);
             return (Int32)_sqlResponseSave.SqlAnswer.result;
@@ -735,7 +825,7 @@ namespace Sklad_v1_001.FormUsers.Company
 
         public LocaleRow Convert(DataRow _dataRow, LocaleRow _localeRow)
         {
-            //SupplyTypeList supplyTypeList = new SupplyTypeList();
+            CompanyStatusList сompanyStatusList = new CompanyStatusList();
             ConvertData convertData = new ConvertData(_dataRow, _localeRow);          
             _localeRow.ID = convertData.ConvertDataInt32("ID");
             _localeRow.INN = convertData.ConvertDataString("INN");           
@@ -748,6 +838,7 @@ namespace Sklad_v1_001.FormUsers.Company
             _localeRow.CreatedByUserID = convertData.ConvertDataInt32("CreatedByUserID");
             _localeRow.LastModifiedByUserID = convertData.ConvertDataInt32("LastModifiedByUserID");
             _localeRow.FullCompanyName = convertData.ConvertDataString("FullCompanyName");
+            _localeRow.ShortCompanyName= convertData.ConvertDataString("ShortCompanyName");
             _localeRow.Adress = convertData.ConvertDataString("Adress");
             
             _localeRow.Phone = convertData.ConvertDataString("Phone");
@@ -762,6 +853,15 @@ namespace Sklad_v1_001.FormUsers.Company
             _localeRow.CurrentCode = convertData.ConvertDataInt32("CurrencyCode");
             _localeRow.Description = convertData.ConvertDataString("Description");
             _localeRow.Active = convertData.ConvertDataBoolean("Active");
+            _localeRow.Status = convertData.ConvertDataInt32("Status");
+            _localeRow.DisplayGeneralDirectory = convertData.ConvertDataString("DisplayGeneralDirectory");
+            _localeRow.ShortGeneralDirectory = convertData.ConvertDataString("ShortGeneralDirectory");
+            _localeRow.DisplaySeniorAccount = convertData.ConvertDataString("DisplaySeniorAccount");
+            _localeRow.ShortSeniorAccount = convertData.ConvertDataString("ShortSeniorAccount");
+
+            _localeRow.StatusString = сompanyStatusList.innerList.FirstOrDefault(x => x.ID == _localeRow.Status) != null ?
+                                            сompanyStatusList.innerList.FirstOrDefault(x => x.ID == _localeRow.Status).Description : Properties.Resources.UndefindField;
+
             // _localeRow.TimeRow = convertData.ConvertDataString("TimeRow");
             //_localeRow.logo = convertData.ConvertDataString("logo");
             // _localeRow.SeniorAccount = convertData.ConvertDataString("SeniorAccount");
@@ -790,7 +890,7 @@ namespace Sklad_v1_001.FormUsers.Company
             _companyRequest.company.currentName = _localeRow.CurrentName;
             _companyRequest.company.description = _localeRow.Description;
             _companyRequest.company.fullCompanyName = _localeRow.FullCompanyName;
-            _companyRequest.company.generalDirectory.active = _localeRow.GeneralDirectory.Active;
+            _companyRequest.company.generalDirectory.active = true;
             _companyRequest.company.generalDirectory.birthday = _localeRow.GeneralDirectory.Birthday;
             _companyRequest.company.generalDirectory.companyID = _localeRow.GeneralDirectory.CompanyID;
             _companyRequest.company.generalDirectory.createdByUserID = _localeRow.CreatedByUserID;
@@ -819,7 +919,7 @@ namespace Sklad_v1_001.FormUsers.Company
             _companyRequest.company.logo = _localeRow.Logo;
             _companyRequest.company.phone = _localeRow.Phone;
             _companyRequest.company.rCBIC = _localeRow.RCBIC;           
-            _companyRequest.company.seniorAccount.active = _localeRow.SeniorAccount.Active;
+            _companyRequest.company.seniorAccount.active = true;
             _companyRequest.company.seniorAccount.birthday = _localeRow.SeniorAccount.Birthday;
             _companyRequest.company.seniorAccount.companyID = _localeRow.SeniorAccount.CompanyID;
             _companyRequest.company.seniorAccount.createdByUserID = _localeRow.SeniorAccount.CreatedByUserID;

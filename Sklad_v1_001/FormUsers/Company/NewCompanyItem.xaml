@@ -315,13 +315,13 @@
                                                       Description="{Binding Path=Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       EnableTextBox="True"/>
 
-                            <FlexTextBox:FlexLabelTextBox x:Name="passwordSenior"
-                                                      IsRequired="Visible"
-                                                      Width="250"
-                                                      MaxWidth="300"
-                                                      LabelText="{x:Static res:Resources.PasswordLabel}"
-                                                      Description="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                      EnableTextBox="True"/>
+                            <EditBox:EditBoxPasswordWithLabel x:Name="passwordSenior" 
+                                                              LabelText="{x:Static res:Resources.PasswordLabel}"
+                                                              TextPassword="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                              LabelWidth="60"
+                                                              Height="50"
+                                                              Width="250"
+                                                              Margin="-5,0,0,-20"/>
                         </WrapPanel>
                     </GroupBox>
                 </StackPanel>

@@ -93,7 +93,15 @@ namespace Sklad_v1_001.GlobalList
         public String Phones { get; set; }
         public String Description { get; set; } // ManagerName
     }
-    
+
+    //отвечает за категории
+    public class CompanyStatus
+    {
+        public Int32 ID { get; set; }
+        public String Name { get; set; }
+        public String Description { get; set; }
+    }
+
     public class DateTimeListFilter
     {
         public ObservableCollection<DateTimeItem> innerList { get; set; }
@@ -252,6 +260,22 @@ namespace Sklad_v1_001.GlobalList
                 new ProductStatus {ID=5,Description=Properties.Resources.ProductStatus5 },//Перемещение
                 new ProductStatus {ID=6,Description=Properties.Resources.ProductStatus6 },//Возврат
                 new ProductStatus {ID=9,Description=Properties.Resources.ProductStatus9 },//Продажа
+            };
+        }
+    }
+
+    //Company
+    public class CompanyStatusList
+    {
+        public ObservableCollection<CompanyStatus> innerList { get; set; }
+        public CompanyStatusList()
+        {
+            innerList = new ObservableCollection<CompanyStatus>()
+            {
+                new CompanyStatus {ID=0,Description=Properties.Resources.CompanyStatus0 },//черновик
+                new CompanyStatus {ID=1,Description=Properties.Resources.CompanyStatus1 },//на регистрации
+                new CompanyStatus {ID=2,Description=Properties.Resources.CompanyStatus2 },//Зарегистрирован
+                new CompanyStatus {ID=3,Description=Properties.Resources.CompanyStatus3 },//Отказано
             };
         }
     }

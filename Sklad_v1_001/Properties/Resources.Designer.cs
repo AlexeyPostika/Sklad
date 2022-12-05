@@ -493,6 +493,42 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Черновик.
+        /// </summary>
+        public static string CompanyStatus0 {
+            get {
+                return ResourceManager.GetString("CompanyStatus0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на На регистрации.
+        /// </summary>
+        public static string CompanyStatus1 {
+            get {
+                return ResourceManager.GetString("CompanyStatus1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Зарегистрировано.
+        /// </summary>
+        public static string CompanyStatus2 {
+            get {
+                return ResourceManager.GetString("CompanyStatus2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Отказано.
+        /// </summary>
+        public static string CompanyStatus3 {
+            get {
+                return ResourceManager.GetString("CompanyStatus3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на КС.
         /// </summary>
         public static string CorrespondentAccount {

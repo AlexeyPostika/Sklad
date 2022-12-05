@@ -39,8 +39,12 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="Auto" Visibility="Collapsed"/>
                     <DataGridTextColumn Binding="{Binding Path=ShortCompanyName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ShortNameCompany}" Width="Auto"/>
-                    <DataGridTextColumn Binding="{Binding Path=GeneralDirectoryUsers, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.Directory}" Width="Auto"/>
-                    <DataGridTextColumn Binding="{Binding Path=SeniorAccount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.SeniorAccount}" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding Path=StatusString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.Status}" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding Path=INN, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.INN}" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding Path=KPP, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.KPP}" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding Path=RCBIC, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.RCBIC}" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding Path=ShortGeneralDirectory, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.Directory}" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding Path=ShortSeniorAccount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.SeniorAccount}" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding Path=Phone, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.Phone}" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.Description}" Width="Auto"/>
                     

@@ -99,6 +99,7 @@ namespace Sklad_v1_001.FormUsers.Company
 
         private void toolbarCompany_ButtonApply()
         {
+            LocaleRowCompany.Status = 1;
             Int32 tempID = Save();
             if (tempID > 0)
             {
@@ -113,6 +114,9 @@ namespace Sklad_v1_001.FormUsers.Company
                     LocaleRowCompany.SyncDate = DateTime.Now;
                     LocaleRowCompany.SyncStatus = 3;
                     LocaleRowCompany.ID = tempID;
+                    LocaleRowCompany.Status = 2;
+                    //LocaleRowCompany.GeneralDirectoryID = LocaleRowCompany.GeneralDirectory.ID;
+                    //LocaleRowCompany.SeniorAccountID = LocaleRowCompany.SeniorAccount.ID;
                     if (Save() > 0)
                     {
                         LocaleRowCompany.GeneralDirectory.SyncDate = DateTime.Now;
