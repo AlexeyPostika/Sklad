@@ -17,6 +17,72 @@ using System.Windows.Shapes;
 
 namespace Sklad_v1_001.Control.SimpleControl
 {
+    public class BoundPasswordBox
+    {
+        #region BoundPassword
+        private static bool _updating = false;
+        /// <summary>
+        /// BoundPassword Attached Dependency Property
+        /// </summary>
+        public static readonly DependencyProperty BoundPasswordProperty =  DependencyProperty.RegisterAttached("BoundPassword",
+        typeof(string),
+        typeof(BoundPasswordBox), new FrameworkPropertyMetadata(string.Empty, OnBoundPasswordChanged));
+        /// <summary>
+        /// Gets the BoundPassword property.
+        /// </summary>
+        public static string GetBoundPassword(DependencyObject d)
+        {
+            return (string)d.GetValue(BoundPasswordProperty);
+        }
+        /// <summary>
+        /// Sets the BoundPassword property.
+        /// </summary>
+        public static void SetBoundPassword(DependencyObject d, string value)
+        {
+            d.SetValue(BoundPasswordProperty, value);
+        }
+
+        /// <summary>
+        /// Handles changes to the BoundPassword property.
+        /// </summary>
+        private static void OnBoundPasswordChanged(
+        DependencyObject d,
+        DependencyPropertyChangedEventArgs e)
+        {
+            PasswordBox password = d as PasswordBox;
+            if (password != null)
+            {
+                // Disconnect the handler while we're updating.
+                //password.PasswordChanged -= PasswordChanged;
+            }
+            if (e.NewValue != null)
+            {
+                if (!_updating)
+                {
+                    password.Password = e.NewValue.ToString();
+                }
+            }
+            else
+            {
+                password.Password = string.Empty;
+            }
+            // Now, reconnect the handler.
+            //password.PasswordChanged += new RoutedEventHandler(PasswordChanged);
+        }
+        /// <summary>
+        /// Handles the password change event.
+        /// </summary>
+        static void PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            //PasswordBox password = sender as PasswordBox;
+            //_updating = true;
+            //SetBoundPassword(password, password.Password);
+            //_updating = false;
+            //password.Focus();
+        }
+        #endregion
+
+    }
     /// <summary>
     /// Логика взаимодействия для EditBoxPasswordWithLabel.xaml
     /// </summary>
@@ -131,30 +197,30 @@ namespace Sklad_v1_001.Control.SimpleControl
         {
             if (IsShowPassword)
             {
+                PasswordTextBox.Focus();
                 PasswordTextBox.Password = TextPassword;
-
                 PasswordTextBox.Visibility = System.Windows.Visibility.Visible;
                 TextBox.Visibility = System.Windows.Visibility.Collapsed;
                 image.Source = ImageHelper.GenerateImage("IconLoopPassword_X16.png");
                 IsShowPassword = false;
-                PasswordTextBox.Focus();
+                
 
             }
             else
             {
+                TextBox.Focus();
                 TextPassword = PasswordTextBox.Password;
                 PasswordTextBox.Visibility = System.Windows.Visibility.Collapsed;
                 TextBox.Visibility = System.Windows.Visibility.Visible;
-
                 image.Source = ImageHelper.GenerateImage("IconPassword_X16.png");
                 IsShowPassword = true;
-                TextBox.Focus();
+                
             }
         }
 
         private void PasswordTextBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            TextPassword = PasswordTextBox.Password;
+            //TextPassword = PasswordTextBox.Password;
             ButtonTextChangedClick?.Invoke();
         }
     }

@@ -15,6 +15,7 @@ using System.Data.SqlTypes;
 using Sklad_v1_001.HelperGlobal.StoreAPI.Model.Company;
 using Sklad_v1_001.Crypto;
 using Sklad_v1_001.GlobalList;
+using System.Windows.Media;
 
 namespace Sklad_v1_001.FormUsers.Company
 {
@@ -61,6 +62,7 @@ namespace Sklad_v1_001.FormUsers.Company
         private String adress;
         private String phone;
         private Byte[] logo;
+        private ImageSource logoImage;
         private Boolean active;
         private Int32 status;
         private String statusString;
@@ -187,6 +189,19 @@ namespace Sklad_v1_001.FormUsers.Company
             {
                 logo = value;
                 OnPropertyChanged("Logo");
+            }
+        }        
+        public ImageSource LogoImage
+        {
+            get
+            {
+                return logoImage;
+            }
+
+            set
+            {
+                logoImage = value;
+                OnPropertyChanged("LogoImage");
             }
         }
         public Boolean Active
@@ -854,6 +869,8 @@ namespace Sklad_v1_001.FormUsers.Company
         public LocaleRow Convert(DataRow _dataRow, LocaleRow _localeRow)
         {
             CompanyStatusList сompanyStatusList = new CompanyStatusList();
+            ImageSql imageSql = new ImageSql();
+
             ConvertData convertData = new ConvertData(_dataRow, _localeRow);          
             _localeRow.ID = convertData.ConvertDataInt32("ID");
             _localeRow.INN = convertData.ConvertDataString("INN");           
@@ -891,20 +908,11 @@ namespace Sklad_v1_001.FormUsers.Company
                                             сompanyStatusList.innerList.FirstOrDefault(x => x.ID == _localeRow.Status).Description : Properties.Resources.UndefindField;
             _localeRow.GeneralDirectoryID= convertData.ConvertDataInt32("GeneralDirectory");
             _localeRow.SeniorAccountID = convertData.ConvertDataInt32("SeniorAccount");
-            // _localeRow.TimeRow = convertData.ConvertDataString("TimeRow");
-            //_localeRow.logo = convertData.ConvertDataString("logo");
-            // _localeRow.SeniorAccount = convertData.ConvertDataString("SeniorAccount");
-            //_localeRow.GeneralDirectory = convertData.ConvertDataString("GeneralDirectory");
-            //_localeRow.StatusString = supplyTypeList.innerList.FirstOrDefault(x => x.ID == _localeRow.Status) != null ?
-            //                                supplyTypeList.innerList.FirstOrDefault(x => x.ID == _localeRow.Status).Description : Properties.Resources.UndefindField;
 
-            //_localeRow.SupplyDocumentNumberString = "";
-            //if (_localeRow.SupplyDocumentNumber > 0)
-            //    _localeRow.SupplyDocumentNumberString = _localeRow.SupplyDocumentNumber.ToString();
-
-
-
-
+            if (_dataRow["Logo"] as byte[] != null)
+                _localeRow.LogoImage = imageSql.BytesToImageSource(_dataRow["ImageProduct"] as byte[]);
+            else
+                _localeRow.LogoImage = ImageHelper.GenerateImage("IconNotCamera_X80.png");
             return _localeRow;
         }
         public CompanyRequest Convert(LocaleRow _localeRow, CompanyRequest _companyRequest)

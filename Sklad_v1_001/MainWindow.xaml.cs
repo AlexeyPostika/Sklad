@@ -29,6 +29,8 @@ using Sklad_v1_001.FormUsers.Tovar;
 using Sklad_v1_001.FormUsers.Zacupca;
 using Sklad_v1_001.GlobalAttributes;
 
+using CompanyRow = Sklad_v1_001.FormUsers.Company.LocaleRow;
+
 namespace Sklad_v1_001
 {
     /// <summary>
@@ -321,6 +323,15 @@ namespace Sklad_v1_001
             GC.Collect();   //Вызов сборщика мусора
             GC.WaitForPendingFinalizers();  //ждем освобождение памяти
             newCompanyGrid = new NewCompanyGrid(attributes);
+            frameWorkArea.Navigate(newCompanyGrid); // открытие страницы
+        }
+
+        public void ButtonNewCompanyOpenF(CompanyRow _localeRow)
+        {
+            GC.Collect();   //Вызов сборщика мусора
+            GC.WaitForPendingFinalizers();  //ждем освобождение памяти
+            newCompanyGrid = new NewCompanyGrid(attributes);
+            newCompanyGrid.LocaleRowCompany = _localeRow;
             frameWorkArea.Navigate(newCompanyGrid); // открытие страницы
         }
 

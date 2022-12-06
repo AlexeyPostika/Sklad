@@ -91,9 +91,14 @@ namespace Sklad_v1_001.FormUsers.Company
 
         private void listCompany_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            LocaleRow currentrow = this.listCompany.SelectedItem as LocaleRow;
+            if (currentrow != null)
+            {
+                EditDetails(currentrow);
+            }
         }
         #endregion
+
         #region Refresh
         public void Refresh()
         {
@@ -113,10 +118,8 @@ namespace Sklad_v1_001.FormUsers.Company
                     localeRow.GeneralDirectory = userLogic.Convert(rowDirector[0], new LocalRow());
                 DataRow[] rowSeniorAccount = datatablySeniorAccount.Select("ID  = " + localeRow.SeniorAccountID);
                 if (rowSeniorAccount != null && rowSeniorAccount.Count() > 0)
-                    localeRow.GeneralDirectory = userLogic.Convert(rowSeniorAccount[0], new LocalRow());
+                    localeRow.SeniorAccount = userLogic.Convert(rowSeniorAccount[0], new LocalRow());
                 datalist.Add(localeRow);
-
-
             }
 
             //CalculateSummary();
@@ -124,6 +127,13 @@ namespace Sklad_v1_001.FormUsers.Company
             //TotalCount = summary.SummaryQuantityLine;
             //PageCount = localFilter.PagerowCount;
             //CurrentPage = localFilter.PageNumber;
+        }
+        #endregion
+
+        #region Edit
+        private void EditDetails(LocaleRow _localeRow)
+        {
+            MainWindow.AppWindow.ButtonNewCompanyOpenF(_localeRow);
         }
         #endregion
     }

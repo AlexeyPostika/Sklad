@@ -26,7 +26,7 @@
                                 ButtonScan="ToolBarCompany_ButtonScan"
                                 ButtonClean="ToolBarCompany_ButtonClean"/>
         
-        <Grid Grid.Row="1" x:Name="SypplyDocumentList">
+        <Grid Grid.Row="1" x:Name="CompanyDocumentList">
             <DataGrid x:Name="listCompany" 
                       Style="{DynamicResource DataGridStyle}" 
                       ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" 
@@ -37,6 +37,18 @@
                       SelectionChanged="listCompany_SelectionChanged"
                       MouseDoubleClick="listCompany_MouseDoubleClick">
                 <DataGrid.Columns>
+                    <DataGridTemplateColumn MaxWidth="100">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <Label Content="{x:Static res:Resources.Photo}" HorizontalAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Path=LogoImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="24" Height="24"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                     <DataGridTextColumn Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="Auto" Visibility="Collapsed"/>
                     <DataGridTextColumn Binding="{Binding Path=ShortCompanyName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ShortNameCompany}" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding Path=StatusString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.Status}" Width="Auto"/>

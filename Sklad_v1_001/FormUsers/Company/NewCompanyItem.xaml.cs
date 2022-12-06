@@ -63,6 +63,7 @@ namespace Sklad_v1_001.FormUsers.Company
             {
                 localeRowCompany = value;
                 OnPropertyChanged("LocaleRowCompany");
+                this.DataContext = LocaleRowCompany;
             }
         }
         public NewCompanyGrid(Attributes _attributes)
