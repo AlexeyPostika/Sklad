@@ -12,7 +12,7 @@
       xmlns:FlexRadioButton="clr-namespace:Sklad_v1_001.Control.FlexRadio"
       xmlns:FlexEditBox="clr-namespace:Sklad_v1_001.Control.FlexEditBox"
       xmlns:FlexCheckBox="clr-namespace:Sklad_v1_001.Control.FlexCheckBox"
-      xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
+      xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"   
       mc:Ignorable="d" 
       Title="NewShopsItem"
        Style="{DynamicResource UsersPageWidth}" 
@@ -70,6 +70,7 @@
                     </WrapPanel>
                 </StackPanel>
             </GroupBox>
+           
         </StackPanel>
     </Grid>
 </Page>

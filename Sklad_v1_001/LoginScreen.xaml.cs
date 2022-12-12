@@ -90,7 +90,7 @@ namespace Sklad_v1_001
 
                 etalonPassword = localeRow.Password;               
 
-                if (Password.TextPassword == localeRow.Password)
+                if (Password.PasswordTextBox.Password == localeRow.Password)
                 {
                     mb.Show(Properties.Resources.LoginSuccessfulMessage, Properties.Resources.LoginSuccessfulTitle, MessageBoxButton.OK, MessageBoxImage.Asterisk, "Privet.mp3");
                     attributes.numeric.userEdit.AddUserID = localeRow.ID;
