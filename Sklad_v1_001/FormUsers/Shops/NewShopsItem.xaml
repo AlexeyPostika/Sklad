@@ -13,6 +13,7 @@
       xmlns:FlexEditBox="clr-namespace:Sklad_v1_001.Control.FlexEditBox"
       xmlns:FlexCheckBox="clr-namespace:Sklad_v1_001.Control.FlexCheckBox"
       xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"   
+      xmlns:GMaps="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
       mc:Ignorable="d" 
       Title="NewShopsItem"
        Style="{DynamicResource UsersPageWidth}" 
@@ -68,6 +69,7 @@
                                               Description="{Binding Path=Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                               EnableTextBox="True"/>
                     </WrapPanel>
+                    <GMaps:GMapControl x:Name="gmaps" Background="Gray" Loaded="gmaps_Loaded" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                 </StackPanel>
             </GroupBox>
            
