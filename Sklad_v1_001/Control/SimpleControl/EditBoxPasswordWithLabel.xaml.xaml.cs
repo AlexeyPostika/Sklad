@@ -53,7 +53,7 @@ namespace Sklad_v1_001.Control.SimpleControl
             if (password != null)
             {
                 // Disconnect the handler while we're updating.
-                //password.PasswordChanged -= PasswordChanged;
+                password.PasswordChanged -= PasswordChanged;
             }
             if (e.NewValue != null)
             {
@@ -67,18 +67,17 @@ namespace Sklad_v1_001.Control.SimpleControl
                 password.Password = string.Empty;
             }
             // Now, reconnect the handler.
-            //password.PasswordChanged += new RoutedEventHandler(PasswordChanged);
+            password.PasswordChanged += new RoutedEventHandler(PasswordChanged);
         }
         /// <summary>
         /// Handles the password change event.
         /// </summary>
         static void PasswordChanged(object sender, RoutedEventArgs e)
         {
-            //PasswordBox password = sender as PasswordBox;
-            //_updating = true;
-            //SetBoundPassword(password, password.Password);
-            //_updating = false;
-            //password.Focus();
+            PasswordBox password = sender as PasswordBox;
+            _updating = true;
+            SetBoundPassword(password, password.Password);
+            _updating = false;
         }
         #endregion
 
