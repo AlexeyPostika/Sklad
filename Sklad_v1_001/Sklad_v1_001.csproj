@@ -1254,6 +1254,7 @@
     <Resource Include="Icone\IconShops_X32.png" />
     <Resource Include="Icone\IconShops_X16.png" />
     <Resource Include="Icone\IconShops_X30.png" />
+    <Resource Include="Icone\IconShops_X12.png" />
     <Content Include="SQLCommand\JDB_DataAdapter.sql" />
     <Content Include="SQLCommand\JDB_POS.sql" />
     <Resource Include="Icone\IconOk.png" />

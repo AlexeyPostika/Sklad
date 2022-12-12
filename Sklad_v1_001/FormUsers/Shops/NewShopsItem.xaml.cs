@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GMap.NET;
 using GMap.NET.MapProviders;
+using Sklad_v1_001.GlobalVariable;
 
 namespace Sklad_v1_001.FormUsers.Shops
 {
@@ -72,6 +73,17 @@ namespace Sklad_v1_001.FormUsers.Shops
             //Для запросов
             GMapProvider.WebProxy = WebRequest.GetSystemWebProxy();
             GMapProvider.WebProxy.Credentials = CredentialCache.DefaultCredentials;
+
+            //Инициализация маркера
+            GMap.NET.WindowsPresentation.GMapMarker marker = new GMap.NET.WindowsPresentation.GMapMarker(new PointLatLng(47.2229, 38.8855908));
+
+            //Пример как добавить маркер на карту            
+            Image image = new Image();
+            image.Source = ImageHelper.GenerateImage("IconShops_X24.png"); 
+            
+            marker.Shape = image;
+
+            gmaps.Markers.Add(marker);
         }
     }
 }
