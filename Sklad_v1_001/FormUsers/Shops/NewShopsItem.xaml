@@ -69,7 +69,7 @@
                                               Description="{Binding Path=Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                               EnableTextBox="True"/>
                     </WrapPanel>
-                    <GMaps:GMapControl x:Name="gmaps" Background="Gray" Loaded="gmaps_Loaded" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    <GMaps:GMapControl Loaded="gmaps_Loaded" x:Name="gmaps" Height="500" Width="500"/>
                 </StackPanel>
             </GroupBox>
            
