@@ -124,6 +124,7 @@ namespace WebHTMLConvertObject
 
         private void SearchHTML(String htmlContent)
         {
+            Content1.Text = String.Empty;
             // Obtain the document interface
             IHTMLDocument2 htmlDocument = (IHTMLDocument2)new mshtml.HTMLDocument();
 
@@ -156,9 +157,16 @@ namespace WebHTMLConvertObject
                 }
                 if (!String.IsNullOrEmpty(ElementList.Text))
                 {
+                   
                     if (element.tagName == ElementList.Text)
                     {
-                        Content1.Text = element.innerText;
+                        Content1.Text += element.innerText == null ? Environment.NewLine + element.outerHTML : Environment.NewLine + element.innerText;
+                        //String temp1 = element.;
+                        var temp = element.document;
+                        if (element.outerHTML == "twitter:card")
+                        {
+
+                        }
                     }
                 }
 

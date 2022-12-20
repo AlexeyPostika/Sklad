@@ -1,0 +1,47 @@
+﻿<Window x:Class="GMaps_Test.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GMaps_Test"
+        xmlns:gmaps="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
+        xmlns:FlexListView="clr-namespace:GMaps_Test.FlexControls.FlexListView"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" x:Name="page">
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5"/>
+        </Grid.ColumnDefinitions>
+        <WrapPanel Name="menu" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" Grid.Column="1">
+            <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Label Content="Координаты по метке"/>
+                <TextBlock x:Name="Ox" Background="Gray" Margin="0,0,0,5"/>
+                <TextBlock x:Name="Oy" Background="Gray"/>
+            </StackPanel>
+            <StackPanel Width="Auto">
+                <Label Content="Поиск по адресу"  Margin="10,0,0,0"/>
+                <StackPanel>
+                    <TextBox x:Name="search" Background="Violet" Margin="10,0,0,5" Keyboard.KeyDown="search_KeyDown"/>
+                    <Popup x:Name="popup1" StaysOpen="False" Placement="Mouse" MaxWidth="350" AllowsTransparency="True">
+                        <FlexListView:FlexListViewItem x:Name="list" ListData="{Binding ElementName=page, Path=location, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="250"
+                                                       ButtonSelectClick="list_ButtonSelectClick"
+                                                      />
+                    </Popup>
+                </StackPanel>
+                
+            </StackPanel>
+        </WrapPanel>
+        <gmaps:GMapControl x:Name="gmaps" Loaded="gmaps_Loaded" Grid.Row="1" Grid.Column="1"
+                           Height="{Binding ElementName=page, Path=HeightPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                           Width="{Binding ElementName=page, Path=Width, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                           MouseDoubleClick="gmaps_MouseLeftButtonDown"/>
+    </Grid>
+</Window>
