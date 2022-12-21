@@ -482,6 +482,9 @@
       <DependentUpon>NewAddProductItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\SupplyDocumentDelivery\SupplyDocumentDeliveryLogic.cs" />
+    <Compile Include="GlobalAttributes\GMap.cs" />
+    <Compile Include="HelperGlobal\GMapIntegration\OpenStreetMap\Row.cs" />
+    <Compile Include="HelperGlobal\GMapIntegration\OpenStreetMap\RowDetails.cs" />
     <Compile Include="HelperGlobal\Role\AccessRules.cs" />
     <Compile Include="HelperGlobal\StoreAPI\Model\Company\CompanyRequest.cs" />
     <Compile Include="HelperGlobal\StoreAPI\Model\Shops\ShopRequest.cs" />

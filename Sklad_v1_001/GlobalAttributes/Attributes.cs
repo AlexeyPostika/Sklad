@@ -21,8 +21,9 @@ namespace Sklad_v1_001.GlobalAttributes
 {    
     public class Attributes
     {
-
         public Numeric numeric { get; set; }
+        public GMap gMap { get; set; } 
+
         public static Attributes globalData;
         ConvertData convertData;
         //работа с схемой БД 
@@ -60,6 +61,7 @@ namespace Sklad_v1_001.GlobalAttributes
         public Attributes()
         {
             numeric = new Numeric();
+            gMap = new GMap();
             shemaStorage = new ShemaStorаge();
             getCategoryTableTableAdapter = new GetCategoryTableTableAdapter();
             getDeliveryCompanyTableAdapter = new GetDeliveryCompanyTableAdapter();          
