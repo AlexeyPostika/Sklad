@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Sklad_v1_001.GlobalList;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,18 +44,17 @@ namespace Sklad_v1_001.Control.FlexListView
 
             return str;
         }
-    }
-    public class RowListView
-    {
-        public Int64 ID { get; set; }
-        public String Description { get; set; }
-        public ImageSource Icon { get; set; }
-    }
+    }   
     /// <summary>
     /// Логика взаимодействия для FlexListViewItem.xaml
     /// </summary>
-    public partial class FlexListViewItem : UserControl
+    public partial class FlexListViewItem : UserControl, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         //Text
         // свойство зависимостей
         public static readonly DependencyProperty TextProperty = DependencyProperty.Register(
@@ -88,6 +89,30 @@ namespace Sklad_v1_001.Control.FlexListView
                         "IsOpenPopup",
                         typeof(Boolean),
                         typeof(FlexListViewItem), new UIPropertyMetadata(false));
+        
+        // свойство зависимостей
+        public static readonly DependencyProperty IsRequiredProperty = DependencyProperty.Register(
+                        "IsRequired",
+                        typeof(Visibility),
+                        typeof(FlexListViewItem), new UIPropertyMetadata(Visibility.Collapsed));
+
+        // свойство зависимостей
+        public static readonly DependencyProperty HorizontalTextAlignmentProperty = DependencyProperty.Register(
+                        "HorizontalTextAlignment",
+                        typeof(HorizontalAlignment),
+                        typeof(FlexListViewItem), new UIPropertyMetadata(HorizontalAlignment.Left));
+
+        // свойство зависимостей
+        public static readonly DependencyProperty AcceptsReturnProperty = DependencyProperty.Register(
+                        "AcceptReturn",
+                        typeof(Boolean),
+                        typeof(FlexListViewItem), new UIPropertyMetadata(false));
+
+        // свойство зависимостей
+        public static readonly DependencyProperty MaxLengthProperty = DependencyProperty.Register(
+                        "MaxLength",
+                        typeof(Int32),
+                        typeof(FlexListViewItem), new UIPropertyMetadata(50));
         // Обычное свойство .NET  - обертка над свойством зависимостей     
         public string Text
         {
@@ -124,6 +149,57 @@ namespace Sklad_v1_001.Control.FlexListView
             get { return (Boolean)GetValue(IsOpenPopupProperty); }
             set { SetValue(IsOpenPopupProperty, value); }
         }
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Visibility IsRequired
+        {
+            get
+            {
+                return (Visibility)GetValue(IsRequiredProperty);
+            }
+            set
+            {
+                SetValue(IsRequiredProperty, value);
+                OnPropertyChanged("IsRequired");
+            }
+        }
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Int32 MaxLength
+        {
+            get
+            {
+                return (Int32)GetValue(MaxLengthProperty);
+            }
+            set
+            {
+                SetValue(MaxLengthProperty, value);
+                OnPropertyChanged("MaxLength");
+            }
+        }
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public HorizontalAlignment HorizontalTextAlignment
+        {
+            get
+            {
+                return (HorizontalAlignment)GetValue(HorizontalTextAlignmentProperty);
+            }
+            set
+            {
+                SetValue(HorizontalTextAlignmentProperty, value);
+                OnPropertyChanged("HorizontalTextAlignment");
+            }
+        }
+
+        // Обычное свойство .NET  - обертка над свойством зависимостей
+        public Boolean AcceptsReturn
+        {
+            get { return (Boolean)GetValue(AcceptsReturnProperty); }
+            set
+            {
+                SetValue(AcceptsReturnProperty, value);
+            }
+        }
         public event Action ButtonSearch;
         public delegate void ButtonSelectClickHandler(Int64 text);
         public event ButtonSelectClickHandler ButtonSelectClick;
@@ -136,14 +212,8 @@ namespace Sklad_v1_001.Control.FlexListView
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            MarginListView = new Thickness(5 + this.search.wrapPanel.ActualWidth, 0, 5, 5);
+            MarginListView = new Thickness(5 + this.wrapPanel.ActualWidth, 0, 5, 5);
             this.DataContext = this;
-        }
-
-        private void search_ButtonClick()
-        {            
-            TextSearch = Text.Filter();
-            ButtonSearch?.Invoke();
         }
 
         private void list_MouseUp(object sender, MouseButtonEventArgs e)
@@ -153,5 +223,10 @@ namespace Sklad_v1_001.Control.FlexListView
                 ButtonSelectClick?.Invoke(row.ID);
         }
 
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextSearch = Text.Filter();
+            ButtonSearch?.Invoke();
+        }
     }
 }

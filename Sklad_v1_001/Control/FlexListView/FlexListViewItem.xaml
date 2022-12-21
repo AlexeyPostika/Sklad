@@ -9,48 +9,46 @@
              xmlns:res="clr-namespace:Sklad_v1_001.Properties"
              mc:Ignorable="d" 
              x:Name="control">
-    <Grid Loaded="Grid_Loaded">
+    <Grid Loaded="Grid_Loaded"  Margin="0,5,0,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
-        <StackPanel x:Name="items" 
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Top"
-                     Grid.ColumnSpan="2">
-            <SimpleControl:EditBoxWithLabel x:Name="search"   
-                                            Grid.ColumnSpan="2"
-                                            HorizontalAlignment="Stretch"
-                                            VerticalAlignment="Top"
-                                            LabelText="{Binding ElementName=control, Path=LabelText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                            Text="{Binding ElementName=control, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                            ButtonClick="search_ButtonClick"/>
-            <Popup x:Name="popup1" StaysOpen="False" AllowsTransparency="True"
+        <WrapPanel Name="wrapPanel" Width="Auto" Margin="5,0,0,0">
+            <Label Name="label" Style="{DynamicResource LabelStyle}" Height="30" Content="{Binding ElementName=control, Path=LabelText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <Label Name="required" Style="{DynamicResource LabelStyle}"  Margin="-9,0,0,0" FontSize="18" Height="30" Visibility="{Binding ElementName=control, Path=IsRequired, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="Red" Content="*" HorizontalAlignment="Left"/>
+        </WrapPanel>
+
+        <TextBox Name="TextBox"  
+                     Grid.Column="1"
+                     Style="{DynamicResource TextBoxStyle}"
+                     Text="{Binding ElementName=control, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     HorizontalContentAlignment="{Binding ElementName=control, Path=HorizontalTextAlignment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     TextChanged="TextBox_TextChanged" 
+                     MaxLength="{Binding ElementName=control, Path=MaxLength, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Popup x:Name="popup1" 
+                   StaysOpen="False" 
+                   AllowsTransparency="True"
+                   PlacementTarget="{Binding ElementName=TextBox}"                     
                    IsOpen="{Binding ElementName=control, Path=IsOpenPopup, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                <ListView x:Name="list" 
+            <ListView x:Name="list" 
+                      ItemsSource="{Binding ElementName=control, Path=ListData, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"   
                       Margin="{Binding ElementName=control, Path=MarginListView, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                      ItemsSource="{Binding ElementName=control, Path=ListData, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                
                       Mouse.MouseUp="list_MouseUp">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn DisplayMemberBinding="{Binding Description}" Header="Name" Width="Auto"/>
-                            <GridViewColumn Header="Icon" Width="35">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Image Source="{Binding Icon}"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-
-
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-            </Popup>
-        </StackPanel>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Description}" Header="Name" Width="Auto"/>
+                        <GridViewColumn Header="Icon" Width="35">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding Icon}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Popup>
     </Grid>
 </UserControl>

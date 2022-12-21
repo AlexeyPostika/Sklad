@@ -21,6 +21,10 @@
         </Grid.RowDefinitions>
         <FlexListView:FlexListViewItem x:Name="search" 
                                        LabelText="{x:Static res:Resources.SearchAdress}"
+                                       Text="{Binding ElementName=control, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       TextSearch="{Binding ElementName=control, Path=TextSearch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       IsOpenPopup="{Binding ElementName=control, Path=IsOpenPopup, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                       
+                                       ListData="{Binding ElementName=control, Path=ListData, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                        Grid.ColumnSpan="2"
                                        ButtonSearch="search_ButtonSearch"
                                        ButtonSelectClick="search_ButtonSelectClick"

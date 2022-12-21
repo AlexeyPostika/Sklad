@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace Sklad_v1_001.GlobalList
 {
@@ -100,6 +101,13 @@ namespace Sklad_v1_001.GlobalList
         public Int32 ID { get; set; }
         public String Name { get; set; }
         public String Description { get; set; }
+    }
+    //Используем для всплывающих popup при поиске
+    public class RowListView
+    {
+        public Int64 ID { get; set; }
+        public String Description { get; set; }
+        public ImageSource Icon { get; set; }
     }
 
     public class DateTimeListFilter
