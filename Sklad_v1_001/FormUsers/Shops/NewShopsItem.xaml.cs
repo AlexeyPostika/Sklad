@@ -43,47 +43,6 @@ namespace Sklad_v1_001.FormUsers.Shops
 
         }
 
-        private void gmaps_Loaded(object sender, RoutedEventArgs e)
-        {
-            //Настройки для компонента GMAP
-            gmaps.Bearing = 0;
-            //Перетаскивание левой кнопки мыши
-            gmaps.CanDragMap = true;
-            //перетаскивание карты левой кнопкой мыши
-            gmaps.DragButton = MouseButton.Left;
-            // макисмальное приближение
-            gmaps.MaxZoom = 18;
-            //Минимальное приближение
-            gmaps.MinZoom = 2;
-            //курсор мыши в центре карты
-            gmaps.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
-
-            //Скрытие внешней сетки карты
-            gmaps.ShowTileGridLines = false;
-            // При загрузке 10-кратное увеличение
-            gmaps.Zoom = 10;
-            //Убрать красный крестик по центру
-            gmaps.ShowCenter = false;
-
-            //Чья карта используется
-            gmaps.MapProvider = GMapProviders.GoogleMap;
-            GMaps.Instance.Mode = AccessMode.ServerAndCache;
-            gmaps.Position = new GMap.NET.PointLatLng(47.2229, 38.9095);
-
-            //Для запросов
-            GMapProvider.WebProxy = WebRequest.GetSystemWebProxy();
-            GMapProvider.WebProxy.Credentials = CredentialCache.DefaultCredentials;
-
-            //Инициализация маркера
-            GMap.NET.WindowsPresentation.GMapMarker marker = new GMap.NET.WindowsPresentation.GMapMarker(new PointLatLng(47.2229, 38.8855908));
-
-            //Пример как добавить маркер на карту            
-            Image image = new Image();
-            image.Source = ImageHelper.GenerateImage("IconShops_X24.png"); 
-            
-            marker.Shape = image;
-
-            gmaps.Markers.Add(marker);
-        }
+       
     }
 }

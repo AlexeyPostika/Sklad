@@ -262,6 +262,9 @@
     <Compile Include="Control\FlexFilter\FlexGridFromToWindowTime.xaml.cs">
       <DependentUpon>FlexGridFromToWindowTime.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexGmap\FlexGmapSearch.xaml.cs">
+      <DependentUpon>FlexGmapSearch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FlexGridControl\ImageWithCheckBox.xaml.cs">
       <DependentUpon>ImageWithCheckBox.xaml</DependentUpon>
     </Compile>
@@ -276,6 +279,9 @@
     </Compile>
     <Compile Include="Control\FlexImage\ImageListPage.xaml.cs">
       <DependentUpon>ImageListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexListView\FlexListViewItem.xaml.cs">
+      <DependentUpon>FlexListViewItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\FlexMenu\frameMenu.xaml.cs">
       <DependentUpon>frameMenu.xaml</DependentUpon>
@@ -691,6 +697,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Control\FlexGmap\FlexGmapSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\FlexGridControl\ImageWithCheckBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -708,6 +718,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\FlexImage\ImageListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\FlexListView\FlexListViewItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

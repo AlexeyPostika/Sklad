@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="Sklad_v1_001.Control.FlexGmap.FlexGmapSearch"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sklad_v1_001.Control.FlexGmap"
+             xmlns:FlexListView="clr-namespace:Sklad_v1_001.Control.FlexListView"
+             xmlns:SimpleControl="clr-namespace:Sklad_v1_001.Control.SimpleControl"
+             xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+             xmlns:GMaps="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
+             mc:Ignorable="d" 
+             x:Name="control">
+    <Grid Name="grid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <FlexListView:FlexListViewItem x:Name="search" 
+                                       LabelText="{x:Static res:Resources.SearchAdress}"
+                                       Grid.ColumnSpan="2"
+                                       ButtonSearch="search_ButtonSearch"
+                                       ButtonSelectClick="search_ButtonSelectClick"
+                                       />
+        <StackPanel x:Name="items" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <SimpleControl:EditBoxWithLabel x:Name="country" LabelText="{x:Static res:Resources.Country}" 
+                                            Text="{Binding Path=Country, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            IsEnabled="False"
+                                            Width="250"/>
+            <SimpleControl:EditBoxWithLabel x:Name="city" LabelText="{x:Static res:Resources.City}" 
+                                            Text="{Binding Path=City, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            IsEnabled="False"
+                                            Width="250"/>
+            <SimpleControl:EditBoxWithLabel x:Name="administrative" LabelText="{x:Static res:Resources.Administrative}" 
+                                            Text="{Binding Path=Administrative, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            IsEnabled="False"
+                                            Width="250"/>
+            <SimpleControl:EditBoxWithLabel x:Name="street" LabelText="{x:Static res:Resources.Street}" 
+                                            Text="{Binding Path=Street, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            IsEnabled="False"
+                                            Width="250"/>
+            <SimpleControl:EditBoxWithLabel x:Name="housenumber" LabelText="{x:Static res:Resources.Housenumber}" 
+                                            Text="{Binding Path=Housenumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            IsEnabled="False"
+                                            Width="250"/>
+            <SimpleControl:EditBoxWithLabel x:Name="postcode" LabelText="{x:Static res:Resources.PostCode}" 
+                                            Text="{Binding Path=Postcode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            IsEnabled="False"
+                                            Width="250"/>
+            <SimpleControl:EditBoxWithLabel x:Name="center_point" LabelText="{x:Static res:Resources.CenterPoint}" 
+                                            Text="{Binding Path=center_point, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            IsEnabled="False"
+                                            Width="250"/>
+        </StackPanel>
+        <GMaps:GMapControl x:Name="gmaps" 
+                           Loaded="gmaps_Loaded"
+                           Grid.Column="1"
+                           Grid.Row="1"
+                           Height="{Binding ElementName=items, Path=Height, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                           Width="{Binding ElementName=grid, Path=ColumnDefinitions[1].Width, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                           Margin="5,10,5,0"/>
+    </Grid>
+</UserControl>

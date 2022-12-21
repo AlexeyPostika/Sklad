@@ -286,7 +286,7 @@
     <value>Наименование под категории</value>
   </data>
   <data name="Adress" xml:space="preserve">
-    <value>Адресс доставки</value>
+    <value>Адрес доставки</value>
   </data>
   <data name="FromWhere" xml:space="preserve">
     <value>От куда идет</value>
@@ -1013,5 +1013,29 @@
   </data>
   <data name="CompanyStatus3" xml:space="preserve">
     <value>Отказано</value>
+  </data>
+  <data name="Administrative" xml:space="preserve">
+    <value>Район</value>
+  </data>
+  <data name="CenterPoint" xml:space="preserve">
+    <value>Координаты</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Страна</value>
+  </data>
+  <data name="Housenumber" xml:space="preserve">
+    <value>Номер дома</value>
+  </data>
+  <data name="PostCode" xml:space="preserve">
+    <value>Почтовый индекс</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>Улица</value>
+  </data>
+  <data name="SearchAdress" xml:space="preserve">
+    <value>Поиск по адресу</value>
   </data>
 </root>

@@ -19,7 +19,7 @@ namespace Sklad_v1_001.Properties {
     // с помощью такого средства, как ResGen или Visual Studio.
     // Чтобы добавить или удалить член, измените файл .ResX и снова запустите ResGen
     // с параметром /str или перестройте свой проект VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -151,7 +151,16 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Адресс доставки.
+        ///   Ищет локализованную строку, похожую на Район.
+        /// </summary>
+        public static string Administrative {
+            get {
+                return ResourceManager.GetString("Administrative", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Адрес доставки.
         /// </summary>
         public static string Adress {
             get {
@@ -439,11 +448,29 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Координаты.
+        /// </summary>
+        public static string CenterPoint {
+            get {
+                return ResourceManager.GetString("CenterPoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Чек.
         /// </summary>
         public static string CheckProduct {
             get {
                 return ResourceManager.GetString("CheckProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Город.
+        /// </summary>
+        public static string City {
+            get {
+                return ResourceManager.GetString("City", resourceCulture);
             }
         }
         
@@ -534,6 +561,15 @@ namespace Sklad_v1_001.Properties {
         public static string CorrespondentAccount {
             get {
                 return ResourceManager.GetString("CorrespondentAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Страна.
+        /// </summary>
+        public static string Country {
+            get {
+                return ResourceManager.GetString("Country", resourceCulture);
             }
         }
         
@@ -1074,6 +1110,15 @@ namespace Sklad_v1_001.Properties {
         public static string HandTitle {
             get {
                 return ResourceManager.GetString("HandTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Номер дома.
+        /// </summary>
+        public static string Housenumber {
+            get {
+                return ResourceManager.GetString("Housenumber", resourceCulture);
             }
         }
         
@@ -1825,6 +1870,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Почтовый индекс.
+        /// </summary>
+        public static string PostCode {
+            get {
+                return ResourceManager.GetString("PostCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Производитель.
         /// </summary>
         public static string Procreator {
@@ -2176,6 +2230,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Поиск по адресу.
+        /// </summary>
+        public static string SearchAdress {
+            get {
+                return ResourceManager.GetString("SearchAdress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Отчество.
         /// </summary>
         public static string SecondName {
@@ -2298,6 +2361,15 @@ namespace Sklad_v1_001.Properties {
         public static string StopTitle {
             get {
                 return ResourceManager.GetString("StopTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Улица.
+        /// </summary>
+        public static string Street {
+            get {
+                return ResourceManager.GetString("Street", resourceCulture);
             }
         }
         

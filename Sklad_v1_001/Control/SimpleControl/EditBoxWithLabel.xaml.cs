@@ -56,7 +56,11 @@ namespace Sklad_v1_001.Control.SimpleControl
                         "MaxLength",
                         typeof(Int32),
                         typeof(EditBoxWithLabel), new UIPropertyMetadata(50));
-
+        public static readonly DependencyProperty LabelTextProperty = DependencyProperty.Register(
+                   "LabelText",
+                   typeof(String),
+                   typeof(EditBoxWithLabel), new UIPropertyMetadata(Properties.Resources.Name));
+       
         public EditBoxWithLabel()
         {
             InitializeComponent();
@@ -130,17 +134,22 @@ namespace Sklad_v1_001.Control.SimpleControl
 
         public event Action ButtonClick;
 
-        public string LabelText
-        {
-            get
-            {
-                return this.label.Content.ToString();
-            }
+        //public string LabelText
+        //{
+        //    get
+        //    {
+        //        return this.label.Content.ToString();
+        //    }
 
-            set
-            {
-                this.label.Content = value;
-            }
+        //    set
+        //    {
+        //        this.label.Content = value;
+        //    }
+        //}
+        public String LabelText
+        {
+            get { return (String)GetValue(LabelTextProperty); }
+            set { SetValue(LabelTextProperty, value); }
         }
 
         public double LabelWidth

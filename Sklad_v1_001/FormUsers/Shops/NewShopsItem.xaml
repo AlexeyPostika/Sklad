@@ -13,7 +13,7 @@
       xmlns:FlexEditBox="clr-namespace:Sklad_v1_001.Control.FlexEditBox"
       xmlns:FlexCheckBox="clr-namespace:Sklad_v1_001.Control.FlexCheckBox"
       xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"   
-      xmlns:GMaps="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
+      xmlns:Gmap="clr-namespace:Sklad_v1_001.Control.FlexGmap"
       mc:Ignorable="d" 
       Title="NewShopsItem"
        Style="{DynamicResource UsersPageWidth}" 
@@ -69,7 +69,8 @@
                                               Description="{Binding Path=Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                               EnableTextBox="True"/>
                     </WrapPanel>
-                    <GMaps:GMapControl Loaded="gmaps_Loaded" x:Name="gmaps" Height="500" Width="500"/>
+                    <!--<Gmap:FlexListViewItem x:Name="gmap" LabelText="{x:Static res:Resources.SearchAdress}"/>-->
+                    <Gmap:FlexGmapSearch/>
                 </StackPanel>
             </GroupBox>
            
