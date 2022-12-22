@@ -55,7 +55,7 @@
                                             IsEnabled="False"
                                             Width="250"/>
             <SimpleControl:EditBoxWithLabel x:Name="center_point" LabelText="{x:Static res:Resources.CenterPoint}" 
-                                            Text="{Binding Path=lon, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            Text="{Binding ElementName=control, Path=Geoposition, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                             IsEnabled="False"
                                             Width="250"/>
         </StackPanel>

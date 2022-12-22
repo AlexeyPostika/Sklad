@@ -70,7 +70,11 @@ namespace Sklad_v1_001.Control.FlexGmap
                         "ListData",
                         typeof(List<RowListView>),
                         typeof(FlexGmapSearch), new UIPropertyMetadata(new List<RowListView>()));
-
+        // свойство зависимостей
+        public static readonly DependencyProperty GeopositionProperty = DependencyProperty.Register(
+                        "Geoposition",
+                        typeof(String),
+                        typeof(FlexGmapSearch), new UIPropertyMetadata("0:0"));
         // Обычное свойство .NET  - обертка над свойством зависимостей     
         public string Text
         {
@@ -94,10 +98,14 @@ namespace Sklad_v1_001.Control.FlexGmap
             get { return (List<RowListView>)GetValue(ListDataProperty); }
             set { SetValue(ListDataProperty, value); }
         }
-
+        //Geoposition
+        public String Geoposition
+        {
+            get { return (String)GetValue(GeopositionProperty); }
+            set { SetValue(GeopositionProperty, value); }
+        }
         public Double Lat { get; set; }
         public Double Lng { get; set; }
-
         public String startPosition { get; set; }
         public String url { get; set; }
         public String lastUrl { get; set; }
@@ -189,6 +197,8 @@ namespace Sklad_v1_001.Control.FlexGmap
                     ListData = rows.ConvertToListView();
                     Lat = rows[0].lat;
                     Lng = rows[0].lon;
+                    Geoposition = Lat + " : " + Lng;
+                    //this.DataContext = rows[0];
                 }
             }
             catch (Exception ex)
