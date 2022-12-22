@@ -7,6 +7,7 @@ using Sklad_v1_001.GlobalVariable;
 using Sklad_v1_001.HelperGlobal.GMapIntegration.OpenStreetMap;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -111,8 +112,8 @@ namespace Sklad_v1_001.Control.FlexGmap
         }
 
         private void search_ButtonSearch()
-        {
-            if (!String.IsNullOrEmpty(TextSearch))
+        {          
+            if (!String.IsNullOrEmpty(TextSearch) && TextSearch.ToArray().Last().ToString()=="+")
                 GetRequest(url, TextSearch);
 
             if (rows.Count() > 1)
@@ -129,14 +130,16 @@ namespace Sklad_v1_001.Control.FlexGmap
                 GMap.NET.WindowsPresentation.GMapMarker marker = new GMap.NET.WindowsPresentation.GMapMarker(new PointLatLng(tempRow.lat, tempRow.lon));
                 marker.Offset = new Point(-10, -20);
                 Image image = new Image();
-                image.Source = tempRow.icon!=null? tempRow.icon:ImageHelper.GenerateImage("IconGMap_X24.png");
+                image.Source = ImageHelper.GenerateImage("IconGMap_X24.png");
                 marker.Shape = image;
                 gmaps.Markers.Add(marker);
                 gmaps.Zoom = 25;
                 gmaps.Position = new GMap.NET.PointLatLng(tempRow.lat, tempRow.lon);
                 //Ox.Text = marker.Position.Lat.ToString();
                 //Oy.Text = marker.Position.Lng.ToString();
-                GetDetails(tempRow.osm_id);
+                GetDetails(tempRow);
+                Text = tempRow.display_name;
+                IsOpenPopup = false;
             }
            
         }
@@ -166,6 +169,7 @@ namespace Sklad_v1_001.Control.FlexGmap
         {
             rows.Clear();
             ListData.Clear();
+            gmaps.Markers.Clear();
             try
             {
                 using (var webClient = new WebClient())
@@ -193,15 +197,17 @@ namespace Sklad_v1_001.Control.FlexGmap
 
             }
         }
-        private void GetDetails(Int64 osmid)
+        private void GetDetails(Row row)
         {
             //https://nominatim.openstreetmap.org/details.php?osmtype=W&osmid=129704752&class=building&addressdetails=1&hierarchy=0&group_hierarchy=1&format=json
-            String pathDetails = @"https://nominatim.openstreetmap.org/details.php?osmtype=W&osmid=" + osmid + @"&class=building&addressdetails=1&hierarchy=0&group_hierarchy=1&format=json";
+            String pathDetails = @"https://nominatim.openstreetmap.org/details.php";
+            //osmtype=W&osmid=" + osmid + @"&class=building&addressdetails=1&hierarchy=0&group_hierarchy=1&format=json";
 
             try
             {
                 using (var webClient = new WebClient())
                 {
+                    pathDetails += "?osmtype=" + row.osm_type.ToArray()[0].ToString().ToUpper() + "&osmid=" + row.osm_id.ToString() + "&class=" + row.category + "&addressdetails=1&hierarchy=0&group_hierarchy=1&format=json";
                     // Выполняем запрос по адресу и получаем ответ в виде строки
                     ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3;
                     System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
@@ -212,9 +218,19 @@ namespace Sklad_v1_001.Control.FlexGmap
                     webClient.Headers[HttpRequestHeader.ContentType] = "application/json";
 
                     string response = webClient.DownloadString(new Uri(pathDetails));
-                    var temp = rows.FirstOrDefault(x => x.osm_id == osmid);
+                    var temp = rows.FirstOrDefault(x => x.osm_id == row.osm_id);
                     if (temp != null)
-                        temp.rowDetails = JsonConvert.DeserializeObject<RowDetails>(response);
+                    {
+                        temp.rowDetails = JsonConvert.DeserializeObject<RowDetails>(response, new JsonSerializerSettings()
+                        {
+                            Error = (sender, error) =>
+                            {
+                                //error.Add(error.ErrorContext.Error.Message);
+                                error.ErrorContext.Handled = true;
+                            }
+                        });
+                        this.DataContext = rows.FirstOrDefault(x=>x.osm_id==temp.osm_id);
+                    }
                 }
             }
             catch (Exception ex)
@@ -222,6 +238,7 @@ namespace Sklad_v1_001.Control.FlexGmap
 
 
             }
+           
         }
     }
 }

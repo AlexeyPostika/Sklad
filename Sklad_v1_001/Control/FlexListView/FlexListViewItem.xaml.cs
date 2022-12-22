@@ -228,5 +228,14 @@ namespace Sklad_v1_001.Control.FlexListView
             TextSearch = Text.Filter();
             ButtonSearch?.Invoke();
         }
+
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                TextSearch = Text.Filter() + "+";
+                ButtonSearch?.Invoke();
+            }
+        }
     }
 }

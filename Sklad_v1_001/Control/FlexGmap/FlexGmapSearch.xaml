@@ -29,33 +29,33 @@
                                        ButtonSearch="search_ButtonSearch"
                                        ButtonSelectClick="search_ButtonSelectClick"
                                        />
-        <StackPanel x:Name="items" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+        <StackPanel x:Name="items" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" DataContext="{Binding Path=rowDetails, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <SimpleControl:EditBoxWithLabel x:Name="country" LabelText="{x:Static res:Resources.Country}" 
-                                            Text="{Binding Path=Country, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            Text="{Binding Path=address[7].localname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                             IsEnabled="False"
                                             Width="250"/>
             <SimpleControl:EditBoxWithLabel x:Name="city" LabelText="{x:Static res:Resources.City}" 
-                                            Text="{Binding Path=City, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            Text="{Binding Path=address[3].localname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                             IsEnabled="False"
                                             Width="250"/>
             <SimpleControl:EditBoxWithLabel x:Name="administrative" LabelText="{x:Static res:Resources.Administrative}" 
-                                            Text="{Binding Path=Administrative, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            Text="{Binding Path=address[2].localname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                             IsEnabled="False"
                                             Width="250"/>
             <SimpleControl:EditBoxWithLabel x:Name="street" LabelText="{x:Static res:Resources.Street}" 
-                                            Text="{Binding Path=Street, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            Text="{Binding Path=address[1].localname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                             IsEnabled="False"
                                             Width="250"/>
             <SimpleControl:EditBoxWithLabel x:Name="housenumber" LabelText="{x:Static res:Resources.Housenumber}" 
-                                            Text="{Binding Path=Housenumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            Text="{Binding Path=housenumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                             IsEnabled="False"
                                             Width="250"/>
             <SimpleControl:EditBoxWithLabel x:Name="postcode" LabelText="{x:Static res:Resources.PostCode}" 
-                                            Text="{Binding Path=Postcode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            Text="{Binding Path=address[6].localname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                             IsEnabled="False"
                                             Width="250"/>
             <SimpleControl:EditBoxWithLabel x:Name="center_point" LabelText="{x:Static res:Resources.CenterPoint}" 
-                                            Text="{Binding Path=center_point, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            Text="{Binding Path=lon, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                             IsEnabled="False"
                                             Width="250"/>
         </StackPanel>

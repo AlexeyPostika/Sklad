@@ -16,7 +16,7 @@ namespace Sklad_v1_001.HelperGlobal.GMapIntegration.OpenStreetMap
         public String type { get; set; }
         public Int32 admin_level { get; set; }
         public String localname { get; set; }
-        public String[] names { get; set; }
+        public Name names { get; set; }
         public Addresstags addresstags { get; set; }
         public String housenumber { get; set; }
         public String calculated_postcode { get; set; }
@@ -33,6 +33,12 @@ namespace Sklad_v1_001.HelperGlobal.GMapIntegration.OpenStreetMap
         public List<Address> address { get; set; }
 
     }
+
+    public class Name
+    {
+        public String name { get; set; }
+    }
+
     public class Addresstags
     {
         public String housenumber { get; set; }

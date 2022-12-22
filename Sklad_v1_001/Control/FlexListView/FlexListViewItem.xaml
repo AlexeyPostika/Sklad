@@ -25,6 +25,7 @@
                      Text="{Binding ElementName=control, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      HorizontalContentAlignment="{Binding ElementName=control, Path=HorizontalTextAlignment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      TextChanged="TextBox_TextChanged" 
+                     Keyboard.KeyDown="TextBox_KeyDown" 
                      MaxLength="{Binding ElementName=control, Path=MaxLength, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Popup x:Name="popup1" 
