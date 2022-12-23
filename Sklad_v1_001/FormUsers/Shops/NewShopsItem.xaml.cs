@@ -88,7 +88,16 @@ namespace Sklad_v1_001.FormUsers.Shops
         #region Save
 
         private Int32 Save(LocaleRow localeRow)
-        {            
+        {
+            NewShopRow.Country = gmap.Сountry;
+            NewShopRow.City = gmap.City;
+            NewShopRow.Administrative = gmap.Administrative;
+            NewShopRow.Street = gmap.Street;
+            NewShopRow.Housenumber = gmap.Housenumber;
+            NewShopRow.PostCode = gmap.PostCode;
+            NewShopRow.Address = gmap.Text;
+            NewShopRow.Lat = gmap.Lat;
+            NewShopRow.Lng = gmap.Lng;
             Int32 tempID =  shopsLogic.SaveRow(localeRow);
 
             return tempID;

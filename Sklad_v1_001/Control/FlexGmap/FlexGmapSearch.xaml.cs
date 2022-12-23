@@ -89,32 +89,32 @@ namespace Sklad_v1_001.Control.FlexGmap
         public static readonly DependencyProperty СountryProperty = DependencyProperty.Register(
                         "Сountry",
                         typeof(String),
-                        typeof(FlexGmapSearch), new UIPropertyMetadata(String.Empty));
+                        typeof(FlexGmapSearch), new UIPropertyMetadata());
         // свойство зависимостей
         public static readonly DependencyProperty CityProperty = DependencyProperty.Register(
                         "City",
                         typeof(String),
-                        typeof(FlexGmapSearch), new UIPropertyMetadata(String.Empty));
+                        typeof(FlexGmapSearch), new UIPropertyMetadata());
         // свойство зависимостей
         public static readonly DependencyProperty AdministrativeProperty = DependencyProperty.Register(
                         "Administrative",
                         typeof(String),
-                        typeof(FlexGmapSearch), new UIPropertyMetadata(String.Empty));
+                        typeof(FlexGmapSearch), new UIPropertyMetadata());
         // свойство зависимостей
         public static readonly DependencyProperty StreetProperty = DependencyProperty.Register(
                         "Street",
                         typeof(String),
-                        typeof(FlexGmapSearch), new UIPropertyMetadata(String.Empty));
+                        typeof(FlexGmapSearch), new UIPropertyMetadata());
         // свойство зависимостей
         public static readonly DependencyProperty HousenumberProperty = DependencyProperty.Register(
                         "Housenumber",
                         typeof(String),
-                        typeof(FlexGmapSearch), new UIPropertyMetadata(String.Empty));
+                        typeof(FlexGmapSearch), new UIPropertyMetadata());
         // свойство зависимостей
         public static readonly DependencyProperty PostCodeProperty = DependencyProperty.Register(
                         "PostCode",
                         typeof(Int32),
-                        typeof(FlexGmapSearch), new UIPropertyMetadata(0));
+                        typeof(FlexGmapSearch), new UIPropertyMetadata());
         // Обычное свойство .NET  - обертка над свойством зависимостей     
         public string Text
         {

@@ -85,14 +85,15 @@
                     <!--<Gmap:FlexListViewItem x:Name="gmap" LabelText="{x:Static res:Resources.SearchAdress}"/>-->
                     <Gmap:FlexGmapSearch x:Name="gmap"  
                                          Text="{Binding Path=Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                         Lat="{Binding Path=Lat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        />
+                    <!--Lat="{Binding Path=Lat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                          Lng="{Binding Path=Lng, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                         Сountry="{Binding Path=Сountry, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                         City ="{Binding Path=City, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                         Administrative="{Binding Path=Administrative, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                         Street ="{Binding Path=Street, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                         Housenumber="{Binding Path=Housenumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                         PostCode ="{Binding Path=PostCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                         Сountry1="{Binding Path=Сountry, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         City1 ="{Binding Path=City, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Administrative1="{Binding Path=Administrative, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Street1 ="{Binding Path=Street, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Housenumber1="{Binding Path=Housenumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         PostCode1 ="{Binding Path=PostCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
                 </StackPanel>
             </GroupBox>
            
