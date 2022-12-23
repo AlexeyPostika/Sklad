@@ -341,6 +341,9 @@
     <Compile Include="Control\ToolBar\Close.xaml.cs">
       <DependentUpon>Close.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\ToolBar\NewShopToolBar.xaml.cs">
+      <DependentUpon>NewShopToolBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\ToolBar\NewSaleDocumentGridToolBar.xaml.cs">
       <DependentUpon>NewSaleDocumentGridToolBar.xaml</DependentUpon>
     </Compile>
@@ -801,6 +804,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\ToolBar\Close.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\ToolBar\NewShopToolBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

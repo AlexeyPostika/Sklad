@@ -27,22 +27,73 @@ namespace Sklad_v1_001.FormUsers.Shops
     public partial class NewShopsItem : Page
     {
         Attributes attributes;
+
+
+        //объект Shop
+        LocaleRow newShopRow;
+        ShopsLogic shopsLogic;
+       
+        public LocaleRow NewShopRow
+        {
+            get
+            {
+                return newShopRow;
+            }
+
+            set
+            {
+                newShopRow = value;
+            }
+        }
+
         public NewShopsItem(Attributes _attributes)
         {
             InitializeComponent();
             this.attributes = _attributes;
+
+            shopsLogic = new ShopsLogic(attributes);
+
+            NewShopRow = new LocaleRow();
+
+            this.DataContext = NewShopRow;
         }
 
-        private void checkBoxShop_ButtonCheckedClick(object sender, RoutedEventArgs e)
+        #region ToolBar
+        private void toolbar_ButtonSave()
+        {
+            Save(NewShopRow);
+        }
+
+        private void toolbar_ButtonSaveclose()
         {
 
         }
 
-        private void checkBoxShop_ButtonUnCheckedClick(object sender, RoutedEventArgs e)
+        private void toolbar_ButtonListCancel()
         {
 
         }
 
-       
+        private void toolbar_ButtonRgister()
+        {
+
+        }
+
+        private void toolbar_ButtonCancel()
+        {
+
+        }
+        #endregion
+
+        #region Save
+
+        private Int32 Save(LocaleRow localeRow)
+        {            
+            Int32 tempID =  shopsLogic.SaveRow(localeRow);
+
+            return tempID;
+        }
+
+        #endregion
     }
 }

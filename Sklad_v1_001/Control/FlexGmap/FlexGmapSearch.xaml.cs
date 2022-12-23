@@ -74,7 +74,47 @@ namespace Sklad_v1_001.Control.FlexGmap
         public static readonly DependencyProperty GeopositionProperty = DependencyProperty.Register(
                         "Geoposition",
                         typeof(String),
-                        typeof(FlexGmapSearch), new UIPropertyMetadata("0:0"));
+                        typeof(FlexGmapSearch), new UIPropertyMetadata("0:0"));       
+        // свойство зависимостей
+        public static readonly DependencyProperty LatProperty = DependencyProperty.Register(
+                        "Lat",
+                        typeof(Double),
+                        typeof(FlexGmapSearch), new UIPropertyMetadata());
+        // свойство зависимостей
+        public static readonly DependencyProperty LngProperty = DependencyProperty.Register(
+                        "Lng",
+                        typeof(Double),
+                        typeof(FlexGmapSearch), new UIPropertyMetadata());
+        // свойство зависимостей
+        public static readonly DependencyProperty СountryProperty = DependencyProperty.Register(
+                        "Сountry",
+                        typeof(String),
+                        typeof(FlexGmapSearch), new UIPropertyMetadata(String.Empty));
+        // свойство зависимостей
+        public static readonly DependencyProperty CityProperty = DependencyProperty.Register(
+                        "City",
+                        typeof(String),
+                        typeof(FlexGmapSearch), new UIPropertyMetadata(String.Empty));
+        // свойство зависимостей
+        public static readonly DependencyProperty AdministrativeProperty = DependencyProperty.Register(
+                        "Administrative",
+                        typeof(String),
+                        typeof(FlexGmapSearch), new UIPropertyMetadata(String.Empty));
+        // свойство зависимостей
+        public static readonly DependencyProperty StreetProperty = DependencyProperty.Register(
+                        "Street",
+                        typeof(String),
+                        typeof(FlexGmapSearch), new UIPropertyMetadata(String.Empty));
+        // свойство зависимостей
+        public static readonly DependencyProperty HousenumberProperty = DependencyProperty.Register(
+                        "Housenumber",
+                        typeof(String),
+                        typeof(FlexGmapSearch), new UIPropertyMetadata(String.Empty));
+        // свойство зависимостей
+        public static readonly DependencyProperty PostCodeProperty = DependencyProperty.Register(
+                        "PostCode",
+                        typeof(Int32),
+                        typeof(FlexGmapSearch), new UIPropertyMetadata(0));
         // Обычное свойство .NET  - обертка над свойством зависимостей     
         public string Text
         {
@@ -104,8 +144,54 @@ namespace Sklad_v1_001.Control.FlexGmap
             get { return (String)GetValue(GeopositionProperty); }
             set { SetValue(GeopositionProperty, value); }
         }
-        public Double Lat { get; set; }
-        public Double Lng { get; set; }
+        public Double Lat
+        {
+            get { return (Double)GetValue(LatProperty); }
+            set { SetValue(LatProperty, value); }
+        }
+        
+        public Double Lng
+        {
+            get { return (Double)GetValue(LngProperty); }
+            set { SetValue(LngProperty, value); }
+        }
+        //
+        public String Сountry
+        {
+            get { return (String)GetValue(СountryProperty); }
+            set { SetValue(СountryProperty, value); }
+        }
+        //
+        public String City
+        {
+            get { return (String)GetValue(CityProperty); }
+            set { SetValue(CityProperty, value); }
+        }
+        //
+        public String Administrative
+        {
+            get { return (String)GetValue(AdministrativeProperty); }
+            set { SetValue(AdministrativeProperty, value); }
+        }
+        //
+        public String Street
+        {
+            get { return (String)GetValue(StreetProperty); }
+            set { SetValue(StreetProperty, value); }
+        }
+        //Housenumber
+        public String Housenumber
+        {
+            get { return (String)GetValue(HousenumberProperty); }
+            set { SetValue(HousenumberProperty, value); }
+        }
+        
+        public Int32 PostCode
+        {
+            get { return (Int32)GetValue(PostCodeProperty); }
+            set { SetValue(PostCodeProperty, value); }
+        }
+
         public String startPosition { get; set; }
         public String url { get; set; }
         public String lastUrl { get; set; }
@@ -198,6 +284,12 @@ namespace Sklad_v1_001.Control.FlexGmap
                     Lat = rows[0].lat;
                     Lng = rows[0].lon;
                     Geoposition = Lat + " : " + Lng;
+                    Сountry = country.Text;
+                    City = city.Text;
+                    Administrative = administrative.Text;
+                    Street = street.Text;
+                    Housenumber = housenumber.Text;
+                    PostCode = Convert.ToInt32(postcode.Text);
                     //this.DataContext = rows[0];
                 }
             }
@@ -241,6 +333,12 @@ namespace Sklad_v1_001.Control.FlexGmap
                         });
                         this.DataContext = rows.FirstOrDefault(x=>x.osm_id==temp.osm_id);
                     }
+                    Сountry = country.Text;
+                    City = city.Text;
+                    Administrative = administrative.Text;
+                    Street = street.Text;
+                    Housenumber = housenumber.Text;
+                    PostCode = Convert.ToInt32(postcode.Text);
                 }
             }
             catch (Exception ex)

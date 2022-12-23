@@ -16,18 +16,31 @@
       xmlns:Gmap="clr-namespace:Sklad_v1_001.Control.FlexGmap"
       mc:Ignorable="d" 
       Title="NewShopsItem"
-       Style="{DynamicResource UsersPageWidth}" 
+      Style="{DynamicResource UsersPageWidth}" 
       Width="Auto"
       Height="Auto"
       x:Name="page">
 
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-        <StackPanel>
-            <FlexCheckBox:CheckBoxWithLabelHideGroupBox x:Name="checkBoxShop" 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <ToolBar:NewShopToolBar x:Name="toolbar" 
+                                Margin="0,10,0,0"
+                                ButtonSave="toolbar_ButtonSave"
+                                ButtonSaveclose="toolbar_ButtonSaveclose"
+                                ButtonListCancel="toolbar_ButtonListCancel"
+                                ButtonRgister="toolbar_ButtonRgister"
+                                ButtonCancel="toolbar_ButtonCancel"/>
+
+        <StackPanel Grid.Row="1">
+            <!--<FlexCheckBox:CheckBoxWithLabelHideGroupBox x:Name="checkBoxShop" 
                                                             LabelText="{x:Static res:Resources.AdressCompanyToShopAdress}"
                                                             IsChecked="{Binding Path=IsAddresRegister, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                                             ButtonCheckedClick="checkBoxShop_ButtonCheckedClick"
-                                                            ButtonUnCheckedClick="checkBoxShop_ButtonUnCheckedClick"/>
+                                                            ButtonUnCheckedClick="checkBoxShop_ButtonUnCheckedClick"/>-->
             <GroupBox Header="{x:Static res:Resources.Shop}" Style="{DynamicResource GroupBoxStyle}" 
                       HorizontalAlignment="Stretch" 
                       VerticalAlignment="Stretch">
@@ -38,12 +51,12 @@
                                                             />
                     <WrapPanel>
                         <FlexTextBox:FlexLabelTextBox x:Name="shopNumber"
-                                              IsRequired="Visible"
-                                              Width="250"
-                                              MaxWidth="300"
-                                              LabelText="{x:Static res:Resources.ShopNumber}"
-                                              Description="{Binding Path=ShopNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                              EnableTextBox="True"/>
+                                                      IsRequired="Visible"
+                                                      Width="250"
+                                                      MaxWidth="300"
+                                                      LabelText="{x:Static res:Resources.ShopNumber}"
+                                                      Description="{Binding Path=ShopNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                      EnableTextBox="False"/>
 
                         <FlexTextBox:FlexLabelTextBox x:Name="nameShop"
                                               IsRequired="Visible"
@@ -53,13 +66,13 @@
                                               Description="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                               EnableTextBox="True"/>
 
-                        <FlexTextBox:FlexLabelTextBox x:Name="adressShop"
+                        <!--<FlexTextBox:FlexLabelTextBox x:Name="adressShop"
                                               IsRequired="Visible"
                                               Width="350"
                                               MaxWidth="450"
                                               LabelText="{x:Static res:Resources.Adress}"
                                               Description="{Binding Path=Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                              EnableTextBox="True"/>
+                                              EnableTextBox="True"/>-->
 
                         <FlexTextBox:FlexLabelTextBox x:Name="phoneShop"
                                               IsRequired="Visible"
@@ -70,7 +83,16 @@
                                               EnableTextBox="True"/>
                     </WrapPanel>
                     <!--<Gmap:FlexListViewItem x:Name="gmap" LabelText="{x:Static res:Resources.SearchAdress}"/>-->
-                    <Gmap:FlexGmapSearch/>
+                    <Gmap:FlexGmapSearch x:Name="gmap"  
+                                         Text="{Binding Path=Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Lat="{Binding Path=Lat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Lng="{Binding Path=Lng, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Сountry="{Binding Path=Сountry, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         City ="{Binding Path=City, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Administrative="{Binding Path=Administrative, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Street ="{Binding Path=Street, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Housenumber="{Binding Path=Housenumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         PostCode ="{Binding Path=PostCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
             </GroupBox>
            
