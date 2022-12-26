@@ -15,6 +15,331 @@ using System.Threading.Tasks;
 
 namespace Sklad_v1_001.FormUsers.Shops
 {
+    public class LocalFilter : INotifyPropertyChanged
+    {
+        private string search;
+        private Int32 iD;
+        private string screenTypeGrid;
+
+        private String active;
+        private String phone;
+        private String createdByUserID;
+        private String lastModifiedByUserID;
+        private String name;
+        private String shopNumber;
+
+        private Int32 filterCreatedDate;
+        private DateTime? fromCreatedDate;
+        private DateTime? toCreatedDate;
+
+        private Int32 filterLastModifiedDate;
+        private DateTime? fromLastModifiedDate;
+        private DateTime? toLastModifiedDate;
+
+        private String sortColumn;
+        private Boolean sort;
+
+        private Int32 pageNumber;
+        private Int32 pagerowCount;
+
+        public string Search
+        {
+            get
+            {
+                return search;
+            }
+
+            set
+            {
+                search = value;
+                OnPropertyChanged("Search");
+            }
+        }
+
+        public Int32 ID
+        {
+            get
+            {
+                return iD;
+            }
+
+            set
+            {
+                iD = value;
+                OnPropertyChanged("ID");
+            }
+        }
+
+        public string ScreenTypeGrid
+        {
+            get
+            {
+                return screenTypeGrid;
+            }
+
+            set
+            {
+                screenTypeGrid = value;
+                OnPropertyChanged("ScreenTypeGrid");
+            }
+        }
+
+        public Int32 FilterCreatedDate
+        {
+            get
+            {
+                return filterCreatedDate;
+            }
+
+            set
+            {
+                filterCreatedDate = value;
+                OnPropertyChanged("FilterCreatedDate");
+            }
+        }
+
+        public DateTime? FromCreatedDate
+        {
+            get
+            {
+                return fromCreatedDate;
+            }
+
+            set
+            {
+                fromCreatedDate = value;
+                OnPropertyChanged("FromCreatedDate");
+            }
+        }
+
+        public DateTime? ToCreatedDate
+        {
+            get
+            {
+                return toCreatedDate;
+            }
+
+            set
+            {
+                toCreatedDate = value;
+                OnPropertyChanged("ToCreatedDate");
+            }
+        }
+
+        public Int32 FilterLastModifiedDate
+        {
+            get
+            {
+                return filterLastModifiedDate;
+            }
+
+            set
+            {
+                filterLastModifiedDate = value;
+                OnPropertyChanged("FilterLastModifiedDate");
+            }
+        }
+
+        public DateTime? FromLastModifiedDate
+        {
+            get
+            {
+                return fromLastModifiedDate;
+            }
+
+            set
+            {
+                fromLastModifiedDate = value;
+                OnPropertyChanged("FromLastModifiedDate");
+            }
+        }
+
+        public DateTime? ToLastModifiedDate
+        {
+            get
+            {
+                return toLastModifiedDate;
+            }
+
+            set
+            {
+                toLastModifiedDate = value;
+                OnPropertyChanged("ToLastModifiedDate");
+            }
+        }
+        //deliveryID
+        public string Active
+        {
+            get
+            {
+                return active;
+            }
+
+            set
+            {
+                active = value;
+                OnPropertyChanged("Active");
+            }
+        }
+        //managerUserID
+        public string Phone
+        {
+            get
+            {
+                return phone;
+            }
+
+            set
+            {
+                phone = value;
+                OnPropertyChanged("Phone");
+            }
+        }
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+
+            set
+            {
+                name = value;
+                OnPropertyChanged("Name");
+            }
+        }
+
+        public string ShopNumber
+        {
+            get
+            {
+                return shopNumber;
+            }
+
+            set
+            {
+                shopNumber = value;
+                OnPropertyChanged("ShopNumber");
+            }
+        }
+        public string CreatedByUserID
+        {
+            get
+            {
+                return createdByUserID;
+            }
+
+            set
+            {
+                createdByUserID = value;
+                OnPropertyChanged("CreatedByUserID");
+            }
+        }
+
+        public string LastModifiedByUserID
+        {
+            get
+            {
+                return lastModifiedByUserID;
+            }
+
+            set
+            {
+                lastModifiedByUserID = value;
+                OnPropertyChanged("LastModifiedByUserID");
+            }
+        }
+
+        public string SortColumn
+        {
+            get
+            {
+                return sortColumn;
+            }
+
+            set
+            {
+                sortColumn = value;
+                OnPropertyChanged("SortColumn");
+            }
+        }
+
+        public Boolean Sort
+        {
+            get
+            {
+                return sort;
+            }
+
+            set
+            {
+                sort = value;
+                OnPropertyChanged("Sort");
+            }
+        }
+
+        public Int32 PageNumber
+        {
+            get
+            {
+                return pageNumber;
+            }
+
+            set
+            {
+                pageNumber = value;
+                OnPropertyChanged("PageNumber");
+            }
+        }
+
+        public Int32 PagerowCount
+        {
+            get
+            {
+                return pagerowCount;
+            }
+
+            set
+            {
+                pagerowCount = value;
+                OnPropertyChanged("PagerowCount");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public LocalFilter()
+        {
+            ScreenTypeGrid = ScreenType.ScreenTypeGrid;
+            Search = "";
+
+            FromCreatedDate = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
+            ToCreatedDate = DateTime.Now;
+            FromCreatedDate = FromCreatedDate?.AddSeconds(10);
+
+            FromLastModifiedDate = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
+            ToLastModifiedDate = DateTime.Now;
+            FromLastModifiedDate = FromLastModifiedDate?.AddSeconds(10);
+
+            PageNumber = 0;
+            PagerowCount = 16;
+            Sort = true;
+            SortColumn = "ID";
+
+            Name = "All";
+            CreatedByUserID = "All";
+            LastModifiedByUserID = "All";
+            ShopNumber = "All";
+            Phone = "All";
+            Active = "All";
+        }
+
+    }
+
     public class LocaleRow : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -508,6 +833,62 @@ namespace Sklad_v1_001.FormUsers.Shops
             _data.Clear();
             _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ItemByStatus);
             _sqlRequestSelect.SetParametrValue("@p_Search", _supplyDocumentNumber);
+
+            _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
+            _data = _sqlRequestSelect.SqlAnswer.datatable;
+            return _data;
+        }
+
+        public DataTable FillGrid(LocalFilter _localFilter)
+        {
+            /*
+             *  private string ;
+                private Int32 ;
+                private string ;
+
+                private String ;
+                private String ;
+                private String ;
+                private String ;
+                private String ;
+                private String ;
+
+                private Int32 filterCreatedDate;
+                private DateTime? fromCreatedDate;
+                private DateTime? toCreatedDate;
+
+                private Int32 filterLastModifiedDate;
+                private DateTime? fromLastModifiedDate;
+                private DateTime? toLastModifiedDate;
+
+                private String sortColumn;
+                private Boolean sort;
+
+                private Int32 pageNumber;
+                private Int32 pagerowCount;
+
+            */
+            _sqlRequestSelect.SqlAnswer.datatable.Clear();
+            _data.Clear();
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ItemByStatus);
+            _sqlRequestSelect.SetParametrValue("@p_Search", _localFilter.Search);
+
+            _sqlRequestSelect.SetParametrValue("@p_ID", _localFilter.ID);
+            _sqlRequestSelect.SetParametrValue("@p_Active", _localFilter.Active);
+            _sqlRequestSelect.SetParametrValue("@p_Phone", _localFilter.Phone);
+            _sqlRequestSelect.SetParametrValue("@p_Name", _localFilter.Name);
+            _sqlRequestSelect.SetParametrValue("@p_ShopNumber", _localFilter.ShopNumber);
+            _sqlRequestSelect.SetParametrValue("@p_CreatedByUserID", _localFilter.CreatedByUserID);
+            _sqlRequestSelect.SetParametrValue("@p_LastModifiedByUserID", _localFilter.LastModifiedByUserID);
+
+            //_sqlRequestSelect.SetParametrValue("@p_FromCreatedDate", _localFilter.FromCreatedDate);
+            //_sqlRequestSelect.SetParametrValue("@p_ToCreatedDate", _localFilter.ToCreatedDate);
+            //_sqlRequestSelect.SetParametrValue("@p_FromLastModifiedDate", _localFilter.FromLastModifiedDate);
+            //_sqlRequestSelect.SetParametrValue("@p_ToLastModifiedDate", _localFilter.ToLastModifiedDate);
+            _sqlRequestSelect.SetParametrValue("@p_PageNumber", _localFilter.PageNumber);
+            _sqlRequestSelect.SetParametrValue("@p_PagerowCount", _localFilter.PagerowCount);
+            _sqlRequestSelect.SetParametrValue("@p_SortColumn", _localFilter.SortColumn);
+            _sqlRequestSelect.SetParametrValue("@p_Sort", _localFilter.Sort); //тест github
 
             _sqlRequestSelect.ComplexRequest(get_store_procedure, CommandType.StoredProcedure, null);
             _data = _sqlRequestSelect.SqlAnswer.datatable;
