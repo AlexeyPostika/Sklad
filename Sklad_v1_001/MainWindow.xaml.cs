@@ -30,6 +30,7 @@ using Sklad_v1_001.FormUsers.Zacupca;
 using Sklad_v1_001.GlobalAttributes;
 
 using CompanyRow = Sklad_v1_001.FormUsers.Company.LocaleRow;
+using ShopsFilter = Sklad_v1_001.FormUsers.Shops.LocaleFilter;
 
 namespace Sklad_v1_001
 {
@@ -348,6 +349,15 @@ namespace Sklad_v1_001
 
         #region магазины/склады
         private void ButtonListShopsOpen()
+        {
+            GC.Collect();   //Вызов сборщика мусора
+            GC.WaitForPendingFinalizers();  //ждем освобождение памяти
+            if (shopsGrid == null)
+                shopsGrid = new ShopsGrid(attributes);
+            frameWorkArea.Navigate(companyGrid); // открытие страницы
+        }
+
+        public void ButtonListShopsOpenF(ShopsFilter _localeFilter)
         {
             GC.Collect();   //Вызов сборщика мусора
             GC.WaitForPendingFinalizers();  //ждем освобождение памяти

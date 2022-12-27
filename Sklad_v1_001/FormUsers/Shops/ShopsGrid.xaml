@@ -4,11 +4,201 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Sklad_v1_001.FormUsers.Shops"
+      xmlns:res="clr-namespace:Sklad_v1_001.Properties"
+      xmlns:ToolBar="clr-namespace:Sklad_v1_001.Control.ToolBar"
+      xmlns:FlexFilter="clr-namespace:Sklad_v1_001.Control.FlexFilter"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="ShopsGrid">
+      Title="ShopsGrid"
+      Style="{DynamicResource UsersPageWidth}"    
+      x:Name="page">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ToolBar:RegisterToolBar x:Name="ToolBarRegisterDocument"
+                                     Margin="5,5,5,0"                             
+                                     ButtonEdit="ToolBarSaleDocument_ButtonEdit"
+                                     ButtonDelete="ToolBarSaleDocument_ButtonDelete"
+                                     ButtonClear="ToolBarSaleDocument_ButtonClear"
+                                     ButtonScan="ToolBarSaleDocument_ButtonScan"
+                                     ButtonClean="ToolBarSaleDocument_ButtonClean"
+                                     ButtonRefresh="ToolBarSaleDocument_ButtonRefresh"
+                                     IsEnableAdd="True"
+                                     IsEnableEdit="True"
+                                     IsEnableDeleted="{Binding ElementName=page, Path=IsEnableDeleted, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+
+        <Grid Grid.Row="1" x:Name="registerDocumentList">
+            <DataGrid x:Name="registerDocument" 
+                      Style="{DynamicResource DataGridStyle}" 
+                      ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" 
+                      RowStyle="{DynamicResource DataGridRowStyle}" 
+                      CellStyle="{DynamicResource DataGridCellStyle}"
+                      AutoGenerateColumns="False"
+                      Loaded="saleDocument_Loaded"
+                      SelectionChanged="saleDocument_SelectionChanged"
+                      MouseDoubleClick="saleDocument_MouseDoubleClick">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="Auto" Visibility="Collapsed"/>
+                    <DataGridTextColumn Binding="{Binding Path=LineDocument, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="Auto"/>
+
+                    <DataGridTemplateColumn x:Name="FilterShop" Width="Auto" IsReadOnly="True" SortMemberPath="ShopID" CanUserSort="True">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <FlexFilter:FlexGridCheckBox x:Name="FilterShopID"
+                                                         ButtonApplyClick="FilterShopID_ButtonApplyClick"
+                                                         IsVisibility="Collapsed" 
+                                                         LabelWidth="80"
+                                                         DataTableData="{Binding ElementName=page, Path=FilterIDShop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         ImageSource="{Binding ElementName=page, Path=ClearfilterShopID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         CheckAll="True"
+                                                         LabelText="{x:Static res:Resources.Shop}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Content="{Binding Path=NameShopID, Mode=OneWay}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Binding="{Binding Path=LastModificatedDateString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.DocumentDate}" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding Path=ReffDateString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.SyncDate}" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding Path=RegisterDocumentNumberString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NumberDocument}" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding Path=SupplyDocumentNumberString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.NumberDocumentShop}" Width="Auto"/>
+
+                    <DataGridTemplateColumn x:Name="FilterQuantity" Width="Auto" IsReadOnly="True" SortMemberPath="Count" CanUserSort="True">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <FlexFilter:FlexGridFromTo HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" x:Name="FilterQuantity" 
+                                                       To="{Binding ElementName=page, Path=QuantityMax, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                       From="{Binding ElementName=page, Path=QuantityMin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                       DefaultMax="{Binding ElementName=page, Path=DefaultquantityMax, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                       DefaultMin="{Binding ElementName=page, Path=DefaultquantityMin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                       ImageSource="{Binding ElementName=page, Path=ClearfilterQuantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                       ButtonApplyClick="FilterQuantity_ButtonApplyClick"
+                                                       LabelText="{x:Static res:Resources.Quantity}"
+                                                      />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label HorizontalContentAlignment="Right" Content="{Binding Path=Count, Mode=OneWay}" ContentStringFormat=" {0:N2}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <!--<DataGridTemplateColumn x:Name="FilterDelivery" Width="Auto" IsReadOnly="True" SortMemberPath="ShortLDisplayNameUser" CanUserSort="True">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <FlexFilter:FlexGridCheckBox x:Name="FilterDeliveryID"
+                                                         ButtonApplyClick="FilterDeliveryID_ButtonApplyClick"
+                                                         DataTableData="{Binding ElementName=page, Path=FilterIDDelivery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         ImageSource="{Binding ElementName=page, Path=ClearfilterDeliveryID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         CheckAll="True"
+                                                         LabelText="{x:Static res:Resources.CompanyDelivery}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Content="{Binding Path=Delivery, Mode=OneWay}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>-->
+
+                    <!--<DataGridTemplateColumn x:Name="FilterStatus" Width="Auto" IsReadOnly="True" SortMemberPath="ShortLDisplayNameUser" CanUserSort="True">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <FlexFilter:FlexGridCheckBox x:Name="FilterStatusID"
+                                                             IsVisibility="Collapsed"
+                                                             ButtonApplyClick="FilterStatusID_ButtonApplyClick"
+                                                             DataTableData="{Binding ElementName=page, Path=FilterIDStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                             ImageSource="{Binding ElementName=page, Path=ClearfilterStatusID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                             CheckAll="True"
+                                                             LabelText="{x:Static res:Resources.Status}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Content="{Binding Path=StatusString, Mode=OneWay}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>-->
+
+                    <DataGridTemplateColumn x:Name="FilterAmountColumn" Width="Auto" IsReadOnly="True" SortMemberPath="Amount" CanUserSort="True">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <FlexFilter:FlexGridFromTo HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" x:Name="FilterAmount" 
+                                                       To="{Binding ElementName=page, Path=AmountMax, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                       From="{Binding ElementName=page, Path=AmountMin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                       DefaultMax="{Binding ElementName=page, Path=DefaultamountMax, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                       DefaultMin="{Binding ElementName=page, Path=DefaultamountMin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                       ImageSource="{Binding ElementName=page, Path=ClearfilterAmount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                       ButtonApplyClick="FilterAmount_ButtonApplyClick"
+                                                       LabelText="{x:Static res:Resources.SummaSumm}"
+                                                      />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label HorizontalContentAlignment="Right" Content="{Binding Path=Amount, Mode=OneWay}" ContentStringFormat=" {0:N2}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn x:Name="filterUserInputName" Width="Auto" IsReadOnly="True" SortMemberPath="UserInput" CanUserSort="True">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <FlexFilter:FlexGridCheckBox x:Name="filterIdUserInput"                                                            
+                                                             IsVisibility="Collapsed"
+                                                             LabelWidth="80"    
+                                                             ButtonApplyClick="filterIdUserInput_ButtonApplyClick"
+                                                             DataTableData="{Binding ElementName=page, Path=FilterInputUserID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                             ImageSource="{Binding ElementName=page, Path=ClearfilterInputUserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                             CheckAll="True"
+                                                             LabelText="{x:Static res:Resources.UserNameInput}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Content="{Binding Path=ShortDisplayInputUserID, Mode=OneWay}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn x:Name="filterUserName" Width="Auto" IsReadOnly="True" SortMemberPath="ShortLDisplayNameUser" CanUserSort="True">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <FlexFilter:FlexGridCheckBox x:Name="filterIdUser"                                                            
+                                                             IsVisibility="Collapsed"
+                                                             LabelWidth="80"  
+                                                             ButtonApplyClick="FilterUserID_ButtonApplyClick"
+                                                             DataTableData="{Binding ElementName=page, Path=FilterLastModifiedByUserID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                             ImageSource="{Binding ElementName=page, Path=ClearfilterUserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                             CheckAll="True"
+                                                             LabelText="{x:Static res:Resources.UserName}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Content="{Binding Path=ShortLDisplayNameUser, Mode=OneWay}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </Grid>
+        <ToolBar:ToolBarNextToBack Grid.Row="2" x:Name="ToolbarNextPageData"
+                                   ButtonBack="ToolBarNextToBack_ButtonBack"
+                                   ButtonNext="ToolBarNextToBack_ButtonNext"
+                                   ButtonBackIn="ToolbarNextPageData_ButtonBackIn"
+                                   ButtonNextEnd="ToolbarNextPageData_ButtonNextEnd"
+                                   CurrentPage="{Binding ElementName=page, Path=CurrentPage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   TotalCount="{Binding ElementName=page, Path=TotalCount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   PageCount="{Binding ElementName=page, Path=PageCount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+
     </Grid>
 </Page>

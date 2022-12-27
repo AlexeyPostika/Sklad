@@ -31,6 +31,7 @@ namespace Sklad_v1_001.FormUsers.Shops
 
         //объект Shop
         LocaleRow newShopRow;
+        LocaleFilter filter;
         ShopsLogic shopsLogic;
        
         public LocaleRow NewShopRow
@@ -45,7 +46,18 @@ namespace Sklad_v1_001.FormUsers.Shops
                 newShopRow = value;
             }
         }
+        public LocaleFilter Filter
+        {
+            get
+            {
+                return filter;
+            }
 
+            set
+            {
+                filter = value;
+            }
+        }
         public NewShopsItem(Attributes _attributes)
         {
             InitializeComponent();
@@ -54,6 +66,7 @@ namespace Sklad_v1_001.FormUsers.Shops
             shopsLogic = new ShopsLogic(attributes);
 
             NewShopRow = new LocaleRow();
+            Filter = new LocaleFilter();
 
             this.DataContext = NewShopRow;
         }
@@ -66,7 +79,8 @@ namespace Sklad_v1_001.FormUsers.Shops
 
         private void toolbar_ButtonSaveclose()
         {
-
+            if (Save(NewShopRow) > 0)
+                MainWindow.AppWindow.ButtonListShopsOpenF(Filter);
         }
 
         private void toolbar_ButtonListCancel()

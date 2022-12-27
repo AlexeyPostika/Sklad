@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace Sklad_v1_001.FormUsers.Shops
 {
-    public class LocalFilter : INotifyPropertyChanged
+    public class LocaleFilter : INotifyPropertyChanged
     {
         private string search;
         private Int32 iD;
@@ -312,7 +312,7 @@ namespace Sklad_v1_001.FormUsers.Shops
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public LocalFilter()
+        public LocaleFilter()
         {
             ScreenTypeGrid = ScreenType.ScreenTypeGrid;
             Search = "";
@@ -839,7 +839,7 @@ namespace Sklad_v1_001.FormUsers.Shops
             return _data;
         }
 
-        public DataTable FillGrid(LocalFilter _localFilter)
+        public DataTable FillGrid(LocaleFilter _localFilter)
         {
             /*
              *  private string ;
@@ -885,6 +885,7 @@ namespace Sklad_v1_001.FormUsers.Shops
             //_sqlRequestSelect.SetParametrValue("@p_ToCreatedDate", _localFilter.ToCreatedDate);
             //_sqlRequestSelect.SetParametrValue("@p_FromLastModifiedDate", _localFilter.FromLastModifiedDate);
             //_sqlRequestSelect.SetParametrValue("@p_ToLastModifiedDate", _localFilter.ToLastModifiedDate);
+
             _sqlRequestSelect.SetParametrValue("@p_PageNumber", _localFilter.PageNumber);
             _sqlRequestSelect.SetParametrValue("@p_PagerowCount", _localFilter.PagerowCount);
             _sqlRequestSelect.SetParametrValue("@p_SortColumn", _localFilter.SortColumn);
