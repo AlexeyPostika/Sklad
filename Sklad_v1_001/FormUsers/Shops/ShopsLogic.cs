@@ -339,7 +339,72 @@ namespace Sklad_v1_001.FormUsers.Shops
         }
 
     }
+    public class RowsFilters : INotifyPropertyChanged
+    {
+        private Double filtersQuantityMin;
+        private Double filtersQuantityMax;
+        private Double filtersAmountMin;
+        private Double filtersAmountMax;
 
+        public Double FiltersQuantityMin
+        {
+            get
+            {
+                return filtersQuantityMin;
+            }
+
+            set
+            {
+                filtersQuantityMin = value;
+                OnPropertyChanged("FiltersQuantityMin");
+            }
+        }
+        public Double FiltersQuantityMax
+        {
+            get
+            {
+                return filtersQuantityMax;
+            }
+
+            set
+            {
+                filtersQuantityMax = value;
+                OnPropertyChanged("FiltersQuantityMax");
+            }
+        }
+        public Double FiltersAmountMin
+        {
+            get
+            {
+                return filtersAmountMin;
+            }
+
+            set
+            {
+                filtersAmountMin = value;
+                OnPropertyChanged("FiltersAmountMin");
+            }
+        }
+        public Double FiltersAmountMax
+        {
+            get
+            {
+                return filtersAmountMax;
+            }
+
+            set
+            {
+                filtersAmountMax = value;
+                OnPropertyChanged("FiltersAmountMax");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
     public class LocaleRow : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -748,6 +813,15 @@ namespace Sklad_v1_001.FormUsers.Shops
         //структура таблиц
         ShemaStorаge shemaStorаge;
 
+        public class Range
+        {
+            public double min;
+            public double max;
+        }
+
+        Dictionary<String, DataTable> filters;
+        Dictionary<String, Range> filtersFromTo;
+
         public ShopsLogic(Attributes _attributes)
         {
             this.attributes = _attributes;
@@ -895,6 +969,15 @@ namespace Sklad_v1_001.FormUsers.Shops
             _data = _sqlRequestSelect.SqlAnswer.datatable;
             return _data;
         }
+        public DataTable FillGridAllFilter()
+        {
+            _sqlRequestSelectFilters.SqlAnswer.datatable.Clear();
+            _data.Clear();
+
+            _sqlRequestSelectFilters.ComplexRequest(get_filters_procedure, CommandType.StoredProcedure, null);
+            _data = _sqlRequestSelectFilters.SqlAnswer.datatable;
+            return _data;
+        }
 
         public Int32 SaveRow(LocaleRow _localeRow)
         {
@@ -918,6 +1001,72 @@ namespace Sklad_v1_001.FormUsers.Shops
 
             _sqlRequestSave.ComplexRequest(get_save_procedure, CommandType.StoredProcedure, null);
             return (Int32)_sqlRequestSave.SqlAnswer.result;
+        }
+
+        public RowsFilters ConvertFilter(DataRow _dataRow, RowsFilters _localeRow)
+        {
+            ConvertData convertData = new ConvertData(_dataRow, _localeRow);
+            _localeRow.FiltersQuantityMin = convertData.ConvertDataDouble("QuantityMin");
+            _localeRow.FiltersQuantityMax = convertData.ConvertDataDouble("QuantityMax");
+            _localeRow.FiltersAmountMin = convertData.ConvertDataDouble("AmountMin");
+            _localeRow.FiltersAmountMax = convertData.ConvertDataDouble("AmountMax");
+            return _localeRow;
+        }
+
+        public DataTable GetFilter(String filterName)
+        {
+            return filters.FirstOrDefault(x => x.Key == filterName).Value;
+        }
+
+        public Range GetFromToFilter(String filterName)
+        {
+            return filtersFromTo.FirstOrDefault(x => x.Key == filterName).Value;
+        }
+
+        public void InitFilters()
+        {
+            DataTable table = FillGridAllFilter();
+            FillFilter("InputUserID", table);
+            FillFilter("LastModifiedByUserID", table);
+            FillFilter("Delivery", table);
+            FillFilter("ManagerName", table);
+            FillFilter("Status", table);
+            FillFilter("ShopID", table);
+
+            RowsFilters rowsFilters;
+            foreach (DataRow row in table.Rows)
+            {
+                rowsFilters = new RowsFilters();
+                ConvertFilter(row, rowsFilters);
+                filtersFromTo["Quantity"].min = rowsFilters.FiltersQuantityMin;
+                filtersFromTo["Quantity"].max = rowsFilters.FiltersQuantityMax;
+                filtersFromTo["Amount"].min = rowsFilters.FiltersAmountMin;
+                filtersFromTo["Amount"].max = rowsFilters.FiltersAmountMax;
+            }
+        }
+
+        public void FillFilter(String filterName, DataTable table)
+        {
+            DataTable current1 = filters.FirstOrDefault(x => x.Key == filterName).Value;
+            current1.Clear();
+            foreach (DataRow row in table.Rows)
+            {
+                ConvertData convert = new ConvertData(row, new LocaleRow());
+                if (!String.IsNullOrEmpty(row[filterName].ToString()))
+                {
+                    String data = convert.ConvertDataString(filterName);
+                    String[] dataarray = data.Split('|');
+                    foreach (string curstr in dataarray.ToList())
+                    {
+                        String[] pair = curstr.Split(':');
+                        DataRow newrow = current1.NewRow();
+                        newrow["ID"] = pair[0];
+                        newrow["IsChecked"] = false;
+                        newrow["Description"] = pair[1];
+                        current1.Rows.Add(newrow);
+                    }
+                }
+            }
         }
     }
 }
