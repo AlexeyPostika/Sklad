@@ -560,5 +560,102 @@ namespace Sklad_v1_001.FormUsers.Shops
             FilterIDShop.Columns.Add("Description");
 
         }
+        #region DataGrid
+        private void saleDocument_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void saleDocument_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void saleDocument_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region Filters DataGrid
+        private void FilterShopID_ButtonApplyClick(string text)
+        {
+
+        }
+
+        private void FilterQuantity_ButtonApplyClick()
+        {
+
+        }
+
+        private void FilterAmount_ButtonApplyClick()
+        {
+
+        }
+
+        private void filterIdUserInput_ButtonApplyClick(string text)
+        {
+
+        }
+
+        private void FilterUserID_ButtonApplyClick(string text)
+        {
+
+        }
+        #endregion
+
+        #region Paginator
+        private void ToolBarNextToBack_ButtonBack()
+        {
+
+        }
+
+        private void ToolBarNextToBack_ButtonNext()
+        {
+
+        }
+
+        private void ToolbarNextPageData_ButtonBackIn()
+        {
+
+        }
+
+        private void ToolbarNextPageData_ButtonNextEnd()
+        {
+
+        }
+        #endregion
+
+        #region ToolBar
+        private void ToolBarSaleDocument_ButtonEdit()
+        {
+
+        }
+
+        private void ToolBarSaleDocument_ButtonDelete()
+        {
+
+        }
+
+        private void ToolBarSaleDocument_ButtonClear()
+        {
+
+        }
+
+        private void ToolBarSaleDocument_ButtonScan(string text)
+        {
+
+        }
+
+        private void ToolBarSaleDocument_ButtonClean()
+        {
+
+        }
+
+        private void ToolBarSaleDocument_ButtonRefresh()
+        {
+
+        }
+        #endregion
     }
 }

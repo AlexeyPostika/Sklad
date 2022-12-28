@@ -354,7 +354,7 @@ namespace Sklad_v1_001
             GC.WaitForPendingFinalizers();  //ждем освобождение памяти
             if (shopsGrid == null)
                 shopsGrid = new ShopsGrid(attributes);
-            frameWorkArea.Navigate(companyGrid); // открытие страницы
+            frameWorkArea.Navigate(shopsGrid); // открытие страницы
         }
 
         public void ButtonListShopsOpenF(ShopsFilter _localeFilter)
@@ -363,7 +363,7 @@ namespace Sklad_v1_001
             GC.WaitForPendingFinalizers();  //ждем освобождение памяти
             if (shopsGrid == null)
                 shopsGrid = new ShopsGrid(attributes);
-            frameWorkArea.Navigate(companyGrid); // открытие страницы
+            frameWorkArea.Navigate(shopsGrid); // открытие страницы
         }
 
         private void ButtonNewShopsOpen()
