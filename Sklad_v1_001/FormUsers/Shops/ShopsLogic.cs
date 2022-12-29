@@ -1310,7 +1310,7 @@ namespace Sklad_v1_001.FormUsers.Shops
         public void ConvertSummary(DataRow _dataRow, RowSummary _localeRow)
         {
             ConvertData convertData = new ConvertData(_dataRow, _localeRow);
-            _localeRow.SummaryQuantityLine = convertData.ConvertDataInt32("QuantityLine");
+            _localeRow.SummaryQuantityLine = convertData.ConvertDataInt32("SummaryQuantityLine");
         }
 
         public DataTable GetFilter(String filterName)
