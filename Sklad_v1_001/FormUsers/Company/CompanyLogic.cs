@@ -985,7 +985,7 @@ namespace Sklad_v1_001.FormUsers.Company
             _companyRequest.company.shop.companyID = _localeRow.Shop.CompanyID;
             _companyRequest.company.shop.createdUserID = _localeRow.Shop.CreatedByUserID;
             _companyRequest.company.shop.iD = _localeRow.Shop.ID;
-            _companyRequest.company.shop.lastModificatedDate = _localeRow.Shop.LastModifiedDate;
+            _companyRequest.company.shop.lastModificatedDate = _localeRow.Shop.LastModificatedDate;
             _companyRequest.company.shop.lastModificatedUserID = _localeRow.Shop.LastModifiedByUserID;
             _companyRequest.company.shop.Name = _localeRow.Shop.Name;
             _companyRequest.company.shop.phone = _localeRow.Shop.Phone;
@@ -1064,7 +1064,7 @@ namespace Sklad_v1_001.FormUsers.Company
             _localeRow.Shop.AddUserID = attributes.numeric.userEdit.AddUserID;
             _localeRow.Shop.CompanyID = _companyRequest.company.shop.companyID;         
             _localeRow.Shop.ID = _companyRequest.company.shop.iD;
-            _localeRow.Shop.LastModifiedDate = _companyRequest.company.shop.lastModificatedDate;
+            _localeRow.Shop.LastModificatedDate = _companyRequest.company.shop.lastModificatedDate;
             _localeRow.Shop.LastModifiedByUserID = _companyRequest.company.shop.lastModificatedUserID;
             _localeRow.Shop.Name = _companyRequest.company.shop.Name;
             _localeRow.Shop.Phone = _companyRequest.company.shop.phone;

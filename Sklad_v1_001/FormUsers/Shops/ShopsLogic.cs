@@ -949,6 +949,7 @@ namespace Sklad_v1_001.FormUsers.Shops
         {
             this.attributes = _attributes;
             convertData = new ConvertData();
+            filters = new Dictionary<string, DataTable>();
 
             innerList1 = new DataTable();
             innerList2 = new DataTable();
@@ -1181,16 +1182,16 @@ namespace Sklad_v1_001.FormUsers.Shops
         {            
             _sqlRequestSelect.SqlAnswer.datatable.Clear();
             _data.Clear();
-            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ItemByStatus);
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", _localFilter.ScreenTypeGrid);
             _sqlRequestSelect.SetParametrValue("@p_Search", _localFilter.Search);
 
             _sqlRequestSelect.SetParametrValue("@p_ID", _localFilter.ID);
             _sqlRequestSelect.SetParametrValue("@p_Active", _localFilter.Active);
             _sqlRequestSelect.SetParametrValue("@p_Phone", _localFilter.Phone);
             _sqlRequestSelect.SetParametrValue("@p_CompanyID", _localFilter.CompanyID);
-            _sqlRequestSelect.SetParametrValue("@p_ShopNumber", _localFilter.ShopNumber);
-            _sqlRequestSelect.SetParametrValue("@p_CreatedByUserID", _localFilter.CreatedByUserID);
-            _sqlRequestSelect.SetParametrValue("@p_LastModifiedByUserID", _localFilter.LastModifiedByUserID);
+            //_sqlRequestSelect.SetParametrValue("@p_ShopNumber", _localFilter.ShopNumber);
+            _sqlRequestSelect.SetParametrValue("@p_CreatedUserID", _localFilter.CreatedByUserID);
+            _sqlRequestSelect.SetParametrValue("@p_LastModifiedUserID", _localFilter.LastModifiedByUserID);
 
             _sqlRequestSelect.SetParametrValue("@p_PostCode", _localFilter.PostCode);
             _sqlRequestSelect.SetParametrValue("@p_City", _localFilter.City);
@@ -1232,9 +1233,9 @@ namespace Sklad_v1_001.FormUsers.Shops
             _sqlRequestSelectSummary.SetParametrValue("@p_Active", _localFilter.Active);
             _sqlRequestSelectSummary.SetParametrValue("@p_Phone", _localFilter.Phone);
             _sqlRequestSelectSummary.SetParametrValue("@p_CompanyID", _localFilter.CompanyID);
-            _sqlRequestSelectSummary.SetParametrValue("@p_ShopNumber", _localFilter.ShopNumber);
-            _sqlRequestSelectSummary.SetParametrValue("@p_CreatedByUserID", _localFilter.CreatedByUserID);
-            _sqlRequestSelectSummary.SetParametrValue("@p_LastModifiedByUserID", _localFilter.LastModifiedByUserID);
+            //_sqlRequestSelectSummary.SetParametrValue("@p_ShopNumber", _localFilter.ShopNumber);
+            _sqlRequestSelectSummary.SetParametrValue("@p_CreatedUserID", _localFilter.CreatedByUserID);
+            _sqlRequestSelectSummary.SetParametrValue("@p_LastModifiedUserID", _localFilter.LastModifiedByUserID);
 
             _sqlRequestSelectSummary.SetParametrValue("@p_PostCode", _localFilter.PostCode);
             _sqlRequestSelectSummary.SetParametrValue("@p_City", _localFilter.City);

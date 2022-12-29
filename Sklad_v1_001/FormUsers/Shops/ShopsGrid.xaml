@@ -31,7 +31,7 @@
                                      IsEnableDeleted="{Binding ElementName=page, Path=IsEnableDeleted, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
         <Grid Grid.Row="1" x:Name="registerDocumentList">
-            <DataGrid x:Name="registerDocument" 
+            <DataGrid x:Name="shopList" 
                       Style="{DynamicResource DataGridStyle}" 
                       ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" 
                       RowStyle="{DynamicResource DataGridRowStyle}" 
