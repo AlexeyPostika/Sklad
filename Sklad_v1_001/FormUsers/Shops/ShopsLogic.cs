@@ -25,8 +25,12 @@ namespace Sklad_v1_001.FormUsers.Shops
         private String phone;
         private String createdByUserID;
         private String lastModifiedByUserID;
-        private String name;
+        private String companyID;
         private String shopNumber;
+        private String postCode;
+        private String city;
+        private String street;
+        private String country;
 
         private Int32 filterCreatedDate;
         private DateTime? fromCreatedDate;
@@ -195,17 +199,17 @@ namespace Sklad_v1_001.FormUsers.Shops
                 OnPropertyChanged("Phone");
             }
         }
-        public string Name
+        public string CompanyID
         {
             get
             {
-                return name;
+                return companyID;
             }
 
             set
             {
-                name = value;
-                OnPropertyChanged("Name");
+                companyID = value;
+                OnPropertyChanged("CompanyID");
             }
         }
 
@@ -220,6 +224,62 @@ namespace Sklad_v1_001.FormUsers.Shops
             {
                 shopNumber = value;
                 OnPropertyChanged("ShopNumber");
+            }
+        }
+
+        public string PostCode
+        {
+            get
+            {
+                return postCode;
+            }
+
+            set
+            {
+                postCode = value;
+                OnPropertyChanged("PostCode");
+            }
+        }
+
+        public string City
+        {
+            get
+            {
+                return city;
+            }
+
+            set
+            {
+                city = value;
+                OnPropertyChanged("City");
+            }
+        }
+
+        public string Street
+        {
+            get
+            {
+                return street;
+            }
+
+            set
+            {
+                street = value;
+                OnPropertyChanged("Street");
+            }
+        }
+        
+        public string Country
+        {
+            get
+            {
+                return country;
+            }
+
+            set
+            {
+                country = value;
+                OnPropertyChanged("Country");
             }
         }
         public string CreatedByUserID
@@ -330,81 +390,20 @@ namespace Sklad_v1_001.FormUsers.Shops
             Sort = true;
             SortColumn = "ID";
 
-            Name = "All";
+            Country = "All";
             CreatedByUserID = "All";
             LastModifiedByUserID = "All";
             ShopNumber = "All";
             Phone = "All";
             Active = "All";
+            PostCode = "All";
+            City = "All";
+            Street = "All";
+            CompanyID = "All";
         }
 
     }
-    public class RowsFilters : INotifyPropertyChanged
-    {
-        private Double filtersQuantityMin;
-        private Double filtersQuantityMax;
-        private Double filtersAmountMin;
-        private Double filtersAmountMax;
-
-        public Double FiltersQuantityMin
-        {
-            get
-            {
-                return filtersQuantityMin;
-            }
-
-            set
-            {
-                filtersQuantityMin = value;
-                OnPropertyChanged("FiltersQuantityMin");
-            }
-        }
-        public Double FiltersQuantityMax
-        {
-            get
-            {
-                return filtersQuantityMax;
-            }
-
-            set
-            {
-                filtersQuantityMax = value;
-                OnPropertyChanged("FiltersQuantityMax");
-            }
-        }
-        public Double FiltersAmountMin
-        {
-            get
-            {
-                return filtersAmountMin;
-            }
-
-            set
-            {
-                filtersAmountMin = value;
-                OnPropertyChanged("FiltersAmountMin");
-            }
-        }
-        public Double FiltersAmountMax
-        {
-            get
-            {
-                return filtersAmountMax;
-            }
-
-            set
-            {
-                filtersAmountMax = value;
-                OnPropertyChanged("FiltersAmountMax");
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-    }
+    
     public class LocaleRow : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -423,8 +422,8 @@ namespace Sklad_v1_001.FormUsers.Shops
         private String phone ;
         private DateTime? createdDate;
         private String createdDateString;
-        private DateTime? lastModifiedDate;
-        private String lastModifiedDateString;
+        private DateTime? lastModificatedDate;
+        private String lastModificatedDateString;
         private Int32 createdByUserID;
         private Int32 lastModifiedByUserID;
         private DateTime? syncDate ;
@@ -439,6 +438,12 @@ namespace Sklad_v1_001.FormUsers.Shops
         private Int64 postCode;
         private Double lat;
         private Double lng;
+        private String displayNameUser;
+        private String lDisplayNameUser;
+        private String shortDisplayNameUser;
+        private String shortLDisplayNameUser;
+        private String fullCompanyName;
+        private String shortCompanyName;
 
         [Timestamp]
         public Byte[] TimeRow { get; set; }
@@ -562,31 +567,31 @@ namespace Sklad_v1_001.FormUsers.Shops
             }
         }
 
-        public DateTime? LastModifiedDate
+        public DateTime? LastModificatedDate
         {
             get
             {
-                return lastModifiedDate;
+                return lastModificatedDate;
             }
 
             set
             {
-                lastModifiedDate = value;
+                lastModificatedDate = value;
                 OnPropertyChanged("LastModifiedDate");
             }
         }
 
-        public String LastModifiedDateString
+        public String LastModificatedDateString
         {
             get
             {
-                return lastModifiedDateString;
+                return lastModificatedDateString;
             }
 
             set
             {
-                lastModifiedDateString = value;
-                OnPropertyChanged("LastModifiedDateString");
+                lastModificatedDateString = value;
+                OnPropertyChanged("LastModificatedDateString");
             }
         }
 
@@ -782,12 +787,120 @@ namespace Sklad_v1_001.FormUsers.Shops
                 OnPropertyChanged("Lng");
             }
         }
+
+        public String DisplayNameUser
+        {
+            get
+            {
+                return displayNameUser;
+            }
+
+            set
+            {
+                displayNameUser = value;
+                OnPropertyChanged("DisplayNameUser");
+            }
+        }
+
+        public String LDisplayNameUser
+        {
+            get
+            {
+                return lDisplayNameUser;
+            }
+
+            set
+            {
+                lDisplayNameUser = value;
+                OnPropertyChanged("LDisplayNameUser");
+            }
+        }
+ 
+        public String ShortDisplayNameUser
+        {
+            get
+            {
+                return shortDisplayNameUser;
+            }
+
+            set
+            {
+                shortDisplayNameUser = value;
+                OnPropertyChanged("ShortDisplayNameUser");
+            }
+        }
+
+        public String ShortLDisplayNameUser
+        {
+            get
+            {
+                return shortLDisplayNameUser;
+            }
+
+            set
+            {
+                shortLDisplayNameUser = value;
+                OnPropertyChanged("ShortLDisplayNameUser");
+            }
+        }
+
+        public String FullCompanyName
+        {
+            get
+            {
+                return fullCompanyName;
+            }
+
+            set
+            {
+                fullCompanyName = value;
+                OnPropertyChanged("FullCompanyName");
+            }
+        }
+
+        public String ShortCompanyName
+        {
+            get
+            {
+                return shortCompanyName;
+            }
+
+            set
+            {
+                shortCompanyName = value;
+                OnPropertyChanged("ShortCompanyName");
+            }
+        }
         public LocaleRow()
         {
             CreatedDate = DateTime.Now;
-            LastModifiedDate = DateTime.Now;
+            LastModificatedDate = DateTime.Now;
             SyncDate = DateTime.Now;
             IsAddresRegister = false;
+        }
+    }
+
+    public class RowSummary : INotifyPropertyChanged
+    {
+        Int32 summaryQuantityLine;
+       
+        public Int32 SummaryQuantityLine
+        {
+            get
+            {
+                return summaryQuantityLine;
+            }
+
+            set
+            {
+                summaryQuantityLine = value;
+                OnPropertyChanged("SummaryQuantityLine");
+            }
+        }     
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
     public class ShopsLogic
@@ -795,9 +908,19 @@ namespace Sklad_v1_001.FormUsers.Shops
         Attributes attributes;
         ConvertData convertData;
 
-        string get_store_procedure = "";
-        string get_filters_procedure = "";
-        string get_summary_procedure = "";
+        public DataTable innerList1;
+        public DataTable innerList2;
+        public DataTable innerList3;
+        public DataTable innerList4;
+        public DataTable innerList5;
+        public DataTable innerList6;
+        public DataTable innerList7;
+        public DataTable innerList8;
+        public DataTable innerList9;
+
+        string get_store_procedure = "xp_GetShopTable";
+        string get_filters_procedure = "xp_GetShopFilter";
+        string get_summary_procedure = "xp_GetShopSummary";
 
         string get_save_procedure = "xp_SaveShop";
 
@@ -811,7 +934,7 @@ namespace Sklad_v1_001.FormUsers.Shops
         DataTable _datarow = null;
 
         //структура таблиц
-        ShemaStorаge shemaStorаge;
+        ShemaStorаge shemaStorаge;      
 
         public class Range
         {
@@ -827,6 +950,62 @@ namespace Sklad_v1_001.FormUsers.Shops
             this.attributes = _attributes;
             convertData = new ConvertData();
 
+            innerList1 = new DataTable();
+            innerList2 = new DataTable();
+            innerList3 = new DataTable();
+            innerList4 = new DataTable();
+            innerList5 = new DataTable();
+            innerList6 = new DataTable();
+            innerList7 = new DataTable();
+            innerList8 = new DataTable();
+            innerList9 = new DataTable();
+
+            innerList1.Columns.Add("ID");
+            innerList1.Columns.Add("IsChecked");
+            innerList1.Columns.Add("Description");
+
+            innerList2.Columns.Add("ID");
+            innerList2.Columns.Add("IsChecked");
+            innerList2.Columns.Add("Description");
+
+            innerList3.Columns.Add("ID");
+            innerList3.Columns.Add("IsChecked");
+            innerList3.Columns.Add("Description");
+
+            innerList4.Columns.Add("ID");
+            innerList4.Columns.Add("IsChecked");
+            innerList4.Columns.Add("Description");
+
+            innerList5.Columns.Add("ID");
+            innerList5.Columns.Add("IsChecked");
+            innerList5.Columns.Add("Description");
+
+            innerList6.Columns.Add("ID");
+            innerList6.Columns.Add("IsChecked");
+            innerList6.Columns.Add("Description");
+
+            innerList7.Columns.Add("ID");
+            innerList7.Columns.Add("IsChecked");
+            innerList7.Columns.Add("Description");
+
+            innerList8.Columns.Add("ID");
+            innerList8.Columns.Add("IsChecked");
+            innerList8.Columns.Add("Description");
+
+            innerList9.Columns.Add("ID");
+            innerList9.Columns.Add("IsChecked");
+            innerList9.Columns.Add("Description");
+
+            filters.Add("CreatedByUserID", innerList1);
+            filters.Add("LastModifiedByUserID", innerList2);
+            filters.Add("CompanyID", innerList3);
+            filters.Add("Phone", innerList4);
+            filters.Add("Active", innerList5);
+            filters.Add("PostCode", innerList6);
+            filters.Add("City", innerList7);
+            filters.Add("Street", innerList8);
+            filters.Add("Country", innerList9);
+
             _data = new DataTable();
             _datarow = new DataTable();
             shemaStorаge = new ShemaStorаge();
@@ -835,6 +1014,91 @@ namespace Sklad_v1_001.FormUsers.Shops
             _sqlRequestSelectFilters = new SQLCommanSelect();
             _sqlRequestSelectSummary = new SQLCommanSelect();
             _sqlRequestSave = new SQLCommanSelect();
+
+            //----------------------------------------------------------------------------
+            _sqlRequestSelect.AddParametr("@p_TypeScreen", SqlDbType.VarChar, 10);
+            _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ScreenTypeGrid);
+
+            _sqlRequestSelect.AddParametr("@p_Search", SqlDbType.NVarChar, 40);
+            _sqlRequestSelect.SetParametrValue("@p_Search", String.Empty);
+
+            _sqlRequestSelect.AddParametr("@p_ID", SqlDbType.Int);
+            _sqlRequestSelect.SetParametrValue("@p_ID", 0);
+
+            _sqlRequestSelect.AddParametr("@p_CreatedUserID", SqlDbType.NVarChar, 255);
+            _sqlRequestSelect.SetParametrValue("@p_CreatedUserID", String.Empty);
+
+            _sqlRequestSelect.AddParametr("@p_LastModifiedUserID", SqlDbType.NVarChar, 255);
+            _sqlRequestSelect.SetParametrValue("@p_LastModifiedUserID", String.Empty);
+
+            _sqlRequestSelect.AddParametr("@p_CompanyID", SqlDbType.NVarChar, 255);
+            _sqlRequestSelect.SetParametrValue("@p_CompanyID", String.Empty);
+
+            _sqlRequestSelect.AddParametr("@p_Phone", SqlDbType.NVarChar, 255);
+            _sqlRequestSelect.SetParametrValue("@p_Phone", String.Empty);
+
+            _sqlRequestSelect.AddParametr("@p_Active", SqlDbType.NVarChar, 255);
+            _sqlRequestSelect.SetParametrValue("@p_Active", String.Empty);
+
+            _sqlRequestSelect.AddParametr("@p_PostCode", SqlDbType.NVarChar, 255);
+            _sqlRequestSelect.SetParametrValue("@p_PostCode", String.Empty);
+
+            _sqlRequestSelect.AddParametr("@p_City", SqlDbType.NVarChar, 255);
+            _sqlRequestSelect.SetParametrValue("@p_City", String.Empty);
+
+            _sqlRequestSelect.AddParametr("@p_Street", SqlDbType.NVarChar, 255);
+            _sqlRequestSelect.SetParametrValue("@p_Street", String.Empty);
+
+            _sqlRequestSelect.AddParametr("@p_Country", SqlDbType.NVarChar, 255);
+            _sqlRequestSelect.SetParametrValue("@p_Country", 0);
+
+            _sqlRequestSelect.AddParametr("@p_PageNumber", SqlDbType.Int);
+            _sqlRequestSelect.SetParametrValue("@p_PageNumber", 0);
+
+            _sqlRequestSelect.AddParametr("@p_PagerowCount", SqlDbType.Int);
+            _sqlRequestSelect.SetParametrValue("@p_PagerowCount", 0);
+
+            _sqlRequestSelect.AddParametr("@p_SortColumn", SqlDbType.NVarChar, 255);
+            _sqlRequestSelect.SetParametrValue("@p_SortColumn", 0);
+
+            _sqlRequestSelect.AddParametr("@p_Sort", SqlDbType.Bit);
+            _sqlRequestSelect.SetParametrValue("@p_Sort", String.Empty);
+            //----------------------------------------------------------------------------
+
+            _sqlRequestSelectSummary.AddParametr("@p_Search", SqlDbType.NVarChar);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Search", "");
+
+            _sqlRequestSelectSummary.AddParametr("@p_ID", SqlDbType.Int);
+            _sqlRequestSelectSummary.SetParametrValue("@p_ID", 0);
+
+            _sqlRequestSelectSummary.AddParametr("@p_CreatedUserID", SqlDbType.NVarChar, 255);
+            _sqlRequestSelectSummary.SetParametrValue("@p_CreatedUserID", String.Empty);
+
+            _sqlRequestSelectSummary.AddParametr("@p_LastModifiedUserID", SqlDbType.NVarChar, 255);
+            _sqlRequestSelectSummary.SetParametrValue("@p_LastModifiedUserID", String.Empty);
+
+            _sqlRequestSelectSummary.AddParametr("@p_CompanyID", SqlDbType.NVarChar, 255);
+            _sqlRequestSelectSummary.SetParametrValue("@p_CompanyID", String.Empty);
+
+            _sqlRequestSelectSummary.AddParametr("@p_Phone", SqlDbType.NVarChar, 255);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Phone", String.Empty);
+
+            _sqlRequestSelectSummary.AddParametr("@p_Active", SqlDbType.NVarChar, 255);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Active", String.Empty);
+
+            _sqlRequestSelectSummary.AddParametr("@p_PostCode", SqlDbType.NVarChar, 255);
+            _sqlRequestSelectSummary.SetParametrValue("@p_PostCode", String.Empty);
+
+            _sqlRequestSelectSummary.AddParametr("@p_City", SqlDbType.NVarChar, 255);
+            _sqlRequestSelectSummary.SetParametrValue("@p_City", String.Empty);
+
+            _sqlRequestSelectSummary.AddParametr("@p_Street", SqlDbType.NVarChar, 255);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Street", String.Empty);
+
+            _sqlRequestSelectSummary.AddParametr("@p_Country", SqlDbType.NVarChar, 255);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Country", String.Empty);
+
+            //----------------------------------------------------------------------------
 
             _sqlRequestSave.AddParametr("@p_AddUserID", SqlDbType.Int);
             _sqlRequestSave.SetParametrValue("@p_AddUserID", attributes.numeric.userEdit.AddUserID);
@@ -914,34 +1178,7 @@ namespace Sklad_v1_001.FormUsers.Shops
         }
 
         public DataTable FillGrid(LocaleFilter _localFilter)
-        {
-            /*
-             *  private string ;
-                private Int32 ;
-                private string ;
-
-                private String ;
-                private String ;
-                private String ;
-                private String ;
-                private String ;
-                private String ;
-
-                private Int32 filterCreatedDate;
-                private DateTime? fromCreatedDate;
-                private DateTime? toCreatedDate;
-
-                private Int32 filterLastModifiedDate;
-                private DateTime? fromLastModifiedDate;
-                private DateTime? toLastModifiedDate;
-
-                private String sortColumn;
-                private Boolean sort;
-
-                private Int32 pageNumber;
-                private Int32 pagerowCount;
-
-            */
+        {            
             _sqlRequestSelect.SqlAnswer.datatable.Clear();
             _data.Clear();
             _sqlRequestSelect.SetParametrValue("@p_TypeScreen", ScreenType.ItemByStatus);
@@ -950,10 +1187,15 @@ namespace Sklad_v1_001.FormUsers.Shops
             _sqlRequestSelect.SetParametrValue("@p_ID", _localFilter.ID);
             _sqlRequestSelect.SetParametrValue("@p_Active", _localFilter.Active);
             _sqlRequestSelect.SetParametrValue("@p_Phone", _localFilter.Phone);
-            _sqlRequestSelect.SetParametrValue("@p_Name", _localFilter.Name);
+            _sqlRequestSelect.SetParametrValue("@p_CompanyID", _localFilter.CompanyID);
             _sqlRequestSelect.SetParametrValue("@p_ShopNumber", _localFilter.ShopNumber);
             _sqlRequestSelect.SetParametrValue("@p_CreatedByUserID", _localFilter.CreatedByUserID);
             _sqlRequestSelect.SetParametrValue("@p_LastModifiedByUserID", _localFilter.LastModifiedByUserID);
+
+            _sqlRequestSelect.SetParametrValue("@p_PostCode", _localFilter.PostCode);
+            _sqlRequestSelect.SetParametrValue("@p_City", _localFilter.City);
+            _sqlRequestSelect.SetParametrValue("@p_Street", _localFilter.Street);
+            _sqlRequestSelect.SetParametrValue("@p_Country", _localFilter.Country);
 
             //_sqlRequestSelect.SetParametrValue("@p_FromCreatedDate", _localFilter.FromCreatedDate);
             //_sqlRequestSelect.SetParametrValue("@p_ToCreatedDate", _localFilter.ToCreatedDate);
@@ -976,6 +1218,31 @@ namespace Sklad_v1_001.FormUsers.Shops
 
             _sqlRequestSelectFilters.ComplexRequest(get_filters_procedure, CommandType.StoredProcedure, null);
             _data = _sqlRequestSelectFilters.SqlAnswer.datatable;
+            return _data;
+        }
+
+        public DataTable FillSummary(LocaleFilter _localFilter)
+        {
+            _sqlRequestSelectSummary.SqlAnswer.datatable.Clear();
+            _data.Clear();
+           
+            _sqlRequestSelectSummary.SetParametrValue("@p_Search", _localFilter.Search);
+
+            _sqlRequestSelectSummary.SetParametrValue("@p_ID", _localFilter.ID);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Active", _localFilter.Active);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Phone", _localFilter.Phone);
+            _sqlRequestSelectSummary.SetParametrValue("@p_CompanyID", _localFilter.CompanyID);
+            _sqlRequestSelectSummary.SetParametrValue("@p_ShopNumber", _localFilter.ShopNumber);
+            _sqlRequestSelectSummary.SetParametrValue("@p_CreatedByUserID", _localFilter.CreatedByUserID);
+            _sqlRequestSelectSummary.SetParametrValue("@p_LastModifiedByUserID", _localFilter.LastModifiedByUserID);
+
+            _sqlRequestSelectSummary.SetParametrValue("@p_PostCode", _localFilter.PostCode);
+            _sqlRequestSelectSummary.SetParametrValue("@p_City", _localFilter.City);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Street", _localFilter.Street);
+            _sqlRequestSelectSummary.SetParametrValue("@p_Country", _localFilter.Country);
+
+            _sqlRequestSelectSummary.ComplexRequest(get_summary_procedure, CommandType.StoredProcedure, null);
+            _data = _sqlRequestSelectSummary.SqlAnswer.datatable;
             return _data;
         }
 
@@ -1002,15 +1269,47 @@ namespace Sklad_v1_001.FormUsers.Shops
             _sqlRequestSave.ComplexRequest(get_save_procedure, CommandType.StoredProcedure, null);
             return (Int32)_sqlRequestSave.SqlAnswer.result;
         }
-
-        public RowsFilters ConvertFilter(DataRow _dataRow, RowsFilters _localeRow)
+        public LocaleRow Convert(DataRow _dataRow, LocaleRow _localeRow)
         {
             ConvertData convertData = new ConvertData(_dataRow, _localeRow);
-            _localeRow.FiltersQuantityMin = convertData.ConvertDataDouble("QuantityMin");
-            _localeRow.FiltersQuantityMax = convertData.ConvertDataDouble("QuantityMax");
-            _localeRow.FiltersAmountMin = convertData.ConvertDataDouble("AmountMin");
-            _localeRow.FiltersAmountMax = convertData.ConvertDataDouble("AmountMax");
+
+            _localeRow.ID = convertData.ConvertDataInt32("ID");
+            _localeRow.ShopNumber = convertData.ConvertDataInt32("ShopNumber");
+            _localeRow.CompanyID = convertData.ConvertDataInt32("CompanyID");
+            _localeRow.FullCompanyName = convertData.ConvertDataString("FullCompanyName");
+            _localeRow.ShortCompanyName = convertData.ConvertDataString("ShortCompanyName");
+            _localeRow.Name = convertData.ConvertDataString("Name");
+           
+            _localeRow.Address = convertData.ConvertDataString("Address");
+            _localeRow.Phone = convertData.ConvertDataString("Phone");
+            _localeRow.CreatedDate = convertData.ConvertDataDateTime("CreatedDate");
+            _localeRow.CreatedDateString = convertData.DateTimeConvertShortString(_localeRow.CreatedDate);
+            _localeRow.LastModificatedDate = convertData.ConvertDataDateTime("LastModificatedDate");
+            _localeRow.LastModificatedDateString = convertData.DateTimeConvertShortString(_localeRow.LastModificatedDate);
+            _localeRow.ReffTimeRow = convertData.ConvertDataString("ReffTimeRow");
+            _localeRow.Active = convertData.ConvertDataBoolean("Active");
+            _localeRow.Country = convertData.ConvertDataString("Country");
+            _localeRow.City = convertData.ConvertDataString("City");
+            _localeRow.Administrative = convertData.ConvertDataString("Administrative");
+            _localeRow.Street = convertData.ConvertDataString("Street");
+            _localeRow.Housenumber = convertData.ConvertDataString("Housenumber");
+            _localeRow.PostCode = convertData.ConvertDataInt64("PostCode");
+
+            _localeRow.Lng = convertData.ConvertDataDouble("Lng");
+            _localeRow.Lat = convertData.ConvertDataDouble("Lat");
+            _localeRow.DisplayNameUser = convertData.ConvertDataString("DisplayNameUser");
+            _localeRow.ShortDisplayNameUser = convertData.ConvertDataString("ShortDisplayNameUser");
+            _localeRow.LDisplayNameUser = convertData.ConvertDataString("LDisplayNameUser");
+            _localeRow.ShortLDisplayNameUser = convertData.ConvertDataString("ShortLDisplayNameUser");
+            
             return _localeRow;
+        }
+
+        //данные для суммы
+        public void ConvertSummary(DataRow _dataRow, RowSummary _localeRow)
+        {
+            ConvertData convertData = new ConvertData(_dataRow, _localeRow);
+            _localeRow.SummaryQuantityLine = convertData.ConvertDataInt32("QuantityLine");
         }
 
         public DataTable GetFilter(String filterName)
@@ -1026,22 +1325,25 @@ namespace Sklad_v1_001.FormUsers.Shops
         public void InitFilters()
         {
             DataTable table = FillGridAllFilter();
-            FillFilter("InputUserID", table);
+            FillFilter("CreatedByUserID", table);
             FillFilter("LastModifiedByUserID", table);
-            FillFilter("Delivery", table);
-            FillFilter("ManagerName", table);
-            FillFilter("Status", table);
-            FillFilter("ShopID", table);
+            FillFilter("CompanyID", table);
+            FillFilter("Phone", table);
+            FillFilter("Active", table);
+            FillFilter("PostCode", table);
+            FillFilter("City", table);
+            FillFilter("Street", table);
+            FillFilter("Country", table);
 
-            RowsFilters rowsFilters;
+            // RowsFilters rowsFilters;
             foreach (DataRow row in table.Rows)
             {
-                rowsFilters = new RowsFilters();
-                ConvertFilter(row, rowsFilters);
-                filtersFromTo["Quantity"].min = rowsFilters.FiltersQuantityMin;
-                filtersFromTo["Quantity"].max = rowsFilters.FiltersQuantityMax;
-                filtersFromTo["Amount"].min = rowsFilters.FiltersAmountMin;
-                filtersFromTo["Amount"].max = rowsFilters.FiltersAmountMax;
+                //rowsFilters = new RowsFilters();
+                //ConvertFilter(row, rowsFilters);
+                //filtersFromTo["Quantity"].min = rowsFilters.FiltersQuantityMin;
+                //filtersFromTo["Quantity"].max = rowsFilters.FiltersQuantityMax;
+                //filtersFromTo["Amount"].min = rowsFilters.FiltersAmountMin;
+                //filtersFromTo["Amount"].max = rowsFilters.FiltersAmountMax;
             }
         }
 
