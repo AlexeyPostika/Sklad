@@ -22,7 +22,8 @@
                 <Label Style="{DynamicResource LabelStyle}" Name="required" Margin="-9,0,0,0" FontSize="18" Height="30" Visibility="{Binding ElementName=control, Path=IsRequired, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="Red" Content="*" HorizontalAlignment="Left"/>
             </WrapPanel>
 
-            <TextBox Name="ScanTextBox" Grid.Column="1" 
+            <TextBox Name="ScanTextBox" Grid.Column="1"
+                     Style="{DynamicResource TextBoxStyle}"
                      Text="{Binding ElementName=control, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      KeyDown="ScanTextBox_KeyDown" 
                      PreviewTextInput="ScanTextBox_PreviewTextInput"

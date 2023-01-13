@@ -251,7 +251,7 @@ namespace Sklad_v1_001.Control.FlexGmap
             gmaps.ShowTileGridLines = false;
             gmaps.Zoom = 0;
             gmaps.ShowCenter = false;
-            gmaps.MapProvider = GMapProviders.WikiMapiaMap;//
+            gmaps.MapProvider = GMapProviders.GoogleMap;//
             GMaps.Instance.Mode = AccessMode.ServerAndCache;
             gmaps.Position = new GMap.NET.PointLatLng(Lat, Lng);
 
