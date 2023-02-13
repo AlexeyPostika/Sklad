@@ -999,10 +999,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FormUsers\Page1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="FormUsers\Prixod\RegistraciyTovara.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1041,9 +1037,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="FormUsers\Page1.xaml.cs">
-      <DependentUpon>Page1.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormUsers\Prixod\RegistraciyTovara.xaml.cs">
       <DependentUpon>RegistraciyTovara.xaml</DependentUpon>
@@ -1172,7 +1165,7 @@
     <Resource Include="Icone\Controllu\funnel_30px.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="FormUsers\purchase_30px.png" />
+    <Resource Include="Icone\purchase_30px.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icone\IconTransfer.png" />
