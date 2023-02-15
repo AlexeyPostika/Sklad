@@ -19,7 +19,7 @@ namespace Sklad_v1_001.Properties {
     // с помощью такого средства, как ResGen или Visual Studio.
     // Чтобы добавить или удалить член, измените файл .ResX и снова запустите ResGen
     // с параметром /str или перестройте свой проект VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -129,6 +129,15 @@ namespace Sklad_v1_001.Properties {
         public static string ADDPRODUCT {
             get {
                 return ResourceManager.GetString("ADDPRODUCT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Адрес маг..
+        /// </summary>
+        public static string AddressShop {
+            get {
+                return ResourceManager.GetString("AddressShop", resourceCulture);
             }
         }
         
@@ -516,6 +525,15 @@ namespace Sklad_v1_001.Properties {
         public static string CompanyDelivery {
             get {
                 return ResourceManager.GetString("CompanyDelivery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Н-ие компании.
+        /// </summary>
+        public static string CompanyName {
+            get {
+                return ResourceManager.GetString("CompanyName", resourceCulture);
             }
         }
         

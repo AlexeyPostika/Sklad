@@ -1038,4 +1038,10 @@
   <data name="SearchAdress" xml:space="preserve">
     <value>Поиск по адресу</value>
   </data>
+  <data name="AddressShop" xml:space="preserve">
+    <value>Адрес маг.</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Н-ие компании</value>
+  </data>
 </root>

@@ -416,7 +416,7 @@ namespace Sklad_v1_001.FormUsers.Shops
         private Int32 addUserID;
         private Int32 iD ;
         private Int32 shopNumber ;
-        private Int32 companyID ;
+        private Int32 companyID ;       
         private String name ;
         private String address ;
         private String phone ;
@@ -500,6 +500,7 @@ namespace Sklad_v1_001.FormUsers.Shops
                 OnPropertyChanged("CompanyID");
             }
         }
+       
         public String Name
         {
             get
@@ -1188,7 +1189,7 @@ namespace Sklad_v1_001.FormUsers.Shops
             _sqlRequestSelect.SetParametrValue("@p_ID", _localFilter.ID);
             _sqlRequestSelect.SetParametrValue("@p_Active", _localFilter.Active);
             _sqlRequestSelect.SetParametrValue("@p_Phone", _localFilter.Phone);
-            _sqlRequestSelect.SetParametrValue("@p_CompanyID", _localFilter.CompanyID);
+            _sqlRequestSelect.SetParametrValue("@p_CompanyID", _localFilter.CompanyID);           
             //_sqlRequestSelect.SetParametrValue("@p_ShopNumber", _localFilter.ShopNumber);
             _sqlRequestSelect.SetParametrValue("@p_CreatedUserID", _localFilter.CreatedByUserID);
             _sqlRequestSelect.SetParametrValue("@p_LastModifiedUserID", _localFilter.LastModifiedByUserID);
