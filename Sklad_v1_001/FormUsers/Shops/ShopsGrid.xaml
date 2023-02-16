@@ -45,7 +45,7 @@
                     <DataGridTextColumn Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="Auto" Visibility="Collapsed"/>
                     <DataGridTextColumn Binding="{Binding Path=LineDocument, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.ID}" Width="Auto"/>
                     
-                    <DataGridTemplateColumn x:Name="FilterActive" Width="Auto" IsReadOnly="True" SortMemberPath="Active" CanUserSort="True">
+                    <!--<DataGridTemplateColumn x:Name="filterActive" Width="Auto" IsReadOnly="True" SortMemberPath="Active" CanUserSort="True">
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>
                                 <FlexFilter:FlexGridCheckBox x:Name="active"
@@ -62,7 +62,7 @@
                                 <Label HorizontalContentAlignment="Right" Content="{Binding Path=Active, Mode=OneWay}" ContentStringFormat=" {0:N2}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
+                    </DataGridTemplateColumn>-->
                     
                    
 
