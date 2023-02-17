@@ -63,7 +63,25 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>-->
-                    
+                    <DataGridTemplateColumn x:Name="active" Width="Auto" IsReadOnly="True" SortMemberPath="Active" CanUserSort="True">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <FlexFilter:FlexGridCheckBox x:Name="FilterActive"
+                                                         ButtonApplyClick="FilterActive_ButtonApplyClick"
+                                                         IsVisibility="Collapsed" 
+                                                         LabelWidth="1"
+                                                         DataTableData="{Binding ElementName=page, Path=FilterActive, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         ImageSource="{Binding ElementName=page, Path=ClearfilterActive, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         CheckAll="True"
+                                                         LabelText=""/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding Path=Active, Mode=OneWay}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                    
 
                     <DataGridTemplateColumn x:Name="FilterShop" Width="Auto" IsReadOnly="True" SortMemberPath="ShopID" CanUserSort="True">

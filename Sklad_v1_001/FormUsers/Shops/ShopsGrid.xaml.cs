@@ -805,5 +805,10 @@ namespace Sklad_v1_001.FormUsers.Shops
             }
         }
         #endregion
+
+        private void FilterActive_ButtonApplyClick(string text)
+        {
+
+        }
     }
 }
