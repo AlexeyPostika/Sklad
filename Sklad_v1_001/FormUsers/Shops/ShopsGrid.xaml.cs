@@ -60,12 +60,11 @@ namespace Sklad_v1_001.FormUsers.Shops
         Boolean isAllowFilter;
         Boolean isPaginator;
 
-        BitmapImage clearfilterQuantity;
+        BitmapImage clearfilterActive;
         BitmapImage clearfilterShopID;
-        BitmapImage clearfilterStatusID;
-        BitmapImage clearfilterInputUserName;
+        BitmapImage clearfilterPostCode;
         BitmapImage clearfilterUserName;
-        BitmapImage clearfilterAmount;
+        BitmapImage clearfilterCityID;
 
         private Boolean isEnableBack;
         private Boolean isEnableNext;
@@ -320,16 +319,16 @@ namespace Sklad_v1_001.FormUsers.Shops
                 OnPropertyChanged("IsAllowFilter");
             }
         }
-        public BitmapImage ClearfilterQuantity
+        public BitmapImage ClearfilterActive
         {
             get
             {
-                return clearfilterQuantity;
+                return clearfilterActive;
             }
 
             set
             {
-                clearfilterQuantity = value;
+                clearfilterActive = value;
                 OnPropertyChanged("ClearfilterManagerNameID");
             }
         }
@@ -346,16 +345,16 @@ namespace Sklad_v1_001.FormUsers.Shops
                 OnPropertyChanged("ClearfilterDeliveryID");
             }
         }
-        public BitmapImage ClearfilterStatusID
+        public BitmapImage ClearfilterPostCode
         {
             get
             {
-                return clearfilterStatusID;
+                return clearfilterPostCode;
             }
 
             set
             {
-                clearfilterStatusID = value;
+                clearfilterPostCode = value;
                 OnPropertyChanged("ClearfilterStatusID");
             }
         }
@@ -372,30 +371,17 @@ namespace Sklad_v1_001.FormUsers.Shops
                 OnPropertyChanged("ClearfilterLastModifiedByUserID");
             }
         }
-        //ClearfilterInputUserName
-        public BitmapImage ClearfilterInputUserName
+
+        public BitmapImage ClearfilterCityID
         {
             get
             {
-                return clearfilterInputUserName;
+                return clearfilterCityID;
             }
 
             set
             {
-                clearfilterInputUserName = value;
-                OnPropertyChanged("ClearfilterInputUserName");
-            }
-        }
-        public BitmapImage ClearfilterAmount
-        {
-            get
-            {
-                return clearfilterAmount;
-            }
-
-            set
-            {
-                clearfilterAmount = value;
+                clearfilterCityID = value;
                 OnPropertyChanged("ClearfilterAmount");
             }
         }
@@ -571,11 +557,10 @@ namespace Sklad_v1_001.FormUsers.Shops
         void InitFilters()
         {
             ClearfilterShopID = ImageHelper.GenerateImage("IconFilter.png");
-            ClearfilterUserName = ImageHelper.GenerateImage("IconFilter.png");
-            ClearfilterInputUserName = ImageHelper.GenerateImage("IconFilter.png");
-            ClearfilterQuantity = ImageHelper.GenerateImage("IconFilter.png");
-            ClearfilterStatusID = ImageHelper.GenerateImage("IconFilter.png");
-            ClearfilterAmount = ImageHelper.GenerateImage("IconFilter.png");
+            ClearfilterUserName = ImageHelper.GenerateImage("IconFilter.png");           
+            ClearfilterActive = ImageHelper.GenerateImage("IconFilter.png");
+            ClearfilterPostCode = ImageHelper.GenerateImage("IconFilter.png");
+            ClearfilterCityID = ImageHelper.GenerateImage("IconFilter.png");
            
             FilterCreatedByUserID.Clear();
             if (shopsLogic.GetFilter("CreatedByUserID") != null)
@@ -719,6 +704,16 @@ namespace Sklad_v1_001.FormUsers.Shops
         {
 
         }
+
+        private void FilterActive_ButtonApplyClick(string text)
+        {
+
+        }
+
+        private void FilterPostCode_ButtonApplyClick(string text)
+        {
+
+        }
         #endregion
 
         #region Paginator
@@ -806,14 +801,6 @@ namespace Sklad_v1_001.FormUsers.Shops
         }
         #endregion
 
-        private void FilterActive_ButtonApplyClick(string text)
-        {
-
-        }
-
-        private void FilterPostCode_ButtonApplyClick(string text)
-        {
-
-        }
+       
     }
 }

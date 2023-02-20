@@ -136,8 +136,8 @@
                                                          ButtonApplyClick="FilterShopID_ButtonApplyClick"
                                                          IsVisibility="Collapsed" 
                                                          LabelWidth="60"
-                                                         DataTableData="{Binding ElementName=page, Path=FilterIDShop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                         ImageSource="{Binding ElementName=page, Path=ClearfilterShopID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         DataTableData="{Binding ElementName=page, Path=FilterCityID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         ImageSource="{Binding ElementName=page, Path=ClearfilterCityID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                          CheckAll="True"
                                                          LabelText="{x:Static res:Resources.City}"/>
                             </DataTemplate>
