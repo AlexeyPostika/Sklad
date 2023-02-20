@@ -113,7 +113,7 @@
                                 <FlexFilter:FlexGridCheckBox x:Name="FilterPostCode"
                                                          ButtonApplyClick="FilterPostCode_ButtonApplyClick"
                                                          IsVisibility="Collapsed" 
-                                                         LabelWidth="1"
+                                                         LabelWidth="130"
                                                          DataTableData="{Binding ElementName=page, Path=FilterPostCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                          ImageSource="{Binding ElementName=page, Path=ClearfilterPostCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                          CheckAll="True"
@@ -122,7 +122,7 @@
                         </DataGridTemplateColumn.HeaderTemplate>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <CheckBox IsChecked="{Binding Path=PostCode, Mode=OneWay}"/>
+                                <Label HorizontalContentAlignment="Right" Content="{Binding Path=PostCode, Mode=OneWay}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
