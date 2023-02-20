@@ -745,6 +745,15 @@ namespace Sklad_v1_001.FormUsers.Shops
         {
 
         }
+        private void phone_ButtonApplyClick(string text)
+        {
+
+        }
+
+        private void FilterCompanyID_ButtonApplyClick(string text)
+        {
+
+        }
         #endregion
 
         #region Paginator
@@ -833,14 +842,6 @@ namespace Sklad_v1_001.FormUsers.Shops
 
         #endregion
 
-        private void phone_ButtonApplyClick(string text)
-        {
-
-        }
-
-        private void FilterCompanyID_ButtonApplyClick(string text)
-        {
-
-        }
+      
     }
 }
