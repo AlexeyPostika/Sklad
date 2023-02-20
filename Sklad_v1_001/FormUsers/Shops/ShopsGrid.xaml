@@ -104,9 +104,30 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                     <DataGridTextColumn Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.Shop}" Width="Auto"/>
+                    
                     <DataGridTextColumn Binding="{Binding Path=ShortCompanyName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.CompanyName}" Width="Auto"/>
-                   
+                    <DataGridTemplateColumn x:Name="company" Width="Auto" IsReadOnly="True" SortMemberPath="PostCode" CanUserSort="True">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <FlexFilter:FlexGridCheckBox x:Name="FilterCompanyID"
+                                                         ButtonApplyClick="FilterCompanyID_ButtonApplyClick"
+                                                         IsVisibility="Collapsed" 
+                                                         LabelWidth="130"
+                                                         DataTableData="{Binding ElementName=page, Path=FilterCompanyID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         ImageSource="{Binding ElementName=page, Path=ClearfilterCompanyID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         CheckAll="True"
+                                                         LabelText="{x:Static res:Resources.CompanyName}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label HorizontalContentAlignment="Right" Content="{Binding Path=ShortCompanyName, Mode=OneWay}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    
                     <DataGridTextColumn Binding="{Binding Path=Address, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.AddressShop}" Width="Auto"/>
+                    
                     <DataGridTemplateColumn x:Name="postcode" Width="Auto" IsReadOnly="True" SortMemberPath="PostCode" CanUserSort="True">
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>
