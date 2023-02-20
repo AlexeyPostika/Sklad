@@ -107,6 +107,26 @@
                     <DataGridTextColumn Binding="{Binding Path=ShortCompanyName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.CompanyName}" Width="Auto"/>
                    
                     <DataGridTextColumn Binding="{Binding Path=Address, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.AddressShop}" Width="Auto"/>
+                    <DataGridTemplateColumn x:Name="postcode" Width="Auto" IsReadOnly="True" SortMemberPath="PostCode" CanUserSort="True">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <FlexFilter:FlexGridCheckBox x:Name="FilterPostCode"
+                                                         ButtonApplyClick="FilterPostCode_ButtonApplyClick"
+                                                         IsVisibility="Collapsed" 
+                                                         LabelWidth="1"
+                                                         DataTableData="{Binding ElementName=page, Path=FilterPostCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         ImageSource="{Binding ElementName=page, Path=ClearfilterPostCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         CheckAll="True"
+                                                         LabelText="{x:Static res:Resources.PostCode}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding Path=PostCode, Mode=OneWay}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
                     <DataGridTextColumn Binding="{Binding Path=Phone, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.Phone}" Width="Auto"/>
 
                     <DataGridTemplateColumn x:Name="FilterQuantity" Width="Auto" IsReadOnly="True" SortMemberPath="City" CanUserSort="True">

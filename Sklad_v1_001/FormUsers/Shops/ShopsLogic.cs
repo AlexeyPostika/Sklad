@@ -998,15 +998,15 @@ namespace Sklad_v1_001.FormUsers.Shops
             innerList9.Columns.Add("IsChecked");
             innerList9.Columns.Add("Description");
 
-            filters.Add("CreatedByUserID", innerList1);
-            filters.Add("LastModifiedByUserID", innerList2);
+            filters.Add("Active", innerList1);
+            filters.Add("ShopNumber", innerList2);
             filters.Add("CompanyID", innerList3);
             filters.Add("Phone", innerList4);
-            filters.Add("Active", innerList5);
-            filters.Add("PostCode", innerList6);
-            filters.Add("City", innerList7);
-            filters.Add("Street", innerList8);
-            filters.Add("Country", innerList9);
+            filters.Add("PostCode", innerList5);
+            filters.Add("City", innerList6);
+           // filters.Add("Street", innerList8);
+            filters.Add("Country", innerList7);
+            filters.Add("CreatedUserID", innerList8);
 
             _data = new DataTable();
             _datarow = new DataTable();
@@ -1325,17 +1325,16 @@ namespace Sklad_v1_001.FormUsers.Shops
         }
 
         public void InitFilters()
-        {
+        {           
             DataTable table = FillGridAllFilter();
-            FillFilter("CreatedByUserID", table);
-            FillFilter("LastModifiedByUserID", table);
+            FillFilter("Active", table);
+            FillFilter("ShopNumber", table);
             FillFilter("CompanyID", table);
             FillFilter("Phone", table);
-            FillFilter("Active", table);
             FillFilter("PostCode", table);
             FillFilter("City", table);
-            FillFilter("Street", table);
             FillFilter("Country", table);
+            FillFilter("CreatedUserID", table);
 
             // RowsFilters rowsFilters;
             foreach (DataRow row in table.Rows)

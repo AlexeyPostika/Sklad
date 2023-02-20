@@ -810,5 +810,10 @@ namespace Sklad_v1_001.FormUsers.Shops
         {
 
         }
+
+        private void FilterPostCode_ButtonApplyClick(string text)
+        {
+
+        }
     }
 }
