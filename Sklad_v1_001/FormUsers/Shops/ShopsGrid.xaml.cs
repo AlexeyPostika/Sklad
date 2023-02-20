@@ -329,7 +329,7 @@ namespace Sklad_v1_001.FormUsers.Shops
             set
             {
                 clearfilterActive = value;
-                OnPropertyChanged("ClearfilterManagerNameID");
+                OnPropertyChanged("ClearfilterActive");
             }
         }
         public BitmapImage ClearfilterShopID
@@ -342,7 +342,7 @@ namespace Sklad_v1_001.FormUsers.Shops
             set
             {
                 clearfilterShopID = value;
-                OnPropertyChanged("ClearfilterDeliveryID");
+                OnPropertyChanged("ClearfilterShopID");
             }
         }
         public BitmapImage ClearfilterPostCode
@@ -355,7 +355,7 @@ namespace Sklad_v1_001.FormUsers.Shops
             set
             {
                 clearfilterPostCode = value;
-                OnPropertyChanged("ClearfilterStatusID");
+                OnPropertyChanged("ClearfilterPostCode");
             }
         }
         public BitmapImage ClearfilterUserName
@@ -368,7 +368,7 @@ namespace Sklad_v1_001.FormUsers.Shops
             set
             {
                 clearfilterUserName = value;
-                OnPropertyChanged("ClearfilterLastModifiedByUserID");
+                OnPropertyChanged("ClearfilterUserName");
             }
         }
 
@@ -382,7 +382,7 @@ namespace Sklad_v1_001.FormUsers.Shops
             set
             {
                 clearfilterCityID = value;
-                OnPropertyChanged("ClearfilterAmount");
+                OnPropertyChanged("ClearfilterCityID");
             }
         }
 
