@@ -127,9 +127,29 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
-                    <DataGridTextColumn Binding="{Binding Path=Phone, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.Phone}" Width="Auto"/>
+                    <!--<DataGridTextColumn Binding="{Binding Path=Phone, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Header="{x:Static res:Resources.Phone}" Width="Auto"/>-->
 
-                    <DataGridTemplateColumn x:Name="FilterQuantity" Width="Auto" IsReadOnly="True" SortMemberPath="City" CanUserSort="True">
+                    <DataGridTemplateColumn x:Name="Filterphones" Width="Auto" IsReadOnly="True" SortMemberPath="Phone" CanUserSort="True">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <FlexFilter:FlexGridCheckBox x:Name="phone"
+                                                         ButtonApplyClick="phone_ButtonApplyClick"
+                                                         IsVisibility="Collapsed" 
+                                                         LabelWidth="60"
+                                                         DataTableData="{Binding ElementName=page, Path=FilterPhone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         ImageSource="{Binding ElementName=page, Path=ClearfilterPhone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         CheckAll="True"
+                                                         LabelText="{x:Static res:Resources.Phone}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label HorizontalContentAlignment="Right" Content="{Binding Path=Phone, Mode=OneWay}" ContentStringFormat=" {0:N2}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn x:Name="Filtercity" Width="Auto" IsReadOnly="True" SortMemberPath="City" CanUserSort="True">
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>
                                 <FlexFilter:FlexGridCheckBox x:Name="CityID"

@@ -65,6 +65,8 @@ namespace Sklad_v1_001.FormUsers.Shops
         BitmapImage clearfilterPostCode;
         BitmapImage clearfilterUserName;
         BitmapImage clearfilterCityID;
+        BitmapImage clearfilterPhone;
+        BitmapImage clearfilterCompanyID;
 
         private Boolean isEnableBack;
         private Boolean isEnableNext;
@@ -385,7 +387,34 @@ namespace Sklad_v1_001.FormUsers.Shops
                 OnPropertyChanged("ClearfilterCityID");
             }
         }
+        //ClearfilterPhone
+        public BitmapImage ClearfilterPhone
+        {
+            get
+            {
+                return clearfilterPhone;
+            }
 
+            set
+            {
+                clearfilterPhone = value;
+                OnPropertyChanged("ClearfilterPhone");
+            }
+        }
+        //ClearfilterCompanyID
+        public BitmapImage ClearfilterCompanyID
+        {
+            get
+            {
+                return clearfilterCompanyID;
+            }
+
+            set
+            {
+                clearfilterCompanyID = value;
+                OnPropertyChanged("ClearfilterCompanyID");
+            }
+        }
         public Boolean IsPaginator
         {
             get
@@ -561,7 +590,9 @@ namespace Sklad_v1_001.FormUsers.Shops
             ClearfilterActive = ImageHelper.GenerateImage("IconFilter.png");
             ClearfilterPostCode = ImageHelper.GenerateImage("IconFilter.png");
             ClearfilterCityID = ImageHelper.GenerateImage("IconFilter.png");
-           
+            ClearfilterPhone = ImageHelper.GenerateImage("IconFilter.png");
+            ClearfilterCompanyID = ImageHelper.GenerateImage("IconFilter.png");
+
             FilterCreatedByUserID.Clear();
             if (shopsLogic.GetFilter("CreatedByUserID") != null)
             {
@@ -799,8 +830,17 @@ namespace Sklad_v1_001.FormUsers.Shops
                 shopsLogic.ConvertSummary(row, summary);
             }
         }
+
         #endregion
 
-       
+        private void phone_ButtonApplyClick(string text)
+        {
+
+        }
+
+        private void FilterCompanyID_ButtonApplyClick(string text)
+        {
+
+        }
     }
 }
