@@ -91,7 +91,7 @@
                                                          ButtonApplyClick="FilterShopID_ButtonApplyClick"
                                                          IsVisibility="Collapsed" 
                                                          LabelWidth="120"
-                                                         DataTableData="{Binding ElementName=page, Path=FilterIDShop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         DataTableData="{Binding ElementName=page, Path=FilterShopNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                          ImageSource="{Binding ElementName=page, Path=ClearfilterShopID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                          CheckAll="True"
                                                          LabelText="{x:Static res:Resources.ShopNumber}"/>
@@ -234,7 +234,7 @@
                                                              IsVisibility="Collapsed"
                                                              LabelWidth="80"  
                                                              ButtonApplyClick="FilterUserID_ButtonApplyClick"
-                                                             DataTableData="{Binding ElementName=page, Path=FilterLastModifiedByUserID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                             DataTableData="{Binding ElementName=page, Path=FilterCreatedByUserID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                              ImageSource="{Binding ElementName=page, Path=ClearfilterUserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                              CheckAll="True"
                                                              LabelText="{x:Static res:Resources.UserName}"/>
@@ -242,7 +242,7 @@
                         </DataGridTemplateColumn.HeaderTemplate>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Content="{Binding Path=LDisplayNameUser, Mode=OneWay}"/>
+                                <Label Content="{Binding Path=DisplayNameUser, Mode=OneWay}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

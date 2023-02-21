@@ -44,13 +44,13 @@ namespace Sklad_v1_001.FormUsers.Shops
         RowSummary summary;
 
         DataTable filterCreatedByUserID;
-        DataTable filterLastModifiedByUserID;
+        //DataTable filterLastModifiedByUserID;
         DataTable filterCompanyID;
         DataTable filterPhone;
         DataTable filterActive;
         DataTable filterPostCode;
         DataTable filterCity;
-        DataTable filterStreet;
+        DataTable filterShopNumber;
         DataTable filterCountry;
 
         Int32 filterDateIDLastModifiadDate;
@@ -161,20 +161,20 @@ namespace Sklad_v1_001.FormUsers.Shops
                 OnPropertyChanged("FilterCreatedByUserID");
             }
         }
-        public DataTable FilterLastModifiedByUserID
-        {
-            get
-            {
-                return filterLastModifiedByUserID;
-            }
+        //public DataTable FilterLastModifiedByUserID
+        //{
+        //    get
+        //    {
+        //        return filterLastModifiedByUserID;
+        //    }
 
-            set
-            {
-                filterLastModifiedByUserID = value;
-                OnPropertyChanged("FilterLastModifiedByUserID");
-            }
+        //    set
+        //    {
+        //        filterLastModifiedByUserID = value;
+        //        OnPropertyChanged("FilterLastModifiedByUserID");
+        //    }
 
-        }
+        //}
         public DataTable FilterCompanyID
         {
             get
@@ -242,17 +242,17 @@ namespace Sklad_v1_001.FormUsers.Shops
                 OnPropertyChanged("FilterCity");
             }
         }
-        public DataTable FilterStreet
+        public DataTable FilterShopNumber
         {
             get
             {
-                return filterStreet;
+                return filterShopNumber;
             }
 
             set
             {
-                filterStreet = value;
-                OnPropertyChanged("FilterStreet");
+                filterShopNumber = value;
+                OnPropertyChanged("FilterShopNumber");
             }
         }
         public DataTable FilterCountry
@@ -506,22 +506,22 @@ namespace Sklad_v1_001.FormUsers.Shops
             shopsLogic = new ShopsLogic(attributes);
 
             FilterCreatedByUserID = new DataTable();
-            FilterLastModifiedByUserID = new DataTable();
+            //FilterLastModifiedByUserID = new DataTable();
             FilterCompanyID = new DataTable();
             FilterPhone = new DataTable();
             FilterActive = new DataTable();            
             FilterPostCode = new DataTable();
             FilterCity = new DataTable();
-            FilterStreet = new DataTable();
+            FilterShopNumber = new DataTable();
             FilterCountry = new DataTable();
 
             FilterCreatedByUserID.Columns.Add("ID");
             FilterCreatedByUserID.Columns.Add("IsChecked");
             FilterCreatedByUserID.Columns.Add("Description");
 
-            FilterLastModifiedByUserID.Columns.Add("ID");
-            FilterLastModifiedByUserID.Columns.Add("IsChecked");
-            FilterLastModifiedByUserID.Columns.Add("Description");
+            //FilterLastModifiedByUserID.Columns.Add("ID");
+            //FilterLastModifiedByUserID.Columns.Add("IsChecked");
+            //FilterLastModifiedByUserID.Columns.Add("Description");
 
             FilterCompanyID.Columns.Add("ID");
             FilterCompanyID.Columns.Add("IsChecked");
@@ -543,9 +543,9 @@ namespace Sklad_v1_001.FormUsers.Shops
             FilterCity.Columns.Add("IsChecked");
             FilterCity.Columns.Add("Description");
 
-            FilterStreet.Columns.Add("ID");
-            FilterStreet.Columns.Add("IsChecked");
-            FilterStreet.Columns.Add("Description");
+            FilterShopNumber.Columns.Add("ID");
+            FilterShopNumber.Columns.Add("IsChecked");
+            FilterShopNumber.Columns.Add("Description");
 
             FilterCountry.Columns.Add("ID");
             FilterCountry.Columns.Add("IsChecked");
@@ -594,9 +594,9 @@ namespace Sklad_v1_001.FormUsers.Shops
             ClearfilterCompanyID = ImageHelper.GenerateImage("IconFilter.png");
 
             FilterCreatedByUserID.Clear();
-            if (shopsLogic.GetFilter("CreatedByUserID") != null)
+            if (shopsLogic.GetFilter("CreatedUserID") != null)
             {
-                foreach (DataRow row in shopsLogic.GetFilter("CreatedByUserID").Rows)
+                foreach (DataRow row in shopsLogic.GetFilter("CreatedUserID").Rows)
                 {
                     DataRow newrow = FilterCreatedByUserID.NewRow();
                     newrow["ID"] = row["ID"];
@@ -606,18 +606,18 @@ namespace Sklad_v1_001.FormUsers.Shops
                 }
             }
 
-            FilterLastModifiedByUserID.Clear();
-            if (shopsLogic.GetFilter("LastModifiedByUserID") != null)
-            {
-                foreach (DataRow row in shopsLogic.GetFilter("LastModifiedByUserID").Rows)
-                {
-                    DataRow newrow = FilterLastModifiedByUserID.NewRow();
-                    newrow["ID"] = row["ID"];
-                    newrow["IsChecked"] = true;
-                    newrow["Description"] = row["Description"];
-                    FilterLastModifiedByUserID.Rows.Add(newrow);
-                }
-            }
+            //FilterLastModifiedByUserID.Clear();
+            //if (shopsLogic.GetFilter("LastModifiedByUserID") != null)
+            //{
+            //    foreach (DataRow row in shopsLogic.GetFilter("LastModifiedByUserID").Rows)
+            //    {
+            //        DataRow newrow = FilterLastModifiedByUserID.NewRow();
+            //        newrow["ID"] = row["ID"];
+            //        newrow["IsChecked"] = true;
+            //        newrow["Description"] = row["Description"];
+            //        FilterLastModifiedByUserID.Rows.Add(newrow);
+            //    }
+            //}
 
             FilterCompanyID.Clear();
             if (shopsLogic.GetFilter("CompanyID") != null)
@@ -684,16 +684,16 @@ namespace Sklad_v1_001.FormUsers.Shops
                 }
             }
 
-            FilterStreet.Clear();
-            if (shopsLogic.GetFilter("Street") != null)
+            FilterShopNumber.Clear();
+            if (shopsLogic.GetFilter("ShopNumber") != null)
             {
-                foreach (DataRow row in shopsLogic.GetFilter("Street").Rows)
+                foreach (DataRow row in shopsLogic.GetFilter("ShopNumber").Rows)
                 {
-                    DataRow newrow = FilterStreet.NewRow();
+                    DataRow newrow = FilterShopNumber.NewRow();
                     newrow["ID"] = row["ID"];
                     newrow["IsChecked"] = true;
                     newrow["Description"] = row["Description"]; 
-                    FilterStreet.Rows.Add(newrow);
+                    FilterShopNumber.Rows.Add(newrow);
                 }
             }
 
