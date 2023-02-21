@@ -371,7 +371,7 @@ namespace Sklad_v1_001.Control.FlexFilter
                 flexGridCheckBoxWindow.Width = 350;
                 flexGridCheckBoxWindow.Height = 450;
                 flexGridCheckBoxWithImageWindow.Left = this.ButtonFilter.PointToScreen(new Point(0, 0)).X + this.ButtonFilter.ActualWidth;
-                flexGridCheckBoxWithImageWindow.Top = location.Y + this.ActualHeight;// - 20; 
+                flexGridCheckBoxWithImageWindow.Top = location.Y + 10;// this.ActualHeight;// - 20; 
                 flexGridCheckBoxWithImageWindow.AllowDrop = false;
 
                 foreach (DataRow row in DataTableData.Rows)

@@ -428,7 +428,7 @@ namespace Sklad_v1_001.Control.FlexFilter
             {
                 flexGridFromToWindowInt.WindowStartupLocation = WindowStartupLocation.Manual;
                 flexGridFromToWindowInt.Left = this.ButtonFilter.PointToScreen(new Point(0, 0)).X + this.ButtonFilter.ActualWidth;
-                flexGridFromToWindowInt.Top = location.Y + this.ActualHeight;
+                flexGridFromToWindowInt.Top = location.Y + 10;// this.ActualHeight;
                 flexGridFromToWindowInt.AllowDrop = false;
                 flexGridFromToWindowInt.LabelText = Properties.Resources.FilterTitle + " " + this.LabelText;
                 flexGridFromToWindowInt.DefaultMax = (Int32)DefaultMax;
@@ -443,7 +443,7 @@ namespace Sklad_v1_001.Control.FlexFilter
             {
                 flexGridFromToWindowTime.WindowStartupLocation = WindowStartupLocation.Manual;
                 flexGridFromToWindowTime.Left = this.ButtonFilter.PointToScreen(new Point(0, 0)).X + this.ButtonFilter.ActualWidth;
-                flexGridFromToWindowTime.Top = location.Y + this.ActualHeight;
+                flexGridFromToWindowTime.Top = location.Y + 10;// this.ActualHeight;
                 flexGridFromToWindowTime.AllowDrop = false;
                 flexGridFromToWindowTime.LabelText = Properties.Resources.FilterTitle + " " + this.LabelText;
                 flexGridFromToWindowTime.DefaultMax = DefaultMaxTime;
@@ -458,7 +458,7 @@ namespace Sklad_v1_001.Control.FlexFilter
             {
                 flexGridFromToWindow.WindowStartupLocation = WindowStartupLocation.Manual;
                 flexGridFromToWindow.Left = this.ButtonFilter.PointToScreen(new Point(0, 0)).X + this.ButtonFilter.ActualWidth;
-                flexGridFromToWindow.Top = location.Y + this.ActualHeight;
+                flexGridFromToWindow.Top = location.Y + 10;//+ this.ActualHeight;
                 flexGridFromToWindow.AllowDrop = false;
                 flexGridFromToWindow.LabelText = Properties.Resources.FilterTitle + " " + this.LabelText;
                 flexGridFromToWindow.DefaultMax = DefaultMax;
