@@ -90,7 +90,7 @@
                                 <FlexFilter:FlexGridCheckBox x:Name="FilterShopID"
                                                          ButtonApplyClick="FilterShopID_ButtonApplyClick"
                                                          IsVisibility="Collapsed" 
-                                                         LabelWidth="80"
+                                                         LabelWidth="120"
                                                          DataTableData="{Binding ElementName=page, Path=FilterIDShop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                          ImageSource="{Binding ElementName=page, Path=ClearfilterShopID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                          CheckAll="True"

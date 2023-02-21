@@ -359,19 +359,19 @@ namespace Sklad_v1_001.Control.FlexFilter
         private void ButtonFilter_ButtonClick()
         {
             Boolean CheckAllTemp = true;
+            var location = this.MainGrid.PointToScreen(new Point(0, 0));
             if (IsHaveImage)
             {
                 if (flexGridCheckBoxWithImageWindow == null)
                 {
                     flexGridCheckBoxWithImageWindow = new FlexGridCheckBoxWithImageWindow();
                     flexGridCheckBoxWithImageWindow.ButtonApplyClick += new Action(ButtonApplyClickWindow);
-                }
-                var location = this.PointToScreen(new Point(0, 0));
+                }              
                 flexGridCheckBoxWithImageWindow.WindowStartupLocation = WindowStartupLocation.Manual;
                 flexGridCheckBoxWindow.Width = 350;
                 flexGridCheckBoxWindow.Height = 450;
                 flexGridCheckBoxWithImageWindow.Left = this.ButtonFilter.PointToScreen(new Point(0, 0)).X + this.ButtonFilter.ActualWidth;
-                flexGridCheckBoxWithImageWindow.Top = location.Y + this.ActualHeight;
+                flexGridCheckBoxWithImageWindow.Top = location.Y + this.ActualHeight;// - 20; 
                 flexGridCheckBoxWithImageWindow.AllowDrop = false;
 
                 foreach (DataRow row in DataTableData.Rows)
@@ -395,13 +395,11 @@ namespace Sklad_v1_001.Control.FlexFilter
                     flexGridCheckBoxWindow = new FlexGridCheckBoxWindow();
                     flexGridCheckBoxWindow.ButtonApplyClick += new Action(ButtonApplyClickWindow);
                 }
-
-                var location = this.PointToScreen(new Point(0, 0));
                 flexGridCheckBoxWindow.WindowStartupLocation = WindowStartupLocation.Manual;
                 flexGridCheckBoxWindow.Width = 350;
                 flexGridCheckBoxWindow.Height = 450;
                 flexGridCheckBoxWindow.Left = this.ButtonFilter.PointToScreen(new Point(0, 0)).X + this.ButtonFilter.ActualWidth;
-                flexGridCheckBoxWindow.Top =  location.Y + this.ActualHeight;
+                flexGridCheckBoxWindow.Top = location.Y + 10;// + this.MainGrid.ActualHeight;// - 20;
                 flexGridCheckBoxWindow.AllowDrop = false;
                 
                 foreach (DataRow row in DataTableData.Rows)

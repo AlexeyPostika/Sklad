@@ -432,16 +432,26 @@ namespace Sklad_v1_001.Control.FlexFilter
             NeedResize = true;
             var frameWorkAreaX = MainWindow.AppWindow.frameWorkArea.PointToScreen(new Point(0, 0)).X;
             var frameWorkAreaActualWidth = MainWindow.AppWindow.frameWorkArea.ActualWidth;
-            if (this.Left - this.ActualWidth <= frameWorkAreaX)
-                this.Left = frameWorkAreaX;
-            else
-                this.Left = this.Left - this.ActualWidth;
-            if (this.Left + this.ActualWidth > frameWorkAreaX + frameWorkAreaActualWidth)
+            if (Left - ActualWidth <= frameWorkAreaX)
             {
-                this.MaxWidth = frameWorkAreaActualWidth - this.Left + frameWorkAreaX;
+                Left = frameWorkAreaX;
             }
-            this.Activated -= ContentActivated;
+            else
+            {
+                Left = Left - ActualWidth;
+            }
+            if (Left + ActualWidth > frameWorkAreaX + frameWorkAreaActualWidth)
+            {
+                Left = frameWorkAreaX + frameWorkAreaActualWidth - ActualWidth;
+            }
+            if (Left + ActualWidth > frameWorkAreaX + frameWorkAreaActualWidth)
+            {
+                MaxWidth = frameWorkAreaActualWidth - Left + frameWorkAreaX;
+            }
+            Left -= 70;
+            Activated -= ContentActivated;
         }
+
 
         private void CheckBox_Click(object sender, RoutedEventArgs e)
         {
