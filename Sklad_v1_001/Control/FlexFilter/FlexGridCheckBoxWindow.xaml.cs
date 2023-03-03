@@ -448,7 +448,7 @@ namespace Sklad_v1_001.Control.FlexFilter
             {
                 MaxWidth = frameWorkAreaActualWidth - Left + frameWorkAreaX;
             }
-            Left -= 70;
+           // Left -= 70;
             Activated -= ContentActivated;
         }
 
