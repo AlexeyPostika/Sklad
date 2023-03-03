@@ -181,7 +181,7 @@ namespace Sklad_v1_001.Control.FlexImage
         public String BareCode
         {
             get { return (String)GetValue(BareCodeProperty); }
-            set { SetValue(BareCodeProperty, value); }
+            set { SetValue(BareCodeProperty, value); stiker.Numeric = value; }
         }
 
         public String NameString

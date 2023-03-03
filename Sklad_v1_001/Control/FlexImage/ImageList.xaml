@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Sklad_v1_001.Control.FlexImage"
              xmlns:FlexText="clr-namespace:Sklad_v1_001.Control.FlexTextBox"
              xmlns:FlexComboBox="clr-namespace:Sklad_v1_001.Control.FlexComboBox"
+             xmlns:FlexStickers="clr-namespace:Sklad_v1_001.Control.Stickers"
              xmlns:res="clr-namespace:Sklad_v1_001.Properties"
              mc:Ignorable="d"            
              Style="{DynamicResource UsersControlColor}"
@@ -248,7 +249,9 @@
                                          Width="250"
                                          HeightTextBlock="142"/>
 
-
+                <FlexStickers:FlexStickers20x10 x:Name="stiker"
+                                                Description="{Binding ElementName=control, Path=NameString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                Numeric="{Binding ElementName=control, Path=BareCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
         </WrapPanel>
        

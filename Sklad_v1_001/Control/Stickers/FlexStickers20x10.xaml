@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="Sklad_v1_001.Control.Stickers.FlexStickers20x10"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sklad_v1_001.Control.Stickers"
+             mc:Ignorable="d" 
+              Height="2cm"
+             Width="4cm"
+             Name="control">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Name="header" Height="Auto"/>
+            <RowDefinition Name="body" Height="1*"/>
+            <RowDefinition Name="footer" Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--<StackPanel x:Name="stack" 
+                    Orientation="Vertical" 
+                    VerticalAlignment="Stretch" 
+                    HorizontalAlignment="Stretch">-->
+            <AccessText x:Name="descriptionLabel"
+                        TextAlignment="Center"
+                        Text="{Binding ElementName=control, Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        TextWrapping="Wrap"/>
+            <Viewbox RenderOptions.EdgeMode="Aliased"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Stretch"
+                     Grid.Row="1"
+                     Height="{Binding ElementName=body, Path=Height, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     >
+                <ContentControl x:Name="barecode"   
+                                Height="{Binding ElementName=body, Path=Height, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                VerticalContentAlignment="Center"
+                                HorizontalContentAlignment="Center"/>
+            </Viewbox>
+
+            <AccessText x:Name="numericLabel"
+                        TextAlignment="Center"
+                        FontSize="10"
+                        Grid.Row="2"
+                        Text="{Binding ElementName=control,Path=Numeric, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <!--</StackPanel>-->
+    </Grid>
+</UserControl>

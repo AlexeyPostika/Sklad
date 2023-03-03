@@ -338,6 +338,9 @@
       <DependentUpon>EditBoxWithLabelTimeSpan.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\SimpleControl\TextBoxTimeBehavior.cs" />
+    <Compile Include="Control\Stickers\FlexStickers20x10.xaml.cs">
+      <DependentUpon>FlexStickers20x10.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\ToolBar\Close.xaml.cs">
       <DependentUpon>Close.xaml</DependentUpon>
     </Compile>
@@ -1115,6 +1118,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Control\Stickers\FlexStickers20x10.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\ToolBar\Close.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1612,9 +1619,7 @@
     <Resource Include="Icone\IconErase.png" />
     <Resource Include="Icone\IconSaveAs.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="FormUsers\Report\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

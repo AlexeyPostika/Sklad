@@ -55,8 +55,9 @@ namespace Sklad_v1_001.FormUsers.Product
 
             set
             {
-                localRowDetails = value;
+                localRowDetails = value;               
                 this.Edit.DataContext = LocalRowDetails;
+                Edit.BareCode = value.BarCodeString;
                 OnPropertyChanged("LocalRowDetails");
             }
         }
