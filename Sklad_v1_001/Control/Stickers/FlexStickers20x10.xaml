@@ -19,13 +19,13 @@
                     VerticalAlignment="Stretch" 
                     HorizontalAlignment="Stretch">-->
         <AccessText x:Name="descriptionLabel"
-                        TextAlignment="Center"
-                        Height="20"
-                        Text="{Binding ElementName=control, Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        TextWrapping="Wrap"
-                    FontStretch="UltraCondensed">
-            
-        </AccessText>
+                    TextAlignment="Center"
+                    Height="20"
+                    FontStretch="UltraCondensed"
+                    Text="{Binding ElementName=control, Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    TextWrapping="Wrap"/>
+
+
         <Viewbox RenderOptions.EdgeMode="Aliased"
                      HorizontalAlignment="Stretch"
                      VerticalAlignment="Stretch"
