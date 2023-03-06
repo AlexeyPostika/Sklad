@@ -10,38 +10,38 @@
              Name="control">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Name="header" Height="Auto"/>
+            <RowDefinition Name="header" Height="20"/>
             <RowDefinition Name="body" Height="1*"/>
-            <RowDefinition Name="footer" Height="Auto"/>
+            <RowDefinition Name="footer" Height="10"/>
         </Grid.RowDefinitions>
         <!--<StackPanel x:Name="stack" 
                     Orientation="Vertical" 
                     VerticalAlignment="Stretch" 
                     HorizontalAlignment="Stretch">-->
+        <Viewbox>
             <AccessText x:Name="descriptionLabel"
                         TextAlignment="Center"
                         Text="{Binding ElementName=control, Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         TextWrapping="Wrap"/>
-            <Viewbox RenderOptions.EdgeMode="Aliased"
+        </Viewbox>
+        <Viewbox RenderOptions.EdgeMode="Aliased"
                      HorizontalAlignment="Stretch"
                      VerticalAlignment="Stretch"
                      Grid.Row="1"
                      Height="{Binding ElementName=body, Path=Height, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      >
-                <ContentControl x:Name="barecode"   
-                                Height="{Binding ElementName=body, Path=Height, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                HorizontalAlignment="Stretch"
-                                VerticalAlignment="Stretch"
+            <ContentControl x:Name="barecode"   
+                            Height="167"
+                            Width="562"
                                 VerticalContentAlignment="Center"
                                 HorizontalContentAlignment="Center"/>
-            </Viewbox>
-
+        </Viewbox>
+        <Viewbox>
             <AccessText x:Name="numericLabel"
-                        TextAlignment="Center"
-                        FontSize="10"
+                        TextAlignment="Center"                       
                         Grid.Row="2"
                         Text="{Binding ElementName=control,Path=Numeric, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-
+        </Viewbox>
         <!--</StackPanel>-->
     </Grid>
 </UserControl>
