@@ -36,10 +36,10 @@
                                 VerticalContentAlignment="Center"
                                 HorizontalContentAlignment="Center"/>
         </Viewbox>
-        <Viewbox>
+        <Viewbox Grid.Row="2">
             <AccessText x:Name="numericLabel"
                         TextAlignment="Center"                       
-                        Grid.Row="2"
+                        
                         Text="{Binding ElementName=control,Path=Numeric, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Viewbox>
         <!--</StackPanel>-->
