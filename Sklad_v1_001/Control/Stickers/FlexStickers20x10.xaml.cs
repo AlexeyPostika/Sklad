@@ -53,6 +53,8 @@ namespace Sklad_v1_001.Control.Stickers
 
         private void GeneratBareCode()
         {
+
+
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
             barcodeEncoder.Width = Int32.Parse(((Int32)control.Width).ToString());
             barcodeEncoder.Height = Int32.Parse(((Int32)(body.Height.Value * 50)).ToString());
