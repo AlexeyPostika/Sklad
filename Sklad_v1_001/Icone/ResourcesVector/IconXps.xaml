@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="Sklad_v1_001.Icone.ResourcesVector.IconXps"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sklad_v1_001.Icone.ResourcesVector"
+             Name="control"
+             mc:Ignorable="d"
+             Margin="2"
+             >
+    <Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform" >
+        <Canvas Name="svg1048" Width="24" Height="24">
+            <Canvas.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+            </Canvas.RenderTransform>
+            <Canvas.Resources/>
+            <!--Unknown tag: sodipodi:namedview-->
+            <!--Unknown tag: metadata-->
+            <Canvas Name="layer2">
+                <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="3.0210443e-014" Canvas.Top="6.1476647e-005" Width="24" Height="24" Name="rect11452" Fill="#02FFFFFF" StrokeThickness="3.21412539" StrokeMiterLimit="4" StrokeLineJoin="Bevel"/>
+            </Canvas>
+            <Canvas Name="layer3">
+                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path12055" Fill="{DynamicResource ColorIconWhite}" StrokeThickness="0.53415453" StrokeMiterLimit="4" StrokeLineJoin="Bevel">
+                    <Path.Data>
+                        <PathGeometry Figures="M 3.34802 0.31340357 H 15.62091 L 21.948168 8.261032 V 23.686531 H 3.34802 Z" FillRule="NonZero"/>
+                    </Path.Data>
+                </Path>
+                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path12057" Fill="{DynamicResource ColorIconCian}" StrokeThickness="0.5253576" StrokeMiterLimit="4" StrokeLineJoin="Bevel">
+                    <Path.Data>
+                        <PathGeometry Figures="M 21.948168 8.261032 15.589763 8.253473 15.620755 0.31359255 21.948013 8.261221 Z" FillRule="NonZero"/>
+                    </Path.Data>
+                </Path>
+                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1910" Fill="{DynamicResource ColorIconBlue}" StrokeThickness="0.53415453" StrokeMiterLimit="4" StrokeLineJoin="Bevel" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Opacity="1">
+                    <Path.Data>
+                        <PathGeometry Figures="M 3.3476562 0.046875 3.0800781 0.3125 v 23.375 l 0.2675781 0.265625 H 21.947266 L 22.214844 23.6875 V 8.2617188 L 22.15625 8.09375 15.830078 0.14648438 15.621094 0.046875 Z M 3.6152344 0.58007812 H 15.492188 L 21.681641 8.3535156 V 23.419922 H 3.6152344 Z" FillRule="NonZero"/>
+                    </Path.Data>
+                </Path>
+                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1912" Fill="{DynamicResource ColorIconBlue}" StrokeThickness="0.5253576" StrokeMiterLimit="4" StrokeLineJoin="Bevel" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Opacity="1">
+                    <Path.Data>
+                        <PathGeometry Figures="M 15.826172 0.15039062 15.357422 0.3125 l -0.03125 7.9394531 0.263672 0.2636719 6.357422 0.00781 -0.04492 -0.097656 0.248047 0.00195 -0.154297 -0.3320313 0.158203 0.00195 z m 0.05273 0.90820318 5.521485 6.9394531 -5.546875 -0.00781 z" FillRule="NonZero"/>
+                    </Path.Data>
+                </Path>
+                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1787" Fill="{DynamicResource ColorIconBlue}" StrokeThickness="0.74556124" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat">
+                    <Path.Data>
+                        <PathGeometry Figures="m 4.7445197 16.053291 0.5922838 5.523016 1.7647995 -3.745199 15.70758 -7.607625 z" FillRule="NonZero"/>
+                    </Path.Data>
+                </Path>
+                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1789" Fill="{DynamicResource ColorIconDarkBlue}" StrokeThickness="0.74556124" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat">
+                    <Path.Data>
+                        <PathGeometry Figures="M 6.9655848 17.740929 5.3368035 21.576307 23.105325 10.07003 Z" FillRule="NonZero"/>
+                    </Path.Data>
+                </Path>
+                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1791" Fill="{DynamicResource ColorIconCian}" StrokeThickness="0.74556124" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat">
+                    <Path.Data>
+                        <PathGeometry Figures="M 0.89467313 12.831524 4.7445197 16.053291 22.809183 10.223483 6.9573681 17.7444 11.111573 21.729703 23.105325 10.07003 Z" FillRule="NonZero"/>
+                    </Path.Data>
+                </Path>
+            </Canvas>
+        </Canvas>
+    </Viewbox>
+</UserControl>

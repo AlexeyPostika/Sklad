@@ -349,6 +349,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        public static string BUTTONPRINT {
+            get {
+                return ResourceManager.GetString("BUTTONPRINT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Отмена.
         /// </summary>
         public static string CANCEL {
@@ -840,6 +849,15 @@ namespace Sklad_v1_001.Properties {
         public static string Dolwnost {
             get {
                 return ResourceManager.GetString("Dolwnost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        public static string DoublePage {
+            get {
+                return ResourceManager.GetString("DoublePage", resourceCulture);
             }
         }
         
@@ -1690,6 +1708,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        public static string OnePage {
+            get {
+                return ResourceManager.GetString("OnePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Тип оплаты.
         /// </summary>
         public static string OperationType {
@@ -1861,6 +1888,15 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        public static string PDF {
+            get {
+                return ResourceManager.GetString("PDF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Телефон.
         /// </summary>
         public static string Phone {
@@ -1893,6 +1929,24 @@ namespace Sklad_v1_001.Properties {
         public static string PostCode {
             get {
                 return ResourceManager.GetString("PostCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Печать.
+        /// </summary>
+        public static string Print {
+            get {
+                return ResourceManager.GetString("Print", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Сервер печати недоступен..
+        /// </summary>
+        public static string PrintServerError {
+            get {
+                return ResourceManager.GetString("PrintServerError", resourceCulture);
             }
         }
         
@@ -2221,6 +2275,24 @@ namespace Sklad_v1_001.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        public static string SavePdf {
+            get {
+                return ResourceManager.GetString("SavePdf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        public static string SaveXps {
+            get {
+                return ResourceManager.GetString("SaveXps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Сканировать.
         /// </summary>
         public static string Scan {
@@ -2262,6 +2334,24 @@ namespace Sklad_v1_001.Properties {
         public static string SecondName {
             get {
                 return ResourceManager.GetString("SecondName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        public static string SendEmail {
+            get {
+                return ResourceManager.GetString("SendEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        public static string SendEmailToolTip {
+            get {
+                return ResourceManager.GetString("SendEmailToolTip", resourceCulture);
             }
         }
         
@@ -2838,6 +2928,51 @@ namespace Sklad_v1_001.Properties {
         public static string WhenOrdered {
             get {
                 return ResourceManager.GetString("WhenOrdered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        public static string XPS {
+            get {
+                return ResourceManager.GetString("XPS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        public static string ZoomIn {
+            get {
+                return ResourceManager.GetString("ZoomIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        public static string ZoomOut {
+            get {
+                return ResourceManager.GetString("ZoomOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        public static string ZoomPage {
+            get {
+                return ResourceManager.GetString("ZoomPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        public static string ZoomWidth {
+            get {
+                return ResourceManager.GetString("ZoomWidth", resourceCulture);
             }
         }
     }

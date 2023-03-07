@@ -1044,4 +1044,49 @@
   <data name="CompanyName" xml:space="preserve">
     <value>Н-ие компании</value>
   </data>
+  <data name="BUTTONPRINT" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DoublePage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="OnePage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PDF" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Печать</value>
+  </data>
+  <data name="PrintServerError" xml:space="preserve">
+    <value>Сервер печати недоступен.</value>
+  </data>
+  <data name="SavePdf" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SaveXps" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SendEmail" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SendEmailToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="XPS" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ZoomIn" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ZoomOut" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ZoomPage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ZoomWidth" xml:space="preserve">
+    <value />
+  </data>
 </root>

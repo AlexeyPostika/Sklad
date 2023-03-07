@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="Sklad_v1_001.Icone.ResourcesVector.IconMail"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sklad_v1_001.Icone.ResourcesVector"
+             Name="control"
+             mc:Ignorable="d"
+             Margin="2"
+             >
+    <Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform" >
+        <Canvas Width="24" Height="24">
+            <Canvas.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+            </Canvas.RenderTransform>
+            <Canvas.Resources/>
+            <Canvas>
+                <Path Data="M -0.61925476 24.619255 V -0.61925476 H 24.619255 V 24.619255 Z"/>
+                <Canvas>
+                    <Canvas.RenderTransform>
+                        <TranslateTransform X="0" Y="-0.99999995"/>
+                    </Canvas.RenderTransform>
+                    <Path Fill="{DynamicResource ColorIconCian}" Data="M 0.32718934 2.8510403 H 21.14896 V 18.625109 H 0.32718934 Z"/>
+                    <Path Fill="{DynamicResource ColorIconBlue}" Data="M 20.833478 3.1665217 V 18.309627 H 0.64267071 V 3.1665217 H 20.833478 M 21.464441 2.5355589 H 0.01170798 V 18.94059 H 21.464441 Z"/>
+                    <Path Fill="{DynamicResource ColorIconWhite}" Data="M 2.8510403 7.3748912 H 23.672811 V 23.14896 H 2.8510403 Z"/>
+                    <Path Fill="{DynamicResource ColorIconBlue}" Data="M 23.357329 7.6903726 V 22.833478 H 3.1665217 V 7.6903726 H 23.357329 M 23.988292 7.0594099 H 2.5355589 V 23.464441 H 23.988292 Z"/>
+                    <Path Fill="{DynamicResource ColorIconBlue}" Data="m 3.0976562 10.228516 -0.3574218 0.601562 8.8906246 5.289063 c 1.013317 0.602493 2.250355 0.602493 3.263672 0 l 8.890625 -5.289063 -0.357422 -0.601562 -8.890625 5.289062 c -0.801333 0.476453 -1.747495 0.476453 -2.548828 0 z"/>
+                </Canvas>
+            </Canvas>
+        </Canvas>
+    </Viewbox>
+</UserControl>

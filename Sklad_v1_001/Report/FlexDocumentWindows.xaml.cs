@@ -40,5 +40,30 @@ namespace Sklad_v1_001.Report
         {
             InitializeComponent();
         }
+
+        private void ButtonSavePdf_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonSaveXps_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonSendMail_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PART_ScrollContentPresenter_PreviewMouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void PART_ScrollContentPresenter_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

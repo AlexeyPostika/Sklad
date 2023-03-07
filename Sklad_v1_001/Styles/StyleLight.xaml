@@ -70,5 +70,14 @@
     <SolidColorBrush x:Key="ColorBrushSwitchEllipseDisabled" Color="#FF555555"/>
     <SolidColorBrush x:Key="ColorBrushSwitchBackgroundDisabled" Color="#FFCCCCCC"/>
 
+    <SolidColorBrush x:Key="ColorIconBlue" Color="#FF569DE5"/>
+    <SolidColorBrush x:Key="ColorIconDarkBlue" Color="#FF999999"/>
+    <SolidColorBrush x:Key="ColorIconCian" Color="#FF000000"/>
+    <SolidColorBrush x:Key="ColorIconWhite" Color="#FFEFEF15"/>
+
+    <SolidColorBrush x:Key="ColorIconDarkBlueOnWhite" Color="#FF666666"/>
+    <SolidColorBrush x:Key="ColorIconLightBlueOnWhite" Color="#FFCCCCCC"/>
+
+
 
 </ResourceDictionary>

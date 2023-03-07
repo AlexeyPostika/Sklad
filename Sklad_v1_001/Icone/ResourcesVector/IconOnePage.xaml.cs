@@ -1,5 +1,4 @@
-﻿using POS.Helper;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,8 +13,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace POS.ResourcesVector
+namespace Sklad_v1_001.Icone.ResourcesVector
 {
+    /// <summary>
+    /// Логика взаимодействия для IconOnePage.xaml
+    /// </summary>
     public partial class IconOnePage : UserControl
     {
         public IconOnePage()

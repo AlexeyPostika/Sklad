@@ -851,12 +851,44 @@
     <Compile Include="HelperGlobal\StoreAPI\Model\Users\UsersRequest.cs" />
     <Compile Include="HelperGlobal\StoreAPI\Request.cs" />
     <Compile Include="HelperGlobal\StoreAPI\Response.cs" />
+    <Compile Include="Icone\ResourcesVector\IconDoublePage.xaml.cs">
+      <DependentUpon>IconDoublePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Icone\ResourcesVector\IconMail.xaml.cs">
+      <DependentUpon>IconMail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Icone\ResourcesVector\IconMinus.xaml.cs">
+      <DependentUpon>IconMinus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Icone\ResourcesVector\IconOnePage.xaml.cs">
+      <DependentUpon>IconOnePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Icone\ResourcesVector\IconPageMax.xaml.cs">
+      <DependentUpon>IconPageMax.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Icone\ResourcesVector\IconPageWidth.xaml.cs">
+      <DependentUpon>IconPageWidth.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Icone\ResourcesVector\IconPdf.xaml.cs">
+      <DependentUpon>IconPdf.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Icone\ResourcesVector\IconPlus.xaml.cs">
+      <DependentUpon>IconPlus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Icone\ResourcesVector\IconPrint.xaml.cs">
+      <DependentUpon>IconPrint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Icone\ResourcesVector\IconXps.xaml.cs">
+      <DependentUpon>IconXps.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LoginScreen.xaml.cs">
       <DependentUpon>LoginScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Report\FlexDocumentViewer.cs" />
     <Compile Include="Report\FlexDocumentWindows.xaml.cs">
       <DependentUpon>FlexDocumentWindows.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Report\PrintDocumentPaginator.cs" />
     <Compile Include="SQLCommand\ShemaStorаge.cs">
       <DependentUpon>ShemaStorаge.xsd</DependentUpon>
     </Compile>
@@ -1341,6 +1373,46 @@
     <Page Include="HelperGlobal\FromToTimeFilter.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Icone\ResourcesVector\IconDoublePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Icone\ResourcesVector\IconMail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Icone\ResourcesVector\IconMinus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Icone\ResourcesVector\IconOnePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Icone\ResourcesVector\IconPageMax.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Icone\ResourcesVector\IconPageWidth.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Icone\ResourcesVector\IconPdf.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Icone\ResourcesVector\IconPlus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Icone\ResourcesVector\IconPrint.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Icone\ResourcesVector\IconXps.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LoginScreen.xaml">
       <SubType>Designer</SubType>
