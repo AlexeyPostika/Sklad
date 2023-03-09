@@ -480,9 +480,6 @@
   <data name="SupplyDocument4" xml:space="preserve">
     <value>В пути</value>
   </data>
-  <data name="UndefindField" xml:space="preserve">
-    <value />
-  </data>
   <data name="Apply" xml:space="preserve">
     <value>Применить</value>
   </data>
@@ -1045,16 +1042,13 @@
     <value>Н-ие компании</value>
   </data>
   <data name="BUTTONPRINT" xml:space="preserve">
-    <value />
+    <value>ПЕЧАТЬ</value>
   </data>
   <data name="DoublePage" xml:space="preserve">
-    <value />
+    <value>Две страницы на экран</value>
   </data>
   <data name="OnePage" xml:space="preserve">
-    <value />
-  </data>
-  <data name="PDF" xml:space="preserve">
-    <value />
+    <value>Одна страница на экран</value>
   </data>
   <data name="Print" xml:space="preserve">
     <value>Печать</value>
@@ -1063,30 +1057,78 @@
     <value>Сервер печати недоступен.</value>
   </data>
   <data name="SavePdf" xml:space="preserve">
-    <value />
+    <value>PDF формате</value>
   </data>
   <data name="SaveXps" xml:space="preserve">
-    <value />
-  </data>
-  <data name="SendEmail" xml:space="preserve">
-    <value />
+    <value>Сохранить в XPS формате</value>
   </data>
   <data name="SendEmailToolTip" xml:space="preserve">
+    <value>Отправить документ по почте</value>
+  </data>
+  <data name="ZoomIn" xml:space="preserve">
+    <value>Увеличить</value>
+  </data>
+  <data name="ZoomOut" xml:space="preserve">
+    <value>Уменьшить</value>
+  </data>
+  <data name="ZoomPage" xml:space="preserve">
+    <value>В размер станицы</value>
+  </data>
+  <data name="ZoomWidth" xml:space="preserve">
+    <value>По ширине страницы</value>
+  </data>
+  <data name="SendEmail" xml:space="preserve">
+    <value>ОТПРАВИТЬ</value>
+  </data>
+  <data name="DocumentPreview" xml:space="preserve">
+    <value>Предпросмотр документа</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="TaxFreeCanceling" xml:space="preserve">
+    <value>Отмена выпуска Tax Free</value>
+  </data>
+  <data name="TaxFreeCancelingQuestion" xml:space="preserve">
+    <value>Вы действительно хотите отменить выпуск документа Tax Free?</value>
+  </data>
+  <data name="TaxFreeCancelIssueButton" xml:space="preserve">
+    <value>ОТМЕНИТЬ</value>
+  </data>
+  <data name="TaxFreeOperation" xml:space="preserve">
+    <value>Операция с Tax Free</value>
+  </data>
+  <data name="Waiting" xml:space="preserve">
+    <value>Ожидайте</value>
+  </data>
+  <data name="FromDocPaginator" xml:space="preserve">
+    <value>из</value>
+  </data>
+  <data name="PageDocPaginator" xml:space="preserve">
+    <value>Страница</value>
+  </data>
+  <data name="SavePdfFile" xml:space="preserve">
+    <value>Сохранить файл в PDF формате</value>
+  </data>
+  <data name="ErrorFileIsOpen" xml:space="preserve">
+    <value>Файл открыт в другой программе.</value>
+  </data>
+  <data name="SaveXpsFile" xml:space="preserve">
+    <value>Сохранить файл в XPS формате</value>
+  </data>
+  <data name="PDF" xml:space="preserve">
+    <value>PDF</value>
+  </data>
+  <data name="ProgressBarMessage1" xml:space="preserve">
+    <value>Осталось время:</value>
+  </data>
+  <data name="TerminalOperation" xml:space="preserve">
+    <value>Операция с терминалом</value>
+  </data>
+  <data name="UndefindField" xml:space="preserve">
     <value />
   </data>
   <data name="XPS" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ZoomIn" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ZoomOut" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ZoomPage" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ZoomWidth" xml:space="preserve">
-    <value />
+    <value>XPS</value>
   </data>
 </root>

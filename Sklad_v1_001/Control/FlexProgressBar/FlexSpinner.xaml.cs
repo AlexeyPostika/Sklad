@@ -1,4 +1,4 @@
-﻿namespace POS.FlexControls.FlexProgressBar
+﻿namespace Sklad_v1_001.Controls.FlexProgressBar
 {
     /// <summary>
     /// Логика взаимодействия для ProgressBar.xaml

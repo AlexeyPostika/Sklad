@@ -1,4 +1,4 @@
-﻿using POS.FlexControls.FlexProgressBar;
+﻿using Sklad_v1_001.Control.FlexProgressBar;
 using System;
 using System.Globalization;
 using System.IO;
@@ -9,7 +9,7 @@ using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Xps.Packaging;
 
-namespace POS.Report
+namespace Sklad_v1_001.Report
 {
     public class DocumentPaginatorWrapper : DocumentPaginator
     {

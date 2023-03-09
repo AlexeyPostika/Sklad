@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sklad_v1_001.Control.FlexProgressBar;
+using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Windows;
@@ -7,7 +8,7 @@ using System.Windows.Interop;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
 
-namespace POS.FlexControls.FlexProgressBar
+namespace Sklad_v1_001.Controls.FlexProgressBar
 {
     /// <summary>
     /// Логика взаимодействия для ProgressBar.xaml

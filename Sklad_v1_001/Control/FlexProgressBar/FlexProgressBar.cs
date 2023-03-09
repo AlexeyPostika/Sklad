@@ -1,11 +1,13 @@
-﻿using POS.Report;
+﻿using Sklad_v1_001.Control.FlexMessageBox;
+using Sklad_v1_001.Control.FlexProgressBar;
+using Sklad_v1_001.Report;
 using System;
 using System.ComponentModel;
 using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 
-namespace POS.FlexControls.FlexProgressBar
+namespace Sklad_v1_001.Controls.FlexProgressBar
 {
     public partial class FlexProgressBar
     {
@@ -40,7 +42,7 @@ namespace POS.FlexControls.FlexProgressBar
                         System.Net.HttpWebRequest httpRequest = (System.Net.HttpWebRequest)System.Net.HttpWebRequest.Create("http://localhost:8001/");
                         httpRequest.Method = System.Net.WebRequestMethods.Http.Post;
                         httpRequest.ContentType = "application/json";
-                        FlexControl.FlexMessageBox.FlexMessageBox mb = new FlexControl.FlexMessageBox.FlexMessageBox();
+                        FlexMessageBox mb = new FlexMessageBox();
                         if(mb.Show(Properties.Resources.TaxFreeCancelingQuestion, Properties.Resources.TaxFreeCanceling, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                         {
                             String str = "";
@@ -57,7 +59,7 @@ namespace POS.FlexControls.FlexProgressBar
                                 }
                                 catch
                                 {
-                                    POS.FlexControl.FlexMessageBox.FlexMessageBox mb1 = new POS.FlexControl.FlexMessageBox.FlexMessageBox();
+                                    FlexMessageBox mb1 = new FlexMessageBox();
                                     mb1.Show(Properties.Resources.Error, Properties.Resources.Error, MessageBoxButton.OK);
                                 }
                             }

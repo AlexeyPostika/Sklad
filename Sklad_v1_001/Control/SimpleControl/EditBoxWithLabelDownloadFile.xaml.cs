@@ -377,12 +377,12 @@ namespace Sklad_v1_001.Control.SimpleControl
             {
                 using (Stream stream = new MemoryStream(ByteFaile))
                 {
-                    FlexDocumentWindows flexDocumentWindows = new FlexDocumentWindows();
-                    XpsDocument doc = new XpsDocument(fileWork.ByteToXPSString(ByteFaile, "Output.txt"), FileAccess.ReadWrite);
-                    //XpsDocument doc = fileWork.ByteToXPSString(ByteFaile, NameFile);
-                    flexDocumentWindows.DocumentXps = doc.GetFixedDocumentSequence();
-                    doc.Close();
-                    flexDocumentWindows.ShowDialog();
+                    //FlexDocumentWindows flexDocumentWindows = new FlexDocumentWindows();
+                    //XpsDocument doc = new XpsDocument(fileWork.ByteToXPSString(ByteFaile, "Output.txt"), FileAccess.ReadWrite);
+                    ////XpsDocument doc = fileWork.ByteToXPSString(ByteFaile, NameFile);
+                    //flexDocumentWindows.DocumentXps = doc.GetFixedDocumentSequence();
+                    //doc.Close();
+                    //flexDocumentWindows.ShowDialog();
                 }
             }
             catch(Exception ex)

@@ -1,6 +1,5 @@
 ﻿using MessagingToolkit.Barcode;
-using POS.FlexControls.FlexProgressBar;
-using POS.Helper;
+using Sklad_v1_001.Control.FlexProgressBar;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -22,7 +21,7 @@ using System.Windows.Xps.Packaging;
 using System.Windows.Xps.Serialization;
 using System.Xml.Serialization;
 
-namespace POS.Report
+namespace Sklad_v1_001.Report
 {
     public class DocFunction
     {
@@ -33,14 +32,12 @@ namespace POS.Report
         String xpsOutPath;
         String tempPath;
         Double progressItemSize;
-        ConvertData convertData;
         Guid fileGuid;
         public String filePath;
 
         public DocFunction()
         {
             fileGuid = Guid.NewGuid();
-            convertData = new ConvertData();
             tempPath = Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData) + @"\Temp\Printdoc\";
             if (!System.IO.Directory.Exists(tempPath))
                 System.IO.Directory.CreateDirectory(tempPath);
@@ -315,7 +312,7 @@ namespace POS.Report
         {
             if (!Directory.Exists(dirFullPath))
                 Directory.CreateDirectory(dirFullPath);
-            ZipFile.ExtractToDirectory(xpsFullPath, dirFullPath);
+            //ZipFile.ExtractToDirectory(xpsFullPath, dirFullPath);
         }
 
         void AddFilesToZip(string zipFile, Dictionary<String, String> fileDct, FlowDocument FD)
@@ -436,7 +433,7 @@ namespace POS.Report
             RowGroups.Rows.Add(currentRow);
         }
 
-        public void AddFixedRowToTable(TableRowGroup RowGroups, DataRow tableRow, TableRow TableHeader, String[] cellAligmnet, POS.Report.LabelDocument7x23.ReportData docinfo)
+        public void AddFixedRowToTable(TableRowGroup RowGroups, DataRow tableRow, TableRow TableHeader, String[] cellAligmnet)//, Report.LabelDocument7x23.ReportData docinfo
         {
             TableRow currentRow = new TableRow();
             TextBox textBox;
@@ -467,13 +464,13 @@ namespace POS.Report
                         textBox.Height = tableTextBox.Height / (lines.Length - 1);
                         textBox.TextAlignment = TextAlignment.Center;
 
-                        if (docinfo.isDiscount == true && line == 0)
-                        {
-                            if (k == 2 || k == 6 || k == 10)
-                            {
-                                textBox.TextDecorations = TextDecorations.Strikethrough;
-                            }
-                        }
+                        //if (docinfo.isDiscount == true && line == 0)
+                        //{
+                        //    if (k == 2 || k == 6 || k == 10)
+                        //    {
+                        //        textBox.TextDecorations = TextDecorations.Strikethrough;
+                        //    }
+                        //}
 
                         if ((lines.Length - 1) == 2 && line == 0)
                         {

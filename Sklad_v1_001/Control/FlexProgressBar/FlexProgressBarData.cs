@@ -1,14 +1,9 @@
-﻿using POS.Helper.CRMRequest;
-using POS.Helper.SberbankIntegration;
-using POS.Helper.TinkoffbankIntegration;
-using POS.Helper.UCSIntegration;
-using POS.Screens.SaleDocumentPayment;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows.Threading;
 using System.Windows.Xps.Packaging;
 
-namespace POS.FlexControls.FlexProgressBar
+namespace Sklad_v1_001.Control.FlexProgressBar
 {
     public enum ProgressBarType
     {
@@ -32,35 +27,35 @@ namespace POS.FlexControls.FlexProgressBar
 
         String cardNumberCRM;
 
-        LocaleRow saleDocumentPaymentRow;
-        AuthAnswer13 authAnswer13;
-        AuthAnswer authAnswer;
-        Response responseTinkoff;
-        UCSRequest ucsRequest;
+        //LocaleRow saleDocumentPaymentRow;
+        //AuthAnswer13 authAnswer13;
+        //AuthAnswer authAnswer;
+        //Response responseTinkoff;
+        //UCSRequest ucsRequest;
 
         XpsDocument xpsDoc;
         String xpsDocPath;
 
-        BalanceResponseBase balanceResponseBaseCRM;
+       // BalanceResponseBase balanceResponseBaseCRM;
 
         Delegate @delegate;
         Boolean pbStatusAbort;
 
         public Int32 OwnerBank { get; set; }
 
-        public UCSRequest UcsRequest
-        {
-            get
-            {
-                return ucsRequest;
-            }
+        //public UCSRequest UcsRequest
+        //{
+        //    get
+        //    {
+        //        return ucsRequest;
+        //    }
 
-            set
-            {
-                ucsRequest = value;
-                OnPropertyChanged("UcsRequest");
-            }
-        }
+        //    set
+        //    {
+        //        ucsRequest = value;
+        //        OnPropertyChanged("UcsRequest");
+        //    }
+        //}
 
         public XpsDocument XpsDoc
         {
@@ -246,75 +241,75 @@ namespace POS.FlexControls.FlexProgressBar
                 OnPropertyChanged("CardNumberCRM");
             }
         }
-        public LocaleRow SaleDocumentPaymentRow
-        {
-            get
-            {
-                return saleDocumentPaymentRow;
-            }
+        //public LocaleRow SaleDocumentPaymentRow
+        //{
+        //    get
+        //    {
+        //        return saleDocumentPaymentRow;
+        //    }
 
-            set
-            {
-                saleDocumentPaymentRow = value;
-                OnPropertyChanged("SaleDocumentPaymentRow");
-            }
-        }
+        //    set
+        //    {
+        //        saleDocumentPaymentRow = value;
+        //        OnPropertyChanged("SaleDocumentPaymentRow");
+        //    }
+        //}
 
-        public AuthAnswer13 AuthAnswer13
-        {
-            get
-            {
-                return authAnswer13;
-            }
+        //public AuthAnswer13 AuthAnswer13
+        //{
+        //    get
+        //    {
+        //        return authAnswer13;
+        //    }
 
-            set
-            {
-                authAnswer13 = value;
-                OnPropertyChanged("AuthAnswer13");
-            }
-        }
+        //    set
+        //    {
+        //        authAnswer13 = value;
+        //        OnPropertyChanged("AuthAnswer13");
+        //    }
+        //}
 
-        public AuthAnswer AuthAnswer
-        {
-            get
-            {
-                return authAnswer;
-            }
+        //public AuthAnswer AuthAnswer
+        //{
+        //    get
+        //    {
+        //        return authAnswer;
+        //    }
 
-            set
-            {
-                authAnswer = value;
-                OnPropertyChanged("AuthAnswer");
-            }
-        }
+        //    set
+        //    {
+        //        authAnswer = value;
+        //        OnPropertyChanged("AuthAnswer");
+        //    }
+        //}
 
-        public Response ResponseTinkoff
-        {
-            get
-            {
-                return responseTinkoff;
-            }
+        //public Response ResponseTinkoff
+        //{
+        //    get
+        //    {
+        //        return responseTinkoff;
+        //    }
 
-            set
-            {
-                responseTinkoff = value;
-                OnPropertyChanged("ResponseTinkoff");
-            }
-        }
+        //    set
+        //    {
+        //        responseTinkoff = value;
+        //        OnPropertyChanged("ResponseTinkoff");
+        //    }
+        //}
 
-        public BalanceResponseBase BalanceResponseBaseCRM
-        {
-            get
-            {
-                return balanceResponseBaseCRM;
-            }
+        //public BalanceResponseBase BalanceResponseBaseCRM
+        //{
+        //    get
+        //    {
+        //        return balanceResponseBaseCRM;
+        //    }
 
-            set
-            {
-                balanceResponseBaseCRM = value;
-                OnPropertyChanged("BalanceResponseBaseCRM");
-            }
-        }
+        //    set
+        //    {
+        //        balanceResponseBaseCRM = value;
+        //        OnPropertyChanged("BalanceResponseBaseCRM");
+        //    }
+        //}
 
         public delegate void PropertyChangedHandler(string propertyName);
         public event PropertyChangedHandler PropertyChanged;

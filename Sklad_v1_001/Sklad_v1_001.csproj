@@ -88,6 +88,10 @@
     </Reference>
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="PresentationFramework.Aero2" />
+    <Reference Include="PresentationUI, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\PresentationUI\v4.0_4.0.0.0__31bf3856ad364e35\PresentationUI.dll</HintPath>
+    </Reference>
     <Reference Include="ReachFramework" />
     <Reference Include="System">
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll</HintPath>
@@ -295,6 +299,21 @@
     <Compile Include="Control\FlexMessageBox\FlexWindows.xaml.cs">
       <DependentUpon>FlexWindows.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\FlexProgressBar\FlexPaymentUi.xaml.cs">
+      <DependentUpon>FlexPaymentUi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexProgressBar\FlexProgressBar.cs" />
+    <Compile Include="Control\FlexProgressBar\FlexProgressBarData.cs" />
+    <Compile Include="Control\FlexProgressBar\FlexProgressBarUi.xaml.cs">
+      <DependentUpon>FlexProgressBarUi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexProgressBar\FlexSpinner.xaml.cs">
+      <DependentUpon>FlexSpinner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexProgressBar\FlexTaxFreeUi.xaml.cs">
+      <DependentUpon>FlexTaxFreeUi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FlexProgressBar\iAbstractProgressWork.cs" />
     <Compile Include="Control\FlexRadio\FlexRadioButton.xaml.cs">
       <DependentUpon>FlexRadioButton.xaml</DependentUpon>
     </Compile>
@@ -884,11 +903,17 @@
     <Compile Include="LoginScreen.xaml.cs">
       <DependentUpon>LoginScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Report\DocFunction.cs" />
+    <Compile Include="Report\DocumentPaginatorWrapper.cs" />
+    <Compile Include="Report\DocumentsReport.cs" />
     <Compile Include="Report\FlexDocumentViewer.cs" />
-    <Compile Include="Report\FlexDocumentWindows.xaml.cs">
-      <DependentUpon>FlexDocumentWindows.xaml</DependentUpon>
+    <Compile Include="Report\FlexDocumentWindow.xaml.cs">
+      <DependentUpon>FlexDocumentWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Report\FlexGrid.cs" />
+    <Compile Include="Report\LongReport.cs" />
     <Compile Include="Report\PrintDocumentPaginator.cs" />
+    <Compile Include="Report\ReportData.cs" />
     <Compile Include="SQLCommand\ShemaStorаge.cs">
       <DependentUpon>ShemaStorаge.xsd</DependentUpon>
     </Compile>
@@ -1093,6 +1118,22 @@
     <Page Include="Control\FlexMessageBox\FlexWindows.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\FlexProgressBar\FlexPaymentUi.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\FlexProgressBar\FlexProgressBarUi.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\FlexProgressBar\FlexSpinner.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\FlexProgressBar\FlexTaxFreeUi.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Control\FlexRadio\FlexRadioButton.xaml">
       <SubType>Designer</SubType>
@@ -1442,9 +1483,17 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Report\FlexDocumentWindows.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Report\FlexDocument.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Report\FlexDocumentWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Report\PrintDocStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Styles\StyleLight.xaml">
       <SubType>Designer</SubType>
@@ -1600,7 +1649,6 @@
     <Resource Include="Icone\IconToList_x24.png" />
     <Resource Include="Icone\IconPackage_x16.png" />
     <Resource Include="Icone\IconEdit_x16.png" />
-    <Resource Include="Report\Store.png" />
     <Resource Include="Icone\IconBasketAdd_X16.png" />
     <Resource Include="Icone\IconBasketAdd_X24.png" />
     <Resource Include="Icone\IconClearAllFilters_X32.png" />

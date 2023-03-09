@@ -6,7 +6,7 @@ using System.Windows.Data;
 using System;
 using System.Windows.Xps.Packaging;
 
-namespace POS.FlexControls.FlexProgressBar
+namespace Sklad_v1_001.Control.FlexProgressBar
 {
     interface iAbstractProgressWork : INotifyPropertyChanged
     {

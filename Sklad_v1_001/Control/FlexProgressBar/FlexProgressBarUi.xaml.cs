@@ -6,7 +6,7 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Threading;
 
-namespace POS.FlexControls.FlexProgressBar
+namespace Sklad_v1_001.Control.FlexProgressBar
 {
     /// <summary>
     /// Логика взаимодействия для ProgressBar.xaml

@@ -1,0 +1,443 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Sklad_v1_001.Report">
+
+    <Style TargetType="FlowDocument">
+        <Setter Property="FontSize" Value="0.01"/>
+        <Setter Property="LineHeight" Value="0.01"/>
+    </Style>
+
+    <Style TargetType="Section">
+        <Setter Property="FontSize" Value="0.01"/>
+        <Setter Property="LineHeight" Value="0.01"/>
+    </Style>
+    
+    <Style TargetType="TextBox">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+
+        <Setter Property="AcceptsReturn" Value="True"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="TextBox1">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+
+        <Setter Property="AcceptsReturn" Value="True"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="TextBox2">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="AcceptsReturn" Value="True"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="TextBox3">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="AcceptsReturn" Value="True"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="TextBox8">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="8" />
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+
+        <Setter Property="AcceptsReturn" Value="True"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="TextBox7">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="7" />
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="AcceptsReturn" Value="True"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+    
+    <Style TargetType="TextBox" x:Key="TextBox9">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="9" />
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="AcceptsReturn" Value="True"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="TextBox10">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="9" />
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="TextAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="AcceptsReturn" Value="True"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="TextBoxLabelHeader0">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="7" />
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="Black"/>
+
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="AcceptsReturn" Value="True"/>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="TextBoxLabelHeader3">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="AcceptsReturn" Value="True"/>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="TextBoxLabelHeader1">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="Black"/>
+
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="AcceptsReturn" Value="True"/>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="TextBoxTableHeader0">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="7" />
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="Black"/>
+
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="AcceptsReturn" Value="True"/>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="TextBoxTableHeader1">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="Black"/>
+
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="AcceptsReturn" Value="True"/>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="TextBoxTableHeader2">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="AcceptsReturn" Value="True"/>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="TextBoxTableHeader3">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="AcceptsReturn" Value="True"/>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="TextBoxTableHeader4">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="8" />
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="Black"/>
+
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="AcceptsReturn" Value="True"/>
+    </Style>
+    
+
+    <Style TargetType="TextBox" x:Key="TextBoxTableCell">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="4"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="AcceptsReturn" Value="True"/>
+    </Style>
+
+    <Style TargetType="Paragraph" x:Key="ParagraphTableCell">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="TextAlignment" Value="Center" />
+    </Style>
+    
+    <Style TargetType="TextBox" x:Key="TextBoxParagraphHeader1">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="White" />
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="TextBoxParagraphHeader2">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="White" />
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="TextBoxParagraphHeader3">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="White" />
+    </Style>
+    
+    <Style TargetType="Paragraph">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="12" />
+    </Style>
+
+    <Style TargetType="Paragraph" x:Key="ParagraphHeader1">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <Style TargetType="Paragraph" x:Key="ParagraphHeader2">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <Style TargetType="Paragraph" x:Key="ParagraphHeader3">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <Style TargetType="Paragraph" x:Key="TableHeader">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="TextAlignment" Value="Center" />
+    </Style>
+
+    <Style TargetType="Label">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="12" />
+    </Style>
+
+    <Style TargetType="TableCell">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="0.5" />
+        <Setter Property="Padding" Value="2,2,2,2" />
+        <Setter Property="TextAlignment" Value="Left" />
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+    </Style>
+
+    <Style TargetType="TableCell" x:Key="TableCellNormal">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="0.5" />
+        <Setter Property="Padding" Value="2,2,2,2" />
+        <Setter Property="TextAlignment" Value="Left" />
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+    </Style>
+    
+    <Style TargetType="TableCell" x:Key="TableCellHidden">
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <!--<Setter Property="BorderBrush" Value="#CC0000" />-->
+        <Setter Property="BorderThickness" Value="0.5" />
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+
+    <Style TargetType="TableCell" x:Key="TableCellBorderRight3">
+        <Setter Property="BorderBrush" Value="#000000" />
+        <Setter Property="BorderThickness" Value="0 0 3 0" />
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+
+    <Style TargetType="TableCell" x:Key="TableCellBorderBottom3">
+        <Setter Property="BorderBrush" Value="#000000" />
+        <Setter Property="BorderThickness" Value="0 0 0 3" />
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+
+    <Style TargetType="TableCell" x:Key="TableCellBorderFullRight3">
+        <Setter Property="BorderBrush" Value="#000000" />
+        <Setter Property="BorderThickness" Value="0.5 0.5 3 0.5" />
+        <Setter Property="Padding" Value="0" />
+    </Style>
+
+    <Style TargetType="TableCell" x:Key="TableCellBorderLeftHidden">
+        <Setter Property="BorderBrush" Value="#000000" />
+        <Setter Property="BorderThickness" Value="0 0.5 0.5 0.5" />
+        <Setter Property="Padding" Value="0" />
+    </Style>
+
+    <Style TargetType="TableCell" x:Key="TableCellBorder">
+        <Setter Property="BorderBrush" Value="#000000" />
+        <Setter Property="BorderThickness" Value="0.5" />
+        <Setter Property="Padding" Value="0" />
+    </Style>
+
+    <Style TargetType="TableCell" x:Key="TableCellBorderRightHidden">
+        <Setter Property="BorderBrush" Value="#000000" />
+        <Setter Property="BorderThickness" Value="0.5 0.5 0 0.5" />
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+    
+    <Style TargetType="TableCell" x:Key="TableCellHiddenBorderBottom" BasedOn="{StaticResource TableCellHidden}">
+        <Setter Property="BorderBrush" Value="#000000" />
+        <Setter Property="BorderThickness" Value="0 0 0 0.5" />
+    </Style>
+
+    <Style TargetType="TableCell" x:Key="TableCellHiddenBorderTop" BasedOn="{StaticResource TableCellHidden}">
+        <Setter Property="BorderBrush" Value="#000000" />
+        <Setter Property="BorderThickness" Value="0.5 0 0.5 0.5" />
+    </Style>
+
+    <Style TargetType="TableCell" x:Key="TableCellHiddenBorderBottom1" BasedOn="{StaticResource TableCellHidden}">
+        <Setter Property="BorderBrush" Value="#000000" />
+        <Setter Property="BorderThickness" Value="0.5 0.5 0.5 0" />
+    </Style>
+
+    <Style TargetType="TableCell" x:Key="TableCellBorderTopRight" BasedOn="{StaticResource TableCellHidden}">
+        <Setter Property="BorderBrush" Value="#000000" />
+        <Setter Property="BorderThickness" Value="0 1 0.5 0" />
+    </Style>
+
+    <Style TargetType="TableCell" x:Key="TableCellBorderTopLeft" BasedOn="{StaticResource TableCellHidden}">
+        <Setter Property="BorderBrush" Value="#000000" />
+        <Setter Property="BorderThickness" Value="0.5 1 0 0" />
+    </Style>
+
+    <Style TargetType="TableCell" x:Key="TableCellBorderTopLeftRight" BasedOn="{StaticResource TableCellHidden}">
+        <Setter Property="BorderBrush" Value="#000000" />
+        <Setter Property="BorderThickness" Value="0.5 1 0.5 0" />
+    </Style>
+
+    <Style TargetType="TableCell" x:Key="TableCellBorderTop" BasedOn="{StaticResource TableCellHidden}">
+        <Setter Property="BorderBrush" Value="#000000" />
+        <Setter Property="BorderThickness" Value="0 1 0 0" />
+    </Style>
+
+    <Style TargetType="TableCell" x:Key="TableCellBorderBottom1">
+        <Setter Property="BorderBrush" Value="#000000" />
+        <Setter Property="BorderThickness" Value="0.5 0.5 0.5 2" />
+        <Setter Property="Padding" Value="0" />
+    </Style>
+
+
+    <Style TargetType="TableCell" x:Key="TableCellBorderTopBottom1">
+        <Setter Property="BorderBrush" Value="#000000" />
+        <Setter Property="BorderThickness" Value="0.5 2 0.5 2" />
+        <Setter Property="Padding" Value="0" />
+    </Style>
+
+    <Style TargetType="TableCell" x:Key="TableCellBorderTop1">
+        <Setter Property="BorderBrush" Value="#000000" />
+        <Setter Property="BorderThickness" Value="0.5 2 0.5 0.5" />
+        <Setter Property="Padding" Value="0" />
+    </Style>
+
+
+    <Style x:Key="IconArrow" TargetType="ContentControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+
+                    <Canvas Width="4" Height="4">
+                        <Canvas>
+                            <Canvas.RenderTransform>
+                                <TranslateTransform X="0" Y="-20"/>
+                            </Canvas.RenderTransform>
+                            <Canvas>
+                                <Path Fill="#FF000000" Data="M 2.1855377 20 4 21.995049 2.1781545 24 h -0.75647 L 2.8761097 22.280945 H 0 v -0.56189 H 2.8761097 L 1.4364505 20 Z"/>
+                            </Canvas>
+                        </Canvas>
+                    </Canvas>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="AccessText" x:Key="AccessTextCenter10">
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0.5"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+</ResourceDictionary>
+    

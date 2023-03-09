@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace POS.Report.FlexGrid
+namespace Sklad_v1_001.Report.FlexGrid
 {
     public class FlexGrid : Grid
     {

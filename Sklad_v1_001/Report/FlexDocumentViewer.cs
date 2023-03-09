@@ -1,15 +1,12 @@
-﻿using Sklad_v1_001.Control.FlexMessageBox;
+﻿using Sklad_v1_001.Report;
+using Sklad_v1_001.Control.FlexMessageBox;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Printing;
-using System.Text;
-using System.Threading.Tasks;
-using static Sklad_v1_001.HelperGlobal.MessageBoxTitleHelper;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Xps;
-using System.Windows;
+using static Sklad_v1_001.HelperGlobal.MessageBoxTitleHelper;
 
 namespace Sklad_v1_001.Report
 {
